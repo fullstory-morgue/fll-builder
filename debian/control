@@ -1,12 +1,12 @@
 Source: fll-builder
-Section: unknown
-Priority: extra
+Section: misc
+Priority: optional
 Maintainer: Kel Modderman <kelmo@kanotixguide.org>
-Build-Depends: cdbs, cdbs, debhelper (>= 5)
+Build-Depends: cdbs, debhelper (>= 5)
 Standards-Version: 3.7.2
 
 Package: fll-builder
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: <insert up to 60 chars description>
+Architecture: all
+Depends: distro-defaults
+Description: scripts to build a live-cd based on the FULLSTORY project code
  <insert long description, indented with spaces>
