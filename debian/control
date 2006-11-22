@@ -1,0 +1,12 @@
+Source: fll-builder
+Section: unknown
+Priority: extra
+Maintainer: Kel Modderman <kelmo@kanotixguide.org>
+Build-Depends: cdbs, cdbs, debhelper (>= 5)
+Standards-Version: 3.7.2
+
+Package: fll-builder
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description>
+ <insert long description, indented with spaces>
