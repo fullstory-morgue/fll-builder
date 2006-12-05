@@ -7,9 +7,9 @@ install/fll-builder::
 		debian/fll-builder/usr/sbin/fll-build
 	install -D -m 0644 fll-build.conf \
 		debian/fll-builder/etc/fll-build/fll-build.conf
-	install -D -m 0755 functions \
+	install -D -m 0755 functions.bm \
 		debian/fll-builder/usr/share/fll-builder/functions
-	for script in fll-build.d/*; do \
+	for script in fll-build.d/*.bm; do \
 		install -D -m 0755 $$script \
-			debian/fll-builder/usr/share/fll-builder/fll-build.d; \
+			debian/fll-builder/usr/share/fll-builder/fll-build.d/$$script; \
 	done
