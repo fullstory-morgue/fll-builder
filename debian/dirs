@@ -1,1 +1,5 @@
+/etc/fll-builder
+/usr/sbin
+/usr/share/fll-builder
+/usr/share/fll-builder/fll-build.d
 /var/cache/fll-builder
