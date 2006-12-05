@@ -1,3 +1,15 @@
 #!/usr/bin/make -f
   
 include /usr/share/cdbs/1/rules/debhelper.mk
+
+install/fll-builder::
+	install -D -m 0755 fll-build.bash \
+		debian/fll-builder/usr/sbin/fll-build
+	install -D -m 0644 fll-build.conf \
+		debian/fll-builder/etc/fll-build/fll-build.conf
+	install -D -m 0755 functions \
+		debian/fll-builder/usr/share/fll-builder/functions
+	for script in fll-build.d/*; do \
+		install -D -m 0755 $$script \
+			debian/fll-builder/usr/share/fll-builder/fll-build.d; \
+	done
