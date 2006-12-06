@@ -34,7 +34,39 @@
 # http://svn.berlios.de/viewcvs/fullstory (viewcvs)
 # http://svn.berlios.de/wsvn/fullstory (websvn)
 
-[[ -s $PWD/debian/changelog ]] && FLL_BUILD_BASE="$PWD" || unset FLL_BUILD_BASE
+set -e
 
+# Allow lazy development and testing
+unset FLL_BUILD_BASE
+[[ -s $PWD/debian/changelog ]] && FLL_BUILD_BASE="$PWD"
+
+# Source default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+source "$FLL_BUILD_CONFIG"
+
+# Source functions
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
+FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
+source "$FLL_BUILD_FUNCS"
+
+SELF=$(basename $0)
+CLI_ARGS=$(
+	getopt --name="$SELF" --shell=bash \
+	--longoptions configfile: \
+	--options c: \
+	-- $@
+)
+
+eval set -- "$CLI_ARGS"
+
+while true; do
+	case "$1" in
+		-c|--configfile)
+			FLL_BUILD_ALT_CONFIG="$2"
+			shift
+			;;
+		*)
+			;;
+	esac
+	shift
+done
