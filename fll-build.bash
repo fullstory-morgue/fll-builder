@@ -22,8 +22,8 @@
 # found in /usr/share/common-licenses/GPL.
 
 # fll-build(8): build a debian 'sid' live linux cd that uses code
-# from developed by members of the F.U.L.L.S.T.O.R.Y project to
-# enhance hardware detection and linux experience.
+# developed by members of the F.U.L.L.S.T.O.R.Y project to enhance
+# hardware detection and linux experience.
 #
 # F.U.L.L.S.T.O.R.Y Project Homepage:
 # http://developer.berlios.de/projects/fullstory
