@@ -36,16 +36,6 @@
 
 set -e
 
-SELF=$(basename $0)
-CLI_ARGS=$(
-	getopt --name="$SELF" --shell=bash \
-		--longoptions configfile: \
-		--options c: \
-		-- $@
-)
-
-eval set -- "$CLI_ARGS"
-
 while (($#)); do
 	case "$1" in
 		-c|--configfile)
