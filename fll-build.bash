@@ -63,6 +63,9 @@ if [[ -s $PWD/debian/changelog ]]; then
 	FLL_BUILD_BASE="$PWD"
 fi
 
+# Source distro-defaults
+source /etc/default/distro
+
 # Source default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 source "$FLL_BUILD_CONFIG"
