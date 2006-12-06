@@ -34,5 +34,7 @@
 # http://svn.berlios.de/viewcvs/fullstory (viewcvs)
 # http://svn.berlios.de/wsvn/fullstory (websvn)
 
-FLL_CONFIG="/etc/fll-builder/fll-build.conf"
-FLL_SHARED="/usr/share/fll-builder"
+[[ -s $PWD/debian/changelog ]] && FLL_BUILD_BASE="$PWD" || unset FLL_BUILD_BASE
+
+FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
