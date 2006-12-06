@@ -33,3 +33,6 @@
 # http://svn.berlios.de/svnroot/repos/fullstory
 # http://svn.berlios.de/viewcvs/fullstory (viewcvs)
 # http://svn.berlios.de/wsvn/fullstory (websvn)
+
+FLL_CONFIG="/etc/fll-builder/fll-build.conf"
+FLL_SHARED="/usr/share/fll-builder"
