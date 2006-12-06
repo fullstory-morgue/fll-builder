@@ -36,37 +36,51 @@
 
 set -e
 
-# Allow lazy development and testing
-unset FLL_BUILD_BASE
-[[ -s $PWD/debian/changelog ]] && FLL_BUILD_BASE="$PWD"
-
-# Source default configfile
-FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
-source "$FLL_BUILD_CONFIG"
-
-# Source functions
-FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
-source "$FLL_BUILD_FUNCS"
-
 SELF=$(basename $0)
 CLI_ARGS=$(
 	getopt --name="$SELF" --shell=bash \
-	--longoptions configfile: \
-	--options c: \
-	-- $@
+		--longoptions configfile: \
+		--options c: \
+		-- $@
 )
 
 eval set -- "$CLI_ARGS"
 
-while true; do
+while (($#)); do
 	case "$1" in
 		-c|--configfile)
-			FLL_BUILD_ALT_CONFIG="$2"
 			shift
+			FLL_BUILD_ALT_CONFIG="$1"
 			;;
 		*)
 			;;
 	esac
 	shift
 done
+
+# Allow lazy development and testing
+if [[ -s $PWD/debian/changelog ]]; then
+	FLL_BUILD_BASE="$PWD"
+fi
+
+# Source default configfile
+FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+source "$FLL_BUILD_CONFIG"
+
+# Source alternative configfile
+if [[ -s $FLL_BUILD_ALT_CONFIG ]]; then
+	source $FLL_BUILD_ALT_CONFIG
+fi
+
+# Source functions
+FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
+FLL_BUILD_SCRIPTS="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d/*.bm"
+FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
+source "$FLL_BUILD_FUNCS"
+
+# Source all the scriptlets
+for fll_script in $FLL_BUILD_SCRIPTS; do
+	source $fll_script
+done
+
+exit 0
