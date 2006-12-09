@@ -5,7 +5,6 @@ if [ $(id -u) != 0 ]; then
 	exit 1
 fi
 
-VER=2.6.18.5-slh-up-1
 SUB=1
 ALSA=
 
@@ -13,11 +12,13 @@ rm -f	/boot/System.map \
 	/boot/vmlinuz \
 	initrd.img
 
+source /root/install-packages
+
+VER="$KVERS"
+
 dpkg -i linux-image-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
 dpkg -i linux-headers-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
 dpkg -i linux-doc-"$VER"_"$SUB"_all.deb
-
-source /root/install-packages
 
 for mp in $KERNELMODULES; do
   dpkg -i $mp
