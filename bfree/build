@@ -24,7 +24,6 @@ docdebootstrap () {
 
 doprechroot () {
   # convert templates/ to files/ based on default/distro
-  cp -a $BUILDSRC/files/sudoers $BUILD/etc/
   mkdir -p $BUILD/etc/network
   cp -a $BUILDSRC/files/hosts $BUILD/etc/
   cp -a $BUILDSRC/files/interfaces $BUILD/etc/network/
@@ -54,6 +53,7 @@ dochroot () {
 
 dopreimage () {
   rm $BUILD/KNOPPIX.build
+  cp -a $BUILDSRC/files/sudoers $BUILD/etc/
   cp -a $BUILD/root/fll-build-log $LOG
   mkdir -p $BUILDSRC/iso/boot/
   cp -a $BUILD/boot/live* $BUILDSRC/iso/boot/miniroot.gz
