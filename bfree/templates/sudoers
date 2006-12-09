@@ -1,0 +1,21 @@
+# sudoers file.
+#
+# This file MUST be edited with the "visudo" command as root.
+#
+# See the man page for details on how to write a sudoers file.
+#
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL) ALL
+
+# SIDUX WARNING: This allows the unprivileged sidux user to start commands as root
+# SIDUX WARNING: This is totally insecure and (almost) makes sidux a second root account.
+# SIDUX WARNING: Never allow external access to the sidux user!!!
+sidux	ALL=NOPASSWD: ALL
+

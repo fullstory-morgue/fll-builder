@@ -1,0 +1,9 @@
+#!/bin/bash
+pushd /root/sidux/
+  rm -f iso/SIDUX
+  FILE=$(ls *.squashfs | tail -n 1)
+  echo "Using $FILE"
+  ln $FILE iso/SIDUX/SIDUX
+  mkisofs -J -T -v -r -c "SIDUX" -no-emul-boot -boot-load-size 4 -boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved -o $FILE.iso iso
+popd
+

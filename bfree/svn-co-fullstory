@@ -1,0 +1,19 @@
+#!/bin/bash
+#BASE="/media/hda4/fullstory/"
+SVN_BASE_URL="svn://svn.berlios.de/fullstory/"
+#SVN_BASE_URL="svn+ssh://svn.berlios.de/svnroot/repos/fullstory/"
+for i in $(svn list "$SVN_BASE_URL"); do
+        mkdir -p "$BASE$i/trunk"
+#	rm -rf "$BASE.debian"
+#	mkdir -p "$BASE.debian/$i"
+	pushd "$BASE$i/trunk" &>/dev/null
+		svn checkout "$SVN_BASE_URL$i/trunk/debian/"
+		popd &>/dev/null
+		if ! [ "$(dpkg-parsechangelog -l$BASE$i/trunk/debian/changelog | grep ^Distribution\: | sed s/.*[[:space:]]//)" = "ORPHANED" ]; then
+		        pushd "$BASE$i" &>/dev/null
+			rm -rf trunk
+	        	svn checkout "$SVN_BASE_URL$i/trunk/"
+			popd &>/dev/null
+		fi
+done
+

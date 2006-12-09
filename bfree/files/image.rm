@@ -1,0 +1,6 @@
+root/*
+root/.*
+var/cache/apt/archives/*.deb
+var/lib/apt/lists/localhost*
+var/cache/bootstrap
+

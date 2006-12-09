@@ -1,0 +1,134 @@
+#!/bin/bash
+export LANG="C"
+BASE="
+  acpid \
+  bzip2 \
+  console-common \
+  console-data \
+  dhcp3-client \
+  eject \
+  hibernate \
+  less \
+  lilo \
+  locales \
+  lynx \
+  module-init-tools \
+  ntpdate \
+  openssh-client \
+  pump \
+  reiserfsprogs \
+  smbfs \
+  udev \
+  unp \
+  unzip \
+  vim \
+  xfsprogs \
+  zip
+"
+
+KDE_CORE="
+  hal \
+  kate \
+  kdebase \
+  kde-core \
+  kde-i18n-de \
+  kdm \
+  konversation \
+  pmount \
+  x-window-system-core
+"
+
+DISTRO_BASE="
+  sidux-irc
+  initscripts-sidux-live
+  sidux-setpassword
+  sudoers-sidux
+  sidux-scripts
+  sidux-graphics
+  sidux-graphics-common
+  grub-gfxboot
+  infobash
+  live-initrd-sidux
+  rebuildfstab
+  sshstart-sidux
+  startsyslog-sidux
+  sudoers-sidux
+  su-me
+  udev-config-sidux
+  scanpartitions
+  configure-keyboard
+  etcskel-sidux
+  user-profile-sidux
+  udev-config-sidux
+  networkconfig-sidux
+"
+
+DISTRO_XORG="
+  xsession-sidux
+  xsession-initscript-sidux
+  rootshell
+  configure-mouse
+  configure-screenres
+  checkmem
+  ddcxinfo-sidux
+  sidux-menu
+  sidux-scripts
+  sidux-setpassword
+"
+
+DISTRO_KDE="
+  kdeservicemenus-sidux
+  kde-services-sidux
+  restartx
+"
+
+KERNELINST="
+  build-essential
+  yaird
+  linux-kbuild-2.6.18
+"
+
+LOG=/root/fll-build-log
+mount /proc
+mount /sys
+mkdir $LOG
+echo "fll_build_live" > /etc/debian_chroot
+apt-get update > $LOG/apt-get-update
+echo "Done update"
+apt-get --allow-unauthenticated -y install sidux-keyrings > $LOG/apt-get-keyrings
+echo "Done keyrings"
+apt-get --allow-unauthenticated -y dist-upgrade > $LOG/apt-get-dist-upgrade
+echo "Done dist-upgrade"
+apt-get --allow-unauthenticated -y install $BASE > $LOG/apt-get-install-base
+echo "Done base"
+apt-get --allow-unauthenticated -y install distro-defaults > $LOG/apt-get-install-distro
+source /etc/default/distro
+echo "Done distro"
+apt-get --allow-unauthenticated -y install $DISTRO_BASE > $LOG/apt-get-install-distro-base
+echo "Done sidux"
+apt-get --allow-unauthenticated -y install $DISTRO_XORG > $LOG/apt-get-install-distro-xorg
+echo "Done siduxxorg"
+apt-get --allow-unauthenticated -y install $KDE_CORE $DISTRO_KDE > $LOG/apt-get-install-kde
+echo "Done kde"
+adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER
+for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users; do adduser "$FLL_LIVE_USER" "$joingroup"; done
+echo "Done adduser"
+apt-get --allow-unauthenticated -y install $KERNELINST > $LOG/apt-get-kernelinst
+pushd /root/sidux/deb/
+./install-kernel.sh > $LOG/install-kernel
+echo "Done kernel"
+popd
+#mv /etc/rc2.d /etc/rcinstall.d
+#mkdir /etc/rc2.d
+#ln -s /etc/init.d/xsession /etc/rc2.d/S10xsession
+#for file in $(ls /etc/rc2.d | grep -v ); do
+  # do we want to keep any
+#done
+sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
+export KVERS="2.6.18.5-slh-up-1"
+/usr/sbin/mklive-initrd > $LOG/mkinitrd
+echo "Done initrd"
+rm /etc/debian_chroot
+umount /sys
+umount /proc
+

@@ -1,0 +1,368 @@
+Package: busybox-sidux
+Version: 1.2.2.1-2
+Priority: optional
+Section: shells
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Architecture: i386
+Filename: ./busybox-sidux_1.2.2.1-2_i386.deb
+Size: 451992
+Installed-Size: 872
+MD5sum: e04ac480b0c4b2a2c7650e5cdc7f7f95
+Description: Standalone rescue shell with tons of builtin utilities
+ BusyBox combines tiny versions of many common UNIX utilities into a single
+ small executable. It provides minimalist replacements for the most common
+ utilities you would usually find on your desktop system (i.e., ls, cp, mv,
+ mount, tar, etc.).  The utilities in BusyBox generally have fewer options than
+ their full-featured GNU cousins; however, the options that are included
+ provide the expected functionality and behave very much like their GNU
+ counterparts.
+ .
+ BusyBox-static provides you with a statically linked simple stand alone shell
+ that provides all the utilities available in BusyBox.  This package is
+ intended to be used as a rescue shell, in the event that you screw up your
+ system.  Invoke "busybox sh" and you have a standalone shell ready to save
+ your system from certain destruction.  Invoke "busybox", and it will list the
+ available builtin commands.
+
+Package: checkmem-kanotix
+Version: 0.5.11
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: gawk, xbase-clients
+Suggests: initscripts-kanotix-live
+Architecture: all
+Filename: ./checkmem-kanotix_0.5.11_all.deb
+Size: 3088
+Installed-Size: 40
+MD5sum: 1830c3ae6151d45a2502027b4ad8cc1b
+Description: Simple script to check if enough memory is available
+ Check if we have enough memory installed for starting X.
+
+Package: configure-keyboard
+Version: 0.5.9
+Priority: optional
+Section: misc
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: hwsetup-ng, dialog, xdialog
+Conflicts: kbdconfig-kanotix
+Provides: kbdconfig
+Replaces: kbdconfig
+Architecture: all
+Filename: ./configure-keyboard_0.5.9_all.deb
+Size: 2626
+Installed-Size: 40
+MD5sum: 053080ec70fc24e00346e16a0f1bc5ad
+Description: Lightweight keyboard configuration tool for sidux
+ small tool for configuring keyboards.
+
+Package: ddcxinfo-kanotix
+Version: 0.6.20
+Priority: optional
+Section: x11
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: libc6 (>= 2.3.6-6)
+Architecture: i386
+Filename: ./ddcxinfo-kanotix_0.6.20_i386.deb
+Size: 17434
+Installed-Size: 84
+MD5sum: f14f07985c2502dc56a8e2f4c5468cec
+Description: Monitor/ Graphics card DDC hardware detection
+ Part of the KANOTIX hardware detection suite.
+
+Package: distro-defaults
+Version: 0.4.1
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Architecture: all
+Filename: ./distro-defaults_0.4.1_all.deb
+Size: 2846
+Installed-Size: 48
+MD5sum: 8ef500d637de9afd8dd6dabe61a346fe
+Description: set various default options
+ This package has much influence on the system and update behaviour of
+ customized live linux utilities. Take care to keep sane settings for
+ installed systems.
+
+Package: hwsetup-ng
+Version: 0.2.2
+Priority: extra
+Section: utils
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: gawk, perl, discover1-data
+Conflicts: hwsetup-kanotix, hwdata-kanotix
+Provides: hwsetup-kanotix
+Replaces: hwsetup-kanotix
+Architecture: all
+Filename: ./hwsetup-ng_0.2.2_all.deb
+Size: 6270
+Installed-Size: 68
+MD5sum: 4e91231d56e4bfbdf2fc98bf94fe7a88
+Description: udev based hwsetup replacement
+ Bash emulation of the former hwsetup for combined usage with udev.
+
+Package: initscripts-kanotix-live
+Version: 0.3.36
+Priority: optional
+Section: base
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: distro-defaults, rebuildfstab-kanotix, udev (>= 0.071), sysvinit (>= 2.86), eject (>= 2.1.4-2.1), pcmciautils, hwsetup-ng
+Recommends: xf86config-kanotix (>= 0.9.11)
+Suggests: avm-firmware, drdsl, ltmodem-common, unionfs-utils, hotkey-setup
+Conflicts: hotplug-kanotix, fix-cdrom, mkdesktophdicons-kanotix, eject-live, pcmcia-cs, usleep-kanotix
+Architecture: all
+Filename: ./initscripts-kanotix-live_0.3.36_all.deb
+Size: 21710
+Installed-Size: 120
+MD5sum: 2c1fb50bd9a64ae9c3b61daf810d400f
+Description: KANOTIX initscripts for live CDs
+ Live specific initscripts for hardware detection and shutdown functions
+ on KANOTIX.
+
+Package: kanotix-su
+Version: 0.2.3
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: sudo
+Suggests: gksu, kdesu
+Architecture: all
+Filename: ./kanotix-su_0.2.3_all.deb
+Size: 2330
+Installed-Size: 40
+MD5sum: a5a21a024321b40862629483be4bc952
+Description: su wrapper for KANOTIX
+ This package provides a simple su wrapper for various uses.
+
+Package: kanotix-udev-config
+Version: 0.2.25
+Priority: extra
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: udev (>= 0.091-1)
+Replaces: kanotix-scripts (<= 0.1.2)
+Architecture: all
+Filename: ./kanotix-udev-config_0.2.25_all.deb
+Size: 5156
+Installed-Size: 84
+MD5sum: d751fafabf085b30f049684dabac8da3
+Description: custom configuration for udev
+ Configure PCI IDs and udev events needed by KANOTIX.
+
+Package: kde-services-kanotix
+Version: 0.3.6
+Priority: optional
+Section: kde
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: kcontrol, xbase-clients, kmix, kdebase, kdelibs-bin, perl
+Suggests: knemo
+Architecture: all
+Filename: ./kde-services-kanotix_0.3.6_all.deb
+Size: 2916
+Installed-Size: 64
+MD5sum: a8ead41db93c6e9ee8dfdff62a654f1e
+Description: starts mixer and krandrtray on KDE Startup
+ Automatic start of certain useful services like mixer and krandrtray.
+
+Package: knx-installer
+Version: 0.4.0.37
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: dialog, initrd-tools, perl, bash (>> 2.05), lilo, kdm, grub-gfxboot | grub, whois, yaird, kanotix-udev-config
+Suggests: gparted, xdialog, distro-defaults, 855resolution
+Conflicts: ifrename, initscripts-kanotix
+Architecture: all
+Filename: ./knx-installer_0.4.0.37_all.deb
+Size: 83760
+Installed-Size: 480
+MD5sum: 97ba346a42ff1daed3f329cde4c04804
+Description: installs kanotix to hd
+ kanotix-installer is an fully functional installation program
+ to easily install kanotix to hd. It has support for config-files,
+ which allow more advanced usages.
+
+Package: knxcc
+Version: 0.4.1-2
+Priority: optional
+Section: admin
+Maintainer: Andreas Loibl <andreas@andreas-loibl.de>
+Depends: dialog, perl, infobash, fix-fonts, xbase-clients, kanotix-toolkit
+Recommends: knxcc-kde, sysv-freeze
+Architecture: all
+Filename: ./knxcc_0.4.1-2_all.deb
+Size: 33010
+Installed-Size: 208
+MD5sum: af8a6278fc255de70370fbe76b075d2a
+Description: KANOTIX-Control-Center
+ Dialog based frontend for Kano's Scripts and other Settings.
+
+Package: knxcc-kde
+Source: knxcc
+Version: 0.4.1-2
+Priority: optional
+Section: admin
+Maintainer: Andreas Loibl <andreas@andreas-loibl.de>
+Depends: kdelibs4c2a (>= 4:3.5.5-1), libacl1 (>= 2.2.11-1), libart-2.0-2 (>= 2.3.16), libattr1 (>= 2.4.4-1), libaudio2, libc6 (>= 2.3.6-6), libfam0, libfontconfig1 (>= 2.4.0), libfreetype6 (>= 2.2), libgcc1 (>= 1:4.1.1-12), libice6 (>= 1:1.0.0), libidn11 (>= 0.5.18), libjpeg62, libpng12-0 (>= 1.2.8rel), libqt3-mt (>= 3:3.3.7), libsm6, libstdc++6 (>= 4.1.1-12), libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxft2 (>> 2.1.1), libxi6, libxinerama1, libxrandr2, libxrender1, libxt6, zlib1g (>= 1:1.2.1), knxcc (>= 0.4.1-2), kdebase-data, kcontrol
+Architecture: i386
+Filename: ./knxcc-kde_0.4.1-2_i386.deb
+Size: 153230
+Installed-Size: 584
+MD5sum: 5da639820b2e2fae32388c3a30c82dd3
+Description: KANOTIX-Control-Center for KDE
+ QT/ KDE based frontend for Kano's Scripts and other Settings.
+
+Package: mouseconfig-kanotix
+Version: 0.5.8
+Priority: optional
+Section: utils
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: dialog, xdialog, hwsetup-ng
+Recommends: gpm, xbase-clients
+Provides: mouseconfig
+Replaces: mouseconfig
+Architecture: all
+Filename: ./mouseconfig-kanotix_0.5.8_all.deb
+Size: 3000
+Installed-Size: 40
+MD5sum: 605633ed3db56e282878d864ef7de6fe
+Description: Lightweight mouse configuration tool for Kanotix
+ small tool for configuring the mouse in live mode.
+
+Package: networkconfig-kanotix
+Version: 0.5.7
+Priority: optional
+Section: net
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: kppp, pppoeconf, kanotix-menu, kdebase-bin, ppp-scripts-kanotix
+Architecture: all
+Filename: ./networkconfig-kanotix_0.5.7_all.deb
+Size: 3794
+Installed-Size: 52
+MD5sum: 8c894edf050cf8f86d9d8b5ba55c47e7
+Description: network configuration xdg menus
+ This package contains the network configuration XDG Menus for KANOTIX.
+
+Package: rebuildfstab-kanotix
+Version: 0.5.15
+Priority: extra
+Section: utils
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: scanpartitions-kanotix, kanotix-su
+Recommends: xterm | x-terminal-emulator
+Architecture: all
+Filename: ./rebuildfstab-kanotix_0.5.15_all.deb
+Size: 3548
+Installed-Size: 40
+MD5sum: 82c35899b6ff41248a56276b50a0f36e
+Description: fstab-rebuilder for KANOTIX
+ rebuildfstab uses scanpartitions-kanotix to rebuild all harddisk entries
+ in /etc/fstab, for automatic integration of USB storage devices and similar.
+
+Package: restartx-kanotix
+Version: 0.5.14
+Priority: optional
+Section: x11
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: dialog, xsession-initscript-kanotix, kanotix-su
+Recommends: xdialog
+Architecture: all
+Filename: ./restartx-kanotix_0.5.14_all.deb
+Size: 3624
+Installed-Size: 56
+MD5sum: a87bb1b6a4eee8cb66bd10854f6a8730
+Description: shell GUI for restarting the KANOTIX desktop
+ Don't use this tool on your installed system.
+
+Package: scanpartitions-kanotix
+Version: 0.7.2
+Priority: optional
+Section: utils
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: disktype, gawk
+Architecture: all
+Filename: ./scanpartitions-kanotix_0.7.2_all.deb
+Size: 4652
+Installed-Size: 44
+MD5sum: d2a4a85e256491a261c1af3113d077bc
+Description: fstab-helper for KANOTIX
+ scanpartitions reads /proc/partitions and tries to guess
+ the filesystem on each partition for automatic /etc/fstab
+ generation.
+
+Package: su-me
+Version: 0.3.1
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Recommends: sudo, kdesu | gksu
+Architecture: all
+Filename: ./su-me_0.3.1_all.deb
+Size: 2362
+Installed-Size: 40
+MD5sum: c105a85ee84d2fc5750e0817251083f2
+Description: su wrapper for KANOTIX
+ This package provides a simple su wrapper for various uses.
+
+Package: sudoers-kanotix
+Version: 0.5.6
+Priority: optional
+Section: admin
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Pre-Depends: distro-defaults
+Depends: sudo
+Architecture: all
+Filename: ./sudoers-kanotix_0.5.6_all.deb
+Size: 2288
+Installed-Size: 40
+MD5sum: f342f2046619b6c804ff6a43b8ee57e4
+Description: /etc/sudoers for the kanotix user
+ sudoers template for life uses.
+
+Package: xf86config-kanotix
+Version: 0.10.3
+Priority: optional
+Section: x11
+Maintainer: Joerg Schirottke <master@kanotix.com>
+Depends: ddcxinfo-kanotix, xserver-xorg-core (>= 1.1.0)
+Architecture: all
+Filename: ./xf86config-kanotix_0.10.3_all.deb
+Size: 11734
+Installed-Size: 76
+MD5sum: 6907102ea827b936dba21dcba8ad1fdd
+Description: XFree86 template config files and setup program for KANOTIX
+ Template files and a shell script (mkxf86config) for the KANOTIX
+ non-interactive setup of XFree86 3.x/4.x.
+
+Package: xsession-initscript-kanotix
+Version: 0.6.14
+Priority: optional
+Section: base
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Depends: initscripts-kanotix-live, kanotix-graphics, xloadimage, distro-defaults, xf86config-kanotix (>= 0.9.11)
+Suggests: 915resolution
+Architecture: all
+Filename: ./xsession-initscript-kanotix_0.6.14_all.deb
+Size: 6714
+Installed-Size: 60
+MD5sum: 42ec8a1b22e120cd873184036087a313
+Description: Starts X-Window system from INIT on KANOTIX
+ Custom Initscripts for the KANOTIX live X11 capabilities.
+
+Package: xsession-kanotix
+Version: 0.5.79
+Priority: optional
+Section: base
+Maintainer: Stefan Lippers-Hollmann <s.l-h@gmx.de>
+Pre-Depends: distro-defaults
+Depends: etcskel-kanotix, rsync, initscripts-kanotix-live, dbus, xterm | x-terminal-emulator
+Conflicts: kanotix-remountrw, mkdesktophdicons-kanotix
+Architecture: all
+Filename: ./xsession-kanotix_0.5.79_all.deb
+Size: 11528
+Installed-Size: 72
+MD5sum: 489284561a260cd0f324414a0d5c2fc9
+Description: Automatic Xsession startup script for KANOTIX
+ Only for live usage, as this overrides the ordinary startup methods.
+

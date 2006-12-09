@@ -1,0 +1,55 @@
+#!/bin/bash
+[ -d svn ] || echo "please run from dir containing svn dir"
+
+dobuildpackage () {
+  echo -n $i $(date) '...' >> ../../../log/pbuilder/log
+  svn-buildpackage --svn-builder="pdebuild --buildresult `pwd`/../build-area" > ../../../log/pbuilder/$i 2>&1 || echo "error in $i"
+  #  mv ../build-area/* ../../../debian/
+  echo $(date) >> ../../../log/pbuilder/log
+}
+
+
+mkdir -p log/pbuilder/
+echo 'Start Full Run' $(date) > log/pbuilder/log
+pushd svn >/dev/null
+ALL=$(ls)
+for i in $ALL; do
+  pushd $i/trunk >/dev/null
+  dobuildpackage
+  BUILD=""
+  for j in $ALL ; do 
+    grep Build-Depends debian/control | grep $j && BUILD="$BUILD $j"
+  done
+  if [ -n "$BUILD" ]; then
+    echo $BUILD > ../Build-Deps
+    REBUILD="$REBUILD $i"
+  fi
+  popd >/dev/null
+done
+popd >/dev/null
+echo 'Done first pass $(date)' >> log/pbuilder/log
+
+if ! grep -q '^deb file:///var/cache/pbuilder/deps ./' /etc/apt/sources.list; then
+  echo 'deb file:///var/cache/pbuilder/deps ./
+' >> /etc/apt/sources.list
+fi
+
+while [-n $REBUILD] ; do
+  REBUILD2=""
+  echo 'Start second pass' $(date) > log/pbuilder/log
+  export OTHERMIRROR="deb file:///var/cache/pbuilder/deps ./"
+  for i in $REBUILD; do
+    pushd $i/trunk > /dev/null
+    for j in $(cat ../Build-Deps); do
+      cp ../../$j/build-area/*.deb /var/cache/pbuilder/deps
+    done
+    dobuildpackage
+    popd >/dev/null
+  done
+  REBUILD="$REBUILD2"
+  echo 'Done second pass $(date)' >> log/pbuilder/log
+done
+
+export OTHERMIRROR=""
+
+echo 'End' $(date)>> log/pbuilder/log

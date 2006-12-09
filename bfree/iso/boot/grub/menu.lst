@@ -1,0 +1,90 @@
+default 0
+timeout 30
+color cyan/blue white/blue
+foreground EE0000
+background 400000
+#splashimage /boot/grub/kanotix.xpm.gz
+gfxmenu /boot/grub/message
+
+setkey y z
+setkey z y
+setkey Y Z
+setkey Z Y
+setkey equal parenright
+setkey parenright parenleft
+setkey parenleft asterisk
+setkey doublequote at
+setkey plus bracketright
+setkey minus slash
+setkey slash ampersand
+setkey ampersand percent
+setkey percent caret
+setkey underscore question
+setkey question underscore
+setkey semicolon less
+setkey less numbersign
+setkey numbersign backslash
+setkey colon greater
+setkey greater bar
+setkey asterisk braceright
+
+#title  ACPI on - DMA on - ALSA Sound - Deutsch
+#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet alsa
+#initrd /boot/miniroot.gz
+
+#title  ACPI on - DMA on - ALSA Sound - English
+#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet alsa
+#initrd /boot/miniroot.gz
+
+title  ACPI on - DMA on - Deutsch
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet vga=791 splash
+initrd /boot/miniroot.gz
+
+title  ACPI on - DMA on - English
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet vga=791 splash
+initrd /boot/miniroot.gz
+
+title  ACPI off - DMA off - Deutsch
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+initrd /boot/miniroot.gz
+
+title  ACPI off - DMA off - English
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+initrd /boot/miniroot.gz
+
+title  ACPI on - DMA on - APIC off - Deutsch
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+initrd /boot/miniroot.gz
+
+title  ACPI on - DMA on - APIC off - English
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+initrd /boot/miniroot.gz
+
+title EXTRA MENU - Deutsch
+configfile /boot/grub/extra_d.lst
+
+title EXTRA MENU - English
+configfile /boot/grub/extra_e.lst
+
+title GRUB - Keyboardlayout - English
+setkey y y
+setkey z z
+setkey Y Y
+setkey Z Z
+setkey equal equal
+setkey parenright parenright
+setkey parenleft parenleft
+setkey doublequote doublequote
+setkey plus plus
+setkey minus minus
+setkey slash slash
+setkey ampersand ampersand
+setkey percent percent
+setkey underscore underscore
+setkey question question
+setkey semicolon semicolon
+setkey less less
+setkey numbersign numbersign
+setkey colon colon
+setkey greater greater
+setkey asterisk asterisk
