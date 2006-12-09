@@ -1,5 +1,5 @@
 127.0.0.1	localhost
-127.0.0.1	_-_FLL_DISTRONAME_-_
+127.0.0.1	@FLL_DISTRONAME@
 
 # The following lines are desirable for IPv6 capable hosts
 # (added automatically by netbase upgrade)
