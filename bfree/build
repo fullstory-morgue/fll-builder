@@ -58,6 +58,7 @@ dopreimage () {
   mkdir -p $BUILDSRC/iso/boot/
   cp -a $BUILD/boot/live* $BUILDSRC/iso/boot/miniroot.gz
   cp -a $BUILD/boot/vmlinuz* $BUILDSRC/iso/boot/vmlinuz
+  cp -a $BUILD/usr/lib/grub/i386-pc/* $BUILDSRC/iso/boot/grub/
   pushd $BUILD
   rm -rf $(cat $BUILDSRC/files/image.rm)
   mkdir $(cat $BUILDSRC/files/image.mkdir)
