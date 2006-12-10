@@ -30,7 +30,8 @@ apt-get -y install $DISTRO_ALL > $LOG/apt-get-install-all
 echo "Done all"
 adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER
 for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users camera floppy games powerdev; do adduser "$FLL_LIVE_USER" "$joingroup"; done
-passwd -l root
+# TODO: fix sudo  and remove root password
+#passwd -l root
 echo "Done users"
 apt-get -y install $KERNELINST > $LOG/apt-get-kernelinst
 pushd /root/deb/

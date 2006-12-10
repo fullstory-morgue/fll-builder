@@ -49,13 +49,14 @@ DISTRO_BASE="
   rebuildfstab
   sshstart-sidux
   startsyslog-sidux
+  sudoers-sidux
   su-me
-  udev-config-sidux
   scanpartitions
   configure-keyboard
   etcskel-sidux
   user-profile-sidux
   networkconfig-sidux
+  unionfs-tools
 "
 
 DISTRO_XORG="
@@ -82,7 +83,6 @@ KERNELINST="
 
 DISTRO_ALL="
   configure-cups
-  configure-dsl
   configure-freenx
   configure-gprs
   configure-isdn
@@ -91,9 +91,6 @@ DISTRO_ALL="
   configure-xawtv
   fix-fonts
   knxcc
-  knxinstaller
-  knx-installer
-  mkdosswapfile
   mkpersistenthome
   sambastart-sidux
   saveconfig
@@ -101,10 +98,16 @@ DISTRO_ALL="
   sidux-searchplugins
   sidux-vdr
   smbconf-sidux
-  sysv-freeze
   teclasat
 "
 
+DISTRO_FAILING="
+  sysv-freeze
+  configure-dsl
+  knx-installer
+  knxinstaller
+  mkdosswapfile
+"
 KVERS="2.6.18.5-slh-up-1"
 
 KERNELMODULES="
