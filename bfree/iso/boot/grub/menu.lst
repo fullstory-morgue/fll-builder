@@ -1,90 +1,57 @@
 default 0
 timeout 30
-color cyan/blue white/blue
+color red/black light-red/black
 foreground EE0000
 background 400000
-#splashimage /boot/grub/kanotix.xpm.gz
-gfxmenu /boot/grub/message
+gfxmenu /boot/message
 
-setkey y z
-setkey z y
-setkey Y Z
-setkey Z Y
-setkey equal parenright
-setkey parenright parenleft
-setkey parenleft asterisk
-setkey doublequote at
-setkey plus bracketright
-setkey minus slash
-setkey slash ampersand
-setkey ampersand percent
-setkey percent caret
-setkey underscore question
-setkey question underscore
-setkey semicolon less
-setkey less numbersign
-setkey numbersign backslash
-setkey colon greater
-setkey greater bar
-setkey asterisk braceright
-
-#title  ACPI on - DMA on - ALSA Sound - Deutsch
-#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet alsa
+#title  ACPI on - DMA on - ALSA Sound
+#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet alsa
 #initrd /boot/miniroot.gz
 
-#title  ACPI on - DMA on - ALSA Sound - English
-#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet alsa
-#initrd /boot/miniroot.gz
-
-title  ACPI on - DMA on - Deutsch
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet vga=791 splash
+title  Default
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet vga=791 splash
 initrd /boot/miniroot.gz
 
-title  ACPI on - DMA on - English
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet vga=791 splash
+title  ACPI off - DMA off
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
 initrd /boot/miniroot.gz
 
-title  ACPI off - DMA off - Deutsch
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+title  APIC off
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
 initrd /boot/miniroot.gz
 
-title  ACPI off - DMA off - English
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+title  Expert Mode
+kernel /boot/vmlinuz BOOT_IMAGE=expert ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce nodma
 initrd /boot/miniroot.gz
 
-title  ACPI on - DMA on - APIC off - Deutsch
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+title  Framebuffer Mode
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off vga=791 xmodule=fbdev nomce quiet
 initrd /boot/miniroot.gz
 
-title  ACPI on - DMA on - APIC off - English
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=us-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+title  Failsafe
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
 initrd /boot/miniroot.gz
 
-title EXTRA MENU - Deutsch
-configfile /boot/grub/extra_d.lst
+title  Framebuffer off
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off vga=normal nomce quiet
+initrd /boot/miniroot.gz
 
-title EXTRA MENU - English
-configfile /boot/grub/extra_e.lst
+title  Console only
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet 2
+initrd /boot/miniroot.gz
 
-title GRUB - Keyboardlayout - English
-setkey y y
-setkey z z
-setkey Y Y
-setkey Z Z
-setkey equal equal
-setkey parenright parenright
-setkey parenleft parenleft
-setkey doublequote doublequote
-setkey plus plus
-setkey minus minus
-setkey slash slash
-setkey ampersand ampersand
-setkey percent percent
-setkey underscore underscore
-setkey question question
-setkey semicolon semicolon
-setkey less less
-setkey numbersign numbersign
-setkey colon colon
-setkey greater greater
-setkey asterisk asterisk
+title MEMTEST - Memtest86+
+kernel /boot/memtest.bin
+
+title BOOT - 1st HD 1st Partition
+chainloader (hd0,0)+1
+
+title BOOT - 2nd HD 1st Partition (swapped)
+map (hd0) (hd1)
+map (hd1) (hd0)
+chainloader (hd1,0)+1
+
+title BOOT - HD Install from /dev/hda2
+kernel (hd0,1)/boot/vmlinuz ro root=/dev/hda2 apm=power-off nomce
+

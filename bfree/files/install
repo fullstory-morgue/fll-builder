@@ -8,28 +8,31 @@ mount /proc
 mount /sys
 mkdir $LOG
 echo "sidux-live" > /etc/debian_chroot
-apt-get update > $LOG/apt-get-update
+apt-get --allow-unauthenticated update > $LOG/apt-get-update
 echo "Done update"
-apt-get --allow-unauthenticated -y install sidux-keyrings > $LOG/apt-get-keyrings
+apt-get --allow-unauthenticated -y install sidux-keyrings sidux-keyring > $LOG/apt-get-keyrings
+apt-get update
 echo "Done keyrings"
-apt-get --allow-unauthenticated -y install distro-defaults > $LOG/apt-get-keyrings
+apt-get -y install distro-defaults > $LOG/apt-get-defaults
 echo "Done default"
 source /etc/default/distro
-apt-get --allow-unauthenticated -y dist-upgrade > $LOG/apt-get-dist-upgrade
+apt-get -y dist-upgrade > $LOG/apt-get-dist-upgrade
 echo "Done dist-upgrade"
-apt-get --allow-unauthenticated -y install $BASE > $LOG/apt-get-install-base
+apt-get -y install $BASE > $LOG/apt-get-install-base
 echo "Done base"
-apt-get --allow-unauthenticated -y install $DISTRO_BASE > $LOG/apt-get-install-sidux
+apt-get -y install $DISTRO_BASE > $LOG/apt-get-install-distro
 echo "Done sidux"
-apt-get --allow-unauthenticated -y install $DISTRO_XORG > $LOG/apt-get-install-siduxxorg
+apt-get -y install $DISTRO_XORG > $LOG/apt-get-install-xorg
 echo "Done siduxxorg"
-apt-get --allow-unauthenticated -y install $KDE_CORE $DISTRO_KDE > $LOG/apt-get-install-kde
+apt-get -y install $KDE_CORE $DISTRO_KDE > $LOG/apt-get-install-kde
 echo "Done kde"
+apt-get -y install $DISTRO_ALL > $LOG/apt-get-install-all
+echo "Done all"
 adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER
 for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users camera floppy games powerdev; do adduser "$FLL_LIVE_USER" "$joingroup"; done
 passwd -l root
 echo "Done users"
-apt-get --allow-unauthenticated -y install $KERNELINST > $LOG/apt-get-kernelinst
+apt-get -y install $KERNELINST > $LOG/apt-get-kernelinst
 pushd /root/deb/
 ./install-kernel.sh > $LOG/install-kernel
 echo "Done kernel"
