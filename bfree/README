@@ -3,7 +3,7 @@ Edit and save the build script to set the BUILDSRC
 It is setup to use a localhost apt-cacher of /debian and /sidux,
 you may want to setup apt-cacher to match or change to normal sources.
 
-path_map = debian ftp.ie.debian.org/debian ; sidux sidux.com/repo/debian
+path_map = debian ftp.ie.debian.org/debian ; sidux sidux.com/repo
 
 Run the build script (this will take a while, look in log to see what's happening).
 

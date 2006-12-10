@@ -53,8 +53,8 @@ dochroot () {
 
 dopreimage () {
   rm $BUILD/KNOPPIX.build
-#  cp -a $BUILDSRC/files/sudoers $BUILD/etc/
-#  chmod 440 $BUILD/etc/sudoers
+  cp -a $BUILDSRC/files/sudoers $BUILD/etc/
+  chmod 440 $BUILD/etc/sudoers
   cp -a $BUILD/root/fll-build-log $LOG
   mkdir -p $BUILDSRC/iso/boot/
   cp -a $BUILD/boot/live* $BUILDSRC/iso/boot/miniroot.gz

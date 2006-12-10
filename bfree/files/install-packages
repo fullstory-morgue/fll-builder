@@ -49,8 +49,8 @@ DISTRO_BASE="
   rebuildfstab
   sshstart-sidux
   startsyslog-sidux
-  sudoers-sidux
   su-me
+  sudo
   scanpartitions
   configure-keyboard
   etcskel-sidux

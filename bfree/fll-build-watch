@@ -1,0 +1,33 @@
+#!/bin/bash
+BUILDSRC="/root/sidux"
+MYD=$(pwd)
+cd $BUILDSRC
+BUILDT=$(ls -art $BUILDSRC | grep -v squashfs | grep ^[[:digit:]]*$ | grep -v ^\\. | tail -n 1)
+#echo "BUILDT:$BUILDT"
+BUILD=$BUILDSRC/$BUILDT
+#echo "BUILD:$BUILD"
+LOG=$BUILDSRC/log/$BUILDT
+#echo "LOG:$LOG"
+
+#ls -l $BUILD.squashfs
+#ls -l log/$BUILD/fll-build-log
+#ls -l log/$BUILD/cdebootstrap
+
+if [ -e $BUILD.squashfs ]; then
+  ls -lh *.squashfs | tail -n 2
+  ps aux | grep mksquashfs | grep $BUILD
+elif [ -e $LOG/fll-build-log ]; then
+  cd $LOG/fll-build-log
+  ls -art . | tail -n 1 | xargs tail
+elif [ -e $BUILD/fll-build-log ]; then
+  cd $BUILD/fll-build-log
+  ls -art . | tail -n 1 | xargs tail
+elif [ -e log/$BUILDT/cdebootstrap ]; then
+  tail log/$BUILDT/cdebootstrap
+fi
+echo
+echo
+echo
+tail build.log
+cd $MYD
+

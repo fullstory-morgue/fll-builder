@@ -1,0 +1,9 @@
+#!/bin/bash
+ISOPATH="/root/sidux"
+ISO=$(ls -art $ISOPATH/*.iso | tail -n 1)
+[ -e $ISO ] || (echo "No iso found in $ISOPATH" && exit 0)
+echo "Found latest iso $ISO"
+MEM="256"
+QEMUOPT="-monitor stdio -net nic -net user"
+qemu -m $MEM -boot d -cdrom $ISO $QEMUOPT
+
