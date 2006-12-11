@@ -1,6 +1,7 @@
 #!/bin/bash
 pushd /root/sidux/
   rm -f iso/SIDUX
+  mkdir iso/SIDUX
   FILE=$(ls *.squashfs | tail -n 1)
   echo "Using $FILE"
   ln $FILE iso/SIDUX/SIDUX
