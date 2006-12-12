@@ -1,12 +1,39 @@
 #!/bin/bash
 # Common functions for fll-build(8)
 
-
 chroot_exec() {
-	:
+	# adapted from live-package
+	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
+		SHELL="$SHELL" \
+		HOME="/root" \
+		PATH="/usr/sbin:/usr/bin:/sbin:/bin" \
+		DEBIAN_FRONTEND="noninteractive" \
+		DEBIAN_PRIORITY="critical" \
+		DEBCONF_NOWARNINGS="yes" \
+		$@
+	
+	return $?
 }
 
 copy_template_to_chroot() {
-	:
+	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR/$1"
+	local DESTFILE="$FLL_BUILD_CHROOT/$2"
+	
+	if [[ -f $DESTFILE ]]; then
+		mv $DESTFILE $DESTFILE.bak
+	fi
+
+	cp $ORIGFILE $DESTFILE
+
+	return $?
 }
 
+nuke_buildarea() {
+	[[ -d $FLL_BUILD_AREA ]] || return 0
+
+	# adpated from pbuilder
+	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
+		xargs -0 rm -f
+  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
+		(xargs -0 rmdir || true)
+}
