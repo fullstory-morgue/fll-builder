@@ -85,9 +85,63 @@ create_fstab() {
 EOF
 }
 
+create_apt_sources() {
+	local DEBIANMIRROR=${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
+	local SIDUXMIRROR=${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
+	case $1 in
+		temp)
+			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
+<<EOF
+deb $DEBIANMIRROR sid main
+deb-src $DEBIANMIRROR sid main
+
+deb $SIDUXMIRROR sid main fix.main
+deb-src $SIDUXMIRROR sid main fix.main
+EOF
+			;;
+		final)
+			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
+<<EOF
+deb http://ftp.debian.org/debian/ sid main
+deb-src http://ftp.debian.org/debian/ sid main
+
+deb http://sidux.com/debian/ sid main fix.main
+deb-src http://sidux.com/debian/ sid main fix.main
+EOF
+			;;
+	esac
+}
+
+create_sudoers() {
+	cat > "${FLL_BUILD_CHROOT}"/etc/sudoers \
+<<EOF
+# sudoers file.
+#
+# This file MUST be edited with the "visudo" command as root.
+#
+# See the man page for details on how to write a sudoers file.
+#
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL) ALL
+
+# SIDUX WARNING: This allows the unprivileged sidux user to start commands as root
+# SIDUX WARNING: This is totally insecure and (almost) makes sidux a second root account.
+# SIDUX WARNING: Never allow external access to the sidux user!!!
+$FLL_LIVE_USER	ALL=NOPASSWD: ALL
+EOF
+}
+
 patch_chroot() {
 	case $1 in
-		apply)
+		pre)
+			chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 			mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 			create_chroot_policy
 			create_debian_chroot
@@ -95,13 +149,16 @@ patch_chroot() {
 			copy_to_chroot /etc/resolv.conf
 			create_interfaces
 			create_fstab
+			create_apt_sources temp
 			;;
-		reverse)
+		post)
 			rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 			rm -vf "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			revert_copy_to_chroot /etc/hosts
 			revert_copy_to_chroot /etc/resolv.conf
+			create_apt_sources final
+			create_sudoers
 			;;
 	esac
 }

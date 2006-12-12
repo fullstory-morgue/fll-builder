@@ -245,12 +245,12 @@ strap_chroot
 # cleanup unrequired packages (from live-package)
 chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 
-patch_chroot apply
+patch_chroot pre
 
 proc mount
 
 proc umount
 
-patch_chroot reverse
+patch_chroot post
 
 exit 0
