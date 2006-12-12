@@ -163,6 +163,14 @@ patch_chroot() {
 	esac
 }
 
+prepare_apt() {
+	chroot_exec "apt-get update"
+	chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings distro-defaults"
+	chroot_exec "apt-get update"
+}
+
+
+
 proc() {
 	local PROC="$FLL_BUILD_CHROOT"/proc
 	
