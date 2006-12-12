@@ -22,21 +22,22 @@ set -e
 #		Variable Declarations				#
 #################################################################
 # script name and version info
+SELF="fll-build"
 VERSION="0.0.0"
-SELF=$(basename $0)
 
 # Allow lazy development and testing
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
-# defaults
+# fll defaults
 FLL_BUILD_DEFAULTS="/etc/default/distro"
 
-# default configfile
+# fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 
-# fll functions
+# fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
+FLL_BUILD_SCRIPTDIR="$FLL_BUILD_SHARED/fll-build.d"
+FLL_BUILD_TEMPLATEDIR="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
 
 #################################################################
@@ -66,10 +67,10 @@ else
 fi
 
 while true; do
-	case "$1" in
+	case $1 in
 		-c|--configfile)
 			shift
-			FLL_BUILD_ALT_CONFIG="$1"
+			FLL_BUILD_ALT_CONFIG=$1
 			;;
 		-h|--help)
 			print_help

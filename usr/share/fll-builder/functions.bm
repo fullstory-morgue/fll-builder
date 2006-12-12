@@ -1,5 +1,5 @@
 #!/bin/bash
-# Common shell functions for fll-build(8)
+# Common functions for fll-build(8)
 
 print_copyright() {
 cat <<EOF
@@ -53,4 +53,27 @@ $SELF
 Version: $VERSION
 
 EOF
+}
+
+error() {
+	echo -ne "$SELF error: "
+	case $1 in
+		1) 
+			echo "error 1 text"
+			;;
+		2) 
+			echo "error 2 text"
+			;;
+		3) 
+			echo "error 3 text"
+			;;
+		4) 
+			echo "error 4 text"
+			;;
+		*) 
+			echo "Unknown error code \"$1\"."
+			set -- 255
+			;;
+	esac
+	exit $1
 }
