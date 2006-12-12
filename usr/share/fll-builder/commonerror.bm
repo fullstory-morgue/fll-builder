@@ -13,8 +13,11 @@ error() {
 		3)
 			echo "unable to source alternate configfile"
 			;;
-		4)
-			echo "buildarea target does not exist"
+		4)	
+			echo "unable to create buildarea"
+			;;
+		5)
+			echo "buildarea target not specified"
 			;;
 		*)
 			echo "Unknown error code \"$1\"."

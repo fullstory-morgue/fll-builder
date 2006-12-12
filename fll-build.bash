@@ -98,8 +98,6 @@ FLL_BUILD_TEMPLATEDIR="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_ERROR="$FLL_BUILD_SHARED/commonerror.bm"
 FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
 
-FLL_BUILD_AREA="/var/cache/fll-builder"
-
 #################################################################
 #		source configfiles and functions.sh		#
 #################################################################
@@ -174,12 +172,15 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 fi
 
 # temporary staging areas within buildarea
-if [[ -d $FLL_BUILD_AREA ]]; then
+if [[ $FLL_BUILD_AREA ]]; then
+	mkdir -p $FLL_BUILD_AREA || error 4
 	unset TMPDIR
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 else
-	error 4
+	# must provide --buildarea or FLL_BUILD_AREA
+	# there is no sane default
+	error 5
 fi
 
 #################################################################
@@ -191,8 +192,8 @@ fi
 #		Main()						#
 #################################################################
 # source all the fll scriptlets
-for fll_script in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9][0-9]*.bm; do
-	[[ -s $fll_script ]] && source $fll_script
+for fllscript in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9][0-9]*.bm; do
+	[[ -s $fll_script ]] && source $fllscript
 done
 
 exit 0
