@@ -38,12 +38,12 @@ cat <<EOF
 Usage: $SELF [options]
 
 Options:
-  -c|--configfile	path to alternate configfile
+  -c|--configfile	Path to alternate configfile
   (default: /etc/fll-builder/fll-build.conf)
 
-  -h|--help		information about using this program
+  -h|--help		Information about using this program
 
-  -v|--version		$SELF version and copyright information
+  -v|--version		Version and copyright information
 
 EOF
 }
