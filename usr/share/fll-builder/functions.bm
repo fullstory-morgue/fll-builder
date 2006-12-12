@@ -39,7 +39,7 @@ copy_template_to_chroot() {
 	local DESTFILE="$FLL_BUILD_CHROOT/$2"
 	
 	if [[ -f $DESTFILE ]]; then
-		mv $DESTFILE $DESTFILE.orig
+		rm -f $DESTFILE
 	fi
 
 	cp $ORIGFILE $DESTFILE
@@ -66,8 +66,7 @@ patch_debian_chroot() {
 
 	case $1 in
 		apply)
-			echo "$FLL_DISTRO_NAME-live" > \
-				"$FLL_BUILD_CHROOT"/etc/debian_chroot
+			echo "$FLL_DISTRO_NAME-live" > "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			;;
 		reverse)
 			rm -f "$FLL_BUILD_CHROOT"/etc/debian_chroot
