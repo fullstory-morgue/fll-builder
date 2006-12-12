@@ -52,7 +52,6 @@ Usage: $SELF [options]
 
 Options:
   -b|--buildarea	Path to temporary build area for live-cd chroot
-  (default: /var/cache/fll-builder)
 
   -c|--configfile	Path to alternate configfile
   (default: /etc/fll-builder/fll-build.conf)
