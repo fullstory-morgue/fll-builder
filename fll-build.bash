@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copyright (C) 2006 Sidux Crew, http://www.sidux.com
+#	Stefan Lippers-Hollmann <s.l-h@gmx.de>
+#	Niall Walsh <niallwalsh@users.berlios.de>
 #	Kel Modderman <kel@otaku42.de>
 #
 # This program is free software; you can redistribute it and/or
@@ -21,6 +23,9 @@
 # On Debian GNU/Linux systems, the text of the GPL license can be
 # found in /usr/share/common-licenses/GPL.
 
+#################################################################
+#		Synopsis					#
+#################################################################
 # fll-build(8): build a debian 'sid' live linux cd that uses code
 # developed by members of the F.U.L.L.S.T.O.R.Y project to enhance
 # hardware detection and linux experience.
@@ -36,11 +41,39 @@
 
 set -e
 
-while (($#)); do
+#################################################################
+#		Parse Command Line				#
+#################################################################
+ARGS=$(
+	getopt \
+		--name $(basename $0) \
+		--shell sh \
+		--options c:hv \
+		--long configfile,help,version
+)
+
+if [ $? != 0 ]; then
+	eval set -- "$ARGS"
+else
+	echo "Terminating..." >&2
+	exit 1
+fi
+
+while true; do
 	case "$1" in
 		-c|--configfile)
 			shift
 			FLL_BUILD_ALT_CONFIG="$1"
+			;;
+		-h|--help)
+			print_help
+			;;
+		-v|--version)
+			print_version
+			;;
+		--)
+			shift
+			break
 			;;
 		*)
 			;;
@@ -49,31 +82,31 @@ while (($#)); do
 done
 
 # Allow lazy development and testing
-if [[ -s $PWD/debian/changelog ]]; then
+if [ -s ./debian/changelog ]; then
 	FLL_BUILD_BASE="$PWD"
 fi
 
 # Source distro-defaults
-source /etc/default/distro
+. /etc/default/distro
 
 # Source default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
-source "$FLL_BUILD_CONFIG"
+. "$FLL_BUILD_CONFIG"
 
 # Source alternative configfile
-if [[ -s $FLL_BUILD_ALT_CONFIG ]]; then
-	source $FLL_BUILD_ALT_CONFIG
+if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
+	. "$FLL_BUILD_ALT_CONFIG"
 fi
 
 # Source functions
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_SCRIPTS="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d/*.bm"
-FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
-source "$FLL_BUILD_FUNCS"
+FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
+FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
+. "$FLL_BUILD_FUNCS"
 
 # Source all the scriptlets
-for fll_script in $FLL_BUILD_SCRIPTS; do
-	source $fll_script
+for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.sh; do
+	. "$fll_script"
 done
 
 exit 0
