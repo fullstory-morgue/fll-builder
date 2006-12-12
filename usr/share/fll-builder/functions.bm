@@ -198,7 +198,6 @@ prepare_apt() {
 
 install_desktop() {
 	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
-	chroot_exec "apt-get clean"
 	case "$FLL_XTOOLKIT" in
 		kde)
 			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
@@ -207,9 +206,16 @@ install_desktop() {
 		*)
 			;;
 	esac
-	chroot_exec "apt-get clean"
 }
 
 install_distro() {
 	chroot_exec "apt-get --assume-yes install distro-defaults"
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_CORE"
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
+}
+
+install_kernel() {
+	chroot_exec "apt-get --assume-yes install busybox-sidux live-initrd-sidux"
+	# install kernel + modules, mklive-initrd
+	chroot_exec "dpkg --purge busybox-sidux live-initrd-sidux"
 }
