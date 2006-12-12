@@ -123,12 +123,14 @@ nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
 	proc umount
-
-	# adpated from pbuilder
-	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
-		xargs -0 rm -f
-  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
-		(xargs -0 rmdir || true)
+	
+	if [[ ! "$FLL_BUILD_KEEPCHROOT" ]]; then
+		# adpated from pbuilder
+		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
+			xargs -0 rm -f
+	  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
+			(xargs -0 rmdir || true)
+	fi
 }
 
 

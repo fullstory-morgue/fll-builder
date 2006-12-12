@@ -64,6 +64,8 @@ Options:
 
   -h|--help		Information about using this program
 
+  -k|--keep		Preserve build area when finished
+
   -v|--verbose		Verbose informational output
 
   -V|--version		Version and copyright information
@@ -150,8 +152,8 @@ ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--shell sh \
-		--options b:c:dhvV \
-		--long buildarea,configfile,debug,help,verbose,version \
+		--options b:c:dhkvV \
+		--long buildarea,configfile,debug,help,keep,verbose,version \
 		-- $@
 )
 
@@ -175,6 +177,9 @@ while true; do
 		-h|--help)
 			print_help
 			exit 0
+			;;
+		-k|--keep)
+			FLL_BUILD_KEEPCHROOT=1
 			;;
 		-v|--verbose)
 			VERBOSE=1
