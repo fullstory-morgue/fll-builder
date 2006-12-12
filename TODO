@@ -1,2 +1,4 @@
 * debug handling
 * logging
+* turn function return codes into error() codes
+* the rest!

@@ -2,6 +2,8 @@
 # Common functions for fll-build(8)
 
 chroot_exec() {
+	[[ $# = 0 ]] && return 1
+
 	# adapted from live-package
 	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
 		SHELL="$SHELL" \
@@ -16,11 +18,13 @@ chroot_exec() {
 }
 
 copy_to_chroot() {
+	[[ $1 && $2 ]] || return 1
+
 	local ORIGFILE="$1"
 	local DESTFILE="$FLL_BUILD_CHROOT/$2"
 	
 	if [[ -f $DESTFILE ]]; then
-		mv $DESTFILE $DESTFILE.bak
+		mv $DESTFILE $DESTFILE.orig
 	fi
 
 	cp $ORIGFILE $DESTFILE
@@ -29,11 +33,13 @@ copy_to_chroot() {
 }
 
 copy_template_to_chroot() {
+	[[ $1 && $2 ]] || return 1
+
 	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR/$1"
 	local DESTFILE="$FLL_BUILD_CHROOT/$2"
 	
 	if [[ -f $DESTFILE ]]; then
-		mv $DESTFILE $DESTFILE.bak
+		mv $DESTFILE $DESTFILE.orig
 	fi
 
 	cp $ORIGFILE $DESTFILE
@@ -44,8 +50,8 @@ copy_template_to_chroot() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	if grep -q "$FLL_BUILD_CHROOT/proc" /proc/mounts; then
-		umount "$FLL_BUILD_CHROOT/proc"
+	if grep -q "$FLL_BUILD_CHROOT"/proc /proc/mounts; then
+		umount "$FLL_BUILD_CHROOT"/proc
 	fi
 
 	# adpated from pbuilder
@@ -53,4 +59,43 @@ nuke_buildarea() {
 		xargs -0 rm -f
   	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
 		(xargs -0 rmdir || true)
+}
+
+patch_debian_chroot() {
+	[[ $1 ]] || return 0
+
+	case $1 in
+		apply)
+			echo "$FLL_DISTRO_NAME-live" > \
+				"$FLL_BUILD_CHROOT"/etc/debian_chroot
+			;;
+		reverse)
+			rm -f "$FLL_BUILD_CHROOT"/etc/debian_chroot
+			;;
+	esac
+}
+
+patch_policy_rcd() {
+	[[ $1 ]] || return 0
+
+	case $1 in
+		apply)
+			copy_template_to_chroot policy-rc.d usr/sbin/policy-rc.d
+			chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+			;;
+		reverse)
+			rm -f "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+			;;
+	esac
+}
+
+patch_network() {
+	[[ $1 ]] || return 0
+	
+	case $1 in
+		apply)
+			;;
+		reverse)
+			;;
+	esac
 }
