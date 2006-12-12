@@ -3,9 +3,9 @@
 #################################################################
 #		Synopsis					#
 #################################################################
-# fll-build(8): build a debian 'sid' live linux cd that uses code
-# developed by members of the F.U.L.L.S.T.O.R.Y project to enhance
-# hardware detection and linux experience.
+# fll-build(8): build script for a debian 'sid' live linux cd
+# that uses code developed by members of the F.U.L.L.S.T.O.R.Y
+# project to enhance hardware detection and linux experience.
 #
 # F.U.L.L.S.T.O.R.Y Project Homepage:
 # http://developer.berlios.de/projects/fullstory
