@@ -11,9 +11,6 @@ install/fll-builder::
 		$(DESTDIR)/usr/share/fll-builder/functions.bm
 	install -D -m 0644 etc/fll-builder/fll-build.conf \
 		$(DESTDIR)/etc/fll-build/fll-build.conf
-	mkdir -p $(DESTDIR)/usr/share/fll-builder/templates/
-	for file in usr/share/fll-builder/templates/*; do \
-		install -D -m 0644 $$file \
-			$(DESTDIR)/usr/share/fll-builder/templates/$$file; \
-	done
+	install -D -m 0644 etc/fll-builder/packages.conf \
+		$(DESTDIR)/etc/fll-build/packages.conf
 	

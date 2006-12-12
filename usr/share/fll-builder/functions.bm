@@ -11,6 +11,33 @@ strap_chroot() {
 	return $?
 }
 
+proc() {
+	local PROC="$FLL_BUILD_CHROOT"/proc
+	
+	case $1 in
+		mount)
+			mount fllchrootproc -t proc "$PROC"
+			;;
+		umount)
+			grep -q "$PROC" /proc/mounts && umount "$PROC"
+			;;
+	esac
+}
+
+nuke_buildarea() {
+	[[ -d $FLL_BUILD_AREA ]] || return 0
+
+	proc umount
+	
+	if [[ ! "$FLL_BUILD_KEEPCHROOT" ]]; then
+		# adpated from pbuilder
+		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
+			xargs -0 rm -f
+	  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
+			(xargs -0 rmdir || true)
+	fi
+}
+
 chroot_exec() {
 	# adapted from live-package
 	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
@@ -167,35 +194,6 @@ prepare_apt() {
 	chroot_exec "apt-get update"
 	chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings distro-defaults"
 	chroot_exec "apt-get update"
-}
-
-
-
-proc() {
-	local PROC="$FLL_BUILD_CHROOT"/proc
-	
-	case $1 in
-		mount)
-			mount fllchrootproc -t proc "$PROC"
-			;;
-		umount)
-			grep -q "$PROC" /proc/mounts && umount "$PROC"
-			;;
-	esac
-}
-
-nuke_buildarea() {
-	[[ -d $FLL_BUILD_AREA ]] || return 0
-
-	proc umount
-	
-	if [[ ! "$FLL_BUILD_KEEPCHROOT" ]]; then
-		# adpated from pbuilder
-		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
-			xargs -0 rm -f
-	  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
-			(xargs -0 rmdir || true)
-	fi
 }
 
 

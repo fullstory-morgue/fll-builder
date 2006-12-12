@@ -132,18 +132,19 @@ FLL_BUILD_DEFAULTS="/etc/default/distro"
 
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_TEMPLATEDIR="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 
 #################################################################
 #		source configfiles and functions.sh		#
 #################################################################
-source $FLL_BUILD_DEFAULTS
-source $FLL_BUILD_CONFIG
-source $FLL_BUILD_FUNCTIONS
+source "$FLL_BUILD_DEFAULTS"
+source "$FLL_BUILD_CONFIG"
+source "$FLL_BUILD_FUNCTIONS"
+source "$FLL_BUILD_PACKAGELIST"
 
 #################################################################
 #		parse command line				#
