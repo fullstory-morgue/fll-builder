@@ -17,3 +17,13 @@ Options:
 
 EOF
 }
+
+print_version()
+{
+cat <<EOF
+
+$SELF
+Version: $VERSION
+
+EOF
+}

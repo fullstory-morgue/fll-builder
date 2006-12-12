@@ -49,9 +49,10 @@ VERSION="0.0.0"
 SELF=$(basename $0)
 
 # Allow lazy development and testing
-if [ -s ./debian/changelog ]; then
-	FLL_BUILD_BASE="$PWD"
-fi
+[ -s ./debian/changelog ] && FLL_BUILD_BASE="."
+
+# defaults
+FLL_BUILD_DEFAULTS="/etc/default/distro"
 
 # default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
@@ -64,9 +65,9 @@ FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
 #################################################################
 #		Source configfiles and functions.sh		#
 #################################################################
-. /etc/default/distro
-. "$FLL_BUILD_FUNCS"
+. "$FLL_BUILD_DEFAULTS"
 . "$FLL_BUILD_CONFIG"
+. "$FLL_BUILD_FUNCS"
 
 #################################################################
 #		Parse Command Line				#
@@ -83,7 +84,7 @@ ARGS=$(
 if [ $? = 0 ]; then
 	eval set -- "$ARGS"
 else
-	echo "Terminating..." >&2
+	echo "getopt failed, terminating..." >&2
 	exit 1
 fi
 
@@ -91,14 +92,14 @@ while true; do
 	case "$1" in
 		-c|--configfile)
 			shift
-			[ -s "$1" ] && . "$1"
+			FLL_BUILD_ALT_CONFIG="$1"
 			;;
 		-h|--help)
 			print_help
 			exit 0
 			;;
 		-v|--version)
-			echo "$SELF Version: $VERSION"
+			print_version
 			exit 0
 			;;
 		--)
@@ -110,6 +111,16 @@ while true; do
 	esac
 	shift
 done
+#################################################################
+#		Process Command Line Options			#
+#################################################################
+# alternate configfile
+if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
+	. "$FLL_BUILD_ALT_CONFIG"
+else
+	echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
+	exit 1
+fi
 
 #################################################################
 #		Main()						#
