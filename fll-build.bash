@@ -25,6 +25,11 @@ set -e
 SELF="fll-build"
 VERSION="0.0.0"
 
+# Required for installation of some packages
+LANG=C
+LC_ALL=C
+export LANG LC_ALL
+
 # Allow lazy development and testing
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
@@ -59,11 +64,9 @@ ARGS=$(
 		-- $@
 )
 
-if [[ $? = 0 ]]; then
-	eval set -- "$ARGS"
-else
-	error 1
-fi
+[[ $? = 0 ]] || error 1
+
+eval set -- "$ARGS"
 
 while true; do
 	case $1 in
@@ -126,7 +129,7 @@ FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 #		Main()						#
 #################################################################
 # source all the fll scriptlets
-for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.bm; do
+for fll_script in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9][0-9]*.bm; do
 	[[ -s $fll_script ]] && source $fll_script
 done
 
