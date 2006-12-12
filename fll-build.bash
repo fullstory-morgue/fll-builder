@@ -1,5 +1,21 @@
 #!/bin/bash
 
+#################################################################
+#		Synopsis					#
+#################################################################
+# fll-build(8): build script for a debian 'sid' live linux cd
+# that uses code developed by members of the F.U.L.L.S.T.O.R.Y
+# project to enhance hardware detection and linux experience.
+#
+# F.U.L.L.S.T.O.R.Y Project Homepage:
+# http://developer.berlios.de/projects/fullstory
+#
+# F.U.L.L.S.T.O.R.Y Subversion Archive:
+# svn://svn.berlios.de/fullstory/trunk
+# http://svn.berlios.de/svnroot/repos/fullstory
+# http://svn.berlios.de/viewcvs/fullstory (viewcvs)
+# http://svn.berlios.de/wsvn/fullstory (websvn)
+
 print_copyright() {
 	cat <<EOF
 
@@ -88,22 +104,6 @@ error() {
 #################################################################
 # XXX: use su-me here?
 (( UID )) && error 1
-
-#################################################################
-#		Synopsis					#
-#################################################################
-# fll-build(8): build script for a debian 'sid' live linux cd
-# that uses code developed by members of the F.U.L.L.S.T.O.R.Y
-# project to enhance hardware detection and linux experience.
-#
-# F.U.L.L.S.T.O.R.Y Project Homepage:
-# http://developer.berlios.de/projects/fullstory
-#
-# F.U.L.L.S.T.O.R.Y Subversion Archive:
-# svn://svn.berlios.de/fullstory/trunk
-# http://svn.berlios.de/svnroot/repos/fullstory
-# http://svn.berlios.de/viewcvs/fullstory (viewcvs)
-# http://svn.berlios.de/wsvn/fullstory (websvn)
 
 set -e
 
