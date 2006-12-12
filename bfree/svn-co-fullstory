@@ -1,7 +1,14 @@
 #!/bin/bash
 #BASE="/media/hda4/fullstory/"
+
+# for anonymous checkouts
 SVN_BASE_URL="svn://svn.berlios.de/fullstory/"
+
+# for ssh checkouts
+#BERLIOS_USERNAME=""
+#SVN_SSH="ssh -l $BERLIOS_USERNAME"
 #SVN_BASE_URL="svn+ssh://svn.berlios.de/svnroot/repos/fullstory/"
+
 for i in $(svn list "$SVN_BASE_URL"); do
         mkdir -p "$BASE$i/trunk"
 #	rm -rf "$BASE.debian"
