@@ -29,18 +29,18 @@ copy_to_chroot() {
 	local ORIGFILE="$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
-	if [[ -f $DESTFILE ]]; then
-		mv $DESTFILE $DESTFILE.orig
+	if [[ -f "$DESTFILE" ]]; then
+		mv "$DESTFILE" "$DESTFILE".orig
 	fi
 
-	cp -v $ORIGFILE $DESTFILE
+	cp -v "$ORIGFILE" "$DESTFILE"
 }
 
 revert_copy_to_chroot() {
 	local FILE="${FLL_BUILD_CHROOT}${1}"
-	rm -vf ${FILE}
-	if [[ -f ${FILE}.orig ]]; then
-		mv -v ${FILE}.orig ${FILE}
+	rm -vf "$FILE"
+	if [[ -f "$FILE".orig ]]; then
+		mv -v "$FILE".orig "$FILE"
 	fi
 }
 
@@ -114,9 +114,7 @@ proc() {
 			mount fllchrootproc -t proc "$PROC"
 			;;
 		umount)
-			if grep -q "$PROC" /proc/mounts; then
-				umount "$PROC"
-			fi
+			grep -q "$PROC" /proc/mounts && umount "$PROC"
 			;;
 	esac
 }
