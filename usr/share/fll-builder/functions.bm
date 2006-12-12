@@ -32,7 +32,7 @@ nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
 	if grep -q "$FLL_BUILD_CHROOT/proc" /proc/mounts; then
-		umount "$FLL_BUILD_CHROOT/proc" || return 1
+		umount "$FLL_BUILD_CHROOT/proc"
 	fi
 
 	# adpated from pbuilder

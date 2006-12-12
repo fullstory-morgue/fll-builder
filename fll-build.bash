@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if (( UID )); then
-	echo "Must be executed as root"
-	exit 1
-fi
-
 print_copyright() {
 	cat <<EOF
 
@@ -56,6 +51,43 @@ Options:
 
 EOF
 }
+
+error() {
+	echo -ne "$SELF error: "
+	
+	case $1 in
+		1)
+			echo "must be executed as root"
+			;;
+		2)
+			echo "getopt failed"
+			;;
+		3)
+			echo "invalid command line option"
+			;;
+		4)
+			echo "unable to source alternate configfile"
+			;;
+		5)	
+			echo "unable to create buildarea"
+			;;
+		6)
+			echo "buildarea target not specified"
+			;;
+		*)
+			echo "Unknown error code \"$1\"."
+			set -- 255
+			;;
+	esac
+	
+	return $1
+}
+
+#################################################################
+#		Root?						#
+#################################################################
+# XXX: use su-me here?
+(( UID )) && error 1
 
 #################################################################
 #		Synopsis					#
