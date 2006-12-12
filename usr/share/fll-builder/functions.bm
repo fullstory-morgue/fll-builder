@@ -192,8 +192,24 @@ patch_chroot() {
 
 prepare_apt() {
 	chroot_exec "apt-get update"
-	chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings distro-defaults"
+	chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
 	chroot_exec "apt-get update"
 }
 
+install_desktop() {
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
+	chroot_exec "apt-get clean"
+	case "$FLL_XTOOLKIT" in
+		kde)
+			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
+			#chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
+			;;
+		*)
+			;;
+	esac
+	chroot_exec "apt-get clean"
+}
 
+install_distro() {
+	chroot_exec "apt-get --assume-yes install distro-defaults"
+}

@@ -250,8 +250,20 @@ proc mount
 
 prepare_apt
 
+install_desktop
+
+install_distro
+
+#install_kernel
+
 proc umount
 
 patch_chroot post
+
+#clean_chroot
+
+#make_compressed_image
+
+#make_iso
 
 exit 0
