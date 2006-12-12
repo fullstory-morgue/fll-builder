@@ -2,8 +2,18 @@
   
 include /usr/share/cdbs/1/rules/debhelper.mk
 
+DESTDIR := debian/fll-builder
+
 install/fll-builder::
 	install -D -m 0755 fll-build.bash \
-		debian/fll-builder/usr/sbin/fll-build
-	install -D -m 0644 fll-build.conf \
-		debian/fll-builder/etc/fll-build/fll-build.conf
+		$(DESTDIR)/usr/sbin/fll-build
+	install -D -m 0755 usr/share/fll-builder/functions.bm \
+		$(DESTDIR)/usr/share/fll-builder/functions.bm
+	install -D -m 0644 etc/fll-builder/fll-build.conf \
+		$(DESTDIR)/etc/fll-build/fll-build.conf
+	mkdir -p $(DESTDIR)/usr/share/fll-builder/templates/
+	for file in usr/share/fll-builder/templates/*; do \
+		install -D -m 0644 $$file \
+			$(DESTDIR)/usr/share/fll-builder/templates/$$file; \
+	done
+	

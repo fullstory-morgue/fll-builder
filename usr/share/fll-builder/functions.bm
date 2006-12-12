@@ -38,8 +38,8 @@ copy_to_chroot() {
 
 revert_copy_to_chroot() {
 	local FILE="${FLL_BUILD_CHROOT}${1}"
+	rm -vf ${FILE}
 	if [[ -f ${FILE}.orig ]]; then
-		rm -vf ${FILE}
 		mv -v ${FILE}.orig ${FILE}
 	fi
 }
@@ -70,10 +70,20 @@ patch_debian_chroot() {
 	esac
 }
 
+cat_chroot_policy() {
+	# disable all init scripts
+	# /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
+	cat <<EOF
+#!/bin/sh
+
+exit 101
+EOF
+}
+
 patch_policy_rcd() {
 	case $1 in
 		apply)
-			copy_template_to_chroot policy-rc.d /usr/sbin/policy-rc.d
+			cat_chroot_policy > "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			;;
 		reverse)

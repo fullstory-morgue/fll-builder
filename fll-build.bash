@@ -101,8 +101,7 @@ error() {
 #################################################################
 #		root?						#
 #################################################################
-# XXX: use su-me here?
-(( UID )) && error 1
+(( UID )) && exec su-me "$0" "$@"
 
 set -e
 
@@ -227,7 +226,9 @@ trap nuke_buildarea exit
 #################################################################
 #		debug environment				#
 #################################################################
-[[ $VERBOSE -gt 0 ]] && set | grep '^(FLL|DEBOOTSTRAP)'
+if [[ $VERBOSE -gt 0 ]]; then
+	set | grep -E '^(FLL|DEBOOTSTRAP)'
+fi
 
 #################################################################
 #		main()						#
@@ -244,5 +245,8 @@ patch_network apply
 mount_proc
 
 
+patch_debian_chroot reverse
+patch_policy_rcd reverse
+patch_network reverse
 
 exit 0

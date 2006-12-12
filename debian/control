@@ -7,6 +7,6 @@ Standards-Version: 3.7.2
 
 Package: fll-builder
 Architecture: all
-Depends: distro-defaults
+Depends: distro-defaults, su-me
 Description: scripts to build a live-cd based on the FULLSTORY project code
  <insert long description, indented with spaces>
