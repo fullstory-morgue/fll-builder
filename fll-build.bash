@@ -95,7 +95,7 @@ done
 #################################################################
 # alternate configfile
 if [[ $FLL_BUILD_ALT_CONFIG ]]; then
-	if [ -s $FLL_BUILD_ALT_CONFIG ]; then
+	if [[ -s $FLL_BUILD_ALT_CONFIG ]]; then
 		source $FLL_BUILD_ALT_CONFIG
 	else
 		echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
