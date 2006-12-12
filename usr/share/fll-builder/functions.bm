@@ -1,8 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 # Common shell functions for fll-build(8)
 
-print_copyright()
-{
+print_copyright() {
 cat <<EOF
 
 Copyright (C) 2006 Sidux Crew, http://www.sidux.com
@@ -31,8 +30,7 @@ found in /usr/share/common-licenses/GPL.
 EOF
 }
 
-print_help()
-{
+print_help() {
 cat <<EOF
 
 Usage: $SELF [options]
@@ -48,8 +46,7 @@ Options:
 EOF
 }
 
-print_version()
-{
+print_version() {
 cat <<EOF
 
 $SELF

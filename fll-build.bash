@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #################################################################
 #		Synopsis					#
@@ -26,7 +26,7 @@ VERSION="0.0.0"
 SELF=$(basename $0)
 
 # Allow lazy development and testing
-[ -s ./debian/changelog ] && FLL_BUILD_BASE="."
+[[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
 # defaults
 FLL_BUILD_DEFAULTS="/etc/default/distro"
@@ -37,14 +37,14 @@ FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 # fll functions
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
-FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
+FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
 
 #################################################################
 #		Source configfiles and functions.sh		#
 #################################################################
-. "$FLL_BUILD_DEFAULTS"
-. "$FLL_BUILD_CONFIG"
-. "$FLL_BUILD_FUNCS"
+source $FLL_BUILD_DEFAULTS
+source $FLL_BUILD_CONFIG
+source $FLL_BUILD_FUNCS
 
 #################################################################
 #		Parse Command Line				#
@@ -58,7 +58,7 @@ ARGS=$(
 		-- $@
 )
 
-if [ $? = 0 ]; then
+if [[ $? = 0 ]]; then
 	eval set -- "$ARGS"
 else
 	echo "getopt failed, terminating..." >&2
@@ -94,9 +94,9 @@ done
 #		Process Command Line Options			#
 #################################################################
 # alternate configfile
-if [ "$FLL_BUILD_ALT_CONFIG" ]; then
-	if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
-		. "$FLL_BUILD_ALT_CONFIG"
+if [[ $FLL_BUILD_ALT_CONFIG ]]; then
+	if [ -s $FLL_BUILD_ALT_CONFIG ]; then
+		source $FLL_BUILD_ALT_CONFIG
 	else
 		echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
 		exit 1
@@ -106,16 +106,16 @@ fi
 #################################################################
 #		Debug()						#
 #################################################################
-if [ "$DEBUG" -gt 0 ]; then
-	set | grep ^FLL
+if [[ $DEBUG -gt 0 ]]; then
+	set | grep ^FLL_
 fi
 
 #################################################################
 #		Main()						#
 #################################################################
 # source all the fll scriptlets
-for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.sh; do
-	[ -s "$fll_script" ] && . "$fll_script"
+for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.bm; do
+	[[ -s $fll_script ]] && source $fll_script
 done
 
 exit 0
