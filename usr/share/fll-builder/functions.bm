@@ -88,7 +88,7 @@ EOF
 patch_chroot() {
 	case $1 in
 		apply)
-			mkdir -p "$FLL_BUILD_CHROOT"/"$FLL_MOUNT_POINT"
+			mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 			create_chroot_policy
 			create_debian_chroot
 			copy_to_chroot /etc/hosts
@@ -97,7 +97,7 @@ patch_chroot() {
 			create_fstab
 			;;
 		reverse)
-			rmdir "$FLL_BUILD_CHROOT"/"$FLL_MOUNT_POINT"
+			rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 			rm -vf "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			revert_copy_to_chroot /etc/hosts
