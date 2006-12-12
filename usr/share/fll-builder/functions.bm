@@ -14,14 +14,16 @@ error() {
 		3)
 			echo "unable to source alternate configfile"
 			;;
+		4)
+			echo "buildarea target does not exist"
+			;;
 		*)
 			echo "Unknown error code \"$1\"."
 			set -- 255
 			;;
 	esac
 	
-	echo "terminating . . ."
-	exit $1
+	return $1
 }
 
 print_help() {

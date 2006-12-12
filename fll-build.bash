@@ -19,7 +19,7 @@
 set -e
 
 #################################################################
-#		Variable Declarations				#
+#		constant variable declarations			#
 #################################################################
 # script name and version info
 SELF="fll-build"
@@ -41,21 +41,21 @@ FLL_BUILD_TEMPLATEDIR="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
 
 #################################################################
-#		Source configfiles and functions.sh		#
+#		source configfiles and functions.sh		#
 #################################################################
 source $FLL_BUILD_DEFAULTS
 source $FLL_BUILD_CONFIG
 source $FLL_BUILD_FUNCS
 
 #################################################################
-#		Parse Command Line				#
+#		parse command line				#
 #################################################################
 ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--shell sh \
-		--options c:hv \
-		--long configfile,help,version \
+		--options b:c:hv \
+		--long buildarea,configfile,help,version \
 		-- $@
 )
 
@@ -67,6 +67,10 @@ fi
 
 while true; do
 	case $1 in
+		-b|--buildarea)
+			shift
+			FLL_BUILD_AREA=$1
+			;;
 		-c|--configfile)
 			shift
 			FLL_BUILD_ALT_CONFIG=$1
@@ -92,7 +96,8 @@ while true; do
 done
 
 #################################################################
-#		Process Command Line Options			#
+#		process command line options			#
+#		volatile variable declarations			#
 #################################################################
 # alternate configfile
 if [[ $FLL_BUILD_ALT_CONFIG ]]; then
@@ -103,12 +108,19 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	fi
 fi
 
+# local buildarea
+: ${FLL_BUILD_AREA:="/var/cache/fll-builder"}
+
+[[ -d $FLL_BUILD_AREA ]] || error 4
+
+unset TMPDIR
+FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA $SELF.XXXXX)
+FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA $SELF.XXXXX)
+
 #################################################################
-#		Debug()						#
+#		Debug Environment						#
 #################################################################
-if [[ $DEBUG -gt 0 ]]; then
-	set | grep ^FLL_
-fi
+[[ $DEBUG -gt 0 ]] && set | grep ^FLL_
 
 #################################################################
 #		Main()						#
