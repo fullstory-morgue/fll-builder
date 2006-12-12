@@ -202,7 +202,7 @@ install_desktop() {
 	case "$FLL_XTOOLKIT" in
 		kde)
 			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
-			#chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
+			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
 			;;
 		*)
 			;;
