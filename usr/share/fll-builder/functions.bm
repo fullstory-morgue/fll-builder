@@ -25,7 +25,7 @@ error() {
 }
 
 print_help() {
-cat <<EOF
+	cat <<EOF
 
 Usage: $SELF [options]
 
@@ -41,7 +41,7 @@ EOF
 }
 
 print_version() {
-cat <<EOF
+	cat <<EOF
 
 $SELF
 Version: $VERSION
@@ -50,7 +50,7 @@ EOF
 }
 
 print_copyright() {
-cat <<EOF
+	cat <<EOF
 
 Copyright (C) 2006 Sidux Crew, http://www.sidux.com
 	Stefan Lippers-Hollmann <s.l-h@gmx.de>
