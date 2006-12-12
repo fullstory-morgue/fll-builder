@@ -62,6 +62,13 @@ FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
 FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
 
 #################################################################
+#		Source configfiles and functions.sh		#
+#################################################################
+. /etc/default/distro
+. "$FLL_BUILD_FUNCS"
+. "$FLL_BUILD_CONFIG"
+
+#################################################################
 #		Parse Command Line				#
 #################################################################
 ARGS=$(
@@ -69,7 +76,8 @@ ARGS=$(
 		--name "$SELF" \
 		--shell sh \
 		--options c:hv \
-		--long configfile,help,version
+		--long configfile,help,version \
+		-- $@
 )
 
 if [ $? = 0 ]; then
@@ -83,7 +91,7 @@ while true; do
 	case "$1" in
 		-c|--configfile)
 			shift
-			FLL_BUILD_ALT_CONFIG="$1"
+			[ -s "$1" ] && . "$1"
 			;;
 		-h|--help)
 			print_help
@@ -104,21 +112,11 @@ while true; do
 done
 
 #################################################################
-#		Source configfiles and functions.sh		#
-#################################################################
-. /etc/default/distro
-. "$FLL_BUILD_FUNCS"
-. "$FLL_BUILD_CONFIG"
-if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
-	. "$FLL_BUILD_ALT_CONFIG"
-fi
-
-#################################################################
 #		Main()						#
 #################################################################
 # source all the fll scriptlets
 for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.sh; do
-	. "$fll_script"
+	[ -s "$fll_script" ] && . "$fll_script"
 done
 
 exit 0
