@@ -44,81 +44,85 @@ revert_copy_to_chroot() {
 	fi
 }
 
-copy_template_to_chroot() {
-	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR"/"$1"
-	local DESTFILE="${FLL_BUILD_CHROOT}${2}"
-	
-	if [[ -f $DESTFILE ]]; then
-		rm -vf $DESTFILE
-	fi
-
-	if [[ ! -d ${DESTFILE%/*} ]]; then
-		mkdir -vp ${DESTFILE%/*}
-	fi
-
-	cp -v $ORIGFILE $DESTFILE
-}
-
-patch_debian_chroot() {
-	case $1 in
-		apply)
-			echo "$FLL_DISTRO_NAME-live" > "$FLL_BUILD_CHROOT"/etc/debian_chroot
-			;;
-		reverse)
-			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
-			;;
-	esac
-}
-
-cat_chroot_policy() {
+create_chroot_policy() {
 	# disable all init scripts
 	# /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
-	cat <<EOF
+	cat > "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d \
+<<EOF
 #!/bin/sh
 
 exit 101
 EOF
+	chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 }
 
-patch_policy_rcd() {
+create_interfaces() {
+	mkdir -p "$FLL_BUILD_CHROOT"/etc/network/
+	cat > "$FLL_BUILD_CHROOT"/etc/network/interfaces \
+<<EOF
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+
+# The loopback interface
+# automatically added when upgrading
+auto lo
+iface lo inet loopback
+EOF
+}
+
+create_debian_chroot() {
+	cat > "$FLL_BUILD_CHROOT"/etc/debian_chroot \
+<<EOF
+$FLL_DISTRO_NAME-live
+EOF
+}
+
+create_fstab() {
+	cat > "$FLL_BUILD_CHROOT"/etc/fstab \
+<<EOF
+# /etc/fstab: static file system information.
+#
+# <file system>	<mount point>	<type>	<options>		<dump>	<pass>
+EOF
+}
+
+patch_chroot() {
 	case $1 in
 		apply)
-			cat_chroot_policy > "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
-			chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+			create_chroot_policy
+			create_debian_chroot
+			copy_to_chroot /etc/hosts
+			copy_to_chroot /etc/resolv.conf
+			create_interfaces
+			create_fstab
 			;;
 		reverse)
 			rm -vf "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
-			;;
-	esac
-}
-
-patch_network() {
-	case $1 in
-		apply)
-			copy_to_chroot /etc/hosts
-			copy_to_chroot /etc/resolv.conf
-			;;
-		reverse)
+			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			revert_copy_to_chroot /etc/hosts
 			revert_copy_to_chroot /etc/resolv.conf
 			;;
 	esac
 }
 
-mount_proc() {
-	mount fllchrootproc -t proc "$FLL_BUILD_CHROOT"/proc
-}
-
-umount_proc() {
-	if grep -q "$FLL_BUILD_CHROOT"/proc /proc/mounts; then
-		umount "$FLL_BUILD_CHROOT"/proc
-	fi
+proc() {
+	local PROC="$FLL_BUILD_CHROOT"/proc
+	
+	case $1 in
+		mount)
+			mount fllchrootproc -t proc "$PROC"
+			;;
+		umount)
+			if grep -q "$PROC" /proc/mounts; then
+				umount "$PROC"
+			fi
+			;;
+	esac
 }
 
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	umount_proc
+	proc umount
 
 	# adpated from pbuilder
 	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \

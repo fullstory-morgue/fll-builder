@@ -17,7 +17,8 @@
 # http://svn.berlios.de/wsvn/fullstory (websvn)
 
 print_copyright() {
-	cat <<EOF
+	cat \
+<<EOF
 
 Copyright (C) 2006 Sidux Crew, http://www.sidux.com
 	Stefan Lippers-Hollmann <s.l-h@gmx.de>
@@ -46,7 +47,8 @@ EOF
 }
 
 print_help() {
-	cat <<EOF
+	cat \
+<<EOF
 
 Usage: $SELF [options]
 
@@ -238,15 +240,12 @@ strap_chroot
 # cleanup unrequired packages (from live-package)
 chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 
-patch_debian_chroot apply
-patch_policy_rcd apply
-patch_network apply
+patch_chroot apply
 
-mount_proc
+proc mount
 
+proc umount
 
-patch_debian_chroot reverse
-patch_policy_rcd reverse
-patch_network reverse
+patch_chroot reverse
 
 exit 0
