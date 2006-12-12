@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if (( UID )); then
+	echo "Must be executed as root"
+	exit 1
+fi
+
 print_copyright() {
 	cat <<EOF
 
@@ -194,8 +199,8 @@ trap nuke_buildarea exit
 #		Main()						#
 #################################################################
 # source all the fll scriptlets
-for fllscript in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9][0-9]*.bm; do
-	[[ -s $fll_script ]] && source $fllscript
+for fllscript in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9]*.bm; do
+	[[ -s $fllscript ]] && source $fllscript
 done
 
 exit 0

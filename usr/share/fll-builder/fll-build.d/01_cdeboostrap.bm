@@ -1,0 +1,12 @@
+#!/bin/bash
+
+strap_chroot() {
+	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.us.debian.org/debian/"}
+	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
+
+	cdebootstrap --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
+
+	return $?
+}
+
+strap_chroot
