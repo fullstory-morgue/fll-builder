@@ -18,33 +18,39 @@ chroot_exec() {
 }
 
 copy_to_chroot() {
-	[[ $1 && $2 ]] || return 1
+	[[ $1 ]] || return 1
 
 	local ORIGFILE="$1"
-	local DESTFILE="$FLL_BUILD_CHROOT/$2"
+	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
 	if [[ -f $DESTFILE ]]; then
 		mv $DESTFILE $DESTFILE.orig
 	fi
 
-	cp $ORIGFILE $DESTFILE
+	cp -v $ORIGFILE $DESTFILE
+}
 
-	return $?
+revert_copy_to_chroot() {
+	[[ $1 ]] || return 1
+
+	local FILE="${FLL_BUILD_CHROOT}${1}"
+	if [[ -f ${FILE}.orig ]]; then
+		rm -vf ${FILE}
+		mv -v ${FILE}.orig ${FILE}
+	fi
 }
 
 copy_template_to_chroot() {
 	[[ $1 && $2 ]] || return 1
 
-	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR/$1"
-	local DESTFILE="$FLL_BUILD_CHROOT/$2"
+	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR"/"$1"
+	local DESTFILE="${FLL_BUILD_CHROOT}${2}"
 	
 	if [[ -f $DESTFILE ]]; then
-		rm -f $DESTFILE
+		rm -vf $DESTFILE
 	fi
 
-	cp $ORIGFILE $DESTFILE
-
-	return $?
+	cp -v $ORIGFILE $DESTFILE
 }
 
 nuke_buildarea() {
@@ -69,7 +75,7 @@ patch_debian_chroot() {
 			echo "$FLL_DISTRO_NAME-live" > "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			;;
 		reverse)
-			rm -f "$FLL_BUILD_CHROOT"/etc/debian_chroot
+			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
 			;;
 	esac
 }
@@ -79,11 +85,11 @@ patch_policy_rcd() {
 
 	case $1 in
 		apply)
-			copy_template_to_chroot policy-rc.d usr/sbin/policy-rc.d
+			copy_template_to_chroot policy-rc.d /usr/sbin/policy-rc.d
 			chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			;;
 		reverse)
-			rm -f "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+			rm -vf "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 			;;
 	esac
 }
@@ -93,8 +99,12 @@ patch_network() {
 	
 	case $1 in
 		apply)
+			copy_to_chroot /etc/hosts
+			copy_to_chroot /etc/resolv.conf
 			;;
 		reverse)
+			revert_copy_to_chroot /etc/hosts
+			revert_copy_to_chroot /etc/resolv.conf
 			;;
 	esac
 }
