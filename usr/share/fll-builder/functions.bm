@@ -50,6 +50,10 @@ copy_template_to_chroot() {
 		rm -vf $DESTFILE
 	fi
 
+	if [[ ! -d ${DESTFILE%/*} ]]; then
+		mkdir -vp ${DESTFILE%/*}
+	fi
+
 	cp -v $ORIGFILE $DESTFILE
 }
 

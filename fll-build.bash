@@ -118,6 +118,9 @@ LANG=C
 LC_ALL=C
 export LANG LC_ALL
 
+# host arch
+DPKG_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
+
 # Allow lazy development and testing
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
@@ -226,7 +229,7 @@ trap nuke_buildarea exit
 #################################################################
 #		debug environment				#
 #################################################################
-[[ $VERBOSE -gt 0 ]] && set | grep ^FLL_
+[[ $VERBOSE -gt 0 ]] && set | grep '^(FLL|DEBOOTSTRAP)'
 
 #################################################################
 #		main()						#
