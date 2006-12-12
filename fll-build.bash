@@ -254,6 +254,8 @@ install_desktop
 
 install_distro
 
+install_common
+
 #install_kernel
 
 proc umount

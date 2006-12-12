@@ -214,6 +214,10 @@ install_distro() {
 	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
 }
 
+install_common() {
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
+}
+
 install_kernel() {
 	chroot_exec "apt-get --assume-yes install busybox-sidux live-initrd-sidux"
 	# install kernel + modules, mklive-initrd
