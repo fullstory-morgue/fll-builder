@@ -197,11 +197,15 @@ prepare_apt() {
 }
 
 install_desktop() {
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
+	if [[ $FLL_PACKAGES_XSERVER ]]; then
+		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
+	fi
 	case "$FLL_XTOOLKIT" in
 		kde)
 			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
-			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
+			if [[ $FLL_PACKAGES_KDE_EXTRA ]]; then
+				chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
+			fi
 			;;
 		*)
 			;;
@@ -211,11 +215,15 @@ install_desktop() {
 install_distro() {
 	chroot_exec "apt-get --assume-yes install distro-defaults"
 	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_CORE"
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
+	if [[ $FLL_PACKAGES_DISTRO_EXTRA ]]; then
+		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
+	fi
 }
 
 install_common() {
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
+	if [[ $FLL_PACKAGES_COMMON ]]; then
+		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
+	fi
 }
 
 install_kernel() {
