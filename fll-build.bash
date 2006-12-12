@@ -132,17 +132,15 @@ FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_SCRIPTDIR="$FLL_BUILD_SHARED/fll-build.d"
 FLL_BUILD_TEMPLATEDIR="$FLL_BUILD_SHARED/templates"
-FLL_BUILD_ERROR="$FLL_BUILD_SHARED/commonerror.bm"
-FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.bm"
+FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 
 #################################################################
 #		source configfiles and functions.sh		#
 #################################################################
 source $FLL_BUILD_DEFAULTS
 source $FLL_BUILD_CONFIG
-source $FLL_BUILD_FUNCS
+source $FLL_BUILD_FUNCTIONS
 
 #################################################################
 #		parse command line				#
@@ -234,9 +232,17 @@ trap nuke_buildarea exit
 #################################################################
 #		main()						#
 #################################################################
-# source all the fll scriptlets
-for fllscript in "$FLL_BUILD_SCRIPTDIR"/[0-9][0-9]*.bm; do
-	[[ -s $fllscript ]] && source $fllscript
-done
+
+strap_chroot
+# cleanup unrequired packages (from live-package)
+chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
+
+patch_debian_chroot apply
+patch_policy_rcd apply
+patch_network apply
+
+mount_proc
+
+
 
 exit 0

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-strap_chroot
-
-# cleanup unrequired packages (from live-package)
-chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
