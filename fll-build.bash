@@ -62,8 +62,7 @@ ARGS=$(
 if [[ $? = 0 ]]; then
 	eval set -- "$ARGS"
 else
-	echo "getopt failed, terminating..." >&2
-	exit 1
+	error 1
 fi
 
 while true; do
@@ -86,6 +85,7 @@ while true; do
 			break
 			;;
 		*)
+			error 2
 			;;
 	esac
 	shift
@@ -99,8 +99,7 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	if [[ -s $FLL_BUILD_ALT_CONFIG ]]; then
 		source $FLL_BUILD_ALT_CONFIG
 	else
-		echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
-		exit 1
+		error 3
 	fi
 fi
 

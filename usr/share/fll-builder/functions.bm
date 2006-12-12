@@ -3,24 +3,24 @@
 
 error() {
 	echo -ne "$SELF error: "
+	
 	case $1 in
-		1) 
-			echo "error 1 text"
+		1)
+			echo "getopt failed"
 			;;
-		2) 
-			echo "error 2 text"
+		2)
+			echo "invalid command line option"
 			;;
-		3) 
-			echo "error 3 text"
+		3)
+			echo "unable to source alternate configfile"
 			;;
-		4) 
-			echo "error 4 text"
-			;;
-		*) 
+		*)
 			echo "Unknown error code \"$1\"."
 			set -- 255
 			;;
 	esac
+	
+	echo "terminating . . ."
 	exit $1
 }
 
