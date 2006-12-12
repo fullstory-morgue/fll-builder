@@ -42,11 +42,31 @@
 set -e
 
 #################################################################
+#		Variable Declarations				#
+#################################################################
+# script name and version info
+VERSION="0.0.0"
+SELF=$(basename $0)
+
+# Allow lazy development and testing
+if [ -s ./debian/changelog ]; then
+	FLL_BUILD_BASE="$PWD"
+fi
+
+# default configfile
+FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+
+# fll functions
+FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
+FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
+FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
+
+#################################################################
 #		Parse Command Line				#
 #################################################################
 ARGS=$(
 	getopt \
-		--name $(basename $0) \
+		--name "$SELF" \
 		--shell sh \
 		--options c:hv \
 		--long configfile,help,version
@@ -67,9 +87,11 @@ while true; do
 			;;
 		-h|--help)
 			print_help
+			exit 0
 			;;
 		-v|--version)
-			print_version
+			echo "$SELF Version: $VERSION"
+			exit 0
 			;;
 		--)
 			shift
@@ -81,30 +103,20 @@ while true; do
 	shift
 done
 
-# Allow lazy development and testing
-if [ -s ./debian/changelog ]; then
-	FLL_BUILD_BASE="$PWD"
-fi
-
-# Source distro-defaults
+#################################################################
+#		Source configfiles and functions.sh		#
+#################################################################
 . /etc/default/distro
-
-# Source default configfile
-FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+. "$FLL_BUILD_FUNCS"
 . "$FLL_BUILD_CONFIG"
-
-# Source alternative configfile
 if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
 	. "$FLL_BUILD_ALT_CONFIG"
 fi
 
-# Source functions
-FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_SCRIPTDIR="$FLL_BUILD_BASE/usr/share/fll-builder/fll-build.d"
-FLL_BUILD_FUNCS="$FLL_BUILD_SHARED/functions.sh"
-. "$FLL_BUILD_FUNCS"
-
-# Source all the scriptlets
+#################################################################
+#		Main()						#
+#################################################################
+# source all the fll scriptlets
 for fll_script in "$FLL_BUILD_SCRIPTDIR"/*.sh; do
 	. "$fll_script"
 done
