@@ -111,15 +111,25 @@ while true; do
 	esac
 	shift
 done
+
 #################################################################
 #		Process Command Line Options			#
 #################################################################
 # alternate configfile
-if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
-	. "$FLL_BUILD_ALT_CONFIG"
-else
-	echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
-	exit 1
+if [ "$FLL_BUILD_ALT_CONFIG" ]; then
+	if [ -s "$FLL_BUILD_ALT_CONFIG" ]; then
+		. "$FLL_BUILD_ALT_CONFIG"
+	else
+		echo "Cannot source alternate configfile: $FLL_BUILD_ALT_CONFIG" >&2
+		exit 1
+	fi
+fi
+
+#################################################################
+#		Debug()						#
+#################################################################
+if [ "$DEBUG" -gt 0 ]; then
+	set | grep ^FLL
 fi
 
 #################################################################
