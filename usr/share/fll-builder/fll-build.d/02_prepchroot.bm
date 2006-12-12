@@ -4,5 +4,4 @@ patch_debian_chroot apply
 patch_policy_rcd apply
 patch_network apply
 
-# mount chroot proc
-mount fllchrootproc -t proc "$FLL_BUILD_CHROOT"/proc
+mount_proc

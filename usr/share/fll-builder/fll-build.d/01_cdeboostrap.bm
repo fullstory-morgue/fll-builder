@@ -1,15 +1,5 @@
 #!/bin/bash
 
-strap_chroot() {
-	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
-	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
-	local ARCH=${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
-
-	cdebootstrap --arch="$ARCH" --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
-
-	return $?
-}
-
 strap_chroot
 
 # cleanup unrequired packages (from live-package)

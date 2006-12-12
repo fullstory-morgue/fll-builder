@@ -1,9 +1,17 @@
 #!/bin/bash
 # Common functions for fll-build(8)
 
-chroot_exec() {
-	[[ $# = 0 ]] && return 1
+strap_chroot() {
+	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
+	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
+	local ARCH=${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
 
+	cdebootstrap --arch="$ARCH" --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
+
+	return $?
+}
+
+chroot_exec() {
 	# adapted from live-package
 	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
 		SHELL="$SHELL" \
@@ -18,8 +26,6 @@ chroot_exec() {
 }
 
 copy_to_chroot() {
-	[[ $1 ]] || return 1
-
 	local ORIGFILE="$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
@@ -31,8 +37,6 @@ copy_to_chroot() {
 }
 
 revert_copy_to_chroot() {
-	[[ $1 ]] || return 1
-
 	local FILE="${FLL_BUILD_CHROOT}${1}"
 	if [[ -f ${FILE}.orig ]]; then
 		rm -vf ${FILE}
@@ -41,8 +45,6 @@ revert_copy_to_chroot() {
 }
 
 copy_template_to_chroot() {
-	[[ $1 && $2 ]] || return 1
-
 	local ORIGFILE="$FLL_BUILD_TEMPLATEDIR"/"$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${2}"
 	
@@ -57,23 +59,7 @@ copy_template_to_chroot() {
 	cp -v $ORIGFILE $DESTFILE
 }
 
-nuke_buildarea() {
-	[[ -d $FLL_BUILD_AREA ]] || return 0
-
-	if grep -q "$FLL_BUILD_CHROOT"/proc /proc/mounts; then
-		umount "$FLL_BUILD_CHROOT"/proc
-	fi
-
-	# adpated from pbuilder
-	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
-		xargs -0 rm -f
-  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
-		(xargs -0 rmdir || true)
-}
-
 patch_debian_chroot() {
-	[[ $1 ]] || return 0
-
 	case $1 in
 		apply)
 			echo "$FLL_DISTRO_NAME-live" > "$FLL_BUILD_CHROOT"/etc/debian_chroot
@@ -85,8 +71,6 @@ patch_debian_chroot() {
 }
 
 patch_policy_rcd() {
-	[[ $1 ]] || return 0
-
 	case $1 in
 		apply)
 			copy_template_to_chroot policy-rc.d /usr/sbin/policy-rc.d
@@ -99,8 +83,6 @@ patch_policy_rcd() {
 }
 
 patch_network() {
-	[[ $1 ]] || return 0
-	
 	case $1 in
 		apply)
 			copy_to_chroot /etc/hosts
@@ -112,3 +94,27 @@ patch_network() {
 			;;
 	esac
 }
+
+mount_proc() {
+	mount fllchrootproc -t proc "$FLL_BUILD_CHROOT"/proc
+}
+
+umount_proc() {
+	if grep -q "$FLL_BUILD_CHROOT"/proc /proc/mounts; then
+		umount "$FLL_BUILD_CHROOT"/proc
+	fi
+}
+
+nuke_buildarea() {
+	[[ -d $FLL_BUILD_AREA ]] || return 0
+
+	umount_proc
+
+	# adpated from pbuilder
+	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
+		xargs -0 rm -f
+  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
+		(xargs -0 rmdir || true)
+}
+
+
