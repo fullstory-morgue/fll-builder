@@ -114,11 +114,11 @@ fi
 [[ -d $FLL_BUILD_AREA ]] || error 4
 
 unset TMPDIR
-FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA $SELF.XXXXX)
-FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA $SELF.XXXXX)
+FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 
 #################################################################
-#		Debug Environment						#
+#		Debug Environment				#
 #################################################################
 [[ $DEBUG -gt 0 ]] && set | grep ^FLL_
 
