@@ -52,7 +52,7 @@ ARGS=$(
 		--long configfile,help,version
 )
 
-if [ $? != 0 ]; then
+if [ $? = 0 ]; then
 	eval set -- "$ARGS"
 else
 	echo "Terminating..." >&2
