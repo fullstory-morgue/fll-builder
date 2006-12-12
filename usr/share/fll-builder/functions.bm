@@ -31,6 +31,10 @@ copy_template_to_chroot() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
+	if grep -q "$FLL_BUILD_CHROOT/proc" /proc/mounts; then
+		umount "$FLL_BUILD_CHROOT/proc" || return 1
+	fi
+
 	# adpated from pbuilder
 	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
 		xargs -0 rm -f
