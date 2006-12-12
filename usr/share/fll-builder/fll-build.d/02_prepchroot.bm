@@ -1,9 +1,7 @@
 #!/bin/bash
 
 patch_debian_chroot apply
-
 patch_policy_rcd apply
-
 patch_network apply
 
 # mount chroot proc
