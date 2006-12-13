@@ -19,7 +19,7 @@ proc() {
 			mount fllchrootproc -t proc "$PROC"
 			;;
 		umount)
-			grep -q "$PROC" /proc/mounts && umount "$PROC"
+			grep -q "$PROC" /proc/mounts && umount "$PROC" || true
 			;;
 	esac
 }
@@ -28,14 +28,14 @@ nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
 	proc umount
+
+	[[ $FLL_BUILD_KEEPCHROOT = 1 ]] && return 0
 	
-	if [[ ! "$FLL_BUILD_KEEPCHROOT" ]]; then
-		# adpated from pbuilder
-		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
-			xargs -0 rm -f
-	  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
-			(xargs -0 rmdir || true)
-	fi
+	# adpated from pbuilder
+	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
+		xargs -0 rm -f
+  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
+		(xargs -0 rmdir || true)
 }
 
 chroot_exec() {
