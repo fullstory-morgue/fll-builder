@@ -116,11 +116,6 @@ error() {
 SELF="fll-build"
 VERSION="0.0.0"
 
-# Required for installation of some packages
-LANG=C
-LC_ALL=C
-export LANG LC_ALL
-
 # host arch
 DPKG_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
 
@@ -217,7 +212,6 @@ fi
 # temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p $FLL_BUILD_AREA || error 4
-	unset TMPDIR
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 else
@@ -232,35 +226,68 @@ fi
 trap nuke_buildarea exit
 
 #################################################################
-#		debug environment				#
-#################################################################
-if [[ $VERBOSE -gt 0 ]]; then
-	set | grep -E '^(FLL|DEBOOTSTRAP)'
-fi
-
-#################################################################
-#		main()						#
+#		main						#
 #################################################################
 
-strap_chroot
+cdebootstrap_chroot
 
-patch_chroot pre
+create_chroot_policy
+create_debian_chroot
+create_interfaces
+create_fstab
+create_sources_list working
+copy_to_chroot /etc/hosts
+copy_to_chroot /etc/resolv.conf
 
 proc mount
 
-prepare_apt
+chroot_exec "mkdir -vp ${FLL_MOUNTPOINT}"
+chroot_exec "apt-get update"
+chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
+chroot_exec "apt-get update"
+chroot_exec "apt-get --assume-yes install distro-defaults"
 
-install_desktop
+if [[ $FLL_PACKAGES_XSERVER ]]; then
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
+fi
 
-install_distro
+case "$FLL_XTOOLKIT" in
+	kde)
+		if [[ $FLL_PACKAGES_KDE_CORE ]]; then
+			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
+		fi
+		if [[ $FLL_PACKAGES_KDE_EXTRA ]]; then
+			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
+		fi
+		;;
+	*)
+		;;
+esac
 
-install_common
+if [[ $FLL_PACKAGES_DISTRO_CORE ]]; then
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_CORE"
+fi
 
-#install_kernel
+if [[ $FLL_PACKAGES_DISTRO_EXTRA ]]; then
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
+fi
+
+if [[ $FLL_PACKAGES_COMMON ]]; then
+	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
+fi
+
+chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
+chroot_exec "rmdir -v ${FLL_MOUNTPOINT}"
 
 proc umount
 
-patch_chroot post
+remove_from_chroot /usr/sbin/policy-rc.d
+remove_from_chroot /etc/debian_chroot
+remove_from_chroot /etc/hosts
+remove_from_chroot /etc/resolv.conf
+
+create_apt_sources final
+create_sudoers
 
 #clean_chroot
 

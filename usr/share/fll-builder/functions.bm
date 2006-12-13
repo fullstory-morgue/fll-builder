@@ -1,27 +1,25 @@
 #!/bin/bash
 # Common functions for fll-build(8)
 
-strap_chroot() {
-	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
-	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
-	local ARCH=${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
-
-	cdebootstrap --arch="$ARCH" --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
-
-	return $?
-}
+LANG=C
+LC_ALL=C
+export LANG LC_ALL
 
 proc() {
 	local PROC="$FLL_BUILD_CHROOT"/proc
+	local NAME="proc-fll"
 	
 	case $1 in
 		mount)
-			mount fllchrootproc -t proc "$PROC"
+			mount "$NAME" -t proc "$PROC"
 			;;
 		umount)
-			grep -q "$PROC" /proc/mounts && umount "$PROC" || true
+			grep -q "$PROC" /proc/mounts || return 0
+			umount "$PROC"
 			;;
 	esac
+
+	return $?
 }
 
 nuke_buildarea() {
@@ -29,13 +27,21 @@ nuke_buildarea() {
 
 	proc umount
 
-	[[ $FLL_BUILD_KEEPCHROOT = 1 ]] && return 0
+	[[ $FLL_BUILD_KEEPCHROOT ]] && return 0
 	
 	# adpated from pbuilder
-	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | \
-		xargs -0 rm -f
-  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | \
-		(xargs -0 rmdir || true)
+	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
+  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | ( xargs -0 rmdir || true )
+}
+
+cdebootstrap_chroot() {
+	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
+	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
+	local ARCH=${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
+
+	cdebootstrap --arch="$ARCH" --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
+
+	return $?
 }
 
 chroot_exec() {
@@ -56,24 +62,21 @@ copy_to_chroot() {
 	local ORIGFILE="$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
-	if [[ -f "$DESTFILE" ]]; then
-		mv "$DESTFILE" "$DESTFILE".orig
-	fi
+	[[ -f "$DESTFILE" ]] && mv -v "$DESTFILE" "$DESTFILE".orig
 
 	cp -v "$ORIGFILE" "$DESTFILE"
 }
 
-revert_copy_to_chroot() {
+remove_from_chroot() {
 	local FILE="${FLL_BUILD_CHROOT}${1}"
+	
 	rm -vf "$FILE"
-	if [[ -f "$FILE".orig ]]; then
-		mv -v "$FILE".orig "$FILE"
-	fi
+	
+	[[ -f "$FILE".orig ]] && mv -v "$FILE".orig "$FILE"
 }
 
 create_chroot_policy() {
-	# disable all init scripts
-	# /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
+	# disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
 	cat > "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d \
 <<EOF
 #!/bin/sh
@@ -112,11 +115,11 @@ create_fstab() {
 EOF
 }
 
-create_apt_sources() {
+create_sources_list() {
 	local DEBIANMIRROR=${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
 	local SIDUXMIRROR=${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
 	case $1 in
-		temp)
+		working)
 			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
 <<EOF
 deb $DEBIANMIRROR sid main
@@ -163,71 +166,4 @@ root	ALL=(ALL) ALL
 # SIDUX WARNING: Never allow external access to the sidux user!!!
 $FLL_LIVE_USER	ALL=NOPASSWD: ALL
 EOF
-}
-
-patch_chroot() {
-	case $1 in
-		pre)
-			chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
-			mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
-			create_chroot_policy
-			create_debian_chroot
-			copy_to_chroot /etc/hosts
-			copy_to_chroot /etc/resolv.conf
-			create_interfaces
-			create_fstab
-			create_apt_sources temp
-			;;
-		post)
-			rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
-			rm -vf "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
-			rm -vf "$FLL_BUILD_CHROOT"/etc/debian_chroot
-			revert_copy_to_chroot /etc/hosts
-			revert_copy_to_chroot /etc/resolv.conf
-			create_apt_sources final
-			create_sudoers
-			;;
-	esac
-}
-
-prepare_apt() {
-	chroot_exec "apt-get update"
-	chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
-	chroot_exec "apt-get update"
-}
-
-install_desktop() {
-	if [[ $FLL_PACKAGES_XSERVER ]]; then
-		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
-	fi
-	case "$FLL_XTOOLKIT" in
-		kde)
-			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
-			if [[ $FLL_PACKAGES_KDE_EXTRA ]]; then
-				chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
-			fi
-			;;
-		*)
-			;;
-	esac
-}
-
-install_distro() {
-	chroot_exec "apt-get --assume-yes install distro-defaults"
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_CORE"
-	if [[ $FLL_PACKAGES_DISTRO_EXTRA ]]; then
-		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
-	fi
-}
-
-install_common() {
-	if [[ $FLL_PACKAGES_COMMON ]]; then
-		chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
-	fi
-}
-
-install_kernel() {
-	chroot_exec "apt-get --assume-yes install busybox-sidux live-initrd-sidux"
-	# install kernel + modules, mklive-initrd
-	chroot_exec "dpkg --purge busybox-sidux live-initrd-sidux"
 }
