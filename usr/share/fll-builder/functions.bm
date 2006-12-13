@@ -123,10 +123,10 @@ create_sources_list() {
 			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
 <<EOF
 deb $DEBIANMIRROR sid main
-deb-src $DEBIANMIRROR sid main
+#deb-src $DEBIANMIRROR sid main
 
 deb $SIDUXMIRROR sid main fix.main
-deb-src $SIDUXMIRROR sid main fix.main
+#deb-src $SIDUXMIRROR sid main fix.main
 EOF
 			;;
 		final)
