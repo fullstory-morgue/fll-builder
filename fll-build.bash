@@ -90,7 +90,7 @@ error() {
 			echo "unable to source alternate configfile"
 			;;
 		5)	
-			echo "unable to create buildarea"
+			echo "buildarea not specified"
 			;;
 		6)
 			echo "buildarea target not specified"
