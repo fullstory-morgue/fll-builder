@@ -147,7 +147,6 @@ source "$FLL_BUILD_PACKAGELIST"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--shell sh \
 		--options b:c:dhkvV \
 		--long buildarea,configfile,debug,help,keep,verbose,version \
 		-- $@
