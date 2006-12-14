@@ -66,6 +66,8 @@ Options:
 
   -k|--keep		Preserve build area when finished
 
+  -o|--output		Path to final ISO output
+
   -v|--verbose		Verbose informational output
 
   -V|--version		Version and copyright information
@@ -147,8 +149,8 @@ source "$FLL_BUILD_PACKAGELIST"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:dhkvV \
-		--long buildarea,configfile,debug,help,keep,verbose,version \
+		--options b:c:dhko:vV \
+		--long buildarea,configfile,debug,help,keep,output,verbose,version \
 		-- $@
 )
 
@@ -175,6 +177,10 @@ while true; do
 			;;
 		-k|--keep)
 			FLL_BUILD_KEEPCHROOT=1
+			;;
+		-o|--output)
+			shift
+			FLL_ISO_OUTPUT=$1
 			;;
 		-v|--verbose)
 			VERBOSE=1
@@ -208,11 +214,14 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	fi
 fi
 
-# temporary staging areas within buildarea
+# temporary staging areas within buildarea, plus iso output
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p $FLL_BUILD_AREA || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+	# fll safe (non-nuked) prep dir
+	FLL_SAFE_DIR="$FLL_BUILD_AREA/../"
+	[[ $FLL_ISO_OUPUT ]] || FLL_ISO_OUTPUT="$FLL_SAFE_DIR/$FLL_MEDIA_NAME"
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
@@ -291,7 +300,10 @@ create_sudoers
 #clean_chroot
 
 #make_compressed_image
+mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" -info 
 
 #make_iso
+mkisofs -pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 -boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved -o "$FLL_ISO_OUTPUT" "$FLL_BUILD_RESULT"
+
 
 exit 0
