@@ -299,11 +299,7 @@ create_sudoers
 
 #clean_chroot
 
-#make_compressed_image
-mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" -info 
-
-#make_iso
-genisoimage -pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 -boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved -o "$FLL_ISO_OUTPUT" "$FLL_BUILD_RESULT"
-
+make_compressed_image
+make_fll_iso
 
 exit 0
