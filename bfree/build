@@ -2,9 +2,10 @@
 
 export LANG=C
 TIME=$(date -u +%s)
-BUILDSRC="/root/sidux"
+BUILDSRC="/media/sda15/sidux"
 BUILD="$BUILDSRC/$TIME"
-MIRROR="http://localhost:3142/debian/"
+MIRROR="http://ftp.de.debian.org/debian"
+ARCH="amd64"
 LOG="$BUILDSRC/log/$TIME"
 
 DEBIAN_FRONTEND=noninteractive
@@ -19,15 +20,16 @@ dostart () {
 }
 
 docdebootstrap () {
-  cdebootstrap  --flavour=minimal -v --debug sid $BUILD $MIRROR > $LOG/cdebootstrap 2> $LOG/cdebootstrap.err
+  cdebootstrap  --flavour=minimal --arch=$ARCH -v --debug sid $BUILD $MIRROR > $LOG/cdebootstrap 2> $LOG/cdebootstrap.err
 }
 
 doprechroot () {
-  # convert templates/ to files/ based on default/distro
+# convert templates/ to files/ based on default/distro
   mkdir -p $BUILD/etc/network
   cp -a $BUILDSRC/files/hosts $BUILD/etc/
   cp -a $BUILDSRC/files/interfaces $BUILD/etc/network/
   cp -a $BUILDSRC/files/fstab $BUILD/etc/
+  cp -a $BUILDSRC/files/resolv.conf $BUILD/etc/
   cp -a $BUILDSRC/files/sources.list $BUILD/etc/apt/
   cp -a $BUILDSRC/files/preferences $BUILD/etc/apt/
 #  mkdir -p $BUILD/var/cache/debconf/

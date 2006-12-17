@@ -5,53 +5,22 @@ foreground EE0000
 background 400000
 gfxmenu /boot/message
 
-#title  ACPI on - DMA on - ALSA Sound
-#kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet alsa
-#initrd /boot/miniroot.gz
-
-title  Default
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet vga=791 splash
+title  sidux Default
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet vga=791 splash
 initrd /boot/miniroot.gz
 
-title  ACPI off - DMA off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+title  sidux ACPI off - DMA off
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
 initrd /boot/miniroot.gz
 
-title  APIC off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+title  sidux APIC off
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
 initrd /boot/miniroot.gz
 
-title  Expert Mode
-kernel /boot/vmlinuz BOOT_IMAGE=expert ramdisk_size=100000 init=/etc/init lang=de-utf8 apm=power-off nomce nodma
+title  sidux Framebuffer Mode
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off vga=791 xmodule=fbdev nomce quiet
 initrd /boot/miniroot.gz
 
-title  Framebuffer Mode
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off vga=791 xmodule=fbdev nomce quiet
+title  sidux Failsafe
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
 initrd /boot/miniroot.gz
-
-title  Failsafe
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
-initrd /boot/miniroot.gz
-
-title  Framebuffer off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off vga=normal nomce quiet
-initrd /boot/miniroot.gz
-
-title  Console only
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=ie-utf8 apm=power-off nomce quiet 2
-initrd /boot/miniroot.gz
-
-title MEMTEST - Memtest86+
-kernel /boot/memtest.bin
-
-title BOOT - 1st HD 1st Partition
-chainloader (hd0,0)+1
-
-title BOOT - 2nd HD 1st Partition (swapped)
-map (hd0) (hd1)
-map (hd1) (hd0)
-chainloader (hd1,0)+1
-
-title BOOT - HD Install from /dev/hda2
-kernel (hd0,1)/boot/vmlinuz ro root=/dev/hda2 apm=power-off nomce
-

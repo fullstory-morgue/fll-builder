@@ -16,3 +16,8 @@ Good Luck,
 
 Niall
 
+1) for use with real debian repos, needed a copy of resolv.conf in the chroot (which i did with a quick and dirty cp in build)
+2) kernel version is hardcoded in files/install-packages, tested with smp-kernel
+3) added a 64bit branch, --arch= key to cdebootstrap
+
+Chris

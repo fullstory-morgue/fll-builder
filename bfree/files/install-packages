@@ -83,7 +83,6 @@ KERNELINST="
 
 DISTRO_ALL="
   configure-cups
-  configure-freenx
   configure-gprs
   configure-isdn
   configure-ndiswrapper
@@ -102,39 +101,11 @@ DISTRO_ALL="
 "
 
 DISTRO_FAILING="
-  sysv-freeze
-  configure-dsl
-  knx-installer
-  knxinstaller
-  mkdosswapfile
+
 "
-KVERS="2.6.18.5-slh-up-1"
+KVERS="2.6.19.1-slh64-smp-2"
 
 KERNELMODULES="
-  acer-acpi-modules-2.6.18.5-slh-up-1_0.3-2+1_i386.deb
-  acerhk-modules-2.6.18.5-slh-up-1_0.5.34-3+1_i386.deb
-  acx-modules-2.6.18.5-slh-up-1_20060521-3+1_i386.deb
-  adm8211-modules-2.6.18.5-slh-up-1_20060111-3+1_i386.deb
-  at76c503a-modules-2.6.18.5-slh-up-1_0.14~beta1+1_i386.deb
-  btsco-modules-2.6.18.5-slh-up-1_0.42-3+1_i386.deb
-  cloop-module-2.6.18.5-slh-up-1_2.05~20060829-1+1_i386.deb
-  fsam7400-modules-2.6.18.5-slh-up-1_0.5.1-1+1_i386.deb
-  gspca-modules-2.6.18.5-slh-up-1_01.00.04-2+1_i386.deb
-  ibdriver-modules-2.6.18.5-slh-up-1_1.2.9-1+1_i386.deb
-  ipw3945-modules-2.6.18.5-slh-up-1_1.1.2-6+1_i386.deb
-  ivtv-modules-2.6.18.5-slh-up-1_0.8.1-2+1_i386.deb
-  linux-wlan-ng-modules-2.6.18.5-slh-up-1_0.2.6+svn20061108-1_i386.deb
-  lirc-modules-2.6.18.5-slh-up-1_0.8.0-9+c0.sidux.1+1_i386.deb
-  ndiswrapper-modules-2.6.18.5-slh-up-1_1.30-1+1_i386.deb
-  qc-usb-modules-2.6.18.5-slh-up-1_0.6.6-1+c0.sidux.1+1_i386.deb
-  rfswitch-modules-2.6.18.5-slh-up-1_1.1-2+1_i386.deb
-  rt2400-modules-2.6.18.5-slh-up-1_1.2.2+cvs20060620-4+1_i386.deb
-  rt2500-modules-2.6.18.5-slh-up-1_1.1.0+cvs20060620-3+c0.sidux.1+1_i386.deb
-  rt2570-modules-2.6.18.5-slh-up-1_1.1.0+cvs20060620-3+1_i386.deb
-  rt61-modules-2.6.18.5-slh-up-1_1.1.0+20060910-1+1_i386.deb
-  rtl8180-sa2400-modules-2.6.18.5-slh-up-1_0.21+cvs20050828-8+1_i386.deb
-  squashfs-modules-2.6.18.5-slh-up-1_3.1r2-5+1_i386.deb
-  unionfs-modules-2.6.18.5-slh-up-1_1.4+debian-3+1_i386.deb
-  usbvision-modules-2.6.18.5-slh-up-1_0.9.6.20060618-1+1_i386.deb
+
 "
 
