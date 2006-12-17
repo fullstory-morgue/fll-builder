@@ -10,7 +10,7 @@ install/fll-builder::
 	install -D -m 0755 usr/share/fll-builder/functions.bm \
 		$(DESTDIR)/usr/share/fll-builder/functions.bm
 	install -D -m 0644 etc/fll-builder/fll-build.conf \
-		$(DESTDIR)/etc/fll-build/fll-build.conf
+		$(DESTDIR)/etc/fll-builder/fll-build.conf
 	install -D -m 0644 etc/fll-builder/packages.conf \
 		$(DESTDIR)/etc/fll-build/packages.conf
 	
