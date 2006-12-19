@@ -220,8 +220,7 @@ if [[ $FLL_BUILD_AREA ]]; then
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	# fll safe (non-nuked) prep dir
-	FLL_SAFE_DIR="$FLL_BUILD_AREA/../"
-	[[ $FLL_ISO_OUPUT ]] || FLL_ISO_OUTPUT="$FLL_SAFE_DIR/$FLL_MEDIA_NAME"
+	: ${FLL_ISO_OUPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
@@ -236,9 +235,11 @@ trap nuke_buildarea exit
 #################################################################
 #		main						#
 #################################################################
-
+# chroot
 cdebootstrap_chroot
+chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 
+# prep chroot
 create_chroot_policy
 create_debian_chroot
 create_interfaces
@@ -247,59 +248,52 @@ create_sources_list working
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
+# mount virtual filesystems
 proc mount
 
-chroot_exec "mkdir -vp ${FLL_MOUNTPOINT}"
+# XXX: distro-defaults live environment detection
+chroot_exec "mkdir -vp $FLL_MOUNTPOINT"
+
+#################################################################
+#
 chroot_exec "apt-get update"
 chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
 chroot_exec "apt-get update"
 chroot_exec "apt-get --assume-yes install distro-defaults"
 
-if [[ $FLL_PACKAGES_XSERVER ]]; then
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_XSERVER"
+if [[ $FLL_PACKAGES_CORE ]]; then
+	chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES_CORE[@]}"
 fi
 
-case "$FLL_XTOOLKIT" in
-	kde)
-		if [[ $FLL_PACKAGES_KDE_CORE ]]; then
-			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_CORE"
-		fi
-		if [[ $FLL_PACKAGES_KDE_EXTRA ]]; then
-			chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_KDE_EXTRA"
-		fi
-		;;
-	*)
-		;;
-esac
-
-if [[ $FLL_PACKAGES_DISTRO_CORE ]]; then
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_CORE"
+if [[ $FLL_PACKAGES_EXTRA ]]; then
+	chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}"
 fi
 
-if [[ $FLL_PACKAGES_DISTRO_EXTRA ]]; then
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_DISTRO_EXTRA"
-fi
+# XXX: preseeding
 
-if [[ $FLL_PACKAGES_COMMON ]]; then
-	chroot_exec "apt-get --assume-yes install $FLL_PACKAGES_COMMON"
-fi
+# XXX: reverse distro-defaults live environment detection
+chroot_exec "rmdir -v $FLL_MOUNTPOINT"
 
-chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
-chroot_exec "rmdir -v ${FLL_MOUNTPOINT}"
-
+# umount virtual filesystems
 proc umount
 
+# reverse chroot preparations
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 
+#clean_chroot
+# XXX: misc cleanups
+
+# prepare final chroot
 create_apt_sources final
 create_sudoers
 
-#clean_chroot
+# XXX: compress chroot
+#make_compressed_image
 
-make_compressed_image
-make_fll_iso
+# XXX: authour iso image
+#make_fll_iso
 
 exit 0

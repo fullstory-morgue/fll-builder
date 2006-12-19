@@ -35,11 +35,12 @@ nuke_buildarea() {
 }
 
 cdebootstrap_chroot() {
-	local MIRROR=${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
-	local FLAVOUR=${DEBOOTSTRAP_FLAVOUR:="minimal"}
-	local ARCH=${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
+	: ${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
+	: ${DEBOOTSTRAP_FLAVOUR:="minimal"}
+	: ${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
 
-	cdebootstrap --arch="$ARCH" --flavour="$FLAVOUR" sid "$FLL_BUILD_CHROOT" "$MIRROR"
+	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
+		sid "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
 	return $?
 }
