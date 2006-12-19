@@ -5,13 +5,12 @@ LANG=C
 LC_ALL=C
 export LANG LC_ALL
 
-proc() {
+bind_virtfs() {
 	local PROC="$FLL_BUILD_CHROOT"/proc
-	local NAME="proc-fll"
-	
+
 	case $1 in
 		mount)
-			mount "$NAME" -t proc "$PROC"
+			mount -o ro,bind /proc "$PROC"
 			;;
 		umount)
 			grep -q "$PROC" /proc/mounts || return 0
@@ -25,13 +24,15 @@ proc() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	proc umount
-
-	[[ $FLL_BUILD_KEEPCHROOT ]] && return 0
-	
-	# adpated from pbuilder
-	find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
-  	find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | ( xargs -0 rmdir || true )
+	if bind_virtfs umount; then
+		[[ $FLL_BUILD_KEEPCHROOT ]] && return 0
+		# adpated from pbuilder
+		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
+  		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
+	else
+		echo "Error unmountint virtual filesystems"
+		echo "You must manually cleanup up $FLL_BUILD_AREA"
+	fi
 }
 
 cdebootstrap_chroot() {
@@ -63,17 +64,21 @@ copy_to_chroot() {
 	local ORIGFILE="$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
-	[[ -f "$DESTFILE" ]] && mv -v "$DESTFILE" "$DESTFILE".orig
+	[[ -f "$DESTFILE" ]] && mv -v "$DESTFILE" "$DESTFILE".orig || true
 
 	cp -v "$ORIGFILE" "$DESTFILE"
+
+	return 0
 }
 
 remove_from_chroot() {
 	local FILE="${FLL_BUILD_CHROOT}${1}"
 	
-	rm -vf "$FILE"
+	rm -vf "$FILE" || true
 	
-	[[ -f "$FILE".orig ]] && mv -v "$FILE".orig "$FILE"
+	[[ -f "$FILE".orig ]] && mv -v "$FILE".orig "$FILE" || true
+
+	return 0
 }
 
 create_chroot_policy() {
@@ -117,17 +122,17 @@ EOF
 }
 
 create_sources_list() {
-	local DEBIANMIRROR=${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
-	local SIDUXMIRROR=${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
 	case $1 in
 		working)
+			: ${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
+			: ${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
 			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
 <<EOF
-deb $DEBIANMIRROR sid main
-#deb-src $DEBIANMIRROR sid main
+deb $FLL_BUILD_DEBIANMIRROR sid main
+#deb-src $FLL_BUILD_DEBIANMIRROR sid main
 
-deb $SIDUXMIRROR sid main fix.main
-#deb-src $SIDUXMIRROR sid main fix.main
+deb $FLL_BUILD_SIDUXMIRROR sid main fix.main
+#deb-src $FLL_BUILD_SIDUXMIRROR sid main fix.main
 EOF
 			;;
 		final)

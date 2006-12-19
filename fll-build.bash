@@ -249,7 +249,7 @@ copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
 # mount virtual filesystems
-proc mount
+bind_virtfs mount
 
 # XXX: distro-defaults live environment detection
 chroot_exec "mkdir -vp $FLL_MOUNTPOINT"
@@ -275,7 +275,7 @@ fi
 chroot_exec "rmdir -v $FLL_MOUNTPOINT"
 
 # umount virtual filesystems
-proc umount
+bind_virtfs umount
 
 # reverse chroot preparations
 remove_from_chroot /usr/sbin/policy-rc.d
@@ -283,11 +283,10 @@ remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 
-#clean_chroot
 # XXX: misc cleanups
 
 # prepare final chroot
-create_apt_sources final
+create_sources_list final
 create_sudoers
 
 # XXX: compress chroot
