@@ -33,7 +33,6 @@ KDE_CORE="
   kdm \
   konversation \
   pmount \
-  x-window-system-core
 "
 
 DISTRO_BASE="
@@ -60,6 +59,9 @@ DISTRO_BASE="
 "
 
 DISTRO_XORG="
+  xorg
+  xserver-xorg-input-all
+  xserver-xorg-video-all
   xsession-sidux
   xsession-initscript-sidux
   rootshell
