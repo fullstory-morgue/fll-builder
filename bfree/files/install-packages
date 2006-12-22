@@ -103,9 +103,43 @@ DISTRO_ALL="
 DISTRO_FAILING="
 
 "
-KVERS="2.6.19.1-slh64-smp-2"
 
-KERNELMODULES="
+KVERS="2.6.18.5-slh-smp-1"
 
+KERNELMODULESINITRD="
+  squashfs-modules-$KVERS
+  unionfs-modules-$KVERS
 "
+
+KERNELMODULES="$KERNELMODULESINITRD
+  acer-acpi-modules-$KVERS
+  acerhk-modules-$KVERS
+  adm8211-modules-$KVERS
+  btsco-modules-$KVERS
+  cloop-module-$KVERS
+  fsam7400-modules-$KVERS
+  gspca-modules-$KVERS
+  ibdriver-modules-$KVERS
+  ivtv-modules-$KVERS
+  linux-wlan-ng-modules-$KVERS
+  lirc-modules-$KVERS
+  ndiswrapper-modules-$KVERS
+  qc-usb-modules-$KVERS
+  rfswitch-modules-$KVERS
+  rt2400-modules-$KVERS
+  rt2500-modules-$KVERS
+  rt2570-modules-$KVERS
+  rt61-modules-$KVERS
+  rtl8180-sa2400-modules-$KVERS
+  usbvision-modules-$KVERS
+"
+
+KERNELMODULESCONTRIB="
+  acx-modules-$KVERS
+  at76c503a-modules-$KVERS
+  ipw3945-modules-$KVERS
+"
+
+# Uncomment if you want your contrib kernel modules to install
+# KERNELMODULES="$KERNELMODULES\n$KERNELMODULESCONTRIB"
 
