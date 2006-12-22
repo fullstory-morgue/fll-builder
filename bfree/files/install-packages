@@ -114,7 +114,9 @@ KLIK="
 "
 
 # Uncomment to add Klik
-#DISTRO_ALL="$DISTRO_ALL\n$KLIK"
+#DISTRO_ALL="$DISTRO_ALL
+#  $KLIK
+#"
 
 DISTRO_FAILING="
 
@@ -157,5 +159,7 @@ KERNELMODULESCONTRIB="
 "
 
 # Uncomment if you want your contrib kernel modules to install
-# KERNELMODULES="$KERNELMODULES\n$KERNELMODULESCONTRIB"
+# KERNELMODULES="$KERNELMODULES
+#  $KERNELMODULESCONTRIB
+#"
 
