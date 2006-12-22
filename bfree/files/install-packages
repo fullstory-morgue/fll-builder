@@ -102,6 +102,20 @@ DISTRO_ALL="
   teclasat
 "
 
+KLIK="
+  klik
+  kdialog
+  ssft
+  fuse-utils
+  fusecram
+  fuseiso
+  rpm
+  binutils
+"
+
+# Uncomment to add Klik
+#DISTRO_ALL="$DISTRO_ALL\n$KLIK"
+
 DISTRO_FAILING="
 
 "
