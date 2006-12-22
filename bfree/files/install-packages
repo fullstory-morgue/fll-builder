@@ -107,37 +107,37 @@ DISTRO_FAILING="
 KVERS="2.6.18.5-slh-smp-1"
 
 KERNELMODULESINITRD="
-  squashfs-modules-$KVERS
-  unionfs-modules-$KVERS
+  squashfs-modules
+  unionfs-modules
 "
 
 KERNELMODULES="$KERNELMODULESINITRD
-  acer-acpi-modules-$KVERS
-  acerhk-modules-$KVERS
-  adm8211-modules-$KVERS
-  btsco-modules-$KVERS
-  cloop-module-$KVERS
-  fsam7400-modules-$KVERS
-  gspca-modules-$KVERS
-  ibdriver-modules-$KVERS
-  ivtv-modules-$KVERS
-  linux-wlan-ng-modules-$KVERS
-  lirc-modules-$KVERS
-  ndiswrapper-modules-$KVERS
-  qc-usb-modules-$KVERS
-  rfswitch-modules-$KVERS
-  rt2400-modules-$KVERS
-  rt2500-modules-$KVERS
-  rt2570-modules-$KVERS
-  rt61-modules-$KVERS
-  rtl8180-sa2400-modules-$KVERS
-  usbvision-modules-$KVERS
+  acer-acpi-modules
+  acerhk-modules
+  adm8211-modules
+  btsco-modules
+  cloop-module
+  fsam7400-modules
+  gspca-modules
+  ibdriver-modules
+  ivtv-modules
+  linux-wlan-ng-modules
+  lirc-modules
+  ndiswrapper-modules
+  qc-usb-modules
+  rfswitch-modules
+  rt2400-modules
+  rt2500-modules
+  rt2570-modules
+  rt61-modules
+  rtl8180-sa2400-modules
+  usbvision-modules
 "
 
 KERNELMODULESCONTRIB="
-  acx-modules-$KVERS
-  at76c503a-modules-$KVERS
-  ipw3945-modules-$KVERS
+  acx-modules
+  at76c503a-modules
+  ipw3945-modules
 "
 
 # Uncomment if you want your contrib kernel modules to install

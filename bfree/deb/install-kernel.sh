@@ -21,7 +21,7 @@ dpkg -i linux-headers-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
 dpkg -i linux-doc-"$VER"_"$SUB"_all.deb
 
 for mp in $KERNELMODULES; do
-  ls -art $mp-$VER_*_$(dpkg-architecture -qDEB_BUILD_ARCH).deb | tail -n 1 | xargs dpkg -i || echo "ERROR: KERNEL MODULE $mp FAILED !!"
+  ls -art "$mp"-"$VER"_*_$(dpkg-architecture -qDEB_BUILD_ARCH).deb | tail -n 1 | xargs dpkg -i || echo "ERROR: KERNEL MODULE $mp FAILED !!"
 done
 
 # in case we loaded any more modules
