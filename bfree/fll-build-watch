@@ -8,7 +8,7 @@ BUILD=$BUILDSRC/$BUILDT
 #echo "BUILD:$BUILD"
 LOG=$BUILDSRC/log/$BUILDT
 #echo "LOG:$LOG"
-
+TAILOPT="-n 20"
 #ls -l $BUILD.squashfs
 #ls -l log/$BUILD/fll-build-log
 #ls -l log/$BUILD/cdebootstrap
@@ -18,16 +18,18 @@ if [ -e $BUILD.squashfs ]; then
   ps aux | grep mksquashfs | grep $BUILD
 elif [ -e $LOG/fll-build-log ]; then
   cd $LOG/fll-build-log
-  ls -art . | tail -n 1 | xargs tail
-elif [ -e $BUILD/fll-build-log ]; then
-  cd $BUILD/fll-build-log
-  ls -art . | tail -n 1 | xargs tail
+  ls -art . | tail -n 1
+  ls -art | tail -n 1 | xargs tail $TAILOPT
+elif [ -e $BUILD/root/fll-build-log ]; then
+  cd $BUILD/root/fll-build-log
+  ls -art . | tail -n 1
+  ls -art . | tail -n 1 | xargs tail $TAILOPT
 elif [ -e log/$BUILDT/cdebootstrap ]; then
-  tail log/$BUILDT/cdebootstrap
+  tail $TAILOPT log/$BUILDT/cdebootstrap
 fi
 echo
 echo
 echo
-tail build.log
+tail $TAILOPT $BUILDSRC/build.log
 cd $MYD
 

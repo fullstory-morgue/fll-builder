@@ -3,9 +3,12 @@
 export LANG=C
 TIME=$(date -u +%s)
 BUILDSRC="/media/sda15/sidux"
+#BUILDSRC="/media/hdb3/fll-builder/building/bfree"
 BUILD="$BUILDSRC/$TIME"
 MIRROR="http://ftp.de.debian.org/debian"
+#MIRROR="http://localhost:3142/debian"
 ARCH="amd64"
+#ARCH="i386"
 LOG="$BUILDSRC/log/$TIME"
 
 DEBIAN_FRONTEND=noninteractive
@@ -72,7 +75,9 @@ dopreimage () {
 }
 
 doimage () {
-  mksquashfs $BUILD $BUILD.squashfs
+  MKSQUASHFSOPTS=""
+  [ -e files/mksquashfs.sortlist ] && MKSQUASHFSOPTS=" -sort files/mksquashfs.sortlist "
+   mksquashfs $BUILD $BUILD.squashfs $MKSQUASHFSOPT
 }
 
 dofinal () {

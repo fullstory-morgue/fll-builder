@@ -56,6 +56,30 @@ DISTRO_BASE="
   user-profile-sidux
   networkconfig-sidux
   unionfs-tools
+  unionfs-utils
+  alsa-base
+  alsa-utils
+  alsa-oss
+  configure-dsl
+  configure-freenx
+  configure-modemlink
+  cpufrequtils
+  dmidecode
+  hotkey-setup
+  lirc
+  lirc-x
+  mesa-utils
+  mkdosswapfile
+  module-assistant
+  ncurses-bin
+  ntfs-3g
+  powersaved
+  ppp-scripts
+  ppp
+  pppoe
+  uswsusp
+  wpasupplicant
+  knx-installer
 "
 
 DISTRO_XORG="
@@ -70,12 +94,47 @@ DISTRO_XORG="
   checkmem
   ddcxinfo-sidux
   sidux-menu
+  915resolution
+  ttf-bitstream-vera
+  ttf-freefont
+  xfonts-100dpi-transcoded
+  xfonts-75dpi-transcoded
 "
 
 DISTRO_KDE="
   kdeservicemenus-sidux
   kde-services-sidux
   restartx
+  ksplash-theme-sidux-2006
+"
+
+KDE_EXTRA="
+  amarok
+  k3b
+  kaffeine
+  kmail
+  kmix
+  knemo
+  koffice
+  kompare
+  kpackage
+  kpdf
+  kpowersave
+  ksnapshot
+  ktorrent
+  kuickshow
+  kdemultimedia-kio-plugins
+"
+
+for lang in de es fr it ja pt ru zhcn; do
+  KDE_LANG="$KDE_LANG
+kde-i18n-$lang
+koffice-i18n-$lang"
+done
+
+DISTRO_KDE="$DISTRO_KDE
+$KDE_EXTRA
+$KDE_LANG
 "
 
 KERNELINST="
@@ -85,6 +144,19 @@ KERNELINST="
 
 DISTRO_ALL="
   configure-cups
+  cupsys-bsd
+  cupsys-driver-gutenprint
+  foomatic-db
+  foomatic-db-engine
+  foomatic-db-gutenprint
+  foomatic-db-hpijs
+  foomatic-filters
+  foomatic-filters-ppds
+  hplip
+  linuxprinting.org-ppds
+  cups-pdf
+  sane
+  sane-utils
   configure-gprs
   configure-isdn
   configure-ndiswrapper
@@ -97,14 +169,13 @@ DISTRO_ALL="
   saveconfig
   sidux-kernelhacking
   sidux-searchplugins
-  sidux-vdr
   smbconf-sidux
   teclasat
 "
 
 KLIK="
   klik
-  kdialog
+  dialog
   ssft
   fuse-utils
   fusecram
