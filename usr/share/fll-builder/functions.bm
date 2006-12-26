@@ -30,7 +30,7 @@ nuke_buildarea() {
 		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
   		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
 	else
-		echo "Error unmountint virtual filesystems"
+		echo "Error umounting virtual filesystems"
 		echo "You must manually cleanup up $FLL_BUILD_AREA"
 	fi
 }
