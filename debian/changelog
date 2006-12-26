@@ -1,3 +1,9 @@
+fll-builder (0.0.1) UNRELEASED; urgency=low
+
+  * move cdebootstrap related cleanup directly into cdebootstrap_chroot().
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Dec 2006 18:24:32 +0100
+
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
   * Initial Release.

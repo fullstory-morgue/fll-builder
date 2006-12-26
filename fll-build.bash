@@ -237,7 +237,6 @@ trap nuke_buildarea exit
 #################################################################
 # chroot
 cdebootstrap_chroot
-chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 
 # prep chroot
 create_chroot_policy
