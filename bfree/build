@@ -5,11 +5,13 @@ TIME=$(date -u +%s)
 BUILDSRC="/media/sda15/sidux"
 #BUILDSRC="/media/hdb3/fll-builder/building/bfree"
 BUILD="$BUILDSRC/$TIME"
+#BUILD="$BUILDSRC/CDROOT"
 MIRROR="http://ftp.de.debian.org/debian"
 #MIRROR="http://localhost:3142/debian"
 ARCH="amd64"
 #ARCH="i386"
 LOG="$BUILDSRC/log/$TIME"
+#LOG="$BUILDSRC/log"
 
 DEBIAN_FRONTEND=noninteractive
 DEBIAN_PRIORITY=critical
@@ -84,11 +86,35 @@ dofinal () {
   echo "Done"
 }
 
-dostart
-docdebootstrap
-doprechroot
-dochroot
-dopreimage
-doimage
+doclean {
+  rm -rf $BUILD*
+  rm -rf $LOG/*
+}
+
+OPTCHECK=""
+while getopts ascdrRpih opt
+do
+OPTCHECK="1"
+case $opt in
+  a) dostart
+    docdebootstrap
+    doprechroot
+    dochroot
+    dopreimage
+    doimage
+  ;;
+  s) dostart ;;
+  c) docdebootstrap ;;
+  d) doclean ;;
+  r) doprechroot ;;
+  R) dochroot ;;
+  p) dopreimage ;;
+  i) doimage ;;
+  h) echo "No Help :)" ;;
+esac
+done
+
+[ "$OPTCHECK" ] || (dostart && docdebootstrap && doprechroot && dochroot && dopreimage && doimage)
+
 dofinal
 
