@@ -186,12 +186,11 @@ EOF
 }
 
 add_fll_user() {
-	chroot_exec "adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER"
+	chroot_exec "adduser --no-create-home --disabled-password  --gecos "$FLL_DISTRONAME User" $FLL_LIVE_USER"
 	[ "$?" -ne 0 ] && return 1
 
 	for group in $FLL_LIVE_USER_GROUPS; do
-		chroot_exec "adduser $group"
-		[ "$?" -ne 0 ] && return 1
+		chroot_exec "getent group $group && adduser $FLL_LIVE_USER $group"
 	done
 }
 
