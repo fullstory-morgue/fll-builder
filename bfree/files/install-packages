@@ -6,10 +6,12 @@ BASE="
   dhcp3-client \
   eject \
   hibernate \
+  info \
   less \
   lilo \
   locales \
   lynx \
+  manpages \
   module-init-tools \
   ntpdate \
   openssh-client \
@@ -132,6 +134,9 @@ for lang in $FLL_BUILD_LANG; do
   KDE_LANG="$KDE_LANG
 kde-i18n-$lang
 koffice-i18n-$lang"
+  BASE="$BASE
+manpages-$lang
+"
 done
 
 DISTRO_KDE="$DISTRO_KDE
