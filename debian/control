@@ -5,8 +5,15 @@ Maintainer: Kel Modderman <kelmo@kanotixguide.org>
 Build-Depends: cdbs, debhelper (>= 5)
 Standards-Version: 3.7.2
 
+Package: distro-defaults
+Architecture: all
+Description: set various default options
+ This package has much influence on the system and update behaviour of
+ customized live linux utilities. Take care to keep sane settings for
+ installed systems.
+
 Package: fll-builder
 Architecture: all
-Depends: cdebootstrap, distro-defaults, su-me, genisoimage
+Depends: cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools, su-me
 Description: scripts to build a live-cd based on the FULLSTORY project code
  <insert long description, indented with spaces>

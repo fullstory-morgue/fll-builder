@@ -1,0 +1,53 @@
+# Defaults for distro-defaults
+# sourced by various packages
+# installed at /etc/default/distro by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+# specify distribution name
+FLL_DISTRO_NAME="sidux"
+
+# where is the compressed image located (from the media root, no leading /)
+FLL_IMAGE_DIR="SIDUX"
+FLL_IMAGE_FILE="SIDUX"
+FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
+
+# specify the mountpoint for the compressed file system
+FLL_MOUNTPOINT="/SIDUX"
+
+# As a match to the above though only relevant to sidux fromiso
+FLL_MEDIA_DIR="SIDUX"
+FLL_MEDIA_NAME="SIDUX.ISO"
+FLL_MEDIA_MOUNTPOINT="/isosrc"
+
+# specify default user name on a single user system
+FLL_LIVE_USER="sidux"
+
+# system status (installed|live)
+# this affects su/ sudo mechanisms and other defaults
+FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] || [ -e /KNOPPIX.build ] && echo live || echo installed)
+
+# install type (debian|beginner|live)
+FLL_INSTALL_TYPE="debian"
+
+# where is the default X wallpaper located
+FLL_WALLPAPER="/usr/share/wallpapers/sidux.jpg"
+
+# specify some settings for IRC support
+FLL_IRC_SERVER="irc.oftc.net"
+FLL_IRC_PORT="6667"
+FLL_IRC_CHANNEL="#sidux"
+
+# configure unionfs
+FLL_UNION_SOURCE="/ramdisk/var/tmp/union"
+FLL_UNION_TARGET="$FLL_MOUNTPOINT"
+FLL_UNION_OPTIONS="rw"
+
+# configure persistent home location
+FLL_PERSISTENT_HOME="sidux.img"
+
+# preferred X toolkit for various helper tools (gtk|gtk2|kde).
+FLL_XTOOLKIT="kde"
+

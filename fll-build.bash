@@ -123,7 +123,7 @@ DPKG_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
 # fll defaults
-FLL_BUILD_DEFAULTS="/etc/default/distro"
+FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
