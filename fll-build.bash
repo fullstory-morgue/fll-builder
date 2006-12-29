@@ -246,7 +246,7 @@ copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
 # mount virtual filesystems
-bind_virtfs mount
+virtfs mount
 
 # XXX: distro-defaults live environment detection
 chroot_exec "mkdir -vp $FLL_MOUNTPOINT"
@@ -265,7 +265,7 @@ chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES[@]}"
 chroot_exec "rmdir -v $FLL_MOUNTPOINT"
 
 # umount virtual filesystems
-bind_virtfs umount
+virtfs umount
 
 # reverse chroot preparations
 remove_from_chroot /usr/sbin/policy-rc.d

@@ -5,7 +5,7 @@ LANG=C
 LC_ALL=C
 export LANG LC_ALL
 
-bind_virtfs() {
+virtfs() {
 	local PROC="$FLL_BUILD_CHROOT"/proc
 
 	case $1 in
@@ -23,8 +23,11 @@ bind_virtfs() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	if bind_virtfs umount; then
-		[[ $FLL_BUILD_KEEPCHROOT ]] && return 0
+	if virtfs umount; then
+		if [[ $FLL_BUILD_KEEPCHROOT ]]; then
+			echo "Chroot preserved at $FLL_BUILD_AREA"
+			return 0
+		fi
 		# adpated from pbuilder
 		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
   		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
@@ -74,8 +77,6 @@ copy_to_chroot() {
 	[[ -f "$DESTFILE" ]] && mv -v "$DESTFILE" "$DESTFILE".orig
 
 	cp -v "$ORIGFILE" "$DESTFILE"
-
-	return 0
 }
 
 remove_from_chroot() {
@@ -84,8 +85,6 @@ remove_from_chroot() {
 	rm -vf "$FILE"
 	
 	[[ -f "$FILE".orig ]] && mv -v "$FILE".orig "$FILE"
-
-	return 0
 }
 
 create_chroot_policy() {
@@ -147,6 +146,9 @@ EOF
 <<EOF
 deb http://ftp.debian.org/debian/ sid main
 deb-src http://ftp.debian.org/debian/ sid main
+
+deb http://ftp.debian.org/debian/ testing main
+deb-src http://ftp.debian.org/debian/ testing main
 
 deb http://sidux.com/debian/ sid main fix.main
 deb-src http://sidux.com/debian/ sid main fix.main
