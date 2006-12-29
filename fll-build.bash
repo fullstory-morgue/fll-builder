@@ -261,10 +261,17 @@ chroot_exec apt-get --assume-yes install distro-defaults
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
 # add live user
-add_fll_user
+chroot_exec adduser --no-create-home --disabled-password \
+	--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
+
+for group in $FLL_LIVE_USER_GROUPS; do
+	if chroot_exec getent group "$group"; then
+		chroot_exec adduser "$FLL_LIVE_USER" "$group"
+	fi
+done
 
 # XXX: ugly kernel installation
-install_linux
+install_linux_kernel
 
 # XXX: reverse distro-defaults live environment detection
 chroot_exec rmdir -v $FLL_MOUNTPOINT
