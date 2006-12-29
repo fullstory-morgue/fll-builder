@@ -177,7 +177,7 @@ while true; do
 			;;
 		-o|--output)
 			shift
-			FLL_ISO_OUTPUT=$1
+			FLL_BUILD_ISO_OUTPUT=$1
 			;;
 		-v|--verbose)
 			VERBOSE=1

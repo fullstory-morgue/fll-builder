@@ -193,5 +193,5 @@ make_fll_iso() {
 	genisoimage \
 		-pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 \
 		-boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved \
-		-o "$FLL_ISO_OUTPUT" "$FLL_BUILD_RESULT"
+		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
 }
