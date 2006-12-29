@@ -72,8 +72,6 @@ Options:
 
   -p|--preserve		Preserve build area when finished
 
-  -v|--verbose		Verbose informational output
-
 EOF
 }
 
@@ -243,6 +241,8 @@ trap nuke_buildarea exit
 #		main						#
 #################################################################
 set -e
+
+set | grep ^FLL_
 
 cdebootstrap_chroot
 

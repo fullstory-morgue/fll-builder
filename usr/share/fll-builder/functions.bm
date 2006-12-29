@@ -228,8 +228,9 @@ install_linux_kernel() {
 	
 	popd >/dev/null
 
-	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> $FLL_BUILD_CHROOT/etc/apt/sources.list
-	
+	chroot_exec apt-get install live-initrd-sidux busybox-sidux
+
+	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" > $FLL_BUILD_CHROOT/etc/apt/sources.list
 	chroot_exec apt-get update
 
 	KDEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $KDIR/Packages)
@@ -239,6 +240,13 @@ install_linux_kernel() {
 	fi
 
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
+
+	for kernel in $FLL_BUILD_CHROOT/boot/vmlinuz-*; do
+		kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
+		chroot_exec mklive-initrd --version "$kernel"
+	done
+
+	chroot_exec apt-get --purge remove live-initrd-sidux busybox-sidux
 }
 
 make_compressed_image() {
