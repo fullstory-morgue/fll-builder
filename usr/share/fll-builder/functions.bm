@@ -243,10 +243,10 @@ install_linux_kernel() {
 
 	for kernel in $FLL_BUILD_CHROOT/boot/vmlinuz-*; do
 		kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
-		chroot_exec mklive-initrd --version "$kernel"
+		chroot_exec mklive-initrd --debug --version "$kernel"
 	done
 
-	chroot_exec apt-get --purge remove live-initrd-sidux busybox-sidux
+	chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 }
 
 make_compressed_image() {
