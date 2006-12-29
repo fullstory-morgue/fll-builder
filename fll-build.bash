@@ -114,7 +114,6 @@ error() {
 #################################################################
 # script name and version info
 SELF="fll-build"
-VERSION="0.0.0"
 
 # host arch
 DPKG_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
@@ -184,7 +183,6 @@ while true; do
 			VERBOSE=1
 			;;
 		-V|--version)
-			echo "$SELF (Version: $VERSION)"
 			print_copyright
 			exit 0
 			;;
