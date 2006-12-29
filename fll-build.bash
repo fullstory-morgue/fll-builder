@@ -93,7 +93,7 @@ error() {
 			echo "buildarea not specified"
 			;;
 		6)
-			echo "failed to bootstrap a debian chroot"
+			echo "must specify a linux kernel"
 			;;
 		*)
 			echo "Unknown error code \"$1\"."
@@ -221,6 +221,10 @@ else
 	error 5
 fi
 
+if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
+	error 6
+fi
+
 #################################################################
 #		clean up on exit				#
 #################################################################
@@ -247,37 +251,36 @@ copy_to_chroot /etc/resolv.conf
 virtfs mount
 
 # XXX: distro-defaults live environment detection
-chroot_exec "mkdir -vp $FLL_MOUNTPOINT"
+chroot_exec mkdir -vp $FLL_MOUNTPOINT
 
-#################################################################
-#
-chroot_exec "apt-get update"
-chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
-chroot_exec "apt-get update"
-chroot_exec "apt-get --assume-yes install distro-defaults"
-chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES[@]}"
+# prepare apt and install packages
+chroot_exec apt-get update
+chroot_exec apt-get --allow-unauthenticated --assume-yes install sidux-keyrings
+chroot_exec apt-get update
+chroot_exec apt-get --assume-yes install distro-defaults
+chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
+# add live user
 add_fll_user
 
-# XXX: preseeding
+# XXX: ugly kernel installation
+install_linux
 
 # XXX: reverse distro-defaults live environment detection
-chroot_exec "rmdir -v $FLL_MOUNTPOINT"
+chroot_exec rmdir -v $FLL_MOUNTPOINT
 
 # umount virtual filesystems
 virtfs umount
 
 set +e
 
-# reverse chroot preparations
+# reverse chroot preparations - ignore return codes
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 
 set -e
-
-# XXX: misc cleanups
 
 # prepare final chroot
 create_sources_list final

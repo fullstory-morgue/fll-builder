@@ -51,7 +51,7 @@ cdebootstrap_chroot() {
 	
 	if [ "$RETVAL" -eq 0 ]; then
 		# clean up
-		chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
+		chroot_exec dpkg --purge cdebootstrap-helper-diverts
 		rm -rf "${FLL_BUILD_CHROOT}/var/cache/bootstrap"
 	fi
 
@@ -67,7 +67,7 @@ chroot_exec() {
 		DEBIAN_FRONTEND="noninteractive" \
 		DEBIAN_PRIORITY="critical" \
 		DEBCONF_NOWARNINGS="yes" \
-		$@
+		$*
 	
 	return $?
 }
@@ -91,18 +91,18 @@ remove_from_chroot() {
 
 create_chroot_policy() {
 	# disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
-	cat > "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d \
+	cat > $FLL_BUILD_CHROOT/usr/sbin/policy-rc.d \
 <<EOF
 #!/bin/sh
 
 exit 101
 EOF
-	chmod 0755 "$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+	chmod 0755 $FLL_BUILD_CHROOT/usr/sbin/policy-rc.d
 }
 
 create_interfaces() {
-	mkdir -p "$FLL_BUILD_CHROOT"/etc/network/
-	cat > "$FLL_BUILD_CHROOT"/etc/network/interfaces \
+	mkdir -p $FLL_BUILD_CHROOT/etc/network/
+	cat > $FLL_BUILD_CHROOT/etc/network/interfaces \
 <<EOF
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
 
@@ -114,14 +114,14 @@ EOF
 }
 
 create_debian_chroot() {
-	cat > "$FLL_BUILD_CHROOT"/etc/debian_chroot \
+	cat > $FLL_BUILD_CHROOT/etc/debian_chroot \
 <<EOF
 $FLL_DISTRO_NAME-live
 EOF
 }
 
 create_fstab() {
-	cat > "$FLL_BUILD_CHROOT"/etc/fstab \
+	cat > $FLL_BUILD_CHROOT/etc/fstab \
 <<EOF
 # /etc/fstab: static file system information.
 #
@@ -160,7 +160,7 @@ EOF
 }
 
 create_sudoers() {
-	cat > "${FLL_BUILD_CHROOT}"/etc/sudoers \
+	cat > $FLL_BUILD_CHROOT/etc/sudoers \
 <<EOF
 # sudoers file.
 #
@@ -186,20 +186,68 @@ EOF
 }
 
 add_fll_user() {
-	chroot_exec "adduser --no-create-home --disabled-password --gecos "$FLL_DISTRONAME User" $FLL_LIVE_USER"
-	[ "$?" -ne 0 ] && return 1
+	chroot_exec adduser --no-create-home --disabled-password \
+		--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
 
 	for group in $FLL_LIVE_USER_GROUPS; do
-		if chroot_exec "getent group $group"; then
-			chroot_exec "adduser $FLL_LIVE_USER $group"
-			[ "$?" -ne 0 ] && return 1
+		if chroot_exec getent group "$group"; then
+			chroot_exec adduser "$FLL_LIVE_USER" "$group"
 		fi
 	done
 }
 
+install_linux() {
+	[[ $FLL_BUILD_LINUX_KERNEL ]] || return 1
+
+	local KTYPE KDIR KDEBS
+
+	case "$FLL_BUILD_LINUX_KERNEL" in
+		*.zip)
+			if [[ -f $FLL_BUILD_LINUX_KERNEL ]]; then
+				KTYPE="file"
+			else
+				KTYPE="url"
+			fi
+			;;
+		*)
+			echo "Unrecognised kernel option: $FLL_BUILD_LINUX_KERNEL"
+			return 1
+			;;
+	esac
+
+	KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
+
+	pushd "$KDIR" >/dev/null
+		case "$KTYPE" in
+			"file")
+				cp "$FLL_BUILD_LINUX_KERNEL" kernel.zip
+				;;
+			"url")
+				wget -N -T10 "$FLL_BUILD_LINUX_KERNEL" -O kernel.zip
+				;;
+		esac
+
+		if unzip kernel.zip; then
+			find . -maxdepth 1 -type f ! -name '*.deb' -exec rm -vf {} \;
+			# XXX: contrib in kernel.zip ?
+			rm -f rt61*.deb
+			apt-ftparchive packages . > Packages
+			[[ -f $KDIR/Packages ]] || return 1
+		fi
+	
+	popd >/dev/null
+
+	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> $FLL_BUILD_CHROOT/etc/apt/sources.list
+	
+	chroot_exec apt-get update
+
+	KDEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $KDIR/Packages)
+
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
+}
 
 make_compressed_image() {
-	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" -info 
+	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/$FLL_IMAGE_LOCATION" -info 
 }
 
 make_fll_iso() {
