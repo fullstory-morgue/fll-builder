@@ -39,6 +39,7 @@ nuke_buildarea() {
 }
 
 cdebootstrap_chroot() {
+	local RETVAL
 	: ${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
 	: ${DEBOOTSTRAP_FLAVOUR:="minimal"}
 	: ${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
@@ -46,15 +47,15 @@ cdebootstrap_chroot() {
 	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 		sid "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 	
-	if [ "$?" -eq 0 ]; then
+	RETVAL=$?
+	
+	if [ "$RETVAL" -eq 0 ]; then
 		# clean up
 		chroot_exec "dpkg --purge cdebootstrap-helper-diverts"
 		rm -rf "${FLL_BUILD_CHROOT}/var/cache/bootstrap"
-
-		return 0
 	fi
 
-	return 1
+	return $RETVAL
 }
 
 chroot_exec() {

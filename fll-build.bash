@@ -68,7 +68,7 @@ Options:
 
   -v|--verbose		Verbose informational output
 
-  -V|--version		Version and copyright information
+  -V|--version		Copyright information
 
 EOF
 }
@@ -93,7 +93,7 @@ error() {
 			echo "buildarea not specified"
 			;;
 		6)
-			echo "buildarea target not specified"
+			echo "failed to bootstrap a debian chroot"
 			;;
 		*)
 			echo "Unknown error code \"$1\"."
@@ -232,7 +232,7 @@ trap nuke_buildarea exit
 #		main						#
 #################################################################
 # chroot
-cdebootstrap_chroot
+cdebootstrap_chroot || error 6
 
 # prep chroot
 create_chroot_policy
