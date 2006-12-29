@@ -25,7 +25,7 @@ nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
 	if virtfs umount; then
-		if [[ $FLL_BUILD_KEEPCHROOT ]]; then
+		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
 			echo "Chroot preserved at $FLL_BUILD_AREA"
 			return 0
 		fi
@@ -67,7 +67,7 @@ chroot_exec() {
 		DEBIAN_FRONTEND="noninteractive" \
 		DEBIAN_PRIORITY="critical" \
 		DEBCONF_NOWARNINGS="yes" \
-		$*
+		$@
 	
 	return $?
 }
@@ -233,6 +233,10 @@ install_linux_kernel() {
 	chroot_exec apt-get update
 
 	KDEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $KDIR/Packages)
+
+	if [[ -z $KDEBS ]]; then
+		return 1
+	fi
 
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
 }

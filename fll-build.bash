@@ -58,17 +58,21 @@ Options:
   -c|--configfile	Path to alternate configfile
   (default: /etc/fll-builder/fll-build.conf)
 
+  -C|--copyright	Copyright information
+
   -d|--debug		Debug shell code execution (set -x)
 
   -h|--help		Information about using this program
 
-  -k|--keep		Preserve build area when finished
+  -k|--kernel		URL to kernel zip package
+
+  -n|--chrootonly	Quit after preparing chroot
 
   -o|--output		Path to final ISO output
 
-  -v|--verbose		Verbose informational output
+  -p|--preserve		Preserve build area when finished
 
-  -V|--version		Copyright information
+  -v|--verbose		Verbose informational output
 
 EOF
 }
@@ -107,7 +111,7 @@ error() {
 #################################################################
 #		root?						#
 #################################################################
-(( UID )) && exec su-me "$0 $@"
+(( UID )) && exec su-me "$0" "$@"
 
 #################################################################
 #		constant variable declarations			#
@@ -165,6 +169,10 @@ while true; do
 			shift
 			FLL_BUILD_ALT_CONFIG=$1
 			;;
+		-C|--copyright)
+			print_copyright
+			exit 0
+			;;
 		-d|--debug)
 			set -x
 			;;
@@ -172,19 +180,19 @@ while true; do
 			print_help
 			exit 0
 			;;
-		-k|--keep)
-			FLL_BUILD_KEEPCHROOT=1
+		-k|--kernel)
+			shift
+			FLL_BUILD_LINUX_KERNEL=$1
 			;;
+		-n|--chrootonly)
+			FLL_BUILD_CHROOT_ONLY=1
+			;;			
 		-o|--output)
 			shift
 			FLL_BUILD_ISO_OUTPUT=$1
 			;;
-		-v|--verbose)
-			VERBOSE=1
-			;;
-		-V|--version)
-			print_copyright
-			exit 0
+		-p|--preserve)
+			FLL_BUILD_PRESERVE_CHROOT=1
 			;;
 		--)
 			shift
@@ -204,7 +212,7 @@ done
 # alternate configfile
 if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	if [[ -s $FLL_BUILD_ALT_CONFIG ]]; then
-		source $FLL_BUILD_ALT_CONFIG
+		source "$FLL_BUILD_ALT_CONFIG"
 	else
 		error 3
 	fi
@@ -212,7 +220,7 @@ fi
 
 # temporary staging areas within buildarea, plus iso output
 if [[ $FLL_BUILD_AREA ]]; then
-	mkdir -p $FLL_BUILD_AREA || error 4
+	mkdir -p "$FLL_BUILD_AREA" || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 else
@@ -221,6 +229,7 @@ else
 	error 5
 fi
 
+# check kernel is provided
 if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
@@ -235,10 +244,8 @@ trap nuke_buildarea exit
 #################################################################
 set -e
 
-# chroot
 cdebootstrap_chroot
 
-# prep chroot
 create_chroot_policy
 create_debian_chroot
 create_interfaces
@@ -247,20 +254,17 @@ create_sources_list working
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
-# mount virtual filesystems
 virtfs mount
 
 # XXX: distro-defaults live environment detection
-chroot_exec mkdir -vp $FLL_MOUNTPOINT
+chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
 
-# prepare apt and install packages
 chroot_exec apt-get update
 chroot_exec apt-get --allow-unauthenticated --assume-yes install sidux-keyrings
 chroot_exec apt-get update
 chroot_exec apt-get --assume-yes install distro-defaults
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
-# add live user
 chroot_exec adduser --no-create-home --disabled-password \
 	--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
 
@@ -270,29 +274,26 @@ for group in $FLL_LIVE_USER_GROUPS; do
 	fi
 done
 
-# XXX: ugly kernel installation
 install_linux_kernel
 
-# XXX: reverse distro-defaults live environment detection
-chroot_exec rmdir -v $FLL_MOUNTPOINT
+chroot_exec rmdir -v "$FLL_MOUNTPOINT"
 
-# umount virtual filesystems
 virtfs umount
 
-# reverse chroot preparations - ignore return codes
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 
-# prepare final chroot
 create_sources_list final
 create_sudoers
 
-# XXX: compress chroot
+if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
+	exit 0
+fi
+
 #make_compressed_image
 
-# XXX: authour iso image
 #make_fll_iso
 
 exit 0

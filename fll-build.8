@@ -15,23 +15,26 @@ Path to temporary build area for live-cd chroot
 Path to alternate configfile.
 (default: /etc/fll-builder/fll-build.conf)
 .TP
+\fB\-C|\-\-copyright\fR
+Copyright information
+.TP
 \fB\-d|\-\-debug\fR
 Debug shell code execution (set -x)
 .TP
 \fB\-h|\-\-help\fR
 Information about using this program
 .TP
-\fB\-k|\-\-keep\fR
-Preserve build area when finished
+\fB\-k|\-\-kernel\fR
+URL to kernel zip package
+.TP
+\fB\-n|\-\-chrootonly
+Quit after preparing chroot
 .TP
 \fB\-o|\-\-output\fR
 Path to final ISO output
 .TP
-\fB\-v|\-\-verbose\fR
-Verbose informational output
-.TP
-\fB\-V|\-\-version\fR
-Copyright information
+\fB\-p|\-\-preserve\fR
+Preserve build area when finished
 .PP
 .SH ENVIRONMENT
 <describe fll-build environment here>
