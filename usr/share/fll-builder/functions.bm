@@ -189,6 +189,21 @@ $FLL_LIVE_USER	ALL=NOPASSWD: ALL
 EOF
 }
 
+fixup_linux_kernel() {
+	local VER=$1
+
+	[[ $VER ]] || return 1
+
+	chroot_exec rm -vf /lib/modules/$VER/build /lib/modules/$VER/source
+	chroot_exec ln -vs linux-headers-$VER /usr/src/linux-$VER
+	chroot_exec ln -vs /usr/src/linux-$VER /lib/modules/$VER/build
+	chroot_exec ln -vs /usr/src/linux-$VER /lib/modules/$VER/source
+	chroot_exec cp -vf /boot/config-$VER /usr/src/linux-$VER/.config
+	chroot_exec rm -rf /usr/src/linux-$VER/Documentation
+	chroot_exec ln -vs /usr/share/doc/linux-doc-$VER/Documentation \
+		/usr/src/linux-$VER/Documentation
+}
+
 install_linux_kernel() {
 	local KTYPE KDIR KDEBS
 
@@ -243,6 +258,7 @@ install_linux_kernel() {
 
 	for kernel in $FLL_BUILD_CHROOT/boot/vmlinuz-*; do
 		kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
+		fixup_linux_kernel "$kernel"
 		chroot_exec mklive-initrd --debug --version "$kernel"
 	done
 

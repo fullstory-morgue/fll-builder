@@ -14,6 +14,6 @@ Description: set various default options
 
 Package: fll-builder
 Architecture: all
-Depends: cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools, su-me
+Depends: apt-utils, cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools, su-me, unzip, wget
 Description: scripts to build a live-cd based on the FULLSTORY project code
  <insert long description, indented with spaces>
