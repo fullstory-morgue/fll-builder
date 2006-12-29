@@ -215,8 +215,6 @@ if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p $FLL_BUILD_AREA || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-	# fll safe (non-nuked) prep dir
-	: ${FLL_ISO_OUPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
