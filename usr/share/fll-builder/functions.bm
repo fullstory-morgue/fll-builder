@@ -13,7 +13,8 @@ virtfs() {
 			mount  procfll -t proc "$PROC"
 			;;
 		umount)
-			grep -q "$PROC" /proc/mounts && umount "$PROC"
+			grep -q "$PROC" /proc/mounts || return 0
+			umount "$PROC"
 			;;
 	esac
 
