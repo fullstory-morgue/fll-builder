@@ -192,6 +192,7 @@ add_fll_user() {
 	for group in $FLL_LIVE_USER_GROUPS; do
 		if chroot_exec "getent group $group"; then
 			chroot_exec "adduser $FLL_LIVE_USER $group"
+			[ "$?" -ne 0 ] && return 1
 		fi
 	done
 }

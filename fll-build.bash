@@ -231,8 +231,10 @@ trap nuke_buildarea exit
 #################################################################
 #		main						#
 #################################################################
+set -e
+
 # chroot
-cdebootstrap_chroot || error 6
+cdebootstrap_chroot
 
 # prep chroot
 create_chroot_policy
@@ -267,11 +269,15 @@ chroot_exec "rmdir -v $FLL_MOUNTPOINT"
 # umount virtual filesystems
 virtfs umount
 
+set +e
+
 # reverse chroot preparations
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
+
+set -e
 
 # XXX: misc cleanups
 
