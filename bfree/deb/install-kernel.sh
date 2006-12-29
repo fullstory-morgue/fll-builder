@@ -16,18 +16,18 @@ source /root/install-packages
 
 update-rc.d module-init-tools start 20 S . >/dev/null
 
-rm -rf /usr/src/linux /usr/src/linux-$VER /lib/modules/$VER/build
-if [ ! -d /usr/src/linux-headers-$VER/scripts ]; then
-	rm -f /usr/src/linux-headers-$VER/scripts
-	ln -s ../linux-kbuild-2.6.18/scripts /usr/src/linux-headers-$VER
+rm -rf /usr/src/linux /usr/src/linux-$KVERS /lib/modules/$KVERS/build
+if [ ! -d /usr/src/linux-headers-$KVERS/scripts ]; then
+	rm -f /usr/src/linux-headers-$KVERS/scripts
+	ln -s ../linux-kbuild-2.6.18/scripts /usr/src/linux-headers-$KVERS
 fi
 
-ln -s linux-headers-$VER /usr/src/linux-$VER
-ln -s /usr/src/linux-$VER /lib/modules/$VER/build  
-cp -f /boot/config-$VER /usr/src/linux-$VER/.config
-rm -rf /usr/src/linux-$VER/Documentation
-ln -s /usr/share/doc/linux-doc-$VER/Documentation /usr/src/linux-$VER/Documentation
-ln -sf boot/vmlinuz-$VER /vmlinuz
+ln -s linux-headers-$KVERS /usr/src/linux-$KVERS
+ln -s /usr/src/linux-$KVERS /lib/modules/$KVERS/build  
+cp -f /boot/config-$KVERS /usr/src/linux-$KVERS/.config
+rm -rf /usr/src/linux-$KVERS/Documentation
+ln -s /usr/share/doc/linux-doc-$KVERS/Documentation /usr/src/linux-$KVERS/Documentation
+ln -sf boot/vmlinuz-$KVERS /vmlinuz
 
 # hack for new installer
 X_CONF=XF86Config-4

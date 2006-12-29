@@ -1,5 +1,6 @@
 #!/bin/bash
-BUILDSRC="/root/sidux"
+BUILDSRC="/media/hdb3/fll-builder/building/bfree"
+#BUILDSRC="/root/sidux"
 MYD=$(pwd)
 cd $BUILDSRC
 BUILDT=$(ls -art $BUILDSRC | grep -v squashfs | grep ^[[:digit:]]*$ | grep -v ^\\. | tail -n 1)

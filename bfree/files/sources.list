@@ -4,11 +4,13 @@
 
 # Unstable
 deb http://ftp.de.debian.org/debian/ unstable main
+#deb http://localhost:3142/debian/ unstable main
 #deb http://ftp.de.debian.org/debian/ unstable main contrib non-free 
 #deb-src http://ftp.de.debian.org/debian/ unstable main contrib non-free 
 
 # Testing
 deb http://ftp.de.debian.org/debian/ testing main
+#deb http://localhost:3142/debian/ testing main
 #deb http://ftp.de.debian.org/debian/ testing main contrib non-free 
 #deb-src http://ftp.de.debian.org/debian/ testing main contrib non-free 
 
@@ -18,6 +20,7 @@ deb http://ftp.de.debian.org/debian/ testing main
 
 # sidux
 deb http://sidux.com/repo/debian/ sid main fix.main
+#deb http://localhost:3142/sidux/debian/ sid main
 #deb http://sidux.com/repo/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free vdr
 #deb http://sidux.com/repo/transitional/ sid main contrib non-free 
 #deb http://sidux.com/repo/compat/ sid main contrib non-free

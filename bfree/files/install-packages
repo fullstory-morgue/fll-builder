@@ -126,7 +126,9 @@ KDE_EXTRA="
   kdemultimedia-kio-plugins
 "
 
-for lang in de es fr it ja pt ru zhcn; do
+#FLL_BUILD_LANG="de es fr it ja pt ru zhcn"
+FLL_BUILD_LANG=""
+for lang in $FLL_BUILD_LANG; do
   KDE_LANG="$KDE_LANG
 kde-i18n-$lang
 koffice-i18n-$lang"
@@ -163,7 +165,6 @@ DISTRO_ALL="
   configure-networkcard
   configure-xawtv
   fix-fonts
-  knxcc
   mkpersistenthome
   sambastart-sidux
   saveconfig
@@ -190,43 +191,43 @@ KLIK="
 #"
 
 DISTRO_FAILING="
-
+  knxcc
 "
 
 KVERS="2.6.18.5-slh-smp-1"
 
 KERNELMODULESINITRD="
-  squashfs-modules
-  unionfs-modules
+  squashfs-modules-$KVERS
+  unionfs-modules-$KVERS
 "
 
 KERNELMODULES="$KERNELMODULESINITRD
-  acer-acpi-modules
-  acerhk-modules
-  adm8211-modules
-  btsco-modules
-  cloop-module
-  fsam7400-modules
-  gspca-modules
-  ibdriver-modules
-  ivtv-modules
-  linux-wlan-ng-modules
-  lirc-modules
-  ndiswrapper-modules
-  qc-usb-modules
-  rfswitch-modules
-  rt2400-modules
-  rt2500-modules
-  rt2570-modules
-  rt61-modules
-  rtl8180-sa2400-modules
-  usbvision-modules
+  acer-acpi-modules-$KVERS
+  acerhk-modules-$KVERS
+  adm8211-modules-$KVERS
+  btsco-modules-$KVERS
+  cloop-module-$KVERS
+  fsam7400-modules-$KVERS
+  gspca-modules-$KVERS
+  ibdriver-modules-$KVERS
+  ivtv-modules-$KVERS
+  linux-wlan-ng-modules-$KVERS
+  lirc-modules-$KVERS
+  ndiswrapper-modules-$KVERS
+  qc-usb-modules-$KVERS
+  rfswitch-modules-$KVERS
+  rt2400-modules-$KVERS
+  rt2500-modules-$KVERS
+  rt2570-modules-$KVERS
+  rt61-modules-$KVERS
+  rtl8180-sa2400-modules-$KVERS
+  usbvision-modules-$KVERS
 "
 
 KERNELMODULESCONTRIB="
-  acx-modules
-  at76c503a-modules
-  ipw3945-modules
+  acx-modules-$KVERS
+  at76c503a-modules-$KVERS
+  ipw3945-modules-$KVERS
 "
 
 # Uncomment if you want your contrib kernel modules to install

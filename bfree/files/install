@@ -29,12 +29,14 @@ echo "Done kde"
 apt-get -y install $DISTRO_ALL > $LOG/apt-get-install-all
 echo "Done all"
 adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER
-for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users camera floppy games powerdev; do adduser "$FLL_LIVE_USER" "$joingroup"; done
+for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users camera floppy games powerdev fuse; do adduser "$FLL_LIVE_USER" "$joingroup"; done
 # TODO: fix sudo  and remove root password
 #passwd -l root
 echo "Done users"
-apt-get -y install $KERNEL > $LOG/apt-get-kernel
+#apt-get -y install $KERNEL > $LOG/apt-get-kernel
 pushd /root/deb/
+apt-get --allow-unauthenticated -y install $(ls *.deb | grep $KVERS | grep -v rt61 | perl -pi -e 's/\_.*\.
+deb//')
 ./install-kernel.sh > $LOG/install-kernel
 echo "Done kernel"
 popd
