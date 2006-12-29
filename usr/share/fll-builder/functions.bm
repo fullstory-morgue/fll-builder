@@ -10,7 +10,7 @@ bind_virtfs() {
 
 	case $1 in
 		mount)
-			mount -o ro,bind /proc "$PROC"
+			mount  procfll -t proc "$PROC"
 			;;
 		umount)
 			grep -q "$PROC" /proc/mounts && umount "$PROC"

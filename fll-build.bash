@@ -257,14 +257,7 @@ chroot_exec "apt-get update"
 chroot_exec "apt-get --allow-unauthenticated --assume-yes install sidux-keyrings"
 chroot_exec "apt-get update"
 chroot_exec "apt-get --assume-yes install distro-defaults"
-
-if [[ $FLL_PACKAGES_CORE ]]; then
-	chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES_CORE[@]}"
-fi
-
-if [[ $FLL_PACKAGES_EXTRA ]]; then
-	chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}"
-fi
+chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES[@]}"
 
 # XXX: preseeding
 
