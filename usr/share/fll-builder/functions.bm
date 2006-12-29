@@ -190,8 +190,6 @@ EOF
 }
 
 install_linux_kernel() {
-	[[ $FLL_BUILD_LINUX_KERNEL ]] || return 1
-
 	local KTYPE KDIR KDEBS
 
 	case "$FLL_BUILD_LINUX_KERNEL" in
