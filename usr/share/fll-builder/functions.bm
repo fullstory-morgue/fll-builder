@@ -76,7 +76,9 @@ copy_to_chroot() {
 	local ORIGFILE="$1"
 	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
 	
-	[[ -f "$DESTFILE" ]] && mv -v "$DESTFILE" "$DESTFILE".orig
+	if [[ -f "$DESTFILE" ]]; then
+		mv -v "$DESTFILE" "$DESTFILE".orig
+	fi
 
 	cp -v "$ORIGFILE" "$DESTFILE"
 }
@@ -86,7 +88,9 @@ remove_from_chroot() {
 	
 	rm -vf "$FILE"
 	
-	[[ -f "$FILE".orig ]] && mv -v "$FILE".orig "$FILE"
+	if [[ -f "$FILE".orig ]]; then
+		mv -v "$FILE".orig "$FILE"
+	fi
 }
 
 create_chroot_policy() {

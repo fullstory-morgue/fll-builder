@@ -272,15 +272,11 @@ chroot_exec rmdir -v $FLL_MOUNTPOINT
 # umount virtual filesystems
 virtfs umount
 
-set +e
-
 # reverse chroot preparations - ignore return codes
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
-
-set -e
 
 # prepare final chroot
 create_sources_list final
