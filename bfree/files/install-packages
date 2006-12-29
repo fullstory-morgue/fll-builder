@@ -234,3 +234,14 @@ KERNELMODULESCONTRIB="
 #  $KERNELMODULESCONTRIB
 #"
 
+KERNEL="
+  $KERNELINST
+  linux-image-$KVERS
+  linux-headers-$KVERS
+  linux-doc-$KVERS
+  $KERNELMODULES
+  alsa-modules-$KVERS
+  linux-custom-patches-$KVERS
+  module-init-tools
+"
+

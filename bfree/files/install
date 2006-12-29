@@ -33,7 +33,7 @@ for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users
 # TODO: fix sudo  and remove root password
 #passwd -l root
 echo "Done users"
-apt-get -y install $KERNELINST > $LOG/apt-get-kernelinst
+apt-get -y install $KERNEL > $LOG/apt-get-kernel
 pushd /root/deb/
 ./install-kernel.sh > $LOG/install-kernel
 echo "Done kernel"

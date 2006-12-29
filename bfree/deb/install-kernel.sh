@@ -14,27 +14,6 @@ rm -f	/boot/System.map \
 
 source /root/install-packages
 
-VER="$KVERS"
-
-dpkg -i linux-image-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
-dpkg -i linux-headers-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
-dpkg -i linux-doc-"$VER"_"$SUB"_all.deb
-
-for mp in $KERNELMODULES; do
-  ls -art "$mp"-"$VER"_*_$(dpkg-architecture -qDEB_BUILD_ARCH).deb | tail -n 1 | xargs dpkg -i || echo "ERROR: KERNEL MODULE $mp FAILED !!"
-done
-
-# in case we loaded any more modules
-apt-get --yes -f install
-
-test -n "$ALSA" && dpkg -i alsa-modules-"$VER"_"$ALSA"+"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
-test -f linux-custom-patches-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb && dpkg -i linux-custom-patches-"$VER"_"$SUB"_$(dpkg-architecture -qDEB_BUILD_ARCH).deb
-
-#ln -sf System.map-$VER /boot/System.map
-#ln -sf vmlinuz-$VER /boot/vmlinuz
-
-# install important dependencies
-dpkg -l module-init-tools &>/dev/null || apt-get -y install module-init-tools
 update-rc.d module-init-tools start 20 S . >/dev/null
 
 rm -rf /usr/src/linux /usr/src/linux-$VER /lib/modules/$VER/build
@@ -80,3 +59,4 @@ echo usbdevfs has been replaced by usbfs in /etc/fstab with devmode=0666
 #echo $GROUP|grep -q camera || (
 #[ "$USER" ] &&  usermod -G $GROUP,camera $USER
 #)
+
