@@ -257,6 +257,8 @@ chroot_exec "apt-get update"
 chroot_exec "apt-get --assume-yes install distro-defaults"
 chroot_exec "apt-get --assume-yes install ${FLL_PACKAGES[@]}"
 
+add_fll_user
+
 # XXX: preseeding
 
 # XXX: reverse distro-defaults live environment detection

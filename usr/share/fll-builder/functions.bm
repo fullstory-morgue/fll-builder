@@ -185,6 +185,16 @@ $FLL_LIVE_USER	ALL=NOPASSWD: ALL
 EOF
 }
 
+add_fll_user() {
+	chroot_exec "adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER"
+	[ "$?" -ne 0 ] && return 1
+
+	for group in $FLL_LIVE_USER_GROUPS; do
+		chroot_exec "adduser $group"
+		[ "$?" -ne 0 ] && return 1
+	done
+}
+
 
 make_compressed_image() {
 	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" -info 
