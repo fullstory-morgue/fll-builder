@@ -86,7 +86,7 @@ dofinal () {
   echo "Done"
 }
 
-doclean {
+doclean () {
   rm -rf $BUILD*
   rm -rf $LOG/*
 }
