@@ -26,7 +26,7 @@ FLL_MEDIA_MOUNTPOINT="/isosrc"
 FLL_LIVE_USER="sidux"
 
 # specify groups the live user should be a member of
-FLL_LIVE_USER_GROUPS="dialout fuse cdrom sudo audio video plugdev users camera floppy powerdev scanner"
+FLL_LIVE_USER_GROUPS="dialout fuse cdrom sudo audio video plugdev users floppy powerdev scanner"
 
 # system status (installed|live)
 # this affects su/ sudo mechanisms and other defaults
