@@ -183,6 +183,7 @@ KLIK="
   fuseiso
   rpm
   binutils
+  binfmt-support
 "
 
 # Uncomment to add Klik
