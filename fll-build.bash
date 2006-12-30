@@ -360,7 +360,9 @@ fi
 mkdir -vp "$FLL_BUILD_RESULT/boot/grub" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 # add templates (documentation/manual/autorun etc.)
-cp -av "$FLL_BUILD_TEMPLATES"/*/* "$FLL_BUILD_RESULT"
+pushd "$FLL_BUILD_TEMPLATES" >/dev/null
+	find . -not -path '*.svn*' | cpio -admp "$FLL_BUILD_RESULT"
+popd >/dev/null
 
 # populate /boot
 mv -v "$FLL_BUILD_CHROOT/boot/miniroot.gz" "$FLL_BUILD_RESULT/boot/miniroot.gz"
