@@ -361,7 +361,7 @@ mkdir -vp "$FLL_BUILD_RESULT/boot/grub" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 # add templates (documentation/manual/autorun etc.)
 pushd "$FLL_BUILD_TEMPLATES" >/dev/null
-	find . -not -path '*.svn*' | cpio -admp "$FLL_BUILD_RESULT"
+	find . -not -path '*.svn*' | cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
 popd >/dev/null
 
 # populate /boot
