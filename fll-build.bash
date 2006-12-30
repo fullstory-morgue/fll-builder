@@ -389,7 +389,6 @@ cp -v "$FLL_BUILD_CHROOT/boot/message.live" "$FLL_BUILD_RESULT/boot/message"
 #################################################################
 #		create iso					#
 #################################################################
-#make_iso_root 
 #make_fll_iso
 
 exit 0
