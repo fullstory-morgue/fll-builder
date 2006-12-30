@@ -41,19 +41,23 @@ remove_from_chroot() {
 }
 
 create_chroot_policy() {
-	# disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
-	cat > $FLL_BUILD_CHROOT/usr/sbin/policy-rc.d \
+	local POLICY="$FLL_BUILD_CHROOT/usr/sbin/policy-rc.d"
+	
+# disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
+	cat > "$POLICY" \
 <<EOF
 #!/bin/sh
 
 exit 101
 EOF
-	chmod 0755 $FLL_BUILD_CHROOT/usr/sbin/policy-rc.d
+	chmod 0755 "$POLICY"
 }
 
 create_interfaces() {
 	local IFACES="$FLL_BUILD_CHROOT/etc/network/interfaces"
+	
 	mkdir -p $(dirname $IFACES)
+	
 	cat > $IFACES \
 <<EOF
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
@@ -74,6 +78,7 @@ EOF
 
 create_fstab() {
 	local FSTAB="$FLL_BUILD_CHROOT/etc/fstab"
+	
 	cat > "$FSTAB" \
 <<EOF
 # /etc/fstab: static file system information.
@@ -84,6 +89,7 @@ EOF
 
 create_hosts() {
 	local HOSTS="$FLL_BUILD_CHROOT/etc/hosts"
+	
 	cat > "$HOSTS" \
 <<EOF
 127.0.0.1	localhost
@@ -216,6 +222,7 @@ install_linux_kernel() {
 	rm -rf "$KDIR"
 }
 
+# XXX: TODO
 make_compressed_image() {
 	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/$FLL_IMAGE_LOCATION" -info 
 }
@@ -226,6 +233,7 @@ make_fll_iso() {
 		-boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved \
 		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
 }
+# END TODO
 
 virtfs() {
 	local ACTION=$1 PROC=$2
