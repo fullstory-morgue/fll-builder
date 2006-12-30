@@ -137,6 +137,15 @@ FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 
+# genisofs default output location
+FLL_BUILD_ISO_OUPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
+
+# cdebootstrap defaults
+DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
+DEBOOTSTRAP_FLAVOUR="minimal"
+DEBOOTSTRAP_ARCH="$DPKG_ARCH"
+DEBOOTSTRAP_DIST="sid"
+
 #################################################################
 #		source configfiles and functions.sh		#
 #################################################################
@@ -247,15 +256,6 @@ fi
 if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
-
-# genisofs default output location
-: ${FLL_BUILD_ISO_OUPUT:=$FLL_BUILD_AREA/../$FLL_MEDIA_NAME}
-
-# cdebootstrap defaults
-: ${DEBOOTSTRAP_MIRROR:="http://ftp.us.debian.org/debian"}
-: ${DEBOOTSTRAP_FLAVOUR:="minimal"}
-: ${DEBOOTSTRAP_ARCH:=$DPKG_ARCH}
-: ${DEBOOTSTRAP_DIST:="sid"}
 
 #################################################################
 #		clean up on exit				#
