@@ -263,11 +263,18 @@ trap nuke_buildarea exit
 #################################################################
 set -e
 
+#################################################################
+#		bootstrap					#
+#################################################################
 cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
-chroot_exec dpkg --purge cdebootstrap-helper-diverts
+
+#chroot_exec dpkg --purge cdebootstrap-helper-diverts
 chroot_exec rm -rf /var/cache/bootstrap
 
+#################################################################
+#		patch and prepare chroot			#
+#################################################################
 create_chroot_policy
 create_debian_chroot
 create_interfaces
@@ -275,18 +282,30 @@ create_fstab
 create_sources_list working
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
-
 virtfs mount "$FLL_BUILD_CHROOT/proc"
+# XXX: distro-defaults live environment detection
+chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
 
+#################################################################
+#		prepare apt					#
+#################################################################
+virtfs mount "$FLL_BUILD_CHROOT/proc"
 # XXX: distro-defaults live environment detection
 chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
 
 chroot_exec apt-get update
 chroot_exec apt-get --allow-unauthenticated --assume-yes install sidux-keyrings
 chroot_exec apt-get update
+
+#################################################################
+#		install packages				#
+#################################################################
 chroot_exec apt-get --assume-yes install distro-defaults
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
+#################################################################
+#		add live user					#
+#################################################################
 chroot_exec adduser --no-create-home --disabled-password \
 	--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
 
@@ -296,28 +315,51 @@ for group in $FLL_LIVE_USER_GROUPS; do
 	fi
 done
 
-install_linux_kernel $FLL_BUILD_LINUX_KERNEL
+#################################################################
+#		install packages				#
+#################################################################
+install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
+for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
+	kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
+	fixup_linux_kernel "$kernel"
+	chroot_exec mklive-initrd --debug --version "$kernel"
+done
+
+chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
+
+#################################################################
+#		preseed chroot					#
+#################################################################
+chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
+create_sources_list final
+create_sudoers
+
+#################################################################
+#		unpatch chroot					#
+#################################################################
 chroot_exec rmdir -v "$FLL_MOUNTPOINT"
-
 virtfs umount "$FLL_BUILD_CHROOT/proc"
-
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 
-create_sources_list final
-create_sudoers
-
+#################################################################
 if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
 	exit 0
 fi
+#################################################################
 
+#################################################################
+#		compress fs					#
+#################################################################
 #make_compressed_image
 
+#################################################################
+#		create iso					#
+#################################################################
 #make_iso_root 
-
 #make_fll_iso
 
 exit 0
