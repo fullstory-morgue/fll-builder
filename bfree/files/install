@@ -28,7 +28,7 @@ apt-get -y install $KDE_CORE $DISTRO_KDE > $LOG/apt-get-install-kde
 echo "Done kde"
 apt-get -y install $DISTRO_ALL > $LOG/apt-get-install-all
 echo "Done all"
-adduser --gecos "$FLL_DISTRONAME User" --disabled-password $FLL_LIVE_USER
+adduser --gecos "$FLL_DISTRO_NAME User" --disabled-password $FLL_LIVE_USER
 for joingroup in dialout fax voice cdrom tape sudo audio dip video plugdev users camera floppy games powerdev fuse; do adduser "$FLL_LIVE_USER" "$joingroup"; done
 # TODO: fix sudo  and remove root password
 #passwd -l root
