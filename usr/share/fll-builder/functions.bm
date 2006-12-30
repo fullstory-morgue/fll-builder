@@ -81,11 +81,12 @@ EOF
 }
 
 create_sources_list() {
+	local SOURCESLIST="$FLL_BUILD_CHROOT/etc/apt/sources.list"
 	case $1 in
 		working)
 			: ${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
 			: ${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
-			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
+			cat > "$SOURCESLIST" \
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid main
 #deb-src $FLL_BUILD_DEBIANMIRROR sid main
@@ -95,7 +96,7 @@ deb $FLL_BUILD_SIDUXMIRROR sid main fix.main
 EOF
 			;;
 		final)
-			cat > "${FLL_BUILD_CHROOT}"/etc/apt/sources.list \
+			cat > "$SOURCESLIST" \
 <<EOF
 deb http://ftp.debian.org/debian/ sid main
 deb-src http://ftp.debian.org/debian/ sid main
@@ -111,27 +112,13 @@ EOF
 }
 
 create_sudoers() {
-	cat > $FLL_BUILD_CHROOT/etc/sudoers \
+	local SUDOERS="$FLL_BUILD_CHROOT/etc/sudoers"
+	[[ -f "$SUDOERS" ]] || return 1
+	cat >> "$SUDOERS" \
 <<EOF
-# sudoers file.
-#
-# This file MUST be edited with the "visudo" command as root.
-#
-# See the man page for details on how to write a sudoers file.
-#
-
-# Host alias specification
-
-# User alias specification
-
-# Cmnd alias specification
-
-# User privilege specification
-root	ALL=(ALL) ALL
-
-# SIDUX WARNING: This allows the unprivileged sidux user to start commands as root
-# SIDUX WARNING: This is totally insecure and (almost) makes sidux a second root account.
-# SIDUX WARNING: Never allow external access to the sidux user!!!
+# WARNING: This allows the unprivileged $FLL_LIVE_USER user to start commands as root
+# WARNING: This is totally insecure and (almost) makes $FLL_LIVE_USER a second root account.
+# WARNING: Never allow external access to the $FLL_LIVE_USER user!!!
 $FLL_LIVE_USER	ALL=NOPASSWD: ALL
 EOF
 }
@@ -187,7 +174,6 @@ install_linux_kernel() {
 			# XXX: contrib in kernel.zip ?
 			rm -f rt61*.deb
 			apt-ftparchive packages . > Packages
-			[[ -f $KDIR/Packages ]] || return 1
 		fi
 	
 	popd >/dev/null
