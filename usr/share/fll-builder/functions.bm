@@ -56,6 +56,9 @@ EOF
 create_interfaces() {
 	local IFACES="$FLL_BUILD_CHROOT/etc/network/interfaces"
 	
+	# test if this is even required
+	[[ -f $IFACES ]] || return 1
+
 	mkdir -p $(dirname $IFACES)
 	
 	cat > $IFACES \
@@ -111,8 +114,6 @@ create_sources_list() {
 	local SOURCESLIST="$FLL_BUILD_CHROOT/etc/apt/sources.list"
 	case $1 in
 		working)
-			: ${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
-			: ${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
 			cat > "$SOURCESLIST" \
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid main
@@ -138,7 +139,7 @@ EOF
 	esac
 }
 
-create_sudoers() {
+append_sudoers() {
 	local SUDOERS="$FLL_BUILD_CHROOT/etc/sudoers"
 	[[ -f "$SUDOERS" ]] || return 1
 	cat >> "$SUDOERS" \

@@ -140,6 +140,10 @@ FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 # genisofs default output location
 FLL_BUILD_ISO_OUPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
 
+# apt sources in chroot
+FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
+FLL_BUILD_SIDUXMIRROR="http://sidux.com/debian/"
+
 # cdebootstrap defaults
 DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
 DEBOOTSTRAP_FLAVOUR="minimal"
@@ -347,7 +351,7 @@ chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
 create_hosts
 create_sources_list final
-create_sudoers
+append_sudoers
 
 #################################################################
 #		unpatch chroot					#
