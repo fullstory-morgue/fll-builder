@@ -135,6 +135,7 @@ FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
+FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 
 #################################################################
 #		source configfiles and functions.sh		#
@@ -247,6 +248,9 @@ if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
 
+# genisofs default output location
+: ${FLL_BUILD_ISO_OUPUT:=$FLL_BUILD_AREA/../$FLL_MEDIA_NAME}
+
 # cdebootstrap defaults
 : ${DEBOOTSTRAP_MIRROR:="http://ftp.us.debian.org/debian"}
 : ${DEBOOTSTRAP_FLAVOUR:="minimal"}
@@ -320,8 +324,8 @@ install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
 for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 	kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
-	fixup_linux_kernel "$kernel"
 	chroot_exec mklive-initrd --debug --version "$kernel"
+	fixup_linux_kernel "$kernel"
 done
 
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
@@ -349,6 +353,19 @@ if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
 	exit 0
 fi
 #################################################################
+
+#################################################################
+#		prepare result staging directory		#
+#################################################################
+mkdir -vp "$FLL_BUILD_RESULT/boot/grub" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
+
+# add templates (documentation/manual/autorun etc.)
+cp -av "$FLL_BUILD_TEMPLATES"/*/* "$FLL_BUILD_RESULT"
+
+# populate /boot
+mv -v "$FLL_BUILD_CHROOT/boot/miniroot.gz" "$FLL_BUILD_RESULT/boot/miniroot.gz"
+cp -vL "$FLL_BUILD_CHROOT/boot/vmlinuz" "$FLL_BUILD_RESULT/boot/vmlinuz"
+cp -va "$FLL_BUILD_CHROOT"/usr/lib/grub/i386-pc/* "$FLL_BUILD_RESULT/boot/grub/"
 
 #################################################################
 #		compress fs					#
