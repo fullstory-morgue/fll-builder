@@ -316,6 +316,8 @@ fi
 
 #make_compressed_image
 
+#make_iso_root 
+
 #make_fll_iso
 
 exit 0
