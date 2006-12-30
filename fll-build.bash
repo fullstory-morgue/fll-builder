@@ -308,6 +308,8 @@ chroot_exec adduser --no-create-home --disabled-password \
 for group in $FLL_LIVE_USER_GROUPS; do
 	if chroot_exec getent group "$group"; then
 		chroot_exec adduser "$FLL_LIVE_USER" "$group"
+	else
+		:
 	fi
 done
 
