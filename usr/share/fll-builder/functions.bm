@@ -201,6 +201,8 @@ install_linux_kernel() {
 	
 	chroot_exec apt-get update
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
+
+	rm -rf "$KDIR"
 }
 
 make_compressed_image() {

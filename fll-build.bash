@@ -312,7 +312,7 @@ for group in $FLL_LIVE_USER_GROUPS; do
 done
 
 #################################################################
-#		install packages				#
+#		install kernel and extra modules		#
 #################################################################
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
