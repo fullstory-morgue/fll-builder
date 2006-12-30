@@ -325,8 +325,18 @@ install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 	[[ -f $kernel ]] || continue
 	kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
+	# make miniroot
 	chroot_exec mklive-initrd --debug --version "$kernel" --output /boot/miniroot.gz
-	fixup_linux_kernel "$kernel"
+	# fix up kernel links
+	chroot_exec rm -vf /lib/modules/$kernel/build /lib/modules/$kernel/source
+	chroot_exec ln -vs linux-headers-$kernel /usr/src/linux-$kernel
+	chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/build
+	chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/source
+	chroot_exec cp -vf /boot/config-$kernel /usr/src/linux-$kernel/.config
+	chroot_exec rm -rf /usr/src/linux-$kernel/Documentation
+	chroot_exec ln -vs /usr/share/doc/linux-doc-$kernel/Documentation \
+		/usr/src/linux-$kernel/Documentation
+	chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
 done
 
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
