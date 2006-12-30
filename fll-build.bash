@@ -378,7 +378,8 @@ popd >/dev/null
 # populate /boot
 mv -v "$FLL_BUILD_CHROOT/boot/miniroot.gz" "$FLL_BUILD_RESULT/boot/miniroot.gz"
 cp -vL "$FLL_BUILD_CHROOT/boot/vmlinuz" "$FLL_BUILD_RESULT/boot/vmlinuz"
-cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/* "$FLL_BUILD_RESULT/boot/grub/"
+cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
+	"$FLL_BUILD_RESULT/boot/grub/"
 cp -v "$FLL_BUILD_CHROOT/boot/message.live" "$FLL_BUILD_RESULT/boot/message"
 
 #################################################################
