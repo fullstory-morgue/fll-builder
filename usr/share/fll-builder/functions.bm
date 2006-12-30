@@ -116,6 +116,7 @@ create_sudoers() {
 	[[ -f "$SUDOERS" ]] || return 1
 	cat >> "$SUDOERS" \
 <<EOF
+
 # WARNING: This allows the unprivileged $FLL_LIVE_USER user to start commands as root
 # WARNING: This is totally insecure and (almost) makes $FLL_LIVE_USER a second root account.
 # WARNING: Never allow external access to the $FLL_LIVE_USER user!!!
