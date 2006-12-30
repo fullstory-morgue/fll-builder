@@ -230,7 +230,7 @@ make_fll_iso() {
 virtfs() {
 	local ACTION=$1 PROC=$2
 
-	[[ $ACTION && $PROC ]] || return 1
+	[[ $ACTION && -d $PROC ]] || return 1
 
 	case "$ACTION" in
 		mount)
