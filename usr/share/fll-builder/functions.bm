@@ -5,61 +5,6 @@ LANG=C
 LC_ALL=C
 export LANG LC_ALL
 
-virtfs() {
-	local ACTION=$1 PROC=$2
-
-	[[ $ACTION && $PROC ]] || return 1
-
-	case "$ACTION" in
-		mount)
-			mount  procfll -t proc "$PROC"
-			;;
-		umount)
-			grep -q "$PROC" /proc/mounts || return 0
-			umount "$PROC"
-			;;
-	esac
-
-	return $?
-}
-
-nuke_buildarea() {
-	[[ -d $FLL_BUILD_AREA ]] || return 0
-
-	if virtfs umount "$FLL_BUILD_CHROOT/proc"; then
-		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
-			echo "Chroot preserved at $FLL_BUILD_AREA"
-			return 0
-		fi
-		# adpated from pbuilder
-		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
-  		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
-	else
-		echo "Error umounting virtual filesystems"
-		echo "You must manually cleanup up $FLL_BUILD_AREA"
-	fi
-}
-
-cdebootstrap_chroot() {
-	local RETVAL
-	: ${DEBOOTSTRAP_MIRROR:="http://ftp.debian.org/debian/"}
-	: ${DEBOOTSTRAP_FLAVOUR:="minimal"}
-	: ${DEBOOTSTRAP_ARCH:="$DPKG_ARCH"}
-
-	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
-		sid "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
-	
-	RETVAL=$?
-	
-	if [ "$RETVAL" -eq 0 ]; then
-		# clean up
-		chroot_exec dpkg --purge cdebootstrap-helper-diverts
-		rm -rf "${FLL_BUILD_CHROOT}/var/cache/bootstrap"
-	fi
-
-	return $RETVAL
-}
-
 chroot_exec() {
 	# adapted from live-package
 	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
@@ -280,4 +225,39 @@ make_fll_iso() {
 		-pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 \
 		-boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved \
 		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
+}
+
+virtfs() {
+	local ACTION=$1 PROC=$2
+
+	[[ $ACTION && $PROC ]] || return 1
+
+	case "$ACTION" in
+		mount)
+			mount  procfll -t proc "$PROC"
+			;;
+		umount)
+			grep -q "$PROC" /proc/mounts || return 0
+			umount "$PROC"
+			;;
+	esac
+
+	return $?
+}
+
+nuke_buildarea() {
+	[[ -d $FLL_BUILD_AREA ]] || return 0
+
+	if virtfs umount "$FLL_BUILD_CHROOT/proc"; then
+		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
+			echo "Chroot preserved at $FLL_BUILD_AREA"
+			return 0
+		fi
+		# adpated from pbuilder
+		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
+  		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
+	else
+		echo "Error umounting virtual filesystems"
+		echo "You must manually cleanup up $FLL_BUILD_AREA"
+	fi
 }

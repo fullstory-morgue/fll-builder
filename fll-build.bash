@@ -232,6 +232,12 @@ if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
 
+# cdebootstrap defaults
+: ${DEBOOTSTRAP_MIRROR:="http://ftp.us.debian.org/debian"}
+: ${DEBOOTSTRAP_FLAVOUR:="minimal"}
+: ${DEBOOTSTRAP_ARCH:=$DPKG_ARCH}
+: ${DEBOOTSTRAP_DIST:="sid"}
+
 #################################################################
 #		clean up on exit				#
 #################################################################
@@ -242,9 +248,10 @@ trap nuke_buildarea exit
 #################################################################
 set -e
 
-set | grep ^FLL_
-
-cdebootstrap_chroot
+cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
+	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
+chroot_exec dpkg --purge cdebootstrap-helper-diverts
+chroot_exec rm -rf /var/cache/bootstrap
 
 create_chroot_policy
 create_debian_chroot
