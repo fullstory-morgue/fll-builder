@@ -357,7 +357,7 @@ append_sudoers
 #		unpatch chroot					#
 #################################################################
 chroot_exec rmdir -v "$FLL_MOUNTPOINT"
-virtfs umount "$FLL_BUILD_CHROOT/proc"
+virtfs umount "$FLL_BUILD_CHROOT"/proc
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
@@ -372,11 +372,11 @@ fi
 #################################################################
 #		prepare result staging directory		#
 #################################################################
-mkdir -vp "$FLL_BUILD_RESULT/boot/grub" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
+mkdir -vp "$FLL_BUILD_RESULT"/boot/grub "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 # add templates (documentation/manual/autorun etc.)
 pushd "$FLL_BUILD_TEMPLATES" >/dev/null
-	for dir in common $FLL_DISTRO_NAME; do
+	for dir in common "$FLL_DISTRO_NAME"; do
 		[[ -d $dir ]] || continue
 		pushd $dir >/dev/null
 			find . -not -path '*.svn*' | \
@@ -386,11 +386,11 @@ pushd "$FLL_BUILD_TEMPLATES" >/dev/null
 popd >/dev/null
 
 # populate /boot
-mv -v "$FLL_BUILD_CHROOT/boot/miniroot.gz" "$FLL_BUILD_RESULT/boot/miniroot.gz"
-cp -vL "$FLL_BUILD_CHROOT/boot/vmlinuz" "$FLL_BUILD_RESULT/boot/vmlinuz"
+mv -v "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
-	"$FLL_BUILD_RESULT/boot/grub/"
-cp -v "$FLL_BUILD_CHROOT/boot/message.live" "$FLL_BUILD_RESULT/boot/message"
+	"$FLL_BUILD_RESULT"/boot/grub/
+cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
 #################################################################
 #		compress fs					#
