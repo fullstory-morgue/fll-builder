@@ -161,7 +161,6 @@ fixup_linux_kernel() {
 	chroot_exec ln -vs /usr/share/doc/linux-doc-$VER/Documentation \
 		/usr/src/linux-$VER/Documentation
 	chroot_exec ln -vs vmlinuz-$VER /boot/vmlinuz
-	chroot_exec ln -vs live-miniroot-$VER.gz /boot/miniroot,gz
 }
 
 install_linux_kernel() {
