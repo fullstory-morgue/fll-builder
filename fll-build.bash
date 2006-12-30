@@ -289,10 +289,6 @@ chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
 #################################################################
 #		prepare apt					#
 #################################################################
-virtfs mount "$FLL_BUILD_CHROOT/proc"
-# XXX: distro-defaults live environment detection
-chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
-
 chroot_exec apt-get update
 chroot_exec apt-get --allow-unauthenticated --assume-yes install sidux-keyrings
 chroot_exec apt-get update
