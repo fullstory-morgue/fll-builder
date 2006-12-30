@@ -72,6 +72,8 @@ Options:
 
   -p|--preserve		Preserve build area when finished
 
+  -P|--packages		Path to alternative packages file
+
 EOF
 }
 
@@ -80,16 +82,16 @@ error() {
 	
 	case $1 in
 		1)
-			echo "must be executed as root"
-			;;
-		2)
 			echo "getopt failed"
 			;;
-		3)
+		2)
 			echo "invalid command line option"
 			;;
-		4)
+		3)
 			echo "unable to source alternate configfile"
+			;;
+		4)
+			echo "unable to source alternate packages file"
 			;;
 		5)	
 			echo "buildarea not specified"
@@ -109,7 +111,7 @@ error() {
 #################################################################
 #		root?						#
 #################################################################
-(( UID )) && exec su-me "$0" "$@"
+(($UID)) && exec su-me "$0" "$@"
 
 #################################################################
 #		constant variable declarations			#
@@ -148,8 +150,8 @@ source "$FLL_BUILD_PACKAGELIST"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:Cdhk:no:p \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,preserve \
+		--options b:c:Cdhk:no:pP: \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve \
 		-- $@
 )
 
@@ -192,6 +194,10 @@ while true; do
 		-p|--preserve)
 			FLL_BUILD_PRESERVE_CHROOT=1
 			;;
+		-P|--packages)
+			shift
+			FLL_BUILD_ALT_PACKAGELIST=$1
+			;;
 		--)
 			shift
 			break
@@ -213,6 +219,15 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 		source "$FLL_BUILD_ALT_CONFIG"
 	else
 		error 3
+	fi
+fi
+
+# alternative package file
+if [[ $FLL_BUILD_ALT_PACKAGELIST ]]; then
+	if [[ -s $FLL_BUILD_ALT_PACKAGELIST ]]; then
+		source "$FLL_BUILD_ALT_PACKAGELIST"
+	else
+		error 4
 	fi
 fi
 
