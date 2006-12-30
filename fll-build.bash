@@ -371,6 +371,7 @@ fi
 mkdir -vp "$FLL_BUILD_RESULT/boot/grub" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 # add templates (documentation/manual/autorun etc.)
+# XXX: fix me, just don't copy .svn stuff please
 find "$FLL_BUILD_TEMPLATES" -not -path '*.svn*' | \
 	cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
 
