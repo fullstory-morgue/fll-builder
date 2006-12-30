@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Sidux Manuals - The Terminal or Konsole</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body id="part">
+<div id="menu">
+<!-- menu starts here -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
+	</ul>
+	<!--<h2>Welcome to the Official Sidux Manual</h2>-->
+	<ul>
+<!-- menu last updated by bluewater 21/12/2006 1900hrs ADEST 21/12/2006 0800hrs UTC -->
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome.htm">Welcome to Sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome.htm#welcome-gen">Official Manual</a></li>
+				<li><a href="welcome.htm#how-to">How to use this manual</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content.htm">CD Contents</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content.htm#cd-content">CD Contents</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning.htm">CD Downloading and Burning</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning.htm#download-sidux">CD Downloading and Burining</a></li>
+				<li><a href="cd-dl-burning.htm#md5">md5 Checksum</a></li>
+				<li><a href="cd-dl-burning.htm#burn-nero">Burning in Windows</a></li>
+				<li><a href="cd-dl-burning.htm#burn-linux">Burning in Linux</a></li>
+				<li><a href="cd-dl-burning.htm#IO-errors">I.O errors</a></li>
+				<li><a href="cd-dl-burning.htm#xdelta">xdelta Patching</a></li>
+				<li><a href="cd-no-gui-burn.htm">Burning without a GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes.htm">CheatCodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="samba.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="samba.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="samba.htm#ssh-w">SSH X-Forwarding from a Windows-PC:</a></li>
+				<li><a href="internet-connecting.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting.htm#netcardconfig">Getting Online</a></li>
+
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted.htm">Partitioning Your Hard Drive</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-cfdisk.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-cfdisk.htm#partition">Partitioning  your HD using cfdisk</a></li>
+				<li><a href="part-cfdisk.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-size-examp.htm#part-example">Partition Size Examples</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install.htm">Installation options</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install.htm#Inst-prep">Install Preparation</a></li>
+				<li><a href="hd-install.htm#Installation">Installing to your HD</a></li>
+				<li><a href="hd-install.htm#first-hd-boot">First Boot Up</a></li>
+				<li><a href="hd-install-opts.htm#perst-home">Persistant Home</a></li>
+				<li><a href="hd-install-opts.htm#fromiso">Booting 'fromiso'</a></li>
+				<li><a href="hd-install-opts.htm#usb-hd">Installing on a USB-HD</a></li>
+				<li><a href="hd-install-opts.htm#qemu">Installing by QEMU</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole.htm">The Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole.htm#konsole"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole.htm#cli-help">Command Line Help</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri.htm">Graphic Cards, Hardware Devices and Drivers</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri.htm#nvidia">nVidia</a></li>
+				<li><a href="hw-dev-hw-dri.htm#ati">ATI</a></li>
+				<li><a href="hw-dev-hw-dri.htm#native">Native</a></li>
+				<li><a href="hw-dev-hw-dri.htm#hd-ntfs3g">Writing to NTFS</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="kde.htm">KDE</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="kde.htm#desk-freeze">KDE Desktop Freezes</a></li>
+				<li><a href="kde.htm#kde-login">Cant login in KDE</a></li>
+				<li><a href="kde.htm#ch-th">Changing Themes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt.htm">System Administration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt.htm#apt-install">Installing a new package</a></li>
+				<li><a href="sys-admin-apt.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt.htm#apt-upgrade">Upgrade of an Installed System</a></li>
+				<li><a href="sys-admin-upgrade.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-upgrade.htm#hd-upgrade">HD installed Upgrade</a></li>
+				<li><a href="sys-admin-kern-upg.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#remove-grub">Removing grub from MBR</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#what-is-grub">Grub the bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here -->
+
+</div>
+<div id="main-page">
+	<div class="divider" id="term-kon">
+		<h2>Definition of terminal/konsole</h2>
+
+		<p>A terminal, also called console and in KDE konsole, is a program that makes it possible to interact directly with the Linux operating system by issuing various commands which are then executed immediately. Also often referred to as a <span class="highlight-3">'shell' or 'command line'</span>, the terminal is a very powerful tool and it's well worth the effort to gain some basic understanding of it's use.</p>
+
+		<p>In sidux you can find the terminal/ console close to the K-menu symbolized by a PC monitor. Depending on your theme it may or may not also contain the image of a shell. You will also find the same icon in the K-menu under "System".</p>
+
+		<p>When you open a terminal window you will be presented with the terminal prompt which will have the format of:</p>
+
+<pre>username@hostname:~$</pre>
+
+
+		<p>You should recognize the username as your own login name. The <span class="highlight-3">~ (tilde)</span> indicates that you are in your home directory and <span class="highlight-3">$</span> indicates that you are logged in with user privilege. At the end you will have your cursor. This is your command line where you will enter the commands you want to execute.</p>
+
+		<p>A lot of commands need to be run with root privileges. To achieve this you type <span class="highlight-3">sux</span> at the prompt and press enter. You will then be asked for your root password. Type your password and hit enter again (note that when you type your password, nothing will show o?n the screen).</p>
+
+		<p>If your password is correct the prompt will change to:</p>
+
+<pre>root@hostname:/home/username#</pre>
+
+		<p class="highlight-2">WARNING: While you are logged in as root, the system will not stop you from doing potentially dangerous things like deleting important files etc., you have to be absolutely sure about what you are doing, because it's fully possible to seriously harm your system.</p>
+
+		<p>Note that the <span class="highlight-3">$</span> sign has changed into a <span class="highlight-3">#</span> (hash). In a terminal/ console the <span class="highlight-3">#</span> always indicates that you are logged in with root privileges. <span class="highlight-3">Throughout this manual we will omit everything in front of the $ or the #. So a command like:</span></p>
+
+<pre># apt-get install something</pre>
+
+	<p>Means: Open a terminal, become root (sux) and enter the command at the # prompt.  <span class="highlight-4">(Don't type the #)</span></p>
+
+	<p>A little note on <span class="highlight-3">sux</span>: The common command for becoming root is 'su' but using 'sux' instead also lets you run X11 applications from the command line.</p>
+
+	</div>
+	<div class="divider" id="cli-help">
+		<h2>Command Line Help</h2>
+
+		<p>Yes there is. Most Linux commands/ programs comes with it's own manual called a "man page" or "manual page" accessible from the command line. The syntax is:</p>
+
+<pre>$ man "command"</pre>
+
+		<p>This will bring up the manual page for that command. Navigate up and down with the cursor keys. As an example try:</p>
+
+<pre>$ man apt-get</pre>
+
+		<p>Another useful utility is the "apropos" command. Apropos basically enables you to search the man pages for a command if you e.g. don't remember the complete syntax. As an example you can try:</p>
+
+<pre>$ apropos apt-</pre>
+
+		<p>This will list all commands for the package manager 'apt'. The 'apropos' utility is a quite powerful tool, but describing it in detail is way beyond the scope of this manual. For details of it's use, see it's man page.</p>
+
+		<p>To escape from the man pages type  <span class="highlight-3">q</span></p>
+
+		<h2>A script and how to use them</h2>
+
+		<p>A script is basically multiple commands bundled together in a file. By entering the filename of the script every command will be executed in turn just like an ordinary program. Sidux comes with several useful scripts in order to make life a little easier for the users.</p>
+
+
+
+		<h2>Where to learn more</h2>
+
+		<p>There are numerous tutorials on the Internet. A very good one aimed at the beginner is: <a href="http://linux.org.mt/article/terminal">A Beginner's Bash</a></p>
+		<p>Or use your favourite search engine to find more.</p>
+	</div>
+	
+	<div class="spacer05"></div>
+</div>
+</body>
+</html>

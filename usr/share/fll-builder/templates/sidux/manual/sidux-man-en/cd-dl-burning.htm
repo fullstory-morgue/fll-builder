@@ -1,0 +1,260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>Sidux Manuals - CD Downloading and Burning</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body id="cd">
+<div id="menu">
+<!-- menu starts here -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
+	</ul>
+	<!--<h2>Welcome to the Official Sidux Manual</h2>-->
+	<ul>
+<!-- menu last updated by bluewater 21/12/2006 1900hrs ADEST 21/12/2006 0800hrs UTC -->
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome.htm">Welcome to Sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome.htm#welcome-gen">Official Manual</a></li>
+				<li><a href="welcome.htm#how-to">How to use this manual</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content.htm">CD Contents</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content.htm#cd-content">CD Contents</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning.htm">CD Downloading and Burning</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning.htm#download-sidux">CD Downloading and Burining</a></li>
+				<li><a href="cd-dl-burning.htm#md5">md5 Checksum</a></li>
+				<li><a href="cd-dl-burning.htm#burn-nero">Burning in Windows</a></li>
+				<li><a href="cd-dl-burning.htm#burn-linux">Burning in Linux</a></li>
+				<li><a href="cd-dl-burning.htm#IO-errors">I.O errors</a></li>
+				<li><a href="cd-dl-burning.htm#xdelta">xdelta Patching</a></li>
+				<li><a href="cd-no-gui-burn.htm">Burning without a GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes.htm">CheatCodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="samba.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="samba.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="samba.htm#ssh-w">SSH X-Forwarding from a Windows-PC:</a></li>
+				<li><a href="internet-connecting.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting.htm#netcardconfig">Getting Online</a></li>
+
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted.htm">Partitioning Your Hard Drive</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-cfdisk.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-cfdisk.htm#partition">Partitioning  your HD using cfdisk</a></li>
+				<li><a href="part-cfdisk.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-size-examp.htm#part-example">Partition Size Examples</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install.htm">Installation options</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install.htm#Inst-prep">Install Preparation</a></li>
+				<li><a href="hd-install.htm#Installation">Installing to your HD</a></li>
+				<li><a href="hd-install.htm#first-hd-boot">First Boot Up</a></li>
+				<li><a href="hd-install-opts.htm#perst-home">Persistant Home</a></li>
+				<li><a href="hd-install-opts.htm#fromiso">Booting 'fromiso'</a></li>
+				<li><a href="hd-install-opts.htm#usb-hd">Installing on a USB-HD</a></li>
+				<li><a href="hd-install-opts.htm#qemu">Installing by QEMU</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole.htm">The Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole.htm#konsole"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole.htm#cli-help">Command Line Help</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri.htm">Graphic Cards, Hardware Devices and Drivers</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri.htm#nvidia">nVidia</a></li>
+				<li><a href="hw-dev-hw-dri.htm#ati">ATI</a></li>
+				<li><a href="hw-dev-hw-dri.htm#native">Native</a></li>
+				<li><a href="hw-dev-hw-dri.htm#hd-ntfs3g">Writing to NTFS</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="kde.htm">KDE</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="kde.htm#desk-freeze">KDE Desktop Freezes</a></li>
+				<li><a href="kde.htm#kde-login">Cant login in KDE</a></li>
+				<li><a href="kde.htm#ch-th">Changing Themes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt.htm">System Administration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt.htm#apt-install">Installing a new package</a></li>
+				<li><a href="sys-admin-apt.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt.htm#apt-upgrade">Upgrade of an Installed System</a></li>
+				<li><a href="sys-admin-upgrade.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-upgrade.htm#hd-upgrade">HD installed Upgrade</a></li>
+				<li><a href="sys-admin-kern-upg.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#remove-grub">Removing grub from MBR</a></li>
+				<li><a href="sys-admin-grub-bootman2.htm#what-is-grub">Grub the bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here -->
+
+</div>
+<div id="main-page">
+	<div class="divider" id="download-sidux">
+		<h2>Downloading the sidux-CD</h2>
+
+		<p>Download-Links and Mirrors are found <a href="http://sidux.com/Downloads.dummy">dummy link</a></p>
+
+		<h5>Downloading with Bittorent</h5>
+			<p>Bittorent is a protocol for filesharing, it is on the sidux-CD. This enables you to download files from the internet and upload at the same time. All you have to do is issue e.g. the command:</p>
+<pre>
+# btdownloadcurses --max_upload_rate 12 ftp://dummy/sibux/sidux-200xxxxx/sidux-200xxxxx.iso.torrent</pre>
+
+			<p>In a konsole, soon after your download should start. Be sure that there is enough free space for the ISO-File in the directory that you issue the command from, (ca. 700 MB). After your download is finished, please keep the program running so that you share the file for other users. This will decrease the overall load on the servers, and the files get spread faster. A good tutorial can be found on <a href="http://btfaq.com/serve/cache/1.html"></a>Brians BitTorent FAQ and Guide</p>
+
+			<p>Dont forget to md5-checksum and validate the download</p>
+			<p>If anybody has a fast FTP-Server with sufficient traffic at their command, please inform the <a href="vpContact.html">sidux team</a></p>
+	</div>
+
+	<div class="divider" id="md5">
+		<h2>MD5-checksumum and Validation</h2>
+
+		<p>This is a checksum for a file and is used to check the integrity of files. The current MD5-Sum of the file is compared with a known checksum. This way you can validate if a file has been changed or damaged; this is advisible for files downloaded from the internet.</p>
+
+		<p>If the md5-sum of the downloaded file corresponds to the one in the md5-file, you can be sure that the file was downloaded correctly. Under Linux you get the checksum with:(it takes a moment to calculate)</p>
+
+<pre>$ md5sum file_to_check</pre>
+
+		<p>The sum will be written in the konsole.<br />
+		With md5summer (486 kb) the md5-sum can also be validated in Windows.</p>
+
+		<p>The ISO-Images of sidux are always offered with a md5-checksum file and should always be validated before burning. This guarantees that if problems occur, they are not to be sought in the downloaded files, and this keeps the forum free of problems that can't be pinned down because the ISO-file was damaged in the first place. You should do this in a konsole. Change to the directory with the Iso-File and the MD5-Sum and issue the command to have the md5-sum checked. e.g:</p>
+
+<pre>$ md5sum -c sidux.iso.md5</pre>
+
+		<p>If they don't match, you will get an error:</p>
+
+<pre>
+"sidux.iso: Error
+md5sum: Warning: calculated checksum does not match!"
+</pre>
+
+		<p>If the downloaded file is correct, the program ends without a message.</p>
+
+		<h6><span class="highlight-2">THIS IS VERY IMPORTANT:</span><span class="highlight-3"> sidux, as a Linux LIVE-CD, is based on high compression technology, (initially pioneered by Knoppix however its not the same as Knoppix) and because of that, special care is needed when burning the ISO image. Only use high quality CD-media [or DVD+RW] and burn in <span class="highlight-2">DAO-mode (disk-at-once)</span> and not faster than x8.</span></h6>
+
+		<p class="highlight-2">ALWAYS BACK-UP YOUR DATA!</p>
+
+	</div>
+	<div class="divider" id="burn-nero">
+		<h2>How Do I Burn The CD With Windows?</h2>
+
+		<p>Naturally, you can burn the CD with Windows, too. The downloaded file must be burned as an ISO-file. If Winrar (or any other archiving tool) is linked with an .ISO-file, it may irritate because one would take it for an archive. From the ISO-file you must burn a CD. <span class="highlight-2">Do not burn the ISO-File as a data-disk!! It is neccessary to burn the ISO-File as Disk-At-Once</span></p>
+
+			<p>You have several good options to burn in Windows.</p>
+
+			<h5>Open Source burners for Windows</h5>
+			<p><a href="http://home.arcor.de/kerberos002/cdrtfe/install_en.html">cdrtfe</a>  :compatable for Windows 9x/ME/2000/XP (tested with Win95, Win98SE, Win2000, WinXP) only for Win9x/ME: working ASPI Layer (e.g. Adaptec ASPI 4.60)</p>
+
+			<h6>Closed Source and Proprietary burners for Windows</h6>
+		<ul>
+			<li> Nero (not nero express!)</li>
+			<li><a href="http://www.engelmann.com/?file=cdrwin&lang=english">CDR-WIN</a>   which you can find as a test version on the net. CDR-WIN burns with reduced speed as a test version, but should be sufficient for the job. The right point in the menu is "Burn a ISO 9660 Image File to CD".</li>
+
+			<li>Another good freeware tool is <a href="http://www.cdburnerxp.se/">CD/DVD Burner XP pro</a></li>
+
+			<li>Burncdcc from  <a href="http://www.terabyteunlimited.com/utilities.html"> terabyteunlimited  it can only burn ISOs..</a></li>
+		</ul>	
+	</div>
+
+	<div class="divider" id="burn-linux">
+		<h2>Burning The CD With Linux</h2>
+
+		<p>If you already run Linux on your machine you should burn the CD either by using the shell or with any of your installed burning programs.</p>
+
+		<p>With sidux and other Linux distributions K3b comes as default cd-burning tool. Open it, select "Extras" -> "burn CD-Image..." and select the ISO-File to burn (e.a. sidux.iso).</p>
+
+		<p>K3B initially calculates the MD5-sum for the ISO-file (this takes a moment). If the shown checksum is similar to the checksum in the MD5-file (i.e. sidux.iso.md5), your download was successful and you can burn the file by simply hitting "Start".</p>
+
+		<p>You can burn it directly from the shell with:</p>
+<pre>$ cdrecord dev=0,0,0 driveropts=burnfree -dao -overburn -v sidux.iso</pre>
+
+		<p>If you prefer to put it o­nto a CD-RW, you should empty the disk before, using</p>
+<pre>$ cdrecord dev=0,0,0 blank=fast</pre>
+
+		<p>The values for dev=x,x,x (in our example 0,0,0) can be obtained with</p>
+<pre>$ cdrecord --scanbus</pre>
+
+		<p>or for ATAPI-CD-Rom with</p>
+<pre>$ cdrecord --scanbus dev=ATAPI</pre>
+	</div>
+	
+	<div class="divider" id="IO-errors">
+		 <h2>I/O errors when burning with Linux</h2>
+
+		<p>On kernel >= 2.6.8 cdrecord will be run with root privileges. Therefore it will not work any more when run suid root for security reasons.</p>
+
+		<p>Solution: Use the K3b-Setup-Assistant to solve this problem, or do</p>
+		<pre># chmod -s /usr/bin/cdrecord*</pre>
+	</div>
+
+	<div class="divider" id="xdelta">
+		<h2>Creating a sidux-CD using XDELTA-Patch?</h2>
+
+		<p>xdelta is a program that makes a new ISO-image out of an initial ISO-image and some modified files, among other things. It is also made to allow small bug-fixes without incurring high download costs.</p>
+
+		<p>The modified files from PATCH-RC1-RC2.XDELTA is, for example, only 5.4 MB in size, whereas the ISO-image itself is 553 MB.</p>
+
+		<p>Lets assume you have:</p>
+		<ul>
+		    <li>An ISO-Image on a hard disk, for instance sidux.iso</li>
+		    <li>A modified file, for example PATCH-RC1-RC2.XDELTA</li>
+		</ul>
+
+		<p>In a terminal/konsole as user:</p>
+
+<pre>$ cd /path/to/iso/and/patch
+$ xdelta patch PATCH-RC1-RC2.XDELTA
+</pre>
+
+		<p>The program will extract the needed filenames from the patch. It will also do the md5sum check. Mind: it will not check for enough free space on hd.</p>
+
+		<p>Here is a link, <a href="http://evanjones.ca/software/xdelta.exe">for xdelta.exe for Windows</a>, to patch your sidux- LiveCD in Windows. <a href="http://evanjones.ca/software/xdelta-win32.html">Information and execution for xdelta with Windows</a></p>
+	</div>
+
+</div>
+</body>
+</html>

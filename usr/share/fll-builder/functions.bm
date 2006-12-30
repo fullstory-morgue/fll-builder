@@ -215,6 +215,20 @@ make_compressed_image() {
 	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/$FLL_IMAGE_LOCATION" -info 
 }
 
+make_iso_root() {
+	# copy templates of any extras to keep in the root of the iso (documentation/autorun scripts etc)
+	cp -a $FLL_BUILD_BASE/usr/share/fll-builder/templates/common/* $FLL_BUILD_RESULT/
+	# this currently contains sidux offline faq
+	# XXX how will the offline faq be distributed? Would it be suitable to include in this package?
+	# XXX turn this into a variable
+	cp -a $FLL_BUILD_BASE/usr/share/fll-builder/templates/sidux/* $FLL_BUILD_RESULT/
+
+	# copy grub info - adapted from bfree's dopreimage fn
+	# XXX consider changing this to mv $FLL_BUILD_CHROOT/boot ala live-package
+	cp -a $FLL_BUILD_CHROOT/boot $FLL_BUILD_RESULT/
+	cp -a $FLL_BUILD_CHROOT/usr/lib/grub/i386-pc/* $FLL_BUILD_RESULT/boot/grub/
+}
+
 make_fll_iso() {
 	: ${FLL_BUILD_ISO_OUPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 
