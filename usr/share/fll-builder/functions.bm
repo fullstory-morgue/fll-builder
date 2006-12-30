@@ -111,8 +111,8 @@ create_sources_list() {
 	local SOURCESLIST="$FLL_BUILD_CHROOT/etc/apt/sources.list"
 	case $1 in
 		working)
-			: ${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
-			: ${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
+			: ${FLL_BUILD_DEBIANMIRROR:="http://10.1.1.50:3142/ftp.debian.org/debian/"}
+			: ${FLL_BUILD_SIDUXMIRROR:="http://10.1.1.50:3142/sidux.com/debian/"}
 			cat > "$SOURCESLIST" \
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid main
@@ -174,16 +174,17 @@ install_linux_kernel() {
 
 	KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
 
-	pushd "$KDIR" >/dev/null
-		case "$KTYPE" in
-			"file")
-				cp "$KZIP" kernel.zip
-				;;
-			"url")
-				wget -N -T10 "$KZIP" -O kernel.zip
-				;;
-		esac
+	# cannot pushd here, it breaks relative kernel paths :: cle
+	case "$KTYPE" in
+		"file")
+			cp "$KZIP" "$KDIR"/kernel.zip
+			;;
+		"url")
+			wget -N -T10 "$KZIP" -O "$KDIR"/kernel.zip
+			;;
+	esac
 
+	pushd "$KDIR" >/dev/null
 		if unzip kernel.zip; then
 			find . -maxdepth 1 -type f ! -name '*.deb' -exec rm -vf {} \;
 			apt-ftparchive packages . > Packages
