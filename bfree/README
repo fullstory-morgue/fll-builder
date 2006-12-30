@@ -7,7 +7,7 @@ path_map = debian ftp.ie.debian.org/debian ; sidux sidux.com/repo
 
 Run the build script (this will take a while, look in log to see what's happening).
 
-If you want the kernel extract the 2.6.18-5 zip into the deb folder before running build
+If you want the kernel extract the 2.6.18 zip into the deb folder before running build
 
 Now run ./toiso and you will have your build
 (or some log along the way should tell you what happened).

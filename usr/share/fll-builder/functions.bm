@@ -186,8 +186,6 @@ install_linux_kernel() {
 
 		if unzip kernel.zip; then
 			find . -maxdepth 1 -type f ! -name '*.deb' -exec rm -vf {} \;
-			# XXX: contrib in kernel.zip ?
-			rm -f rt61*.deb
 			apt-ftparchive packages . > Packages
 		fi
 	

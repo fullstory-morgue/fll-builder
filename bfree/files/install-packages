@@ -201,7 +201,7 @@ DISTRO_FAILING="
   knxcc
 "
 
-KVERS="2.6.18.5-slh-smp-1"
+KVERS="2.6.18.6-slh-smp-1"
 
 KERNELMODULESINITRD="
   squashfs-modules-$KVERS
