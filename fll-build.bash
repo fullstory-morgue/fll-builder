@@ -368,7 +368,8 @@ popd >/dev/null
 # populate /boot
 mv -v "$FLL_BUILD_CHROOT/boot/miniroot.gz" "$FLL_BUILD_RESULT/boot/miniroot.gz"
 cp -vL "$FLL_BUILD_CHROOT/boot/vmlinuz" "$FLL_BUILD_RESULT/boot/vmlinuz"
-cp -va "$FLL_BUILD_CHROOT"/usr/lib/grub/i386-pc/* "$FLL_BUILD_RESULT/boot/grub/"
+cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/* "$FLL_BUILD_RESULT/boot/grub/"
+cp -v "$FLL_BUILD_CHROOT/boot/message.live" "$FLL_BUILD_RESULT/boot/message"
 
 #################################################################
 #		compress fs					#
