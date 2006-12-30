@@ -111,8 +111,8 @@ create_sources_list() {
 	local SOURCESLIST="$FLL_BUILD_CHROOT/etc/apt/sources.list"
 	case $1 in
 		working)
-			: ${FLL_BUILD_DEBIANMIRROR:="http://10.1.1.50:3142/ftp.debian.org/debian/"}
-			: ${FLL_BUILD_SIDUXMIRROR:="http://10.1.1.50:3142/sidux.com/debian/"}
+			: ${FLL_BUILD_DEBIANMIRROR:="http://ftp.debian.org/debian/"}
+			: ${FLL_BUILD_SIDUXMIRROR:="http://sidux.com/debian/"}
 			cat > "$SOURCESLIST" \
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid main
