@@ -52,8 +52,9 @@ EOF
 }
 
 create_interfaces() {
-	mkdir -p $FLL_BUILD_CHROOT/etc/network/
-	cat > $FLL_BUILD_CHROOT/etc/network/interfaces \
+	local IFACES="$FLL_BUILD_CHROOT/etc/network/interfaces"
+	mkdir -p $(dirname $IFACES)
+	cat > $IFACES \
 <<EOF
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
 
@@ -72,11 +73,31 @@ EOF
 }
 
 create_fstab() {
-	cat > $FLL_BUILD_CHROOT/etc/fstab \
+	local FSTAB="$FLL_BUILD_CHROOT/etc/fstab"
+	cat > "$FSTAB" \
 <<EOF
 # /etc/fstab: static file system information.
 #
 # <file system>	<mount point>	<type>	<options>		<dump>	<pass>
+EOF
+}
+
+create_hosts() {
+	local HOSTS="$FLL_BUILD_CHROOT/etc/hosts"
+	cat > "$HOSTS" \
+<<EOF
+127.0.0.1	localhost
+127.0.0.1	$FLL_DISTRO_NAME
+
+# The following lines are desirable for IPv6 capable hosts
+# (added automatically by netbase upgrade)
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
 EOF
 }
 

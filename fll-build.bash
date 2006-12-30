@@ -330,6 +330,7 @@ chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 #		preseed chroot					#
 #################################################################
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
+create_hosts
 create_sources_list final
 create_sudoers
 
