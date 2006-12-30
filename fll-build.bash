@@ -148,8 +148,8 @@ source "$FLL_BUILD_PACKAGELIST"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:dhko:vV \
-		--long buildarea,configfile,debug,help,keep,output,verbose,version \
+		--options b:c:Cdhk:no:p \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,preserve \
 		-- $@
 )
 
