@@ -41,7 +41,7 @@ remove_from_chroot() {
 }
 
 create_chroot_policy() {
-	local POLICY="$FLL_BUILD_CHROOT/usr/sbin/policy-rc.d"
+	local POLICY="$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
 	
 # disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
 	cat > "$POLICY" \
@@ -54,14 +54,14 @@ EOF
 }
 
 create_interfaces() {
-	local IFACES="$FLL_BUILD_CHROOT/etc/network/interfaces"
+	local IFACES="$FLL_BUILD_CHROOT"/etc/network/interfaces
 	
 	# test if this is even required
 	[[ -f $IFACES ]] || return 1
 
 	mkdir -p $(dirname $IFACES)
 	
-	cat > $IFACES \
+	cat > "$IFACES" \
 <<EOF
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
 
@@ -73,14 +73,16 @@ EOF
 }
 
 create_debian_chroot() {
-	cat > $FLL_BUILD_CHROOT/etc/debian_chroot \
+	local DEBCHROOT="$FLL_BUILD_CHROOT"/etc/debian_chroot
+
+	cat > "$DEBCHROOT" \
 <<EOF
 $FLL_DISTRO_NAME-live
 EOF
 }
 
 create_fstab() {
-	local FSTAB="$FLL_BUILD_CHROOT/etc/fstab"
+	local FSTAB="$FLL_BUILD_CHROOT"/etc/fstab
 	
 	cat > "$FSTAB" \
 <<EOF
@@ -91,7 +93,7 @@ EOF
 }
 
 create_hosts() {
-	local HOSTS="$FLL_BUILD_CHROOT/etc/hosts"
+	local HOSTS="$FLL_BUILD_CHROOT"/etc/hosts
 	
 	cat > "$HOSTS" \
 <<EOF
@@ -111,7 +113,7 @@ EOF
 }
 
 create_sources_list() {
-	local SOURCESLIST="$FLL_BUILD_CHROOT/etc/apt/sources.list"
+	local SOURCESLIST="$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	case $1 in
 		working)
 			cat > "$SOURCESLIST" \
@@ -140,7 +142,7 @@ EOF
 }
 
 append_sudoers() {
-	local SUDOERS="$FLL_BUILD_CHROOT/etc/sudoers"
+	local SUDOERS="$FLL_BUILD_CHROOT"/etc/sudoers
 	[[ -f "$SUDOERS" ]] || return 1
 	cat >> "$SUDOERS" \
 <<EOF
@@ -175,7 +177,7 @@ install_linux_kernel() {
 
 	KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
 
-	# cannot pushd here, it breaks relative kernel paths :: cle
+	# cannot pushd here, it breaks relative kernel paths
 	case "$KTYPE" in
 		"file")
 			cp "$KZIP" "$KDIR"/kernel.zip
@@ -198,7 +200,7 @@ install_linux_kernel() {
 		[[ $KDEBS ]] || return 1
 	fi
 
-	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> $FLL_BUILD_CHROOT/etc/apt/sources.list
+	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
 	chroot_exec apt-get update
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
@@ -208,7 +210,7 @@ install_linux_kernel() {
 
 # XXX: TODO
 make_compressed_image() {
-	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/$FLL_IMAGE_LOCATION" -info 
+	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" -info 
 }
 
 make_fll_iso() {
@@ -240,7 +242,7 @@ virtfs() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	if virtfs umount "$FLL_BUILD_CHROOT/proc"; then
+	if virtfs umount "$FLL_BUILD_CHROOT"/proc; then
 		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
 			echo "Chroot preserved at $FLL_BUILD_AREA"
 			return 0
