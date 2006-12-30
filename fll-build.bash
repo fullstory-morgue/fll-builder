@@ -254,7 +254,7 @@ create_sources_list working
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
-virtfs mount
+virtfs mount "$FLL_BUILD_CHROOT/proc"
 
 # XXX: distro-defaults live environment detection
 chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
@@ -274,11 +274,11 @@ for group in $FLL_LIVE_USER_GROUPS; do
 	fi
 done
 
-install_linux_kernel
+install_linux_kernel $FLL_BUILD_LINUX_KERNEL
 
 chroot_exec rmdir -v "$FLL_MOUNTPOINT"
 
-virtfs umount
+virtfs umount "$FLL_BUILD_CHROOT/proc"
 
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot

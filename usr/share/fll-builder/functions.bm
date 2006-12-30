@@ -6,9 +6,11 @@ LC_ALL=C
 export LANG LC_ALL
 
 virtfs() {
-	local PROC="$FLL_BUILD_CHROOT"/proc
+	local ACTION=$1 PROC=$2
 
-	case $1 in
+	[[ $ACTION && $PROC ]] || return 1
+
+	case "$ACTION" in
 		mount)
 			mount  procfll -t proc "$PROC"
 			;;
@@ -24,7 +26,7 @@ virtfs() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	if virtfs umount; then
+	if virtfs umount "$FLL_BUILD_CHROOT/proc"; then
 		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
 			echo "Chroot preserved at $FLL_BUILD_AREA"
 			return 0
@@ -205,18 +207,20 @@ fixup_linux_kernel() {
 }
 
 install_linux_kernel() {
-	local KTYPE KDIR KDEBS
+	local KZIP=$1 KTYPE KDIR KDEBS
 
-	case "$FLL_BUILD_LINUX_KERNEL" in
+	[[ $KZIP ]] || return 1
+
+	case "$KZIP" in
 		*.zip)
-			if [[ -f $FLL_BUILD_LINUX_KERNEL ]]; then
+			if [[ -f $KZIP ]]; then
 				KTYPE="file"
 			else
 				KTYPE="url"
 			fi
 			;;
 		*)
-			echo "Unrecognised kernel option: $FLL_BUILD_LINUX_KERNEL"
+			echo "Unrecognised kernel option: $KZIP"
 			return 1
 			;;
 	esac
@@ -226,10 +230,10 @@ install_linux_kernel() {
 	pushd "$KDIR" >/dev/null
 		case "$KTYPE" in
 			"file")
-				cp "$FLL_BUILD_LINUX_KERNEL" kernel.zip
+				cp "$KZIP" kernel.zip
 				;;
 			"url")
-				wget -N -T10 "$FLL_BUILD_LINUX_KERNEL" -O kernel.zip
+				wget -N -T10 "$KZIP" -O kernel.zip
 				;;
 		esac
 
