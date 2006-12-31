@@ -374,6 +374,16 @@ remove_from_chroot /boot/miniroot.gz
 # XXX: remove_from_chroot() needs fixing or shooting
 #remove_from_chroot /boot/initrd.img*
 
+# XXX: adapt to remove_from_chroot
+# remove_from_chroot would remove partial/ as well
+find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -type f -exec rm -f {} \;
+
+# to allow debconf presseding without unionfs, we need to remove *-old files
+# from dpkg and debconf configurations, remove ssh host keys.
+rm -f	"$FLL_BUILD_CHROOT"/etc/ssh/ssh_host_*key* \
+	"$FLL_BUILD_CHROOT"/var/lib/dpkg/*-old \
+	"$FLL_BUILD_CHROOT"/var/cache/debconf/*-old
+
 virtfs umount "$FLL_BUILD_CHROOT"/proc
 
 #################################################################

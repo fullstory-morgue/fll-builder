@@ -5,8 +5,11 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * rt61 doesn't have a hard depends on non-free firmwares anymore.
   * prefer $FLL_BUILD_BASE/etc/fll-build/distro over
     $FLL_BUILD_BASE/etc/default/distro.
+  * remove dpkg list files.
+  * remove backups for dpkg/ debconf, which would interfere with debconf
+    preseeding on a link farm boot.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 31 Dec 2006 11:33:28 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 31 Dec 2006 12:34:14 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
