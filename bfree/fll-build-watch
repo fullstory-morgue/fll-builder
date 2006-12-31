@@ -1,6 +1,5 @@
 #!/bin/bash
-BUILDSRC="/media/hdb3/fll-builder/building/bfree"
-#BUILDSRC="/root/sidux"
+source build.conf || (echo "must be run in the same dir as build.conf" && exit)
 MYD=$(pwd)
 cd $BUILDSRC
 BUILDT=$(ls -art $BUILDSRC | grep -v squashfs | grep ^[[:digit:]]*$ | grep -v ^\\. | tail -n 1)

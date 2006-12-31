@@ -148,6 +148,8 @@ $KDE_LANG
 KERNELINST="
   build-essential
   yaird
+  gcc-4.1
+  initramfs-tools
 "
 
 DISTRO_ALL="

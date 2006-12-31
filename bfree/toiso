@@ -1,6 +1,7 @@
 #!/bin/bash
-pushd /root/sidux/
-  rm -f iso/SIDUX
+source build.conf || (echo "must be run in the same dir as build.conf" && exit)
+pushd $BUILDSRC
+  rm -rf iso/SIDUX
   mkdir iso/SIDUX
   FILE=$(ls *.squashfs | tail -n 1)
   echo "Using $FILE"

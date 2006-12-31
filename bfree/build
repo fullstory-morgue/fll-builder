@@ -2,16 +2,8 @@
 
 export LANG=C
 TIME=$(date -u +%s)
-BUILDSRC="/media/sda15/sidux"
-#BUILDSRC="/media/hdb3/fll-builder/building/bfree"
-BUILD="$BUILDSRC/$TIME"
-#BUILD="$BUILDSRC/CDROOT"
-MIRROR="http://ftp.de.debian.org/debian"
-#MIRROR="http://localhost:3142/debian"
-ARCH="amd64"
-#ARCH="i386"
-LOG="$BUILDSRC/log/$TIME"
-#LOG="$BUILDSRC/log"
+
+source build.conf || (echo "must be run in the same dir as build.conf" && exit)
 
 DEBIAN_FRONTEND=noninteractive
 DEBIAN_PRIORITY=critical
@@ -37,6 +29,7 @@ doprechroot () {
   cp -a $BUILDSRC/files/resolv.conf $BUILD/etc/
   cp -a $BUILDSRC/files/sources.list $BUILD/etc/apt/
   cp -a $BUILDSRC/files/preferences $BUILD/etc/apt/
+  cp -a $BUILDSRC/deb/slh-source.sh /usr/src/
 #  mkdir -p $BUILD/var/cache/debconf/
 #  cp -a $BUILDSRC/files/config.dat $BUILD/var/cache/debconf/
   mkdir -p $BUILD/root/
@@ -46,6 +39,7 @@ doprechroot () {
     apt-ftparchive packages ./ > Packages
   popd
   cp -a $BUILDSRC/deb $BUILD/root/
+  cp -a $BUILDSRC/files/kernel-img.conf $BUILD/etc/
   touch $BUILD/KNOPPIX.build
 #  cp -a $BUILDSRC/files/install-kernel-sidux.sh $BUILD/root/
 #  pushd $BUILD/root/sidux/deb
@@ -65,10 +59,11 @@ dopreimage () {
   cp -a $BUILD/root/fll-build-log $LOG
   mkdir -p $BUILDSRC/iso/boot/
   cp -a $BUILD/boot/live* $BUILDSRC/iso/boot/miniroot.gz
-  cp -a $BUILD/boot/vmlinuz* $BUILDSRC/iso/boot/vmlinuz
+  cp -L $BUILD/boot/vmlinuz $BUILDSRC/iso/boot/vmlinuz
   cp -a $BUILD/usr/lib/grub/i386-pc/* $BUILDSRC/iso/boot/grub/
   cp -a $BUILD/boot/message.live $BUILDSRC/iso/boot/message
   cp -a $BUILD/boot/message.hd $BUILDSRC/iso/boot/
+  cp -a $BUILDSRC/files/kernel-img.conf.final $BUILD/etc/
   pushd $BUILD
   rm -rf $(cat $BUILDSRC/files/image.rm)
   mkdir $(cat $BUILDSRC/files/image.mkdir)

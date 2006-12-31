@@ -25,5 +25,5 @@ deb http://sidux.com/repo/debian/ sid main fix.main
 #deb http://sidux.com/repo/transitional/ sid main contrib non-free 
 #deb http://sidux.com/repo/compat/ sid main contrib non-free
 
-deb file://root/deb ./
+deb file:/root/deb ./
 

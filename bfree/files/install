@@ -36,7 +36,9 @@ echo "Done users"
 #apt-get -y install $KERNEL > $LOG/apt-get-kernel
 pushd /root/deb/
 apt-get --allow-unauthenticated -y install $(ls *.deb | grep $KVERS | grep -v rt61 | perl -pi -e 's/\_.*\.
-deb//')
+deb//') > $LOG/apt-get-install-kernel
+# remove the dummy initrd
+rm /boot/initrd.img-2.6.18.6-slh-smp-1
 ./install-kernel.sh > $LOG/install-kernel
 echo "Done kernel"
 popd
