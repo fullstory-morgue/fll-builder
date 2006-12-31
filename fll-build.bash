@@ -142,7 +142,7 @@ FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 
 # genisofs default output location
-FLL_BUILD_ISO_OUPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
+FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
 
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
