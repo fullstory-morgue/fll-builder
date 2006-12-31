@@ -56,11 +56,6 @@ EOF
 create_interfaces() {
 	local IFACES="$FLL_BUILD_CHROOT"/etc/network/interfaces
 	
-	# test if this is even required
-	[[ -f $IFACES ]] || return 1
-
-	mkdir -p $(dirname $IFACES)
-	
 	cat > "$IFACES" \
 <<EOF
 # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
@@ -143,7 +138,9 @@ EOF
 
 append_sudoers() {
 	local SUDOERS="$FLL_BUILD_CHROOT"/etc/sudoers
+
 	[[ -f "$SUDOERS" ]] || return 1
+
 	cat >> "$SUDOERS" \
 <<EOF
 
