@@ -339,7 +339,7 @@ for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 	chroot_exec ln -vs /usr/share/doc/linux-doc-$kernel/Documentation \
 		/usr/src/linux-$kernel/Documentation
 	chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
-	chroot_exec ln -vs initrd-image-$kernel /boot/miniroot.gz
+	chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
 done
 
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
