@@ -277,8 +277,7 @@ set -e
 cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
-#chroot_exec dpkg --purge cdebootstrap-helper-diverts
-chroot_exec rm -rf /var/cache/bootstrap
+remove_from_chroot /var/cache/bootstrap
 
 #################################################################
 #		patch and prepare chroot			#
@@ -291,6 +290,7 @@ create_sources_list working
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 virtfs mount "$FLL_BUILD_CHROOT/proc"
+
 # XXX: distro-defaults live environment detection
 mkdir -vp "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 
@@ -335,16 +335,6 @@ create_sources_list final
 append_sudoers
 
 #################################################################
-#		unpatch chroot					#
-#################################################################
-rmdir -v "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
-virtfs umount "$FLL_BUILD_CHROOT"/proc
-remove_from_chroot /usr/sbin/policy-rc.d
-remove_from_chroot /etc/debian_chroot
-remove_from_chroot /etc/hosts
-remove_from_chroot /etc/resolv.conf
-
-#################################################################
 #		prepare result staging directory		#
 #################################################################
 mkdir -vp "$FLL_BUILD_RESULT"/boot/grub "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
@@ -366,10 +356,19 @@ cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,st
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
 #################################################################
-#		cleanup anything that should not 		#
-#		be on the compressed image			#
+#		unpatch chroot					#
 #################################################################
-rm -vf "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_CHROOT"/boot/initrd.img*
+chroot_exec apt-get clean
+
+remove_from_chroot "$FLL_MOUNTPOINT"
+remove_from_chroot /usr/sbin/policy-rc.d
+remove_from_chroot /etc/debian_chroot
+remove_from_chroot /etc/hosts
+remove_from_chroot /etc/resolv.conf
+remove_from_chroot /boot/miniroot.gz
+remove_from_chroot /boot/initrd.img*
+
+virtfs umount "$FLL_BUILD_CHROOT"/proc
 
 #################################################################
 if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
