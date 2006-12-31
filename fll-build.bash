@@ -292,7 +292,7 @@ copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 virtfs mount "$FLL_BUILD_CHROOT/proc"
 # XXX: distro-defaults live environment detection
-chroot_exec mkdir -vp "$FLL_MOUNTPOINT"
+mkdir -vp "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 
 #################################################################
 #		prepare apt					#
@@ -324,22 +324,6 @@ done
 #################################################################
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
-for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
-	[[ -f $kernel ]] || continue
-	kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
-	# fix up kernel links
-	chroot_exec rm -vf /lib/modules/$kernel/build /lib/modules/$kernel/source
-	chroot_exec ln -vs linux-headers-$kernel /usr/src/linux-$kernel
-	chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/build
-	chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/source
-	chroot_exec cp -vf /boot/config-$kernel /usr/src/linux-$kernel/.config
-	chroot_exec rm -rf /usr/src/linux-$kernel/Documentation
-	chroot_exec ln -vs /usr/share/doc/linux-doc-$kernel/Documentation \
-		/usr/src/linux-$kernel/Documentation
-	chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
-	chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
-done
-
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 
 #################################################################
@@ -353,18 +337,12 @@ append_sudoers
 #################################################################
 #		unpatch chroot					#
 #################################################################
-chroot_exec rmdir -v "$FLL_MOUNTPOINT"
+rmdir -v "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 virtfs umount "$FLL_BUILD_CHROOT"/proc
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
-
-#################################################################
-if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
-	exit 0
-fi
-#################################################################
 
 #################################################################
 #		prepare result staging directory		#
@@ -386,6 +364,18 @@ cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+
+#################################################################
+#		cleanup anything that should not 		#
+#		be on the compressed image			#
+#################################################################
+rm -vf "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_CHROOT"/boot/initrd.img*
+
+#################################################################
+if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
+	exit 0
+fi
+#################################################################
 
 #################################################################
 #		compress fs					#
