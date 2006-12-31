@@ -161,7 +161,7 @@ create_kernelimg_conf() {
 do_symlinks = NO
 do_bootloader = NO
 warn_initrd = NO
-ramdisk = /usr/sbin/mklive-initrd
+ramdisk = mklive-initrd
 EOF
 }
 
