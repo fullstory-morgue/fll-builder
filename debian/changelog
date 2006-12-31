@@ -3,8 +3,10 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * move cdebootstrap related cleanup directly into cdebootstrap_chroot().
   * add procps to essential packages.
   * rt61 doesn't have a hard depends on non-free firmwares anymore.
+  * prefer $FLL_BUILD_BASE/etc/fll-build/distro over
+    $FLL_BUILD_BASE/etc/default/distro.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 30 Dec 2006 18:34:30 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 31 Dec 2006 11:33:28 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
