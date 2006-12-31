@@ -212,6 +212,7 @@ install_linux_kernel() {
 	# hack until new package is uploaded
 	copy_to_chroot /usr/sbin/mklive-initrd
 	
+	# ask kernel package nicely to create a miniroot for our kernel
 	create_kernelimg_conf
 
 	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list

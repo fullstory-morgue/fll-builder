@@ -339,6 +339,7 @@ for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 	chroot_exec ln -vs /usr/share/doc/linux-doc-$kernel/Documentation \
 		/usr/src/linux-$kernel/Documentation
 	chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
+	chroot_exec ln -vs initrd-image-$kernel /boot/miniroot.gz
 done
 
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
@@ -384,7 +385,7 @@ pushd "$FLL_BUILD_TEMPLATES" >/dev/null
 popd >/dev/null
 
 # populate /boot
-mv -v "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
 cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 	"$FLL_BUILD_RESULT"/boot/grub/
