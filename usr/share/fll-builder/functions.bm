@@ -241,7 +241,7 @@ make_compressed_image() {
 	local MKSQUASHFSOPTS="-info"
 	# XXX: make room for a sort list
 
-	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $SQUASHFSOPTS
+	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
 }
 
 make_fll_iso() {
