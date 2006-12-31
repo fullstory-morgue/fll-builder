@@ -329,8 +329,6 @@ install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 	[[ -f $kernel ]] || continue
 	kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
-	# make miniroot
-	#chroot_exec mklive-initrd --debug --version "$kernel" --output /boot/miniroot.gz
 	# fix up kernel links
 	chroot_exec rm -vf /lib/modules/$kernel/build /lib/modules/$kernel/source
 	chroot_exec ln -vs linux-headers-$kernel /usr/src/linux-$kernel
