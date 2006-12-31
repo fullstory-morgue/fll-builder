@@ -316,8 +316,6 @@ chroot_exec adduser --no-create-home --disabled-password \
 for group in $FLL_LIVE_USER_GROUPS; do
 	if chroot_exec getent group "$group"; then
 		chroot_exec adduser "$FLL_LIVE_USER" "$group"
-	else
-		:
 	fi
 done
 
@@ -378,7 +376,7 @@ pushd "$FLL_BUILD_TEMPLATES" >/dev/null
 	for dir in common "$FLL_DISTRO_NAME"; do
 		[[ -d $dir ]] || continue
 		pushd $dir >/dev/null
-			find . -not -path '*.svn*' | \
+			find . -not -path '*.svn*' -printf '%P\n' | \
 				cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
 		popd >/dev/null
 	done
