@@ -120,7 +120,7 @@ error() {
 SELF="fll-build"
 
 # host arch
-DPKG_ARCH=$(dpkg-architecture -qDEB_HOST_ARCH)
+DPKG_ARCH=$(dpkg --print-installation-architecture)
 
 # Allow lazy development and testing
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."

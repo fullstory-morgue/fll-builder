@@ -153,29 +153,15 @@ EOF
 	chmod 0440 "$SUDOERS"
 }
 
-create_mkinitrd_dummy() {
-	local MKINTRD=$1
-
-	cat > "$MKINTRD" \
-<<EOF
-#!/bin/sh
-VER=\$1
-touch /boot/initrd.img-\$VER.new
-exit 0
-EOF
-
-	chmod 0755 "$MKINTRD"
-}
-
 create_kernelimg_conf() {
-	local MKINTRD=$1 KERNELIMG="$FLL_BUILD_CHROOT"/etc/kernel-img.conf
+	local KERNELIMG="$FLL_BUILD_CHROOT"/etc/kernel-img.conf
 
 	cat > "$KERNELIMG" \
 <<EOF
 do_symlinks = NO
 do_bootloader = NO
 warn_initrd = NO
-ramdisk = $MKINTRD
+ramdisk = /usr/sbin/mklive-initrd
 EOF
 }
 
@@ -223,8 +209,10 @@ install_linux_kernel() {
 		[[ $KDEBS ]] || return 1
 	fi
 
-	create_mkinitrd_dummy "$KDIR"/mkintrd-dummy
-	create_kernelimg_conf "${KDIR//$FLL_BUILD_CHROOT/}"/mkintrd-dummy
+	# hack until new package is uploaded
+	copy_to_chroot /usr/sbin/mklive-initrd
+	
+	create_kernelimg_conf
 
 	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
