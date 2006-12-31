@@ -209,9 +209,6 @@ install_linux_kernel() {
 		[[ $KDEBS ]] || return 1
 	fi
 
-	# XXX: hack until new package is uploaded
-	copy_to_chroot /usr/sbin/mklive-initrd
-	
 	# ask kernel package nicely to create a miniroot for our kernel
 	create_kernelimg_conf
 
