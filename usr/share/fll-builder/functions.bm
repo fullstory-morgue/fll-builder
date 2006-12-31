@@ -159,7 +159,8 @@ create_mkinitrd_dummy() {
 	cat > "$MKINTRD" \
 <<EOF
 #!/bin/sh
-touch /boot/initrd.img-2.6.18.6-slh-smp-1.new
+VER=\$1
+touch /boot/initrd.img-\$VER.new
 exit 0
 EOF
 
