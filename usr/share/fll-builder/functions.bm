@@ -116,8 +116,8 @@ create_sources_list() {
 deb $FLL_BUILD_DEBIANMIRROR sid main
 #deb-src $FLL_BUILD_DEBIANMIRROR sid main
 
-deb $FLL_BUILD_SIDUXMIRROR sid main fix.main
-#deb-src $FLL_BUILD_SIDUXMIRROR sid main fix.main
+deb $FLL_BUILD_FLLMIRROR sid main fix.main
+#deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
 EOF
 			;;
 		final)

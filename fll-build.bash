@@ -142,7 +142,7 @@ FLL_BUILD_ISO_OUPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
 
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
-FLL_BUILD_SIDUXMIRROR="http://sidux.com/debian/"
+FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
 
 # cdebootstrap defaults
 DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
@@ -298,7 +298,7 @@ mkdir -vp "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 #		prepare apt					#
 #################################################################
 chroot_exec apt-get update
-chroot_exec apt-get --allow-unauthenticated --assume-yes install sidux-keyrings
+chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
 chroot_exec apt-get update
 
 #################################################################
