@@ -366,7 +366,9 @@ remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /boot/miniroot.gz
-remove_from_chroot /boot/initrd.img*
+# XXX: wildcard expansions may need to be protected
+# XXX: remove_from_chroot() needs fixing or shooting
+#remove_from_chroot /boot/initrd.img*
 
 virtfs umount "$FLL_BUILD_CHROOT"/proc
 
