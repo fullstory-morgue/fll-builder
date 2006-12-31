@@ -163,7 +163,7 @@ touch /boot/initrd.img-2.6.18.6-slh-smp-1.new
 exit 0
 EOF
 
-chmod 0755 "$MKINTRD"
+	chmod 0755 "$MKINTRD"
 }
 
 create_kernelimg_conf() {
