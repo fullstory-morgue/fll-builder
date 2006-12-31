@@ -153,6 +153,31 @@ EOF
 	chmod 0440 "$SUDOERS"
 }
 
+create_mkinitrd_dummy() {
+	local MKINTRD=$1
+
+	cat > "$MKINTRD" \
+<<EOF
+#!/bin/sh
+touch /boot/initrd.img-2.6.18.6-slh-smp-1.new
+exit 0
+EOF
+
+chmod 0755 "$MKINTRD"
+}
+
+create_kernelimg_conf() {
+	local MKINTRD=$1 KERNELIMG="$FLL_BUILD_CHROOT"/etc/kernel-img.conf
+
+	cat > "$KERNELIMG" \
+<<EOF
+do_symlinks = NO
+do_bootloader = NO
+warn_initrd = NO
+ramdisk = $MKINTRD
+EOF
+}
+
 install_linux_kernel() {
 	local KZIP=$1 KTYPE KDIR KDEBS
 
@@ -196,6 +221,9 @@ install_linux_kernel() {
 		KDEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $KDIR/Packages)
 		[[ $KDEBS ]] || return 1
 	fi
+
+	create_mkinitrd_dummy "$KDIR"/mkintrd-dummy
+	create_kernelimg_conf "${KDIR//$FLL_BUILD_CHROOT/}"/mkintrd-dummy
 
 	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
