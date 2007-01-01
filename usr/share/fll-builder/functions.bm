@@ -255,11 +255,11 @@ make_fll_iso() {
 	echo "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001"	>> "$SORTLIST"
 
 	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
-
+	
+	# -input-charset required?
+	# -A "$FLL_DISTRO_NAME LIVE LINUX CD" <- need upper case name
 	genisoimage -v -pad -l -r -J \
 		-V "$FLL_DISTRO_NAME" \
-		-A "$FLL_DISTRO_NAME LIVE LINUX CD" \
-		-input-charset ISO-8859-15 \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
