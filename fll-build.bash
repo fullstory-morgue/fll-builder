@@ -366,6 +366,8 @@ cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,st
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
+# XXX: need md5sums
+
 #################################################################
 #		unpatch chroot					#
 #################################################################
