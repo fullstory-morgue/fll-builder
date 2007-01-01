@@ -296,7 +296,7 @@ copy_to_chroot /etc/resolv.conf
 virtfs mount
 
 # XXX: distro-defaults live environment detection
-mkdir -vp "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
+mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 
 #################################################################
 #		prepare apt					#
@@ -383,7 +383,9 @@ remove_from_chroot "/var/cache/debconf/*-old"
 
 find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
 
-rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
+rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
+
+rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 
 virtfs umount
 

@@ -237,8 +237,8 @@ install_linux_kernel() {
 	rm -rf "$KDIR"
 }
 
-# XXX: TODO
 make_compressed_image() {
+	# XXX: TODO
 	# -info is a bit too verbose
 	local MKSQUASHFSOPTS=""
 	# XXX: make room for a sort list and exclude list
@@ -247,17 +247,24 @@ make_compressed_image() {
 }
 
 make_fll_iso() {
-	# XXX: sort iso contents for bad bios
-	# genisoimage default output location
+	local SORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
+
+	echo "$FLL_BUILD_RESULT/boot/grub/* 111111"		> "$SORTLIST"
+	echo "$FLL_BUILD_RESULT/boot/* 111110" 			>> "$SORTLIST"
+	echo "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001"	>> "$SORTLIST"
+
 	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 
-
-	genisoimage \
-		-pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 \
-		-boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved \
-		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
+	genisoimage -v -pad -l -r -J \
+		-V "$FLL_DISTRO_NAME" \
+		-A "$FLL_DISTRO_NAME LIVE LINUX CD" \
+		-input-charset ISO-8859-15 \
+		-no-emul-boot -boot-load-size 4 -boot-info-table \
+		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
+		-hide-rr-moved \
+		-sort "$SORTLIST"
+		-o "$OUTPUT" "$FLL_BUILD_RESULT"
 }
-# END TODO
 
 virtfs() {
 	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
