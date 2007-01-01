@@ -155,6 +155,8 @@ source "$FLL_BUILD_PACKAGELIST"
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
 FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
+FLL_HTTP_PROXY=""
+FLL_FTP_PROXY=""
 
 # cdebootstrap defaults
 DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
@@ -278,7 +280,8 @@ set -e
 #################################################################
 #		bootstrap					#
 #################################################################
-cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
+http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" \
+	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
 #################################################################
@@ -301,16 +304,16 @@ mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 #################################################################
 #		prepare apt					#
 #################################################################
-chroot_exec apt-get update
-chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
-chroot_exec apt-get update
+chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get update
+chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
+chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get update
 PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 
 #################################################################
 #		install packages				#
 #################################################################
-chroot_exec apt-get --assume-yes install distro-defaults
-chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
+chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --assume-yes install distro-defaults
+chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
 #################################################################
 #		add live user					#
