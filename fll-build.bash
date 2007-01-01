@@ -314,8 +314,8 @@ PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 #################################################################
 chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --assume-yes install distro-defaults
 
-echo "locales	locales/default_environment_locale	select	de_DE.UTF-8" | debconf-get-selections
-echo "locales	locales/locales_to_be_generated	multiselect	de_AT.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8" | debconf-get-selections
+echo "locales	locales/default_environment_locale	select	de_DE.UTF-8" | chroot_exec debconf-get-selections
+echo "locales	locales/locales_to_be_generated	multiselect	de_AT.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8" | chroot_exec debconf-get-selections
 
 #################################################################
 #		install packages				#
