@@ -262,7 +262,7 @@ make_fll_iso() {
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
-		-sort "$SORTLIST"
+		-sort "$SORTLIST" \
 		-o "$OUTPUT" "$FLL_BUILD_RESULT"
 }
 
