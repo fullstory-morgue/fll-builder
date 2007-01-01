@@ -271,7 +271,20 @@ make_fll_iso() {
 	echo "$FLL_BUILD_RESULT/boot/* 111110" 			>> "$SORTLIST"
 	echo "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001"	>> "$SORTLIST"
 
-	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
+	# set default ISO name
+	case $DEBOOTSTRAP_ARCH in
+		i386|i486)
+			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP} | tr a-z A-Z)"
+			;;
+		x86_64)
+			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP} | tr a-z A-Z)"
+			;;
+		*)
+			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP} | tr a-z A-Z)"
+			;;
+	esac
+
+	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_ISO_NAME"}
 	
 	# -input-charset required?
 	genisoimage -v -pad -l -r -J \

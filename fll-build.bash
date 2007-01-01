@@ -267,6 +267,10 @@ if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
 
+# check for $FLL_DISTRO_CODENAME
+[[ -z $FLL_DISTRO_CODENAME ]] && FLL_DISTRO_CODENAME="snapshot"
+
+
 #################################################################
 #		clean up on exit				#
 #################################################################
@@ -280,8 +284,7 @@ set -e
 #################################################################
 #		bootstrap					#
 #################################################################
-http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" \
-	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
+cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
 #################################################################
@@ -392,13 +395,8 @@ chroot_exec apt-get clean
 # add version marker, this is the exact time stamp for our package list
 printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
 	> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-if [[ -n $FLL_DISTRO_CODENAME ]]; then
-	printf " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
-		>> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-else
-	printf " - snapshot ($PACKAGE_TIMESTAMP)" \
-		 >> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-fi
+printf " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
+	>> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
 
 remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
