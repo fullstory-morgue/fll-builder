@@ -33,7 +33,7 @@ copy_to_chroot() {
 remove_from_chroot() {
 	local OBJ="${FLL_BUILD_CHROOT}${1}"
 
-	rm -vrf $OBJ
+	rm -vf $OBJ
 	
 	if [[ -e "$OBJ".orig ]]; then
 		mv -v "$OBJ".orig "$OBJ"
