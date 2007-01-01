@@ -299,5 +299,6 @@ nuke_buildarea() {
 	else
 		echo "Error umounting virtual filesystems"
 		echo "You must manually cleanup up $FLL_BUILD_AREA"
+		return 1
 	fi
 }
