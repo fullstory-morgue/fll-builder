@@ -350,9 +350,9 @@ cat_file sudoers	/etc/sudoers
 #################################################################
 #		prepare result staging directory		#
 #################################################################
-mkdir -vp "$FLL_BUILD_RESULT"/boot/grub "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
+mkdir -vp "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
-# add templates (documentation/manual/autorun etc.)
+# add templates (grub menu.lst/documentation/manual/autorun etc.)
 for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
 	[[ -d $dir ]] || continue
 	pushd $dir >/dev/null
