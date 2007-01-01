@@ -227,8 +227,9 @@ install_linux_kernel() {
 
 # XXX: TODO
 make_compressed_image() {
-	local MKSQUASHFSOPTS="-info"
-	# XXX: make room for a sort list
+	# -info is a bit too verbose
+	local MKSQUASHFSOPTS=""
+	# XXX: make room for a sort list and exclude list
 
 	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
 }
@@ -244,7 +245,7 @@ make_fll_iso() {
 # END TODO
 
 virtfs() {
-	local ACTION="$1" PROC="$FLL_BUILD_CHROOT/proc"
+	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
 
 	[[ $ACTION && -d $PROC ]] || return 1
 
