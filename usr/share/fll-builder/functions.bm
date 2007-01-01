@@ -243,8 +243,10 @@ make_compressed_image() {
 
 	# -info is a bit too verbose
 	local MKSQUASHFSOPTS=""
-	
-	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
+
+	pushd "$FLL_BUILD_CHROOT" >/dev/null
+		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
+	popd >/dev/null
 }
 
 make_fll_iso() {
