@@ -152,9 +152,6 @@ source "$FLL_BUILD_PACKAGELIST"
 #################################################################
 #		more constant variable declarations		#
 #################################################################
-# genisofs default output location
-FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"
-
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
 FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
@@ -257,6 +254,8 @@ if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA" || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+	# genisofs default output location
+	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
@@ -289,13 +288,15 @@ remove_from_chroot /var/cache/bootstrap
 #################################################################
 #		patch and prepare chroot			#
 #################################################################
-create_chroot_policy
-create_debian_chroot
-create_interfaces
-create_fstab
-create_sources_list working
+cat_file chroot_policy		/usr/sbin/policy-rc.d
+cat_file debian_chroot		/etc/debian_chroot
+cat_file fstab			/etc/fstab
+cat_file interfaces		/etc/network/interfaces
+cat_file apt_sources_tmp	/etc/apt/sources.list
+
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
+
 virtfs mount "$FLL_BUILD_CHROOT/proc"
 
 # XXX: distro-defaults live environment detection
@@ -329,6 +330,8 @@ done
 #################################################################
 #		install kernel and extra modules		#
 #################################################################
+cat_file kernelimg	/etc/kernel-img.conf
+
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
@@ -337,9 +340,10 @@ chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 #		preseed chroot					#
 #################################################################
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
-create_hosts
-create_sources_list final
-append_sudoers
+
+cat_file hosts		/etc/hosts
+cat_file apt_sources	/etc/apt/sources.list
+cat_file sudoers	/etc/sudoers
 
 #################################################################
 #		prepare result staging directory		#

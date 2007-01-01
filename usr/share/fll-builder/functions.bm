@@ -40,57 +40,67 @@ remove_from_chroot() {
 	fi
 }
 
-create_chroot_policy() {
-	local POLICY="$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
-	
-# disable all init scripts as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz.
-	cat > "$POLICY" \
+cat_file() {
+	local FILE="$1" DEST="${FLL_BUILD_CHROOT}${2}"
+
+	[[ $1 && $2 ]] || return 1
+
+	case "$FILE" in
+
+		apt_sources)
+			cat > "$DEST" \
+<<EOF
+deb http://ftp.debian.org/debian/ sid main
+deb-src http://ftp.debian.org/debian/ sid main
+
+deb http://ftp.debian.org/debian/ testing main
+deb-src http://ftp.debian.org/debian/ testing main
+
+deb http://sidux.com/debian/ sid main fix.main
+deb-src http://sidux.com/debian/ sid main fix.main
+EOF
+			;;
+
+		apt_sources_tmp)
+			cat > "$DEST" \
+<<EOF
+deb $FLL_BUILD_DEBIANMIRROR sid main
+#deb-src $FLL_BUILD_DEBIANMIRROR sid main
+
+deb $FLL_BUILD_FLLMIRROR sid main fix.main
+#deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
+EOF
+			;;
+
+		chroot_policy)
+			# disable all init scripts
+			# /usr/share/doc/sysv-rc/README.policy-rc.d.gz
+			cat > "$DEST" \
 <<EOF
 #!/bin/sh
-
 exit 101
 EOF
-	chmod 0755 "$POLICY"
-}
+			chmod 0755 "$DEST"
+			;;
 
-create_interfaces() {
-	local IFACES="$FLL_BUILD_CHROOT"/etc/network/interfaces
-	
-	cat > "$IFACES" \
-<<EOF
-# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
-
-# The loopback interface
-# automatically added when upgrading
-auto lo
-iface lo inet loopback
-EOF
-}
-
-create_debian_chroot() {
-	local DEBCHROOT="$FLL_BUILD_CHROOT"/etc/debian_chroot
-
-	cat > "$DEBCHROOT" \
+		debian_chroot)
+			cat > "$DEST" \
 <<EOF
 $FLL_DISTRO_NAME-live
 EOF
-}
+			;;
 
-create_fstab() {
-	local FSTAB="$FLL_BUILD_CHROOT"/etc/fstab
-	
-	cat > "$FSTAB" \
+		fstab)
+			cat > "$DEST" \
 <<EOF
 # /etc/fstab: static file system information.
 #
 # <file system>	<mount point>	<type>	<options>		<dump>	<pass>
 EOF
-}
+			;;
 
-create_hosts() {
-	local HOSTS="$FLL_BUILD_CHROOT"/etc/hosts
-	
-	cat > "$HOSTS" \
+		hosts)
+			cat > "$DEST" \
 <<EOF
 127.0.0.1	localhost
 127.0.0.1	$FLL_DISTRO_NAME
@@ -105,43 +115,34 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 ff02::3 ip6-allhosts
 EOF
-}
+			;;
 
-create_sources_list() {
-	local SOURCESLIST="$FLL_BUILD_CHROOT"/etc/apt/sources.list
-	case $1 in
-		working)
-			cat > "$SOURCESLIST" \
+		interfaces)
+			cat > "$DEST" \
 <<EOF
-deb $FLL_BUILD_DEBIANMIRROR sid main
-#deb-src $FLL_BUILD_DEBIANMIRROR sid main
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
 
-deb $FLL_BUILD_FLLMIRROR sid main fix.main
-#deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
+# The loopback interface
+# automatically added when upgrading
+auto lo
+iface lo inet loopback
 EOF
 			;;
-		final)
-			cat > "$SOURCESLIST" \
+
+		kernelimg)
+			cat > "$DEST" \
 <<EOF
-deb http://ftp.debian.org/debian/ sid main
-deb-src http://ftp.debian.org/debian/ sid main
-
-deb http://ftp.debian.org/debian/ testing main
-deb-src http://ftp.debian.org/debian/ testing main
-
-deb http://sidux.com/debian/ sid main fix.main
-deb-src http://sidux.com/debian/ sid main fix.main
+do_symlinks = NO
+do_bootloader = NO
+warn_initrd = NO
+ramdisk = mklive-initrd
 EOF
 			;;
-	esac
-}
 
-append_sudoers() {
-	local SUDOERS="$FLL_BUILD_CHROOT"/etc/sudoers
-
-	[[ -f "$SUDOERS" ]] || return 1
-
-	cat >> "$SUDOERS" \
+		sudoers)
+			[[ -f "$DEST" ]] || return 1
+			# append
+			cat >> "$DEST" \
 <<EOF
 
 # WARNING: This allows the unprivileged $FLL_LIVE_USER user to start commands as root
@@ -149,20 +150,11 @@ append_sudoers() {
 # WARNING: Never allow external access to the $FLL_LIVE_USER user!!!
 $FLL_LIVE_USER	ALL=NOPASSWD: ALL
 EOF
+			
+			chmod 0440 "$DEST"
+			;;
 
-	chmod 0440 "$SUDOERS"
-}
-
-create_kernelimg_conf() {
-	local KERNELIMG="$FLL_BUILD_CHROOT"/etc/kernel-img.conf
-
-	cat > "$KERNELIMG" \
-<<EOF
-do_symlinks = NO
-do_bootloader = NO
-warn_initrd = NO
-ramdisk = mklive-initrd
-EOF
+esac
 }
 
 install_linux_kernel() {
@@ -209,9 +201,6 @@ install_linux_kernel() {
 		[[ $KDEBS ]] || return 1
 	fi
 
-	# ask kernel package nicely to create a miniroot for our kernel
-	create_kernelimg_conf
-
 	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
 	chroot_exec apt-get update
@@ -245,6 +234,8 @@ make_compressed_image() {
 }
 
 make_fll_iso() {
+	# XXX: sort iso contents for bad bios
+
 	genisoimage \
 		-pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 \
 		-boot-info-table -b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat -hide-rr-moved \
