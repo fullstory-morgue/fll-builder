@@ -239,10 +239,11 @@ install_linux_kernel() {
 
 make_compressed_image() {
 	# XXX: TODO
-	# -info is a bit too verbose
-	local MKSQUASHFSOPTS=""
 	# XXX: make room for a sort list and exclude list
 
+	# -info is a bit too verbose
+	local MKSQUASHFSOPTS=""
+	
 	mksquashfs "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
 }
 
@@ -263,7 +264,7 @@ make_fll_iso() {
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
 		-sort "$SORTLIST" \
-		-o "$OUTPUT" "$FLL_BUILD_RESULT"
+		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
 }
 
 virtfs() {
