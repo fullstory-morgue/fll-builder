@@ -31,13 +31,17 @@ copy_to_chroot() {
 }
 
 remove_from_chroot() {
-	local OBJ="${FLL_BUILD_CHROOT}${1}"
+	[[ $# -ge 1 ]] || return 1
 
-	rm -vrf $OBJ
+	for obj in $@; do
+		obj="${FLL_BUILD_CHROOT}${obj}"
 	
-	if [[ -e "$OBJ".orig ]]; then
-		mv -v "$OBJ".orig "$OBJ"
-	fi
+		rm -vf $obj
+	
+		if [[ -e "$obj".orig ]]; then
+			mv -v "$obj".orig "$obj"
+		fi
+	done
 }
 
 exists_in_chroot() {

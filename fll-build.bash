@@ -281,8 +281,6 @@ set -e
 cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
-remove_from_chroot /var/cache/bootstrap
-
 #################################################################
 #		patch and prepare chroot			#
 #################################################################
@@ -373,25 +371,14 @@ cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 #################################################################
 chroot_exec apt-get clean
 
-remove_from_chroot "$FLL_MOUNTPOINT"
-remove_from_chroot /usr/sbin/policy-rc.d
-remove_from_chroot /etc/debian_chroot
-remove_from_chroot /etc/hosts
-remove_from_chroot /etc/resolv.conf
-remove_from_chroot /boot/miniroot.gz
-# XXX: wildcard expansions may need to be protected
-# XXX: remove_from_chroot() needs fixing or shooting
-remove_from_chroot "/boot/initrd.img*"
+remove_from_chroot /usr/sbin/policy-rc.d /etc/debian_chroot /etc/hosts \
+	/etc/resolv.conf /boot/miniroot.gz "/boot/initrd.img*" \
+	"/etc/ssh/ssh_host_*key*" "/var/lib/dpkg/*-old" "/var/cache/debconf/*-old" \
+	"/var/lib/apt/lists/*{Packages,Sources,Release}*"
 
-# XXX: adapt to remove_from_chroot
-# remove_from_chroot would remove partial/ as well
-find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -type f -exec rm -f {} \;
+find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -f {} \;
 
-# to allow debconf presseding without unionfs, we need to remove *-old files
-# from dpkg and debconf configurations, remove ssh host keys.
-rm -vf	"$FLL_BUILD_CHROOT"/etc/ssh/ssh_host_*key* \
-	"$FLL_BUILD_CHROOT"/var/lib/dpkg/*-old \
-	"$FLL_BUILD_CHROOT"/var/cache/debconf/*-old
+rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 
 virtfs umount
 
