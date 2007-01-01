@@ -13,13 +13,15 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * add FLL_DISTRO_VERSION and FLL_DISTRO_CODENAME to distro-defaults.
   * write version marker to /etc/$FLL_DISTRO_NAME-version.
   * add support for FLL_BUILD_PROXY.
-  * adapt menu.lst to remove APM/ MCE related kernel options from the 
+  * adapt menu.lst to remove APM/ MCE related kernel options from the
     default entry, the -utf8 suffix is no longer used.
+  * rework packages.conf to allow more sophisticated i18n options.
+  * try to hook in initial debconf preseeding.
 
   [ Andreas Weber ]
   * added sux to the package list.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 18:01:43 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 22:39:47 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
