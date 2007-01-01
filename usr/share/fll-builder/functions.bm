@@ -55,7 +55,7 @@ cat_file() {
 
 	[[ $1 && $2 ]] || return 1
 
-	echo "Creating \`$FILE\' at $DEST"
+	echo "Creating \`$FILE' at $DEST"
 
 	case "$FILE" in
 
