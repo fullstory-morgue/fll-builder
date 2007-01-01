@@ -249,6 +249,7 @@ make_compressed_image() {
 
 make_fll_iso() {
 	local SORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
+	local FLLNAME=$(echo $FLL_DISTRO_NAME | tr a-z A-Z)
 
 	echo "$FLL_BUILD_RESULT/boot/grub/* 111111"		> "$SORTLIST"
 	echo "$FLL_BUILD_RESULT/boot/* 111110" 			>> "$SORTLIST"
@@ -258,8 +259,8 @@ make_fll_iso() {
 	
 	# -input-charset required?
 	genisoimage -v -pad -l -r -J \
-		-V "$(echo $FLL_DISTRO_NAME | tr a-z A-Z)" \
-		-A "$(echo $FLL_DISTRO_NAME | tr a-z A-Z) LIVE LINUX CD" \
+		-V "$FLLNAME" \
+		-A "$FLLNAME LIVE LINUX CD" \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
