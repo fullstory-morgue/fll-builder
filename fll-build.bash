@@ -376,7 +376,7 @@ remove_from_chroot /usr/sbin/policy-rc.d /etc/debian_chroot /etc/hosts \
 	"/etc/ssh/ssh_host_*key*" "/var/lib/dpkg/*-old" "/var/cache/debconf/*-old" \
 	"/var/lib/apt/lists/*{Packages,Sources,Release}*"
 
-find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -f {} \;
+find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
 
 rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
 
