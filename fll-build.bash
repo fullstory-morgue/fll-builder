@@ -249,13 +249,11 @@ if [[ $FLL_BUILD_ALT_PACKAGELIST ]]; then
 	fi
 fi
 
-# temporary staging areas within buildarea, plus iso output
+# temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA" || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-	# genisofs default output location
-	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
@@ -341,6 +339,10 @@ chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 #################################################################
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
 
+if exists_in_chroot /usr/sbin/fix-fonts; then
+	chroot_exec fix-fonts
+fi
+
 cat_file hosts		/etc/hosts
 cat_file apt_sources	/etc/apt/sources.list
 cat_file sudoers	/etc/sudoers
@@ -379,7 +381,7 @@ remove_from_chroot /etc/resolv.conf
 remove_from_chroot /boot/miniroot.gz
 # XXX: wildcard expansions may need to be protected
 # XXX: remove_from_chroot() needs fixing or shooting
-remove_from_chroot '/boot/initrd.img*'
+remove_from_chroot /boot/initrd.img\*
 
 # XXX: adapt to remove_from_chroot
 # remove_from_chroot would remove partial/ as well

@@ -40,6 +40,16 @@ remove_from_chroot() {
 	fi
 }
 
+exists_in_chroot() {
+	local OBJ="${FLL_BUILD_CHROOT}${1}"
+
+	if [[ -e $OBJ ]]; then
+		return 0
+	fi
+
+	return 1
+}
+
 cat_file() {
 	local FILE="$1" DEST="${FLL_BUILD_CHROOT}${2}"
 
@@ -236,6 +246,9 @@ make_compressed_image() {
 
 make_fll_iso() {
 	# XXX: sort iso contents for bad bios
+	# genisoimage default output location
+	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_MEDIA_NAME"}
+
 
 	genisoimage \
 		-pad -l -r -J -v -V \"$FLL_DISTRO_NAME\" -no-emul-boot -boot-load-size 4 \
