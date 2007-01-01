@@ -371,10 +371,15 @@ cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 #################################################################
 chroot_exec apt-get clean
 
-remove_from_chroot /usr/sbin/policy-rc.d /etc/debian_chroot /etc/hosts \
-	/etc/resolv.conf /boot/miniroot.gz "/boot/initrd.img*" \
-	"/etc/ssh/ssh_host_*key*" "/var/lib/dpkg/*-old" "/var/cache/debconf/*-old" \
-	"/var/lib/apt/lists/*{Packages,Sources,Release}*"
+remove_from_chroot /usr/sbin/policy-rc.d
+remove_from_chroot /etc/debian_chroot
+remove_from_chroot /etc/hosts
+remove_from_chroot /etc/resolv.conf
+remove_from_chroot /boot/miniroot.gz
+remove_from_chroot "/boot/initrd.img*"
+remove_from_chroot "/etc/ssh/ssh_host_*key*"
+remove_from_chroot "/var/lib/dpkg/*-old"
+remove_from_chroot "/var/cache/debconf/*-old"
 
 find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
 
