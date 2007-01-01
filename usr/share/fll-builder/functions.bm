@@ -59,6 +59,20 @@ cat_file() {
 
 	case "$FILE" in
 
+		apt_conf)
+			if [[ $FLL_HTTP_PROXY ]]; then
+				cat > "$DEST" \
+<<EOF
+Acquire::http::Proxy "$FLL_HTTP_PROXY";
+EOF
+			elif [[ $FLL_FTP_PROXY ]]; then
+				cat > "$DEST" \
+<<EOF
+Acquire::ftp::Proxy "$FLL_FTP_PROXY";
+EOF
+			fi
+			;;
+
 		apt_sources)
 			cat > "$DEST" \
 <<EOF
@@ -215,8 +229,8 @@ install_linux_kernel() {
 
 	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
-	chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get update
-	chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
+	chroot_exec apt-get update
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
 
 	for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 		[[ -f $kernel ]] || continue

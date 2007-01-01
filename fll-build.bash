@@ -292,6 +292,7 @@ cat_file debian_chroot		/etc/debian_chroot
 cat_file fstab			/etc/fstab
 cat_file interfaces		/etc/network/interfaces
 cat_file apt_sources_tmp	/etc/apt/sources.list
+cat_file apt_conf		/etc/apt/apt.conf
 
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
@@ -304,15 +305,15 @@ mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 #################################################################
 #		prepare apt					#
 #################################################################
-chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get update
-chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
-chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get update
+chroot_exec apt-get update
+chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
+chroot_exec apt-get update
 PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 
 #################################################################
 #		debconf preseeding				#
 #################################################################
-chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --assume-yes install distro-defaults debconf
+chroot_exec apt-get --assume-yes install distro-defaults debconf
 
 echo "locales	locales/default_environment_locale	select	de_DE.UTF-8" | chroot_exec debconf-set-selections
 echo "locales	locales/locales_to_be_generated	multiselect	de_AT.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8" | chroot_exec debconf-set-selections
@@ -320,7 +321,7 @@ echo "locales	locales/locales_to_be_generated	multiselect	de_AT.UTF-8 UTF-8, de_
 #################################################################
 #		install packages				#
 #################################################################
-chroot_exec http_proxy="$FLL_HTTP_PROXY" ftp_proxy="$FLL_FTP_PROXY" apt-get --assume-yes install ${FLL_PACKAGES[@]}
+chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
 #################################################################
 #		add live user					#
@@ -404,6 +405,7 @@ remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
+remove_from_chroot /etc/apt/apt.conf
 remove_from_chroot /boot/miniroot.gz
 remove_from_chroot "/boot/initrd.img*"
 remove_from_chroot "/etc/ssh/ssh_host_*key*"
