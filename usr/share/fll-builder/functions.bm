@@ -244,7 +244,7 @@ make_fll_iso() {
 # END TODO
 
 virtfs() {
-	local ACTION=$1 PROC=$2
+	local ACTION="$1" PROC="$FLL_BUILD_CHROOT/proc"
 
 	[[ $ACTION && -d $PROC ]] || return 1
 
@@ -264,7 +264,7 @@ virtfs() {
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_AREA ]] || return 0
 
-	if virtfs umount "$FLL_BUILD_CHROOT"/proc; then
+	if virtfs umount; then
 		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
 			echo "Chroot preserved at $FLL_BUILD_AREA"
 			return 0

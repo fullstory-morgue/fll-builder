@@ -297,7 +297,7 @@ cat_file apt_sources_tmp	/etc/apt/sources.list
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
-virtfs mount "$FLL_BUILD_CHROOT/proc"
+virtfs mount
 
 # XXX: distro-defaults live environment detection
 mkdir -vp "$FLL_BUILD_CHROOT"/"$FLL_MOUNTPOINT"
@@ -391,7 +391,7 @@ rm -f	"$FLL_BUILD_CHROOT"/etc/ssh/ssh_host_*key* \
 	"$FLL_BUILD_CHROOT"/var/lib/dpkg/*-old \
 	"$FLL_BUILD_CHROOT"/var/cache/debconf/*-old
 
-virtfs umount "$FLL_BUILD_CHROOT"/proc
+virtfs umount
 
 #################################################################
 if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
