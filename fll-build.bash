@@ -366,7 +366,10 @@ cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,st
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
-# XXX: need md5sums
+# md5sums
+pushd "$FLL_BUILD_RESULT" >/dev/null
+	( find . -type f -not -name '*.cat' -printf '%P\n' | sort | xargs md5sum -b ) > "$FLL_IMAGE_DIR"/md5sums
+popd >/dev/null
 
 #################################################################
 #		unpatch chroot					#
