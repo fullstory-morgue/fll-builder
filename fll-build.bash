@@ -376,6 +376,7 @@ popd >/dev/null
 #################################################################
 chroot_exec apt-get clean
 
+remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
