@@ -259,7 +259,7 @@ make_fll_iso() {
 	# -input-charset required?
 	# -A "$FLL_DISTRO_NAME LIVE LINUX CD" <- need upper case name
 	genisoimage -v -pad -l -r -J \
-		-V "$FLL_DISTRO_NAME" \
+		-V "$(echo $FLL_DISTRO_NAME | tr a-z A-Z)" \
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
