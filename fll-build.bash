@@ -381,7 +381,7 @@ remove_from_chroot /etc/resolv.conf
 remove_from_chroot /boot/miniroot.gz
 # XXX: wildcard expansions may need to be protected
 # XXX: remove_from_chroot() needs fixing or shooting
-remove_from_chroot /boot/initrd.img\*
+remove_from_chroot "/boot/initrd.img*"
 
 # XXX: adapt to remove_from_chroot
 # remove_from_chroot would remove partial/ as well
