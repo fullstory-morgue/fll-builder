@@ -304,17 +304,7 @@ mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 chroot_exec apt-get update
 chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
 chroot_exec apt-get update
-
-# add version marker, this is the exact time stamp for our package list
-printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
-	> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-if [[ -n $FLL_DISTRO_CODENAME ]]; then
-	printf " - $FLL_DISTRO_CODENAME ($(date -u +%Y%m%d%H%M))" \
-		>> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-else
-	printf " - snapshot ($(date -u +%Y%m%d%H%M))" \
-		 >> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
-fi
+PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 
 #################################################################
 #		install packages				#
@@ -387,6 +377,17 @@ popd >/dev/null
 #		unpatch chroot					#
 #################################################################
 chroot_exec apt-get clean
+
+# add version marker, this is the exact time stamp for our package list
+printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+	> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+if [[ -n $FLL_DISTRO_CODENAME ]]; then
+	printf " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
+		>> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+else
+	printf " - snapshot ($PACKAGE_TIMESTAMP)" \
+		 >> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+fi
 
 remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
