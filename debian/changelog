@@ -9,8 +9,10 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * remove backups for dpkg/ debconf, which would interfere with debconf
     preseeding on a link farm boot.
   * ensure upper case for ISO volume descriptor.
+  * add FLL_DISTRO_VERSION and FLL_DISTRO_CODENAME to distro-defaults.
+  * write version marker to /etc/$FLL_DISTRO_NAME-version.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 12:09:10 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon,  1 Jan 2007 13:18:27 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 

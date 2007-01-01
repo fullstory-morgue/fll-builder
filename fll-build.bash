@@ -305,6 +305,17 @@ chroot_exec apt-get update
 chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
 chroot_exec apt-get update
 
+# add version marker, this is the exact time stamp for our package list
+printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+	> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+if [[ -n $FLL_DISTRO_CODENAME ]]; then
+	printf " - $FLL_DISTRO_CODENAME ($(date -u +%Y%m%d%H%M))" \
+		>> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+else
+	printf " - snapshot ($(date -u +%Y%m%d%H%M))" \
+		 >> "${FLL_MOUNTPOINT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+fi
+
 #################################################################
 #		install packages				#
 #################################################################
