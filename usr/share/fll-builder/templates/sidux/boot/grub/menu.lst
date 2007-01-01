@@ -6,21 +6,22 @@ background 400000
 gfxmenu /boot/message
 
 title  sidux Default
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet vga=791 splash
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en quiet vga=791 splash
 initrd /boot/miniroot.gz
 
 title  sidux ACPI off - DMA off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet acpi=off nodma vga=791 splash
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en apm=power-off nomce quiet acpi=off nodma vga=791 splash
 initrd /boot/miniroot.gz
 
 title  sidux APIC off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off nomce quiet nosmp noapic vga=791 splash
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en apm=power-off nomce quiet nosmp noapic vga=791 splash
 initrd /boot/miniroot.gz
 
 title  sidux Framebuffer Mode
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 apm=power-off vga=791 xmodule=fbdev nomce quiet
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en apm=power-off vga=791 xmodule=fbdev nomce quiet
 initrd /boot/miniroot.gz
 
 title  sidux Failsafe
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en-utf8 vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init lang=en vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa
 initrd /boot/miniroot.gz
+
