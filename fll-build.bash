@@ -178,7 +178,7 @@ ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--options b:c:Cdhk:no:pP: \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,uid \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,uid: \
 		-- $@
 )
 
