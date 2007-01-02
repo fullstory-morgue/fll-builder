@@ -297,7 +297,7 @@ make_fll_iso() {
 virtfs() {
 	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
 
-	[[ $ACTION && -d $PROC ]] || return 1
+	[[ $ACTION && -d $PROC ]] || return 0
 
 	case "$ACTION" in
 		mount)
