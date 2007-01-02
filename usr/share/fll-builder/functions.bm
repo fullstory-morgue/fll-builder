@@ -275,7 +275,7 @@ make_compressed_image() {
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
 
-	cat_file sort_iso > "$ISOSORTLIST"
+	cat_file sort_iso "$ISOSORTLIST"
 
 	# set default ISO name
 	case $DEBOOTSTRAP_ARCH in
