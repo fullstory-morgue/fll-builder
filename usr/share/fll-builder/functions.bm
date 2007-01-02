@@ -285,7 +285,7 @@ make_fll_iso() {
 
 	# default iso output
 	if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
-		FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/../$FLL_ISO_NAME"
+		FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/.."
 	fi
 
 	# make the iso
@@ -296,7 +296,8 @@ make_fll_iso() {
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
 		-sort "$SORTLIST" \
-		-o "$FLL_BUILD_ISO_OUTPUT" "$FLL_BUILD_RESULT"
+		-o "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" \
+		"$FLL_BUILD_RESULT"
 }
 
 virtfs() {
