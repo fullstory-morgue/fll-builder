@@ -274,9 +274,9 @@ if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 fi
 
 # distro name, lower casified
-FLL_DISTRO_NAME_LC=$(echo $FLL_DISTRO_NAME | tr A-Z a-z)
+FLL_DISTRO_NAME_LC=$(tr A-Z a-z <<< $FLL_DISTRO_NAME)
 # distro name, upper casified
-FLL_DISTRO_NAME_UC=$(echo $FLL_DISTRO_NAME | tr a-z A-Z)
+FLL_DISTRO_NAME_UC=$(tr A-Z a-z <<< $FLL_DISTRO_NAME)
 
 # check for $FLL_DISTRO_CODENAME
 if [[ -z $FLL_DISTRO_CODENAME ]]; then
