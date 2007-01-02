@@ -111,7 +111,9 @@ error() {
 #################################################################
 #		root?						#
 #################################################################
-(($UID)) && DISPLAY= exec su-me "$0" "$@"
+if (($UID)); then
+	DISPLAY= exec su-me "$0 --uid $UID" "$@"
+fi
 
 #################################################################
 #		constant variable declarations			#
@@ -176,7 +178,7 @@ ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--options b:c:Cdhk:no:pP: \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,uid \
 		-- $@
 )
 
@@ -222,6 +224,10 @@ while true; do
 		-P|--packages)
 			shift
 			FLL_BUILD_ALT_PACKAGELIST=$1
+			;;
+		--uid)
+			shift
+			FLL_BUILD_OUTPUT_UID=$1
 			;;
 		--)
 			shift
@@ -277,6 +283,10 @@ if [[ -z $FLL_DISTRO_CODENAME ]]; then
 	FLL_DISTRO_CODENAME="snapshot"
 fi
 
+# default iso output
+if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
+	FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/../$FLL_ISO_NAME"
+fi
 
 #################################################################
 #		clean up on exit				#
@@ -440,6 +450,10 @@ make_compressed_image
 #		create iso					#
 #################################################################
 make_fll_iso
+
+if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
+	chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" "$FLL_BUILD_ISO_OUTPUT"
+fi
 
 exit 0
 

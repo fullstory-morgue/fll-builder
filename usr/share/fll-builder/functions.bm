@@ -283,8 +283,6 @@ make_fll_iso() {
 			;;
 	esac
 
-	: ${FLL_BUILD_ISO_OUTPUT:="$FLL_BUILD_AREA/../$FLL_ISO_NAME"}
-	
 	# -input-charset required?
 	genisoimage -v -pad -l -r -J \
 		-V "$FLL_DISTRO_NAME_UC" \
