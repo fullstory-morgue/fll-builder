@@ -447,7 +447,8 @@ make_compressed_image
 make_fll_iso
 
 if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
-	chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" "$FLL_BUILD_ISO_OUTPUT"
+	chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" \
+		"$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME"*
 fi
 
 exit 0
