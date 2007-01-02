@@ -252,11 +252,21 @@ install_linux_kernel() {
 }
 
 make_compressed_image() {
-	# XXX: TODO
+	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_AREA squashfs-exclude.XXXXX)
 	# XXX: make room for a sort list and exclude list
 
+	cat > "$SQUASHFSEXCLUDEFILE" \
+<<EOF
+./boot/initrd*
+./boot/miniroot.gz
+./home/*
+./root/*
+./tmp/*
+./var/tmp/*
+EOF
+
 	# -info is a bit too verbose
-	local MKSQUASHFSOPTS=""
+	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
 
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
