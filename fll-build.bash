@@ -444,11 +444,6 @@ make_compressed_image
 #################################################################
 #		create iso					#
 #################################################################
-# default iso output
-if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
-	FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/../$FLL_ISO_NAME"
-fi
-
 make_fll_iso
 
 if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
