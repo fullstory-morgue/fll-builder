@@ -32,7 +32,7 @@ FLL_LIVE_USER_GROUPS="dialout fuse cdrom sudo audio video plugdev users floppy p
 
 # system status (installed|live)
 # this affects su/ sudo mechanisms and other defaults
-FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] || [ -e /KNOPPIX.build ] && echo live || echo installed)
+FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] && echo live || echo installed)
 
 # install type (debian|beginner|live)
 FLL_INSTALL_TYPE="debian"

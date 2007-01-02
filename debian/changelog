@@ -1,5 +1,7 @@
 fll-builder (0.0.1) UNRELEASED; urgency=low
 
+  * NOT RELEASED YET
+
   [ Stefan Lippers-Hollmann ]
   * move cdebootstrap related cleanup directly into cdebootstrap_chroot().
   * add procps to essential packages.
@@ -21,11 +23,12 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * LANG=en_US.UTF-8 should be default.
   * remove stray proxy redefinition.
   * time stamp created ISOs.
+  * /KNOPPIX.build is obsolete
 
   [ Andreas Weber ]
   * added sux to the package list.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 00:34:39 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 15:40:56 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
