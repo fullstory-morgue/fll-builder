@@ -257,12 +257,14 @@ make_compressed_image() {
 
 	cat > "$SQUASHFSEXCLUDEFILE" \
 <<EOF
-/boot/initrd*
-/boot/miniroot.gz
-/home/*
-/root/*
-/tmp/*
-/var/tmp/*
+$FLL_BUILD_CHROOT/.*
+$FLL_BUILD_CHROOT/boot/initrd*
+$FLL_BUILD_CHROOT/boot/miniroot.gz
+$FLL_BUILD_CHROOT/home/*
+$FLL_BUILD_CHROOT/root/*
+$FLL_BUILD_CHROOT/root/.*
+$FLL_BUILD_CHROOT/tmp/*
+$FLL_BUILD_CHROOT/var/tmp/*
 EOF
 
 	# -info is a bit too verbose
