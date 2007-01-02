@@ -165,6 +165,15 @@ ramdisk = mklive-initrd
 EOF
 			;;
 
+		sort_iso)
+			cat > "$DEST" \
+<<EOF
+$FLL_BUILD_RESULT/boot/grub/* 111111
+$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
+EOF
+			;;
+
 		sudoers)
 			[[ -f "$DEST" ]] || return 1
 			# append
@@ -264,22 +273,20 @@ make_compressed_image() {
 }
 
 make_fll_iso() {
-	local SORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
+	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
 
-	echo "$FLL_BUILD_RESULT/boot/grub/* 111111"		> "$SORTLIST"
-	echo "$FLL_BUILD_RESULT/boot/* 111110" 			>> "$SORTLIST"
-	echo "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001"	>> "$SORTLIST"
+	cat_file sort_iso > "$ISOSORTLIST"
 
 	# set default ISO name
 	case $DEBOOTSTRAP_ARCH in
-		i386|i486)
-			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO | tr a-z A-Z)"
+		i?86)
+			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
 			;;
 		amd64|x86_64)
-			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO | tr a-z A-Z)"
+			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
 			;;
 		*)
-			FLL_ISO_NAME="$(echo ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO | tr a-z A-Z)"
+			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
 			;;
 	esac
 
@@ -295,7 +302,7 @@ make_fll_iso() {
 		-no-emul-boot -boot-load-size 4 -boot-info-table \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
-		-sort "$SORTLIST" \
+		-sort "$ISOSORTLIST" \
 		-o "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" \
 		"$FLL_BUILD_RESULT"
 	
@@ -311,7 +318,8 @@ make_fll_iso() {
 virtfs() {
 	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
 
-	[[ $ACTION && -d $PROC ]] || return 0
+	[[ $ACTION && $PROC ]] || return 1
+	[[ -d $PROC ]] || return 0
 
 	case "$ACTION" in
 		mount)
