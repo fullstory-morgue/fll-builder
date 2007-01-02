@@ -99,6 +99,9 @@ error() {
 		6)
 			echo "must specify a linux kernel"
 			;;
+		7)
+			echo "ISO output directory does not exist"
+			;;
 		*)
 			echo "Unknown error code \"$1\"."
 			set -- 255
@@ -281,6 +284,15 @@ FLL_DISTRO_NAME_UC=$(tr A-Z a-z <<< $FLL_DISTRO_NAME)
 # check for $FLL_DISTRO_CODENAME
 if [[ -z $FLL_DISTRO_CODENAME ]]; then
 	FLL_DISTRO_CODENAME="snapshot"
+fi
+
+# default iso output
+if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
+	FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/.."
+fi
+
+if [[ ! -d $FLL_BUILD_ISO_OUTPUT ]]; then
+	error 7
 fi
 
 #################################################################

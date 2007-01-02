@@ -296,11 +296,6 @@ EOF
 			;;
 	esac
 
-	# default iso output
-	if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
-		FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/.."
-	fi
-
 	# make the iso
 	genisoimage -v -pad -l -r -J \
 		-V "$FLL_DISTRO_NAME_UC" \
