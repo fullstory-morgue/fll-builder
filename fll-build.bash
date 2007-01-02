@@ -128,8 +128,8 @@ DPKG_ARCH=$(dpkg --print-installation-architecture)
 [[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
 
 # fll defaults
-if [[ -r $FLL_BUILD_BASE/etc/fll-build/distro ]]; then
-	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/fll-build/distro"
+if [[ -r $FLL_BUILD_BASE/etc/fll-builder/distro ]]; then
+	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/fll-builder/distro"
 else
 	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 fi

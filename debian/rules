@@ -14,6 +14,6 @@ install/fll-builder::
 	install -D -m 0644 etc/fll-builder/fll-build.conf \
 		debian/fll-builder/etc/fll-builder/fll-build.conf
 	install -D -m 0644 etc/fll-builder/packages.conf \
-		debian/fll-builder/etc/fll-build/packages.conf
+		debian/fll-builder/etc/fll-builder/packages.conf
 	install -D -m 0644 etc/default/distro \
-		debian/fll-builder/etc/fll-build/distro
+		debian/fll-builder/etc/fll-builder/distro

@@ -29,11 +29,12 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * take care that FLL_DISTRO_NAME_LC and FLL_DISTRO_NAME_UP are already
     defined.
   * add less to package list.
+  * fix install path for /etc/fll-builder/, thanks to kalium for noticing.
 
   [ Andreas Weber ]
   * added sux to the package list.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 18:58:55 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed,  3 Jan 2007 00:40:36 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
