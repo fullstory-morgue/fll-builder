@@ -132,6 +132,11 @@ else
 	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 fi
 
+# distro name, lower casified
+FLL_DISTRO_NAME_LC=$(echo $FLL_DISTRO_NAME | tr A-Z a-z)
+# distro name, upper casified
+FLL_DISTRO_NAME_UC=$(echo $FLL_DISTRO_NAME | tr a-z A-Z)
+
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
@@ -268,7 +273,9 @@ if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 fi
 
 # check for $FLL_DISTRO_CODENAME
-[[ -z $FLL_DISTRO_CODENAME ]] && FLL_DISTRO_CODENAME="snapshot"
+if [[ -z $FLL_DISTRO_CODENAME ]]; then
+	FLL_DISTRO_CODENAME="snapshot"
+fi
 
 
 #################################################################
@@ -394,9 +401,9 @@ chroot_exec apt-get clean
 
 # add version marker, this is the exact time stamp for our package list
 printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
-	> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+	> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 printf " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
-	>> "${FLL_BUILD_CHROOT}/etc/$(echo $FLL_DISTRO_NAME | tr A-Z a-z)-version"
+	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 
 remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
