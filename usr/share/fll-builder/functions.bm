@@ -165,15 +165,6 @@ ramdisk = mklive-initrd
 EOF
 			;;
 
-		sort_iso)
-			cat > "$DEST" \
-<<EOF
-$FLL_BUILD_RESULT/boot/grub/* 111111
-$FLL_BUILD_RESULT/boot/* 111110
-${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
-EOF
-			;;
-
 		sudoers)
 			[[ -f "$DEST" ]] || return 1
 			# append
@@ -275,7 +266,9 @@ make_compressed_image() {
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
 
-	cat_file sort_iso "$ISOSORTLIST"
+	echo "$FLL_BUILD_RESULT/boot/grub/* 111111"		> "$ISOSORTLIST"
+	echo "$FLL_BUILD_RESULT/boot/* 111110" 			>> "$ISOSORTLIST"
+	echo "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001"	>> "$ISOSORTLIST"
 
 	# set default ISO name
 	case $DEBOOTSTRAP_ARCH in
