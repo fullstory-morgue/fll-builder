@@ -28,11 +28,12 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * add knx-installer for now, so we can debug it.
   * take care that FLL_DISTRO_NAME_LC and FLL_DISTRO_NAME_UP are already
     defined.
+  * add less to package list.
 
   [ Andreas Weber ]
   * added sux to the package list.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 18:52:35 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue,  2 Jan 2007 18:58:55 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
