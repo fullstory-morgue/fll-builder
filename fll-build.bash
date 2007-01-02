@@ -134,11 +134,6 @@ else
 	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 fi
 
-# distro name, lower casified
-FLL_DISTRO_NAME_LC=$(echo $FLL_DISTRO_NAME | tr A-Z a-z)
-# distro name, upper casified
-FLL_DISTRO_NAME_UC=$(echo $FLL_DISTRO_NAME | tr a-z A-Z)
-
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
@@ -277,6 +272,11 @@ fi
 if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
+
+# distro name, lower casified
+FLL_DISTRO_NAME_LC=$(echo $FLL_DISTRO_NAME | tr A-Z a-z)
+# distro name, upper casified
+FLL_DISTRO_NAME_UC=$(echo $FLL_DISTRO_NAME | tr a-z A-Z)
 
 # check for $FLL_DISTRO_CODENAME
 if [[ -z $FLL_DISTRO_CODENAME ]]; then
