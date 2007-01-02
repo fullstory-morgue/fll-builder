@@ -298,6 +298,9 @@ make_fll_iso() {
 		-sort "$SORTLIST" \
 		-o "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" \
 		"$FLL_BUILD_RESULT"
+	
+	md5sum -b "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" > \
+		"$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME".MD5
 }
 
 virtfs() {
