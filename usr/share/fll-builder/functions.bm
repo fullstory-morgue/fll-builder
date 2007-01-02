@@ -332,6 +332,7 @@ nuke_buildarea() {
 		# adpated from pbuilder
 		find "$FLL_BUILD_AREA" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
   		find "$FLL_BUILD_AREA" -xdev -depth -type d -print0 | xargs -0 rmdir
+		return 0
 	else
 		echo "Error umounting virtual filesystems"
 		echo "You must manually cleanup up $FLL_BUILD_AREA"
