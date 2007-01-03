@@ -100,11 +100,11 @@ EOF
 			;;
 
 		chroot_policy)
-			# disable all init scripts
-			# /usr/share/doc/sysv-rc/README.policy-rc.d.gz
 			cat > "$DEST" \
 <<EOF
 #!/bin/sh
+# disable init scripts: /usr/share/doc/sysv-rc/README.policy-rc.d.gz
+
 exit 101
 EOF
 			chmod 0755 "$DEST"
@@ -225,7 +225,7 @@ install_debs_from_dir() {
 }
 
 install_linux_kernel() {
-	local KZIP=$1
+	local KZIP="$1"
 	local KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
 	local KTYPE KDEBS KURL
 
@@ -279,6 +279,7 @@ install_linux_kernel() {
 		/usr/src/linux-"$KVERS"/Documentation
 	chroot_exec ln -vs vmlinuz-"$KVERS" /boot/vmlinuz
 	chroot_exec ln -vs initrd.img-"$KVERS" /boot/miniroot.gz
+	
 	# save kernel.zip if building source iso
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
 		cp -v "$KDIR"/kernel-"$KVERS".zip "$FLL_BUILD_SOURCE"/kernel/kernel-"$KVERS".zip
@@ -288,6 +289,7 @@ install_linux_kernel() {
 }
 
 make_compressed_image() {
+	local SQUASHFSEXCLUDELIST=$(mktemp -p $FLL_BUILD_AREA squashfs-list.XXXXX)
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_AREA squashfs-exclude.XXXXX)
 	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
 	
@@ -296,14 +298,7 @@ make_compressed_image() {
 	# expanded by some magic and written to the final sort file.
 	cat > "$SQUASHFSEXCLUDEFILE" \
 <<EOF
-$FLL_BUILD_CHROOT/.*
-$FLL_BUILD_CHROOT/boot/initrd*
-$FLL_BUILD_CHROOT/boot/miniroot.gz
-$FLL_BUILD_CHROOT/home/*
-$FLL_BUILD_CHROOT/root/*
-$FLL_BUILD_CHROOT/root/.*
-$FLL_BUILD_CHROOT/tmp/*
-$FLL_BUILD_CHROOT/var/tmp/*
+.bash_history
 EOF
 
 	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
@@ -344,9 +339,11 @@ make_fll_iso() {
 		-o "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" \
 		"$FLL_BUILD_RESULT"
 	
+	# generate md5sums	
 	md5sum -b "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" > \
 		"$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME".MD5
 	
+	# if started as user, apply user ownership to output (based on --uid)
 	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
 		chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" \
 			"$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME"*
