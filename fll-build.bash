@@ -123,10 +123,15 @@ error() {
 #		root?						#
 #################################################################
 if (($UID)); then
-	if [[ " $* " =~ ' --help ' || " $* " =~ ' -h ' ]]; then
+	# allow user to access help or copyright info before su-me
+	if [[ " $* " =~ ' (--help|-h) ' ]]; then
 		print_help
 		exit 0
+	elif [[ " $* " =~ ' (-C|--copyright) ' ]]; then
+		print_copyright
+		exit 0
 	fi
+	# su-me, trap users UID
 	DISPLAY= exec su-me "$0 --uid $UID" "$@"
 fi
 
