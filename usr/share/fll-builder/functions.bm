@@ -280,7 +280,7 @@ install_linux_kernel() {
 		chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
 		# save kernel.zip if building source iso
 		if [[ $FLL_BUILD_SOURCE_REL ]]; then
-			cp -v "$KDIR"/kernel.zip "$FLL_BUILD_SOURCE_REL"/kernel/kernel-$kernel.zip
+			cp -v "$KDIR"/kernel.zip "$FLL_BUILD_SOURCE"/kernel/kernel-$kernel.zip
 		fi
 	done
 
