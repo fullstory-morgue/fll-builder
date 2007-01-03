@@ -339,6 +339,8 @@ trap nuke_buildarea exit
 cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 	"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
 
+chroot_exec dpkg --purge cdebootstrap-helper-diverts
+
 #################################################################
 #		patch and prepare chroot			#
 #################################################################
