@@ -194,9 +194,9 @@ esac
 }
 
 install_debs_from_dir() {
-	local DEBS
 	local DEBDIR="$1"
 	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
+	local DEBS
 
 	[[ -d $DEBDIR ]] || return 1
 
@@ -226,19 +226,13 @@ install_debs_from_dir() {
 
 install_linux_kernel() {
 	local KZIP=$1
-	local KTYPE
-	local KDIR
-	local KDEBS
+	local KTYPE KDIR KDEBS KURL KVERS
 
 	[[ $KZIP ]] || return 1
 
 	case "$KZIP" in
-		*.zip)
-			if [[ -f $KZIP ]]; then
-				KTYPE="file"
-			else
-				KTYPE="url"
-			fi
+		*kernel-*.zip)
+			[[ -f $KZIP ]] && KTYPE="file" || KTYPE="url"
 			;;
 		*)
 			echo "Unrecognised kernel option: $KZIP"
@@ -246,43 +240,50 @@ install_linux_kernel() {
 			;;
 	esac
 
+	# use bash regexp to determine kernel version
+	if [[ $KZIP =~ '.*/kernel-(.*).zip' ]]; then
+		if [[ $DEBUG ]]; then
+			for ((i=0; i<${#BASH_REMATCH[@]}; i++)); do
+               			echo "\${BASH_REMATCH[$i]} => ${BASH_REMATCH[$i]}"
+        		done
+		fi
+		KVERS=${BASH_REMATCH[1]}
+		# package list needs to filter these packages out :(
+		export KVERS
+	fi
+
 	KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
 
 	# cannot pushd here, it breaks relative kernel paths
 	case "$KTYPE" in
 		"file")
-			cp "$KZIP" "$KDIR"/kernel.zip
+			cp "$KZIP" "$KDIR"/kernel-"$KVERS".zip
 			;;
 		"url")
-			wget -T3 "$KZIP" -O "$KDIR"/kernel.zip
+			wget -T3 "$KZIP" -O "$KDIR"/kernel-"$KVERS".zip
 			;;
 	esac
 
 	pushd "$KDIR" >/dev/null
-		unzip kernel.zip
+		unzip kernel-"$KVERS".zip
 	popd >/dev/null
 
 	install_debs_from_dir "$KDIR"
 
-	for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
-		[[ -f $kernel ]] || continue
-		kernel=$(sed 's/.*vmlinuz-//' <<< $kernel)
-		# fix up kernel links
-		chroot_exec rm -vf /lib/modules/$kernel/build /lib/modules/$kernel/source
-		chroot_exec ln -vs linux-headers-$kernel /usr/src/linux-$kernel
-		chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/build
-		chroot_exec ln -vs /usr/src/linux-$kernel /lib/modules/$kernel/source
-		chroot_exec cp -vf /boot/config-$kernel /usr/src/linux-$kernel/.config
-		chroot_exec rm -rf /usr/src/linux-$kernel/Documentation
-		chroot_exec ln -vs /usr/share/doc/linux-doc-$kernel/Documentation \
-			/usr/src/linux-$kernel/Documentation
-		chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
-		chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
-		# save kernel.zip if building source iso
-		if [[ $FLL_BUILD_SOURCE_REL ]]; then
-			cp -v "$KDIR"/kernel.zip "$FLL_BUILD_SOURCE"/kernel/kernel-$kernel.zip
-		fi
-	done
+	chroot_exec rm -vf /lib/modules/"$KVERS"/build /lib/modules/"$KVERS"/source
+	chroot_exec ln -vs linux-headers-"$KVERS" /usr/src/linux-"$KVERS"
+	chroot_exec ln -vs /usr/src/linux-"$KVERS" /lib/modules/"$KVERS"/build
+	chroot_exec ln -vs /usr/src/linux-"$KVERS" /lib/modules/"$KVERS"/source
+	chroot_exec cp -vf /boot/config-"$KVERS" /usr/src/linux-"$KVERS"/.config
+	chroot_exec rm -rf /usr/src/linux-"$KVERS"/Documentation
+	chroot_exec ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
+		/usr/src/linux-"$KVERS"/Documentation
+	chroot_exec ln -vs vmlinuz-"$KVERS" /boot/vmlinuz
+	chroot_exec ln -vs initrd.img-"$KVERS" /boot/miniroot.gz
+	# save kernel.zip if building source iso
+	if [[ $FLL_BUILD_SOURCE_REL ]]; then
+		cp -v "$KDIR"/kernel-"$KVERS".zip "$FLL_BUILD_SOURCE"/kernel/kernel-"$KVERS".zip
+	fi
 
 	rm -vrf "$KDIR"
 }
@@ -364,7 +365,9 @@ fetch_source_code() {
 	chroot_exec apt-get update
 
 	# get chroot source packages
-	chroot_exec COLUMNS=250 dpkg --list | awk '/^[hi]i/{ printf("%s=%s\n", $2, $3) }' > "$CHROOTPKGLIST"
+	# XXX: damned kernel packages have no source, filter KVERS
+	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
+		'/^[hi]i/{ if($0 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
 	chroot_exec apt-get source --download-only --simulate $(< $CHROOTPKGLIST)
 
 	# XXX: get packages required for cdrom root creation
