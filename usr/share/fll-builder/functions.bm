@@ -320,12 +320,15 @@ make_fll_iso() {
 	case $DEBOOTSTRAP_ARCH in
 		i?86)
 			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
+			FLL_SOURCE_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.SOURCE\.ISO)"
 			;;
 		amd64|x86_64)
 			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
+			FLL_SOURCE_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.SOURCE\.ISO)"
 			;;
 		*)
 			FLL_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.ISO)"
+			FLL_SOURCE_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${FLL_DISTRO_CODENAME}-${PACKAGE_TIMESTAMP}\.SOURCE\.ISO)"
 			;;
 	esac
 
@@ -387,6 +390,29 @@ fetch_source_code() {
  	done
 
 	rm -vf "$PKGLIST"
+
+	# create trivial repository index
+	# XXX: improve me
+	pushd "${FLL_BUILD_SOURCE}/source/" >/dev/null
+		apt-ftparchive sources . > Sources
+		gzip  -c Sources > Sources.gz
+		bzip2 -c Sources > Sources.bz2
+	popd >/dev/null
+}
+
+make_fll_source_iso() {
+	# make the iso
+	genisoimage -v -pad -l -r -J \
+		-V "${FLL_DISTRO_NAME_UC}-SOURCE" \
+		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD SOURCE" \
+		-hide-rr-moved \
+		-o "${FLL_BUILD_ISO_OUTPUT}/${FLL_SOURCE_ISO_NAME}" \
+		"${FLL_BUILD_SOURCE}/source/"
+	
+	# generate md5sums
+	pushd "$FLL_BUILD_ISO_OUTPUT" >/dev/null
+		md5sum -b "$FLL_BUILD_SOURCE" > "${FLL_BUILD_SOURCE}.MD5"
+	popd >/dev/null
 }
 
 virtfs() {
