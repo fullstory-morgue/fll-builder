@@ -70,7 +70,7 @@ Options:
 
   -n|--chrootonly	Quit after preparing chroot
 
-  -o|--output		Path to final ISO output
+  -o|--output		ISO output dir
 
   -p|--preserve		Preserve build area when finished
 
