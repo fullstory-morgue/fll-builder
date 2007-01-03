@@ -353,15 +353,17 @@ fetch_source_code() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{cdrom,chroot,kernel}
 	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
+	local CHROOTLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
 
 	# XXX: decide on best way to create the list
 	# get chroot source packages
-	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > "${PKGLIST//$FLL_BUILD_CHROOT/}"
+	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > "$CHROOTLIST"
+	chroot_exec apt-get source --download-only $(< $CHROOTLIST)
 
 	# XXX: get packages required for cdrom root creation
 	# XXX: don't forget busybox-* and live-initrd-*
 
-	# XXX: mv saved package list out and download via host system
+	# XXX: adapt below code
 
 	rm -vf "$PKGLIST"
 }

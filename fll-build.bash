@@ -479,6 +479,7 @@ make_fll_iso
 #################################################################
 if [[ $FLL_BUILD_SOURCE_REL ]]; then
 	fetch_source_code
+	# XXX: make_fll_source_iso
 fi
 
 exit 0
