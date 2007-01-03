@@ -213,6 +213,7 @@ while true; do
 			exit 0
 			;;
 		-d|--debug)
+			DEBUG=1
 			set -x
 			;;
 		-h|--help)
