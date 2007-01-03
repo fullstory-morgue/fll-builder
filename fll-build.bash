@@ -78,7 +78,7 @@ Options:
 
   -P|--packages			Path to alternative packages file
 
-  -s|--source-rel		Retrieve all source packages for the release
+  -s|--source			Retrieve all source packages for the release
 
   -S|--squashfs-sortfile 	Path to squashfs sort file
 
@@ -190,7 +190,7 @@ ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--options b:c:Cdhk:no:pP:sS: \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source-rel,squashfs-sortfile:,uid: \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source,squashfs-sortfile:,uid: \
 		-- $@
 )
 
@@ -237,7 +237,7 @@ while true; do
 			shift
 			FLL_BUILD_ALT_PACKAGELIST=$1
 			;;
-		-s|--source-rel)
+		-s|--source)
 			FLL_BUILD_SOURCE_REL=1
 			;;
 		-S|--squashfs-sortfile)
@@ -245,6 +245,7 @@ while true; do
 			FLL_BUILD_SQUASHFS_SORTFILE=$1
 			;;
 		--uid)
+			# this need not be a documented feature
 			shift
 			FLL_BUILD_OUTPUT_UID=$1
 			;;
