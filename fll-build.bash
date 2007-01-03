@@ -76,6 +76,8 @@ Options:
 
   -P|--packages		Path to alternative packages file
 
+  -s|--source-rel	Retrieve all source packages for the release
+
 EOF
 }
 
@@ -177,8 +179,8 @@ DEBOOTSTRAP_DIST="sid"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:Cdhk:no:pP: \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,uid: \
+		--options b:c:Cdhk:no:pP:s \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source-rel,uid: \
 		-- $@
 )
 
@@ -224,6 +226,9 @@ while true; do
 		-P|--packages)
 			shift
 			FLL_BUILD_ALT_PACKAGELIST=$1
+			;;
+		-s|--source-rel)
+			FLL_SOURCE_REL=1
 			;;
 		--uid)
 			shift
@@ -457,6 +462,11 @@ make_compressed_image
 #		create iso					#
 #################################################################
 make_fll_iso
+
+#################################################################
+#		get sources					#
+#################################################################
+[[ $FLL_SOURCE_REL ]] && sources
 
 exit 0
 

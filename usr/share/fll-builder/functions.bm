@@ -248,7 +248,11 @@ install_linux_kernel() {
 		chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
 	done
 
-	rm -rf "$KDIR"
+	if [[ $FLL_SOURCE_REL ]]; then
+		FLL_KERNEL_SOURCE="$KDIR"
+	else
+		rm -rf "$KDIR"
+	fi
 }
 
 make_compressed_image() {
@@ -320,12 +324,17 @@ EOF
 
 sources() {
 	# download source packages used in ISO creation, dump into $FLL_BUILD_ISO_OUTPUT/src/chroot|cdrom_root|kernel
+	# XXX TODO: get packages required for cdrom root creation
+
+	# get kernel source package
+	mv "$FLL_KERNEL_SOURCE" "$FLL_BUILD_ISO_OUTPUT"/src/kernel
 
 	# get chroot source packages
 	chroot_exec mkdir -p /src/chroot
 	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > /src/chroot/pkg_sources.txt
 	chroot_exec pushd /src/chroot/; apt-get source --download-only $(cat pkg_sources.txt); popd
 	mv "$FLL_BUILD_RESULT"/src "$FLL_BUILD_ISO_OUTPUT"
+
 
 # equivalent fn grabbed from live-package - for reference only
 #Sources ()
@@ -357,9 +366,7 @@ sources() {
 
 
 
-	# XXX TODO: get packages required for cdrom root creation
 
-	# XXX TODO: get kernel source package
 }
 
 virtfs() {
