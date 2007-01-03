@@ -2,6 +2,8 @@
 
 set -e
 
+SELF="fll-build"
+
 #################################################################
 #		Synopsis					#
 #################################################################
@@ -131,9 +133,6 @@ fi
 #################################################################
 #		constant variable declarations			#
 #################################################################
-# script name and version info
-SELF="fll-build"
-
 # host arch
 DPKG_ARCH=$(dpkg --print-installation-architecture)
 
