@@ -226,7 +226,8 @@ install_debs_from_dir() {
 
 install_linux_kernel() {
 	local KZIP=$1
-	local KTYPE KDIR KDEBS KURL KVERS
+	local KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
+	local KTYPE KDEBS KURL
 
 	[[ $KZIP ]] || return 1
 
@@ -251,8 +252,6 @@ install_linux_kernel() {
 		# package list needs to filter these packages out :(
 		export KVERS
 	fi
-
-	KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
 
 	# cannot pushd here, it breaks relative kernel paths
 	case "$KTYPE" in
