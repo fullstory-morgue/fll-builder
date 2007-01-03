@@ -124,7 +124,7 @@ error() {
 #################################################################
 if (($UID)); then
 	# allow user to access help or copyright info before su-me
-	if [[ " $* " =~ ' (--help|-h) ' ]]; then
+	if [[ " $* " =~ ' (-h|--help) ' ]]; then
 		print_help
 		exit 0
 	elif [[ " $* " =~ ' (-C|--copyright) ' ]]; then
@@ -384,6 +384,7 @@ chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 chroot_exec adduser --no-create-home --disabled-password \
 	--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
 
+# add to groups, check if group exists first
 for group in $FLL_LIVE_USER_GROUPS; do
 	if chroot_exec getent group "$group"; then
 		chroot_exec adduser "$FLL_LIVE_USER" "$group"
@@ -400,12 +401,15 @@ install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 #################################################################
 #		preseed chroot					#
 #################################################################
+# init 5 by default
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
 
+# run fix-fonts, if installed in chroot
 if exists_in_chroot /usr/sbin/fix-fonts; then
 	chroot_exec fix-fonts
 fi
 
+# create final config files
 cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
 cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
 cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
@@ -443,7 +447,6 @@ popd >/dev/null
 if [[ $FLL_BUILD_SOURCE_REL ]]; then
 	fetch_source_code
 fi
-
 
 #################################################################
 #		unpatch chroot					#
