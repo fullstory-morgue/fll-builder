@@ -394,8 +394,6 @@ cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
 
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
-chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
-
 #################################################################
 #		preseed chroot					#
 #################################################################
@@ -448,7 +446,17 @@ fi
 #################################################################
 #		unpatch chroot					#
 #################################################################
+# clear out bootstrap cache
+rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
+
+# purge unwanted package
+chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
+
+# clean apt cache
 chroot_exec apt-get clean
+
+# clean apt lists
+find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
 
 # add version marker, this is the exact time stamp for our package list
 echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
@@ -456,6 +464,7 @@ echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
 echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
 	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 
+# remove hacks/patches unwanted files
 remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
@@ -468,12 +477,10 @@ remove_from_chroot "/etc/ssh/ssh_host_*key*"
 remove_from_chroot "/var/lib/dpkg/*-old"
 remove_from_chroot "/var/cache/debconf/*-old"
 
-find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
-
-rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
-
+# remove live-cd mode identifier
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 
+# umount proc
 virtfs umount
 
 #################################################################

@@ -356,20 +356,15 @@ fetch_source_code() {
 	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
 	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
 	
-	# ensure we are working with clean sources.list
+	# ensure we are working with clean sources.list (install_linux_kernel() "taints" it)
 	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
-	chroot_exec apt-get update
-
-	# get chroot source packages
+	
+	# XXX: version numbers should not be required due to the design of our build process
 	# XXX: damned kernel packages have no source, filter KVERS
-	#chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
-	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
+	
 	chroot_exec apt-get source --download-only --simulate $(< $CHROOTPKGLIST)
-
-	# XXX: get packages required for cdrom root creation
-	# XXX: don't forget busybox-* and live-initrd-*
 
 	# XXX: adapt below code
 
