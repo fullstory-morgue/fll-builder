@@ -322,11 +322,10 @@ sources() {
 	# download source packages used in ISO creation, dump into $FLL_BUILD_ISO_OUTPUT/src/chroot|cdrom_root|kernel
 
 	# get chroot source packages
-	# XXX: I'm not clear on what paths I should be passing to chroot_exec so do not expect this to work (yet) - cleary
-	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > "$FLL_BUILD_RESULT"/pkg_sources.txt
-	chroot_exec mkdir -p "$FLL_BUILD_RESULT"/src/chroot
-	chroot_exec pushd /src/chroot/; apt-get source --download-only $(cat "$FLL_BUILD_RESULT"/pkg_sources.txt); popd
-	mv "$FLL_BUILD_RESULT"/src/chroot "$FLL_BUILD_ISO_OUTPUT"
+	chroot_exec mkdir -p /src/chroot
+	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > /src/chroot/pkg_sources.txt
+	chroot_exec pushd /src/chroot/; apt-get source --download-only $(cat pkg_sources.txt); popd
+	mv "$FLL_BUILD_RESULT"/src "$FLL_BUILD_ISO_OUTPUT"
 
 # equivalent fn grabbed from live-package - for reference only
 #Sources ()
