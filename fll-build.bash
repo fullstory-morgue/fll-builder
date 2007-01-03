@@ -121,6 +121,10 @@ error() {
 #		root?						#
 #################################################################
 if (($UID)); then
+	if [[ " $* " =~ ' --help ' || " $* " =~ ' -h ' ]]; then
+		print_help
+		exit 0
+	fi
 	DISPLAY= exec su-me "$0 --uid $UID" "$@"
 fi
 
