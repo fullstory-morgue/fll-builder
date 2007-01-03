@@ -290,7 +290,7 @@ if [[ $FLL_BUILD_AREA ]]; then
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
 		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-		mkdir -vp "$FLL_BUILD_SOURCE"/{cdrom,source,kernel}
+		mkdir -vp "$FLL_BUILD_SOURCE"/{source,kernel}
 	fi
 else
 	# must provide --buildarea or FLL_BUILD_AREA
@@ -439,7 +439,6 @@ popd >/dev/null
 #################################################################
 if [[ $FLL_BUILD_SOURCE_REL ]]; then
 	fetch_source_code
-	# XXX: make_fll_source_iso
 fi
 
 
@@ -499,5 +498,10 @@ make_compressed_image
 #		create iso					#
 #################################################################
 make_fll_iso
+
+# XXX: TODO
+#if [[ $FLL_BUILD_SOURCE_REL ]]; then
+#	make_fll_source_iso
+#fi
 
 exit 0

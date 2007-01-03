@@ -282,6 +282,7 @@ install_linux_kernel() {
 	
 	# save kernel.zip if building source iso
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
+		# XXX: what about linux + modules source code?
 		cp -v "$KDIR"/kernel-"$KVERS".zip "$FLL_BUILD_SOURCE"/kernel/kernel-"$KVERS".zip
 	fi
 
@@ -352,7 +353,7 @@ make_fll_iso() {
 
 fetch_source_code() {
 	# download source packages used in ISO creation
-	# dump into $FLL_BUILD_SOURCE/{cdrom,chroot,kernel}
+	# dump into $FLL_BUILD_SOURCE/{source,kernel}
 	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
 	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
 	local SOURCE LETTER
@@ -369,6 +370,8 @@ fetch_source_code() {
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
 	chroot_exec apt-get source --download-only $(< $CHROOTPKGLIST)
+	# XXX: uncomment this one fll-builder has been packaged
+	#chroot_exec apt-get source --download-only fll-builder
 
 	# sort sources (adapted from live-package)
 	for dsc in "$FLL_BUILD_CHROOT"/*.dsc; do
