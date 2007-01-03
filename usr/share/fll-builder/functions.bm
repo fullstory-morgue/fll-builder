@@ -360,10 +360,11 @@ fetch_source_code() {
 	# ensure we are working with clean sources.list (install_linux_kernel() "taints" it)
 	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 	
-	# XXX: version numbers should not be required due to the design of our build process
-	# XXX: damned kernel packages have no source, filter KVERS
+	# XXX: some packages mysteriously fail to download when =version is suffixed
 	# chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
+	
+	# XXX: damned kernel packages have no source, filter KVERS
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
