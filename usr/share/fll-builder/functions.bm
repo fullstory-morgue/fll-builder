@@ -356,7 +356,7 @@ fetch_source_code() {
 
 	# XXX: decide on best way to create the list
 	# get chroot source packages
-	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > "$CHROOTLIST"
+	chroot_exec COLUMNS=250 dpkg --list | awk '/^[hi]i/{ printf("%s=%s\n", $2, $3) }' > "$CHROOTLIST"
 	chroot_exec apt-get source --download-only $(< $CHROOTLIST)
 
 	# XXX: get packages required for cdrom root creation
