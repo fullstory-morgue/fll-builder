@@ -230,7 +230,7 @@ while true; do
 			FLL_BUILD_ALT_PACKAGELIST=$1
 			;;
 		-s|--source-rel)
-			FLL_SOURCE_REL=1
+			FLL_BUILD_SOURCE_REL=1
 			;;
 		-S|--squashfs-sortfile)
 			shift
@@ -278,6 +278,10 @@ if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA" || error 4
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+	if [[ $FLL_BUILD_SOURCE_REL ]]; then
+		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+		mkdir -vp "$FLL_BUILD_SOURCE"/{cdrom,chroot,kernel}
+	fi
 else
 	# must provide --buildarea or FLL_BUILD_AREA
 	# there is no sane default
@@ -454,10 +458,11 @@ rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 virtfs umount
 
 #################################################################
+#		quit now?					#
+#################################################################
 if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
 	exit 0
 fi
-#################################################################
 
 #################################################################
 #		compress fs					#
@@ -472,7 +477,8 @@ make_fll_iso
 #################################################################
 #		get sources					#
 #################################################################
-[[ $FLL_SOURCE_REL ]] && sources
+if [[ $FLL_BUILD_SOURCE_REL ]]; then
+	fetch_source_code
+fi
 
 exit 0
-

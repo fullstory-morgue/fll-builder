@@ -192,6 +192,37 @@ EOF
 esac
 }
 
+install_debs_from_dir() {
+	local DEBS DEBDIR=$1
+
+	[[ -d $DEBDIR ]] || return 1
+
+	pushd "$DEBDIR" >/dev/null
+		apt-ftparchive packages . > Packages
+	popd >/dev/null
+
+	if [[ -s $DEBDIR/Packages ]]; then
+		DEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $DEBDIR/Packages)
+		if [[ -z $DEBS ]]; then
+			echo "Failed to install debian packages at $DEBDIR"
+			return 1
+		fi
+	else
+		echo "Failed to install debian packages from $DEBDIR"
+		return 1
+	fi
+
+	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+
+	echo "deb file://${DEBDIR//$FLL_BUILD_CHROOT/} ./" \
+		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+
+	chroot_exec apt-get update
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$DEBS"
+
+	return $?
+}
+
 install_linux_kernel() {
 	local KZIP=$1 KTYPE KDIR KDEBS
 
@@ -219,27 +250,15 @@ install_linux_kernel() {
 			cp "$KZIP" "$KDIR"/kernel.zip
 			;;
 		"url")
-			wget -N -T10 "$KZIP" -O "$KDIR"/kernel.zip
+			wget -T3 "$KZIP" -O "$KDIR"/kernel.zip
 			;;
 	esac
 
 	pushd "$KDIR" >/dev/null
-		if unzip kernel.zip; then
-			find . -maxdepth 1 -type f ! -name '*.deb' -exec rm -vf {} \;
-			apt-ftparchive packages . > Packages
-		fi
-	
+		unzip kernel.zip
 	popd >/dev/null
 
-	if [[ -f $KDIR/Packages ]]; then
-		KDEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $KDIR/Packages)
-		[[ $KDEBS ]] || return 1
-	fi
-
-	echo "deb file://${KDIR//$FLL_BUILD_CHROOT/} ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
-	
-	chroot_exec apt-get update
-	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$KDEBS"
+	install_debs_from_dir "$KDIR"
 
 	for kernel in "$FLL_BUILD_CHROOT"/boot/vmlinuz-*; do
 		[[ -f $kernel ]] || continue
@@ -255,13 +274,13 @@ install_linux_kernel() {
 			/usr/src/linux-$kernel/Documentation
 		chroot_exec ln -vs vmlinuz-$kernel /boot/vmlinuz
 		chroot_exec ln -vs initrd.img-$kernel /boot/miniroot.gz
+		# save kernel.zip if building source iso
+		if [[ $FLL_BUILD_SOURCE_REL ]]; then
+			cp -v "$KDIR"/kernel.zip "$FLL_BUILD_SOURCE_REL"/kernel/kernel-$kernel.zip
+		fi
 	done
 
-	if [[ $FLL_SOURCE_REL ]]; then
-		FLL_KERNEL_SOURCE="$KDIR"
-	else
-		rm -rf "$KDIR"
-	fi
+	rm -vrf "$KDIR"
 }
 
 make_compressed_image() {
@@ -330,19 +349,22 @@ make_fll_iso() {
 	fi
 }
 
-sources() {
-	# download source packages used in ISO creation, dump into $FLL_BUILD_ISO_OUTPUT/src/chroot|cdrom_root|kernel
-	# XXX TODO: get packages required for cdrom root creation
+fetch_source_code() {
+	# download source packages used in ISO creation
+	# dump into $FLL_BUILD_SOURCE/{cdrom,chroot,kernel}
+	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
 
-	# get kernel source package
-	mv "$FLL_KERNEL_SOURCE" "$FLL_BUILD_ISO_OUTPUT"/src/kernel
-
+	# XXX: decide on best way to create the list
 	# get chroot source packages
-	chroot_exec mkdir -p /src/chroot
-	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > /src/chroot/pkg_sources.txt
-	chroot_exec pushd /src/chroot/; apt-get source --download-only $(cat pkg_sources.txt); popd
-	mv "$FLL_BUILD_RESULT"/src "$FLL_BUILD_ISO_OUTPUT"
+	chroot_exec dpkg -l | grep ^ii | awk '{ print $2"="$3 }' > "$PKGLIST"
 
+	# XXX: get packages required for cdrom root creation
+	# XXX: don't forget busybox-* and live-initrd-*
+
+	# XXX: mv saved package list out and download via host system
+
+	rm -vf "$PKGLIST"
+}
 
 # equivalent fn grabbed from live-package - for reference only
 #Sources ()
@@ -371,11 +393,6 @@ sources() {
 # 		mv "${LIVE_CHROOT}"/"${SOURCE}"_* "${LIVE_ROOT}"/source/"${LETTER}"/"${SOURCE}"
 # 	done
 # }
-
-
-
-
-}
 
 virtfs() {
 	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
