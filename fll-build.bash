@@ -142,7 +142,10 @@ fi
 DPKG_ARCH=$(dpkg --print-installation-architecture)
 
 # Allow lazy development and testing
-[[ -s ./debian/changelog ]] && FLL_BUILD_BASE="."
+FLL_BUILD_BASE=$(dirname $0)
+if [[ ! -f  "$FLL_BUILD_BASE"/debian/changelog ]]; then
+	unset FLL_BUILD_BASE
+fi
 
 # fll defaults
 if [[ -r $FLL_BUILD_BASE/etc/fll-builder/distro ]]; then
