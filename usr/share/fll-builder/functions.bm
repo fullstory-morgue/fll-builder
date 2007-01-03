@@ -205,8 +205,8 @@ install_debs_from_dir() {
 	popd >/dev/null
 
 	if [[ -s $DEBDIR/Packages ]]; then
-		DEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $DEBDIR/Packages)
-		if [[ -z $DEBS ]]; then
+		DEBS=( $(sed -n 's/^Package: \(.\+\)/\1/p' $DEBDIR/Packages) )
+		if [[ -z ${DEBS[@]} ]]; then
 			return 1
 		fi
 	else
@@ -219,7 +219,7 @@ install_debs_from_dir() {
 		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
 	chroot_exec apt-get update
-	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$DEBS"
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install ${DEBS[@]}
 
 	return $?
 }
@@ -358,8 +358,11 @@ fetch_source_code() {
 	# dump into $FLL_BUILD_SOURCE/{cdrom,chroot,kernel}
 	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
 	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
+	
+	# ensure we are working with clean sources.list
+	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+	chroot_exec apt-get update
 
-	# XXX: decide on best way to create the list
 	# get chroot source packages
 	chroot_exec COLUMNS=250 dpkg --list | awk '/^[hi]i/{ printf("%s=%s\n", $2, $3) }' > "$CHROOTPKGLIST"
 	chroot_exec apt-get source --download-only --simulate $(< $CHROOTPKGLIST)

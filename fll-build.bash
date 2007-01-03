@@ -436,6 +436,15 @@ pushd "$FLL_BUILD_RESULT" >/dev/null
 popd >/dev/null
 
 #################################################################
+#		get sources					#
+#################################################################
+if [[ $FLL_BUILD_SOURCE_REL ]]; then
+	fetch_source_code
+	# XXX: make_fll_source_iso
+fi
+
+
+#################################################################
 #		unpatch chroot					#
 #################################################################
 chroot_exec apt-get clean
@@ -482,13 +491,5 @@ make_compressed_image
 #		create iso					#
 #################################################################
 make_fll_iso
-
-#################################################################
-#		get sources					#
-#################################################################
-if [[ $FLL_BUILD_SOURCE_REL ]]; then
-	fetch_source_code
-	# XXX: make_fll_source_iso
-fi
 
 exit 0
