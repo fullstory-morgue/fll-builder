@@ -396,7 +396,7 @@ done
 #################################################################
 cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
 
-install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
 
 #################################################################
 #		preseed chroot					#
@@ -445,6 +445,9 @@ popd >/dev/null
 #		get sources					#
 #################################################################
 if [[ $FLL_BUILD_SOURCE_REL ]]; then
+	# XXX: TODO: add a --print-uris option, so we can create
+	#            the source image on remote non-debian 
+	#            servers.
 	fetch_source_code
 fi
 
@@ -507,7 +510,9 @@ make_compressed_image
 #################################################################
 make_fll_iso
 
-# XXX: TODO. maybe include in make_fll_iso function?
+# XXX: TODO. add an option to keep the unpacked sources tree for 
+#            further processing (perhaps also omitting the ISO
+#            creation.
 if [[ $FLL_BUILD_SOURCE_REL ]]; then
 	make_fll_source_iso
 fi
