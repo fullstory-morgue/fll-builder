@@ -340,9 +340,10 @@ make_fll_iso() {
 		-o "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" \
 		"$FLL_BUILD_RESULT"
 	
-	# generate md5sums	
-	md5sum -b "$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME" > \
-		"$FLL_BUILD_ISO_OUTPUT"/"$FLL_ISO_NAME".MD5
+	# generate md5sums
+	pushd "$FLL_BUILD_ISO_OUTPUT" >/dev/null
+		md5sum -b "$FLL_ISO_NAME" > "$FLL_ISO_NAME".MD5
+	popd >/dev/null
 	
 	# if started as user, apply user ownership to output (based on --uid)
 	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
