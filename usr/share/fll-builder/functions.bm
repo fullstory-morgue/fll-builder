@@ -362,6 +362,8 @@ fetch_source_code() {
 	
 	# XXX: version numbers should not be required due to the design of our build process
 	# XXX: damned kernel packages have no source, filter KVERS
+	# chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
+	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
@@ -373,10 +375,10 @@ fetch_source_code() {
  
  		[[ ${SOURCE:0:3} == lib ]] && LETTER=${SOURCE:0:4} || LETTER=${SOURCE:0:1}
  
- 		mkdir -p "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
+ 		mkdir -vp "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
  
  		# Move sources
- 		mv "$FLL_BUILD_CHROOT"/"$SOURCE"* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
+ 		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
  	done
 
 	rm -vf "$PKGLIST"
