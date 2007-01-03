@@ -411,7 +411,7 @@ make_fll_source_iso() {
 	
 	# generate md5sums
 	pushd "$FLL_BUILD_ISO_OUTPUT" >/dev/null
-		md5sum -b "$FLL_BUILD_SOURCE" > "${FLL_BUILD_SOURCE}.MD5"
+		md5sum -b "$FLL_BUILD_ISO_OUTPUT" > "${FLL_BUILD_SOURCE}.MD5"
 	popd >/dev/null
 }
 
