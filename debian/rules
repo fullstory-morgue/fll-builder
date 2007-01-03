@@ -17,3 +17,5 @@ install/fll-builder::
 		debian/fll-builder/etc/fll-builder/packages.conf
 	install -D -m 0644 etc/default/distro \
 		debian/fll-builder/etc/fll-builder/distro
+	cp -a usr/share/fll-builder/templates \
+		debian/fll-builder/usr/share/fll-builder/
