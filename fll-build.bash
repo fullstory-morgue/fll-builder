@@ -55,28 +55,30 @@ print_help() {
 Usage: $SELF [options]
 
 Options:
-  -b|--buildarea	Path to temporary build area for live-cd chroot
+  -b|--buildarea		Path to temporary build area for live-cd chroot
 
-  -c|--configfile	Path to alternate configfile
-  (default: /etc/fll-builder/fll-build.conf)
+  -c|--configfile		Path to alternate configfile
+  				(default: /etc/fll-builder/fll-build.conf)
 
-  -C|--copyright	Copyright information
+  -C|--copyright		Copyright information
 
-  -d|--debug		Debug shell code execution (set -x)
+  -d|--debug			Debug shell code execution (set -x)
 
-  -h|--help		Information about using this program
+  -h|--help			Information about using this program
 
-  -k|--kernel		URL to kernel zip package
+  -k|--kernel			URL to kernel zip package
 
-  -n|--chrootonly	Quit after preparing chroot
+  -n|--chrootonly		Quit after preparing chroot
 
-  -o|--output		ISO output dir
+  -o|--output			ISO output dir
 
-  -p|--preserve		Preserve build area when finished
+  -p|--preserve			Preserve build area when finished
 
-  -P|--packages		Path to alternative packages file
+  -P|--packages			Path to alternative packages file
 
-  -s|--source-rel	Retrieve all source packages for the release
+  -s|--source-rel		Retrieve all source packages for the release
+
+  -S|--squashfs-sortfile 	Path to squashfs sort file
 
 EOF
 }
@@ -179,8 +181,8 @@ DEBOOTSTRAP_DIST="sid"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:Cdhk:no:pP:s \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source-rel,uid: \
+		--options b:c:Cdhk:no:pP:sS: \
+		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source-rel,squashfs-sortfile:,uid: \
 		-- $@
 )
 
@@ -229,6 +231,10 @@ while true; do
 			;;
 		-s|--source-rel)
 			FLL_SOURCE_REL=1
+			;;
+		-S|--squashfs-sortfile)
+			shift
+			FLL_BUILD_SQUASHFS_SORTFILE=$1
 			;;
 		--uid)
 			shift
@@ -319,12 +325,12 @@ cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 #################################################################
 #		patch and prepare chroot			#
 #################################################################
-cat_file chroot_policy		/usr/sbin/policy-rc.d
-cat_file debian_chroot		/etc/debian_chroot
-cat_file fstab			/etc/fstab
-cat_file interfaces		/etc/network/interfaces
-cat_file apt_sources_tmp	/etc/apt/sources.list
-cat_file apt_conf		/etc/apt/apt.conf
+cat_file chroot_policy		"$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
+cat_file debian_chroot		"$FLL_BUILD_CHROOT"/etc/debian_chroot
+cat_file fstab			"$FLL_BUILD_CHROOT"/etc/fstab
+cat_file interfaces		"$FLL_BUILD_CHROOT"/etc/network/interfaces
+cat_file apt_sources_tmp	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
+cat_file apt_conf		"$FLL_BUILD_CHROOT"/etc/apt/apt.conf
 
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
@@ -370,7 +376,7 @@ done
 #################################################################
 #		install kernel and extra modules		#
 #################################################################
-cat_file kernelimg	/etc/kernel-img.conf
+cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
 
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
@@ -385,9 +391,9 @@ if exists_in_chroot /usr/sbin/fix-fonts; then
 	chroot_exec fix-fonts
 fi
 
-cat_file hosts		/etc/hosts
-cat_file apt_sources	/etc/apt/sources.list
-cat_file sudoers	/etc/sudoers
+cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
+cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
+cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
 
 #################################################################
 #		prepare result staging directory		#
@@ -422,9 +428,9 @@ popd >/dev/null
 chroot_exec apt-get clean
 
 # add version marker, this is the exact time stamp for our package list
-printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
 	> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-printf " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
+echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
 	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 
 remove_from_chroot /etc/kernel-img.conf
@@ -433,8 +439,8 @@ remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /etc/apt/apt.conf
-#remove_from_chroot /boot/miniroot.gz
-#remove_from_chroot "/boot/initrd.img*"
+remove_from_chroot /boot/miniroot.gz
+remove_from_chroot "/boot/initrd.img*"
 remove_from_chroot "/etc/ssh/ssh_host_*key*"
 remove_from_chroot "/var/lib/dpkg/*-old"
 remove_from_chroot "/var/cache/debconf/*-old"

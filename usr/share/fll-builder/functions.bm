@@ -51,7 +51,7 @@ exists_in_chroot() {
 }
 
 cat_file() {
-	local FILE="$1" DEST="${FLL_BUILD_CHROOT}${2}"
+	local FILE="$1" DEST="$2"
 
 	[[ $1 && $2 ]] || return 1
 
@@ -165,6 +165,15 @@ ramdisk = mklive-initrd
 EOF
 			;;
 
+		sort_iso)
+			cat > "$DEST" \
+<<EOF
+$FLL_BUILD_RESULT/boot/grub/* 111111
+$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
+EOF
+			;;
+
 		sudoers)
 			[[ -f "$DEST" ]] || return 1
 			# append
@@ -257,8 +266,11 @@ install_linux_kernel() {
 
 make_compressed_image() {
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_AREA squashfs-exclude.XXXXX)
-	# XXX: make room for a sort list and exclude list
-
+	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
+	
+	# XXX: TODO
+	# XXX: we need an input exclusions list with wildcards to be
+	# expanded by some magic and written to the final sort file.
 	cat > "$SQUASHFSEXCLUDEFILE" \
 <<EOF
 $FLL_BUILD_CHROOT/.*
@@ -271,8 +283,9 @@ $FLL_BUILD_CHROOT/tmp/*
 $FLL_BUILD_CHROOT/var/tmp/*
 EOF
 
-	# -info is a bit too verbose
-	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
+	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
+		MKSQUASHFSOPTS="$MKSQUASHFSOPTS -sort $FLL_BUILD_SQUASHFS_SORTFILE"
+	fi
 
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
@@ -282,12 +295,7 @@ EOF
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_AREA sortlist.XXXXX)
 
-	cat > "$ISOSORTLIST" \
-<<EOF
-$FLL_BUILD_RESULT/boot/grub/* 111111
-$FLL_BUILD_RESULT/boot/* 111110
-${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
-EOF
+	cat_file sort_iso "$ISOSORTLIST"
 
 	# set default ISO name
 	case $DEBOOTSTRAP_ARCH in
