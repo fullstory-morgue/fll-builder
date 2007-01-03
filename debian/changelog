@@ -34,11 +34,12 @@ fll-builder (0.0.1) UNRELEASED; urgency=low
   * implement make_fll_source_iso().
   * add trivial source repository index to fetch_source_code().
   * add it, hu and ko to locales preseeding.
+  * add gparted to FLL_PACKAGES_DISTRO_EXTRA, thannks to kalium for noticing.
 
   [ Andreas Weber ]
   * added sux to the package list.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed,  3 Jan 2007 18:01:52 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  4 Jan 2007 00:19:48 +0100
 
 fll-builder (0.0.0) UNRELEASED; urgency=low
 
