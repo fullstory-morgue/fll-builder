@@ -51,7 +51,8 @@ exists_in_chroot() {
 }
 
 cat_file() {
-	local FILE="$1" DEST="$2"
+	local FILE="$1"
+	local DEST="$2"
 
 	[[ $1 && $2 ]] || return 1
 
@@ -193,8 +194,9 @@ esac
 }
 
 install_debs_from_dir() {
-	local DEBS DEBDIR="$1"
-	local CHROOTDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
+	local DEBS
+	local DEBDIR="$1"
+	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
 
 	[[ -d $DEBDIR ]] || return 1
 
@@ -213,7 +215,7 @@ install_debs_from_dir() {
 
 	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
-	echo "deb file://$CHROOTDIR ./" \
+	echo "deb file://$CHROOTDEBDIR ./" \
 		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
 	chroot_exec apt-get update
@@ -223,7 +225,10 @@ install_debs_from_dir() {
 }
 
 install_linux_kernel() {
-	local KZIP=$1 KTYPE KDIR KDEBS
+	local KZIP=$1
+	local KTYPE
+	local KDIR
+	local KDEBS
 
 	[[ $KZIP ]] || return 1
 
@@ -352,12 +357,12 @@ fetch_source_code() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{cdrom,chroot,kernel}
 	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
-	local CHROOTLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
+	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
 
 	# XXX: decide on best way to create the list
 	# get chroot source packages
-	chroot_exec COLUMNS=250 dpkg --list | awk '/^[hi]i/{ printf("%s=%s\n", $2, $3) }' > "$CHROOTLIST"
-	chroot_exec apt-get source --download-only --simulate $(< $CHROOTLIST)
+	chroot_exec COLUMNS=250 dpkg --list | awk '/^[hi]i/{ printf("%s=%s\n", $2, $3) }' > "$CHROOTPKGLIST"
+	chroot_exec apt-get source --download-only --simulate $(< $CHROOTPKGLIST)
 
 	# XXX: get packages required for cdrom root creation
 	# XXX: don't forget busybox-* and live-initrd-*
@@ -396,7 +401,8 @@ fetch_source_code() {
 # }
 
 virtfs() {
-	local ACTION="$1" PROC="$FLL_BUILD_CHROOT"/proc
+	local ACTION="$1"
+	local PROC="$FLL_BUILD_CHROOT"/proc
 
 	[[ $ACTION && $PROC ]] || return 1
 	[[ -d $PROC ]] || return 0
