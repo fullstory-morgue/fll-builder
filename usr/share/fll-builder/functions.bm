@@ -91,10 +91,10 @@ EOF
 			cat > "$DEST" \
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid main
-#deb-src $FLL_BUILD_DEBIANMIRROR sid main
+deb-src $FLL_BUILD_DEBIANMIRROR sid main
 
 deb $FLL_BUILD_FLLMIRROR sid main fix.main
-#deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
+deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
 EOF
 			;;
 
