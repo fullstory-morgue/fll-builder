@@ -383,7 +383,7 @@ fetch_source_code() {
  		mkdir -vp "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
  
  		# Move sources
- 		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
+ 		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"_* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
  	done
 
 	rm -vf "$PKGLIST"
