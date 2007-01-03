@@ -470,6 +470,8 @@ remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /etc/apt/apt.conf
+
+# these could be excluded at mksquashfs time
 remove_from_chroot /boot/miniroot.gz
 remove_from_chroot "/boot/initrd.img*"
 remove_from_chroot "/etc/ssh/ssh_host_*key*"
