@@ -501,7 +501,7 @@ make_compressed_image
 #################################################################
 make_fll_iso
 
-# XXX: TODO
+# XXX: TODO. maybe include in make_fll_iso function?
 #if [[ $FLL_BUILD_SOURCE_REL ]]; then
 #	make_fll_source_iso
 #fi
