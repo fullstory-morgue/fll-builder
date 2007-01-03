@@ -362,8 +362,10 @@ fetch_source_code() {
 
 	# get chroot source packages
 	# XXX: damned kernel packages have no source, filter KVERS
+	#chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
+	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
-		'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
+		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	chroot_exec apt-get source --download-only --simulate $(< $CHROOTPKGLIST)
 
 	# XXX: get packages required for cdrom root creation
