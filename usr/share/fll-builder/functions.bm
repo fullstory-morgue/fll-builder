@@ -193,7 +193,8 @@ esac
 }
 
 install_debs_from_dir() {
-	local DEBS DEBDIR=$1
+	local DEBS DEBDIR="$1"
+	local CHROOTDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
 
 	[[ -d $DEBDIR ]] || return 1
 
@@ -204,17 +205,15 @@ install_debs_from_dir() {
 	if [[ -s $DEBDIR/Packages ]]; then
 		DEBS=$(sed -n 's/^Package: \(.\+\)/\1/p' $DEBDIR/Packages)
 		if [[ -z $DEBS ]]; then
-			echo "Failed to install debian packages at $DEBDIR"
 			return 1
 		fi
 	else
-		echo "Failed to install debian packages from $DEBDIR"
 		return 1
 	fi
 
 	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
-	echo "deb file://${DEBDIR//$FLL_BUILD_CHROOT/} ./" \
+	echo "deb file://$CHROOTDIR ./" \
 		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
 	chroot_exec apt-get update
