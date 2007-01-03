@@ -290,7 +290,7 @@ if [[ $FLL_BUILD_AREA ]]; then
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
 		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-		mkdir -vp "$FLL_BUILD_SOURCE"/{cdrom,chroot,kernel}
+		mkdir -vp "$FLL_BUILD_SOURCE"/{cdrom,source,kernel}
 	fi
 else
 	# must provide --buildarea or FLL_BUILD_AREA
