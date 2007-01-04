@@ -7,24 +7,16 @@ SELF="fll-build"
 #################################################################
 #		Synopsis					#
 #################################################################
-# fll-build(8): build script for a debian 'sid' live linux cd
-# that uses code developed by members of the F.U.L.L.S.T.O.R.Y
-# project to enhance hardware detection and linux experience.
-#
-# F.U.L.L.S.T.O.R.Y Project Homepage:
-# http://developer.berlios.de/projects/fullstory
-#
-# F.U.L.L.S.T.O.R.Y Subversion Archive:
-# svn://svn.berlios.de/fullstory/trunk
-# http://svn.berlios.de/svnroot/repos/fullstory
-# http://svn.berlios.de/viewcvs/fullstory (viewcvs)
-# http://svn.berlios.de/wsvn/fullstory (websvn)
+# fll-build(8): build script for a debian 'sid' live linux cd	#
+# that uses code developed by members of the F.U.L.L.S.T.O.R.Y	#
+# project to enhance hardware detection and linux experience.	#
+#################################################################
 
 print_copyright() {
 	cat \
 <<EOF
 
-Copyright (C) 2006 Sidux Crew, http://www.sidux.com
+Copyright (C) 2006 F.U.L.L.S.T.O.R.Y Project
 	Stefan Lippers-Hollmann <s.l-h@gmx.de>
 	Niall Walsh <niallwalsh@users.berlios.de>
 	Kel Modderman <kel@otaku42.de>
@@ -43,6 +35,15 @@ You should have received a copy of the GNU General Public License
 along with this package; if not, write to the Free Software 
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, 
 MA 02110-1301, USA.
+
+F.U.L.L.S.T.O.R.Y Project Homepage:
+http://developer.berlios.de/projects/fullstory
+
+F.U.L.L.S.T.O.R.Y Subversion Archive:
+svn://svn.berlios.de/fullstory/trunk
+http://svn.berlios.de/svnroot/repos/fullstory
+http://svn.berlios.de/viewcvs/fullstory (viewcvs)
+http://svn.berlios.de/wsvn/fullstory (websvn)
 
 On Debian GNU/Linux systems, the text of the GPL license can be
 found in /usr/share/common-licenses/GPL.
