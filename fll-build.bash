@@ -161,17 +161,6 @@ FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 
-#################################################################
-#		source configfiles and functions.sh		#
-#################################################################
-source "$FLL_BUILD_DEFAULTS"
-source "$FLL_BUILD_CONFIG"
-source "$FLL_BUILD_FUNCTIONS"
-source "$FLL_BUILD_PACKAGELIST"
-
-#################################################################
-#		more constant variable declarations		#
-#################################################################
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
 FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
@@ -183,6 +172,14 @@ DEBOOTSTRAP_MIRROR="http://ftp.us.debian.org/debian"
 DEBOOTSTRAP_FLAVOUR="minimal"
 DEBOOTSTRAP_ARCH="$DPKG_ARCH"
 DEBOOTSTRAP_DIST="sid"
+
+#################################################################
+#		source configfiles and functions.sh		#
+#################################################################
+source "$FLL_BUILD_DEFAULTS"
+source "$FLL_BUILD_CONFIG"
+source "$FLL_BUILD_FUNCTIONS"
+source "$FLL_BUILD_PACKAGELIST"
 
 #################################################################
 #		parse command line				#
