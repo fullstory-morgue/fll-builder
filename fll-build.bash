@@ -21,6 +21,15 @@ Copyright (C) 2006 F.U.L.L.S.T.O.R.Y Project
 	Niall Walsh <niallwalsh@users.berlios.de>
 	Kel Modderman <kel@otaku42.de>
 
+F.U.L.L.S.T.O.R.Y Project Homepage:
+http://developer.berlios.de/projects/fullstory
+
+F.U.L.L.S.T.O.R.Y Subversion Archive:
+svn://svn.berlios.de/fullstory/trunk
+http://svn.berlios.de/svnroot/repos/fullstory
+http://svn.berlios.de/viewcvs/fullstory (viewcvs)
+http://svn.berlios.de/wsvn/fullstory (websvn)
+
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
@@ -35,15 +44,6 @@ You should have received a copy of the GNU General Public License
 along with this package; if not, write to the Free Software 
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, 
 MA 02110-1301, USA.
-
-F.U.L.L.S.T.O.R.Y Project Homepage:
-http://developer.berlios.de/projects/fullstory
-
-F.U.L.L.S.T.O.R.Y Subversion Archive:
-svn://svn.berlios.de/fullstory/trunk
-http://svn.berlios.de/svnroot/repos/fullstory
-http://svn.berlios.de/viewcvs/fullstory (viewcvs)
-http://svn.berlios.de/wsvn/fullstory (websvn)
 
 On Debian GNU/Linux systems, the text of the GPL license can be
 found in /usr/share/common-licenses/GPL.
