@@ -2,6 +2,7 @@ Source: fll-builder
 Section: misc
 Priority: optional
 Maintainer: Kel Modderman <kel@otaku42.de>
+Uploaders: Stefan Lippers-Hollmann <s.l-h@gmx.de>
 Build-Depends: cdbs, debhelper (>= 5)
 Standards-Version: 3.7.2
 
@@ -16,4 +17,12 @@ Package: fll-builder
 Architecture: all
 Depends: apt-utils, cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools, su-me, unzip, wget
 Description: scripts to build a live-cd based on the FULLSTORY project code
- <insert long description, indented with spaces>
+ The purpose of fll-builder is to build a modern linux operating system
+ from the rich software provided by the unstable branch of the Debian
+ GNU/Linux project (codename: sid). 
+ .
+ The product of fll-builder contains additional software from the
+ F.U.L.L.S.T.O.R.Y project that enhances the operating system's ability to
+ adapt to a diverse range of hardware configurations. 
+ .
+ Homepage: http://developer.berlios.de/projects/fullstory 
