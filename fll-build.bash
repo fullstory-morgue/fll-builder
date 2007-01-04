@@ -17,9 +17,6 @@ print_copyright() {
 <<EOF
 
 Copyright (C) 2006 F.U.L.L.S.T.O.R.Y Project
-	Stefan Lippers-Hollmann <s.l-h@gmx.de>
-	Niall Walsh <niallwalsh@users.berlios.de>
-	Kel Modderman <kel@otaku42.de>
 
 F.U.L.L.S.T.O.R.Y Project Homepage:
 http://developer.berlios.de/projects/fullstory
