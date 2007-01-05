@@ -405,11 +405,6 @@ if exists_in_chroot /usr/sbin/fix-fonts; then
 	chroot_exec fix-fonts
 fi
 
-# create final config files
-cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
-cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
-cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
-
 #################################################################
 #		prepare result staging directory		#
 #################################################################
@@ -476,6 +471,11 @@ remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /etc/apt/apt.conf
+
+# create final config files
+cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
+cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
+cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
 
 # these could be excluded at mksquashfs time
 remove_from_chroot /boot/miniroot.gz
