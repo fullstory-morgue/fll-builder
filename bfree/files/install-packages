@@ -90,7 +90,6 @@ DISTRO_XORG="
   xserver-xorg-input-all
   xserver-xorg-video-all
   xsession-sidux
-  xsession-initscript-sidux
   rootshell
   configure-mouse
   configure-screenres
