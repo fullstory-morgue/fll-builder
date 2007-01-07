@@ -400,9 +400,14 @@ install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
 # init 5 by default
 chroot_exec sed -i s/id\:[0-6]\:initdefault\:/id\:5\:initdefault\:/ /etc/inittab
 
-# run fix-fonts, if installed in chroot
+# run fix-fonts
 if exists_in_chroot /usr/sbin/fix-fonts; then
 	chroot_exec fix-fonts
+fi
+
+# use most as PAGER
+if exists_in_chroot /usr/bin/most; then
+	chroot_exec update-alternatives --set pager /usr/bin/most
 fi
 
 #################################################################
