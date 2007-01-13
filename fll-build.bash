@@ -283,11 +283,13 @@ fi
 
 # temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
-	mkdir -p "$FLL_BUILD_AREA" || error 4
-	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.CHROOT.XXXXX)
-	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.RESULT.XXXXX)
+	mkdir -p "$FLL_BUILD_AREA"
+	# keep base directory "safe", create a hive of temporary dirs that get nuked on exit
+	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.TEMP.XXXXX)
+	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.CHROOT.XXXXX)
+	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.RESULT.XXXXX)
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
-		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_AREA -d $SELF.SOURCE.XXXXX)
+		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.SOURCE.XXXXX)
 		mkdir -vp "$FLL_BUILD_SOURCE"/{source,kernel}
 	fi
 else
@@ -313,7 +315,7 @@ fi
 
 # default iso output
 if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
-	FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA/.."
+	FLL_BUILD_ISO_OUTPUT="$FLL_BUILD_AREA"
 fi
 
 if [[ ! -d $FLL_BUILD_ISO_OUTPUT ]]; then
