@@ -6,13 +6,11 @@ fll-builder (1.0.2) UNRELEASED; urgency=low
   * Use most as PAGER if present in chroot.
   * Clean /var/run and /var/log of files.
   * Bugfix switch labels of CHROOT and RESULT mktemp'd chroots.
-  * Use $* instead of $@ in chroot_exec() to avoid shell destroying commands
-    with spaces in them.
 
   [ Stefan Lippers-Hollmann ]
   * add build-essential.
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 14 Jan 2007 00:29:13 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 14 Jan 2007 00:40:49 +1000
 
 fll-builder (1.0.1) unstable; urgency=low
 

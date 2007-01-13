@@ -398,10 +398,10 @@ install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
 #		preseed chroot					#
 #################################################################
 # hack inittab: init 5 by default, "immutable" bash login shells
-chroot_exec sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
+sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 	-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
 	-e 's#^\([0-9]\)\(:[0-9]\+:respawn:\).\+#\1\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
-	/etc/inittab
+	"$FLL_BUILD_CHROOT"/etc/inittab
 
 # run fix-fonts
 if exists_in_chroot /usr/sbin/fix-fonts; then

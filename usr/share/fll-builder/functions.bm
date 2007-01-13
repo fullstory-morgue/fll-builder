@@ -14,7 +14,7 @@ chroot_exec() {
 		DEBIAN_FRONTEND="noninteractive" \
 		DEBIAN_PRIORITY="critical" \
 		DEBCONF_NOWARNINGS="yes" \
-		$*
+		$@
 	
 	return $?
 }
