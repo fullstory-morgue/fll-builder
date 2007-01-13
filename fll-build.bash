@@ -284,8 +284,8 @@ fi
 # temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA" || error 4
-	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.RESULT.XXXXX)
-	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.CHROOT.XXXXX)
+	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.CHROOT.XXXXX)
+	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_AREA -d $SELF.RESULT.XXXXX)
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
 		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_AREA -d $SELF.SOURCE.XXXXX)
 		mkdir -vp "$FLL_BUILD_SOURCE"/{source,kernel}
