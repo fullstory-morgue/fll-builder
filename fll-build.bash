@@ -462,6 +462,8 @@ chroot_exec apt-get clean
 
 # clean apt lists
 find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
+find "$FLL_BUILD_CHROOT"/var/log/ -type f -exec rm -vf {} \;
+find "$FLL_BUILD_CHROOT"/var/run/ -type f -exec rm -vf {} \;
 
 # add version marker, this is the exact time stamp for our package list
 echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \

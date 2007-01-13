@@ -292,7 +292,7 @@ install_linux_kernel() {
 make_compressed_image() {
 	local SQUASHFSEXCLUDELIST=$(mktemp -p $FLL_BUILD_AREA squashfs-list.XXXXX)
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_AREA squashfs-exclude.XXXXX)
-	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
+	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress -info"
 	
 	# XXX: TODO
 	# XXX: we need an input exclusions list with wildcards to be
