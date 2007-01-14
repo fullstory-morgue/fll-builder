@@ -4,12 +4,15 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * NOT RELEASED YET
 
   [ Kel Modderman ]
-  * Hack inittab to allow "immutable" back login shells on the tty's instead
+  * Hack inittab to allow "immutable" bash login shells on the tty's instead
     of mgetty.
   * Always preserve FLL_BUILD_AREA, create a hive of temp directories on top
     of this given location.
+  * Define source iso name in source iso making function, not elsewhere.
+  * Chown build area according to UID that initiated build.
+  * Source iso neglected to include kernel directory.
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 14 Jan 2007 09:36:29 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 14 Jan 2007 10:34:07 +1000
 
 fll-builder (1.0.2) unstable; urgency=low
 

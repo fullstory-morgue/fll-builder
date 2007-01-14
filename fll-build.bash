@@ -173,6 +173,9 @@ DEBOOTSTRAP_FLAVOUR="minimal"
 DEBOOTSTRAP_ARCH="$DPKG_ARCH"
 DEBOOTSTRAP_DIST="sid"
 
+# store current UID, override later if executed by !root
+FLL_BUILD_OUTPUT_UID=$UID
+
 #################################################################
 #		source configfiles and functions.sh		#
 #################################################################
@@ -284,6 +287,9 @@ fi
 # temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA"
+	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
+		chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" "$FLL_BUILD_AREA"
+	fi
 	# keep base directory "safe", create a hive of temporary dirs that get nuked on exit
 	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.TEMP.XXXXX)
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.CHROOT.XXXXX)
