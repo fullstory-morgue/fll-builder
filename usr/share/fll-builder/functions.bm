@@ -292,7 +292,7 @@ install_linux_kernel() {
 make_compressed_image() {
 	local SQUASHFSEXCLUDELIST=$(mktemp -p $FLL_BUILD_TEMP squashfs-list.XXXXX)
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude.XXXXX)
-	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress -info"
+	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress"
 	
 	# XXX: TODO
 	# XXX: we need an input exclusions list with wildcards to be
@@ -306,6 +306,7 @@ EOF
 		MKSQUASHFSOPTS="$MKSQUASHFSOPTS -sort $FLL_BUILD_SQUASHFS_SORTFILE"
 	fi
 
+	echo "> Create squashfs."
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" $MKSQUASHFSOPTS
 	popd >/dev/null
@@ -330,6 +331,7 @@ make_fll_iso() {
 	esac
 
 	# make the iso
+	echo "> Create ISO."
 	genisoimage -v -pad -l -r -J \
 		-V "$FLL_DISTRO_NAME_UC" \
 		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD" \
@@ -341,6 +343,7 @@ make_fll_iso() {
 		"$FLL_BUILD_RESULT"
 	
 	# generate md5sums
+	echo "> Calculate md5sums for the resulting ISO."
 	pushd "$FLL_BUILD_ISO_OUTPUT" >/dev/null
 		md5sum -b "$FLL_ISO_NAME" > "$FLL_ISO_NAME".MD5
 	popd >/dev/null
@@ -412,6 +415,7 @@ make_fll_source_iso() {
 	esac
 
 	# make the iso
+	echo "> Create source ISO."
 	genisoimage -v -pad -l -r -J \
 		-V "${FLL_DISTRO_NAME_UC}-SOURCE" \
 		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD SOURCE" \
@@ -420,6 +424,7 @@ make_fll_source_iso() {
 		"$FLL_BUILD_SOURCE"
 	
 	# generate md5sums
+	echo "> Calculate md5sums for the source ISO."
 	pushd "$FLL_BUILD_ISO_OUTPUT" >/dev/null
 		md5sum -b "$FLL_SOURCE_ISO_NAME" > "${FLL_SOURCE_ISO_NAME}.MD5"
 	popd >/dev/null
