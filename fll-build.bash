@@ -461,6 +461,12 @@ fi
 #################################################################
 #		unpatch chroot					#
 #################################################################
+# clean apt cache
+chroot_exec apt-get clean
+
+# clean apt lists
+find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
+
 # clear out bootstrap cache
 rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
 
@@ -468,34 +474,9 @@ rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 
-# clean apt cache
-chroot_exec apt-get clean
-
-# clean apt lists
-find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
-
 # clean /var
 find "$FLL_BUILD_CHROOT"/var/log/ -type f -exec rm -vf {} \;
 find "$FLL_BUILD_CHROOT"/var/run/ -type f -exec rm -vf {} \;
-
-# add version marker, this is the exact time stamp for our package list
-echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
-	> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
-	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-
-# remove hacks/patches unwanted files
-remove_from_chroot /etc/kernel-img.conf
-remove_from_chroot /usr/sbin/policy-rc.d
-remove_from_chroot /etc/debian_chroot
-remove_from_chroot /etc/hosts
-remove_from_chroot /etc/resolv.conf
-remove_from_chroot /etc/apt/apt.conf
-
-# create final config files
-cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
-cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
-cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
 
 # these could be excluded at mksquashfs time
 remove_from_chroot /boot/miniroot.gz
@@ -504,11 +485,30 @@ remove_from_chroot "/etc/ssh/ssh_host_*key*"
 remove_from_chroot "/var/lib/dpkg/*-old"
 remove_from_chroot "/var/cache/debconf/*-old"
 
+# remove used hacks and patches
+remove_from_chroot /etc/kernel-img.conf
+remove_from_chroot /usr/sbin/policy-rc.d
+remove_from_chroot /etc/debian_chroot
+remove_from_chroot /etc/hosts
+remove_from_chroot /etc/resolv.conf
+remove_from_chroot /etc/apt/apt.conf
+
 # remove live-cd mode identifier
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 
-# umount proc
+# umount proc, no more chroot_exec's after this point
 virtfs umount
+
+# create final config files
+cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
+cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
+cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
+
+# add version marker, this is the exact time stamp for our package list
+echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+	> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
+	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 
 #################################################################
 #		quit now?					#
