@@ -193,7 +193,7 @@ EOF
 esac
 }
 
-install_debs_from_dir() {
+chroot_install_debs_from_dir() {
 	local DEBDIR="$1"
 	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
 	local DEBS
@@ -235,7 +235,7 @@ install_local_debs() {
 	
 	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
 
-	install_debs_from_dir "$TMPDEBDIR"
+	chroot_install_debs_from_dir "$TMPDEBDIR"
 
 	rm -vrf "$TMPDEBDIR"	
 }
@@ -283,7 +283,7 @@ install_linux_kernel() {
 		unzip kernel-"$KVERS".zip
 	popd >/dev/null
 
-	install_debs_from_dir "$KDIR"
+	chroot_install_debs_from_dir "$KDIR"
 
 	chroot_exec rm -vf /lib/modules/"$KVERS"/build /lib/modules/"$KVERS"/source
 	chroot_exec ln -vs linux-headers-"$KVERS" /usr/src/linux-"$KVERS"
