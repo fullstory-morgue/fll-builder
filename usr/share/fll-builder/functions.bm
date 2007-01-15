@@ -213,15 +213,17 @@ install_debs_from_dir() {
 		return 1
 	fi
 
+	# hack sources.list
 	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
-
 	echo "deb file://$CHROOTDEBDIR ./" \
 		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
 
 	chroot_exec apt-get update
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install ${DEBS[@]}
 
-	return $?
+	# revert apt and sources.list back to original state
+	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+	chroot_exec apt-get update
 }
 
 install_linux_kernel() {
@@ -362,9 +364,6 @@ fetch_source_code() {
 	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
 	local SOURCE LETTER
 	
-	# ensure we are working with clean sources.list (install_linux_kernel() "taints" it)
-	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
-	
 	# XXX: some packages mysteriously fail to download when =version is suffixed
 	# chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
@@ -373,9 +372,8 @@ fetch_source_code() {
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
+	# distro-defaults originates from fll-builder, which contains the ingredients used to create cd
 	chroot_exec apt-get source --download-only $(< $CHROOTPKGLIST)
-	# XXX: uncomment this one fll-builder has been packaged
-	#chroot_exec apt-get source --download-only fll-builder
 
 	# sort sources (adapted from live-package)
 	for dsc in "$FLL_BUILD_CHROOT"/*.dsc; do

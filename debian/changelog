@@ -10,13 +10,19 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * Define source iso name in source iso making function, not elsewhere.
   * Chown build area according to UID that initiated build.
   * Source iso neglected to include kernel directory.
+  * Clean up install_from_deb_dir(), do extra apt/sources.list cleanup at end
+    of function, don't return a bogus retval.
+  * Cleaned up comment about obtaining source code for fll-builder et al. from
+    fetch_source_code(), distro-defaults being present in chroot ensures that
+    this will happen now that it has been merged into fll-builder source
+    package.
 
   [ Stefan Lippers-Hollmann ]
   * print out that we're about to run mksquashfs, md5sum.
   * mksquashfs -info is to verbose, up to the point where it seriously delays
     the ISO creation, omit it until the progress bar is fixed on amd64.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 14 Jan 2007 18:09:07 +0100
+ -- Kel Modderman <kel@otaku42.de>  Mon, 15 Jan 2007 11:05:44 +1000
 
 fll-builder (1.0.2) unstable; urgency=low
 
