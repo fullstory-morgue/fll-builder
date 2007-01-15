@@ -24,8 +24,9 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * print out that we're about to run mksquashfs, md5sum.
   * mksquashfs -info is to verbose, up to the point where it seriously delays
     the ISO creation, omit it until the progress bar is fixed on amd64.
+  * keep shells open on tty1-6.
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 15 Jan 2007 11:48:53 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 15 Jan 2007 21:41:20 +0100
 
 fll-builder (1.0.2) unstable; urgency=low
 
