@@ -382,6 +382,11 @@ echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_
 #################################################################
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
+# XXX: this hack if FOR TESTING PURPOSES ONLY
+if [[ -d $FLL_BUILD_LOCAL_DEBS ]]; then
+	install_local_debs "$FLL_BUILD_LOCAL_DEBS"
+fi
+
 #################################################################
 #		add live user					#
 #################################################################

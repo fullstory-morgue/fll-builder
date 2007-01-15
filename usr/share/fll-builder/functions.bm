@@ -226,6 +226,20 @@ install_debs_from_dir() {
 	chroot_exec apt-get update
 }
 
+install_local_debs() {
+	# XXX: this hack if FOR TESTING PURPOSES ONLY
+	# no source code for these packages can be fetched
+
+	local LOCDEBDIR="$1"
+	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d localdebs.XXXX)
+	
+	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
+
+	install_debs_from_dir "$TMPDEBDIR"
+
+	rm -vrf "$TMPDEBDIR"	
+}
+
 install_linux_kernel() {
 	local KZIP="$1"
 	local KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d kernel.XXXX)
