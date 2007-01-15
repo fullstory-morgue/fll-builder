@@ -190,6 +190,17 @@ EOF
 			chmod 0440 "$DEST"
 			;;
 
+		vimrc_local)
+			cat > "$DEST" \
+<<EOF
+syntax on
+set background=light
+set showmatch
+set pastetoggle=<F10>
+au FileType debchangelog normal z0
+EOF
+			;;
+
 esac
 }
 

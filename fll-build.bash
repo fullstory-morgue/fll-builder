@@ -410,6 +410,10 @@ for group in $FLL_LIVE_USER_GROUPS; do
 	fi
 done
 
+# lock down root
+sed -i "s#\(^root\:\).*\(\:.*\:.*\:.*\:.*\:.*\:.*\:.*\)#\1\*\2#" \
+	"${FLL_BUILD_CHROOT}/etc/shadow"
+
 #################################################################
 #		install kernel and extra modules		#
 #################################################################
@@ -423,7 +427,7 @@ install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
 # hack inittab: init 5 by default, "immutable" bash login shells
 sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 	-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
-	-e 's#^\([0-9]:\)[0-9]\+\(:respawn:\).\+#\12345\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+	-e 's#^\([0-9]\)\(:[0-9]\+:respawn:\).\+#\1\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
 	"$FLL_BUILD_CHROOT"/etc/inittab
 
 # run fix-fonts
@@ -518,6 +522,7 @@ virtfs umount
 cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
 cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
 cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
+cat_file vimrc_local	"$FLL_BUILD_CHROOT"/etc/vim/vimrc.local
 
 # add version marker, this is the exact time stamp for our package list
 echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
