@@ -190,8 +190,8 @@ source "$FLL_BUILD_PACKAGELIST"
 ARGS=$(
 	getopt \
 		--name "$SELF" \
-		--options b:c:Cdhk:no:pP:sS: \
-		--long buildarea,configfile,chrootonly,copyright,debug,help,kernel,output,packages,preserve,source,squashfs-sortfile:,uid: \
+		--options b:c:CdD:hk:no:pP:sS: \
+		--long buildarea,configfile,chrootonly,copyright,debdir,debug,help,kernel,output,packages,preserve,source,squashfs-sortfile:,uid: \
 		-- $@
 )
 
@@ -216,6 +216,12 @@ while true; do
 		-d|--debug)
 			DEBUG=1
 			set -x
+			;;
+		-D|--debdir)
+			# this need not be a documented feature
+			# avoid encouraging its use by the public
+			shift
+			FLL_BUILD_LOCAL_DEBS=$1
 			;;
 		-h|--help)
 			print_help
