@@ -19,6 +19,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * Add hook (hack) for installation of local dir full of debian binaries into
     chroot. It will remain undocumented for now, as its use should be
     restricted strictly to internal testing and debugging.
+  * Create /etc/hostname.
 
   [ Stefan Lippers-Hollmann ]
   * print out that we're about to run mksquashfs, md5sum.
@@ -26,7 +27,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     the ISO creation, omit it until the progress bar is fixed on amd64.
   * lock down root.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 15 Jan 2007 23:29:43 +0100
+ -- Kel Modderman <kel@otaku42.de>  Tue, 16 Jan 2007 12:31:33 +1000
 
 fll-builder (1.0.2) unstable; urgency=low
 

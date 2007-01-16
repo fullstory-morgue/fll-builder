@@ -126,6 +126,14 @@ EOF
 EOF
 			;;
 
+		hostname)
+
+			cat > "$DEST" \
+<<EOF
+$FLL_DISTRO_NAME
+EOF
+			;;
+
 		hosts)
 			cat > "$DEST" \
 <<EOF
