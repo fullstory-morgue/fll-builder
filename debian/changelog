@@ -22,8 +22,6 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * Create /etc/hostname.
   * Disable splash cmdline param in menu.lst for now, we don't have a splash
     and it costs us at least a couple of sleep's.
-  * Emulate more closely knoppix inttab, but avoid spawning too many login
-    shells (tty 5+6 are disabledi for now).
 
   [ Stefan Lippers-Hollmann ]
   * print out that we're about to run mksquashfs, md5sum.
