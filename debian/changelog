@@ -31,8 +31,9 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     the ISO creation, omit it until the progress bar is fixed on amd64.
   * lock down root.
   * remove hwsetup's configfiles.
+  * remove dependency on configure-keyboard, it has been orphaned.
 
- -- Kel Modderman <kel@otaku42.de>  Thu, 18 Jan 2007 01:34:01 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 17 Jan 2007 16:42:02 +0100
 
 fll-builder (1.0.2) unstable; urgency=low
 
