@@ -20,6 +20,8 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     chroot. It will remain undocumented for now, as its use should be
     restricted strictly to internal testing and debugging.
   * Create /etc/hostname.
+  * Disable splash cmdline param in menu.lst for now, we don't have a splash
+    and it costs us at least a couple of sleep's.
 
   [ Stefan Lippers-Hollmann ]
   * print out that we're about to run mksquashfs, md5sum.
@@ -27,7 +29,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     the ISO creation, omit it until the progress bar is fixed on amd64.
   * lock down root.
 
- -- Kel Modderman <kel@otaku42.de>  Tue, 16 Jan 2007 12:31:33 +1000
+ -- Kel Modderman <kel@otaku42.de>  Wed, 17 Jan 2007 18:38:25 +1000
 
 fll-builder (1.0.2) unstable; urgency=low
 
