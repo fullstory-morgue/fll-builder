@@ -503,6 +503,7 @@ remove_from_chroot "/boot/initrd.img*"
 remove_from_chroot "/etc/ssh/ssh_host_*key*"
 remove_from_chroot "/var/lib/dpkg/*-old"
 remove_from_chroot "/var/cache/debconf/*-old"
+remove_from_chroot "/media/.hal-mtab*"
 
 # remove used hacks and patches
 remove_from_chroot /etc/kernel-img.conf
