@@ -1,4 +1,4 @@
 @echo Starting "index.html"...
 @start index.html
-@start README.txt
+@start README
 @exit
