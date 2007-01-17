@@ -1,4 +1,4 @@
-What to do with this preview and how to do it
+What to do with this PREVIEW and how to do it
 
 So, finally you have booted the first ever preview to the first sidux release.
 Here is just a few notes on this preview.
@@ -12,11 +12,13 @@ If booting the live-cd will not give you net automaticaly, please use netcardcon
 Network being up, you may want to klick on the konversation icon to get some help from irc at #sidux.com.
 Please use unique nicknames instead of the default ones prompted to you, otherwise we have too many web-sidux-xxx online.
 
+How to install to harddisk:
+
+Open k-menu - sidux and go to knx-installer or call knx-installer from a konsole.
+We use ext3 filesystem as default and we recommend to use it on fresh installs. Reiserfs is not really taken care of anymore, and ext3 will be easily upgradable to ext4, when that gets usable.
+The other parts of the installer are self explanatory.
+
 How to install graphics drivers for ATI or NVIDIA cards:
 
 The new script for installation of graphics drivers is called: install-sidux-binary-gfx
 Run it from console as root. It will choose the right driver for your card, build a deb and install it and change xorg.conf accordingly. Just restart X afterwards.
-
-
-
-
