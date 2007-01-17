@@ -427,7 +427,9 @@ install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
 # hack inittab: init 5 by default, "immutable" bash login shells
 sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 	-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
-	-e 's#^\([0-9]\)\(:[0-9]\+:respawn:\).\+#\1\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+	-e 's#^\(1:\)[0-9]\+\(:respawn:\).\+#\112345\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+	-e 's#^\([2-4]:\)[0-9]\+\(:respawn:\).\+#\12345\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+	-e 's#^\([56]:\)[0-9]\+\(:respawn:\).\+#\#\12345\2/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
 	"$FLL_BUILD_CHROOT"/etc/inittab
 
 # run fix-fonts
