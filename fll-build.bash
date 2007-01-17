@@ -498,9 +498,11 @@ find "$FLL_BUILD_CHROOT"/var/log/ -type f -exec rm -vf {} \;
 find "$FLL_BUILD_CHROOT"/var/run/ -type f -exec rm -vf {} \;
 
 # these could be excluded at mksquashfs time
-remove_from_chroot /boot/miniroot.gz
+remove_from_chroot "/boot/miniroot.gz"
 remove_from_chroot "/boot/initrd.img*"
 remove_from_chroot "/etc/ssh/ssh_host_*key*"
+remove_from_chroot "/etc/hwsetup"
+remove_from_chroot "/etc/sysconfig/*"
 remove_from_chroot "/var/lib/dpkg/*-old"
 remove_from_chroot "/var/cache/debconf/*-old"
 remove_from_chroot "/media/.hal-mtab*"
