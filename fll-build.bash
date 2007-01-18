@@ -108,6 +108,12 @@ error() {
 		7)
 			echo "ISO output directory does not exist"
 			;;
+		8)
+			echo "kernel zip file is not readable"
+			;;
+		9)
+			echo "kernel zip file is corrupt"
+			;;
 		*)
 			echo "Unknown error code \"$1\"."
 			set -- 255
@@ -313,6 +319,14 @@ fi
 # check kernel is provided
 if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
+fi
+# check kernel zip exists and is readable
+if [[ ! -r $FLL_BUILD_LINUX_KERNEL ]]; then
+	error 8
+fi
+# check integrity of kernel zip archive
+if [[ ! $(zip -T $FLL_BUILD_LINUX_KERNEL) ]]; then
+	error 9
 fi
 
 # distro name, lower casified
