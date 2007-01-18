@@ -2,6 +2,10 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
 
+  [ Bernard Gray ]
+  * add checking for kernel zip file existance and specific error code return
+  * add checking for kernel zip file integrity and specific error code return
+
   [ Kel Modderman ]
   * Hack inittab to allow "immutable" bash login shells on the tty's instead
     of mgetty.
