@@ -15,7 +15,7 @@ Description: set various default options
 
 #Package: fll-builder
 #Architecture: all
-#Depends: apt-utils, cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools, su-me, unzip, wget
+#Depends: apt-utils, cdebootstrap, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools (>= 3.2-0+c0.sidux.1), su-me, unzip, wget, zip
 #Description: scripts to build a live-cd based on the FULLSTORY project code
 # The purpose of fll-builder is to build a modern linux operating system
 # from the rich software provided by the unstable branch of the Debian
