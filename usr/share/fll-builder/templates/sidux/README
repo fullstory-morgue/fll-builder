@@ -14,7 +14,7 @@ Please use unique nicknames instead of the default ones prompted to you, otherwi
 
 How to install to harddisk:
 
-Open k-menu - sidux and go to knx-installer or call knx-installer from a konsole.
+Open k-menu - sidux and go to knx-installer or call knx-installer from a konsole: su-me knx-installer
 We use ext3 filesystem as default and we recommend to use it on fresh installs. Reiserfs is not really taken care of anymore, and ext3 will be easily upgradable to ext4, when that gets usable.
 The other parts of the installer are self explanatory.
 
