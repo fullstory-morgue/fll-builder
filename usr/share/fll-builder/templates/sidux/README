@@ -1,4 +1,4 @@
-What to do with this PREVIEW and how to do it
+ :: README :: What to do with this PREVIEW and how to do it
 
 So, finally you have booted the first ever preview to the first sidux release.
 Here is just a few notes on this preview.
@@ -22,3 +22,7 @@ How to install graphics drivers for ATI or NVIDIA cards:
 
 The new script for installation of graphics drivers is called: install-sidux-binary-gfx
 Run it from console as root. It will choose the right driver for your card, build a deb and install it and change xorg.conf accordingly. Just restart X afterwards.
+
+There is no password for the live-cd:
+
+su-me (former sudo) will do; if you want a password, do su-me passwd.
