@@ -38,7 +38,10 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     sambastart-sidux, they have been orphaned.
   * only install vimrc.local if vim is installed at all.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 18 Jan 2007 20:04:31 +0100
+  [ Niall Walsh ]
+  * overhaul packages.conf
+
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Fri, 19 Jan 2007 06:19:36 +0000
 
 fll-builder (1.0.2) unstable; urgency=low
 
