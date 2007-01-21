@@ -376,7 +376,7 @@ cat_file apt_conf		"$FLL_BUILD_CHROOT"/etc/apt/apt.conf
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
 
-virtfs mount
+chroot_virtfs mount
 
 # XXX: distro-defaults live environment detection
 mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
@@ -509,7 +509,7 @@ remove_from_chroot /etc/apt/apt.conf
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 
 # umount proc, no more chroot_exec's after this point
-virtfs umount
+chroot_virtfs umount
 
 # create final config files
 cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
