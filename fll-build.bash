@@ -152,11 +152,7 @@ if [[ ! -f  $FLL_BUILD_BASE/debian/changelog ]]; then
 fi
 
 # fll defaults
-if [[ -s $FLL_BUILD_BASE/etc/fll-builder/distro ]]; then
-	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/fll-builder/distro"
-else
-	FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
-fi
+FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
