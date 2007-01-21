@@ -32,7 +32,8 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
     by one single instance of find. The output is redirected to a temp file
     and used by mksquashfs.
   * Remove extranneous remove_from_chroot stuff, rely on exclusion logic to
-    pick those up'
+    pick those up.
+  * Allow exclusion logic to take care of apt and bootstrap cache too.
 
   [ Stefan Lippers-Hollmann ]
   * print out that we're about to run mksquashfs, md5sum.
@@ -49,7 +50,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 21 Jan 2007 14:30:34 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 21 Jan 2007 15:28:27 +1000
 
 fll-builder (1.0.2) unstable; urgency=low
 
