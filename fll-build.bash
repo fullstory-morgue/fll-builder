@@ -413,6 +413,13 @@ if [[ -d $FLL_BUILD_LOCAL_DEBS ]]; then
 fi
 
 #################################################################
+#		install kernel and extra modules		#
+#################################################################
+cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
+
+install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
+
+#################################################################
 #		add live user					#
 #################################################################
 chroot_exec adduser --no-create-home --disabled-password \
@@ -425,20 +432,13 @@ for group in $FLL_LIVE_USER_GROUPS; do
 	fi
 done
 
+#################################################################
+#		preseed chroot					#
+#################################################################
 # lock down root
 sed -i "s#\(^root\:\).*\(\:.*\:.*\:.*\:.*\:.*\:.*\:.*\)#\1\*\2#" \
 	"${FLL_BUILD_CHROOT}/etc/shadow"
 
-#################################################################
-#		install kernel and extra modules		#
-#################################################################
-cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
-
-install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
-
-#################################################################
-#		preseed chroot					#
-#################################################################
 # hack inittab: init 5 by default, "immutable" bash login shells
 sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 	-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
@@ -485,12 +485,10 @@ popd >/dev/null
 #################################################################
 #		get sources					#
 #################################################################
-if [[ $FLL_BUILD_SOURCE_REL ]]; then
-	# XXX: TODO: add a --print-uris option, so we can create
-	#            the source image on remote non-debian 
-	#            servers.
-	fetch_source_code
-fi
+[[ $FLL_BUILD_SOURCE_REL ]] && fetch_source_code
+# XXX: TODO: add a --print-uris option, so we can create
+#            the source image on remote non-debian 
+#            servers.
 
 #################################################################
 #		unpatch chroot					#
@@ -539,9 +537,7 @@ echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
 #################################################################
 #		quit now?					#
 #################################################################
-if [[ $FLL_BUILD_CHROOT_ONLY ]]; then
-	exit 0
-fi
+[[ $FLL_BUILD_CHROOT_ONLY ]] && exit 0
 
 #################################################################
 #		compress fs					#
@@ -553,12 +549,10 @@ make_compressed_image
 #################################################################
 make_fll_iso
 
+[[ $FLL_BUILD_SOURCE_REL ]] && make_fll_source_iso
 # XXX: TODO. add an option to keep the unpacked sources tree for 
 #            further processing (perhaps also omitting the ISO
 #            creation.
-if [[ $FLL_BUILD_SOURCE_REL ]]; then
-	make_fll_source_iso
-fi
 
 exit 0
 
