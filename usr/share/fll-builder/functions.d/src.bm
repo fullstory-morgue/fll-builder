@@ -1,0 +1,42 @@
+#!/bin/bash
+
+fetch_source_code() {
+	# download source packages used in ISO creation
+	# dump into $FLL_BUILD_SOURCE/{source,kernel}
+	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
+	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
+	local SOURCE LETTER
+	
+	# XXX: some packages mysteriously fail to download when =version is suffixed
+	# chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
+	#	'/^[hi]i/{ if($2 !~ kvers) { printf("%s=%s\n", $2, $3) }}' > "$CHROOTPKGLIST"
+	
+	# XXX: damned kernel packages have no source, filter KVERS
+	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
+		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
+	
+	# distro-defaults originates from fll-builder, which contains the ingredients used to create cd
+	chroot_exec apt-get source --download-only $(< $CHROOTPKGLIST)
+
+	# sort sources (adapted from live-package)
+	for dsc in "$FLL_BUILD_CHROOT"/*.dsc; do
+		SOURCE=$(awk '/Source:/ { print $2 }' $dsc)
+ 
+ 		[[ ${SOURCE:0:3} == lib ]] && LETTER=${SOURCE:0:4} || LETTER=${SOURCE:0:1}
+ 
+ 		mkdir -vp "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
+ 
+ 		# Move sources
+ 		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"_* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
+ 	done
+
+	rm -vf "$PKGLIST"
+
+	# create trivial repository index
+	# XXX: improve me
+	pushd "${FLL_BUILD_SOURCE}/source/" >/dev/null
+		apt-ftparchive sources . > Sources
+		gzip  -c Sources > Sources.gz
+		bzip2 -c Sources > Sources.bz2
+	popd >/dev/null
+}

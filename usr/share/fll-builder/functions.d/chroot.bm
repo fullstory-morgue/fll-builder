@@ -1,0 +1,66 @@
+#!/bin/bash
+
+chroot_exec() {
+	# adapted from live-package
+	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
+		SHELL="$SHELL" \
+		HOME="/root" \
+		PATH="/usr/sbin:/usr/bin:/sbin:/bin" \
+		DEBIAN_FRONTEND="noninteractive" \
+		DEBIAN_PRIORITY="critical" \
+		DEBCONF_NOWARNINGS="yes" \
+		$@
+	
+	return $?
+}
+
+copy_to_chroot() {
+	local ORIGFILE="$1"
+	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
+	
+	if [[ -f "$DESTFILE" ]]; then
+		mv -v "$DESTFILE" "$DESTFILE".orig
+	fi
+
+	cp -v "$ORIGFILE" "$DESTFILE"
+}
+
+remove_from_chroot() {
+	local OBJ="${FLL_BUILD_CHROOT}${1}"
+
+	rm -vf $OBJ
+	
+	if [[ -e "$OBJ".orig ]]; then
+		mv -v "$OBJ".orig "$OBJ"
+	fi
+}
+
+exists_in_chroot() {
+	local OBJ="${FLL_BUILD_CHROOT}${1}"
+
+	if [[ -e $OBJ ]]; then
+		return 0
+	fi
+
+	return 1
+}
+
+chroot_virtfs() {
+	local ACTION="$1"
+	local PROC="$FLL_BUILD_CHROOT"/proc
+
+	[[ $ACTION && $PROC ]] || return 1
+	[[ -d $PROC ]] || return 0
+
+	case "$ACTION" in
+		mount)
+			mount  procfll -t proc "$PROC"
+			;;
+		umount)
+			grep -q "$PROC" /proc/mounts || return 0
+			umount "$PROC"
+			;;
+	esac
+
+	return $?
+}

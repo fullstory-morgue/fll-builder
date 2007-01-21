@@ -1,0 +1,166 @@
+#!/bin/bash
+
+cat_file() {
+	local FILE="$1"
+	local DEST="$2"
+
+	[[ $1 && $2 ]] || return 1
+
+	echo "Creating \`$FILE' at $DEST"
+
+	case "$FILE" in
+
+		apt_conf)
+			if [[ $FLL_HTTP_PROXY ]]; then
+				cat > "$DEST" \
+<<EOF
+Acquire::http::Proxy "$FLL_HTTP_PROXY";
+EOF
+			elif [[ $FLL_FTP_PROXY ]]; then
+				cat > "$DEST" \
+<<EOF
+Acquire::ftp::Proxy "$FLL_FTP_PROXY";
+EOF
+			fi
+			;;
+
+		apt_sources)
+			cat > "$DEST" \
+<<EOF
+deb http://ftp.debian.org/debian/ sid main
+deb-src http://ftp.debian.org/debian/ sid main
+
+#deb http://ftp.debian.org/debian/ testing main
+#deb-src http://ftp.debian.org/debian/ testing main
+
+#deb http://ftp.debian.org/debian/ experimental main
+#deb-src http://ftp.debian.org/debian/ experimental main
+
+deb http://sidux.com/debian/ sid main fix.main
+deb-src http://sidux.com/debian/ sid main fix.main
+EOF
+			;;
+
+		apt_sources_tmp)
+			cat > "$DEST" \
+<<EOF
+deb $FLL_BUILD_DEBIANMIRROR sid main
+deb-src $FLL_BUILD_DEBIANMIRROR sid main
+
+deb $FLL_BUILD_FLLMIRROR sid main fix.main
+deb-src $FLL_BUILD_FLLMIRROR sid main fix.main
+EOF
+			;;
+
+		chroot_policy)
+			cat > "$DEST" \
+<<EOF
+#!/bin/sh
+# disable init scripts: /usr/share/doc/sysv-rc/README.policy-rc.d.gz
+
+exit 101
+EOF
+			chmod 0755 "$DEST"
+			;;
+
+		debian_chroot)
+			cat > "$DEST" \
+<<EOF
+$FLL_DISTRO_NAME-live
+EOF
+			;;
+
+		fstab)
+			cat > "$DEST" \
+<<EOF
+# /etc/fstab: static file system information.
+#
+# <file system>	<mount point>	<type>	<options>		<dump>	<pass>
+EOF
+			;;
+
+		hostname)
+
+			cat > "$DEST" \
+<<EOF
+$FLL_DISTRO_NAME
+EOF
+			;;
+
+		hosts)
+			cat > "$DEST" \
+<<EOF
+127.0.0.1	localhost
+127.0.0.1	$FLL_DISTRO_NAME
+
+# The following lines are desirable for IPv6 capable hosts
+# (added automatically by netbase upgrade)
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+EOF
+			;;
+
+		interfaces)
+			cat > "$DEST" \
+<<EOF
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+
+# The loopback interface
+# automatically added when upgrading
+auto lo
+iface lo inet loopback
+EOF
+			;;
+
+		kernelimg)
+			cat > "$DEST" \
+<<EOF
+do_symlinks = NO
+do_bootloader = NO
+warn_initrd = NO
+ramdisk = mklive-initrd
+EOF
+			;;
+
+		sort_iso)
+			cat > "$DEST" \
+<<EOF
+$FLL_BUILD_RESULT/boot/grub/* 111111
+$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
+EOF
+			;;
+
+		sudoers)
+			[[ -f "$DEST" ]] || return 1
+			# append
+			cat >> "$DEST" \
+<<EOF
+
+# WARNING: This allows the unprivileged $FLL_LIVE_USER user to start commands as root
+# WARNING: This is totally insecure and (almost) makes $FLL_LIVE_USER a second root account.
+# WARNING: Never allow external access to the $FLL_LIVE_USER user!!!
+$FLL_LIVE_USER	ALL=NOPASSWD: ALL
+EOF
+			
+			chmod 0440 "$DEST"
+			;;
+
+		vimrc_local)
+			cat > "$DEST" \
+<<EOF
+syntax on
+set background=light
+set showmatch
+set pastetoggle=<F10>
+au FileType debchangelog normal z0
+EOF
+			;;
+
+esac
+}

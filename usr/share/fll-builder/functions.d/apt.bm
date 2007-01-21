@@ -1,0 +1,49 @@
+#!/bin/bash
+
+chroot_install_debs_from_dir() {
+	local DEBDIR="$1"
+	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
+	local DEBS
+
+	[[ -d $DEBDIR ]] || return 1
+
+	pushd "$DEBDIR" >/dev/null
+		apt-ftparchive packages . > Packages
+	popd >/dev/null
+
+	if [[ -s $DEBDIR/Packages ]]; then
+		DEBS=( $(awk '/^Package: /{ print $2 }' $DEBDIR/Packages) )
+		if [[ -z ${DEBS[@]} ]]; then
+			return 1
+		fi
+	else
+		return 1
+	fi
+
+	# hack sources.list
+	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+	echo "deb file://$CHROOTDEBDIR ./" \
+		>> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+
+	chroot_exec apt-get update
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install ${DEBS[@]}
+
+	# revert apt and sources.list back to original state
+	cat_file apt_sources_tmp "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+	chroot_exec apt-get update
+}
+
+install_local_debs() {
+	# XXX: this hack if FOR TESTING PURPOSES ONLY
+	# no source code for these packages can be fetched
+
+	local LOCDEBDIR="$1"
+	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d localdebs.XXXX)
+	
+	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
+
+	chroot_install_debs_from_dir "$TMPDEBDIR"
+
+	rm -vrf "$TMPDEBDIR"	
+}
+

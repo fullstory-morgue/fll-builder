@@ -164,9 +164,14 @@ FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
+FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.d"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
+
+# source functions
+for func in "$FLL_BUILD_FUNCTIONS"/*.bm; do
+	source "$func"
+done
 
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
@@ -348,6 +353,11 @@ fi
 if [[ ! -d $FLL_BUILD_ISO_OUTPUT ]]; then
 	error 7
 fi
+
+# live-package does this
+LANG=C
+LC_ALL=C
+export LANG LC_ALL
 
 #################################################################
 #		clean up on exit				#
