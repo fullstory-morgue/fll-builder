@@ -10,7 +10,7 @@
 * 	./tmp/*
 * 	./var/local/*
 * 	./var/tmp/*
-f	./boot/miniroot*
+*	./boot/miniroot*
 f	./boot/initrd.img*
 f	./etc/hwsetup/*
 f	./etc/ssh/ssh_host_*key*
