@@ -362,6 +362,7 @@ make_compressed_image() {
 		pushd "$FLL_BUILD_CHROOT" >/dev/null
 			eval find . ${FINDOPTS} > "$SQUASHFSEXCLUDEFILE"
 		popd >/dev/null
+	fi
 	
 	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
 		MKSQUASHFSOPTS="$MKSQUASHFSOPTS -sort $FLL_BUILD_SQUASHFS_SORTFILE"
