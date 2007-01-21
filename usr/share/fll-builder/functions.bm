@@ -331,9 +331,9 @@ make_compressed_image() {
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude.XXXXX)
 	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress"
 
-	if [[ -s $FLL_BUILD_EXCLUSIONS_FILE ]]; then
+	if [[ -s $FLL_BUILD_EXCLUSION_LIST ]]; then
 		local FINDOPTS TYPE REGX TEST
-		echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSIONS_FILE."
+		echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSION_LIST."
 		
 		FINDOPTS="-name '*.orig'"
 
