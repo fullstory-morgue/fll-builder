@@ -493,13 +493,7 @@ popd >/dev/null
 #################################################################
 #		unpatch chroot					#
 #################################################################
-# clean apt cache
-chroot_exec apt-get clean
-
-# clear out bootstrap cache
-rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
-
-# purge unwanted package
+# purge unwanted packages
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 
