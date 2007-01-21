@@ -357,7 +357,7 @@ make_compressed_image() {
 					FINDOPTS="$FINDOPTS -o -${TEST} '$REGX'"
 					;;
 			esac
-		done < "$FLL_BUILD_EXCLUSIONS_FILE"
+		done < "$FLL_BUILD_EXCLUSION_LIST"
 
 		pushd "$FLL_BUILD_CHROOT" >/dev/null
 			eval find . ${FINDOPTS} > "$SQUASHFSEXCLUDEFILE"
