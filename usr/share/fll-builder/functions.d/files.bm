@@ -162,5 +162,5 @@ au FileType debchangelog normal z0
 EOF
 			;;
 
-esac
+	esac
 }
