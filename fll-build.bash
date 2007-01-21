@@ -524,7 +524,11 @@ cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
 cat_file hostname	"$FLL_BUILD_CHROOT"/etc/hostname
 cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
 cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
-[[ -d ${FLL_BUILD_CHROOT}/etc/vim ]] && cat_file vimrc_local "${FLL_BUILD_CHROOT}/etc/vim/vimrc.local"
+
+# vimrc.local
+if exists_in_chroot /etc/vim; then
+	cat_file vimrc_local "${FLL_BUILD_CHROOT}/etc/vim/vimrc.local"
+fi
 
 # add version marker, this is the exact time stamp for our package list
 echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
