@@ -168,11 +168,6 @@ FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.d"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 
-# source functions
-for func in "$FLL_BUILD_FUNCTIONS"/*.bm; do
-	source "$func"
-done
-
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
 FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
@@ -189,12 +184,16 @@ DEBOOTSTRAP_DIST="sid"
 FLL_BUILD_OUTPUT_UID=$UID
 
 #################################################################
-#		source configfiles and functions.sh		#
+#		source configfiles and functions		#
 #################################################################
 source "$FLL_BUILD_DEFAULTS"
 source "$FLL_BUILD_CONFIG"
-source "$FLL_BUILD_FUNCTIONS"
 source "$FLL_BUILD_PACKAGELIST"
+
+# source functions
+for func in "$FLL_BUILD_FUNCTIONS"/*.bm; do
+	source "$func"
+done
 
 #################################################################
 #		parse command line				#
