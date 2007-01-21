@@ -166,6 +166,7 @@ FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.bm"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
+FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
@@ -497,29 +498,12 @@ fi
 # clean apt cache
 chroot_exec apt-get clean
 
-# clean apt lists
-find "$FLL_BUILD_CHROOT"/var/lib/apt/lists/ -not -name 'lock' -type f -exec rm -vf {} \;
-
 # clear out bootstrap cache
 rm -vrf "$FLL_BUILD_CHROOT"/var/cache/bootstrap
 
 # purge unwanted package
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
-
-# clean /var
-find "$FLL_BUILD_CHROOT"/var/log/ -type f -exec rm -vf {} \;
-find "$FLL_BUILD_CHROOT"/var/run/ -type f -exec rm -vf {} \;
-
-# these could be excluded at mksquashfs time
-remove_from_chroot "/boot/miniroot.gz"
-remove_from_chroot "/boot/initrd.img*"
-remove_from_chroot "/etc/ssh/ssh_host_*key*"
-remove_from_chroot "/etc/hwsetup"
-remove_from_chroot "/etc/sysconfig/*"
-remove_from_chroot "/var/lib/dpkg/*-old"
-remove_from_chroot "/var/cache/debconf/*-old"
-remove_from_chroot "/media/.hal-mtab*"
 
 # remove used hacks and patches
 remove_from_chroot /etc/kernel-img.conf

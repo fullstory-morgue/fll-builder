@@ -328,18 +328,41 @@ install_linux_kernel() {
 }
 
 make_compressed_image() {
-	local SQUASHFSEXCLUDELIST=$(mktemp -p $FLL_BUILD_TEMP squashfs-list.XXXXX)
 	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude.XXXXX)
 	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress"
-	
-	# XXX: TODO
-	# XXX: we need an input exclusions list with wildcards to be
-	# expanded by some magic and written to the final sort file.
-	cat > "$SQUASHFSEXCLUDEFILE" \
-<<EOF
-.bash_history
-EOF
 
+	if [[ -s $FLL_BUILD_EXCLUSIONS_FILE ]]; then
+		local FINDOPTS TYPE REGX TEST
+		echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSIONS_FILE."
+		
+		FINDOPTS="-name '*.orig'"
+
+		while read TYPE REGX; do
+			[[ $TYPE && $REGX ]] || continue
+
+			case "$REGX" in
+				*/*)
+					TEST=wholename
+					;;
+				*)
+					TEST=name
+					;;
+			esac
+
+			case "$TYPE" in
+				d|f)
+					FINDOPTS="$FINDOPTS -o -type $TYPE -${TEST} '$REGX'"
+					;;
+				*)
+					FINDOPTS="$FINDOPTS -o -${TEST} '$REGX'"
+					;;
+			esac
+		done < "$FLL_BUILD_EXCLUSIONS_FILE"
+
+		pushd "$FLL_BUILD_CHROOT" >/dev/null
+			eval find . ${FINDOPTS} > "$SQUASHFSEXCLUDEFILE"
+		popd >/dev/null
+	
 	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
 		MKSQUASHFSOPTS="$MKSQUASHFSOPTS -sort $FLL_BUILD_SQUASHFS_SORTFILE"
 	fi
