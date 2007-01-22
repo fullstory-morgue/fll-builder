@@ -30,3 +30,4 @@ f	./var/run/*
 f	./var/spool/*
 f	*~
 f	*.dpkg-old
+d	*/lost+found
