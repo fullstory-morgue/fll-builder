@@ -31,13 +31,15 @@ make_exclude_file() {
 }
 
 make_compressed_image() {
-	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude.XXXXX)
+	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude-file.XXXXX)
+	local SQUASHFSEXCLUSIONSLIST=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclusions-list.XXXXX)
 	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE -no-progress"
 
 	if [[ -s $FLL_BUILD_EXCLUSION_LIST ]]; then
 		echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSION_LIST."
+		cat "$FLL_BUILD_EXCLUSION_LIST" > "$SQUASHFSEXCLUSIONSLIST"
 		pushd "$FLL_BUILD_CHROOT" >/dev/null
-			make_exclude_file "$FLL_BUILD_EXCLUSION_LIST" > "$SQUASHFSEXCLUDEFILE"
+			make_exclude_file "$SQUASHFSEXCLUSIONSLIST" > "$SQUASHFSEXCLUDEFILE"
 		popd >/dev/null
 	fi
 	
