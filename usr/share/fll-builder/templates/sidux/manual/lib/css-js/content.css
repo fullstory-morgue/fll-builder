@@ -1,0 +1,154 @@
+/*
+Last updated by bluewater 10/01/2007 1400hrs ADEST :: 10/01/2007 0300hrs UTC
+*/
+
+body,html,object,div{
+	margin:0;
+	padding:0;
+}
+body {
+	font:normal 14px "bitstream vera serif", times, "times new roman", serif;
+	background:#EAEDF4;
+	color:#000611;
+}
+#main-page{
+	padding:10px 20px;
+	margin-left:165px;
+
+}
+/* note: this is the default, will create standard bordered cells and table */
+table {
+	border:1px solid #888;
+	border-collapse:collapse;
+}
+
+table td, table th {
+	border:1px solid #888;
+	padding:4px;
+}
+table th {
+	font-size:13px;
+	font-weight:bold;
+	background:#87898D;
+	color:#F5F8FF;
+	border-color:#525355;
+}
+p {
+	margin-top:0;
+}
+ul, ol {
+	margin: 0 0 1em 0;
+	padding:0;
+}
+li {
+	margin:0 0 1em 18px;
+	padding:0;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-weight:bold;
+	font-family:"bitstream vera sans", arial,sans-serif;
+	margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
+	color:#040A2F;
+	margin-bottom:.1em;
+	padding:.2em;
+}
+h1 {
+	font-size:20px;
+}
+h2 {
+	border-top:1px solid #040A2F;
+	font-size:18px;
+	background:#D4D7DD;
+	margin-bottom:1em;
+}
+h3 {
+	font-size:17px;
+}
+h4 {
+	font-size:16px;
+}
+h5 {
+	font-size:14px;
+}
+h6 {
+	font-size:13px;
+}
+/* these are to handle cosmetic h1-h6 font size differences
+while retaining the correct h1-h6 level structures */
+.size-0 {font-size:10px;}
+.size-1 {font-size:11px;}
+.size-2 {font-size:12px;}
+.size-3 {font-size:13px;}
+.size-4 {font-size:14px;}
+.size-5 {font-size:15px;}
+.size-6 {font-size:16px;}
+img {
+	border:none;
+}
+
+.divider {
+	margin-bottom:1em;
+	padding-bottom:1em;
+}
+
+ #rev {
+	font:italic 8px "bitstream vera serif", times, "times new roman", serif;
+	margin-top:4em;
+	text-align:right;
+	color:#9893E8;/* light blueish */
+}
+
+pre {
+	color:#000;
+	background:#ffffee;
+	border:1px solid #888;
+	font:normal 14px "Courier New", "Lucida Console", monospace;
+	width:95%;
+	margin:0 auto 1em auto;
+	padding:6px;
+	text-align:left;
+	overflow:auto;
+}
+.center {
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.spacer02 {height:25px;}
+.spacer05 {height:50px;}
+.spacer10 {height:100px;}
+.spacer15 {height:150px;}
+.spacer20 {height:200px;}
+.spacer25 {height:250px;}
+
+.path {
+	font-style:italic;
+	font-weight:bold;
+}
+.box, .warning-box {
+	border:1px solid #888;
+	padding:3px;
+}
+.data {
+	font-weight:bold;
+}
+.highlight-1 {
+	color:#007676;/* tealish */
+}
+.highlight-2, .warning-box {
+	color:red;
+}
+.highlight-3 {
+	color:#971171;/* violetish */
+}
+.highlight-4 {
+	color:#B73304;/* orangish */
+}
+.screenshot {
+	margin:10px auto;
+	text-align:center;
+}
+.block {
+	margin:5px 5px 5px 25px;
+}
+

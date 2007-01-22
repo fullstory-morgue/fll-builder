@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>sidux Manuals - SSH</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body>
+<div id="menu">
+<!-- menu starts here -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
+	</ul>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="german-version" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="english-version" /></a></div>
+	<ul>
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-26</h2>-->
+<!-- menu last updated by bluewater 16/01/2007 1500hrs ADEST 16/01/2007 0400hrs UTC -->
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
+				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+				<li><a href="help-en.htm#help-gen">Where to get Help</a></li>
+				<li><a href="credits-en.htm#cred-team">Credits</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content-en.htm">CD Contents</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">CD Contents</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">CD Downloading and Burning</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning-en.htm#download-sidux">CD Downloading and Burning</a></li>
+				<li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+				<li><a href="cd-dl-burning-en.htm#xdelta">xdelta Patching</a></li>
+				<li><a href="cd-no-gui-burn-en.htm">Burning without a GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+				<li><a href="term-konsole-en.htm#shell-scripts">Installing Scripts.sh</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">CheatCodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes-en.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted-en.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-cfdisk-en.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
+				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
+				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
+				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
+				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-en.htm">Graphic Cards, Hardware Devices and Drivers</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-en.htm">Window Managers</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="wm-kde-en.htm#desk-freeze">KDE Desktop Freezes</a></li>
+				<li><a href="wm-kde-en.htm#kde-login">Cant login in KDE</a></li>
+				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
+				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
+				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin-en.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here -->
+</div>
+<div id="main-page">
+<div class="divider" id="ssh">
+			<h2>SSH</h2>
+				<p>In computing, Secure Shell or SSH is a set of standards and an associated network protocol that allows establishing a secure channel between a local and a remote computer. It uses public-key cryptography to authenticate the remote computer and (optionally) to allow the remote computer to authenticate the user. SSH provides confidentiality and integrity of data exchanged between the two computers using encryption and message authentication codes (MACs). SSH is typically used to log into a remote machine and execute commands, but it also supports tunneling, forwarding arbitrary TCP ports and X11 connections; it can transfer files using the associated SFTP or SCP protocols. An SSH server, by default, listens on the standard TCP port 22. <a href="http://en.wikipedia.org/wiki/Secure_Shell"> Referenced from wikipedia</a></p>
+				
+
+<div class="divider" id="ssh-s">
+			<h2>Enabling good security protocols for SHH</h2>
+
+				<p>Allowing root login, via ssh, is not secure. we do not want root users logging in at all by default, debian should be secure, not insecure nor do we want to give users 10 minutes to do a quick dictionary password attack on our ssh login therefore, its up to you to limit the time and attempts!</p>
+
+ 				<p>To help make your ssh more secure, simply take your favorite text editor, and open it with root privileges, then open this file:</p>
+<pre>
+/etc/ssh/sshd_config
+</pre>
+				<p>Then we locate the offending items, and change them.</p>
+
+				<h6>The offending items you need to locate are the following:</h6>
+
+ 				<p><span class="highlight-3">Port &lt;desired port&gt;:</span> This must be set to the correct port that you are forwarding from your router. Port forwarding must also be setup in your router. If you don't know how to do that, maybe you shouldn't be using ssh remotely. Debian sets the default to port 22, however its recommended that you use a port  out of the standard scan range. let's say we use port 5874 so that becomes:</p>
+<pre>
+Port 5874
+</pre>
+ 				<p><span class="highlight-3">ListenAddress &lt;ip of machine or network interface&gt;:</span> Now, of course, since you are forwarding a port from your router, you need the machine to have a static ip address on the network, unless you are using a  dns server locally, but if you're doing something that complicated and need these directions you are probably making a huge mistake So let's say it's this: </p>
+<pre>
+ListenAddress 192.168.2.134
+</pre>
+				<p>Next, Protocol 2 is already a debian default, but check to make sure:</p>
+
+ 				<p><span class="highlight-3">LoginGraceTime &lt;seconds to allow for login&gt;:</span> This has an absurd default of 600 seconds. It does not take you 10 minutes to type in your user name and password, so lets make that sane:</p>
+<pre>
+LoginGraceTime 45
+</pre>
+ 				<p>Now you have 45 seconds to login and hackers do not have 600 seconds each attempt to crack your password</p>
+
+				<p><span class="highlight-3">PermitRootLogin &lt;yes&gt;:</span> Why debian makes PermitRootLogin 'yes', is incomprehensible so we fix that to 'no'</p>
+<pre>
+PermitRootLogin no
+</pre>
+
+<pre>
+StrictModes yes
+</pre>
+ 				<p><span class="highlight-3">MaxAuthTries &lt;xxx&gt;:</span> Number of attempts to login, you can  make it 3 or 4 attempts but no more than that</p>
+<pre>
+MaxAuthTries 2
+</pre>
+ 				<p>You may need to add any of these items if they are not present:</p>
+<pre>
+AllowUsers &lt;user names with spaces allowed to access via ssh&gt;
+</pre>
+ 				<p><span class="highlight-3">AllowUsers &lt;xxx&gt;:</span> make an ssh only user with no rights use adduser to add the user, then put their name here, like:</p>
+<pre>
+AllowUsers whomevertheuseris
+</pre>
+ 				<p><span class="highlight-3">PermitEmptyPasswords &lt;xxx&gt;:</span> give that user a nice long password that is impossible to guess ever in a million years that is the only user allowed to ssh in. Once you are in, you can just su to root:</p>
+<pre>
+PermitEmptyPasswords no
+</pre>
+				<p><span class="highlight-3">PasswordAuthentication &lt;xxx&gt;:</span> obviously, for password login, not key login, you need passwords to be full unless using keys, you need this to be yes</p>
+<pre>
+PasswordAuthentication yes [unless using keys]
+</pre>
+				<p>Finally:</p>
+<pre>
+/etc/init.d/ssh restart
+</pre>
+ 				<p>Now you have somewhat more secure ssh not fully secure, just better, including creating an ssh only user with adduser</p>
+
+	</div>
+		<div class="divider" id="ssh-x">
+			<h2>Using X Window Applications Via Network Through SSH</h2>
+
+			<p>Running an application on a remote computer and have its graphical user interface displayed on your local machine.</p>
+
+			<p>Presumption:<br />
+			* sidux<br />
+			* local computer's IP: 192.168.1.10/24 (only displaying X11)<br />
+			* remote computer's IP: 192.168.1.2/24 (actually running X11 application)</p>
+
+			<h6>Configuration:</h6>
+
+			<p>On the remote computer change in <span class="highlight-3">/etc/hosts.allow</span> a line to add rights for ssh access: </p>
+<pre>
+ssh sshd : 192.168.1.0/24 : ALLOW # e.g. allow all local area network adresses to access the ssh server :code:
+</pre>
+			<p>On the local computer, open a konsole and enter the command for establishing an ssh connection with X-Forwarding:</p>
+<pre>
+ssh -X username@xxx.xxx.xxx.xxx (or IP)
+(enter your ssh password when prompted for it, 
+or the password to the ssh key if you have sent 
+your pub key to the remote and there added it 
+to the user's authorized_keys files)
+</pre>
+
+			<p>Run the X-Application in the shell, for example "firefox".</p>
+
+<pre>
+ssh -X username@xxx.xxx.xxx.xxx (or IP)
+(enter your ssh password when prompted for it, 
+or the password to the ssh key if you have sent 
+your pub key to the remote and there added it 
+to the user's authorized_keys files)
+firefox
+</pre>
+	</div>
+		<div class="divider" id="ssh-w">
+			<h2>Remote access ssh with X-Forwarding from a Windows-PC:</h2>
+
+			<p>* Download and burn the <a href="http://xlivecd.indiana.edu/">Cygwin XLiveCD</a><br />
+			* Put the CD into the CD-ROM tray of the Windows-PC and wait for the autorun.<br />
+			Click "continue" until a shell window pops up and enter:</p>
+<pre>
+ssh -X username@xxx.xxx.xxx.xxx 
+</pre>
+      			<p>Note: xxx.xxx.xxx.xxx is the IP of the linux remote computer or its URL (for example a dyndns.org account) and the username is of course one user account that exists on the remote machine. After successfull login, start "kmail" for example and check your mails!</p>
+
+			<p>Important: make sure hosts.allow has an entry to allow access from PCs from other networks. If you are behind a NAT-Firewall or a router make sure port 22 is forwarded to your linux machine</p>
+	</div>
+		<div class="divider" id="ssh-f">
+			<h2>SSH with Konqueror</h2>
+
+			<p>Konqueror and Krusader are both able to access remote data, using the <span class="highlight-1">fish://</span> protocol. which is based on the ssh protocol</p>
+
+
+			<p>How it works:<br />
+			1) Open a new Konqueror window<br />
+			2) Enter into the address bar: <span class="highlight-3">fish://username@ssh-server.com</span></p>
+			<p>Example 1: </p>
+<pre>
+fish://sidux1@my-home-server.dyndns.org
+ (Note: A popup opens that asks for your ssh password, enter it and click OK)
+</pre>
+			<p>Example 2: </p>
+<pre>
+fish://username:password@ssh-server.com
+(In this form you will <span class="highlight-3">NOT</span> get a popup asking for a password you will be directly connected.)
+</pre>
+			<p>The SSH connection now is initialized. With this Konqueror window, you can work with the files (copy/view) that are on the SSH server just as if the files would be in a folder on your local machine.</p>
+		
+	</div>
+
+	<div class="divider" id="ssh-fs">
+			<h2>SSHFS - Mounting Remotely</h2>
+				<p>SSFS is an easy, fast and secure method that uses FUSE to mount a remote filesystem. The only server-side requirement is a running ssh deamon.</p>
+				<p>On client side you propably have to install sshfs:	</p>
+<pre>
+apt-get update &amp;&amp; apt-get install sshfs
+</pre>
+				<p class="highlight-3">Now you must log out and log back in again</p>
+				<p>Mounting a remote filesystem is very easy:</p>
+<pre>
+sshfs username@remote_hostname:directory local_mount_point
+</pre>
+				<p>where the <span class="highlight-3">username</span> is the account name on the remote host:</p>
+
+				<p>If no directory is given the home directory of the remote user will be mounted.<span class="highlight-3"> Attention: The colon <span class="highlight-2"> <b>:</b></span> is essential even if no directory is given! </span></p>
+
+				<p>After mounting the remote directory behaves like any other local filesystem, you can browse files, edit them and run scripts on them, just as you can do with a local filesystem.</p>
+
+				<p>If you want to unmount the remote host use the following command:</p>
+<pre>
+fusermount -u local_mount_point
+</pre>
+				<p>If you use sshfs frequently it would be a good choice to add a fstab entry:</p>
+<pre>
+sshfs#username@remote_hostname:directory local_mount_point fuse user,noauto 0 0
+</pre>
+				<p>This will allow every user which is part of the group fuse to mount the filesystem by using the well known mount command:</p>
+<pre>mount /path/to/mount/point</pre>
+				<p>With that line in your fstab you can of course use the umount command too:</p>
+<pre>umount /path/to/mount/point</pre>
+				<p>To check whether you are in that group or not use the following command:</p>
+<pre>
+cat /etc/group | grep fuse
+</pre>
+				<p>You should see something like:</p>
+<pre>
+fuse:x:117: &lt;username&gt;
+</pre>
+				<p class="highlight-3">Note: The "id" will not list in the "fuse" group, until you have logged out and logged back in again</p>
+
+				<p>If your username is not listed use the adduser command as root:</p>
+<pre>
+adduser &lt;username&gt; fuse
+</pre>
+				<p>Now your username should be listed und you should be able to run the command:</p>
+<pre>
+mount local_mount_point
+</pre>
+				<p>and</p>
+<pre>
+umount local_mount_point
+</pre>
+
+	</div>
+			<div id="rev">Page last revised 18/01/2007 1300 UTC</div>
+	<div class="spacer05"></div>
+
+</div>
+</body>
+</html>
