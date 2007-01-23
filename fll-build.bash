@@ -441,9 +441,9 @@ done
 #################################################################
 #		preseed chroot					#
 #################################################################
-# lock down root
-sed -i "s#\(^root\:\).*\(\:.*\:.*\:.*\:.*\:.*\:.*\:.*\)#\1\*\2#" \
-	"${FLL_BUILD_CHROOT}/etc/shadow"
+# lock down root and live user
+sed -i "s#^\(root\|$FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+	"$FLL_BUILD_CHROOT"/etc/shadow
 
 # hack inittab: init 5 by default, "immutable" bash login shells
 sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
