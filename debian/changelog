@@ -51,11 +51,13 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * add experimental and comment out experimental + testing from source.list
     template.
   * add sidux-browser to FLL_PACKAGES_BASE_DISTRO.
+  * rework clean-up for /var/log to preserve permissions, exclude
+    /etc/X11/xorg.conf.
 
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Kel Modderman <kel@otaku42.de>  Tue, 23 Jan 2007 17:26:38 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 23 Jan 2007 18:51:32 +0100
 
 fll-builder (1.0.2) unstable; urgency=low
 

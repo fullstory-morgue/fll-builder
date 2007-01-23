@@ -16,6 +16,7 @@ f	./etc/hwsetup/*
 f	./etc/ssh/ssh_host_*key*
 f	./etc/sysconfig/*
 f	./etc/udev/rules.d/*
+f	./etc/X11/xorg.conf*
 f	./var/autofs/*
 f	./var/backups/*.gz
 f	./var/cache/apt/archives/*
@@ -24,7 +25,6 @@ f	./var/cache/debconf/*-old
 f	./var/lib/apt/lists/*
 f	./var/lib/dpkg/*-old
 f	./var/lock/*
-f	./var/log/*
 f	./var/mail/*
 f	./var/run/*
 f	./var/spool/*
