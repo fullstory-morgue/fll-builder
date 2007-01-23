@@ -544,12 +544,10 @@ find	"${FLL_BUILD_CHROOT}/var/cache/" \
 		-o -name \*\\.[0-9][0-9]? \
 			-exec rm -f {} \;
 
-find	"${FLL_BUILD_CHROOT}/var/log/" \
-	"${FLL_BUILD_CHROOT}/var/mail/" \
-	"${FLL_BUILD_CHROOT}/var/spool/" \
-		-type f \
-		-size +0 \
-			-exec :> {} \;
+# XXX: how to do this properly?
+for i in $(find	"${FLL_BUILD_CHROOT}/var/log/" "${FLL_BUILD_CHROOT}/var/mail/" "${FLL_BUILD_CHROOT}/var/spool/" -type f -size +0); do
+	:> "$i"
+done
 
 #################################################################
 #		quit now?					#
