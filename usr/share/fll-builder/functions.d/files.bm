@@ -28,7 +28,7 @@ EOF
 			cat > "$DEST" \
 <<EOF
 deb http://ftp.debian.org/debian/ sid main
-deb-src http://ftp.debian.org/debian/ sid main
+#deb-src http://ftp.debian.org/debian/ sid main
 
 #deb http://ftp.debian.org/debian/ testing main
 #deb-src http://ftp.debian.org/debian/ testing main
@@ -37,7 +37,7 @@ deb-src http://ftp.debian.org/debian/ sid main
 #deb-src http://ftp.debian.org/debian/ experimental main
 
 deb http://sidux.com/debian/ sid main fix.main
-deb-src http://sidux.com/debian/ sid main fix.main
+#deb-src http://sidux.com/debian/ sid main fix.main
 EOF
 			;;
 
