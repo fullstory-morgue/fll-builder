@@ -539,7 +539,7 @@ fi
 # add version marker, this is the exact time stamp for our package list
 echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
 	> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-echo " - $FLL_DISTRO_CODENAME ($PACKAGE_TIMESTAMP)" \
+echo " ($PACKAGE_TIMESTAMP) - $FLL_DISTRO_CODENAME" \
 	>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 
 # a few dæmons are broken if log files are missing, 
