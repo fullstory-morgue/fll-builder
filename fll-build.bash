@@ -457,6 +457,13 @@ if exists_in_chroot /usr/sbin/fix-fonts; then
 	chroot_exec fix-fonts
 fi
 
+# set x-www-browser, use the popular firefox/iceweasel if present
+if exists_in_chroot /usr/bin/iceweasel; then
+	chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
+elif exists_in_chroot /usr/bin/konqueror; then
+	chroot_exec update-alternatives --set x-www-browser /usr/bin/konqueror
+fi
+
 # use most as PAGER
 if exists_in_chroot /usr/bin/most; then
 	chroot_exec update-alternatives --set pager /usr/bin/most
