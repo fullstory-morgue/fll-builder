@@ -57,7 +57,7 @@ make_fll_source_iso() {
 			FLL_SOURCE_ISO_NAME="$(tr a-z A-Z <<< ${FLL_DISTRO_NAME}-${DEBOOTSTRAP_ARCH}-${FLL_DISTRO_VERSION}-${PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME}\.SOURCE\.ISO)"
 			;;
 	esac
-	FLL_SOURCE_ISO_NAME="$(echo FLL_SOURCE_ISO_NAME | sed s/\ /_/g)"
+	FLL_SOURCE_ISO_NAME="$(echo $FLL_SOURCE_ISO_NAME | sed s/\ /_/g)"
 
 	# make the iso
 	echo "> Create source ISO."
