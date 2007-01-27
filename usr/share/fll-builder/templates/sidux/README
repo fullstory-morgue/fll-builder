@@ -23,7 +23,18 @@ The other parts of the installer are self explanatory.
 
 How to install graphics drivers for ATI or NVIDIA cards:
 
-The new script for installation of graphics drivers is called: install-sidux-binary-gfx
+New for installation of graphics drivers: 
+
+ # ie, as root:
+  1. get-sidux-binary-gfx
+  2. install-binary-gfx -a (to build sid source)
+  3. install-binary-gfx -e (to build experimental source)
+   -a     Automatic mode
+   -b MOD Build only
+   -d     Detect Card only
+   -e     Use Experimental
+   -v     Verbose
+  Valid MOD's are nvidia, nvidia-legacy and fglrx
 
 Run it from console as root. It will choose the right driver for your card, build a deb and install it and change xorg.conf accordingly. Just restart X afterwards.
 
