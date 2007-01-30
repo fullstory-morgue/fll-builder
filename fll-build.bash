@@ -166,7 +166,9 @@ FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 
 # apt sources in chroot
 FLL_BUILD_DEBIANMIRROR="http://ftp.debian.org/debian/"
+FLL_BUILD_DEBIANMIRROR_COMPONENTS="main"
 FLL_BUILD_FLLMIRROR="http://sidux.com/debian/"
+FLL_BUILD_FLLMIRROR_COMPONENTS="main fix.main"
 FLL_HTTP_PROXY=""
 FLL_FTP_PROXY=""
 
@@ -286,21 +288,6 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	else
 		error 3
 	fi
-fi
-
-# default apt components - debian mirror
-if [[ -z $FLL_BUILD_DEBIANMIRROR_COMPONENTS ]]; then
-	FLL_BUILD_DEBIANMIRROR_COMPONENTS="main"
-fi
-
-# fll mirror
-if [[ -z $FLL_BUILD_FLLMIRROR_COMPONENTS ]]; then
-	FLL_BUILD_FLLMIRROR_COMPONENTS="main fix.main"
-fi
-
-# extra mirror
-if [[ $FLL_BUILD_EXTRAMIRROR && -z $FLL_BUILD_EXTRAMIRROR_COMPONENTS ]]; then
-	FLL_BUILD_EXTRAMIRROR_COMPONENTS="main"
 fi
 
 # alternative package file
