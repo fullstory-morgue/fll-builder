@@ -158,8 +158,10 @@ FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
-FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
+
+# package profile
 FLL_BUILD_PACKAGE_PROFILE="kde-lite"
+FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
