@@ -106,13 +106,13 @@ error() {
 			echo "must specify a linux kernel"
 			;;
 		7)
-			echo "ISO output directory does not exist"
-			;;
-		8)
 			echo "kernel zip file is not readable"
 			;;
-		9)
+		8)
 			echo "kernel zip file is corrupt"
+			;;
+		9)
+			echo "ISO output directory does not exist"
 			;;
 		*)
 			echo "Unknown error code \"$1\"."
@@ -288,6 +288,21 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	fi
 fi
 
+# default apt components - debian mirror
+if [[ -z $FLL_BUILD_DEBIANMIRROR_COMPONENTS ]]; then
+	FLL_BUILD_DEBIANMIRROR_COMPONENTS="main"
+fi
+
+# fll mirror
+if [[ -z $FLL_BUILD_FLLMIRROR_COMPONENTS ]]; then
+	FLL_BUILD_FLLMIRROR_COMPONENTS="main fix.main"
+fi
+
+# extra mirror
+if [[ $FLL_BUILD_EXTRAMIRROR && -z $FLL_BUILD_EXTRAMIRROR_COMPONENTS ]]; then
+	FLL_BUILD_EXTRAMIRROR_COMPONENTS="main"
+fi
+
 # alternative package file
 if [[ $FLL_BUILD_ALT_PACKAGELIST ]]; then
 	if [[ -s $FLL_BUILD_ALT_PACKAGELIST ]]; then
@@ -321,13 +336,15 @@ fi
 if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
 	error 6
 fi
+
 # check kernel zip exists and is readable
 if [[ ! -r $FLL_BUILD_LINUX_KERNEL ]]; then
-	error 8
+	error 7
 fi
+
 # check integrity of kernel zip archive
 if [[ ! $(zip -T $FLL_BUILD_LINUX_KERNEL) ]]; then
-	error 9
+	error 8
 fi
 
 # distro name, lower casified
@@ -351,7 +368,7 @@ if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
 fi
 
 if [[ ! -d $FLL_BUILD_ISO_OUTPUT ]]; then
-	error 7
+	error 9
 fi
 
 # live-package does this
@@ -395,7 +412,17 @@ mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 #		prepare apt					#
 #################################################################
 chroot_exec apt-get update
+
+# install gpg keyring for fll mirror
 chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
+
+# fetch & install gpg key for extra mirror
+if [[ $FLL_BUILD_EXTRAMIRROR_GPGKEYID ]]; then
+	# XXX: proxy => --keyserver-options http-proxy
+	chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys "$FLL_BUILD_EXTRAMIRROR_GPGKEYID"
+	chroot_exec apt-key add /root/.gnupg/pubring.gpg
+fi
+
 chroot_exec apt-get update
 
 # store time stamp of package installation
@@ -412,7 +439,7 @@ echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_
 #################################################################
 #		install packages				#
 #################################################################
-# ensure distro-defaults is present for mass package installation
+# ensure distro-defaults is present before mass package installation
 chroot_exec apt-get --assume-yes install distro-defaults 
 
 # mass package installation

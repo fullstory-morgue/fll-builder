@@ -5,7 +5,7 @@
 *	./mnt/*
 *	./none/*
 *	./proc/*
-*	./root/.*
+*	./root/*
 *	./sys/*
 *	./tmp/*
 *	./var/local/*

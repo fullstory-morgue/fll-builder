@@ -39,6 +39,8 @@ install_local_debs() {
 
 	local LOCDEBDIR="$1"
 	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d localdebs.XXXX)
+
+	[[ -d $LOCDEBDIR && $(ls -A $LOCDEBDIR/*.deb) ]] || return 0
 	
 	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
 
