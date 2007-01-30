@@ -11,6 +11,7 @@ FLL_PACKAGES+=(
 	fix-fonts
 	gparted
 	install-gui
+	knx-installer
 	networkconfig-sidux
 	restartx
 	rootshell
