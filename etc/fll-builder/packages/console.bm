@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	essential
+	hwsupport
+)
