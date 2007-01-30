@@ -6,7 +6,6 @@ FLL_PACKAGES+=(
 	acpid
 	alsa-base
 	alsa-utils
-	configure-cups
 	cpufrequtils
 	cupsys
 	cupsys-client

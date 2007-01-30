@@ -2,6 +2,7 @@
 
 FLL_PACKAGES+=(
 	checkmem
+	configure-cups
 	configure-gprs
 	configure-mouse
 	configure-screenres
