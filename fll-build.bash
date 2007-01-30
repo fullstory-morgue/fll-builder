@@ -432,7 +432,7 @@ chroot_exec apt-get --assume-yes install distro-defaults
 # mass package installation
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
-# XXX: this hack if FOR TESTING PURPOSES ONLY
+# XXX: this hack is FOR TESTING PURPOSES ONLY
 if [[ -d $FLL_BUILD_LOCAL_DEBS ]]; then
 	install_local_debs "$FLL_BUILD_LOCAL_DEBS"
 fi
