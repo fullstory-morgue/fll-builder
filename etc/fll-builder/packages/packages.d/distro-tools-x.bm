@@ -1,0 +1,23 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	checkmem
+	configure-gprs
+	configure-mouse
+	configure-screenres
+	configure-xawtv
+	ddcxinfo-sidux
+	fix-fonts
+	gparted
+	install-gui
+	networkconfig-sidux
+	restartx
+	rootshell
+	sidux-browser
+	sidux-irc
+	sidux-menu
+	sidux-searchplugins
+	sidux-setpassword
+	xorgconfig-sidux
+	xsession-sidux
+)

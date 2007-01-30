@@ -1,0 +1,26 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	mkdosswapfile
+	mkpersistenthome
+	saveconfig
+	configure-dsl
+	configure-isdn
+	configure-modemlink
+	configure-ndiswrapper
+	configure-networkcard
+	infobash
+	ppp-scripts
+	sshstart-sidux
+	startsyslog-sidux
+)
+
+case "$DPKG_ARCH" in
+	i?86)
+		FLL_PACKAGES+=( klik )
+		# configure-freenx
+		;;
+	
+	*)
+		;;
+esac

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	bzip2
+	console-data
+	console-common
+	dosfstools
+	e2fsprogs
+	fuse-utils
+	initramfs-tools
+	iptables
+	jfsutils
+	less
+	locales
+	man
+	manpages
+	memtest86+
+	netbase
+	ntpdate
+	ntfs-3g
+	reiserfsprogs
+	strace
+	sudo
+	unionfs-tools
+	xfsprogs
+	unzip
+	wget
+	zip
+)

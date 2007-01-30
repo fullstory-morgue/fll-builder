@@ -1,0 +1,25 @@
+#!/bin/bash
+
+case ${FLL_PACKAGES[*]} in
+	*kde*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			FLL_PACKAGES+=( kde-i18n-${lang} )
+		done
+		;;
+esac
+
+case ${FLL_PACKAGES[*]} in
+	*koffice*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			FLL_PACKAGES+=( koffice-i18n-${lang} )
+		done
+		;;
+esac
+
+case ${FLL_PACKAGES[*]} in
+	*iceweasel*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			FLL_PACKAGES+=( iceweasel-l10n-${lang} )
+		done
+		;;
+esac

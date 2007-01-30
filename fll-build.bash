@@ -74,7 +74,9 @@ Options:
 
   -p|--preserve			Preserve build area when finished
 
-  -P|--packages			Path to alternative packages file
+  -P|--package-profile		Name of packages profile. Each profile is sourced from bash lists
+  				(arrays) located at /etc/fll-builder/packages/<NAME>.bm.
+  				(default: kde-lite or /etc/fll-builder/packages/kde-lite.bm)
 
   -s|--source			Retrieve all source packages for the release
 
@@ -97,7 +99,7 @@ error() {
 			echo "unable to source alternate configfile"
 			;;
 		4)
-			echo "unable to source alternate packages file"
+			echo "unable to source packages profile module"
 			;;
 		5)	
 			echo "buildarea not specified"
@@ -156,7 +158,8 @@ FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 
 # fll default configfile
 FLL_BUILD_CONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
-FLL_BUILD_PACKAGELIST="$FLL_BUILD_BASE/etc/fll-builder/packages.conf"
+FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
+FLL_BUILD_PACKAGE_PROFILE="kde-lite"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
@@ -186,7 +189,6 @@ FLL_BUILD_OUTPUT_UID=$UID
 #################################################################
 source "$FLL_BUILD_DEFAULTS"
 source "$FLL_BUILD_CONFIG"
-source "$FLL_BUILD_PACKAGELIST"
 
 # source functions
 for func in "$FLL_BUILD_FUNCTIONS"/*.bm; do
@@ -200,7 +202,7 @@ ARGS=$(
 	getopt \
 		--name "$SELF" \
 		--options b:c:CdD:hk:no:pP:sS: \
-		--long buildarea,configfile,chrootonly,copyright,debdir,debug,help,kernel,output,packages,preserve,source,squashfs-sortfile:,uid: \
+		--long buildarea,configfile,chrootonly,copyright,debdir,debug,help,kernel,output,package-profile,preserve,source,squashfs-sortfile:,uid: \
 		-- $@
 )
 
@@ -250,9 +252,9 @@ while true; do
 		-p|--preserve)
 			FLL_BUILD_PRESERVE_CHROOT=1
 			;;
-		-P|--packages)
+		-P|--package-profile)
 			shift
-			FLL_BUILD_ALT_PACKAGELIST=$1
+			FLL_BUILD_PACKAGE_PROFILE=$1
 			;;
 		-s|--source)
 			FLL_BUILD_SOURCE_REL=1
@@ -278,8 +280,7 @@ while true; do
 done
 
 #################################################################
-#		process command line options			#
-#		volatile variable declarations			#
+#		source local config				#
 #################################################################
 # alternate configfile
 if [[ $FLL_BUILD_ALT_CONFIG ]]; then
@@ -290,15 +291,27 @@ if [[ $FLL_BUILD_ALT_CONFIG ]]; then
 	fi
 fi
 
-# alternative package file
-if [[ $FLL_BUILD_ALT_PACKAGELIST ]]; then
-	if [[ -s $FLL_BUILD_ALT_PACKAGELIST ]]; then
-		source "$FLL_BUILD_ALT_PACKAGELIST"
-	else
-		error 4
-	fi
+#################################################################
+#		process package array(s)			#
+#################################################################
+if [[ -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
+else
+	error 4
 fi
 
+if [[ $FLL_PACKAGE_DEPMODS ]]; then
+	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
+	done
+fi
+
+# unconditionally evaluate i18n requirements
+source "$FLL_BUILD_PACKAGE_PROFDIR"/i18n.bm
+
+#################################################################
+#		preparations and sanity checks			#
+#################################################################
 # temporary staging areas within buildarea
 if [[ $FLL_BUILD_AREA ]]; then
 	mkdir -p "$FLL_BUILD_AREA"

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+FLL_PACKAGE_DEPMODS=(
+	console
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	essential
+	hwsupport
+	xserver
+)
+
+FLL_PACKAGES=(
+	amarok
+	ark
+	k3b
+	kaffeine
+	kde
+	kdm
+	koffice
+	konversation
+	knemo
+	kpowersave
+	ktorrent
+)

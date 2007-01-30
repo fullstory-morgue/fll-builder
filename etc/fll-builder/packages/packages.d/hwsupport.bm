@@ -1,0 +1,41 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	915resolution
+	acpi-support
+	acpid
+	alsa-base
+	alsa-utils
+	configure-cups
+	cpufrequtils
+	cupsys
+	cupsys-client
+	cupsys-bsd
+	cupsys-driver-gutenprint
+	discover1-data
+	dmidecode
+	foomatic-db
+	foomatic-db-engine
+	foomatic-db-gutenprint
+	foomatic-db-hpijs
+	foomatic-filters
+	foomatic-filters-ppds
+	hotkey-setup
+	hplip
+	hplip-ppds
+	laptop-detect
+	linuxprinting.org-ppds
+	lirc
+	ntfs-3g
+	ntfsprogs
+	pcmciautils
+	pciutils
+	powersaved
+	sane
+	sane-utils
+	udev
+	uswsusp
+	wireless-tools
+	wpasupplicant
+	vbetool
+)

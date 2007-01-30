@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	libgl1-mesa-dri
+	menu
+	mesa-utils
+	sux
+	ttf-bitstream-vera
+	ttf-freefont
+	xfonts-base
+	xfonts-75dpi
+	xfonts-75dpi-transcoded
+	xfonts-100dpi
+	xfonts-100dpi-transcoded
+	xserver-xorg
+	xserver-xorg-input-all
+	xserver-xorg-video-all
+	xutils
+)

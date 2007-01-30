@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	busybox-sidux
+	etcskel-sidux
+	gfxboot-theme-sidux
+	grub-gfxboot
+	hwsetup-ng
+	initscripts-sidux-live
+	knx-installer
+	live-initrd-sidux
+	rebuildfstab
+	scanpartitions
+	sidux-graphics
+	sidux-scripts
+	su-me
+	udev-config-sidux
+	user-profile-sidux
+)

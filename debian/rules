@@ -20,10 +20,9 @@ install/fll-builder::
 	install -D -m 0644 etc/fll-builder/fll-build.conf \
 		debian/fll-builder/etc/fll-builder/fll-build.conf
 	# package lists
-	install -D -m 0755 etc/fll-builder/packages.conf \
-		debian/fll-builder/etc/fll-builder/packages.conf
-	for conf in etc/fll-builder/packages/*.conf; do \
-		install -D -m 0755 $$conf debian/fll-builder/$$conf; \
+	for bm in etc/fll-builder/packages/*.bm \
+		etc/fll-builder/packages/packages.d/*.bm; do \
+		install -D -m 0755 $$bm debian/fll-builder/$$bm; \
 	done
 	# templates
 	cp -a usr/share/fll-builder/templates \

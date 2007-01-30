@@ -1,0 +1,12 @@
+#!/bin/bash
+
+FLL_PACKAGE_DEPMODS=(
+	distro
+	essential
+	hwsupport
+	xserver
+)
+
+FLL_PACKAGES=(
+	fluxbox
+)
