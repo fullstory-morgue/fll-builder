@@ -304,12 +304,20 @@ fi
 
 if [[ $FLL_PACKAGE_DEPMODS ]]; then
 	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+		echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
 		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
 	done
 fi
 
 # unconditionally evaluate i18n requirements
+echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/i18n.bm"
 source "$FLL_BUILD_PACKAGE_PROFDIR"/i18n.bm
+
+echo
+echo "PACKAGE LIST:-"
+echo
+echo ${FLL_PACKAGES[@]}
+echo
 
 #################################################################
 #		preparations and sanity checks			#
