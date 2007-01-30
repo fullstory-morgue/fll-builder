@@ -44,8 +44,10 @@ ISO output dir
 \fB\-p|\-\-preserve\fR
 Preserve build area when finished
 .TP
-\fB\-P|\-\-packages\fR
-Path to alternative packages file
+\fB\-P|\-\-package-profile\fR
+Name of packages profile. Each profile is sourced from bash lists
+(arrays) located at /etc/fll-builder/packages/<NAME>.bm.
+(default: kde-lite or /etc/fll-builder/packages/kde-lite.bm)
 .TP
 \fB\-s|\-\-source\fR
 Retrieve all source packages for the release
