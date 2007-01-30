@@ -14,6 +14,11 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	amarok
 	ark
+	iceweasel
+	icedove
+	frozen-bubble
+	gimp
+	gwenview
 	k3b
 	kaffeine
 	kde
@@ -23,4 +28,7 @@ FLL_PACKAGES=(
 	knemo
 	kpowersave
 	ktorrent
+	openoffice.org
+	openoffice.org-kde
+	supertux
 )
