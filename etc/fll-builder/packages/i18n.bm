@@ -23,3 +23,11 @@ case ${FLL_PACKAGES[*]} in
 		done
 		;;
 esac
+
+case ${FLL_PACKAGES[*]} in
+	*openoffice.org*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			FLL_PACKAGES+=( openoffice.org-l10n-${lang} )
+		done
+		;;
+esac
