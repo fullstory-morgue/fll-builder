@@ -31,12 +31,15 @@ FLL_PACKAGES=(
 	k3b
 	kaffeine
 	kde
+	kdesvn
+	kdesvn-kio-plugins
+	kdevelop
+	kdevelop-plugins
 	kdm
 	koffice
 	konversation
 	knemo
 	kpowersave
-	kppp
 	ktorrent
 	kvpnc
 	nmapfe

@@ -15,18 +15,25 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	ark
+	digikam
+	digikamimageplugins
+	gwenview
 	k3b
 	kaffeine
+	kdeadmin
+	kdebluetooth
+	kdegraphics
+	kdemultimedia-kfile-plugins
+	kdemultimedia-kio-plugins
+	kdenetwork
+	kdepim
 	kdeprint
 	kdm
-	klipper
+	kipi-plugins
 	koffice
 	konversation
-	kooka
 	kopete
 	knemo
-	kpackage
-	kpdf
 	kpowersave
 	ktorrent
 	kvpnc

@@ -26,4 +26,5 @@ FLL_PACKAGES=(
 	kppp
 	kpdf
 	ktorrent
+	kuickshow
 )
