@@ -28,6 +28,7 @@ FLL_PACKAGES=(
 	kdenetwork
 	kdepim
 	kdeprint
+	kdeutils
 	kdm
 	kipi-plugins
 	koffice
