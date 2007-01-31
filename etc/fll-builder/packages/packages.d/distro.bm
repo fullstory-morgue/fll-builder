@@ -9,6 +9,7 @@ FLL_PACKAGES+=(
 	knx-installer
 	live-initrd-sidux
 	rebuildfstab
+	rsync
 	scanpartitions
 	sidux-graphics
 	sidux-scripts
