@@ -6,7 +6,3 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport
 	xserver
 )
-
-FLL_PACKAGES=(
-	fluxbox
-)
