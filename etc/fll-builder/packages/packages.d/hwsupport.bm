@@ -25,8 +25,6 @@ FLL_PACKAGES+=(
 	laptop-detect
 	linuxprinting.org-ppds
 	lirc
-	ntfs-3g
-	ntfsprogs
 	pcmciautils
 	pciutils
 	powersaved

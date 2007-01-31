@@ -18,6 +18,7 @@ FLL_PACKAGES+=(
 	netbase
 	ntpdate
 	ntfs-3g
+	ntfsprogs
 	reiserfsprogs
 	strace
 	sudo
