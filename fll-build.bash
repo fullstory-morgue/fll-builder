@@ -310,8 +310,8 @@ if [[ $FLL_PACKAGE_DEPMODS ]]; then
 fi
 
 # unconditionally evaluate i18n requirements
-echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/i18n.bm"
-source "$FLL_BUILD_PACKAGE_PROFDIR"/i18n.bm
+echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
+source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
 
 echo
 echo "PACKAGE LIST:-"
