@@ -17,6 +17,14 @@ case ${FLL_PACKAGES[*]} in
 esac
 
 case ${FLL_PACKAGES[*]} in
+	*icedove*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			FLL_PACKAGES+=( icedove-locale-${lang} )
+		done
+		;;
+esac
+
+case ${FLL_PACKAGES[*]} in
 	*iceweasel*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
 			FLL_PACKAGES+=( iceweasel-l10n-${lang} )
