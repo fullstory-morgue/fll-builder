@@ -3,7 +3,6 @@
 FLL_PACKAGES+=(
 	busybox-sidux
 	etcskel-sidux
-	gfxboot-theme-sidux
 	grub-gfxboot
 	hwsetup-ng
 	initscripts-sidux-live
