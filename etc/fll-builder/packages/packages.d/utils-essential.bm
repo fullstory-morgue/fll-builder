@@ -12,4 +12,6 @@ FLL_PACKAGES+=(
 	netbase
 	sudo
 	wget
+	wireless-tools
+	wpasupplicant
 )

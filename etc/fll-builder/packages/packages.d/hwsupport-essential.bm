@@ -1,0 +1,14 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	915resolution
+	acpid
+	alsa-base
+	alsa-utils
+	discover1-data
+	laptop-detect
+	pcmciautils
+	pciutils
+	powersaved
+	udev
+)

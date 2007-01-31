@@ -2,6 +2,6 @@
 
 FLL_PACKAGE_DEPMODS=(
 	distro
+	hwsupport-essential
 	utils-essential
-	hwsupport
 )

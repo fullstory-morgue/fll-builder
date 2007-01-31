@@ -1,17 +1,12 @@
 #!/bin/bash
 
 FLL_PACKAGES+=(
-	915resolution
 	acpi-support
-	acpid
-	alsa-base
-	alsa-utils
 	cpufrequtils
 	cupsys
 	cupsys-client
 	cupsys-bsd
 	cupsys-driver-gutenprint
-	discover1-data
 	dmidecode
 	foomatic-db
 	foomatic-db-engine
@@ -25,14 +20,8 @@ FLL_PACKAGES+=(
 	laptop-detect
 	linuxprinting.org-ppds
 	lirc
-	pcmciautils
-	pciutils
-	powersaved
 	sane
 	sane-utils
-	udev
 	uswsusp
-	wireless-tools
-	wpasupplicant
 	vbetool
 )
