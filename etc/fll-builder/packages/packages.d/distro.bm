@@ -7,6 +7,7 @@ FLL_PACKAGES+=(
 	grub-gfxboot
 	hwsetup-ng
 	initscripts-sidux-live
+	knx-installer
 	live-initrd-sidux
 	rebuildfstab
 	scanpartitions
