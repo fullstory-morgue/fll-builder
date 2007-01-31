@@ -31,7 +31,6 @@ FLL_PACKAGES=(
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins
 	kdenetwork
-	kdepim
 	kdeprint
 	kdeutils
 	kdm
