@@ -1,26 +1,17 @@
 #!/bin/bash
 
 FLL_PACKAGES+=(
-	bzip2
 	cdrdao
-	console-data
-	console-common
 	dvd+rw-tools
 	dmraid
 	dosfstools
-	e2fsprogs
 	fuse-utils
 	genisoimage
-	initramfs-tools
-	iptables
 	jfsutils
-	less
-	locales
 	lvm2
 	man
 	manpages
 	memtest86+
-	netbase
 	ntpdate
 	ntfs-3g
 	ntfsprogs
@@ -30,12 +21,10 @@ FLL_PACKAGES+=(
 	smbclient
 	smbfs
 	strace
-	sudo
 	unionfs-tools
 	xfsprogs
 	unzip
 	vpnc
-	wget
 	wodim
 	zip
 )

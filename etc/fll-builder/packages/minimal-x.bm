@@ -2,7 +2,7 @@
 
 FLL_PACKAGE_DEPMODS=(
 	distro
-	essential
+	utils-essential
 	hwsupport
 	xserver
 )

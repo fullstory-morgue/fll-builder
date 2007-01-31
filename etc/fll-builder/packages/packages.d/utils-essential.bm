@@ -1,0 +1,15 @@
+#!/bin/bash
+
+FLL_PACKAGES+=(
+	bzip2
+	console-data
+	console-common
+	e2fsprogs
+	initramfs-tools
+	iptables
+	less
+	locales
+	netbase
+	sudo
+	wget
+)

@@ -6,7 +6,8 @@ FLL_PACKAGE_DEPMODS=(
 	distro-kde
 	distro-tools
 	distro-tools-x
-	essential
+	utils-essential
+	utils-extra
 	hwsupport
 	xserver
 )
@@ -21,5 +22,6 @@ FLL_PACKAGES=(
 	kmix
 	knemo
 	kpowersave
+	kppp
 	ktorrent
 )

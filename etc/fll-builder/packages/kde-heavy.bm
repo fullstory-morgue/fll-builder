@@ -6,7 +6,8 @@ FLL_PACKAGE_DEPMODS=(
 	distro-kde
 	distro-tools
 	distro-tools-x
-	essential
+	utils-essential
+	utils-extra
 	hwsupport
 	xserver
 )
@@ -27,8 +28,11 @@ FLL_PACKAGES=(
 	konversation
 	knemo
 	kpowersave
+	kppp
 	ktorrent
+	kvpnc
 	openoffice.org
 	openoffice.org-kde
 	supertux
+	vlc
 )
