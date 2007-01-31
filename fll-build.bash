@@ -532,6 +532,13 @@ cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,st
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
+if exists_in_chroot /boot/memtest86+.bin; then
+	cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
+	echo					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	echo "title memtest86+"			>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	echo "kernel /boot/memtest86+.bin"	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+fi
+
 # md5sums
 pushd "$FLL_BUILD_RESULT" >/dev/null
 	( find . -type f -not \( -name '*md5sums' -o -name '*.cat' \) -printf '%P\n' | \

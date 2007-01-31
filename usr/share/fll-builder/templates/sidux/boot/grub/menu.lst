@@ -26,6 +26,5 @@ kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off vga=791 xm
 initrd /boot/miniroot.gz
 
 title  sidux Failsafe
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp xmodule=vesa lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp nocpufreq xmodule=vesa lang=en
 initrd /boot/miniroot.gz
-
