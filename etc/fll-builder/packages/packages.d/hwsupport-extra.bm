@@ -3,6 +3,7 @@
 FLL_PACKAGES+=(
 	915resolution
 	acpi-support
+	alsa-utils
 	cpufrequtils
 	cupsys
 	cupsys-client
