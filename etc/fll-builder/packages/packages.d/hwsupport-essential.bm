@@ -6,6 +6,5 @@ FLL_PACKAGES+=(
 	laptop-detect
 	pcmciautils
 	pciutils
-	powersaved
 	udev
 )

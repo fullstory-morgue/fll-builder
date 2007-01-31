@@ -6,3 +6,7 @@ FLL_PACKAGE_DEPMODS=(
 	utils-essential
 	xserver
 )
+
+FLL_PACKAGES=(
+	powernowd
+)
