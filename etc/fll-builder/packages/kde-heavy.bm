@@ -36,7 +36,6 @@ FLL_PACKAGES=(
 	kdesvn
 	kdesvn-kio-plugins
 	kdevelop
-	kdevelop-plugins
 	kdm
 	koffice
 	konversation
