@@ -1,6 +1,7 @@
 #!/bin/bash
 
 FLL_PACKAGES+=(
+	915resolution
 	acpi-support
 	cpufrequtils
 	cupsys
