@@ -24,6 +24,8 @@ FLL_PACKAGES=(
 	foobillard
 	frozen-bubble
 	gimp
+	gnucash
+	gnucash-docs
 	gwenview
 	iceweasel
 	icedove
@@ -45,6 +47,8 @@ FLL_PACKAGES=(
 	nmapfe
 	openoffice.org
 	openoffice.org-kde
+	qcad
+	qcad-doc
 	qemu
 	qemu-launcher
 	rafkill
