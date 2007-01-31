@@ -1,18 +1,10 @@
 #!/bin/bash
 
 FLL_PACKAGES+=(
-	cdrdao
-	dvd+rw-tools
 	elinks
-	genisoimage
 	gpm
 	mc
 	most
-	openssh-client
 	rcconf
-	sshfs
-	smbclient
-	smbfs
-	wodim
 	vim
 )
