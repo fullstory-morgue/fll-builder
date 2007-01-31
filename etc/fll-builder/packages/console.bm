@@ -4,7 +4,10 @@ FLL_PACKAGE_DEPMODS=(
 	cli
 	distro
 	hwsupport-essential
-	hwsupport-extra
 	utils-essential
 	utils-extra
+)
+
+FLL_PACKAGES=(
+	powernowd
 )
