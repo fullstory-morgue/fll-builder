@@ -16,11 +16,18 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	amarok
 	ark
-	iceweasel
-	icedove
+	audacity
+	audacious
+	audacious-plugins
+	digikam
+	digikamimageplugins
+	foobillard
 	frozen-bubble
 	gimp
 	gwenview
+	iceweasel
+	icedove
+	inkscape
 	k3b
 	kaffeine
 	kde
@@ -32,8 +39,22 @@ FLL_PACKAGES=(
 	kppp
 	ktorrent
 	kvpnc
+	nmapfe
 	openoffice.org
 	openoffice.org-kde
+	qemu
+	qemu-launcher
+	rafkill
 	supertux
 	vlc
+	wireshark
 )
+
+case "$DPKG_ARCH" in
+	i?86)
+		FLL_PACKAGES+=( wine )
+		;;
+	
+	*)
+		;;
+esac

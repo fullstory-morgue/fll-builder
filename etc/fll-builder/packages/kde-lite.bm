@@ -24,5 +24,6 @@ FLL_PACKAGES=(
 	knemo
 	kpowersave
 	kppp
+	kpdf
 	ktorrent
 )

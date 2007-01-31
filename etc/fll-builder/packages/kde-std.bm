@@ -14,18 +14,10 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	amarok
 	ark
 	k3b
 	kaffeine
-	kdeadmin
-	kdebluetooth
-	kdegraphics
-	kdemultimedia
-	kdenetwork
-	kdepim
 	kdeprint
-	kdewebdev
 	kdm
 	klipper
 	koffice
@@ -34,6 +26,7 @@ FLL_PACKAGES=(
 	kopete
 	knemo
 	kpackage
+	kpdf
 	kpowersave
 	ktorrent
 	kvpnc
