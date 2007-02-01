@@ -26,7 +26,11 @@ FLL_PACKAGES=(
 	inkscape
 	k3b
 	kaffeine
+	kaddressbook-plugins
+	kate-plugins
 	kbattleship
+	kdeaccessibility
+	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebluetooth
 	kdegraphics-kfile-plugins
@@ -40,9 +44,11 @@ FLL_PACKAGES=(
 	kfax
 	kfaxview
 	kghostview
+	kicker-applets
 	kiconedit
 	kipi-plugins
 	kmahjongg
+	konq-plugins
 	konversation
 	kooka
 	kopete
