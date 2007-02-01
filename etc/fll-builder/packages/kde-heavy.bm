@@ -24,11 +24,10 @@ FLL_PACKAGES=(
 	foobillard
 	frozen-bubble
 	gimp
-	gnucash
-	gnucash-docs
 	gwenview
-	iceweasel
+	iceape
 	icedove
+	iceweasel
 	inkscape
 	k3b
 	kaffeine
@@ -44,6 +43,7 @@ FLL_PACKAGES=(
 	ktorrent
 	kvpnc
 	nmapfe
+	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
 	qcad
@@ -51,6 +51,7 @@ FLL_PACKAGES=(
 	qemu
 	qemu-launcher
 	rafkill
+	scribus-ng
 	supertux
 	vlc
 	wireshark

@@ -39,3 +39,21 @@ case ${FLL_PACKAGES[*]} in
 		done
 		;;
 esac
+
+case ${FLL_PACKAGES[*]} in
+	*myspell*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			case $lang in
+				de)
+					FLL_PACKAGES+=( myspell-de-de )
+					;;
+				au|gb)
+					FLL_PACKAGES+=( myspell-en-${lang} )
+					;;
+				*)
+					FLL_PACKAGES+=( myspell-${lang} )
+					;;
+			esac
+		done
+		;;
+esac

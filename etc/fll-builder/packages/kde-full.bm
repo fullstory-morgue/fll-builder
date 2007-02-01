@@ -21,8 +21,8 @@ FLL_PACKAGES=(
 	frozen-bubble
 	gimp
 	gwenview
-	iceweasel
 	icedove
+	iceweasel
 	inkscape
 	k3b
 	kaffeine
@@ -55,6 +55,7 @@ FLL_PACKAGES=(
 	ksnapshot
 	ktorrent
 	kvpnc
+	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
 	scribus-ng
