@@ -26,9 +26,10 @@ FLL_PACKAGES=(
 	inkscape
 	k3b
 	kaffeine
+	kbattleship
 	kdeadmin
 	kdebluetooth
-	kdegraphics
+	kdegraphics-kfile-plugins
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins
 	kdenetwork
@@ -36,15 +37,25 @@ FLL_PACKAGES=(
 	kdeprint
 	kdeutils
 	kdm
+	kfax
+	kfaxview
+	kghostview
+	kiconedit
 	kipi-plugins
-	openoffice.org
-	openoffice.org-kde
+	kmahjongg
 	konversation
+	kooka
 	kopete
 	knemo
+	kpat
+	kpdf
+	kpoker
 	kpowersave
+	kreversi
+	ksnapshot
 	ktorrent
 	kvpnc
+	openoffice.org
+	openoffice.org-kde
 	scribus-ng
-	supertux
 )
