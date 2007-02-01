@@ -43,4 +43,5 @@ FLL_PACKAGES=(
 	kpowersave
 	ktorrent
 	kvpnc
+	scribus-ng
 )
