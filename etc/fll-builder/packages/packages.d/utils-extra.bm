@@ -13,6 +13,7 @@ FLL_PACKAGES+=(
 	man
 	manpages
 	memtest86+
+	module-assistant
 	ntpdate
 	ntfs-3g
 	ntfsprogs
