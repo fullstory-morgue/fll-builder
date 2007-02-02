@@ -183,7 +183,7 @@ EOF
 			cat > "$DEST" \
 <<EOF
 syntax on
-set background=light
+set background=dark
 set showmatch
 set pastetoggle=<F10>
 au FileType debchangelog normal z0
