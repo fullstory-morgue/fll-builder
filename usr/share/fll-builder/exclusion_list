@@ -12,6 +12,7 @@
 *	./var/tmp/*
 *	./boot/miniroot*
 f	./boot/initrd.img*
+f	./etc/adjtime
 f	./etc/hwsetup/*
 f	./etc/ssh/ssh_host_*key*
 f	./etc/sysconfig/*
