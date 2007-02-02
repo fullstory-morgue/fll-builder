@@ -60,11 +60,13 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * don't activate deb-src on default.
   * make lang= cheatcode easier accessible on the grub line.
   * add /etc/adjtime to the exclude list.
+  * enable progress bar for mksquashfs again, squashfs-tools >=
+    1:3.2r2-0+c0.sidux.1 is fixed.
 
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  2 Feb 2007 04:25:40 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  2 Feb 2007 23:55:40 +0100
 
 fll-builder (1.0.2) unstable; urgency=low
 
