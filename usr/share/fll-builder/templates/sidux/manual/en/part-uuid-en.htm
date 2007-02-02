@@ -2,13 +2,13 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>sidux Manuals - Upgrading sidux</title>
+	<title>sidux Manuals - UUID</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
-<body>
+<body id="welcome">
 <div id="menu">
 <!-- menu starts here -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
@@ -84,7 +84,7 @@
 				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
 				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
 				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
 				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
 				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
 			</ul>
@@ -137,37 +137,124 @@
 		</li>
 	</ul>
 <!-- menu ends here -->
-
 </div>
 <div id="main-page">
-	<div class="divider" id="live-cd-upgrade">
-		<h2>Live-cd upgrade</h2>
-			<p>The facility to "live-cd' upgrade a sidux installation does not exist. Before proceeding with installing sidux <span class="highlight-2">BACK-UP YOUR DATA! including your bookmarks and emails.</span></p>
+	<div class="divider" id="uuid">
+			<h2>Overview: UUID, Partition Labelling and fstab</h2>
+				<p>Persistent block device naming has been made possible by the introduction of udev and has some advantages over bus-based naming.</p>
 
-			 <p class="highlight-3">It is highly recommended that you have a separate data partition. The benefits in terms of disaster recovery, stability of your data are unmeasurable.</p>
+				<p>While Linux distributions and udev are evolving and hardware detection is becoming more reliable, there are also a number of new problems and changes:<br />
+				    <b>1)</b> If you have more than one sata/scsi or ide disk controller, the order in which they are added is random. This may result in device names like hdX and hdY switching around randomly on each boot. The same goes for sdX and sdY. Persistent naming allows you not to worry about this at all.<br />
+				    <b>2)</b> With the introduction of the new libata pata support, all your ide hdX devices will become sdX devices at some point in the future. Again, with persistent naming, you won't even notice.<br />
+				    <b>3)</b> Machines with both sata and ide controllers are quite common these days. With the libata changes mentioned above, the first problem will become even more common, as sata and ide hard drives will both have sdX names.</p>
 
-			<p>Therefore your $HOME becomes a place where basic application configurations are kept. or to put it another way, a container for applications to store their settings.</p>
+				<p class="highlight-3">By default sidux will use uuid in your fstab when you install</p>
 
-			<p class="highlight-2">ALWAYS BACK-UP YOUR DATA including your bookmarks and emails!</p>
+				<p>There are more reasons, but these are the most critical ones now and in the near future. That's why sidux encourages you to change your setup to persistent naming schemes.</p>
 
-			
+			<h2>The four different schemes for persistent naming:</h2>
+
+			<h4>1. Persistent Naming by UUID</h4>
+
+				<p>UUID stands for Universally Unique Identifier and is a mechanism to give each filesystem a unique identifier. It is designed so that collisions are unlikely. All Linux filesystems (including swap) support UUID. FAT and NTFS filesystems don't support UUID, but are still listed in by-uuid with a unique identifier:</p>
+<pre>
+$ /bin/ls -lF /dev/disk/by-uuid/
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 2d781b26-0285-421a-b9d0-d4a0d3b55680 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 31f8eb0d-612b-4805-835e-0e6d8b8c5591 -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 3FC2-3DDB -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 5090093f-e023-4a93-b2b6-8a9568dd23dc -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 912c7844-5430-4eea-b55c-e23f8959a8ee -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 B0DC1977DC193954 -> ../../sdb1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 bae98338-ec29-4beb-aacf-107e44599b2e -> ../../sdb2
+</pre>
+				<p>As you can see, the fat and ntfs partitions (fat and windows labels above) have shorter names, but are still listed. The advantage about using the uuid method is that it is less likely that you have name collisions than with labels; the disadvantage is that they are more difficult to memorise.</p>
+
+			<h4>2. Persistent Naming by LABEL</h4>
+
+				<p>Almost every filesystem type can have a label. All your partitions that have one are listed in the /dev/disk/by-label directory:</p>
+<pre>
+$ ls -lF /dev/disk/by-label
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data -> ../../sdb2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data2 -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 fat -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 home -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 root -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 swap -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 windows -> ../../sdb1
+</pre>
+				<p>You can change the labels of your filesystems using these commands:</p>
+<pre>
+* swap: Create a new swapspace like this: mkswap -L &lt;label&gt; /dev/XXX
+* ext2/ext3: e2label /dev/XXX &lt;label&gt;
+* reiserfs: reiserfstune -l &lt;label&gt; /dev/XXX
+* jfs: jfs_tune -L &lt;label&gt; /dev/XXX
+* xfs: xfs_admin -L &lt;label&gt; /dev/XXX
+* fat/vfat: There is no tool to change the label using Linux, 
+but when you create the filesystem, use mkdosfs -n &lt;label&gt; &lt;other options&gt;. 
+You may also change the label of an existing filesystem using Windows.
+* ntfs: ntfslabel /dev/XXX &lt;label&lt; or change it using Windows. 
+</pre>
+				<p class="highlight-3">Be careful: The labels have to be unique to make this work", it applies equally to USB/firewire sticks and to harddisks. The LABEL=/ UUID= syntax is preferred over /dev/disk/by-*/ for UN*X partitions</p>
+
+
+
+			<h4>3. Persistent Naming by id </h4>
+
+				<p>by-id creates a unique name depending on the hardware serial number.</p>
+			<h4>4. Persistent Naming by path</h4>
+				<p>by-path creates a unique name depending on the shortest physical path (according to sysfs). Both contain strings to indicate which subsystem they belong to and thus are not suitable for solving the problems mentioned in the beginning of this article. They won't be discussed any further here.</p>
+
+			<h4>Enabling persistent naming</h4>
+
+				<p>Having chosen which naming method you'd like to use, let's now enable persistent naming for your system:</p>
+
+			<h4>In fstab</h4>
+
+				<p>Enabling persistent naming in /etc/fstab is easy, just replace the device name in the first column by the new persistent name. In my example I would replace /dev/sda7 by one of the following:</p>
+<pre>
+/dev/disk/by-label/home or
+/dev/disk/by-uuid/31f8eb0d-612b-4805-835e-0e6d8b8c5591 
+</pre>
+				<p>Do so for all the partitions in your fstab file.</p>
+
+				<p>Instead of giving the device explicitly, one may indicate the filesystem that is to be mounted by its UUID or volume label, writing LABEL=&lt;label&gt; or UUID=&lt;uuid&gt;, for example:</p>
+<pre>
+LABEL=Boot
+</pre>				<p>or</p>
+<pre>
+UUID=3e6be9de-8139-11d1-9106-a43f08d823a6
+</pre>
+			<h4>Persistent Naming in the boot manager</h4>
+
+				<p>To use persistent names in your boot manager, all of the the following prerequisites have to be met:<br />
+
+				<b>1)</b> You are using a mkinitcpio initramfs image<br />
+				<b>2)</b> You have udev enabled in /etc/mkinitcpio.conf<br />
+				<b>3)</b> When your initramfs image was generated, version 101-3 or greater of klibc-udev was installed (persistent naming is broken in any earlier version). If you are updating klibc-udev from an earlier version and want to use persistent naming, regenerate your initramfs image before you reboot.</p>
+
+				<p>In the above example, /dev/sda1 is the root partition. In the grub menu.lst file, the kernel line looks like this:</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/hda1 vga=0x318 ro
+</pre>
+				<p>Depending on which naming scheme you prefer, change it to one of the following:</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/disk/by-label/root vga=0x318 ro
+</pre>
+				<p>or</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/disk/by-uuid/2d781b26-0285-421a-b9d0-d4a0d3b55680 vga=0x318 ro
+</pre>
+
+				<p>There is an alternative way to use the label embedded in the filesystem. For example if (as above) the filesystem in /dev/hda1 is labelled "root", you would give this line to grub:</p>
+<pre>
+ kernel /boot/vmlinuz26 root=LABEL=root vga=0x318 ro
+</pre>
+				<p>(source:<a href="http://wiki.archlinux.org/index.php/Persistent_block_device_naming">wiki.archlinux.org</a>  whom used <a href=" http://marc.theaimsgroup.com/?l=linux-hotplug-devel&amp;m=114795097514527&amp;w=2">marc.theaimsgroup.com</a> Content from wiki.archlinux.org was stated to be available under GNU Free Documentation License 1.2 ) and has been re-edited for sidux-manuals</p>
 
 	</div>
-	<div class="divider" id="hd-upgrade">
-		<h2>Hard Disk Installed Dist-Upgrade</h2>
-
-			<p>You have upgraded your install with the latest sidux Live Cd and now you want to ensure that you have the latest versions of packages and security updates from here on in.</p>
-			<p>With sidux its called 'dist-upgrade' and is done over the net</p>
-			<p class="highlight-3"><b>The only supported method to dist-upgrade is as follows:</b></p>
-
-			<div class="box block">
-			<div class="highlight-2">NEVER EVER do a dist-upgrade nor upgrade whilst in X</div><div class="highlight-4"> Always check Current Warnings on the <a href="http://sidux.com">sidux</a> main web site. These warnings are there for a reason because of the nature of unstable and updated on a daily basis.  Log out of KDE. Go to Textmode by doing Ctrl+Alt+F1 ; logon as root, and then in type init 3 ; apt-get update ; apt-get dist-upgrade ;run fix-fonts ; run fglrx or nvidia script if xorg updated and you have such a graphics adapter  otherwise do ;  init 5 &amp;&amp; exit [NEVER DIST-UPGRADE [or UPGRADE] with adept or synaptic]</div>
-		
-	</div>
-			<p><a href="http://techpatterns.com/forums/about736.html">For new users, the !h2 d-u-fixes script may provide help by semi-automating the dist-upgrade process</a>.</p>
-			<div class="spacer05"></div>
-	<div id="rev">Content last revised UTC 23/01/2007 1500hrs UTC </div>
-</div>
+			<div id="rev">Content last revised UTC 29/01/2007 0100hrs</div>
 </div>
 </body>
 </html>

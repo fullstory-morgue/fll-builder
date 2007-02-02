@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="german-version" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="english-version" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-26</h2>-->
-<!-- menu last updated by bluewater 16/01/2007 1500hrs ADEST 16/01/2007 0400hrs UTC -->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -64,11 +64,11 @@
 		</li>
 		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
 			<ul class="sub-menu" id="sm5">
-				<li><a href="part-gparted-en.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
 				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
-				<li><a href="part-cfdisk-en.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
 				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
-				<li><a href="part-cfdisk-en.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
@@ -142,19 +142,18 @@
 	<div class="divider" id="start-services">
 		<h2>Enabling services in sidux</h2>
 
-		<p>Because sidux is based on Debian SID and this has the bad habit of starting services after they have been dist-upgraded,the sidux developers have built a new package to protect the user from unwanted services started by default.  This represented a security risk since if you are unaware the service is silently started the user does not stop or secure the service.  The package "sysv-freeze" was built for this purpose.</p>
+			<p>sidux by default runs the following services: <span class="highlight-1">cpid, cron, dbus, hotkey-setup, kdm, klogd, sysklogd</span> and they get updated whenver a dist-upgrade is done. All services that are installed but not active will become active active after a dist-upgrade.</p>
 
-		<p class="highlight-1">This package is installed with sidux. So now starting services takes two extra steps:</p>
+			<p>To start a service for a session use <p>
 
-<pre># unfreeze-rc.d
-# rcconf
-# freeze-rc.d</pre>
-
-<p>or:</p>
-
-<pre># unfreeze-rc.d
-# update-rc.d `service` defaults
-# freeze-rc.d</pre>
+<pre>
+/etc/init.d/service start
+</pre>
+			<p>or</p>
+<pre>
+rcconf
+</pre>
+			<p>to enable service at startup</p>
 
 		<p class="highlight-3">Note on using rcconf: Use: arrows to move up/down, space to select/deselect, tab to highlight, ok or cancel, `enter` to apply changes</p>
 	</div>
@@ -196,6 +195,7 @@ and use the passwd command to set a new password:
 
 			<p>and apply the above mentioned changes</p>
 	<div class="spacer05"></div>
+			<div id="rev">Content last revised UTC 28/01/2007 0100hrs</div>	
 </div>
 </div>
 </body>

@@ -2,13 +2,13 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Sidux Manuals - Upgrading sidux-de</title>
+	<title>sidux Manuals - UUID</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
-<body>
+<body id="welcome">
 <div id="menu">
 <!-- menu starts here -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
@@ -139,33 +139,122 @@
 <!-- menu ends here -->
 </div>
 <div id="main-page">
-	<div class="divider" id="live-cd-upgrade">
-		<h2>Live-cd upgrade</h2>
-			<p>The facility to "live-cd' upgrade a sidux installation does not exist. Before proceeding with installing sidux <span class="highlight-2">BACK-UP YOUR DATA! including your bookmarks and emails.</span></p>
+	<div class="divider" id="uuid">
+			<h2>Übersicht: UUID, Partitions-Label und fstab</h2>
+				<p>Die dauerhafte Benennung (persistent naming) von Blockgeräten wurde mit Einführung von udev ermöglicht und hat einige Vorteile gegenüber der Bennenung auf Bus-Basis.</p>
 
-			 <p class="highlight-3">It is highly recommended that you have a separate data partition. The benefits in terms of disaster recovery, stability of your data are unmeasurable.</p>
+				<p>Die Weiterentwicklung von udev und von Linux-Distributionen hat die Hardware-Erkennung verlässlicher gemacht, auch wenn Veränderungen und neue Herausforderungen damit verbunden sind oder sein können:<br /><br />
+				    <b>1)</b> Bei mehr als einem SATA/SCSI- oder IDE-Festplattenkontroller ist die Reihenfolge der Einbindung der Speichergeräte nun beliebig bzw. zufällig. Dies hat zur Folge, dass Gerätenamen nach jedem Bootvorgang beliebig zwischen hdX und hdY wechseln können. Gleiches gilt für sdX und sdY. Persistent Naming (dauerhafte Benennung) ermöglicht es, dass man darüber keine Gedanken zu verlieren braucht.<br /><br />
+				    <b>2)</b> Mit Einführung der neuen libata PATA-Unterstützung werden alle Speichergeräte in Hinkunft mit sdX benannt, auch Geräte, die bisher hdX benannt waren. Mittels persistent naming ist man als Anwender in der Regel damit nicht konfrontiert, man bemerkt es nicht.<br /><br />
+				    <b>3)</b>Bei Computern mit SATA- und IDE-Kontrollern, eine gängige Konfiguration moderner Hardware-Setups, werden alle Speichergeräte mit sdX benannt.</p>
 
-			<p>Therefore your $HOME becomes a place where basic application configurations are kept. or to put it another way, a container for applications to store their settings.</p>
+				<p class="highlight-3">In der Grundeinstellung benutzt eine sidux-Installation aus oben genannten Gründen UUID in /etc/fstab.</p>
 
-			<p class="highlight-2">ALWAYS BACK-UP YOUR DATA including your bookmarks and emails!</p>
+				<p>Aus diesen und weiteren Überlegungen empfiehlt sidux, die Grundeinstellungen zu einem persistent Naming-Schema (zu dauerhafter Benennung von Speichergeräten) umzustellen.</p>
+
+			<h2>Die vier Grundschemata von persistent naming:</h2>
+
+			<h4>1. Persistent Naming mittels UUID</h4>
+
+				<p>UUID bedeutet wörtlich "Universally Unique Identifier", ist also eine eindeutige, singuläre Kennzeichnung eines Geräts, technisch wird ermöglicht, jedem Dateisystem eine eindeutige, singuläre Identifikation zu geben. Die technische Umsetzung dieses Konzepts macht eine Kollision zweier gleicher Identifikationsnummern sehr unwahrscheinlich.<br />Alle Linux-Dateisysteme inklusive swap unterstützen UUID. Obwohl FAT- und NTFS-Dateisysteme UUID nicht unterstützen, werden sie in by-uuid mit eindeutigen, singulären Identifikationsnummern gelistet:</p>
+<pre>
+$ /bin/ls -lF /dev/disk/by-uuid/
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 2d781b26-0285-421a-b9d0-d4a0d3b55680 -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 31f8eb0d-612b-4805-835e-0e6d8b8c5591 -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 3FC2-3DDB -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 5090093f-e023-4a93-b2b6-8a9568dd23dc -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 912c7844-5430-4eea-b55c-e23f8959a8ee -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 B0DC1977DC193954 -> ../../sdb1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 bae98338-ec29-4beb-aacf-107e44599b2e -> ../../sdb2
+</pre>
+				<p>Wie man sehen kann, haben die FAT- und NTFS-Partitionen kürzere Bezeichnungen, sind aber dennoch gelistet. Der Vorteil der UUID-Methode ist die geringere Wahrscheinlichkeit von Benennungskollisionen, als wenn die Speichergeräte mittels Label-Benennung eingebunden wären. Der Nachteil ist offensichtlich: die UUID-Benennungen kann man sich schwerer merken.</p>
+
+			<h4>2. Persistent Naming mittels LABEL</h4>
+
+				<p>Praktisch jeder Typ von Dateisystem kann ein Label haben. Partitionen mit einem Label findet man im Verzeichnis /dev/disk/by-label:</p>
+<pre>
+$ ls -lF /dev/disk/by-label
+total 0
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data -> ../../sdb2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 data2 -> ../../sda2
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 fat -> ../../sda6
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 home -> ../../sda7
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 root -> ../../sda1
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 swap -> ../../sda5
+lrwxrwxrwx 1 root root 10 Oct 16 10:27 windows -> ../../sdb1
+</pre>
+				<p>Die Bezeichnung eines Labels kann mit folgenden Befehlen geändert werden:</p>
+<pre>
+* swap: Erzeugung eines neuen swapspace: mkswap -L &lt;label&gt; /dev/XXX
+* ext2/ext3: e2label /dev/XXX &lt;label&gt;
+* reiserfs: reiserfstune -l &lt;label&gt; /dev/XXX
+* jfs: jfs_tune -L &lt;label&gt; /dev/XXX
+* xfs: xfs_admin -L &lt;label&gt; /dev/XXX
+* fat/vfat: Es gibt zwar kein Tool, um das Label einer FAT-Partition unter Linux zu ändern,
+aber bei der Erstellung des Filesystems kann dieser Befehl verwendet werden: mkdosfs -n &lt;label&gt; &lt;weitere Optionen&gt;. 
+Die Änderung eines Labels von FAT-Partitionen kann in Windows durchgeführt werden.
+* ntfs: ntfslabel /dev/XXX &lt;label&gt; Änderung des Labels in Windows. 
+</pre>
+				<p class="highlight-3">Unbedingt zu beachten ist: Die Labels müssen eine singuläre Bezeichnung haben, um bei der Einbindung funktionieren zu können. Das gilt auch für externe Geräte (Festplatten, Sticks, etc.), die via USB oder FIrewire eingebunden werden. Die Syntax LABEL=/ UUID= ist für UN*X-Partitionen gegenüber /dev/disk/by-*/ vorzuziehen.</p>
+
+
+
+			<h4>3. Persistent Naming mittels id </h4>
+
+				<p>by-id kreiert eine singuläre Bezeichnung auf Basis der Seriennummer der Hardware.</p>
+			<h4>4. Persistent Naming mittles Pfad</h4>
+				<p>by-path kreiert eine singuläre Bezeichnung auf Basis des kürzesten physischen Pfads (laut sysfs).<br /><br />Beide letztgenannten Methoden beinhalten Zeichenketten, welche indizieren, zu welchem Subsystem sie gehören, und sind somit nicht geeignet, die zu Beginn genannten Probleme zu lösen und werden im weiteren hier nicht diskutiert.</p>
+
+			<h4>Aktivierung des persistent Namings</h4>
+
+				<p>Hier nun die Methode, wie eine dauerhafte Benennung (persistent Naming) aktiviert wird.</p>
+
+			<h4>In fstab</h4>
+
+				<p>Die Aktivierung in /etc/fstab ist einfach. Der Gerätename in der ersten Spalte wird durch die dauerhafte Bezeichnung (den peristent name) ersetzt. In unserem Beispiel wird /dev/sda7 durch eine der beiden neuen Bezeichnungen ersetzt:</p>
+<pre>
+/dev/disk/by-label/home oder
+/dev/disk/by-uuid/31f8eb0d-612b-4805-835e-0e6d8b8c5591 
+</pre>
+				<p>Dies wird für alle Partitonen in der fstab durchgeführt.</p>
+
+				<p>Anstelle der direkten Bezeichnung kann das Laufwerk, das mittles UUID oder Label eingebunden werden soll, auch nur indiziert werden, indem geschrieben wird: LABEL=&lt;label&gt; oder UUID=&lt;uuid&gt;. Zum Beispiel:</p>
+<pre>
+LABEL=Boot
+</pre>				<p>oder</p>
+<pre>
+UUID=3e6be9de-8139-11d1-9106-a43f08d823a6
+</pre>
+			<h4>Persistent Naming im Boot-Manager</h4>
+
+				<p>Um dauerhafte Bezeichnungen (persistent names) im Boot-Manager nutzen zu können, müssen alle folgende Vorkehrungen getroffen werden:<br />
+
+				<b>1)</b> Nutzung eines mkinitcpio initramfs image<br />
+				<b>2)</b> Udev ist aktiviert in: /etc/mkinitcpio.conf<br />
+				<b>3)</b> Zur Generierung eines initramfs image muss klibc-udev in der Version 101-3 oder höher installiert sein (persistent naming ist in früheren Versionen nicht funktionsfähig). Wenn klibc-udev von einer früheren Version einen Update erfahren hat und persistent naming gewünscht ist, muss das initramfs-image vor dem Reboot neu generiert werden.</p>
+
+				<p>In obigem Beispiel ist /dev/sda1 die Rootpartition. Die Kernel-Zeile der Datei /boot/grub/menu.lst sieht daher folgendermaßen aus:<br /><br />Abhängig von der Wahl des Benennungs-Schemas wird diese Zeile</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/hda1 vga=0x318 ro
+</pre>
+				<p>abgeändert in</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/disk/by-label/root vga=0x318 ro
+</pre>
+				<p>oder</p>
+<pre>
+kernel /boot/vmlinuz26 root=/dev/disk/by-uuid/2d781b26-0285-421a-b9d0-d4a0d3b55680 vga=0x318 ro
+</pre>
+
+				<p>Eine alternative Methode ist, das Label in das Dateisystem einzubetten. Wenn zum Beispiel das Dateisystem /dev/hda1 das Label "root" besitzt, würde die Kernelzeile in /boot/grub/menu.lst so aussehen:</p>
+<pre>
+ kernel /boot/vmlinuz26 root=LABEL=root vga=0x318 ro
+</pre>
+				<p>Quelle: <a href="http://wiki.archlinux.org/index.php/Persistent_block_device_naming">wiki.archlinux.org</a> unter Bezugnahme auf <a href=" http://marc.theaimsgroup.com/?l=linux-hotplug-devel&amp;m=114795097514527&amp;w=2">marc.theaimsgroup.com</a>. Der Inhalt von wiki.archlinux.org ist als unter der GNU Free Documentation License 1.2 stehend ausgewiesen. Neu editiert bzw. übersetzt für die sidux-Handbücher.</p>
 
 	</div>
-	<div class="divider" id="hd-upgrade">
-		<h2>Dist-Upgrade nach Installation</h2>
-
-				<p>Du hast sidux auf Deine Festplatte installiert. Nun geht es darum, wie Du immer die neuesten Pakete und Sicherheitsupdates einspielen kannst</p>
-
-				<p>Bei sidux hei&#223;t das 'dist-upgrade' und geht nur mit bestehender Netzanbindung</p>
-				<p class="highlight-3"><b>Die einzig empfohlene Methode hierzu ist die folgende:</b></p>
-
-		<div class="box block">
-		<div class="highlight-2">Bitte NIEMALS ein dist-upgrade ausführen, während Du dich in X (KDE) befindest</div><div class="highlight-4"> Bitte immer vorher nach aktuellen Warnungen schauen auf der <a href="http://sidux.com">sidux</a>-Seite. Dann gehe  in den Textmodus mit Ctrl+Alt+F1; logge Dich als Root ein und tippe init 3; apt-get update; apt-get dist-upgrade; fix-fonts; fglrx- oder nvidia-script, wenn X oder KDE im Upgrade war und Du einen der beiden Grafikkarten besitzt. Ansonsten: init 5 &amp;&amp; exit [BITTE KEIN  DIST-UPGRADE [oder UPGRADE] mit adept or synaptic!].</div>
-		
-	</div>
-				<p><a href="http://techpatterns.com/forums/about736.html">For neue (aber auch erfahrene) Nutzer bietet das hier verlinkte Skript Hilfe zu einem halbautomatischen Dist-Upgrade und weitere n&#252;tzliche Hilfestellungen. !h2 d-u fixes</a>.</p>
-	<div class="spacer05"></div>
-	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
-</div>
+			<div id="rev">Content last revised UTC 29/01/2007 0100hrs</div>
 </div>
 </body>
 </html>

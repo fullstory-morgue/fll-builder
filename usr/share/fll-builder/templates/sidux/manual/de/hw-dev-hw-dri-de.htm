@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="german-version" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="english-version" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-27</h2>-->
-<!-- menu last updated by bluewater 16/01/2007 1500hrs ADEST 16/01/2007 0400hrs UTC -->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -66,7 +66,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
 				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
-				<li><a href="part-cfdisk-de.htm#disknames">Namen der Festplatten</a></li>
+				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
 				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
 				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
 				<li><a href="part-size-examp-de.htm#part-example">Partitionsgr&#246;&#223;en: Beispiele</a></li>
@@ -138,20 +138,37 @@
 	</ul>
 <!-- menu ends here -->
 </div>
-<!-- content last updated by bluewater 30/12/2006 1500hrs ADEST 30/12/2006 0500hrs UTC -->
 <div id="main-page">
 	<div class="divider" id="nvidia-3d">
 		<h2>3D-Treiber f&#252;r nVidia-Grafikkarten</h2>
+			
+			<p>Es gibt drei Methoden, 3D-nVidia-Treiber zu installieren</p>
 
-			<p>Im Augenblick gibt es drei Methoden 3D-Treiber f&#252;r nVidia-Grafikkarten zu installieren:</p>
-
-			<h5>Methode 1: install-sidux-binary-gfx.sh</h5>
-
-			<p>In einer Konsole folgendes Skript als Root anwenden:</p>
+			<h5>Methode 1:</h5>
+			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden. <span class="highlight-3">Warning use METHOD 1a or 1b</span></p>
 <pre>
-install-sidux-binary-gfx.sh
+METHOD 1a
+get-sidux-binary-gfx
+install-binary-gfx -a (to build sid source)
 </pre>
-			<p>Das Skript w&#228;hlt automatisch den korrekten Treiber f&#252;r deine Karte, installiert ihn und &#228;ndert die <span class="highlight-3">xorg.conf</span> entsprechend. <span class="highlight-1">Damit der Treiber verwendet wird muss X neu gestartet werden (Ctrl+Alt+Backspace).</span></p>
+			<p class="highlight-3">OR Using Experimantal Source. Its not recommended to use the experimental source. There is no support from the sidux Team for Method 1b</p>
+<pre>
+METHOD 1b
+get-sidux-binary-gfx
+install-binary-gfx -e (to build experimental source)
+</pre>
+
+			<p>Damit wird der korrekte Treiber ausgew&#228;hlt, ein .deb-Paket gebaut und installiert sowie xorg.conf automatisch angepasst. <span class="highlight-3">Um den neuen Treiber zu aktivieren, muss X neu gestartet werden. (Ctrl+Alt+R&#252;cktaste)</span>.</p>
+
+			<p>Folgende Optionen k&#246;nnen gesetzt werden:</p>
+<pre>
+-a	Automatic mode
+-b	MODULE is build Module only (MODs)
+-d    	Detect Card only
+-e    	Use Experimental
+-v    	Verbose
+Valid MOD's are nvidia, nvidia-legacy and fglrx
+</pre>
 
 			<h5>Methode 2: !h2</h5>
 
@@ -167,7 +184,7 @@ chmod +x install-nvidia-debian.sh
 du-fixes-h2.sh -kiwdt
 </pre>
 
-			<h6>Methode 3</h6>
+			<h5>Methode 3:</h5>
 <pre>
 Aus dem Quellcode installieren
 </pre>
@@ -176,17 +193,33 @@ Aus dem Quellcode installieren
 	<div class="divider" id="ati-3d">
 			<h2>ATI 3D-Treiber</h2>
 
-			<p>Im Augenblick gibt es drei Methoden, 3D-Treiber f&#252;r ATI-Grafikkarten zu installieren:</p>
+			<p>Es gibt drei Methoden, 3D-ATI-Treiber zu installieren</p>
 
-			<h5>Methode 1: install-sidux-binary-gfx.sh</h5>
-
-			<p>In einer Konsole folgendes Skript als Root anwenden:</p>
+			<h5>Methode 1:</h5>
+			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden. <span class="highlight-3">Warning use METHOD 1a or 1b</span></p>
 <pre>
-install-sidux-binary-gfx.sh
+METHOD 1a
+get-sidux-binary-gfx
+install-binary-gfx -a (to build sid source)
+</pre>
+			<p class="highlight-3">OR Using Experimantal Source. Its not recommended to use the experimental source. There is no support from the sidux Team for Method 1b</p>
+<pre>
+METHOD 1b
+get-sidux-binary-gfx
+install-binary-gfx -e (to build experimental source)
 </pre>
 
-			<p><span class="highlight-1">Das Skript w&#228;hlt automatisch den korrekten Treiber f&#252;r deine Karte, installiert ihn und &#228;ndert die xorg.conf entsprechend. Damit der Treiber verwendet wird muss X neu gestartet werden (Ctrl+Alt+Backspace).</span></p>
+			<p>Damit wird der korrekte Treiber ausgew&#228;hlt, ein .deb-Paket gebaut und installiert sowie xorg.conf automatisch angepasst. <span class="highlight-3">Um den neuen Treiber zu aktivieren, muss X neu gestartet werden. (Ctrl+Alt+R&#252;cktaste)</span>.</p>
 
+			<p>Folgende Optionen k&#246;nnen gesetzt werden:</p>
+<pre>
+-a	Automatic mode
+-b	MODULE is build Module only (MODs)
+-d    	Detect Card only
+-e    	Use Experimental
+-v    	Verbose
+Valid MOD's are nvidia, nvidia-legacy and fglrx
+</pre>
 
 			<h5>Methode 2: !h2</h5>
 
@@ -202,7 +235,7 @@ chmod +x install-fglrx-debian.sh
 du-fixes-h2.sh -kiwdt
 </pre>
 
-			<h6>Methode 3</h6>
+			<h5>Methode 3:</h5>
 <pre>
 Aus dem Quellcode installieren
 </pre>
@@ -278,7 +311,7 @@ exit
 
 		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Ein letztes Mal: Sei gewarnt! <i>Experimentell</i>!</p>
 	</div>
-	<div id="rev">Content last revised UTC 11/01/2007 1100hrs UTC </div>
+	<div id="rev">Content last revised UTC 28/01/2007 0200hrs UTC </div>
 </div>
 
 </body>

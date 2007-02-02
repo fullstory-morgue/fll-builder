@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="german-version" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="english-version" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-26</h2>-->
-<!-- menu last updated by bluewater 16/01/2007 1500hrs ADEST 16/01/2007 0400hrs UTC -->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -64,11 +64,11 @@
 		</li>
 		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
 			<ul class="sub-menu" id="sm5">
-				<li><a href="part-gparted-en.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
 				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
-				<li><a href="part-cfdisk-en.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
 				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
-				<li><a href="part-cfdisk-en.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
@@ -138,16 +138,18 @@
 	</ul>
 <!-- menu ends here -->
 </div>
-<!-- content updated by bluewater 02/01/2007 AEDST 1300 hrs 02/01/2007 UTC 0200 hrs-->
 <div id="main-page">
 	<div class="divider" id="Inst-prep">
 		<h2>HD Install Preperation</h2>
 		<p  class="highlight-2">For normal use we recommend ext3, it is the default file system for sidux and is well maintained.</p>
 
 
-		<p><span class="highlight-3">Before installation please remove all usb-sticks, cameras, etc </span>. <a href="hd-install-opts-en.htm">Installation to USB Devices needs additional steps.</a>  You can edit the installer file: <span class="highlight-3">~/.knofig</span>, and thereby use a different filesystem or spread your installation over different partitions.</p>
+		<p><span class="highlight-3">Before installation please remove all usb-sticks, cameras, etc </span>. <a href="hd-install-opts-en.htm">Installation to USB Devices requires additional steps.</a>  You can edit the installer file: <span class="highlight-3">~/.knofig</span>, and thereby use a different filesystem or spread your installation over different partitions.For example a seperate /home.</p>
+			<p class="highlight-3">It is highly recommended that you have a separate data partition. The benefits in terms of disaster recovery, stability of your data are unmeasurable.</p>
 
-		<p>On PC's with less than 512 mb ram you must have a swap-partition. It's size shouldn't be less than 128 mb (cfdisk-output shouldn't be trusted because it calculates with a 10-base), more than 1 GB swap is seldom reasonable.</p> 
+			<p>Therefore your $HOME becomes a place where basic application configurations are kept. or to put it another way, a container for applications to store their settings.</p>
+
+		<p>On PC's with less than 512 mb ram you must have a swap-partition. The size should not be less than 128 mb (cfdisk-output should not be trusted either as it calculates with a 10-base), more than 1 GB swap is seldom reasonable.</p> 
 
 		<p class="highlight-1">Please see: <a href="part-gparted-en.htm">Partitioning your HD</a></p>
 		<p class="highlight-2">ALWAYS BACK-UP YOUR DATA!</p>
@@ -175,7 +177,10 @@ sudo install-gui
 
 		<div class="screenshot"><img src="../lib/images-en/installer-en/installer2-en.png" alt="sidux-Installer2" /></div>
 
-		<p>Now choose where the installation is supposed to go to and we establish the mount points. Partitions for which we establish no mount point are mounted by the installer Here you have to select the root partition ("/") for your sidux installation. If you haven't partitioned your harddrive yet, click the <span class="highlight-3">start-part-manager</span> button, or have a look at <a href="part-cfdisk-en.htm">Partitioning your HD</a> and <a href="part-gparted-en.htm">Partitioning your HD using Gparted</a> You may also start them from the konsole/terminal</p>
+		<p>Now choose where the installation is supposed to go to and we establish the mount points. Partitions for which we establish no mount point are mounted by the installer Here you have to select the root partition ("/") for your sidux installation. <span class="highlight-3">It is at this moment you can also choose to create a data partition.</span></p>
+
+		<p class="highlight-3">Have you backed up your data?</p>
+		<p>If you haven't partitioned your harddrive yet, click the <span class="highlight-3">start-part-manager</span> button, or have a look at <a href="part-cfdisk-en.htm">Partitioning your HD</a> and <a href="part-gparted-en.htm">Partitioning your HD using Gparted</a> You may also start them from the konsole/terminal</p>
 <pre>su
 gparted
 </pre>
@@ -184,12 +189,12 @@ gparted
 cfdisk
 </pre>
 	<div class="spacer02"></div>
-		<p><b>3.</b> As boot manager we install <b>Grub to MBR</b>! If you make a different choice here, you should know what you are doing. Grub recognizes other installed OS's (e.g. Windows) and adds them to the boot menu. </p>
+		<p><b>3.</b> As a boot manager sidux uses GRUB, therfore install <b>Grub to MBR</b>! If you make a different choice here, you should know what you are doing. Grub recognizes other installed OS's (e.g. Windows) and adds them to the boot menu. </p>
 		<div class="screenshot"><img src="../lib/images-en/installer-en/installer3-en.png" alt="grub-to-mbr" /></div>
 	<div class="spacer02"></div>
-		<p><b>4.</b> On we go with user, his/her password and the root-password (remember those!). Please don't choose too easily-guessed passwords.  Whoever wants to add other users can do so after installation with the KDE-Tool <span class="highlight-3">kuser</span></p>
+		<p><b>4.</b> On we go with user, his/her password and the root-password (remember those!). Please don't choose too easily-guessed passwords.  Whomever wants to add other users can do so after installation with the KDE-Tool <span class="highlight-3">kuser</span></p>
 
-		<div class="screenshot"><img src="../lib/images-en/installer-en/installer4-en.png" alt="cho0sing-pw" /></div>
+		<div class="screenshot"><img src="../lib/images-en/installer-en/installer4-en.png" alt="choosing-pw" /></div>
 	<div class="spacer02"></div>
 		<p><b>5.</b> Now choose the name of the Installation (you can name it anything you wish, provided that the 'Hostname: The hostname should consist of letters (and numbers) only and it must not begin with a number'.</p>
 

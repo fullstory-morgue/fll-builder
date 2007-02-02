@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="german-version" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="english-version" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-26</h2>-->
-<!-- menu last updated by bluewater 16/01/2007 1500hrs ADEST 16/01/2007 0400hrs UTC -->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -64,11 +64,11 @@
 		</li>
 		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
 			<ul class="sub-menu" id="sm5">
-				<li><a href="part-gparted-en.htm#partition">Paritioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
 				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
-				<li><a href="part-cfdisk-en.htm#disknames">Disk Naming</a></li>
+				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
 				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
-				<li><a href="part-cfdisk-en.htm#formating">Formating partitions after partitioning with cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
@@ -146,13 +146,30 @@
 
 			<h5>Method 1</h5>
 
-			<p>The new script for installation of graphics drivers is called: install-sidux-binary-gfx.</p>
-
-			<p>Open your Konsole, and run the following script as root:</p>
+			<p>The new script for installation of graphics drivers is called: <span class="highlight-1">install-binary-gfx</span>. To get that script run get-sidux-binary-gfx once, in konsole as root. <span class="highlight-3">Warning use METHOD 1a or 1b</span></p>
 <pre>
-install-sidux-binary-gfx.sh
+METHOD 1a
+get-sidux-binary-gfx
+install-binary-gfx -a (to build sid source)
 </pre>
+			<p class="highlight-3">OR Using Experimantal Source. Its not recommended to use the experimental source. There is no support from the sidux Team for Method 1b</p>
+<pre>
+METHOD 1b
+get-sidux-binary-gfx
+install-binary-gfx -e (to build experimental source)
+</pre>
+
 			<p>It will choose the right driver for your card, build a deb, install it and it will automatically change your xorg.conf accordingly. <span class="highlight-3">For the new driver to take effect you must restart X (Ctrl+Alt+Backspace)</span>.</p>
+
+			<p>There are options you may want to manually enable:
+<pre>
+-a	Automatic mode
+-b	MODULE is build Module only (MODs)
+-d    	Detect Card only
+-e    	Use Experimental
+-v    	Verbose
+Valid MOD's are nvidia, nvidia-legacy and fglrx
+</pre>
 
 			<h5>Method 2, using !h2</h5>
 
@@ -176,14 +193,30 @@ Install from source
 			<p>There are 3 methods to install 3d ATI drivers into your system</p>
 
 			<h5>Method 1</h5>
-
-			<p>The new script for installation of graphics drivers is called: install-sidux-binary-gfx.</p>
-
-			<p>Open your Konsole, and run the following script as root:</p>
+			<p>The new script for installation of graphics drivers is called: <span class="highlight-1">install-binary-gfx</span>. To get that script run get-sidux-binary-gfx once, in konsole as root. <span class="highlight-3">Warning use METHOD 1a or 1b</span></p>
 <pre>
-install-sidux-binary-gfx.sh
+METHOD 1a
+get-sidux-binary-gfx
+install-binary-gfx -a (to build sid source)
 </pre>
+			<p class="highlight-3">OR Using Experimantal Source. Its not recommended to use the experimental source. There is no support from the sidux Team for Method 1b</p>
+<pre>
+METHOD 1b
+get-sidux-binary-gfx
+install-binary-gfx -e (to build experimental source)
+</pre>
+
 			<p>It will choose the right driver for your card, build a deb, install it and it will automatically change your xorg.conf accordingly. <span class="highlight-3">For the new driver to take effect you must restart X (Ctrl+Alt+Backspace)</span>.</p>
+
+			<p>There are options you may want to manually enable:
+<pre>
+-a	Automatic mode
+-b	MODULE is build Module only (MODs)
+-d    	Detect Card only
+-e    	Use Experimental
+-v    	Verbose
+Valid MOD's are nvidia, nvidia-legacy and fglrx
+</pre>
 
 			<h5>Method 2, using !h2</h5>
 
@@ -268,7 +301,7 @@ exit
 </pre>
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! It's <span class="highlight-2">experimental!</span></p>
 		
-			<div id="rev">Content last revised UTC 18/01/2007 1100hrs</div>	
+			<div id="rev">Content last revised UTC 28/01/2007 0100hrs</div>	
 </div>
 </div>
 </div>
