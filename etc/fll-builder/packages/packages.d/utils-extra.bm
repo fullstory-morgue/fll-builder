@@ -24,6 +24,7 @@ FLL_PACKAGES+=(
 	smbclient
 	smbfs
 	strace
+	testdisk
 	unionfs-tools
 	xfsprogs
 	unzip
