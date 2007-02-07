@@ -66,7 +66,8 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  2 Feb 2007 23:55:40 +0100
+ -- Joaquim Boura <x-un-i@sidux.com>  Wed,  7 Feb 2007 07:55:50 +0100
+  * Added croatian language
 
 fll-builder (1.0.2) unstable; urgency=low
 
