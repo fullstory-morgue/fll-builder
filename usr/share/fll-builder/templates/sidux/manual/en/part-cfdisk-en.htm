@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>sidux Manuals - cfdisk</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body id="part">
+<div id="menu">
+<!-- menu starts here -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
+	</ul>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
+	<ul>
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
+				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+				<li><a href="help-en.htm#help-gen">Where to get Help</a></li>
+				<li><a href="credits-en.htm#cred-team">Credits</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content-en.htm">CD Contents</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">CD Contents</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">CD Downloading and Burning</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning-en.htm#download-sidux">CD Downloading and Burning</a></li>
+				<li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+				<li><a href="cd-dl-burning-en.htm#xdelta">xdelta Patching</a></li>
+				<li><a href="cd-no-gui-burn-en.htm">Burning without a GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+				<li><a href="term-konsole-en.htm#shell-scripts">Installing Scripts.sh</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">CheatCodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes-en.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
+				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
+				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
+				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
+				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
+				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-en.htm">Graphic Cards, Hardware Devices and Drivers</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-en.htm">Window Managers</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="wm-kde-en.htm#desk-freeze">KDE Desktop Freezes</a></li>
+				<li><a href="wm-kde-en.htm#kde-login">Cant login in KDE</a></li>
+				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
+				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
+				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin-en.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here -->
+
+</div>
+<div id="main-page">
+	<div class="divider" id="disknames">
+		<h2>Disk Naming</h2>
+			<h5><span class="highlight-2">WARNING: for disk naming</span><a href="part-uuid-en.htm"> Please refer to UUID, Partition Labelling and fstab, as by default sidux now uses UUID</a></h5>
+		<h5>IDE-harddisk names</h5>
+		<p>IDE harddisks are called <b>hda</b>, <b>hdb</b>, <b>hdc</b>, and so on depending on which controller the harddisk is connected. <b>hda</b> is the master disk on the first controller, <b>hdb</b> is the slave disk on the first controller, <b>hdc</b> is the master disk on the second controller, and so on.</p>
+
+		<h5>SCSI or SATA-harddisk names</h5>
+		<p>SATA or SCSI harddisks are named with <b>sd<i>x</i></b>, where <i>x</i> is a harddisk letter. The disk with the lowest SCSI ID on the first controller will become <b>sda</b>, the next higher <b>sdb</b>, an so on. A SATA harddisk will be identified by the place where it is plugged-in on the controller and is named <b>sda</b> when plugged-in on the first, and so on.</p>
+
+		<h5>Partitions names</h5>
+		<p>A harddisk can have up to four primary partitions. If you want more, you have to make one of these an extended partition where you can make several logical partitions. The partitions are named with the disk they belong to, and a number. The first primary partition on the first IDE disk is <b>hda1</b>, the second primary partition is <b>hda2</b>, and so on. The first and second logical partition on an extended partition on the first IDE disk is <b>hda5</b> and <b>hda6</b>, and so on. Similarly for SATA/SCSI disks.</p>
+
+	<div class="divider" id="partition">
+		<h2>Partitioning your HD using cfdisk</h2>
+		<p  class="highlight-2">For normal use we recommend ext3 file system, it is the default file system for sidux and well maintained.</p>
+		<p>Open a konsole/xterm, get root and start cfdisk:
+		<i>(if you are on HD-install you'll have to enter your root password)</i></p>
+<pre >su
+cfdisk /dev/hda</pre>
+
+		<h5>The user interface</h5>
+		<p>On the first screen cfdisk lists the current partition table with the names and some data about each partition. On the screen bottom there are some command buttons. To change between partitions, use the <b>up and down arrow keys</b>. To change between commands, use the <b>left and right arrow keys</b></p>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk0_en.png" alt="The cfdisk user interface" /></div>
+
+		<h5>Delete a partition</h5>
+		<p>To delete a partition, highlight it with the up and down keys, select the</p> <pre >Delete</pre> 
+		<p>command with the left and right arrow keys, and press</p> 
+		<pre >Enter</pre>.
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk1_en.png" alt="The cfdisk user interface" /></div>
+
+		<h5>Create a new partition</h5>
+		<p>To create a new partition, use the command:</p> 
+		<pre >New</pre> 
+		 <p>(select it with the left and right arrow keys), and press enter. You must decide between a <b>primary</b> and a <b>logical</b> partition. If you want a logical partition, the program will automatically make an extended partition for you. Then you must choose the size of the partition (in MB). If you can't enter a value in MB, return to the main screen with the Esc key, and select MB with the command</p>
+		<pre >Units</pre> 
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk2_en.png" alt="The cfdisk user interface" /></div>
+
+		<h5>Type of a partition</h5>
+		<p>To set the type of a partition for <b>Linux swap</b> or <b>Linux</b>, highlight the actual partition, and use the command:</p>
+		<pre >Type</pre> . 
+		<p>You'll get a list of different types. Press space, and you'll get even more. Find what type you need, and enter the number at the prompt. (<b>Linux swap</b> is Type <b>82</b>, <b>Linux</b> filesystems should get type <b>83</b>)</p>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk3_en.png" alt="The cfdisk user interface" /></div>
+
+		<h5>Make a partition bootable</h5>
+		<p>There is no need to make an bootable partition for Linux but some other OS need that. Highlight the partition and select the command:</p>
+		<pre >Bootable</pre> 
+
+		<h5>Write the result to disk</h5>
+		<p>When you are done you can write your changes using the Write command. The partition table will be written to disk. (if you get an error concerning dos, you can ignore it) As this will destroy all data on partitions you have deleted or changed, you should therefore be very sure that you want to do this before you actually press the key</p>
+		<pre >Return</pre> 
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk4_en.png" alt="The cfdisk user interface" /></div>
+
+		<h5>Quit</h5>
+		<p>To exit the program, select the Quit command. After leaving cfdisk and before starting the formatting or the installation, you should reboot your box so sidux can reread the new partition table.</p>
+	</div>
+
+	<div class="spacer05"></div>
+	<div class="divider" id="formating">
+		<h2>Formating partitions (after partitioning with cfdisk)</h2>
+
+		<h5>Basics</h5>
+		<p>A partition must have a filesystem. Linux knows different filesystems to use. There is ReiserFs, Ext3, and for experienced users XFS and JFS. Ext2 is handy as a storage format since a windows driver is available for data-swapping.</p>
+		<p  class="highlight-2">For normal use we recommend the ext3 file system, it is the default file system for sidux and is well maintained.</p>
+
+		<h5>Formating</h5>
+		<p>After closing down <b>cfdisk</b> we return to console. For formatting you need to be root. For formatting the root- and/or home partition, in this example <b>hdb1</b>, we enter: <i>(if you are on HD-install you'll have to enter your root password here)</i></p>
+<pre >su
+mkfs -t ext /dev/hdb1
+</pre>
+
+		<p>There will be a question, that you answer with yes if you are sure, that you have chosen the right partition.</p>
+
+		<p>When the command is done, you will get notice, that ext3 formatting was successfully written to disk. If you don't get that, something probably went wrong with partitioning in cfdisk, or hdb1 is not a linux partition. In this case you can check with</p>
+		<pre >fdisk -l /dev/hdb</pre>
+
+		<p>If something is wrong and maybe partition again.</p>
+
+		<p>If formatting was a success, do the same procedure for a home partition, if you want a separate one.</p>
+
+		<p>Last we format the swap partition, in this example hdb3:</p>
+		<pre >mkswap /dev/hdb3</pre>
+
+		<p>after that a:</p>
+
+		<pre >swapon /dev/hdb3</pre>
+
+		<p>Then we check, if swap is recognized, by entering in console:</p>
+	<pre >swapon -s</pre>
+		<p>the newly mounted swap should be recognized now, in our case as:</p>
+
+	<table class="center">
+		<tbody>
+			<tr>
+				<th>Filename</th>
+				<th>Type</th>
+				<th>Size</th>
+				<th>Used</th>
+				<th>Priority</th>
+			</tr>
+			<tr>
+				<td>/dev/hdb3</td>
+				<td>partition</td>
+				<td>995988</td>
+				<td>248632</td>
+				<td>-1</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="spacer02"></div>
+		<p>If swap is recognized correctly, we enter</p>
+		<pre >swapoff -a</pre>
+		<p>and reboot.</p>
+
+
+		<p>You are now ready to start installation.</p>
+
+			<div id="rev">Content last revised UTC 29/01/2007 0100hrs</div>
+</div>
+</div>
+</div>
+</body>
+</html>

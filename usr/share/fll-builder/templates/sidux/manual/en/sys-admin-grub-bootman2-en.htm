@@ -1,0 +1,416 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>sidux Manuals - Boot Managers</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body>
+<div id="menu">
+<!-- menu starts here -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
+	</ul>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
+	<ul>
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
+				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+				<li><a href="help-en.htm#help-gen">Where to get Help</a></li>
+				<li><a href="credits-en.htm#cred-team">Credits</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content-en.htm">CD Contents</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-en.htm#cd-content">CD Contents</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning-en.htm">CD Downloading and Burning</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning-en.htm#download-sidux">CD Downloading and Burning</a></li>
+				<li><a href="cd-dl-burning-en.htm#md5">md5 Checksum</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-nero">Burning in Windows</a></li>
+				<li><a href="cd-dl-burning-en.htm#burn-linux">Burning in Linux</a></li>
+				<li><a href="cd-dl-burning-en.htm#xdelta">xdelta Patching</a></li>
+				<li><a href="cd-no-gui-burn-en.htm">Burning without a GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole-en.htm">The Terminal/Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole-en.htm#term-kon"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole-en.htm#cli-help">Command Line Help</a></li>
+				<li><a href="term-konsole-en.htm#shell-scripts">Installing Scripts.sh</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes-en.htm">CheatCodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes-en.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga-en.htm#vga">VGA Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-en.htm">Partitioning Your Hard Drive</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
+				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
+				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
+				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
+				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
+				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
+				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
+				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
+				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
+				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
+				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-en.htm">Graphic Cards, Hardware Devices and Drivers</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-en.htm">Window Managers</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="wm-kde-en.htm#desk-freeze">KDE Desktop Freezes</a></li>
+				<li><a href="wm-kde-en.htm#kde-login">Cant login in KDE</a></li>
+				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
+				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
+				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
+				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin-en.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here -->
+
+</div>
+<div id="main-page">
+	<div class="divider" id="mbr-grub-boot">
+		<h2>Bootsector overwritten by Windows MBR</h2>
+			<p>We assume there are 2 hard disks in the PC: windows is installed on the first hard-disk, and sidux is installed on a partition on the second hd, e.g. on hdb5.</p>
+
+			<p>Now boot the Live-CD: Open a Terminal and become root with</p>
+<pre>sudo root</pre>
+
+			<p>Mount the partition where sidux is installed (in our example hdb5)</p>
+<pre>mount /media/hdb5</pre>
+			<p>Now rewrite Grub to MBR:</p>
+
+<pre>grub-install --recheck --no-floppy --root-directory=/media/hdb5 /dev/hda</pre>
+
+
+	</div>
+	<div class="divider" id="boot-grub-floppy">
+		<h2>Creating a bootable Floppy</h2>
+
+			<p>During HD-Installation of sidux you can create a Boot-Disk. Here you will see how to do so afterwards. You need to do the following steps:</p>
+
+			<p>1. Format a floppy</p>
+<pre>fdformat /dev/fd0</pre>
+
+			<p>2. Create a filesystem on the floppy (it is advisable to use ext2 or vfat)</p>
+<pre>mkfs -t ext2 -c /dev/fd0u1440 or
+mkfs.vfat /dev/fd0u1440</pre>
+
+			<p>3. Mount the floppy</p>
+<pre># mount /dev/fd0 /floppy</pre>
+
+			<p>4. Create directory tree on the floppy</p>
+<pre>mkdir -p /floppy/boot/grub</pre>
+
+			<p>5. Copy the needed files to the floppy</p>
+<pre>cp /boot/grub/stage1 /floppy/boot/grub
+cp /boot/grub/stage2 /floppy/boot/grub</pre>
+
+			<p>6. To be able to start the right OS (sidux) from the right partition, you finally must do as follows:</p>
+
+			<p>7. Copy the "menu.lst" file, that was written by sidux to the /boot-directory of the sidux-Partition onto the floppy</p>
+<pre>cp /boot/grub/menu.lst /floppy/boot/grub/menu.lst</pre>
+
+			<p>8. Unmount the floppy (note the the spelling of the command carefully)</p>
+<pre>umount /dev/fd0</pre>
+
+			<p>9. Start the Grub-Shell to finish the re-installation of Grub. To do so, type:</p>
+<pre>grub grub> root (fd0) grub> setup (fd0) grub> quit</pre>
+
+			<p>We have now created a bootable floppy, from which we can reliably boot sidux.</p>
+			<p>If you need to create the floppy from a running Live-CD, the procedure is a bit different. Let's assume, sidux is installed on partition /dev/hda5, then in addition you have to do instead of step 7</p>
+
+			<p>10. Mount the sidux Partition</p>
+<pre>mount /dev/hda5 /media/hda5</pre>
+
+			<p>11. Copy the "menu.lst"-file, that was written by sidux to the /boot-directory of the sidux-Partition onto the floppy</p>
+<pre>cp /mnt/hda5/boot/grub/menu.lst /floppy/boot/grub/menu.lst</pre>
+
+			<p>12. Unmount the sidux Partition (note the spelling of the command carefully)</p>
+<pre>umount /dev/hda5</pre>
+			<p>The rest is similar to steps 8 and 9 in the first case.</p>
+	</div>
+	<div class="divider" id="remove-grub">
+		<h2>Removing grub from MBR</h2>
+
+<p>It's very simple: as root enter</p>
+<pre>lilo -M /dev/hda -s /dev/null</pre>
+
+			<p>in a terminal.</p>
+	</div>
+	<div class="divider" id="what-is-grub">
+		<h2>GRUB the Boot Manager - what it is</h2>
+
+			<h3>General</h3>
+
+			<p>Grub is a boot manager that can boot operating systems from different partitions. Grub does not rely on block lists to find the needed files for a system to start up, and it can read a bunch of file-systems by default: ext2, ext3, reiserfs, ... (Linux), Fat32, Fat16 (Windows), UFS (BSD), Minix and many others.</p>
+
+			<p>Grub knows BIOS-extensions (meaning it can boot partitions above 8 GByte!) and has no 1024-cylinder-barrier. Grub doesn't really care, where the kernel physically resides, all it needs is the declaration of the partition and the path to the kernel it's supposed to boot (this can even be a symlink). After a change in the configuration (i.e. the menu.lst) it doesn't need a program-call like Lilo does, the new configuration is applied at next boot.</p>
+			<p>sidux uses Grub to boot from CD, and when installing to harddisk, Grub is used by default. Nonetheless Grub can be installed afterwards without a problem. Grub is installed to the MBR from a root-shell with the following command:</p>
+
+<pre>grub-install --root-directory=/media/hdaX /dev/hdY</pre>
+
+			<p>/media/hdaX stands for the readable-mounted partition, on which, in the directory "/boot/grub" the necessary files (stage2, stage1_5xxx) will be placed. The configuration file "menu.lst" must also be created in that directory. /dev/hdY is the harddisk, in whose MBR Grub will be installed, normally /dev/hda.</p>
+
+			<h3>Drivenames/Devicenames</h3>
+
+			<p>Grub does not differentiate between SCSI- and IDE-Harddisks. (hd0) is always the first hard disk that is first in the boot sequence (setting in BIOS), no matter if IDE or SCSI. Unusual is the counting method; the first partition on the first hd is (hd0,0). Primary partitions are numbered from 0-3, logical partitions count from 4 on up.</p>
+
+		<table>
+			<tbody>
+				<tr>
+					<th><b>Grub</b></th>
+					<th><b>Linux</b></th>
+					<th><b>Label</b></th>
+				</tr>
+				<tr>
+					<td>(fd0)</td>
+					<td>/dev/fd0</td>
+					<td>Floppy (under Windows)</td>
+				</tr>
+				<tr>
+					<td>(hda0)</td>
+					<td>/dev/hda</td>
+					<td>first hd</td>	
+				</tr>
+				<tr>
+					<td>(hd0,0)</td>
+					<td>/dev/hda1</td>
+					<td>Part.1 on hd1</td>	
+				</tr>
+				<tr>
+					<td>(hd0,5)</td>
+					<td>/dev/hda6</td>
+					<td>Extended. part. on hd 1</td>	
+				</tr>
+			</tbody>
+		</table>
+	<div class="spacer05"></div>
+			<p>All nominations for devices for Grub are to be put in brackets (). Be aware of the entries behind the Kernel-line though. In contrast to Grub the Kernel needs the data in the normal linux way. The entries in the following example both point to the same partition, namely the fourth partition on the first hd. The first line is in Grub notation, the second one in typical linux notation:</p>
+<pre>root (hd0,3)
+kernel /boot/vmlinuz root=/dev/hda4</pre>
+
+			<h3>Command-Mode (Grub-Shell)</h3>
+
+			<p>A very comfortable feature is the Command-Mode. It is accessed by "c", and here comes the Grub-Shell. This enables you to find and boot different systems and files (i.e. Kernel) even with a faulty menu.lst.</p>
+
+			<p>To do a little bit of testing, you can even run Grub from a booted system from within a root-shell with "grub". In the Grub-Shell you can see all possible commands with "help". Detailed help for each command is obtained with <span class="highlight-3">help command",</span> back to the Linux-Shell you go with "quit"( Grub-Shell is terminated). In the Grub-Shell the tab-key has a similar function as in the Linux-Shell, which is a great ease. Commands, Drivenames and Filenames can be auto-completed with the tab-key.</p>
+
+			<p>Grub gives you the opportunity to locate the Kernel and the initrd even before the actual boot by "find" , e.g.with the following command</p>
+<pre>find /boot/vmlinuz</pre>
+
+			<p>Grub shows the partitions, that have a Kernel with the name "vmlinuz" in the directory "/boot":</p>
+<pre>(hd0,3) (hd1,0)</pre>
+
+			<p>All available partitions can be found with "geometry", e.g.</p>
+<pre>geometry (hd0)</pre>
+
+			<p>shows this:</p>
+<pre>"drive 0x80: C/H/S = 3648/255/63, The number of sectors = 58605120, /dev/hda Partition num: 0,
+Filesystem type is fat, partition type 0xb Partition num: 1,
+Filesystem type is fat, partition type 0xb Partition num: 2,
+Filesystem type is fat, partition type 0xc Partition num: 4,
+Filesystem type is ext2fs, partition type 0x83 Partition num: 5,
+Filesystem type unknown, partition type 0x82 Partition num: 6,
+Filesystem type is fat, partition type 0xb"
+</pre>
+			<p>After the Kernel or an existing initrd (or miniroot.gz) has been found, you can start with "boot".</p>
+
+
+			<h3>Edit-Mode</h3>
+
+			<p>This mode enables you to change entries in the "menu.lst" while booting. This works even when Grub is booted from CD an the menu.lst is write-protected . To do so you first hit ESC, confirm with Return and then hit "e". The parameters are then added to the end of the line or you move within the line with the Cursor-keys.</p>
+
+
+			<h3>menu.lst (examples for possible entries)</h3>
+
+			<p>Lines with comments are started with # and don't interfere with the bootprocess, so they can stay in the file.</p>
+
+<pre># Example /boot/grub/menu.lst
+################################################
+# setkey changes the keyboardlayout to german
+setkey y z
+setkey z y
+setkey Y Z
+setkey Z Y
+setkey equal parenright
+setkey parenright parenleft
+setkey parenleft asterisk
+setkey doublequote at
+setkey plus bracketright
+setkey minus slash
+setkey slash ampersand
+setkey ampersand percent
+setkey percent caret
+setkey underscore question
+setkey question underscore
+setkey semicolon less
+setkey less numbersign
+setkey numbersign backslash
+setkey colon greater
+setkey greater bar
+setkey asterisk braceright
+# sets time in seconds, after that automatic boot will be conducted.
+# inbetween you can call Edit- or Commandmode with "e" or "c".
+timeout 30
+# sets the Default-System that is booted after the timeout
+default 0
+# remembers the partition that was booted last, if "savedefault" is set under Title
+#default saved
+# is booted, when booting of the default-entry fails
+fallback 1
+# set foreground/background colours
+# options:flashes red background: blue
+color white/blue blink-red/blue
+# entry 1 is default 0 and boots e.a.. Windows 98
+#################
+title Windows 98 (partition 1 o?n disk 1)
+rootnoverify (hd0,0)
+makeactive
+chainloader +1
+# entry 2 is default 1 and boots e.a. Windows 2000
+#################
+title Windows 2000 (partition 2 o?n disk 1)
+rootnoverify (hd0,1)
+makeaktive
+chainloader
+/bootsect.dos
+# entry 3 is default 2 and boots Suse
+##################
+title Suse-Linux
+root (hd1,5)
+kernel /boot/vmlinuz
+root=/dev/hdb6 read-only
+# other parameters are possible i.e.:
+# kernel /boot/vmlinuz root=/dev/hdb6 single kernel /boot/vmlinuz root=/dev/hdb6 vga=ask
+# entry 4 is default 3 and boots Debian
+##################
+title GNU/Debian (first extended partition o?n disk 2)
+root (hd1,4)
+kernel /boot/vmlinuz
+root=/dev/hdb5 read-only
+# entry 5 is default 4 und boots DOS from disk
+##################
+title DOS (partition 3 o?n disk 1)
+root (hd0,2)
+makeactive chainloader +1
+# entry 6 is default 5 und boots from floppy
+##################
+title floppy
+chainloader (fd0)+1
+</pre>
+
+
+
+			<h3>Dual and Multiple Booting</h3>
+
+			<p>Some people need/want several Windows-Installations. Windows always wants to boot from disk 1. We will have to hide one partition and activate another. The following commands should be entered in the GRUB-Commandline and, if successfull, copied to the menu.lst. This should be done for every Windows-partition. Don't forget to do a Backup! ;-)</p>
+
+<pre>hide (hd0,0) # hidden partition 1 of disk 1
+unhide (hd0,1) # makes partition 2 of disk 1 visible
+rootnoverify (hd0,1) # makes partition 2 of disk 1 the Root-FS
+makeactive # makes partition 2 of disk 1 aktiv
+chainloader +1 # points to the first sector of the start-partition
+boot # boots the operating system</pre>
+
+			<p>If you want to start a 2nd Windows from the 2nd disk, you virtually swap disk 1 and 2. Thereby Windows sees a simulated 1st disk:</p>
+<pre>map (hd0) (hd1)
+map (hd1) (hd0)
+</pre>
+
+
+			<h3>Pitfalls</h3>
+
+			<p>As Grub has no 1024-cylinder barrier and can boot systems above 1024 cylinders, the  "/boot/grub/stage2" must be accessible by the bios (must be before 1024 cylinders). Stage2 may not be moved after installation (e.g. Defrag could try that). Setup data will get written that would not be congruent anymore. It is reasonable to make stage2 read-only (you must be in the current directory):</p>
+
+<pre>Dos: attrib +r +s stage2
+LINUX: # chmod a -w ./stage2
+</pre>
+
+
+			<h3>Where to find out more</h3>
+
+			<p><a href="http://www.sidux.com/dummy/grubboot.zip/">Get a Grub-Floppy-Image</a>. (ca. 580 kB) and play around a bit. On the floppy you also find a functioning FreeDOS and an editor. If you remove the write-protection from the disk, you can edit the menu.lst on the floppy to your needs.</p>
+
+			<p><a href="http://www.gnu.org/software/grub/grub-faq.en.html">The official FAQ for Grub</a>.</p>
+
+			<p>If you have a supported network card, Grub can boot over the network.<a href="http://os.inf.tu-dresden.de/%7Efm3/grub.html"> An appropriate Boot-Disk can be obtained here (allthough with an older version of Grub)</a>.</p>
+				
+	</div>
+	<div class="spacer05"></div>
+
+
+</div>
+</body>
+</html>
