@@ -2,6 +2,7 @@
 
 FLL_PACKAGES+=(
 	build-essential
+	cdebootstrap
 	cdrdao
 	dvd+rw-tools
 	dmraid

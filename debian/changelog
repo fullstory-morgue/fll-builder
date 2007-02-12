@@ -62,11 +62,12 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * add /etc/adjtime to the exclude list.
   * enable progress bar for mksquashfs again, squashfs-tools >=
     1:3.2r2-0+c0.sidux.1 is fixed.
+  * add cdebootstrap to extra utils.
 
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 12 Feb 2007 14:59:03 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 13 Feb 2007 00:53:49 +0100
   * Added croatian language
 
 fll-builder (1.0.2) unstable; urgency=low
