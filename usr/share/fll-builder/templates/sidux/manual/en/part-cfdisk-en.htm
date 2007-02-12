@@ -208,7 +208,7 @@ cfdisk /dev/hda</pre>
 		<h5>Formatting</h5>
 		<p>After closing down <b>cfdisk</b> we return to console. For formatting you need to be root. For formatting the root- and/or home partition, in this example <b>hdb1</b>, we enter: <i>(if you are on HD-install you'll have to enter your root password here)</i></p>
 <pre >su
-mkfs.ext3 /dev/hda1
+mkfs -t ext3 /dev/hdb1
 </pre>
 
 		<p>There will be a question, that you answer with yes if you are sure, that you have chosen the right partition.</p>
