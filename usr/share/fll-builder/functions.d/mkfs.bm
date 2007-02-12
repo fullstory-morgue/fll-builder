@@ -2,7 +2,7 @@
 
 make_exclude_file() {
 	local LIST="$1"
-	local FINDOPTS="-name '*.orig'"
+	local FINDOPTS=( "-name '*.orig'" )
 	local TYPE REGX TEST
 
 	while read TYPE REGX; do
@@ -19,15 +19,15 @@ make_exclude_file() {
 
 		case "$TYPE" in
 			d|f)
-				FINDOPTS="$FINDOPTS -o -type $TYPE -${TEST} '$REGX'"
+				FINDOPTS+=( "-o -type $TYPE -${TEST} '$REGX'" )
 				;;
 			*)
-				FINDOPTS="$FINDOPTS -o -${TEST} '$REGX'"
+				FINDOPTS+=( "-o -${TEST} '$REGX'" )
 				;;
 		esac
 	done < "$LIST"
 
-	eval find . ${FINDOPTS}
+	eval find . ${FINDOPTS[@]}
 }
 
 make_compressed_image() {
