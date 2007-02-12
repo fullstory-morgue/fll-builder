@@ -4,7 +4,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * add checking for kernel zip file existance and specific error code return
-  * add checking for kernel zip file integrity and specific error code return
+  * manual updated sid-man-snapshot-31b--WIP-XDELTA-1-Pre3-chaos-2007-light
 
   [ Kel Modderman ]
   * Hack inittab to allow "immutable" bash login shells on the tty's instead
@@ -66,7 +66,7 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Joaquim Boura <x-un-i@sidux.com>  Wed,  7 Feb 2007 07:55:50 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 12 Feb 2007 14:59:03 +1100
   * Added croatian language
 
 fll-builder (1.0.2) unstable; urgency=low

@@ -17,7 +17,7 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
 <!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
@@ -125,6 +125,7 @@
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
+				<li><a href="sys-admin-rsync-en.htm#rsync">Backing Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
 				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
 				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
@@ -162,26 +163,26 @@ cfdisk /dev/hda</pre>
 
 		<h5>The user interface</h5>
 		<p>On the first screen cfdisk lists the current partition table with the names and some data about each partition. On the screen bottom there are some command buttons. To change between partitions, use the <b>up and down arrow keys</b>. To change between commands, use the <b>left and right arrow keys</b></p>
-		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk0_en.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk0-en.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Delete a partition</h5>
 		<p>To delete a partition, highlight it with the up and down keys, select the</p> <pre >Delete</pre> 
 		<p>command with the left and right arrow keys, and press</p> 
 		<pre >Enter</pre>.
-		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk1_en.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk1-en.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Create a new partition</h5>
 		<p>To create a new partition, use the command:</p> 
 		<pre >New</pre> 
 		 <p>(select it with the left and right arrow keys), and press enter. You must decide between a <b>primary</b> and a <b>logical</b> partition. If you want a logical partition, the program will automatically make an extended partition for you. Then you must choose the size of the partition (in MB). If you can't enter a value in MB, return to the main screen with the Esc key, and select MB with the command</p>
 		<pre >Units</pre> 
-		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk2_en.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk2-en.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Type of a partition</h5>
 		<p>To set the type of a partition for <b>Linux swap</b> or <b>Linux</b>, highlight the actual partition, and use the command:</p>
 		<pre >Type</pre> . 
 		<p>You'll get a list of different types. Press space, and you'll get even more. Find what type you need, and enter the number at the prompt. (<b>Linux swap</b> is Type <b>82</b>, <b>Linux</b> filesystems should get type <b>83</b>)</p>
-		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk3_en.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk3-en.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Make a partition bootable</h5>
 		<p>There is no need to make an bootable partition for Linux but some other OS need that. Highlight the partition and select the command:</p>
@@ -189,8 +190,8 @@ cfdisk /dev/hda</pre>
 
 		<h5>Write the result to disk</h5>
 		<p>When you are done you can write your changes using the Write command. The partition table will be written to disk. (if you get an error concerning dos, you can ignore it) As this will destroy all data on partitions you have deleted or changed, you should therefore be very sure that you want to do this before you actually press the key</p>
-		<pre >Return</pre> 
-		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk4_en.png" alt="The cfdisk user interface" /></div>
+<pre >Return</pre> 
+		<div class="screenshot"><img src="../lib/images-en/cfdisk-en/cfdisk4-en.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Quit</h5>
 		<p>To exit the program, select the Quit command. After leaving cfdisk and before starting the formatting or the installation, you should reboot your box so sidux can reread the new partition table.</p>
@@ -198,16 +199,16 @@ cfdisk /dev/hda</pre>
 
 	<div class="spacer05"></div>
 	<div class="divider" id="formating">
-		<h2>Formating partitions (after partitioning with cfdisk)</h2>
+		<h2>Formatting partitions (after partitioning with cfdisk)</h2>
 
 		<h5>Basics</h5>
 		<p>A partition must have a filesystem. Linux knows different filesystems to use. There is ReiserFs, Ext3, and for experienced users XFS and JFS. Ext2 is handy as a storage format since a windows driver is available for data-swapping.</p>
 		<p  class="highlight-2">For normal use we recommend the ext3 file system, it is the default file system for sidux and is well maintained.</p>
 
-		<h5>Formating</h5>
+		<h5>Formatting</h5>
 		<p>After closing down <b>cfdisk</b> we return to console. For formatting you need to be root. For formatting the root- and/or home partition, in this example <b>hdb1</b>, we enter: <i>(if you are on HD-install you'll have to enter your root password here)</i></p>
 <pre >su
-mkfs -t ext /dev/hdb1
+mkfs.ext3 /dev/hda1
 </pre>
 
 		<p>There will be a question, that you answer with yes if you are sure, that you have chosen the right partition.</p>
@@ -256,7 +257,7 @@ mkfs -t ext /dev/hdb1
 
 		<p>You are now ready to start installation.</p>
 
-			<div id="rev">Content last revised UTC 29/01/2007 0100hrs</div>
+			<div id="rev">Content last revised UTC 12/02/2007 0200hrs</div>
 </div>
 </div>
 </div>

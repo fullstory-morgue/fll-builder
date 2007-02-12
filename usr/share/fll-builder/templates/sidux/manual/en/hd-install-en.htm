@@ -17,7 +17,7 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
 <!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
@@ -125,6 +125,7 @@
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
+				<li><a href="sys-admin-rsync-en.htm#rsync">Backing Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
 				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
 				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
@@ -144,7 +145,7 @@
 			<p  class="highlight-2">For normal use we recommend ext3, it is the default file system for sidux and is well maintained.</p>
 
 
-			<p><span class="highlight-3">Before installation please remove all usb-sticks, cameras, etc </span>. <a href="hd-install-opts-en.htm">Installation to USB Devices requires additional steps.</a>  You can edit the installer file: <span class="highlight-3">~/.knofig</span>, and thereby use a different filesystem or spread your installation over different partitions.For example a seperate /home.</p>
+			<p><span class="highlight-3">Before installation please remove all usb-sticks, cameras, etc </span>. <a href="hd-install-opts-en.htm">Installation to USB Devices requires additional steps.</a>  You can edit the installer file: <span class="highlight-3">~/.siduxconf</span>, and thereby use a different filesystem or spread your installation over different partitions.For example a seperate /home.</p>
 
 			<p class="highlight-3">It is highly recommended that you have a separate data partition. The benefits in terms of disaster recovery, stability of your data are unmeasurable.</p>
 
@@ -205,7 +206,7 @@ cfdisk
 		<p><b>6.</b> This query is the last chance to check the adjustments you made. Read through it again carefully! The whole process takes, depending on your system, from 5 -60 min. (with special bootoptions it can be even faster).</p>
 		<div class="screenshot"><img src="../lib/images-en/installer-en/installer6-en.png" alt="installation-config" /></div>
 
-		<p>The other menu-items are for experienced linux-users, who want to write their special changes to the config-file (<span class="highlight-3">~/.knofig</span>) or have a special partitioning scheme on their hard drive that would be rejected by the automatic check of the installer.</p>
+		<p>The other menu-items are for experienced linux-users, who want to write their special changes to the config-file (<span class="highlight-3">~/.siduxconf</span>) or have a special partitioning scheme on their hard drive that would be rejected by the automatic check of the installer.</p>
 
 		<p>If the progress bar hangs in one place for a while, don't abort, just give it some time.</p>
 

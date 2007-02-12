@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Sidux Manuals - Samba and SSH-de</title>
+	<title>Sidux Manuals - Samba Configs</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
@@ -17,7 +17,7 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
 <!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
@@ -125,6 +125,7 @@
 				<li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Upgrade durch die Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Upgrade des Kernels</a></li>
 				<li><a href="sys-admin-rdiff-de.htm#rdiff">Backup mit rdiff</a></li>
+				<li><a href="sys-admin-rsync-de.htm#rsync">Backup mit rsync</a></li>
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
@@ -211,14 +212,14 @@ public = yes</pre>
 		<pre>/etc/init.d/samba stop</pre>
 
 		<p>Du kannst Samba auch automatisch beim Booten starten:</p>
-		<pre>unfreeze-rc.d
+<pre>
 update.rc.d samba defaults
-freeze-rc.d</pre>
+</pre>
 
 		<p>Samba startet jetzt beim Booten.</p>
 
 	</div>
-			<div id="rev">Content last revised 15/01/2007 0300 UTC</div>
+			<div id="rev">Page last revised 06/02/2007 0700 UTC</div>
 	<div class="spacer05"></div>
 </div>
 </body>

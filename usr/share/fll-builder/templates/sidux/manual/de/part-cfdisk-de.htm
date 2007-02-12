@@ -17,7 +17,7 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-static-proof-30b-xdelta-1-PRE2-Chaos-2007</h2>-->
+<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
 <!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
@@ -125,6 +125,7 @@
 				<li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Upgrade durch die Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Upgrade des Kernels</a></li>
 				<li><a href="sys-admin-rdiff-de.htm#rdiff">Backup mit rdiff</a></li>
+				<li><a href="sys-admin-rsync-de.htm#rsync">Backup mit rsync</a></li>
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
@@ -168,7 +169,7 @@ cfdisk /dev/hda
 
 		<h5>Die Bedienoberfl&#228;che</h5>
 		<p>Im ersten Bildschirm zeigt cfdisk die aktuelle Partitionstabelle mit den Namen und einigen Informationen zu jeder Partition. Am unteren Ende des Screens sind einige Befehlsschalter. Um oben zwischen den Partitionen zu wechseln, benutzt man die Pfeiltasten auf, ab. Um unten Befehle auszuw&#228;hlen, benutzt man die Pfeiltasten rechts, links.</p>
-		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk0_de.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk0-de.png" alt="The cfdisk user interface" /></div>
 
 		<h5>L&#246;schen einer Partition</h5>
 		<p>Um eine Partition zu l&#246;schen, markiere sie mit den auf-ab-Tasten, w&#228;hle den Befehl</p>
@@ -179,7 +180,7 @@ L&#246;schen
 <pre>
 Enter
 </pre>
-		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk1_de.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk1-de.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Erstellen einer neuen Partition</h5>
 		<p>Zum Erstellen einer neuen Partition benutze den Befehl</p>
@@ -190,7 +191,7 @@ Neue
 <pre>
 Einheiten
 </pre>
-		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk2_de.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk2-de.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Partitionstyp</h5>
 		<p>Um den Partitionstyp festzulegen, f&#252;r <b>Linux swap</b> oder <b>Linux</b>, markiere die entsprechende Partition und benutze den Befehl:</p>
@@ -199,7 +200,7 @@ Typ
 </pre>
 
 		<p>Du bekommst nun eine Liste mit Typen. Dr&#252;cke Space, und es erscheint der Rest auf einer zweiten Seite. Finde den ben&#246;tigten Typ (<b>Linux swap</b> ist Typ <b>82</b>, <b>Linux</b> bekommt Typ <b>83</b>)</p>
-		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk3_de.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk3-de.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Eine Partition bootf&#228;hig machen</h5>
 		<p>F&#252;r Linux besteht kein Grund, eine Partition bootbar zu machen, aber einige andere Betriebssysteme brauchen das. Markiere die entsprechende Partition und benutze den Befehl:</p>
@@ -213,7 +214,7 @@ Bootbar
 <pre>
 Enter
 </pre>
-		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk4_de.png" alt="The cfdisk user interface" /></div>
+		<div class="screenshot"><img src="../lib/images-de/cfdisk-de/cfdisk4-de.png" alt="The cfdisk user interface" /></div>
 
 		<h5>Beenden</h5>
 		<p>Um das Programm nun zu verlassen, benutze den Befehl <b>Ende</b>. Nach Beendigung von <b>cfdisk</b>, vor der Installation, sollte man auf jeden Fall rebooten, um die Partitionstabelle neu einzulesen</p>
@@ -230,7 +231,7 @@ Enter
 
 <pre>
 su
-mkfs -t ext /dev/hdb1
+mkfs.ext3 /dev/hda1
 </pre>
 
 		<p>Es folgt eine Abfrage, die wir mit <b>ja</b> beantworten, wenn wir sicher sind, dass wir die richtige Partition formatieren. Also lieber noch mal pr&#252;fen.</p>
@@ -292,7 +293,7 @@ swapon -s
 
 		<p>Jetzt kann die Installation beginnen.</p>
 
-			<div id="rev">Content last revised UTC 29/01/2007 0100hrs</div>
+			<div id="rev">Content last revised UTC 12/02/2007 0200hrs</div>
 
 </div>
 
