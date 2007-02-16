@@ -17,8 +17,8 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
-<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
+<!-- menu last updated by bluewater 16/02/2007 1400hrs ADEST 10/02/2007 0300hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -84,7 +84,7 @@
 				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
 				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
 				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
 				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
 				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
 			</ul>
@@ -138,7 +138,6 @@
 		</li>
 	</ul>
 <!-- menu ends here -->
-
 </div>
 <div id="main-page">
 	<div class="divider" id="apt-cook">
@@ -155,27 +154,28 @@
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 
-# Unstable
-deb http://ftp.de.debian.org/debian unstable main contrib non-free
-deb-src http://ftp.de.debian.org/debian unstable main contrib non-free
+deb http://ftp.debian.org/debian/ sid main
+#deb-src http://ftp.debian.org/debian/ sid main
 
-# Testing
-deb http://ftp.de.debian.org/debian testing main contrib non-free
-deb-src http://ftp.de.debian.org/debian testing main contrib non-free
+#deb http://ftp.debian.org/debian/ testing main
+#deb-src http://ftp.debian.org/debian/ testing main
 
-# Experimental
-#deb http://ftp.de.debian.org/debian ../project/experimental main contrib non-free
-#deb-src http://ftp.de.debian.org/debian ../project/experimental main contrib non-free
+#deb http://ftp.debian.org/debian/ experimental main
+#deb-src http://ftp.debian.org/debian/ experimental main
 
-# sidux
-deb http://sidux.com/files/debian/ ./
-deb-src http://sidux.com/files/debian/ ./
-deb http://sidux.com/files/live/ ./</pre>
+deb http://sidux.com/debian/ sid main fix.main
+#deb-src http://sidux.com/debian/ sid main fix.main</pre>
 
 			<p>To be able to obtain updated information on the packages APT uses a database.  This database contains the packages but also which other packages are needed for that package to work (called dependencies). The program apt-get uses this database when installing your chosen packages to resolve all the dependencies and thereby to guarantee that the chosen packages will work. The updating of this database is done by the command apt-get update.</p>
  
 <pre># apt-get update
-NEED NEW EXAMPLE HERE</pre>
+Get:1 http://sidux.com sid Release.gpg [189B]
+Get:2 http://sidux.com sid Release.gpg [189B]
+Get:3 http://sidux.com sid Release.gpg [189B]
+Get:4 http://ftp.de.debian.org unstable Release.gpg [189B]
+Get:5 http://sidux.com sid Release [34.1kB]
+Get:6 http://ftp.de.debian.org unstable Release [79.6kB]
+</pre>
 
  
 	</div>

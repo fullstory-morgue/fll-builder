@@ -17,8 +17,8 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
-<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
+<!-- menu last updated by bluewater 16/02/2007 1400hrs ADEST 10/02/2007 0300hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -84,7 +84,7 @@
 				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
 				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
 				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-wlan</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
 				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
 				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
 			</ul>
@@ -240,7 +240,7 @@ install-binary-gfx -e (to build experimental source)
 <pre>
  Usage: ./install-binary-gfx [options]
 -a | --auto            Automatic mode
--b | --build           MOD Build only (nvidia|nvidia-legacy|fglrx)
+-b | --build           MOD Build only (ati|ati-legacy|fglrx)
 -d | --detect          Detect Card only
 -e | --experimental    Use Experimental
 -u | --update          Update Script
@@ -253,9 +253,9 @@ install-binary-gfx -a (This will detect you Card and install the sid Drivers aut
 install-binary-gfx -a --aiglx (This will detect your Card and install the sid Drivers automatically and activate AIGLX.)
 install-binary-gfx -e (This will detect your Card and install the experimental Drivers automatically.)
 install-binary-gfx -v -e (This will detect your Card and install the experimental Drivers automatically in debug mode)
-install-binary-gfx -b nvidia (This will just build the nvidia-module....deb in /usr/src. The same works with fglrx and nvidia-legacy.)
+install-binary-gfx -b ati (This will just build the ati-module....deb in /usr/src. The same works with fglrx and ati-legacy.)
 install-binary-gfx -d (This will detect your Card and just print out the Information.)
-install-binary-gfx --aiglx (This will activate AIGLX.)
+install-binary-gfx --aiglx (This will activate AIGLX AND ONLY with r200, r300, not for fglrx)
 install-binary-gfx -u (This will update this Script. Please note that will not be done by dist-upgrade as long as you
 have contrib for the sidux repository activated in your sources.list.)
 </pre>
@@ -297,9 +297,9 @@ init 5 &amp;&amp; exit
 </pre>
 				<p>Note that this is not the same as the binary-only 'nvidia' driver, which adds 3D support, but is binary-only and not supported.</p>
 
-				<p class="highlight-2">Next you need to edit /etc/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing xorg.conf incorrectly will result in many tears by you.</p>
+				<p class="highlight-2">Next you need to edit /etc/X11/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing /etc/X11/xorg.conf incorrectly will result in many tears by you.</p>
 
-				<p>To edit /etc/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">nv</span></p>
+				<p>To edit /etc/X11/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">nv</span></p>
 
 				<p class="highlight-2">YOU HAVE BEEN WARNED!! EDITING XORG.CONF IS ENTIRELY AT YOUR OWN RISK!!</p>
 
@@ -323,9 +323,9 @@ init 5 &amp;&amp; exit
 </pre>
 				<p>Note that this is not the same as the ATI-provided, binary-only, 'fglrx' driver, which provides additional 3D functionality for some newer Radeon cards, but is not supported.</p>
 
-				<p class="highlight-2">Next you need to edit /etc/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing xorg.conf incorrectly will result in many tears by you.</p>
+				<p class="highlight-2">Next you need to edit /etc/X11/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing /etc/X11/xorg.conf incorrectly will result in many tears by you.</p>
 
-				<p>To edit /etc/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">ati</span></p>
+				<p>To edit /etc/X11/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">ati</span></p>
 
 				<p class="highlight-2">YOU HAVE BEEN WARNED!! EDITING XORG.CONF IS ENTIRELY AT YOUR OWN RISK!!</p>
 
@@ -347,7 +347,7 @@ exit
 </pre>
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! It's <span class="highlight-2">experimental!</span></p>
 		
-			<div id="rev">Content last revised UTC 03/02/2007 1500hrs</div>	
+	<div id="rev">Content last revised UTC 15/01/2007 2300hrs UTC</div>
 
 </div>
 </div>

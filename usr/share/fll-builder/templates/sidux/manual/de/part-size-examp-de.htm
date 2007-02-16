@@ -17,8 +17,8 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
-<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
+<!-- menu last updated by bluewater 10/02/2007 2200hrs ADEST 10/02/2007 1100hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -158,7 +158,7 @@
 
 		 <p>Fortgeschrittene Anwender k&#246;nnen auch /var, /tmp, ...etc. aufteilen. Die Erl&#228;uterungen w&#252;rden aber hier zu weit gehen. Es muss/sollte eine Swap-Partition angelegt werden. (Entspricht in der Funktionalit&#228;t etwa der Auslagerungsdatei bei Windows, ist aber weit effektiver als diese). Im Allgemeinen soll Swap doppelt so gross wie der Arbeitsspeicher sein, aber nicht gr&#246;&#223;er als 500 MB. Als Standarddateisystem f&#252;r die Linuxpartitionen verwendet man am besten ext3. ReiserFS hat ein paar Vorteile, aber seine Weiterentwicklung ist ungewiss.</p>
 
-		<p>F&#252;r den Datenaustausch mit einer Windowsinstallation ist vfat (Fat32) <b>am schnellsten und am unkompliziertesten</b>. Wer XFS auch f&#252;r <span class="highlight-3">/</span> (root) verwenden m&#246;chte, muss (weil grub nicht zuverl&#228;ssig mit xfs zusammenarbeitet) eine Extrapartition <span class="highlight-3">/boot</span> anlegen (ext2) oder auf <b>lilo</b> ausweichen. Der Installer unterst&#252;tzt zur Zeit xfs auf <span class="highlight-3">/</span> nur &#252;ber den Umweg des Editierens der Datei <b>.knofig</b></p>
+		<p>F&#252;r den Datenaustausch mit einer Windowsinstallation ist vfat (Fat32) <b>am schnellsten und am unkompliziertesten</b>. Wer XFS auch f&#252;r <span class="highlight-3">/</span> (root) verwenden m&#246;chte, muss (weil grub nicht zuverl&#228;ssig mit xfs zusammenarbeitet) eine Extrapartition <span class="highlight-3">/boot</span> anlegen (ext2) oder auf <b>lilo</b> ausweichen. Der Installer unterst&#252;tzt zur Zeit xfs auf <span class="highlight-3">/</span> nur &#252;ber den Umweg des Editierens der Datei <b>~/.siduxconf.</b></p>
 
 		<p>Wer mehrere Partitionen macht, sollte sich die Bezeichnungen f&#252;r sp&#228;ter notieren! Zum Schluss die &#196;nderungen durchf&#252;hren (das Diskettensymbol bzw Edit > Apply All Operations) und den Partitions-Manager beenden.</p>
 

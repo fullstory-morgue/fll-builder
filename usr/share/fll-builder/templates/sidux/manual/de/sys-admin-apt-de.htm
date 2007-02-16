@@ -17,8 +17,8 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
-<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
+<!-- menu last updated by bluewater 10/02/2007 2200hrs ADEST 10/02/2007 1100hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -154,49 +154,28 @@
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 
-# Unstable
-deb http://ftp.de.debian.org/debian unstable main contrib non-free
-deb-src http://ftp.de.debian.org/debian unstable main contrib non-free
+deb http://ftp.debian.org/debian/ sid main
+#deb-src http://ftp.debian.org/debian/ sid main
 
-# Testing
-deb http://ftp.de.debian.org/debian testing main contrib non-free
-deb-src http://ftp.de.debian.org/debian testing main contrib non-free
+#deb http://ftp.debian.org/debian/ testing main
+#deb-src http://ftp.debian.org/debian/ testing main
 
-# Experimental
-#deb http://ftp.de.debian.org/debian ../project/experimental main contrib non-free
-#deb-src http://ftp.de.debian.org/debian ../project/experimental main contrib non-free
+#deb http://ftp.debian.org/debian/ experimental main
+#deb-src http://ftp.debian.org/debian/ experimental main
 
-# sidux
-deb http://sidux.com/files/debian/ ./
-deb-src http://sidux.com/files/debian/ ./
-deb http://sidux.com/files/live/ ./</pre>
+deb http://sidux.com/debian/ sid main fix.main
+#deb-src http://sidux.com/debian/ sid main fix.main</pre>
 
 		<p>Um aktualisierte Informationen über die Pakete zu erhalten, wird eine Datenbank mit den benötigten Einträgen vorgehalten. Das Programm apt-get benutzt sie bei der Installation eines Paketes, um alle Abhängigkeiten aufzulösen und somit zu garantieren, dass die ausgewählten Pakete funktionieren. Die Erneuerung bzw. Aktualisierung dieser Datenbank wird durch das Kommando apt-get update durchgeführt.</p>
  
 <pre># apt-get update
-Hole:1 http://ftp.de.debian.org unstable Release.gpg [189B]
-Hole:2 http://ftp.de.debian.org testing Release.gpg [189B]
-OK http://ftp.de.debian.org unstable Release
-OK http://ftp.de.debian.org testing Release
-OK http://ftp.de.debian.org unstable/main Packages
-OK http://ftp.de.debian.org unstable/contrib Packages
-OK http://ftp.de.debian.org unstable/non-free Packages
-OK http://ftp.de.debian.org unstable/main Sources
-OK http://ftp.de.debian.org unstable/contrib Sources
-OK http://ftp.de.debian.org unstable/non-free Sources
-Ign http://ftp.de.debian.org testing/main Packages
-Ign http://ftp.de.debian.org testing/contrib Packages
-Ign http://ftp.de.debian.org testing/non-free Packages
-Ign http://ftp.de.debian.org testing/main Sources
-Ign http://ftp.de.debian.org testing/contrib Sources
-Ign http://ftp.de.debian.org testing/non-free Sources
-OK http://ftp.de.debian.org testing/main Packages
-OK http://ftp.de.debian.org testing/contrib Packages
-OK http://ftp.de.debian.org testing/non-free Packages
-OK http://ftp.de.debian.org testing/main Sources
-OK http://ftp.de.debian.org testing/contrib Sources
-OK http://ftp.de.debian.org testing/non-free Sources
-Es wurden 2B in 22s geholt (0B/s)</pre>
+Get:1 http://sidux.com sid Release.gpg [189B]
+Get:2 http://sidux.com sid Release.gpg [189B]
+Get:3 http://sidux.com sid Release.gpg [189B]
+Get:4 http://ftp.de.debian.org unstable Release.gpg [189B]
+Get:5 http://sidux.com sid Release [34.1kB]
+Get:6 http://ftp.de.debian.org unstable Release [79.6kB]
+</pre>
 
  
 	</div>

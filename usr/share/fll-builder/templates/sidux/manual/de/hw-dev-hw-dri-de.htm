@@ -17,8 +17,8 @@
 	</ul>
 	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
 	<ul>
-<!--<h2>Welcome to the Official sidux Manual version sidux-manual-snapshot-31-WIP-xdelta-1-PRE2-Chaos-2007</h2>-->
-<!-- menu last updated by bluewater 29/01/2007 1300hrs ADEST 29/01/2007 1400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
+<!-- menu last updated by bluewater 10/02/2007 2200hrs ADEST 10/02/2007 1100hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -217,7 +217,7 @@ Aus dem Quellcode installieren
 	<div class="divider" id="ati-3d">
 			<h2>ATI 3D-Treiber</h2>
 
-			<p>Es gibt drei Methoden, 3D-nVidia-Treiber zu installieren</p>
+			<p>Es gibt drei Methoden, 3D-ATI-Treiber zu installieren</p>
 
 			<h5>Methode 1:</h5>
 			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden.</p>
@@ -245,7 +245,7 @@ install-binary-gfx -e (Verwendung des Quellcodes aus dem experimental-Repository
 <pre>
  Usage: ./install-binary-gfx [options]
 -a | --auto            automatischer Modus
--b | --build           nur Bau eines MODs (Moduls) (nvidia|nvidia-legacy|fglrx)
+-b | --build           nur Bau eines MODs (Moduls) (ati|ati-legacy|fglrx)
 -d | --detect          nur Grafikkartenerkennung
 -e | --experimental    Verwendung des Treibers aus experimental
 -u | --update          Update-Skript
@@ -259,9 +259,9 @@ install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automa
 install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
 install-binary-gfx -e (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem experimental-Repository)
 install-binary-gfx -v -e (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem experimental-Repository im Debug-Modus)
-install-binary-gfx -b nvidia (Damit wird nur das Modul f&#252;r nvidia gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und nvidia-legacy)
+install-binary-gfx -b ati (Damit wird nur das Modul f&#252;r ati gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und ati-legacy)
 install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx --aiglx (Aktivierung von AIGLX.)
+install-binary-gfx --aiglx (Aktivierung von AIGLX  AND ONLY with r200, r300, not for fglrx)
 install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
 </pre>
 
@@ -270,11 +270,10 @@ install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine 
 
 			<h5>Methode 2: !h2</h5>
 
-			<p>install-nvidia-debian.sh herunterladen:</p>
 
 <pre>
-cd /usr/local/bin ; wget -Nc http://techpatterns.com/nv
-chmod +x install-nvidia-debian.sh
+cd /usr/local/bin ; wget -Nc http://techpatterns.com/fg
+chmod +x install-fglrx-debian.sh
 </pre>
 
 			<p>ODER: verwende h2-fixes-du.sh um die Grafiktreiber zu installieren: <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh</a>. Um nur 3D Treiber zu installieren, ist der Befehl:</p>
@@ -305,9 +304,9 @@ init 5 &amp;&amp; exit
 </pre>
 				<p>Anmerkung: Dies ist nicht der bin&#228;re NVidia-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re NVidia-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
 
-				<p>Nun muss die <span class="highlight-3">/etc/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
+				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
 
-				<p>Um <span class="highlight-3">/etc/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-1">nv</span> &#228;ndern.</p>
+				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-1">nv</span> &#228;ndern.</p>
 
 				<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
 
@@ -333,9 +332,9 @@ init 5 &amp;&amp; exit
 </pre>
 				<p>Anmerkung: Dies ist nicht der bin&#228;re ATI-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re ATI-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
 
-				<p>Nun muss die <span class="highlight-3">/etc/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
+				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
 
-				<p>Um <span class="highlight-3">/etc/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display Treiber in <span class="highlight-1">ati</span> &#228;ndern.</p>
+				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display Treiber in <span class="highlight-1">ati</span> &#228;ndern.</p>
 
 				<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
 
@@ -359,7 +358,7 @@ exit
 		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen.</p> 
 		<p>Ein letztes Mal der Hinweis: <strong><i>dies ist ein experimentelles Verfahren, bei einer Verwendung muss man die Risiken selbst abw&#228;gen</i>!</strong></p>
 	</div>
-	<div id="rev">Content last revised UTC 28/01/2007 0200hrs UTC </div>
+	<div id="rev">Content last revised UTC 15/01/2007 2300hrs UTC</div>
 </div>
 
 </body>
