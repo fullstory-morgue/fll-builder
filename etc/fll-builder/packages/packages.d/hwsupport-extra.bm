@@ -22,6 +22,7 @@ FLL_PACKAGES+=(
 	laptop-detect
 	linuxprinting.org-ppds
 	lirc
+	min12xxw
 	powersaved
 	sane
 	sane-utils
