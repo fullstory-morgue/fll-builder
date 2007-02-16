@@ -5,7 +5,7 @@ case ${FLL_PACKAGES[*]} in
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
 			case $lang in
 				gb)
-					FLL_PACKAGES+=( kde-i18n-en-${lang} )
+					FLL_PACKAGES+=( kde-i18n-en${lang} )
 					;;
 				au)
 					# Missing
@@ -24,7 +24,7 @@ case ${FLL_PACKAGES[*]} in
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
 			case $lang in
 				gb)
-					FLL_PACKAGES+=( koffice-i18n-en-${lang} )
+					FLL_PACKAGES+=( koffice-i18n-en${lang} )
 					;;
 				au|ga)
 					# Missing
