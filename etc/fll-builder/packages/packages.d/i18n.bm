@@ -3,7 +3,17 @@
 case ${FLL_PACKAGES[*]} in
 	*kde*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
-			FLL_PACKAGES+=( kde-i18n-${lang} )
+			case $lang in
+				gb)
+					FLL_PACKAGES+=( kde-i18n-en-${lang} )
+					;;
+				au)
+					# Missing
+					;;
+				*)
+					FLL_PACKAGES+=( kde-i18n-${lang} )
+					;;
+			esac
 		done
 		;;
 esac
@@ -11,7 +21,16 @@ esac
 case ${FLL_PACKAGES[*]} in
 	*koffice*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
-			FLL_PACKAGES+=( koffice-i18n-${lang} )
+			case $lang in
+				gb)
+					FLL_PACKAGES+=( koffice-i18n-en-${lang} )
+				au|ga)
+					# Missing
+					;;
+				*)
+					FLL_PACKAGES+=( koffice-i18n-${lang} )
+					;;
+			esac
 		done
 		;;
 esac
@@ -19,7 +38,17 @@ esac
 case ${FLL_PACKAGES[*]} in
 	*icedove*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
-			FLL_PACKAGES+=( icedove-locale-${lang} )
+			case $lang in
+				gb)
+					FLL_PACKAGES+=( icedove-locale-en-${lang} )
+					;;
+				au)
+					# Missing
+					;;
+				*)
+					FLL_PACKAGES+=( icedove-locale-${lang} )
+					;;
+			esac
 		done
 		;;
 esac
@@ -27,7 +56,20 @@ esac
 case ${FLL_PACKAGES[*]} in
 	*iceweasel*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
-			FLL_PACKAGES+=( iceweasel-l10n-${lang} )
+			case $lang in
+				gb)
+					FLL_PACKAGES+=( iceweasel-l10n-en-${lang} )
+					;;
+				ga)
+					FLL_PACKAGES+=( iceweasel-l10n-${lang}-ie )
+					;;
+				au)
+					# Missing
+					;;
+				*)
+					FLL_PACKAGES+=( iceweasel-l10n-${lang} )
+					;;
+			esac
 		done
 		;;
 esac
@@ -35,7 +77,17 @@ esac
 case ${FLL_PACKAGES[*]} in
 	*openoffice.org*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
-			FLL_PACKAGES+=( openoffice.org-l10n-${lang} )
+			case $lang in
+				gb)
+					FLL_PACKAGES+=( openoffice.org-l10n-en-${lang} )
+					;;
+				au)
+					# Missing
+					;;
+				*)
+					FLL_PACKAGES+=( openoffice.org-l10n-${lang} )
+					;;
+				esac
 		done
 		;;
 esac
@@ -57,3 +109,4 @@ case ${FLL_PACKAGES[*]} in
 		done
 		;;
 esac
+
