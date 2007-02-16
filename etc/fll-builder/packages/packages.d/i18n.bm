@@ -25,6 +25,7 @@ case ${FLL_PACKAGES[*]} in
 			case $lang in
 				gb)
 					FLL_PACKAGES+=( koffice-i18n-en-${lang} )
+					;;
 				au|ga)
 					# Missing
 					:
