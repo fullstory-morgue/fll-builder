@@ -5,6 +5,7 @@ FLL_PACKAGES+=(
 	bzip2
 	console-data
 	console-common
+	cron
 	dhcp3-client
 	e2fsprogs
 	initramfs-tools
