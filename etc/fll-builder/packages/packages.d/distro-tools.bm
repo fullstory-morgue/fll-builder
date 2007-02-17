@@ -15,7 +15,7 @@ FLL_PACKAGES+=(
 	startsyslog-sidux
 )
 
-case "$DPKG_ARCH" in
+case "$DEBOOTSTRAP_ARCH" in
 	i?86)
 		FLL_PACKAGES+=( klik )
 		# configure-freenx
