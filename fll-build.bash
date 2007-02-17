@@ -200,15 +200,12 @@ done
 #################################################################
 #		parse command line				#
 #################################################################
-ARGS=$(
-	getopt \
-		--name "$SELF" \
-		--options b:c:CdD:hk:no:pP:sS: \
-		--long buildarea,configfile,chrootonly,copyright,debdir,debug,help,kernel,output,package-profile,preserve,source,squashfs-sortfile:,uid: \
-		-- $@
-)
+ARGS=$( getopt --name "$SELF" \
+	--options b:c:CdD:hk:no:pP:sS: \
+	--long buildarea,configfile,chrootonly,copyright,debdir,debug,help,kernel,output,package-profile,preserve,source,squashfs-sortfile:,uid: \
+	-- $@ )
 
-[[ $? -eq 0 ]] || error 1
+[[ $? == 0 ]] || error 1
 
 eval set -- "$ARGS"
 
