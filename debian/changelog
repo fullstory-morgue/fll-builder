@@ -1,12 +1,12 @@
-fll-builder (1.0.3) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.0.3) unstable; urgency=low
 
   [ Bernard Gray ]
   * add checking for kernel zip file existance and specific error code return
   * manual updated sid-man-snapshot-31b--WIP-XDELTA-1-Pre3-chaos-2007-light
   * manual updated sid-man-snaps-31-wip-PRE4-chaos-2007
   * manual icon added
+  * Added croatian language
+  * add FLL_CDROM_INDEX and FLL_CDROM_INDEX_ICON for manual
 
   [ Kel Modderman ]
   * Hack inittab to allow "immutable" bash login shells on the tty's instead
@@ -65,12 +65,12 @@ fll-builder (1.0.3) UNRELEASED; urgency=low
   * enable progress bar for mksquashfs again, squashfs-tools >=
     1:3.2r2-0+c0.sidux.1 is fixed.
   * add cdebootstrap to extra utils.
+  * merge changes to distro-defaults.
 
   [ Niall Walsh ]
   * overhaul packages.conf
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sun, 18 Feb 2007 10:08:40 +1100
-  * Added croatian language
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Feb 2007 00:42:16 +0100
 
 fll-builder (1.0.2) unstable; urgency=low
 

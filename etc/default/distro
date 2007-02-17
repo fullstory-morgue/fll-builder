@@ -59,6 +59,8 @@ FLL_XTOOLKIT="kde"
 # add localizations (e.g. "de fr es pt").
 FLL_I18N_SUPPORT="de"
 
-# title for the desktop link to /cdrom/index.html
+# cdrom html index.html custom info
+# for sidux it's the manual
 FLL_CDROM_INDEX="Sidux Manual"
+FLL_CDROM_INDEX_ICON="/cdrom/manual/lib/sidux-book.png"
 
