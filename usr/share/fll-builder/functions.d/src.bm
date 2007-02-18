@@ -3,8 +3,7 @@
 fetch_source_code() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{source,kernel}
-	local PKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
-	local CHROOTPKGLIST="${PKGLIST//$FLL_BUILD_CHROOT/}"
+	local CHROOTPKGLIST=$(mktemp -p $FLL_BUILD_CHROOT pkglist.XXXX)
 	local SOURCE LETTER
 	
 	# XXX: some packages mysteriously fail to download when =version is suffixed
@@ -30,7 +29,7 @@ fetch_source_code() {
  		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"_* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
  	done
 
-	rm -vf "$PKGLIST"
+	rm -vf "$CHROOTPKGLIST"
 
 	# create trivial repository index
 	# XXX: improve me
@@ -40,3 +39,4 @@ fetch_source_code() {
 		bzip2 -c Sources > Sources.bz2
 	popd >/dev/null
 }
+
