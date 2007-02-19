@@ -16,7 +16,7 @@ print_copyright() {
 	cat \
 <<EOF
 
-Copyright (C) 2006 F.U.L.L.S.T.O.R.Y Project
+Copyright (C) 2006 - 2007 F.U.L.L.S.T.O.R.Y Project
 
 F.U.L.L.S.T.O.R.Y Project Homepage:
 http://developer.berlios.de/projects/fullstory

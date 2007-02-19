@@ -1,9 +1,13 @@
 fll-builder (1.0.4) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
   * remove stale /pkglist.XXX files and move them to the build chroot.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Feb 2007 22:08:45 +0100
+  [ Kel Modderman ]
+  * Update copyright year stamp.
+
+ -- Kel Modderman <kel@otaku42.de>  Mon, 19 Feb 2007 11:19:07 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
