@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" alt="EN" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-31-wip-PRE4-Chaos-2007-->
-<!-- menu last updated by bluewater 16/02/2007 1400hrs ADEST 10/02/2007 0300hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-32-PRE-5-Chaos-2007-->
+<!-- menu last updated by bluewater 16/02/2007 1500hrs ADEST 16/02/2007 0400hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -234,13 +234,12 @@ initrd (hd0,4)/sidux/miniroot.gz</pre>
 
 		<p>We start with a normal installation and choose the partition on the USB-device, where sidux is to be installed - we speak of "sda1" here, but this is valid for any other partition on a USB-disk or device.</p>
 
-		<p><span class="highlight-2">Grub must be installed to the Partition (sda1), not MBR !</span></p>
+		<p><span class="highlight-2">Grub must be installed to the Partition you are installing on, not MBR !</span></p>
 
 		<p>The Partition must be formated with a linux-filesystem. Recommended is the ext3 filesystem. An existing partition will be reformatted by the installer!</p>
 
 		<p class="highlight-2">All data on this partition will be lost during the reformat!</p>
 
-		<p>To finish the installation, choose the menu-point "Fix-USB-Installation" from "Advanced Features" Page.</p>
 
 		<p>Now you can boot from your USB-HD. 'Boot from USB' must be enabled in your BIOS.</p>
 
