@@ -1,8 +1,8 @@
 #!/bin/bash
 
-cat_file() {
+cat_file_to_chroot() {
 	local FILE="$1"
-	local DEST="$2"
+	local DEST="$FLL_BUILD_CHROOT"/"$2"
 
 	[[ $1 && $2 ]] || return 1
 

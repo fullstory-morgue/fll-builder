@@ -400,12 +400,12 @@ cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 #################################################################
 #		patch and prepare chroot			#
 #################################################################
-cat_file chroot_policy		"$FLL_BUILD_CHROOT"/usr/sbin/policy-rc.d
-cat_file debian_chroot		"$FLL_BUILD_CHROOT"/etc/debian_chroot
-cat_file fstab			"$FLL_BUILD_CHROOT"/etc/fstab
-cat_file interfaces		"$FLL_BUILD_CHROOT"/etc/network/interfaces
-cat_file apt_sources_tmp	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
-cat_file apt_conf		"$FLL_BUILD_CHROOT"/etc/apt/apt.conf
+cat_file_to_chroot chroot_policy	/usr/sbin/policy-rc.d
+cat_file_to_chroot debian_chroot	/etc/debian_chroot
+cat_file_to_chroot fstab		/etc/fstab
+cat_file_to_chroot interfaces		/etc/network/interfaces
+cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
+cat_file_to_chroot apt_conf		/etc/apt/apt.conf
 
 copy_to_chroot /etc/hosts
 copy_to_chroot /etc/resolv.conf
@@ -460,9 +460,9 @@ fi
 #################################################################
 #		install kernel and extra modules		#
 #################################################################
-cat_file kernelimg	"$FLL_BUILD_CHROOT"/etc/kernel-img.conf
+cat_file_to_chroot kernelimg /etc/kernel-img.conf
 
-install_linux_kernel	"$FLL_BUILD_LINUX_KERNEL"
+install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
 #################################################################
 #		add live user					#
@@ -480,6 +480,7 @@ done
 #################################################################
 #		preseed chroot					#
 #################################################################
+# XXX: move user creation into early userspace -> flexibility
 # lock down root and live user
 sed -i "s#^\(root\|$FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
 	"$FLL_BUILD_CHROOT"/etc/shadow
@@ -572,14 +573,14 @@ rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 chroot_virtfs umount
 
 # create final config files
-cat_file hosts		"$FLL_BUILD_CHROOT"/etc/hosts
-cat_file hostname	"$FLL_BUILD_CHROOT"/etc/hostname
-cat_file apt_sources	"$FLL_BUILD_CHROOT"/etc/apt/sources.list
-cat_file sudoers	"$FLL_BUILD_CHROOT"/etc/sudoers
+cat_file_to_chroot hosts	/etc/hosts
+cat_file_to_chroot hostname	/etc/hostname
+cat_file_to_chroot apt_sources	/etc/apt/sources.list
+cat_file_to_chroot sudoers	/etc/sudoers
 
 # vimrc.local
 if exists_in_chroot /etc/vim; then
-	cat_file vimrc_local "${FLL_BUILD_CHROOT}/etc/vim/vimrc.local"
+	cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
 fi
 
 # add version marker, this is the exact time stamp for our package list
