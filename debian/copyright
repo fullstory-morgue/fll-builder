@@ -15,9 +15,23 @@ License: GPL
 ftp://ftp.debian.org/debian/pool/main/l/live-package/
 
 ./etc/default/distro is covered by the BSD license.
+Copyright:
+	(C) 2005-2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
 
 On Debian systems, the complete text of the BSD license can be found in
 `/usr/share/common-licenses/BSD'.
+
+The sidux manual, ./usr/share/fll-builder/templates/sidux/manual, is covered by
+the GNU/FDL license.
+Copyright:
+	(C) 2006-2007 sidux Foundation
+
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.2
+or any later version published by the Free Software Foundation;
+with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+Texts.  A copy of the license is included in the section entitled "GNU
+Free Documentation License". (http://www.gnu.org/licenses/fdl.txt)
 
 All other files contained within this distribution are covered by the GPL
 license.
