@@ -9,6 +9,7 @@ Copyright:
 	(C) 2006-2007 Daniel Baumann <daniel@debian.org>
 	(C) 2006-2007 Marco Amadori <marco.amadori@gmail.com>
 License: GPL
+ftp://ftp.debian.org/debian/pool/main/l/live-package/
 
 ./etc/default/distro is covered by the BSD license.
 
