@@ -32,3 +32,4 @@ f	./var/spool/*
 f	*~
 f	*.dpkg-old
 d	./lost+found
+*	./fll.*

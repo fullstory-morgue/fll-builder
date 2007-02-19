@@ -31,8 +31,8 @@ make_exclude_file() {
 }
 
 make_compressed_image() {
-	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclude-file.XXXXX)
-	local SQUASHFSEXCLUSIONSLIST=$(mktemp -p $FLL_BUILD_TEMP squashfs-exclusions-list.XXXXX)
+	local SQUASHFSEXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP fll.squashfs-exclude-file.XXXXX)
+	local SQUASHFSEXCLUSIONSLIST=$(mktemp -p $FLL_BUILD_TEMP fll.squashfs-exclusions-list.XXXXX)
 	local MKSQUASHFSOPTS="-ef $SQUASHFSEXCLUDEFILE"
 
 	if [[ -s $FLL_BUILD_EXCLUSION_LIST ]]; then

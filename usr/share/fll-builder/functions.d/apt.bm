@@ -38,14 +38,12 @@ install_local_debs() {
 	# no source code for these packages can be fetched
 
 	local LOCDEBDIR="$1"
-	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d localdebs.XXXX)
+	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.localdebs.XXXX)
 
 	[[ -d $LOCDEBDIR && $(ls -A $LOCDEBDIR/*.deb) ]] || return 0
 	
 	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
 
 	chroot_install_debs_from_dir "$TMPDEBDIR"
-
-	rm -vrf "$TMPDEBDIR"	
 }
 
