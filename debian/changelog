@@ -6,8 +6,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
 
   [ Kel Modderman ]
   * Update copyright year stamp.
+  * Change URL to location of original source.
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 19 Feb 2007 11:19:07 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 19 Feb 2007 12:30:51 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
