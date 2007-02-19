@@ -4,6 +4,12 @@ on Wed, 22 Nov 2006 23:10:46 +1000.
 The original source can always be found at:
 	http://developer.berlios.de/projects/fullstory
 
+Some code and ideas taken from the debian-live project; live-package.
+Copyright:
+	(C) 2006-2007 Daniel Baumann <daniel@debian.org>
+	(C) 2006-2007 Marco Amadori <marco.amadori@gmail.com>
+License: GPL
+
 ./etc/default/distro is covered by the BSD license.
 
 On Debian systems, the complete text of the BSD license can be found in
