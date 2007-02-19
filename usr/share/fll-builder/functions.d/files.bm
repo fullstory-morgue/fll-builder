@@ -155,15 +155,6 @@ ramdisk = mklive-initrd
 EOF
 			;;
 
-		sort_iso)
-			cat > "$DEST" \
-<<EOF
-$FLL_BUILD_RESULT/boot/grub/* 111111
-$FLL_BUILD_RESULT/boot/* 111110
-${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
-EOF
-			;;
-
 		sudoers)
 			[[ -f "$DEST" ]] || return 1
 			# append

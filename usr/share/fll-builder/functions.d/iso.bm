@@ -3,7 +3,12 @@
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
 
-	cat_file sort_iso "$ISOSORTLIST"
+	cat > "$ISOSORTLIST" \
+<<EOF
+$FLL_BUILD_RESULT/boot/grub/* 111111
+$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
+EOF
 
 	# set default ISO name
 	case $DEBOOTSTRAP_ARCH in
