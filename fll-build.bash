@@ -311,7 +311,7 @@ echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
 source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
 
 echo
-echo "PACKAGE LIST:-"
+echo "|########## PACKAGES TO BE INSTALLED ##########|"
 echo
 echo ${FLL_PACKAGES[@]}
 echo
