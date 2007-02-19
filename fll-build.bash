@@ -489,7 +489,7 @@ sed -i "s#^\(root\|$FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
 sed -i -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 	-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
 	-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
-	-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+	-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
 	"$FLL_BUILD_CHROOT"/etc/inittab
 
 # run fix-fonts
