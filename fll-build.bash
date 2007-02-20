@@ -418,6 +418,8 @@ mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 #################################################################
 #		prepare apt					#
 #################################################################
+# XXX: temporary workaround for keyring transition
+chroot_exec apt-key update
 chroot_exec apt-get update
 
 # install gpg keyring for fll mirror
