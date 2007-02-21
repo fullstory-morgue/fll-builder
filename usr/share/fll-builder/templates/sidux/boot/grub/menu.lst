@@ -6,25 +6,25 @@ background 400000
 gfxmenu /boot/message
 
 title  sidux Default
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init quiet vga=791 lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init quiet vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux Default (unionfs)
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init quiet vga=791 unionfs lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init quiet vga=791 unionfs 
 initrd /boot/miniroot.gz
 
 title  sidux ACPI off - DMA off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off nomce quiet acpi=off nodma vga=791 lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off nomce quiet acpi=off nodma vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux APIC off
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off nomce quiet nosmp noapic vga=791 lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off nomce quiet nosmp noapic vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux Framebuffer Mode
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off vga=791 xmodule=fbdev nomce quiet lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init apm=power-off vga=791 xmodule=fbdev nomce quiet 
 initrd /boot/miniroot.gz
 
 title  sidux Failsafe
-kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp nodbus nocpufreq nobluetooth xmodule=vesa lang=en
+kernel /boot/vmlinuz ramdisk_size=100000 init=/etc/init vga=normal nosound noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp nodbus nocpufreq nobluetooth xmodule=vesa 
 initrd /boot/miniroot.gz

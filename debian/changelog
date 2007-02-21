@@ -1,8 +1,10 @@
 fll-builder (1.0.4) UNRELEASED; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
+
+  [ Stefan Lippers-Hollmann ]
   * remove stale /pkglist.XXX files and move them to the build chroot.
+  * lang= is handled by gfxboot now, remove it from menu.lst.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -20,7 +22,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
   * manual update sid-man-snap-32a-PRE-5-Chaos-2007
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 21 Feb 2007 15:45:27 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 21 Feb 2007 06:30:21 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 
