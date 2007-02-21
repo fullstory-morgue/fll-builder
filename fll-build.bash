@@ -568,6 +568,10 @@ popd >/dev/null
 #################################################################
 #		unpatch chroot					#
 #################################################################
+
+# umount proc, no more chroot_exec's after this point
+chroot_virtfs umount
+
 # purge unwanted packages
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 
@@ -581,9 +585,6 @@ remove_from_chroot /etc/apt/apt.conf
 
 # remove live-cd mode identifier
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
-
-# umount proc, no more chroot_exec's after this point
-chroot_virtfs umount
 
 # create final config files
 cat_file_to_chroot hosts	/etc/hosts
