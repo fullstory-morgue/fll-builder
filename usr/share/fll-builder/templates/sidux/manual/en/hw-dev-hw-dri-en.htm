@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 16/02/2007 1500hrs ADEST 16/02/2007 0400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
+<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -107,6 +107,7 @@
 				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-en.htm">Window Managers</a>
@@ -346,8 +347,53 @@ exit
 exit
 </pre>
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! It's <span class="highlight-2">experimental!</span></p>
+
+</div>
+	<div class="divider" id="non-free">
+				<h2>Hints for hardware with non-free needs</h2>
+				<p class="highlight-3">Due to the complexity of law, sidux will only provide dfsg-free software.</p>
+
+				<p>(After adding contrib/ non-free to /etc/apt/sources.list and ensuring internet access)</p>
+
+   				<p> * ATi Radeon graphics: 3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance, please use get-sidux-binary-gfx to fetch install scripts for these cards - initial support for kernel 2.6.20 has been merged and needs to be tested (this might not work under all circumstances with kernel 2.6.20 yet, 2.6.19.x kernels are still available on our servers).</p>
+
+   				<p>* Atheros/ "madwifi" wlan: m-a a-i madwifi.</p>
+
+    				<p>* Atmel AT76c50x 11 MBit/s wlan: apt-get install atmel-firmware</p>
+
+    				<p>* AVM ISDN/ ADSL PCI/ USB Karten: AVM's closed source driver are not compatible with kernel 2.6.19.x yet, please download kernel 2.6.18.x (http://sidux.net/files/kernel/) for now and use m-a a-i avm.</p>
+
+    				<p>* Broadcom/ bcm43xx wlan: apt-get install bcm43xx-fwcutter.
+
+    				<p>* Eagle USB ADSL modem: fetch the firmware from http://eagle-usb.org/ueagle-atm/non-free/ and place it under /lib/firmware/.</p>
+
+   				<p>* DVB firmwares for various full featured DVB TV cards (most budget cards won't need this): fetch the needed firmeware (check dmesg) from http://www.linuxtv.org/downloads/firmware/ and place it under /lib/firmware/.</p>
+
+    				<p>* hostap based 11 MBit/s wlan with loadable firmware (e.g. D-Link DWL-520 rev. E1 and others): http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</p>
+
+    				<p>* Intel ipw2100, 11 MBit/s wlan: fetch the firmware from http://ipw2100.sf.net/ and place it under /lib/firmware/.</p>
+
+    				<p>* Intel ipw2200, 54 MBit/s wlan: fetch the firmware from http://ipw2200.sf.net/ and place it under /lib/firmware/.</p>
+
+   				<p>* Intel ipw3945, 54 Mbit/s wlan: apt-get install ipw3945d firmware-ipw3945</p>
+
+   				<p>* Intersil prism54, 54 MBit/s wlan: fetch the firmware from http://prism54.org/firmware/ and place it under /lib/firmware/.</p>
+
+   				<p>* nVidia graphics: 3d acceleration isn't possible with free drivers yet, please use get-sidux-binary-gfx to fetch install scripts for these cards (this might not work under all circumstances with kernel 2.6.20 yet, 2.6.19.x kernels are still available on our servers).</p>
+
+    				<p>* RaLink rt61 54 MBit/s wlan, fetch the firmware from http://www.ralinktech.com/ralink/Home/Support/Linux.html</p>
+
+    				<p>* Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan, fetch the firmware from http://acx100.erley.org/acx_fw/acx1xx.htm and place it under /lib/firmware/.</p>
+
+    				<p>* ZyDAS zd1201 11 MBit/s wlan: apt-get install zd1201-firmware</p>
+
+   				<p>* ZyDAS zd1211 54 MBit/s wlan: fetch the firmware from http://sourceforge.net/project/showfiles.php?group_id=129083 and place it under /lib/firmware/.</p>
+
+   				<p>* We will check if we can provide packages for at least some of these devices, but the legal status isn't necessarily easy.</p>
+
 		
-	<div id="rev">Content last revised UTC 15/01/2007 2300hrs UTC</div>
+	<div id="rev">Content last revised UTC 20/02/2007 1200hrs UTC</div>
+
 
 </div>
 </div>

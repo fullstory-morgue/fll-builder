@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 16/02/2007 1500hrs ADEST 16/02/2007 0400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
+<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -107,6 +107,7 @@
 				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-en.htm">Window Managers</a>
@@ -141,41 +142,26 @@
 </div>
 <div id="main-page">
 	<div class="divider" id="cd-content">
-		<h2>Contents of the Live CD</h2>
+		<h2>Contents of the Live CD To Be Advised</h2>
+			<p> class="highlight-3">Due to the complexity of law, sidux will only provide dfsg-free software, <a href="hw-dev-hw-dri-en.htm#non-free">please check this link for additional information on non-free sources for firmware</a></p>
 
     		<p>The sidux-CD holds a variety of different programs and tools that cover almost any need of a desktop-user in everyday life.</p>
 
-    		<p><a href="http://www.kde.org/">KDE</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications like<a href="http://www.koffice.org/"> Koffice word processing, spreadsheets, slide presentations</a>, <a href="http://amarok.kde.org/">amarok music/mp3</a>, <a href="http://www.gimp.org/">GIMP digital photo viewing and manipulation</a>, <a href="http://quanta.kdewebdev.org/"> Quanta for web editing and creation </a>, and thats just the beginning.</p>
+    		<p><a href="http://www.kde.org/">KDE</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications</p>
 
-		<p>For the Internet surfing <a href="http://www.mozilla.com/firefox/"> Iceweasel</a> one of the worlds foremost web browsers, and secondly <a href="http://www.konqueror.org/">konqueror</a> as alternate web broser with an extra kick: <span class="highlight-3">it has an FTP client and ssh (fish) built in: very rare in web browsing world</span></p> 
+		<p>For the Internet surfing <a href="http://www.konqueror.org/">konqueror</a> a web browser with an extra kick: <span class="highlight-3">it has an FTP client and ssh (fish) built in: very rare in web browsing world</span></p> 
 
     		<p>For Networking and the Internet connecting there is<a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> along with <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a> and <a href=" internet-connecting-wpa-en.htm"> see our internal WIFI documentaion</a>.</p>
 
-		<p>You may need interconnectivity to other computers not just over a LAN but across the world and across multiple  operating systems meet<a href=" http://us1.samba.org/samba/"> samba</a>.</p>
-
 		<p>You wish to partition a hard drive, we have provided <a href="http://gparted.sourceforge.net/">GParted</a> and also <a href="part-cfdisk-en.htm">cfdisk</a> and gparted also now has an ntfs resize facility!</p>
 
-		<p>Need to email someone and want to have a fully functional address book? <a href="http://www.mozilla.com/thunderbird//">IceDove Mail/News Client a leader in its class of email clients</a> however you wish to save it, well "persistant $HOME to your rescue!</p>
 
-		<p><a>Alternative window managers on the Live-Cd are <a href="http://www.fluxbox.org/">flubox</a> To activate the alternative window managers at bootup time, add fluxbox to the grub screen bootline</p>
-
-		<p class="highlight-3"><a href="http://www.fsl.cs.sunysb.edu/project-unionfs.html"> Unionfs</a> support (with unionfs cheat) to enable use of persistent $home directories (if set up) or to install additional applications whilst in live mode:</p>
+		<p class="highlight-3"><a href="http://www.fsl.cs.sunysb.edu/project-unionfs.html"> Unionfs</a> support (with unionfs cheat) to enable use of persistent $HOME directories (if set up) or to install additional applications whilst in live mode:</p>
 <pre>
-su
+sudo
 fix-unionfs
 </pre>
-			<h6>Diagnostic Applications</h6>
-			<p>For diagnostics of a PC/Laptop applications like  TBA</p>
 			<p>Memory diagnostic tools like <a href="http://www.memtest.org/">Memtest86+</a> -Advanced Memory Diagnostic Tool</p>
-
-			<h6>Data Recovery Applications</h6>
-			<p>For Data recovery tools such as  TBA,</p>
-
-			<h6>Server Tools</h6>			
-			<p>client side packages like cifs</p>
-
-			<h6>Core OS</h6>
-			<p><a href="http://www.gnu.org/software/grub/">GRUB boot loader for CD start </a>- ideal for rescue in command line mode in the extra menu of the boot loader</p>
 
 			<p><a href="http://www.kernel.org/">Kernel</a> 2.6.20</p>
 
@@ -187,7 +173,7 @@ fix-unionfs
 
 
 	</div>
-	<div class="spacer05"></div>
+			<div id="rev">Content last revised 19/02/2007 1200 UTC</div>
 
 </div>
 </body>

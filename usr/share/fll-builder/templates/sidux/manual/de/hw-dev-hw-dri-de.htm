@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 16/02/2007 1500hrs ADEST 16/02/2007 0400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
+<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -107,6 +107,7 @@
 				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">HD Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
@@ -356,9 +357,52 @@ exit
 
 		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen.</p> 
 		<p>Ein letztes Mal der Hinweis: <strong><i>dies ist ein experimentelles Verfahren, bei einer Verwendung muss man die Risiken selbst abw&#228;gen</i>!</strong></p>
-	</div>
-	<div id="rev">Content last revised UTC 15/01/2007 2300hrs UTC</div>
 </div>
+	<div class="divider" id="non-free">
+				<h2>Tipps zu Hardware die unfreie Treiber ben&#246;tigt</h2>
+				<p class="highlight-4">Auf Grund der schwierigen Rechtslage bringt sidux nur DFSG-free Software mit.</p>
 
+				<p>Hier eine Liste wie man unfreie Soft-/Firmware nachinstallieren kann (Nachdem man <span class="highlight-1">contrib/ non-free</span> in der <span class="highlight-3">/etc/apt/sources.list</span> hinzugef&#252;gt hat und einen Internetzugang vorrausgesetzt).</p>
+
+   				<p> * ATi Radeon Grafikkarten: 3d Beschleunigung f&#252;r &#228;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx Karten ben&#246;tigen unfreie Treiber um 3d-beschleunigt zu funktionieren. <span class="highlight-1">Du kannst den unfreien Treiber mit dem sidux Skript <a href="../de/hw-dev-hw-dri-de.htm#ati-3d">get-sidux-binary-gfx</a> installieren.</span></p>
+
+   				<p>* Atheros/ "madwifi" wlan: <span class="highlight-3">m-a a-i madwifi</span></p>
+
+    				<p>* Atmel AT76c50x 11 MBit/s wlan: <span class="highlight-3">apt-get install atmel-firmware</span></p>
+
+    				<p>* AVM ISDN/ ADSL PCI/ USB Karten: AVM's Closed Source Treiber sind mit dem 2.6.19.x Kernel derzeit nicht kompatibel. Bitte den Kernel 2.6.18.x herunterladen (<a href="http://sidux.net/files/kernel/">http://sidux.net/files/kernel</a>) und mit: <span class="highlight-3">m-a a-i avm</span> installieren.</p>
+
+    				<p>* Broadcom/ bcm43xx wlan: <span class="highlight-3">apt-get install bcm43xx-fwcutter</span></p>
+
+    				<p>* Eagle USB ADSL modem: Die Firmware gibts bei <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und speichere sie unter: <span class="highlight-3">/lib/firmware/</span></p>
+
+   				<p>* DVB Firmware f&#252;r diverse DVB TV Karten (die meisten einfacheren Karten ben&#246;tigen das nicht). Die ben&#246;tigte Firmware (<span class="highlight-3">dmesg</span> ansehen) bei <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+    				<p>* hostap basierende 11 MBit/s WLAN mit ladbarer Firmware (z.B. D-Link DWL-520 rev. E1 und andere): <a href="http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html">http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</a></p>
+
+    				<p>* Intel ipw2100, 11 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2100.sf.net/">http://ipw2100.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+    				<p>* Intel ipw2200, 54 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2200.sf.net/">http://ipw2200.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+   				<p>* Intel ipw3945, 54 Mbit/s WLAN: <span class="highlight-3">apt-get install ipw3945d firmware-ipw3945</span></p>
+
+   				<p>* Intersil prism54, 54 MBit/s WLAN: Firmware herunterladen von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+   				<p>* nVidia Grafikkarten: 3D Beschleunigung ist bisher mit den freien Treibern nicht möglich. Unter Verwendung von <a href="../de/hw-dev-hw-dri-de.htm/#nvidia-3d">get-sidux-binary-gfx</a> lassen sich die unfreien Treiber jedoch nachtr&#228;glich installieren. ( Mit dem 2.6.20 Kernel gibts es eventuell Probleme. Der 2.6.19.x Kernel ist aber auf unseren Servern noch erh&#228;ltlich: <a href="http://sidux.com/files/kernel/">http://sidux.com/files/kernel/</a>).</p>
+
+    				<p>* RaLink rt61 54 MBit/s wlan, Firmware von <a href="http://www.ralinktech.com/ralink/Home/Support/Linux.html">http://www.ralinktech.com/ralink/Home/Support/Linux.html</a> herunterladen.</p>
+
+    				<p>* Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan, Firmware bei <a href="http://acx100.erley.org/acx_fw/acx1xx.htm">http://acx100.erley.org/acx_fw/acx1xx.htm</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+    				<p>* ZyDAS zd1201 11 MBit/s wlan: <span class="highlight-3">apt-get install zd1201-firmware</span></p>
+
+   				<p>* ZyDAS zd1211 54 MBit/s wlan: Firmware von <a href="http://sourceforge.net/project/showfiles.php?group_id=129083">http://sourceforge.net/project/showfiles.php?group_id=129083</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
+
+   				<p>* Wir untersuchen noch die M&#246;glichkeit Treiber mancher Ger&#228;te mitzuleifern. Der rechtliche Status dieser Treiber ist leider h&#228;ufig kompliziert.</p>
+
+		
+	<div id="rev">Content last revised UTC 20/02/2007 1700hrs UTC</div>
+</div>
+</div>
 </body>
 </html>

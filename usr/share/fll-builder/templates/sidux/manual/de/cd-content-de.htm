@@ -15,10 +15,10 @@
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 16/02/2007 1500hrs ADEST 16/02/2007 0400hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
+<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
@@ -107,6 +107,7 @@
 				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">HD Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
@@ -141,53 +142,42 @@
 </div>
 <div id="main-page">
 	<div class="divider" id="cd-content">
-		<h2>Inhalt der Live-CD</h2>
+		<h2>Inhalt der Live-CD.. To Be Advised</h2>
+				<p class="highlight-4">Auf Grund der Komplexitizit&#228;t der Gesetzgebung liefert sidux nur DFSG-Freie Software auf der LiveCD mit, n&#228;here Informationen, wie man unfreie Soft-/Firmware installiert gibt es <a href="hw-dev-hw-dri-de.htm#non-free">hier</a>.</p>
 
     		<p>Die sidux-CD enth&#228;lt viele unterschiedliche Programme und Tools, die beinahe den kompletten t&#228;glichen Bedarf eines Desktopnutzers decken.</p>
 
-    		<p><a href="http://www.kde.org/">KDE</a>: Der grafische Desktop, der es erm&#246;glicht, auf Knopfdruck Programme wie <a href="http://www.koffice.org/"> KOffice (Textverarbeitung, Tabellenkalkulation, Pr&#228;sentationen)</a>, <a href="http://amarok.kde.org/">Amarok (Musik)</a>, den <a href="http://www.gimp.org/">GIMP-Bildeditor</a> oder die<a href="http://quanta.kdewebdev.org/"> Quanta Plus Web-Enwicklungsumgebung</a> zu benutzen. Und das ist nur der Anfang.</p>
+    		<p><a href="http://www.kde.org/">KDE</a>: Der grafische Desktop, der es erm&#246;glicht, auf Knopfdruck Programme</p>
 
-		<p>Um im Internet zu surfen, k&#246;nnen Sie <a href="http://www.mozilla-europe.org/de/products/firefox/"> Iceweasel</a>, einen der weitverbreitetsten Browser, oder <a href="http://www.konqueror.org/">Konqueror</a> als alternativen "Browser mit dem extra Kick" (eingebauter FTP-Client, eingebautes ssh/fish) verwenden. Dies ist sehr selten in der Welt der Internet-Browser.</p> 
+		<p>Um im Internet zu surfen, k&#246;nnen Sie <a href="http://www.konqueror.org/">Konqueror</a>  "Browser mit dem extra Kick" (eingebauter FTP-Client, eingebautes ssh/fish) verwenden. Dies ist sehr selten in der Welt der Internet-Browser.</p> 
 
     		<p>F&#252;r Netzwerk- und Internetanschluss gibt es <a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> in Verbindung mit <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a>. Siehe die interne <a href=" internet-connecting-wpa-de.htm"> WIFI-Dokumentation</a>.</p>
 
-		<p>Braucht man eine Verbindung nicht nur zu Computern im LAN, sondern auch zu anderen Rechnern &#252;berall in der Welt und mit anderen Betriebssystemen, gibt es <a href=" http://us1.samba.org/samba/"> Samba</a>.</p>
 
 		<p>Zum Partitionieren der Festplatte bieten wir <a href="http://gparted.sourceforge.net/">GParted</a> und <a href="part-cfdisk-de.htm">cfdisk</a>. GParted kann dabei auch die Gr&#246;&#223;e von NTFS-Partitionen &#228;ndern.</p>
 
-		<p>Als E-Mail-Programm mit voll funktionsf&#228;higem Adressbuch ist der <a href="http://www.mozilla-europe.org/de/products/thunderbird/">Icedove Mail/Nachrichten-Client, einer der bekanntesten Email Clients</a>, oder <a href="http://kontact.kde.org/kmail/">Kmail, die KDE-Alternative zu jedem Mail-Client</a>, im Umfang der CD enthalten.</p>
+
 		<p>Um Einstellungen permanent zu speichern, gibt es die M&#246;glichkeit zu einem <a href="hd-install-opts-de.htm#perst-home"> permanenten $HOME-Verzeichnis</a>.</p>
 
 		<p>Die <a href="http://www.fsl.cs.sunysb.edu/project-unionfs.html">Unionfs</a>-Unterst&#252;tzung (mit dem Boot-Cheatcode unionfs) erm&#246;glicht die Nutzung eines permanenten $HOME-Verzeichnisses:</p>
 <pre>
-su-me dummy
+sudo
 fix-unionfs
 </pre>
 			<h6>Diagnostik</h6>
 			<p>Um besch&#228;digte PCs/Laptops zu reparieren, sind Programme wie TBA...dummy, Speicher-Diagnostik-Tools wie <a href="http://www.memtest.org/">Memtest86+</a> (Advanced Memory Diagnostic Tool) auf der Live-CD vorhanden.</p>
 
-			<h6>Datenwiederherstellungsprogramme</h6>
-			<p>Zur Datenwiederherstellung sind Tools wie TBA, dummy auf der Live-CD vorhanden</p>
-
-			<p>TBA ....Apache same for NFS dummy</p>
-			<p>TBA dummy</p>
-
-
 			<h6>Kern des Betriebssystems</h6>
 			<p><a href="http://www.gnu.org/software/grub/">GRUB: Bootmanager f&#252;r den CD-Start </a>- ideal zur Rettung im Kommandozeilenmodus, zu finden im Extra-Men&#252; von GRUB</p>
 
-			<p><a href="http://www.kernel.org/">Kernel</a> 2.6.XXXXXXXX  mit XXXXXXXXXXXXXXXXXXXXXXXx (its a dummy... obviously</p>
+			<p><a href="http://www.kernel.org/">Kernel</a> 2.6.20</p>
 
 			<p>ACPI und DMA sind als Standard aktiviert (kann aber mit acpi=off und nodma deaktiviert werden)</p>
-			<p>i586 optimiert - nicht zur Verwendung mit &#228;lteren CPUs!</p>
+			<p>i686 optimiert - nicht zur Verwendung mit &#228;lteren CPUs!</p>
 			<p>192 MB RAM ben&#246;tigt, 256 MB RAM empfohlen</p>
 
-
-
-
 	</div>
-	<div class="spacer05"></div>
-			<div id="rev">Content last revised 21/01/2007 1700 UTC</div>
+			<div id="rev">Content last revised 19/02/2007 1200 UTC</div>
 </div>
 </body>
 </html>
