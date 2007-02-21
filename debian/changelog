@@ -13,11 +13,13 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     rather than cleaning up in each individual function.
   * Fix inittab hack, leading forward slash to "/bin/bash" was missing for
     ttys 2-6.
+  * Install linux kernel early, and make provision for upcoming live-initramfs
+    development.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 19 Feb 2007 20:43:21 +1000
+ -- Kel Modderman <kel@otaku42.de>  Wed, 21 Feb 2007 12:50:27 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
