@@ -11,7 +11,7 @@ FLL_PACKAGES+=(
 	genisoimage
 	jfsutils
 	lvm2
-	man
+	man-db
 	manpages
 	memtest86+
 	module-assistant

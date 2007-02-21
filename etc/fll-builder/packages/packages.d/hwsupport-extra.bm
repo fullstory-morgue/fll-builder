@@ -17,8 +17,8 @@ FLL_PACKAGES+=(
 	foomatic-filters
 	foomatic-filters-ppds
 	hotkey-setup
+	hpijs-ppds
 	hplip
-	hplip-ppds
 	laptop-detect
 	linuxprinting.org-ppds
 	lirc
