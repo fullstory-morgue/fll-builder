@@ -446,6 +446,25 @@ echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | chroot_ex
 echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | chroot_exec debconf-set-selections
 
 #################################################################
+#		install kernel and extra modules		#
+#################################################################
+# install kernel early, avoid other packages from inserting their
+# hooks into our live initramfs
+if [[ $FLL_BUILD_INITRAMFS ]]; then
+	chroot_exec apt-get --assume-yes install fll-live-initramfs
+else
+	chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
+fi
+
+# module-init-tools is required for installation of kernel and
+# kernel-module binaries -> depmod
+chroot_exec apt-get --assume-yes install module-init-tools
+
+cat_file_to_chroot kernelimg /etc/kernel-img.conf
+
+install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+
+#################################################################
 #		install packages				#
 #################################################################
 # ensure distro-defaults is present before mass package installation
@@ -458,13 +477,6 @@ chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 if [[ -d $FLL_BUILD_LOCAL_DEBS ]]; then
 	install_local_debs "$FLL_BUILD_LOCAL_DEBS"
 fi
-
-#################################################################
-#		install kernel and extra modules		#
-#################################################################
-cat_file_to_chroot kernelimg /etc/kernel-img.conf
-
-install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
 #################################################################
 #		add live user					#
@@ -558,7 +570,6 @@ popd >/dev/null
 #################################################################
 # purge unwanted packages
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
-chroot_exec dpkg --purge live-initrd-sidux busybox-sidux
 
 # remove used hacks and patches
 remove_from_chroot /etc/kernel-img.conf

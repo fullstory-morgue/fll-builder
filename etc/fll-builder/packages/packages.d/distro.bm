@@ -1,13 +1,11 @@
 #!/bin/bash
 
 FLL_PACKAGES+=(
-	busybox-sidux
 	etcskel-sidux
 	grub-gfxboot
 	hwsetup-ng
 	initscripts-sidux-live
 	knx-installer
-	live-initrd-sidux
 	rebuildfstab
 	rsync
 	scanpartitions
