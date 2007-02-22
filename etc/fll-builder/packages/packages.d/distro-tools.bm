@@ -2,8 +2,6 @@
 
 FLL_PACKAGES+=(
 	mkdosswapfile
-	mkpersistenthome
-	saveconfig
 	configure-dsl
 	configure-isdn
 	configure-modemlink
