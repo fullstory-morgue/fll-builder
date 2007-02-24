@@ -454,13 +454,13 @@ if [[ $FLL_BUILD_INITRAMFS ]]; then
 	chroot_exec apt-get --assume-yes install fll-live-initramfs
 else
 	chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
+	# ask kernel postinst to call our desired hook -> mklive-initrd
+	cat_file_to_chroot kernelimg /etc/kernel-img.conf
 fi
 
 # module-init-tools is required for installation of kernel and
 # kernel-module binaries -> depmod
 chroot_exec apt-get --assume-yes install module-init-tools
-
-cat_file_to_chroot kernelimg /etc/kernel-img.conf
 
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
@@ -514,6 +514,7 @@ if exists_in_chroot /usr/sbin/fix-fonts; then
 fi
 
 # set x-www-browser, use the popular firefox/iceweasel if present
+# XXX: move into sidux-browser postinst
 if exists_in_chroot /usr/bin/iceweasel; then
 	chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
 elif exists_in_chroot /usr/bin/konqueror; then
