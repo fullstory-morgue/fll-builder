@@ -311,7 +311,7 @@ echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
 source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
 
 echo
-echo "|########## PACKAGES TO BE INSTALLED ##########|"
+echo "########## PACKAGES TO BE INSTALLED ##########"
 echo
 echo ${FLL_PACKAGES[@]}
 echo
@@ -582,12 +582,16 @@ chroot_virtfs umount
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 
 # remove used hacks and patches
-remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /etc/apt/apt.conf
+
+# XXX: not required for live-initramfs
+if [[ -z $FLL_BUILD_INITRAMFS ]]; then
+	remove_from_chroot /etc/kernel-img.conf
+fi
 
 # remove live-cd mode identifier
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
