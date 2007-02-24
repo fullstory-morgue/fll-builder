@@ -1,4 +1,4 @@
-.TH FLL-BUILD "8" "December 2006" "" ""
+.TH FLL-BUILD "8" "February 2007" "" ""
 .SH NAME
 fll-build \- build script for a debian sid `live' linux operating system
 .SH SYNOPSIS
@@ -55,11 +55,11 @@ Retrieve all source packages for the release
 \fB\-S|\-\-squashfs-sortfile\fR
 Path to squashfs sort file
 .PP
-.SH ENVIRONMENT
-<describe fll-build environment here>
-.PP
 .SH USAGE
-<small usage blurb here>
+fll-build is best used with a localised configuration file. Use the default
+config, /etc/fll-builder/fll-build.conf, as the template for a local config.
+Comments contained in that file should be sufficient enough to describe the
+purpose of each variable.
 .PP
 .RS
 \fBfll-build\fR \fI--configfile /path/to/alt/configfile\fR
