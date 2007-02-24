@@ -455,6 +455,7 @@ if [[ $FLL_BUILD_INITRAMFS ]]; then
 	if ! install_local_debs "$FLL_BUILD_INITRAMFS"; then
 		chroot_exec apt-get --assume-yes install fll-live-initramfs
 	fi
+	cat_file_to_chroot kernelimg-initramfs /etc/kernel-img.conf
 else
 	chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
 	# ask kernel postinst to call our desired hook -> mklive-initrd
@@ -582,16 +583,12 @@ chroot_virtfs umount
 chroot_exec dpkg --purge cdebootstrap-helper-diverts
 
 # remove used hacks and patches
+remove_from_chroot /etc/kernel-img.conf
 remove_from_chroot /usr/sbin/policy-rc.d
 remove_from_chroot /etc/debian_chroot
 remove_from_chroot /etc/hosts
 remove_from_chroot /etc/resolv.conf
 remove_from_chroot /etc/apt/apt.conf
-
-# XXX: not required for live-initramfs
-if [[ -z $FLL_BUILD_INITRAMFS ]]; then
-	remove_from_chroot /etc/kernel-img.conf
-fi
 
 # remove live-cd mode identifier
 rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"

@@ -145,6 +145,16 @@ iface lo inet loopback
 EOF
 			;;
 
+		kernelimg-initramfs)
+			cat > "$DEST" \
+<<EOF
+do_symlinks = NO
+do_bootloader = NO
+warn_initrd = NO
+do_initrd = YES
+EOF
+			;;
+
 		kernelimg)
 			cat > "$DEST" \
 <<EOF
