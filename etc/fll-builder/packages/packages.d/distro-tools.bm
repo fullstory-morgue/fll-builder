@@ -12,13 +12,3 @@ FLL_PACKAGES+=(
 	sshstart-sidux
 	startsyslog-sidux
 )
-
-case "$DEBOOTSTRAP_ARCH" in
-	i?86)
-		FLL_PACKAGES+=( klik )
-		# configure-freenx
-		;;
-	
-	*)
-		;;
-esac
