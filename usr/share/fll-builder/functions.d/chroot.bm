@@ -60,7 +60,7 @@ chroot_virtfs() {
 			grep -q "$PROC" /proc/mounts || return 0
 			# binfmt workaround
 			if [[ -e $PROC/sys/fs/binfmt_misc/status ]]; then
-				umount "$PROC"/proc/sys/fs/binfmt_misc
+				umount "$PROC"/sys/fs/binfmt_misc
 			fi
 			umount "$PROC"
 			;;
