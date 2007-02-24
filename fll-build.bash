@@ -329,6 +329,7 @@ if [[ $FLL_BUILD_AREA ]]; then
 	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.TEMP.XXXXX)
 	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.CHROOT.XXXXX)
 	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.RESULT.XXXXX)
+	mkdir -vp "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 	if [[ $FLL_BUILD_SOURCE_REL ]]; then
 		FLL_BUILD_SOURCE=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.SOURCE.XXXXX)
 		mkdir -vp "$FLL_BUILD_SOURCE"/{source,kernel}
@@ -468,6 +469,10 @@ chroot_exec apt-get --assume-yes install module-init-tools
 
 install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
+# take these before package selection indirectly bloats the generated initramfs
+cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
+
 #################################################################
 #		install packages				#
 #################################################################
@@ -533,8 +538,6 @@ fi
 #################################################################
 #		prepare result staging directory		#
 #################################################################
-mkdir -vp "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
-
 # add templates (grub menu.lst/documentation/manual/autorun etc.)
 for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
 	[[ -d $dir ]] || continue
@@ -545,8 +548,6 @@ for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAM
 done
 
 # populate /boot
-cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
-cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
