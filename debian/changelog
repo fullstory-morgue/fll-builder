@@ -19,12 +19,14 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     ttys 2-6.
   * Install linux kernel early, and make provision for upcoming live-initramfs
     development.
+  * Add workaround for umounting binfmt crap, to avoid bailing out when
+    chroot's proc cannot be umounted.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
   * manual update sid-man-snap-32a-PRE-5-Chaos-2007
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 22 Feb 2007 16:25:25 +0100
+ -- Kel Modderman <kel@otaku42.de>  Sun, 25 Feb 2007 01:34:01 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
