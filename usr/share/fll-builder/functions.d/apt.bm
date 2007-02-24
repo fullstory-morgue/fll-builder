@@ -14,9 +14,11 @@ chroot_install_debs_from_dir() {
 	if [[ -s $DEBDIR/Packages ]]; then
 		DEBS=( $(awk '/^Package: /{ print $2 }' $DEBDIR/Packages) )
 		if [[ -z ${DEBS[@]} ]]; then
+			echo "No local debs to install!"
 			return 1
 		fi
 	else
+		echo "No local debs to install!"
 		return 1
 	fi
 
@@ -36,13 +38,17 @@ install_local_debs() {
 	# XXX: this hack if FOR TESTING PURPOSES ONLY
 	# no source code for these packages can be fetched
 
-	local LOCDEBDIR="$1"
+	local LOCDEBS="$1"
 	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.localdebs.XXXX)
 
-	[[ -d $LOCDEBDIR && $(ls -A $LOCDEBDIR/*.deb) ]] || return 0
-	
-	cp -v "$LOCDEBDIR"/*.deb "$TMPDEBDIR"
+	if [[ -d $LOCDEBS && $(ls -A $LOCDEBS/*.deb) ]]; then
+		cp -v "$LOCDEBS"/*.deb "$TMPDEBDIR"
+	elif [[ -f $LOCDEBS ]]; then
+		cp -v "$LOCDEBS" "$TMPDEBDIR"
+	fi
 
-	chroot_install_debs_from_dir "$TMPDEBDIR"
+	if [[ $(ls -A $TMPDEBDIR/*.deb) ]]; then
+		chroot_install_debs_from_dir "$TMPDEBDIR"
+	fi
 }
 

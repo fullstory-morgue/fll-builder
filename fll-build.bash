@@ -451,7 +451,9 @@ echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_
 # install kernel early, avoid other packages from inserting their
 # hooks into our live initramfs
 if [[ $FLL_BUILD_INITRAMFS ]]; then
-	chroot_exec apt-get --assume-yes install fll-live-initramfs
+	install_local_debs "$FLL_BUILD_INITRAMFS"
+	# XXX: not yet in repo
+	#chroot_exec apt-get --assume-yes install fll-live-initramfs
 else
 	chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
 	# ask kernel postinst to call our desired hook -> mklive-initrd
