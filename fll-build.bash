@@ -478,6 +478,8 @@ if [[ -d $FLL_BUILD_LOCAL_DEBS ]]; then
 	install_local_debs "$FLL_BUILD_LOCAL_DEBS"
 fi
 
+# XXX: put preseed scriptlets in a hook directory somewhere, with
+# a defined api
 #################################################################
 #		add live user					#
 #################################################################
@@ -569,7 +571,7 @@ popd >/dev/null
 #		unpatch chroot					#
 #################################################################
 
-# umount proc, no more chroot_exec's after this point
+# umount proc
 chroot_virtfs umount
 
 # purge unwanted packages
