@@ -547,7 +547,7 @@ for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAM
 	popd >/dev/null
 done
 
-# populate /boot
+# populate /boot/grub
 cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 	"$FLL_BUILD_RESULT"/boot/grub/
 cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
