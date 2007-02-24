@@ -57,12 +57,3 @@ FLL_PACKAGES=(
 	vlc
 	wireshark
 )
-
-case "$DPKG_ARCH" in
-	i?86)
-		FLL_PACKAGES+=( wine )
-		;;
-	
-	*)
-		;;
-esac
