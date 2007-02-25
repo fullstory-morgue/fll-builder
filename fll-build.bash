@@ -340,21 +340,6 @@ else
 	error 5
 fi
 
-# check kernel is provided
-if [[ -z $FLL_BUILD_LINUX_KERNEL ]]; then
-	error 6
-fi
-
-# check kernel zip exists and is readable
-if [[ ! -r $FLL_BUILD_LINUX_KERNEL ]]; then
-	error 7
-fi
-
-# check integrity of kernel zip archive
-if [[ ! $(zip -T $FLL_BUILD_LINUX_KERNEL) ]]; then
-	error 8
-fi
-
 # distro name, lower casified
 FLL_DISTRO_NAME_LC="$(tr A-Z a-z <<< $FLL_DISTRO_NAME)"
 # distro name, upper casified
