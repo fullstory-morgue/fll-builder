@@ -5,7 +5,17 @@ install_linux_kernel() {
 	local KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
 	local KTYPE KDEBS KURL
 
-	[[ -f $KZIP ]] || return 1
+	[[ $KZIP ]] || return 1
+
+	case "$KZIP" in
+		*kernel-*.zip)
+			[[ -f $KZIP ]] && KTYPE="file" || KTYPE="url"
+			;;
+		*)
+			echo "Unrecognised kernel option: $KZIP"
+			return 1
+			;;
+	esac
 
 	# use bash regexp to determine kernel version
 	if [[ $KZIP =~ '.*/kernel-(.*).zip' ]]; then
@@ -14,7 +24,14 @@ install_linux_kernel() {
 		export KVERS
 	fi
 
-	cp "$KZIP" "$KDIR"/kernel-"$KVERS".zip
+	case "$KTYPE" in
+		"file")
+			cp "$KZIP" "$KDIR"/kernel-"$KVERS".zip
+			;;
+		"url")
+			wget -T3 "$KZIP" -O "$KDIR"/kernel-"$KVERS".zip
+			;;
+	esac
 
 	pushd "$KDIR" >/dev/null
 		unzip kernel-"$KVERS".zip
