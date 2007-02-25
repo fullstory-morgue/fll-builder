@@ -26,6 +26,7 @@ FLL_PACKAGES+=(
 	smbfs
 	strace
 	testdisk
+	traceroute
 	unionfs-tools
 	xfsprogs
 	unzip
