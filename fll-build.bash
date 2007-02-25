@@ -104,15 +104,6 @@ error() {
 		5)	
 			echo "buildarea not specified"
 			;;
-		6)
-			echo "must specify a linux kernel"
-			;;
-		7)
-			echo "kernel zip file is not readable"
-			;;
-		8)
-			echo "kernel zip file is corrupt"
-			;;
 		9)
 			echo "ISO output directory does not exist"
 			;;
