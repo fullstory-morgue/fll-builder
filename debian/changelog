@@ -25,6 +25,8 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * Copy initrd to result staging directory immediately after creation to
     avoid package selection from calling hooks that would uneccessarily bloat
     our live-initramfs.
+  * Calculate md5sum manifest of cd contents _after_ squashfs image has been
+    created.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -32,9 +34,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * reapply url option for kernel var
   * remove kernel archive existence/integrity checks now kernel is installed early
   * remove now unused error codes
-  * anally retentive error code function cleanup 
+  * anally retentive error code function cleanup
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sun, 25 Feb 2007 21:14:56 +1100
+ -- Kel Modderman <kel@otaku42.de>  Sun, 25 Feb 2007 21:55:46 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 

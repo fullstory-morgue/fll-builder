@@ -537,12 +537,6 @@ if exists_in_chroot /boot/memtest86+.bin; then
 	echo "kernel /boot/memtest86+.bin"	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 fi
 
-# md5sums
-pushd "$FLL_BUILD_RESULT" >/dev/null
-	( find . -type f -not \( -name '*md5sums' -o -name '*.cat' \) -printf '%P\n' | \
-		sort | xargs md5sum -b ) > "$FLL_IMAGE_DIR"/md5sums
-popd >/dev/null
-
 #################################################################
 #		get sources					#
 #################################################################

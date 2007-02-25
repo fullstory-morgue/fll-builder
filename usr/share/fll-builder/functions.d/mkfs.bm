@@ -51,4 +51,10 @@ make_compressed_image() {
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${MKSQUASHFSOPTS[@]}
 	popd >/dev/null
+
+	# md5sums
+	pushd "$FLL_BUILD_RESULT" >/dev/null
+		( find . -type f -not \( -name '*md5sums' -o -name '*.cat' \) -printf '%P\n' | \
+			sort | xargs md5sum -b ) > "$FLL_IMAGE_DIR"/md5sums
+	popd >/dev/null
 }
