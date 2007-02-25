@@ -30,9 +30,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
   * manual update sid-man-snap-32a-PRE-5-Chaos-2007
   * reapply url option for kernel var
-  * remove kernel archive integrity checks now kernel is installed early
+  * remove kernel archive existence/integrity checks now kernel is installed early
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sun, 25 Feb 2007 20:58:56 +1100
+ -- Bernard Gray <bernard.gray@gmail.com>  Sun, 25 Feb 2007 21:00:39 +1100
 
 fll-builder (1.0.3) unstable; urgency=low
 
