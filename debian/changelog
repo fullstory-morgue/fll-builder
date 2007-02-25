@@ -5,8 +5,12 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Stefan Lippers-Hollmann ]
   * remove stale /pkglist.XXX files and move them to the build chroot.
   * lang= is handled by gfxboot now, remove it from menu.lst.
-  * umount virtual filesystems before purging cdebootstrap helpers.
   * saveconfig and mkpersistenthome are obsolete now.
+  * fix belgian locales.
+  * exclude boot file from MD5 list, -boot-info-table makes genisoimage to
+    patch the source file with a 56-byte table with information of the CD-ROM
+    layout at offset 8.
+  * revert r5013, it has been fixed properly now.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -31,12 +35,13 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
   * manual update sid-man-snap-32a-PRE-5-Chaos-2007
+  * change case for sidux manual icon title
   * reapply url option for kernel var
   * remove kernel archive existence/integrity checks now kernel is installed early
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 25 Feb 2007 21:55:46 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 25 Feb 2007 20:59:46 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 
