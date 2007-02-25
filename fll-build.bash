@@ -104,7 +104,7 @@ error() {
 		5)	
 			echo "buildarea not specified"
 			;;
-		9)
+		6)
 			echo "ISO output directory does not exist"
 			;;
 		*)
@@ -352,7 +352,7 @@ if [[ -z $FLL_BUILD_ISO_OUTPUT ]]; then
 fi
 
 if [[ ! -d $FLL_BUILD_ISO_OUTPUT ]]; then
-	error 9
+	error 6
 fi
 
 # live-package does this
