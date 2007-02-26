@@ -39,6 +39,18 @@ case ${FLL_PACKAGES[*]} in
 esac
 
 case ${FLL_PACKAGES[*]} in
+	*k3b*)
+		FLL_PACKAGES+=( k3b-i18n )
+		;;
+esac
+
+case ${FLL_PACKAGES[*]} in
+	*gwenview*)
+		FLL_PACKAGES+=( gwenview-i18n )
+		;;
+esac
+
+case ${FLL_PACKAGES[*]} in
 	*icedove*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
 			case $lang in

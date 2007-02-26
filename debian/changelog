@@ -31,6 +31,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     our live-initramfs.
   * Calculate md5sum manifest of cd contents _after_ squashfs image has been
     created.
+  * Add i18n support for k3b and gwenview.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -41,7 +42,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 25 Feb 2007 20:59:46 +0100
+ -- Kel Modderman <kel@otaku42.de>  Mon, 26 Feb 2007 11:02:49 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
