@@ -37,15 +37,6 @@ deb http://ftp.debian.org/debian/ sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb http://sidux.com/debian/ sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 #deb-src http://sidux.com/debian/ sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 EOF
-
-			if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
-				cat >> "$DEST" \
-<<EOF
-
-deb $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
-#deb-src $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
-EOF
-			fi
 			;;
 
 		apt_sources_tmp)
@@ -53,29 +44,9 @@ EOF
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb $FLL_BUILD_FLLMIRROR sid $FLL_BUILD_FLLMIRROR_COMPONENTS
-EOF
-
-			if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
-				cat >> "$DEST" \
-<<EOF
-deb $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
-EOF
-			fi
-			
-			# add deb-src uri's only when building a source iso
-			if [[ $FLL_BUILD_SOURCE_REL ]]; then
-				cat >> "$DEST" \
-<<EOF
 deb-src $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb-src $FLL_BUILD_FLLMIRROR sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 EOF
-				if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
-					cat >> "$DEST" \
-<<EOF
-deb-src $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
-EOF
-				fi
-			fi
 			;;
 
 		chroot_policy)

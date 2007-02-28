@@ -70,8 +70,6 @@ Options:
 
   -p|--preserve			Preserve build area when finished
 
-  -s|--source			Retrieve all source packages for the release
-
 EOF
 }
 
@@ -148,7 +146,7 @@ done
 #################################################################
 ARGS=$( getopt --name "$SELF" \
 	--options c:CdhnpsS: \
-	--long configfile:,chroot-only,copyright,debug,help,preserve,source,squashfs-sortfile:,uid: \
+	--long configfile:,chroot-only,copyright,debug,help,preserve,squashfs-sortfile:,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -181,9 +179,6 @@ while true; do
 			;;			
 		-p|--preserve)
 			FLL_BUILD_PRESERVE_CHROOT=1
-			;;
-		-s|--source)
-			FLL_BUILD_SOURCE_REL=1
 			;;
 		-S|--squashfs-sortfile)
 			shift

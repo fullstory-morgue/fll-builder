@@ -1,13 +1,10 @@
 #!/bin/bash
 
-# XXX: add a --print-uris option, so we can create
-# the source image on remote non-debian
-
-fetch_source_code() {
+fetch_source_uris() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{source,kernel}
 	local CHROOTPKGLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.pkglist.XXXX)
-	local SOURCE LETTER
+	local CHROOTSRCLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.srclist.XXXX)
 	
 	# XXX: some packages mysteriously fail to download when =version is suffixed
 	# chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
@@ -17,30 +14,8 @@ fetch_source_code() {
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
-	# distro-defaults originates from fll-builder, which contains the ingredients used to create cd
-	chroot_exec apt-get source --download-only $(< $CHROOTPKGLIST)
-
-	# sort sources (adapted from live-package)
-	for dsc in "$FLL_BUILD_CHROOT"/*.dsc; do
-		SOURCE=$(awk '/Source:/ { print $2 }' $dsc)
- 
- 		[[ ${SOURCE:0:3} == lib ]] && LETTER=${SOURCE:0:4} || LETTER=${SOURCE:0:1}
- 
- 		mkdir -vp "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
- 
- 		# Move sources
- 		mv -v "$FLL_BUILD_CHROOT"/"$SOURCE"_* "$FLL_BUILD_SOURCE"/source/"$LETTER"/"$SOURCE"
- 	done
-
-	# create trivial repository index
-	# XXX: improve me
-	pushd "${FLL_BUILD_SOURCE}/source/" >/dev/null
-		apt-ftparchive sources . > Sources
-		gzip  -c Sources > Sources.gz
-		bzip2 -c Sources > Sources.bz2
-	popd >/dev/null
+	chroot_exec apt-get -qq --print-uris source $(< $CHROOTPKGLIST) | \
+		awk '{ gsub(/'\''/,"", $1); print $1 }' > "$CHROOTSRCLIST"
 }
 
-if [[ $FLL_BUILD_SOURCE_REL ]]; then
-	fetch_source_code
-fi
+fetch_source_uris

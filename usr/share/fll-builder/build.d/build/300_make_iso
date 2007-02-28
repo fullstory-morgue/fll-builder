@@ -40,6 +40,24 @@ EOF
 	pushd "$FLL_BUILD_AREA" >/dev/null
 		md5sum -b "$FLL_ISO_NAME" > "$FLL_ISO_NAME".MD5
 	popd >/dev/null
+
+	# retrieve package and source lists
+	for list in "$FLL_BUILD_CHROOT"/fll.pkglist.* "$FLL_BUILD_CHROOT"/fll.srclist.* \
+		"$FLL_BUILD_TEMP"/fll.squashfs-exclude-file.*; do
+		if [[ -f $list ]]; then
+			case "$list" in
+				*fll.pkglist.*)
+					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.packages"
+					;;
+				*fll.srclist.*)
+					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.sources"
+					;;
+				*fll.squashfs-exclude-file.*)
+					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.excluded"
+					;;
+			esac
+		fi
+	done
 	
 	# if started as user, apply user ownership to output (based on --uid)
 	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
