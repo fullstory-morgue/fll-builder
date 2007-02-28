@@ -223,7 +223,7 @@ trap nuke_buildarea exit
 #################################################################
 # alternate configfile
 if [[ ! ${FLL_BUILD_CONFIGS[@]} ]]; then
-	FLL_BUILD_CONFIGS+=( $FLL_BUILD_DEFCONFIG )
+	FLL_BUILD_CONFIGS=( $FLL_BUILD_DEFCONFIG )
 fi
 
 for config in ${FLL_BUILD_CONFIGS[@]}; do
