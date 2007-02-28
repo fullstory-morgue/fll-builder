@@ -272,7 +272,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	##################################################################
 	#		chroot						#
 	#################################################################
+	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
+		"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
+	
+	chroot_virtfs mount
+
 	run_scripts "$FLL_BUILD_BUILDD"/chroot
+
+	chroot_virtfs umount
 
 	[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
 
