@@ -1,5 +1,3 @@
-#!/bin/bash
-
 chroot_install_debs_from_dir() {
 	local DEBDIR="$1"
 	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
@@ -53,4 +51,3 @@ install_local_debs() {
 
 	return 1
 }
-

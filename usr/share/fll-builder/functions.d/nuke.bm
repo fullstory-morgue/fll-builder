@@ -1,5 +1,3 @@
-#!/bin/bash
-
 nuke_buildarea() {
 	[[ -d $FLL_BUILD_TEMP ]] || return 0
 

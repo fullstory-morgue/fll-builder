@@ -1,5 +1,3 @@
-#!/bin/bash
-
 FLL_PACKAGES+=(
 	acpid
 	alsa-base

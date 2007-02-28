@@ -1,5 +1,3 @@
-#!/bin/bash
-
 FLL_PACKAGES+=(
 	kde-services-sidux
 	kdeservicemenus-sidux

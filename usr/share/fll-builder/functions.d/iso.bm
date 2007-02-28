@@ -1,5 +1,3 @@
-#!/bin/bash
-
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
 

@@ -1,5 +1,3 @@
-#!/bin/bash
-
 case ${FLL_PACKAGES[*]} in
 	*kde*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do

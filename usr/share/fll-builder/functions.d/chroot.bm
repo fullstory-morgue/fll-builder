@@ -1,5 +1,3 @@
-#!/bin/bash
-
 chroot_exec() {
 	# adapted from live-package
 	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \

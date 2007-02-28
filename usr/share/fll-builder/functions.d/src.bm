@@ -1,5 +1,3 @@
-#!/bin/bash
-
 fetch_source_code() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{source,kernel}

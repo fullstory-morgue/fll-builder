@@ -1,5 +1,3 @@
-#!/bin/bash
-
 FLL_PACKAGES+=(
 	etcskel-sidux
 	grub-gfxboot

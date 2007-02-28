@@ -1,5 +1,3 @@
-#!/bin/bash
-
 make_exclude_file() {
 	local LIST="$1"
 	local FINDOPTS=( "-name '*.orig'" )

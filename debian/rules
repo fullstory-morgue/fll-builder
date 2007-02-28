@@ -11,7 +11,7 @@ install/fll-builder::
 	install -D -m 0755 fll-build.bash \
 		debian/fll-builder/usr/sbin/fll-build
 	for bm in usr/share/fll-builder/functions.d/*.bm; do \
-		install -D -m 0755 $$bm debian/fll-builder/$$bm; \
+		install -D -m 0644 $$bm debian/fll-builder/$$bm; \
 	done
 	# exclude file
 	install -D -m 0644 usr/share/fll-builder/exclusion_list \
@@ -22,7 +22,7 @@ install/fll-builder::
 	# package lists
 	for bm in etc/fll-builder/packages/*.bm \
 		etc/fll-builder/packages/packages.d/*.bm; do \
-		install -D -m 0755 $$bm debian/fll-builder/$$bm; \
+		install -D -m 0644 $$bm debian/fll-builder/$$bm; \
 	done
 	# templates
 	cp -a usr/share/fll-builder/templates \

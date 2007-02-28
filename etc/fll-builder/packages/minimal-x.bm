@@ -1,5 +1,3 @@
-#!/bin/bash
-
 FLL_PACKAGE_DEPMODS=(
 	distro
 	hwsupport-essential

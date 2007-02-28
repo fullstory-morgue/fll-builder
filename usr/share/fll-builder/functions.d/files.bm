@@ -1,5 +1,3 @@
-#!/bin/bash
-
 cat_file_to_chroot() {
 	local FILE="$1"
 	local DEST="$FLL_BUILD_CHROOT"/"$2"
