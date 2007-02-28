@@ -145,8 +145,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhnps: \
-	--long configfile:,chroot-only,copyright,debug,help,preserve,squashfs-sortfile:,uid: \
+	--options c:Cdhnp \
+	--long configfile:,chroot-only,copyright,debug,help,preserve,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -179,10 +179,6 @@ while true; do
 			;;			
 		-p|--preserve)
 			FLL_BUILD_PRESERVE_CHROOT=1
-			;;
-		-s|--squashfs-sortfile)
-			shift
-			FLL_BUILD_SQUASHFS_SORTFILE=$1
 			;;
 		--uid)
 			# this need not be a documented feature
