@@ -209,6 +209,13 @@ else
 	exit 3
 fi
 
+if [[ ! $FLL_BUILD_LINUX_KERNEL ]]; then
+	echo "$SELF: you must define FLL_BUILD_LINUX_KERNEL in the configuration file!"
+	echo
+	print_help
+	exit 4
+fi
+
 #################################################################
 #		clean up on exit				#
 #################################################################
