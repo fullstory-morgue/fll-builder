@@ -1,3 +1,8 @@
+#!/bin/bash
+
+# XXX: add a --print-uris option, so we can create
+# the source image on remote non-debian
+
 fetch_source_code() {
 	# download source packages used in ISO creation
 	# dump into $FLL_BUILD_SOURCE/{source,kernel}
@@ -36,3 +41,6 @@ fetch_source_code() {
 	popd >/dev/null
 }
 
+if [[ $FLL_BUILD_SOURCE_REL ]]; then
+	fetch_source_code
+fi

@@ -1,0 +1,3 @@
+#!/bin/bash
+
+chroot_exec apt-get --assume-yes install debconf

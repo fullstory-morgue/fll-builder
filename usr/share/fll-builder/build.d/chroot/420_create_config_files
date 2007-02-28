@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# create final config files
+cat_file_to_chroot hosts	/etc/hosts
+cat_file_to_chroot hostname	/etc/hostname
+cat_file_to_chroot apt_sources	/etc/apt/sources.list
+cat_file_to_chroot sudoers	/etc/sudoers

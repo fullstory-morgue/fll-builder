@@ -1,3 +1,5 @@
+#!/bin/bash
+
 make_exclude_file() {
 	local LIST="$1"
 	local FINDOPTS=( "-name '*.orig'" )
@@ -66,3 +68,4 @@ make_compressed_image() {
 	popd >/dev/null
 }
 
+make_compressed_image

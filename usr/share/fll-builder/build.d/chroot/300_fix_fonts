@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# run fix-fonts
+if exists_in_chroot /usr/sbin/fix-fonts; then
+	chroot_exec fix-fonts
+fi

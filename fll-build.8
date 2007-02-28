@@ -2,7 +2,7 @@
 .SH NAME
 fll-build \- build script for a debian sid `live' linux operating system
 .SH SYNOPSIS
-\fBfll-build\fR \fI[options]\fR
+\fBfll-build\fR \fI[options] <build_directory>\fR
 .SH DESCRIPTION
 The purpose of \fIfll-builder\fR is to build a modern linux
 operating system from the rich software provided by the unstable
@@ -15,9 +15,6 @@ ability to adapt to a diverse range of hardware configurations.
 Homepage: http://developer.berlios.de/projects/fullstory
 .PP
 .SH OPTIONS
-.TP
-\fB\-b|\-\-buildarea\fR
-Path to temporary build area for live-cd chroot
 .TP
 \fB\-c|\-\-configfile\fR
 Path to alternate configfile.
@@ -32,37 +29,23 @@ Debug shell code execution (set -x)
 \fB\-h|\-\-help\fR
 Information about using this program
 .TP
-\fB\-k|\-\-kernel\fR
-URL to kernel zip package
-.TP
-\fB\-n|\-\-chrootonly
+\fB\-n|\-\-chroot-only
 Quit after preparing chroot
-.TP
-\fB\-o|\-\-output\fR
-ISO output dir
 .TP
 \fB\-p|\-\-preserve\fR
 Preserve build area when finished
 .TP
-\fB\-P|\-\-package-profile\fR
-Name of packages profile. Each profile is sourced from bash lists
-(arrays) located at /etc/fll-builder/packages/<NAME>.bm.
-(default: kde-lite or /etc/fll-builder/packages/kde-lite.bm)
-.TP
 \fB\-s|\-\-source\fR
 Retrieve all source packages for the release
-.TP
-\fB\-S|\-\-squashfs-sortfile\fR
-Path to squashfs sort file
 .PP
 .SH USAGE
 fll-build is best used with a localised configuration file. Use the default
-config, /etc/fll-builder/fll-build.conf, as the template for a local config.
+config, ./etc/fll-builder/fll-build.conf, as the template for a local config.
 Comments contained in that file should be sufficient enough to describe the
 purpose of each variable.
 .PP
 .RS
-\fBfll-build\fR \fI--configfile /path/to/alt/configfile\fR
+\fBfll-build\fR \fI--configfile /path/to/alt/configfile /path/to/build/directory\fR 
 .RE
 .PP
 .SH AUTHOR

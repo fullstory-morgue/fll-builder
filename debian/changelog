@@ -32,6 +32,16 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * Calculate md5sum manifest of cd contents _after_ squashfs image has been
     created.
   * Add i18n support for k3b and gwenview.
+  * Massive refactoring of build infrastructure. Important build creation
+    steps are now done in sequence by sourcing a series of scriplets.
+  * Build area must be given as first argument.
+  * Use /etc/fllbuilder/fll-build.conf to store default definitions for build
+    source URI's, package profile etc etc.
+  * Allow the opportunity to specify more than one configfile, and have a
+    product produced for each one.
+  * Reduce functions.d, move functions for specific purposes into their
+    respective scriptlet.
+  * Strip executable property and shebang line from sourced bash modules.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -42,7 +52,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 26 Feb 2007 11:02:49 +1000
+ -- Kel Modderman <kel@otaku42.de>  Thu,  1 Mar 2007 00:02:26 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# add templates (grub menu.lst/documentation/manual/autorun etc.)
+for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
+	[[ -d $dir ]] || continue
+	pushd $dir >/dev/null
+		find . -not -path '*.svn*' -printf '%P\n' | \
+			cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
+	popd >/dev/null
+done
+
+# populate /boot/
+cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
+
+
+# populate /boot/grub
+cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
+	"$FLL_BUILD_RESULT"/boot/grub/
+cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+
+if exists_in_chroot /boot/memtest86+.bin; then
+	cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
+	echo					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	echo "title memtest86+"			>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	echo "kernel /boot/memtest86+.bin"	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+fi

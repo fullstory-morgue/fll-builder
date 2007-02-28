@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cat_file_to_chroot chroot_policy	/usr/sbin/policy-rc.d
+cat_file_to_chroot debian_chroot	/etc/debian_chroot
+cat_file_to_chroot fstab		/etc/fstab
+cat_file_to_chroot interfaces		/etc/network/interfaces
+cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
+cat_file_to_chroot apt_conf		/etc/apt/apt.conf
+
+copy_to_chroot /etc/hosts
+copy_to_chroot /etc/resolv.conf
+
+# XXX: distro-defaults live environment detection
+mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"

@@ -1,0 +1,19 @@
+source_package_profile() {
+	local PROFILE=$1
+
+	[[ -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$PROFILE".bm ]] || return 1
+
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$PROFILE.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$PROFILE".bm
+
+	if [[ $FLL_PACKAGE_DEPMODS ]]; then
+		for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+			echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+			source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
+		done
+	fi
+	
+	# unconditionally evaluate i18n requirements
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
+}

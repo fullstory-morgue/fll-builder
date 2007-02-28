@@ -1,0 +1,3 @@
+#!/bin/bash
+
+chroot_virtfs mount
