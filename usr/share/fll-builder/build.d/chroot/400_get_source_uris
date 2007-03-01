@@ -14,7 +14,7 @@ fetch_source_uris() {
 	chroot_exec COLUMNS=250 dpkg --list | awk -v kvers=$KVERS \
 		'/^[hi]i/{ if($2 !~ kvers) { print $2 }}' > "$CHROOTPKGLIST"
 	
-	chroot_exec apt-get -qq --print-uris source $(< $CHROOTPKGLIST) | \
+	chroot_exec apt-get -qq --print-uris source $(< $CHROOTPKGLIST) | sort | \
 		awk '{ gsub(/'\''/,"", $1); print $1 }' > "$CHROOTSRCLIST"
 }
 
