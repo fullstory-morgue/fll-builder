@@ -209,13 +209,6 @@ else
 	exit 3
 fi
 
-if [[ ! $FLL_BUILD_LINUX_KERNEL ]]; then
-	echo "$SELF: you must define FLL_BUILD_LINUX_KERNEL in the configuration file!"
-	echo
-	print_help
-	exit 4
-fi
-
 #################################################################
 #		clean up on exit				#
 #################################################################
@@ -239,6 +232,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	source "$config"
 
+	if [[ ! $FLL_BUILD_LINUX_KERNEL ]]; then
+		echo "$SELF: you must define FLL_BUILD_LINUX_KERNEL in the config!"
+		echo
+		print_help
+		exit 4
+	fi
+
 	#################################################################
 	#		process package array(s)			#
 	#################################################################
@@ -246,7 +246,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
-		exit 4
+		exit 5
 	fi
 	
 	# echo package list early for bfree :-)
