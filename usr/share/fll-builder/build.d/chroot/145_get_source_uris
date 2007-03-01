@@ -9,7 +9,7 @@ fetch_source_uris() {
 		sort --unique --output="$CHROOTPKGLIST"
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS => fragile hack
-	chroot_exec apt-get -qq --print-uris source $(awk '$1 !~ /'"$KVERS"'/{ print $1 }' "$CHROOTPKGLIST") | \
+	chroot_exec apt-get -qq --print-uris source $(awk '$1 !~ /'"$KVERS"'$/{ print $1 }' "$CHROOTPKGLIST") | \
 		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique --output="$CHROOTSRCLIST"
 }
 
