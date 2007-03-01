@@ -5,12 +5,11 @@ fetch_source_uris() {
 	local CHROOTSRCLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.srclist.XXXX)
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS
-	chroot_exec dpkg --get-selections | grep -v $KVERS | \
-		awk '{ print $1 }' > "$CHROOTPKGLIST"
+	chroot_exec dpkg-query --showformat='${Package} ${Version} ${Status}\n' -W \* | \
+		grep -v "$KVERS" | awk '$NF == "installed" { print $1 " " $2 }' > "$CHROOTPKGLIST"
 	
-	chroot_exec apt-get -qq --print-uris source $(< $CHROOTPKGLIST) | \
-		awk '{ gsub(/'\''/,"", $1); print $1 }' | \
-		sort --unique --output="$CHROOTSRCLIST"
+	chroot_exec apt-get -qq --print-uris source $(awk '{ print $1 }' "$CHROOTPKGLIST") | \
+		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique --output="$CHROOTSRCLIST"
 }
 
 fetch_source_uris
