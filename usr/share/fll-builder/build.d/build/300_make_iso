@@ -52,7 +52,7 @@ EOF
 				*fll.srclist.*)
 					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.sources"
 					;;
-				*fll.squashfs-exclude-file.*)
+				*fll.exclude-file.*)
 					[[ $DEBUG ]] && cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.exclusions"
 					;;
 			esac
