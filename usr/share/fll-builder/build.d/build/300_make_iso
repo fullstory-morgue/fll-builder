@@ -47,13 +47,13 @@ EOF
 		if [[ -f $list ]]; then
 			case "$list" in
 				*fll.pkglist.*)
-					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.packages"
+					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.MANIFEST"
 					;;
 				*fll.srclist.*)
-					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.sources"
+					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.SOURCES"
 					;;
 				*fll.exclude-file.*)
-					[[ $DEBUG ]] && cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.exclusions"
+					[[ $DEBUG ]] && cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.EXCLUSIONS"
 					;;
 			esac
 		fi
