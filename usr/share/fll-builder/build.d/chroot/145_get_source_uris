@@ -8,8 +8,8 @@ fetch_source_uris() {
 	chroot_exec dpkg-query --showformat='${Package;-50}${Version}\n' -W  | \
 		sort --unique --output="$CHROOTPKGLIST"
 	
-	# XXX: our kernel packages have no apt-gettable source, filter KVERS
-	chroot_exec apt-get -qq --print-uris source $(awk '!/'$KVERS'/{ print $1 }' "$CHROOTPKGLIST") | \
+	# XXX: our kernel packages have no apt-gettable source, filter KVERS => fragile hack
+	chroot_exec apt-get -qq --print-uris source $(awk '$1 !~ /'"$KVERS"'/{ print $1 }' "$CHROOTPKGLIST") | \
 		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique --output="$CHROOTSRCLIST"
 }
 
