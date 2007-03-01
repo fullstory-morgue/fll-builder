@@ -53,7 +53,7 @@ EOF
 					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.sources"
 					;;
 				*fll.squashfs-exclude-file.*)
-					cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.exclusions"
+					[[ $DEBUG ]] && cp -v "$list" "$FLL_BUILD_AREA"/"${FLL_ISO_NAME}.exclusions"
 					;;
 			esac
 		fi
