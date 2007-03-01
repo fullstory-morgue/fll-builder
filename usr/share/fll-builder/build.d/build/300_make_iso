@@ -43,7 +43,7 @@ EOF
 
 	# retrieve package and source lists
 	for list in "$FLL_BUILD_CHROOT"/fll.pkglist.* "$FLL_BUILD_CHROOT"/fll.srclist.* \
-		"$FLL_BUILD_TEMP"/fll.squashfs-exclude-file.*; do
+		"$FLL_BUILD_TEMP"/fll.exclude-file.*; do
 		if [[ -f $list ]]; then
 			case "$list" in
 				*fll.pkglist.*)
