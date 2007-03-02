@@ -68,6 +68,8 @@ Options:
 
   -n|--chroot-only		Quit after preparing chroot
 
+  -o|--output			Directory to output the build product
+
   -p|--preserve			Preserve build area when finished
 
 EOF
@@ -145,8 +147,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhnp \
-	--long configfile:,chroot-only,copyright,debug,help,preserve,uid: \
+	--options c:Cdhno:p \
+	--long configfile:,chroot-only,copyright,debug,help,output,preserve,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -176,7 +178,11 @@ while true; do
 			;;
 		-n|--chroot-only)
 			FLL_BUILD_CHROOT_ONLY=1
-			;;			
+			;;
+		-o|--output)
+			shift
+			FLL_BUILD_ISO_DIR=$1
+			;;
 		-p|--preserve)
 			FLL_BUILD_PRESERVE_CHROOT=1
 			;;
