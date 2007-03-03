@@ -22,7 +22,7 @@ EOF
 			if [[ $FLL_BUILD_APT_DEFAULT_RELEASE ]]; then
 				cat >> "$DEST" \
 <<EOF
-APT::Default-Release \"$FLL_BUILD_APT_DEFAULT_RELEASE\";
+APT::Default-Release "$FLL_BUILD_APT_DEFAULT_RELEASE";
 EOF
 			fi
 			;;
