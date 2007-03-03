@@ -2,8 +2,6 @@ cat_file_to_chroot() {
 	local FILE="$1"
 	local DEST="$FLL_BUILD_CHROOT"/"$2"
 
-	[[ $1 && $2 ]] || return 1
-
 	echo "Creating \`$FILE' at $DEST"
 
 	case "$FILE" in
@@ -18,6 +16,13 @@ EOF
 				cat > "$DEST" \
 <<EOF
 Acquire::ftp::Proxy "$FLL_FTP_PROXY";
+EOF
+			fi
+			
+			if [[ $FLL_BUILD_APT_DEFAULT_RELEASE ]]; then
+				cat >> "$DEST" \
+<<EOF
+APT::Default-Release \"$FLL_BUILD_APT_DEFAULT_RELEASE\";
 EOF
 			fi
 			;;
