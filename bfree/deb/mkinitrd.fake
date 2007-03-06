@@ -1,4 +1,0 @@
-#!/bin/bash
-#TODO: de-hardcode KVERS here
-touch /boot/initrd.img-2.6.18.6-slh-smp-1.new
-

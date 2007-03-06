@@ -1,9 +1,0 @@
-# Kernel Image management overrides
-# See kernel-img.conf(5) for details
-do_symlinks = Yes
-do_initrd = Yes
-postinst_hook = /usr/sbin/update-grub
-postrm_hook = /usr/sbin/update-grub
-do_bootloader = no
-relative_links = Yes
-
