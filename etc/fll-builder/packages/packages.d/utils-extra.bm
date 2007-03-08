@@ -3,12 +3,10 @@ FLL_PACKAGES+=(
 	cdebootstrap
 	cdrdao
 	dvd+rw-tools
-	dmraid
 	dosfstools
 	fuse-utils
 	genisoimage
 	jfsutils
-	lvm2
 	man-db
 	manpages
 	memtest86+

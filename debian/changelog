@@ -11,6 +11,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     patch the source file with a 56-byte table with information of the CD-ROM
     layout at offset 8.
   * revert r5013, it has been fixed properly now.
+  * move dmraid and lvm2 to utils-raid_lvm.bm.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -53,7 +54,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Kel Modderman <kel@otaku42.de>  Thu,  1 Mar 2007 00:56:31 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  8 Mar 2007 14:56:57 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 
