@@ -3,6 +3,7 @@ FLL_PACKAGES+=(
 	bzip2
 	console-data
 	console-common
+	console-tools
 	cron
 	dhcp3-client
 	e2fsprogs
@@ -16,3 +17,4 @@ FLL_PACKAGES+=(
 	wireless-tools
 	wpasupplicant
 )
+
