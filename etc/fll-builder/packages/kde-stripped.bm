@@ -11,11 +11,9 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	ark
-	kaffeine
 	kde-core
 	kdm
 	konversation
-	kmix
 	kpowersave
 	build-essential
 	cdebootstrap
