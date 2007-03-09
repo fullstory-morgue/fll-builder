@@ -1,7 +1,4 @@
 #!/bin/bash
 
-# ensure distro-defaults is present before mass package installation
-chroot_exec apt-get --assume-yes install distro-defaults 
-
 # mass package installation
 chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}

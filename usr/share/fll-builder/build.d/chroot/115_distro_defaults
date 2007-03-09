@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# ensure distro-defaults is present
+chroot_exec apt-get --assume-yes install distro-defaults

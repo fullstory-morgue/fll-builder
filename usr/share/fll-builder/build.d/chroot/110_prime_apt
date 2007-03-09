@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# XXX: temporary workaround for keyring transition
-chroot_exec apt-key update
-
 chroot_exec apt-get update
 
 # install gpg keyring for fll mirror
