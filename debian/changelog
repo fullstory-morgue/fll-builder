@@ -13,6 +13,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * revert r5013, it has been fixed properly now.
   * move dmraid and lvm2 to utils-raid_lvm.bm.
   * add console-tools to utils-essential.bm
+  * add kde-stripped.bm for debugging purposes.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -55,7 +56,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  8 Mar 2007 15:34:33 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri,  9 Mar 2007 16:51:37 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 

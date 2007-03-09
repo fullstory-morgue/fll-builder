@@ -1,0 +1,23 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	utils-essential
+	xserver
+)
+
+FLL_PACKAGES=(
+	ark
+	kaffeine
+	kde-core
+	kdm
+	konversation
+	kmix
+	kpowersave
+	build-essential
+	cdebootstrap
+)
+
