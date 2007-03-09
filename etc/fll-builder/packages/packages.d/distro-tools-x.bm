@@ -11,7 +11,6 @@ FLL_PACKAGES+=(
 	install-gui
 	install-meta
 	networkconfig-sidux
-	restartx
 	rootshell
 	sidux-browser
 	sidux-irc
@@ -19,5 +18,5 @@ FLL_PACKAGES+=(
 	sidux-searchplugins
 	sidux-setpassword
 	xorgconfig-sidux
-	xsession-sidux
 )
+
