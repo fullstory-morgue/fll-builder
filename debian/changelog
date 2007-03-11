@@ -47,7 +47,8 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * Reduce functions.d, move functions for specific purposes into their
     respective scriptlet.
   * Strip executable property and shebang line from sourced bash modules.
-  * Preserve package, source package and exclusions lists for each iso.
+  * Preserve package and source package lists for each iso.
+  * scapartitions has vanished.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -58,7 +59,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 11 Mar 2007 23:53:20 +0100
+ -- Kel Modderman <kel@otaku42.de>  Mon, 12 Mar 2007 09:21:56 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 

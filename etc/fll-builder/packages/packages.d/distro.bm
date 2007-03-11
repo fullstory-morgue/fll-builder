@@ -6,7 +6,6 @@ FLL_PACKAGES+=(
 	knx-installer
 	rebuildfstab
 	rsync
-	scanpartitions
 	sidux-graphics
 	sidux-scripts
 	su-me
