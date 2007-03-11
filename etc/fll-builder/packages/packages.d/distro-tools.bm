@@ -1,5 +1,4 @@
 FLL_PACKAGES+=(
-	mkdosswapfile
 	configure-dsl
 	configure-isdn
 	configure-modemlink
@@ -10,3 +9,4 @@ FLL_PACKAGES+=(
 	sshstart-sidux
 	startsyslog-sidux
 )
+
