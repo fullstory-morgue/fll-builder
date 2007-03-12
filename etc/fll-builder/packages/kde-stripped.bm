@@ -3,7 +3,6 @@ FLL_PACKAGE_DEPMODS=(
 	distro
 	distro-kde
 	distro-tools
-	distro-tools-x
 	hwsupport-essential
 	utils-essential
 	xserver
