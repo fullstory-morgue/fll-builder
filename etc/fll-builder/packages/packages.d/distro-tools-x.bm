@@ -8,6 +8,7 @@ FLL_PACKAGES+=(
 	ddcxinfo-sidux
 	fix-fonts
 	gparted
+	install-gui
 	install-meta
 	networkconfig-sidux
 	rootshell
@@ -19,5 +20,3 @@ FLL_PACKAGES+=(
 	xorgconfig-sidux
 )
 
-# BROKEN
-# install-gui
