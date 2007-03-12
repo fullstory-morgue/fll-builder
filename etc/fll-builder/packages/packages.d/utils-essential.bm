@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	adduser
+	aumix
 	bzip2
 	console-data
 	console-common
