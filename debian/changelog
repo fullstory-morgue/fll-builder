@@ -16,6 +16,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add kde-stripped.bm for debugging purposes.
   * remove xsession-sidux and restartx from dependencies.
   * mkdosswapfile doesn't exist anymore.
+  * shuffle lvm2 and fake RAID support around.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -59,7 +60,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 12 Mar 2007 09:21:56 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Mar 2007 21:21:42 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 

@@ -1,5 +1,4 @@
 FLL_PACKAGES+=(
 	dmraid
-	lvm2
 )
 

@@ -8,6 +8,7 @@ FLL_PACKAGES+=(
 	cupsys-bsd
 	cupsys-driver-gutenprint
 	dmidecode
+	dmsetup
 	foomatic-db
 	foomatic-db-engine
 	foomatic-db-gutenprint

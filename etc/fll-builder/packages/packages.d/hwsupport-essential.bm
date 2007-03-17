@@ -2,7 +2,9 @@ FLL_PACKAGES+=(
 	acpid
 	alsa-base
 	laptop-detect
+	lvm2
 	pcmciautils
 	pciutils
 	udev
 )
+
