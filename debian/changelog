@@ -17,7 +17,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove xsession-sidux and restartx from dependencies.
   * mkdosswapfile doesn't exist anymore.
   * shuffle lvm2 and fake RAID support around.
-  * add fll-builder to utils-fakeraid.
+  * add mdadm to utils-fakeraid.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
