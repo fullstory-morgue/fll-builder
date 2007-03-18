@@ -17,6 +17,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove xsession-sidux and restartx from dependencies.
   * mkdosswapfile doesn't exist anymore.
   * shuffle lvm2 and fake RAID support around.
+  * add fll-builder to utils-fakeraid.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -60,7 +61,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove now unused error codes
   * anally retentive error code function cleanup
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Mar 2007 21:21:42 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Mar 2007 02:33:40 +0100
 
 fll-builder (1.0.3) unstable; urgency=low
 
