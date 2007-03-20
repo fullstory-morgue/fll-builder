@@ -263,9 +263,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	# temporary staging areas within buildarea
 	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.TEMP.XXXXX)
-	FLL_BUILD_CHROOT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.CHROOT.XXXXX)
-	FLL_BUILD_RESULT=$(mktemp -p $FLL_BUILD_TEMP -d $SELF.RESULT.XXXXX)
-	mkdir -vp "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}" "$FLL_BUILD_RESULT"/boot
+	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
+	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
+
+	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
 		for dir in "$FLL_BUILD_AREA" "$FLL_BUILD_TEMP" "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"; do
