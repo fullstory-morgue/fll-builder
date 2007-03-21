@@ -1,6 +1,6 @@
 fetch_source_uris() {
-	local CHROOTPKGLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.pkglist.XXXX)
-	local CHROOTSRCLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.srclist.XXXX)
+	local CHROOTPKGLIST="$FLL_BUILD_TEMP"/manifest
+	local CHROOTSRCLIST="$FLL_BUILD_TEMP"/sources
 	
 	# create package manifest
 	chroot_exec dpkg-query --showformat='${Package;-50}${Version}\n' -W  | \

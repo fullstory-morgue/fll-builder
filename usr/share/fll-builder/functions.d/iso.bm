@@ -1,4 +1,5 @@
 make_fll_iso() {
+	local DESTDIR="$1"
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
 
 	cat > "$ISOSORTLIST" \
@@ -30,7 +31,7 @@ EOF
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
 		-hide-rr-moved \
 		-sort "$ISOSORTLIST" \
-		-o "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME" \
+		-o "$DESTDIR"/"$FLL_ISO_NAME" \
 		"$FLL_BUILD_RESULT"
 	
 	# generate md5sums
@@ -38,24 +39,8 @@ EOF
 	pushd "$FLL_BUILD_ISO_DIR" >/dev/null
 		md5sum -b "$FLL_ISO_NAME" > "$FLL_ISO_NAME".MD5
 	popd >/dev/null
-
-	# retrieve package and source lists
-	for list in "$FLL_BUILD_CHROOT"/fll.pkglist.* "$FLL_BUILD_CHROOT"/fll.srclist.*; do
-		if [[ -f $list ]]; then
-			case "$list" in
-				*fll.pkglist.*)
-					cp -v "$list" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.MANIFEST"
-					;;
-				*fll.srclist.*)
-					cp -v "$list" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.SOURCES"
-					;;
-			esac
-		fi
-	done
 	
-	# if started as user, apply user ownership to output (based on --uid)
-	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
-		chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" \
-			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
-	fi
+	# retrieve package and source lists created by fetch_source_uris
+	mv -v "$FLL_BUILD_TEMP"/manifest "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.MANIFEST"
+	mv -v "$FLL_BUILD_TEMP"/sources "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.SOURCES"
 } 

@@ -261,7 +261,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		prepare build area				#
 	#################################################################
 	# temporary staging areas within buildarea
-	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.TEMP.XXXXX)
+	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
 	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
 	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
 
@@ -489,7 +489,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
 	fi
 
-	make_fll_iso
+	make_fll_iso "$FLL_BUILD_ISO_DIR"
+
+	# if started as user, apply user ownership to output (based on --uid)
+	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
+		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" \
+			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
+	fi
 
 	nuke_buildarea
 done
