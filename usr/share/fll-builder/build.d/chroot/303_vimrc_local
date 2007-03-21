@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# vimrc.local
-if exists_in_chroot /etc/vim; then
-	cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
-fi

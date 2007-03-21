@@ -1,6 +1,0 @@
-#!/bin/bash
-
-# use most as PAGER if installed in chroot
-if exists_in_chroot /usr/bin/most; then
-	chroot_exec update-alternatives --set pager /usr/bin/most
-fi

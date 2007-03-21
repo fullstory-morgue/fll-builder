@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# mass package installation
-chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}

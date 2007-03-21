@@ -1,13 +1,3 @@
-#!/bin/bash
-
-if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
-	if [[ $FLL_BUILD_ISO_DIR ]]; then
-		echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
-		echo "$SELF: creating iso in $FLL_BUILD_AREA"
-	fi
-	FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
-fi
-
 make_fll_iso() {
 	local ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
 
@@ -68,6 +58,4 @@ EOF
 		chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" \
 			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 	fi
-}
-
-make_fll_iso
+} 

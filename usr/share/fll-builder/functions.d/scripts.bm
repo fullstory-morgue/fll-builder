@@ -1,9 +1,0 @@
-run_scripts() {
-	[[ -d $1 ]] || return 1
-
-	local FLL_BUILD_SCRIPTS=( $(run-parts --list "$1") )
-	
-	for script in ${FLL_BUILD_SCRIPTS[@]}; do
-		source "$script"
-	done
-} 

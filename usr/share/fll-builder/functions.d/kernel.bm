@@ -1,5 +1,3 @@
-#!/bin/bash
-
 install_linux_kernel() {
 	local KZIP="$1"
 	local KDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
@@ -56,21 +54,4 @@ install_linux_kernel() {
 		# XXX: what about linux + modules source code?
 		cp -v "$KDIR"/kernel-"$KVERS".zip "$FLL_BUILD_SOURCE"/kernel/kernel-"$KVERS".zip
 	fi
-}
-
-if [[ $FLL_BUILD_INITRAMFS ]]; then
-	if ! install_local_debs "$FLL_BUILD_INITRAMFS"; then
-		chroot_exec apt-get --assume-yes install fll-live-initramfs
-	fi
-	cat_file_to_chroot kernelimg-initramfs /etc/kernel-img.conf
-else
-	chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
-	# ask kernel postinst to call our desired hook -> mklive-initrd
-	cat_file_to_chroot kernelimg /etc/kernel-img.conf
-fi
-
-# module-init-tools is required for installation of kernel and
-# kernel-module binaries -> depmod
-chroot_exec apt-get --assume-yes install module-init-tools
-
-install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+} 

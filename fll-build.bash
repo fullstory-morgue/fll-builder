@@ -129,7 +129,6 @@ FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
 FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.d"
-FLL_BUILD_BUILDD="$FLL_BUILD_SHARED/build.d"
 FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
 FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 
@@ -270,7 +269,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
 		for dir in "$FLL_BUILD_AREA" "$FLL_BUILD_TEMP" "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"; do
-			chown "$FLL_BUILD_OUTPUT_UID":"$FLL_BUILD_OUTPUT_UID" "$dir"
+			chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$dir"
 		done
 	fi
 
@@ -282,7 +281,154 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	chroot_virtfs mount
 
-	run_scripts "$FLL_BUILD_BUILDD"/chroot
+	cat_file_to_chroot chroot_policy	/usr/sbin/policy-rc.d
+	cat_file_to_chroot debian_chroot	/etc/debian_chroot
+	cat_file_to_chroot fstab		/etc/fstab
+	cat_file_to_chroot interfaces		/etc/network/interfaces
+	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
+	cat_file_to_chroot apt_conf		/etc/apt/apt.conf
+	
+	copy_to_chroot /etc/hosts
+	copy_to_chroot /etc/resolv.conf
+	
+	# XXX: distro-defaults live environment detection
+	mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
+	
+	chroot_exec apt-get update
+	
+	# install gpg keyring for fll mirror
+	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
+	
+	chroot_exec apt-get update
+	
+	FLL_PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
+	
+	# ensure distro-defaults is present
+	chroot_exec apt-get --assume-yes install distro-defaults
+	
+	chroot_exec apt-get --assume-yes install debconf
+	
+	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | chroot_exec debconf-set-selections
+	echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | chroot_exec debconf-set-selections
+	
+	chroot_exec apt-get --assume-yes install locales
+	
+	if [[ $FLL_BUILD_INITRAMFS ]]; then
+		if ! install_local_debs "$FLL_BUILD_INITRAMFS"; then
+			chroot_exec apt-get --assume-yes install fll-live-initramfs
+		fi
+		cat_file_to_chroot kernelimg-initramfs /etc/kernel-img.conf
+	else
+		chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
+		# ask kernel postinst to call our desired hook -> mklive-initrd
+		cat_file_to_chroot kernelimg /etc/kernel-img.conf
+	fi
+	
+	# module-init-tools is required for installation of kernel and
+	# kernel-module binaries -> depmod
+	chroot_exec apt-get --assume-yes install module-init-tools
+	
+	install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+	
+	# mass package installation
+	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
+	
+	echo
+	echo "Calculating source package URI list . . ."
+	echo
+	
+	fetch_source_uris
+	
+	# XXX: this hack is FOR TESTING PURPOSES ONLY
+	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
+		install_local_debs "$FLL_BUILD_LOCAL_DEBS"
+	fi
+	
+	# create user in chroot
+	chroot_exec adduser --no-create-home --disabled-password \
+		--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
+	
+	# add to groups, check if group exists first
+	for group in $FLL_LIVE_USER_GROUPS; do
+		if chroot_exec getent group "$group"; then
+			chroot_exec adduser "$FLL_LIVE_USER" "$group"
+		fi
+	done
+	
+	# lock down root and live user
+	sed -i "s#^\(root\|$FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+		"$FLL_BUILD_CHROOT"/etc/shadow
+	
+	# hack inittab: init 5 by default, "immutable" bash login shells
+	sed -i	-e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
+		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
+		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+		"$FLL_BUILD_CHROOT"/etc/inittab
+	
+	# run fix-fonts
+	if exists_in_chroot /usr/sbin/fix-fonts; then
+		chroot_exec fix-fonts
+	fi
+	
+	# set x-www-browser, use the popular firefox/iceweasel if present
+	if exists_in_chroot /usr/bin/iceweasel; then
+		chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
+	elif exists_in_chroot /usr/bin/konqueror; then
+		chroot_exec update-alternatives --set x-www-browser /usr/bin/konqueror
+	fi
+	
+	# use most as PAGER if installed in chroot
+	if exists_in_chroot /usr/bin/most; then
+		chroot_exec update-alternatives --set pager /usr/bin/most
+	fi
+	
+	# vimrc.local
+	if exists_in_chroot /etc/vim; then
+		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
+	fi
+	
+	# purge unwanted packages
+	chroot_exec dpkg --purge cdebootstrap-helper-diverts
+	
+	# remove used hacks and patches
+	remove_from_chroot /etc/kernel-img.conf
+	remove_from_chroot /usr/sbin/policy-rc.d
+	remove_from_chroot /etc/debian_chroot
+	remove_from_chroot /etc/hosts
+	remove_from_chroot /etc/resolv.conf
+	remove_from_chroot /etc/apt/apt.conf
+	
+	# remove live-cd mode identifier
+	rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
+	
+	# create final config files
+	cat_file_to_chroot hosts	/etc/hosts
+	cat_file_to_chroot hostname	/etc/hostname
+	cat_file_to_chroot apt_sources	/etc/apt/sources.list
+	cat_file_to_chroot sudoers	/etc/sudoers
+	
+	# add version marker, this is the exact time stamp for our package list
+	echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+		> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	echo " - $FLL_DISTRO_CODENAME ($FLL_PACKAGE_TIMESTAMP)" \
+		>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	
+	# a few dæmons are broken if log files are missing, 
+	# therefore nuke log and spool files while preserving permissions
+	find	"${FLL_BUILD_CHROOT}/var/cache/" \
+		"${FLL_BUILD_CHROOT}/var/log/" \
+			   -name \*\\.gz \
+			-o -name \*\\.bz2 \
+			-o -name \*\\.[0-9][0-9]? \
+				-exec rm -f {} \;
+	
+	find	"${FLL_BUILD_CHROOT}/var/log/" \
+		"${FLL_BUILD_CHROOT}/var/mail/" \
+		"${FLL_BUILD_CHROOT}/var/spool/" \
+			-type f \
+			-size +0 \
+				-exec cp /dev/null '{}' \;
 
 	chroot_virtfs umount
 
@@ -291,7 +437,44 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		build						#
 	#################################################################
-	run_scripts "$FLL_BUILD_BUILDD"/build
+
+	# add templates (grub menu.lst/documentation/manual/autorun etc.)
+	for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
+		[[ -d $dir ]] || continue
+		pushd $dir >/dev/null
+			find . -not -path '*.svn*' -printf '%P\n' | \
+				cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
+		popd >/dev/null
+	done
+
+	# populate /boot/
+	cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
+
+
+	# populate /boot/grub
+	cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
+		"$FLL_BUILD_RESULT"/boot/grub/
+	cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+	
+	if exists_in_chroot /boot/memtest86+.bin; then
+		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
+		echo					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "title memtest86+"			>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "kernel /boot/memtest86+.bin"	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	fi
+
+	make_compressed_image
+
+	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
+		if [[ $FLL_BUILD_ISO_DIR ]]; then
+			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
+			echo "$SELF: creating iso in $FLL_BUILD_AREA"
+		fi
+		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
+	fi
+
+	make_fll_iso
 
 	nuke_buildarea
 done

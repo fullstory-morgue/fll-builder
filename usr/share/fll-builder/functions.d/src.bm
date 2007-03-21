@@ -1,9 +1,3 @@
-#!/bin/bash
-
-echo
-echo "Calculating source package URI list . . ."
-echo
-
 fetch_source_uris() {
 	local CHROOTPKGLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.pkglist.XXXX)
 	local CHROOTSRCLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.srclist.XXXX)
@@ -15,6 +9,4 @@ fetch_source_uris() {
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS => fragile hack
 	chroot_exec apt-get -qq --print-uris source $(awk '$1 !~ /'"$KVERS"'$/{ print $1 }' "$CHROOTPKGLIST") | \
 		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique --output="$CHROOTSRCLIST"
-}
-
-fetch_source_uris
+} 
