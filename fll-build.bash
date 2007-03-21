@@ -466,6 +466,21 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	make_compressed_image
 
+	# md5sums
+	pushd "$FLL_BUILD_RESULT" >/dev/null
+		( \
+			find .	\
+				-type f \
+				-not \( \
+					-name '*md5sums' \
+					-o -name '*.cat' \
+					-o -name 'iso9660_stage1_5' \
+					-o -name 'stage2_eltorito' \
+				\) -printf '%P\n' | \
+			sort | xargs md5sum -b \
+		) > "$FLL_IMAGE_DIR"/md5sums
+	popd >/dev/null
+
 	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
 		if [[ $FLL_BUILD_ISO_DIR ]]; then
 			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
