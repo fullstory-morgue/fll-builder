@@ -4,21 +4,22 @@
 <head>
 	<title>sidux Manuals - Vitus and Rootkits</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
 <body>
-<div id="menu">
-<!-- menu starts here -->
+<div id="menu"> <!-- menu starts here -->
+<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -72,23 +73,6 @@
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
-		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
-			<ul class="sub-menu" id="sm3">
-				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
-				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
-				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
-				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
-				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
-				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
-				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
-				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
-				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
-				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
-				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
-				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
-			</ul>
-		</li>
 		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
 			<ul class="sub-menu" id="sm8">
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
@@ -117,9 +101,38 @@
 				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
 			</ul>
 		</li>
+		<li  onmouseover="showHide( 14 );" onmouseout="startTime();" ><a href="lamp-apache-en.htm">sidux LAMP Stack</a>
+			<ul class="sub-menu" id="sm14">
+				<li><a href="lamp-apache-en.htm#serv-apache">sidux LAMP Stack</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+				<li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+				<li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+				<li><a href="lamp-ppp-en.htm#serv-php">PHP in Apache</a></li>
+			</ul>
+		</li>
+
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
 		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
 			<ul class="sub-menu" id="sm11">
-				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+				<li><a href="sys-admin-meta-en.htm#meta-pack">Meta-Package Installer</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
@@ -138,11 +151,10 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here -->
-</div>
+<!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="virus-rkits">
-				<h2>Various Virus and Rootkit Scanners</h2>
+				<h2 id="top-header">Various Virus and Rootkit Scanners</h2>
 	</div>
 	<div class="divider" id="av-clam">
 			<h3>Clamav</h3>
@@ -162,7 +174,7 @@ to get the latest signitures manually
 <pre>
 clamscan
 </pre>
-				<h6>If you wish to use a GUI front end for clamav its available for KDE</h6>
+				<h6>If you wish to use a GUI front end for clamav its available for KDE:</h6>
 <pre>
 apt-get install klamav
 </pre>
@@ -170,7 +182,7 @@ apt-get install klamav
 	</div>
 	<div class="divider" id="av-anvir">
 				<h3>AntiVir PersonalEdition Classic for Linux</h3>
-				<p><a href="http://forum.avira.de/thread.php?threadid=15368">The following informarion came from a forum post</a></p>
+				<p><a href="http://forum.avira.de/thread.php?threadid=15368">The following information came from a forum post</a></p>
 				<p>To install the antvir PE Linux Please do the following steps:</p>
 <pre>
 1. as root
@@ -208,7 +220,7 @@ Please do not forget to do an update
 				- Look for suspected strings in LKM and KLD modules<br />
 				- Look for hidden files<br />
 				- Optional scan within plaintext and binary files<br />
-				- Rootkit Hunter is released as GPL licensed project and free for everyone to use.</p>
+				- </p>
 
 <pre>
 apt-get update
@@ -221,6 +233,7 @@ rkhunter --update
 <pre>
 rkhunter -c
 </pre>
+				<p>Rootkit Hunter is released as GPL licensed project and free for everyone to use.</p>
 
 				<p><a href="http://www.rootkit.nl/">The site of rkhunter</a></p>
 				

@@ -4,21 +4,22 @@
 <head>
 	<title>sidux Manuals - Gparted</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
 <body id="part">
-<div id="menu">
-<!-- menu starts here -->
+<div id="menu"> <!-- menu starts here -->
+<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -72,23 +73,6 @@
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
-		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
-			<ul class="sub-menu" id="sm3">
-				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
-				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
-				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
-				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
-				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
-				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
-				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
-				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
-				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
-				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
-				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
-				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
-			</ul>
-		</li>
 		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
 			<ul class="sub-menu" id="sm8">
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
@@ -117,9 +101,38 @@
 				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
 			</ul>
 		</li>
+		<li  onmouseover="showHide( 14 );" onmouseout="startTime();" ><a href="lamp-apache-en.htm">sidux LAMP Stack</a>
+			<ul class="sub-menu" id="sm14">
+				<li><a href="lamp-apache-en.htm#serv-apache">sidux LAMP Stack</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+				<li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+				<li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+				<li><a href="lamp-ppp-en.htm#serv-php">PHP in Apache</a></li>
+			</ul>
+		</li>
+
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
 		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
 			<ul class="sub-menu" id="sm11">
-				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+				<li><a href="sys-admin-meta-en.htm#meta-pack">Meta-Package Installer</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
@@ -138,11 +151,10 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here -->
-</div>
+<!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="partition">
-		<h2>How to partition your HD (using GParted)</h2>
+		<h2 id="top-header">How to partition your HD (using GParted)</h2>
 			<h5><span class="highlight-2">WARNING: for disk naming</span><a href="part-uuid-en.htm"> Please refer to UUID, Partition Labelling and fstab, as by default sidux now uses UUID</a></h5>
 		<p><b>Partitioning tools may request a root password. As none is set just press 'enter', See: <a href="live-mode-en.htm" >Live Mode</a></b></p>
 		
@@ -167,7 +179,7 @@
 			</li>
 			<li>
 				<h3>Edit</h3>
-				<p>It opens a new window from which you can see the supported file types and some partition editing options.</p>
+				<p>It opens a new window from which you can see the supported file systems and some partition editing options.</p>
 		
 				<p>The menu is second from the left. It shows two grayed out functions which are quite useful: Undo, and Apply and also allows you to access/view other areas. These options may also be seen:</p>
 			</li>

@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>sidux Manuals - Generic-Server</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
+	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+</head>
+<body>
+<div id="menu"> <!-- menu starts here -->
+<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
+	<ul id="top-list">
+		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
+	</ul>
+		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<ul>
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
+			<ul class="sub-menu" id="sm1">
+				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
+				<li><a href="welcome-de.htm#how-to">Tipps zum Handbuch</a></li>
+				<li><a href="help-de.htm#help-gen">Wo es Hilfe gibt</a></li>
+				<li><a href="credits-de.htm#cred-team">Danksagung</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="cd-content-de.htm">CD-Inhalt</a>
+			<ul class="sub-menu" id="sm2">
+				<li><a href="cd-content-de.htm#cd-content">CD-Inhalt</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="cd-dl-burning-de.htm">CD Herunterladen &amp; Brennen</a>
+			<ul class="sub-menu" id="sm6">
+				<li><a href="cd-dl-burning-de.htm#download-sidux">CD Herunterladen &amp; Brennen</a></li>
+				<li><a href="cd-dl-burning-de.htm#md5">md5 Pr&#252;fsummen</a></li>
+				<li><a href="cd-dl-burning-de.htm#burn-nero">Brennen in Windows</a></li>
+				<li><a href="cd-dl-burning-de.htm#burn-linux">Brennen in Linux</a></li>
+				<li><a href="cd-dl-burning-de.htm#xdelta">xdelta-Patches</a></li>
+				<li><a href="cd-no-gui-burn-de.htm#burning-no-gui">Brennen ohne GUI</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
+			<ul class="sub-menu" id="sm4">
+				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
+				<li><a href="live-mode-de.htm#unionfs">Unionfs - Software im Live-CD-Modus installieren</a></li>
+				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="term-konsole-de.htm">Das Terminal / Die Konsole</a>
+			<ul class="sub-menu" id="sm9">
+				<li><a href="term-konsole-de.htm#term-kon"> Terminal/Konsole</a></li>
+				<li><a href="term-konsole-de.htm#cli-help">Kommadozeilenhilfe</a></li>
+				<li><a href="term-konsole-de.htm#shell-scripts">Installing Scripts.sh</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="cheatcodes-de.htm">Boot-Cheatcodes</a>
+			<ul class="sub-menu" id="sm7">
+				<li><a href="cheatcodes-de.htm#cheatcodes">Cheatcodes</a></li>
+				<li><a href="cheatcodes-vga-de.htm#vga">VGA-Codes</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 5 );" onmouseout="startTime();" ><a href="part-gparted-de.htm">Partitionieren der Festplatte</a>
+			<ul class="sub-menu" id="sm5">
+				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
+				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
+				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
+				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
+				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
+				<li><a href="part-size-examp-de.htm#part-example">Partitionsgr&#246;&#223;en: Beispiele</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-de.htm">Installationsoptionen</a>
+			<ul class="sub-menu" id="sm8">
+				<li><a href="hd-install-de.htm#Inst-prep">Vorbereiten der Installation</a></li>
+				<li><a href="hd-install-de.htm#Installation">Installation auf die Festplatte</a></li>
+				<li><a href="hd-install-de.htm#first-hd-boot">Erstes Booten von der Festplatte</a></li>
+				<li><a href="hd-install-opts-de.htm#perst-home">Permanentes Homeverzeichnis</a></li>
+				<li><a href="hd-install-opts-de.htm#fromiso">Booten 'fromiso'</a></li>
+				<li><a href="hd-install-opts-de.htm#usb-hd">Installation auf eine USB-Festplatte</a></li>
+				<li><a href="hd-install-opts-de.htm#qemu">Installation &#252;ber qemu</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-de.htm">Graphikkarten, Hardware, Ger&#228;te und Treiber</a>
+			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">HD Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
+			<ul class="sub-menu" id="sm12">
+				<li><a href="wm-kde-de.htm#desk-freeze">KDE-Desktop friert ein</a></li>
+				<li><a href="wm-kde-de.htm#kde-login">Kein Login in KDE</a></li>
+				<li><a href="wm-kde-de.htm#ch-th">Themes &#228;ndern</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 14 );" onmouseout="startTime();" ><a href="lamp-apache-de.htm">sidux LAMP Stack</a>
+			<ul class="sub-menu" id="sm14">
+				<li><a href="lamp-apache-de.htm#serv-apache">siduxs LAMP Paket</a></li>
+				<li><a href="lamp-apache-de.htm#serv-ftp">FTP Clients</a></li>
+				<li><a href="lamp-apache-de.htm#serv-sec">Sichere Protokolle</a></li>
+				<li><a href="lamp-apache-de.htm#serv-ssl">SSL</a></li>
+				<li><a href="lamp-sql-de.htm#serv-mysql">MySQL Setup</a></li>
+				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
+			</ul>
+		</li>
+
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
+				<li><a href="ssh-de.htm#ssh-fs">SSH:Einbindung eines entfernten Computers</a></li>
+				<li><a href="ssh-de.htm#ssh-x">X-Window-Programme via SSH verwenden</a></li>
+				<li><a href="ssh-de.htm#ssh-f">SSH: GUI mit Konqueror</a></li>
+				<li><a href="ssh-de.htm#ssh-w">SSH: X-Forwarding von Windows</a></li>
+				<li><a href="ssh-de.htm#ssh">SSH: Sicherheit</a></li>
+				<li><a href="samba-de.htm#configure">SAMBA: Windows-Freigaben nutzen</a></li>
+				<li><a href="samba-de.htm#setup">Samba-Server aufsetzen</a></li>
+				<li><a href="internet-connecting-de.htm#dial-mod">56k-Modems</a></li>
+				<li><a href="internet-connecting-de.htm#ndiswrapper">Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-de.htm#wpa">WIFI - WLAN</a></li>
+				<li><a href="internet-connecting-de.htm#internetsharing">Internet teilen</a></li>
+				<li><a href="internet-connecting-de.htm#netcardconfig">Internet &amp; Netzwerk</a></li>
+			</ul>
+		</li>
+		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-de.htm">Systemadministration</a>
+			<ul class="sub-menu" id="sm11">
+				<li><a href="sys-admin-apt-de.htm#apt-cook">APT-Kochbuch, sources.list</a></li>
+				<li><a href="sys-admin-meta-de.htm#meta-pack">Meta-Pakete installieren</a></li>
+				<li><a href="sys-admin-apt-de.htm#apt-install">Neue Pakete installieren</a></li>
+				<li><a href="sys-admin-apt-de.htm#apt-delete">Pakete l&#246;schen</a></li>
+				<li><a href="sys-admin-apt-de.htm#apt-upgrade">Upgrade eines installierten Systems</a></li>
+				<li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Upgrade durch die Live-CD</a></li>
+				<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Upgrade des Kernels</a></li>
+				<li><a href="sys-admin-rdiff-de.htm#rdiff">Backup mit rdiff</a></li>
+				<li><a href="sys-admin-rsync-de.htm#rsync">Backup mit rsync</a></li>
+				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
+				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
+				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
+				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
+				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
+				<li><a href="sys-admin-grub-bootman2-de.htm#what-is-grub">Grub: der Bootmanager</a></li>
+			</ul>
+		</li>
+	</ul>
+<!-- menu ends here --> </div>
+<div id="main-page">
+<div class="divider" id="serv-apache">
+			<h2 id="top-header">sidux LAMP-Stack</h2>
+		
+				<p>Das Akronym LAMP bezieht sich auf eine Reihe freier Software, die gemeinsam genutzt wird, um dynamische Websites oder Server zu betreiben:<br />
+				Linux: Betriebssystem<br />
+				Apache: Web-Server<br />
+				MySQL: Datenbank-Management bzw. Datenbank-Server<br />
+				Perl, PHP und/oder Python: Skriptsprachen</p>
+
+				<h5 class="highlight-2">Zur Beachtung: Der Dersktop-PC, mit dem t?glich gearbeitet wird, soll nicht als Server dienen. Als Server soll ein eigener PC verwendet werden, der ansonsten keine weiteren Aufgaben erf?llt.</h5>
+
+				<p>Verwendungsm?glichkeiten als Server:<br />
+				a) <span class="highlight-3">ein lokaler Testserver f?r Webdesigner ohne Internetverbindung (siehe dieses Kapitel)</span><br />
+				b) ein privater (Daten-)Server mit Internetverbindung<br />
+				c) ein privater Webserver mit umfassender Internetverbindung<br />
+				d) ein kommerzieller Webserver (nicht behandelt in diesem Handbuch)</p>
+
+
+			<h5>Minimale Voraussetzungen</h5>
+				<p>Mindestens 256MB RAM. Weniger RAM wird Probleme bereiten, da ein Server mit MySQL viel RAM ben?tigt, um ansprechend zu laufen. Ohne ausreichenden Speicher gibt MySQL folgende Fehlermeldung aus: "cannot connect to mysql.sock".</p>
+
+			<h4>Das sidux-Paket Generic_Server</h4>
+				
+				<p>Das sidux-Paket Generic_Server besteht aus einer vorpaketierten Installation via Meta-Paket-Installer. Folgende Programme werden installiert:</p>
+<pre>
+apache2
+apache2-utils
+apache2-mpm-prefork
+php5 php5-common
+mysql-server
+mysql-common
+libapache2-mod-php5
+php5-mysql
+phpmyadmin
+</pre>
+				<p class="highlight-2">ACHTUNG! </p>
+<pre>
+apt-get remove --purge splashy
+</pre>
+				<p class="highlight-2">Splashy kann nicht mit mysql</p>
+
+					<p>Die Konfigurationsdatei f?r Apache befindet sich hier:<span class="highlight-3">/etc/apache2/apache2.conf</span>, und das Web-Verzeichnis ist hier: <span class="highlight-3">/var/www</span> </p>
+
+					<p>Um zu pr?fen, ob php installiert ist und korrekt l?uft, wird eine Datei test.php in /var/www mit der Funktion phpinfo() auf die Art erstellt, wie es hier angegeben ist:</p>
+<pre>
+mcedit /var/www/test.php
+
+# test.php
+
+&lt;?php phpinfo(); ? &gt;
+</pre>
+					<p>Danach wird der Browser hierher gelinkt:</p>
+<pre>
+http://localhost
+or 
+http://yourip:80
+</pre>
+					<p>Dies zeigt alle php-Konfigurationen und Grundeinstellungen.</p>
+
+					<p>Die Einstellungen k&#246;nnen nun angepasst werden bzw. virtuelle Domains k&#246;nnen mit Hilfe der Apache-Konfiguration eingerichtet werden.</p>
+
+
+					<p>Um die Installation zu testen, wird folgendes in die URL-Zeile des Browsers eingegeben:</p>
+<pre>
+http://youripaddress/apache2-default/
+</pre>
+					<p>Wenn die Installation erfolgreich und korrekt erfolgt ist, sieht man eine Begr&#252;&#223;ungsnachricht.</p>
+
+					<p>Das Rootverzeichnis f&#252;r apache2 ist <span class="highlight-3">/var/www</span> Dies muss folgenderma&#223;en angepasst werden: </p>
+<pre>
+mkdir /home/myself/www
+ln -s /home/myself/www /var/www
+</pre>
+					<p>Danach kann die Website innerhalb des $HOME als normaler User editiert werden.</p>
+					
+	</div>
+<div class="divider" id="serv-ftp">
+			<h2>FTP-Clients</h2>
+				<p>Empfohlen ist SSH (Informationen im Handbuch unter <a href="ssh-de.htm">SSH</a>, sidux liefert mit dem Konqueror einen FTP-Client mit, welcher auch erm&#246;glicht, Dateien upzuloaden.</p>
+
+
+	</div>
+<div class="divider" id="serv-sec">
+			<h2>Aktivieren von Sicherheitsprotokollen f&#252;r Webserver</h2>
+
+				<h3>Firewalls</h3>
+				<p><span class="highlight-2">Ohne Firewall gibt es absolut keine Sicherheit f&#252;r Server. Empfohlene Vorgehensweise ist, ALLES zu blockieren, solange es nicht ben&#246;tigt ist, und nach Gebrauch wieder zu blocken.</span>.</p>
+<pre>
+21 (ftp)
+22 (SSH)
+25 110 (email)
+443 (SSL-http or https)
+993 (imap ssl)
+995 (pop3 ssl)
+80 (http)
+und auch jeder andere verwendete Port!
+</pre>
+
+				<h3>Grunds&#228;tzlicher Schutz von Server-DateienProtect Server Files by Default</h3>
+
+					<p>Ein Aspekt von Apache, der gelegentlich missverstanden wird, ist der grunds&#228;tzliche Zugang (default access). Das bedeutet, solange die Konfiguration nicht ver&#228;ndert ist, dass der Server Clients bedienen kann, wenn der Server seinen Weg zu einem File mittels nomaler URL-Mapping-Regeln finden kann.</p>
+
+					<p>Zum Beispiel:</p>
+<pre>
+ 1. # cd /; ln -s / public_html
+ 2. Accessing http://localhost/~root/
+</pre>
+					<p class="highlight-2">Dies erlaubt Clients, das ganze Dateisystem zu durchsuchen! Um dies zu umgehen, muss folgendes zur Server-Konfiguration gef&#252;gt werden:</p>
+<pre>
+&lt;Directory /&gt;
+   Order Deny,Allow
+   Deny from all
+&lt;/Directory&gt;
+</pre>
+				<p>Dies verbietet grunds&#228;tzlich Zugang zu Bereichen des Dateisystems. Dementsprechend m&#252;ssen Bl&#246;cke &lt;Directory&gt; der Konfiguration beigef&#252;gt sein, welche Zugriff ausschlie&#223;lich zu erlaubten Bereichen gestatten. Zum Beispiel:</p>
+<pre>
+&lt;Directory /usr/users/*/public_html&gt;
+    Order Deny,Allow
+    Allow from all
+&lt;/Directory&gt;
+&lt;Directory /usr/local/httpd&gt;
+    Order Deny,Allow
+    Allow from all
+ &lt;/Directory&gt;
+</pre>
+				<p>Besondere Aufmerksamkeit muss dem Zusammenspiel der Anweisungen &lt;Location&gt; und &lt;Directory&gt; geschenkt werden. Zum Beispiel, eine Anweisung &lt;Directory /&gt; kann den Zugang unterbinden, eine Anweisung &lt;Location /&gt; kann dieses Verbot jedoch &#252;berschreiben und somit umgehen.</p>
+
+				<p>Auch sollte man Experimente mit der Anweisung UserDir vermeiden; eine Konfiguration "./" h&#228;tte f&#252;r root denselben Effekt, wie er im ersten Beispiel gezeigt wurde. F&#252;r die Version Apache 1.3 oder h&#246;her, empfehlen wir nachdr&#252;cklichst, folgende Zeile in der Konfigurationsdatei einzuf&#252;gen:</p>
+<pre>
+UserDir disabled root 
+</pre>
+
+	</div>
+<div class="divider" id="serv-ssl">
+			<h2>SSL</h2>
+
+ 				<p>Ausf&#252;hren des Skripts “apache2-ssl-certificate”</p>
+<pre>
+# apache2-ssl-certificate
+</pre>
+				<p>Folgender Dialog wird gestartet, um alle ben&#246;tigten Informationen eintragen zu k&#246;nnen:</p>
+<pre>
+Creating self-signed certificate
+replace it with one signed by a certification authority (CA) enter your ServerName at the Common Name prompt. If you want your certificate to expire after x days call this programm
+with -days x
+-----
+Generating a 1024 bit RSA private key
+--------
+writing new private key to '/etc/apache2/ssl/apache.pem'
+--------
+You are about to be asked to enter information that will be incorporated into your certificate request.
+-----------
+What you are about to enter is what is called a Distinguished Name or a DN. There are quite a few fields but you can leave some blank. For some fields there will be a default value,
+----------
+If you enter '.', the field will be left blank.
+</pre>
+<pre>
+Country Name (2 letter code) [GB]:
+
+State or Province Name (full name) [Some-State]:
+
+Locality Name (eg, city) []:
+
+Organization Name (eg, company; recommended) []:
+
+Organizational Unit Name (eg, section) []:
+
+server name (eg. ssl.domain.tld; required!!!) []:
+
+Email Address []:
+</pre>
+
+					<p>Ausf&#252;hren des Skripts “a2enmod ssl”  i.e</p>
+<pre>
+ # a2enmod ssl
+</pre>
+ 					<p>Dieses generiert automatisch einen symbolischen Link zwischen mods- available und mods – enabled </p>
+
+					<p>Erstellen einer Kopie von '/etc/apache2/sites-available/default' in der Datei /etc/apache2/sites-available/ssl (Dateiname ist nun 'ssl')</p>
+<pre>
+# cp /etc/apache2/sites-available/default /etc/apache2/sites-available/ssl
+</pre>
+					<p>Erstellen eines symbolischen Links zu dieser neuen Konfigurationsdatei, um sie zu nutzen</p>
+<pre>
+#  ln -s /etc/apache2/sites-available/ssl /etc/apache2/sites-enabled/                     
+(oder)
+#a2ensite ssl
+</pre>
+ 					<p>Wenn Einstellungen der Basiskonfiguration in /etc/apache2/apache2.conf und die Grundeinstellung der Dokument-Route in /etc/apache2/sites-available/default ge&#228;ndert sind, muss der Apache-Server neu gestartet werden.</p>
+
+ 					<p>Der Apache-Server wird mit folgendem Befehl neu gestartet:</p>
+<pre>
+#/etc/init.d/apache2 restart
+</pre>
+ 					<p>Nun wird die Port-Adresse /etc/apache2/ports.conf Angepasst. In der Grundeinstellung wird auf Port 80 gelauscht, und da mit SSL installiert wird, hat dies auf Port 443 ge&#228;ndert zu werden.</p>
+<pre>
+ Listen 443
+</pre>
+					<p>/etc/apache2/sites-available/ssl (oder wie immer die ssl-Konfigurationsdatei benannt wurde) wird editiert und Port 80 wird auf 443 ge&#228;ndert.</p>
+
+					<p>Darunter werden zwei Zeilen in in /etc/apache2/apache2.conf eingef&#252;gt:</p>
+<pre>
+  SSLEngine On
+
+  SSLCertificateFile /etc/apache2/ssl/apache.pem
+</pre>
+					<p>Die Datei des SSLCertificateFile /etc/apache2/ssl/apache.pem wird editiert und der Ort der Zertifikatsdateien und Zertifikatsschl&#252;ssel eingegeben. Zum Beispiel:</p>
+<pre>
+Ex:- SSLCertificateFile /etc/apache2/ssl/online.test.net.crt
+        SSLCertificateKeyFile /etc/apache2/ssl/online.test.net.key
+</pre>
+					<p>Um ServerSignature auf off (aus) zu setzen, wird /etc/apache2/apache2.conf editiert und zwei Zeilen werden eingef&#252;gt:</p>
+<pre>
+  ServerSignature Off
+ ServerTokens ProductOnly
+</pre>
+
+ 					<p>Wenn andere Typen von Index-Dateien gew&#252;nscht sind, muss folgende Zeile in der Datei /etc/apache2/apache2.conf angepasst werden</p>
+<pre>
+ DirectoryIndex index.html index.cgi index.pl index.php index.xhtml index.shtml
+</pre>
+ 					<p>Neustart des Apache-Servers</p>
+<pre>
+ /etc/init.d/apache2 restart
+</pre>
+
+					<p>Nun soll die Sandbox eines Testservers eingerichtet sein. Dieser Testserver soll <span class="highlight-2">NICHT mit dem Internet verbunden werden. Zu diesem Zweck soll ausschlie&#223;lich ein PC verwendet werden, der als Server dienen soll!</span></p>
+
+	</div>
+					<p>Quellen:</p>
+					
+					<p><a href="http://www.mysql-apache-php.com/"> http://www.mysql-apache-php.com</a></p>
+					<p><a href="http://httpd.apache.org/docs/1.3/misc/security_tips.html"> http://httpd.apache.org/docs/1.3/misc/security_tips.html</a></p>				
+					<p><a href="http://www.debianhelp.co.uk/webserver.htm"> http://www.debianhelp.co.uk/webserver.htm</a></p>
+				
+			<div id="rev">Page last revised UTC 15/03/2007 0200hrs</div>
+
+</div>
+</body>
+</html>

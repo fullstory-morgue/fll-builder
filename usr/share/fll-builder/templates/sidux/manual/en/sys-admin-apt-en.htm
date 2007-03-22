@@ -4,21 +4,22 @@
 <head>
 	<title>sidux Manuals - APT-Guide</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
+	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
+	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
 <body id="sys-admin">
-<div id="menu">
-<!-- menu starts here -->
+<div id="menu"> <!-- menu starts here -->
+<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-	<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-<!--Welcome to the Official sidux-manual snapshot-32a-PRE-5-Chaos-2007-->
-<!-- menu last updated by bluewater 21/02/2007 1300hrs ADEST 21/02/2007 0200hrs UTC -->
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
@@ -72,23 +73,6 @@
 				<li><a href="part-size-examp-en.htm#part-example">Partition Size Examples</a></li>
 			</ul>
 		</li>
-		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
-			<ul class="sub-menu" id="sm3">
-				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
-				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
-				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
-				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
-				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
-				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
-				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
-				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
-				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
-				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
-				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
-				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
-				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
-			</ul>
-		</li>
 		<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="hd-install-en.htm">Installation options</a>
 			<ul class="sub-menu" id="sm8">
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
@@ -117,9 +101,38 @@
 				<li><a href="wm-kde-en.htm#ch-th">Changing Themes</a></li>
 			</ul>
 		</li>
+		<li  onmouseover="showHide( 14 );" onmouseout="startTime();" ><a href="lamp-apache-en.htm">sidux LAMP Stack</a>
+			<ul class="sub-menu" id="sm14">
+				<li><a href="lamp-apache-en.htm#serv-apache">sidux LAMP Stack</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ftp">FTP Clients</a></li>
+				<li><a href="lamp-apache-en.htm#serv-sec">Security Protocols</a></li>
+				<li><a href="lamp-apache-en.htm#serv-ssl">SSL</a></li>
+				<li><a href="lamp-sql-en.htm#serv-mysql">MySQL Setup</a></li>
+				<li><a href="lamp-ppp-en.htm#serv-php">PHP in Apache</a></li>
+			</ul>
+		</li>
+
+		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
+			<ul class="sub-menu" id="sm3">
+				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
+				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
+				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
+				<li><a href="ssh-en.htm#ssh-x">X Window Apps via SSH</a></li>
+				<li><a href="ssh-en.htm#ssh-f">GUI SSH with Konqueror</a></li>
+				<li><a href="ssh-en.htm#ssh-w">SSH X-Forwarding from Windows-PC</a></li>
+				<li><a href="ssh-en.htm#ssh">SSH and Security</a></li>
+				<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
+				<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
+				<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
+				<li><a href="internet-connecting-en.htm#internetsharing">Internet Sharing</a></li>
+				<li><a href="internet-connecting-en.htm#netcardconfig">Getting Online</a></li>
+			</ul>
+		</li>
 		<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="sys-admin-apt-en.htm">System Administration</a>
 			<ul class="sub-menu" id="sm11">
-				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
+				<li><a href="sys-admin-meta-en.htm#meta-pack">Meta-Package Installer</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
@@ -138,34 +151,47 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here -->
-</div>
+<!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="apt-cook">
-		<h2>A small APT-Guide Cookbook</h2>
+		<h2 id="top-header">A small APT-Guide Cookbook</h2>
 
 		<h3>What does APT mean?</h3>
  			<p>APT is short for Advanced Packaging Tool and is a collection of programs and scripts that help both the sysadmin (in your case root) with the installation and management of deb-files but equally the system itself to know what is installed.</p>
+	</div>
+	<div class="divider" id="sources-list">
+			<h2>Sources List</h2>
+				<p>The "APT" -system needs a config-file: <span class="highlight-3">/etc/apt/sources.list</span> and it contains the information about the locations of the installable and upgradeable packages.</p>
+ 				<p>All sidux ISOs already use the following sources.list as default:</p>
 
-			<p>For that, the "APT" -system needs a config-file: /etc/apt/sources.list; it contains the information about the locations of the installable and upgradeable packages . An example of such a file from a typical sidux Installation is as follows:</p>
+<pre>
+deb http://ftp.de.debian.org/debian unstable main
+deb http://sidux.com/debian/ sid main fix.main
+</pre>
 
-			<p>NOTE: In this example ftp.de indicates its using german repositories.You may edit this file, as root, to use the repositories closest to you, simply by changing the country,ie change ftp.de to ftp.us, or ftp.uk. Most countries have local mirrors.Bandwidth is conserved; speeds improved.</p>
- 
-<pre># See sources.list(5) for more information, especialy
+				<p>Further entries for non-free needs can be found in our always updated <a href="http://sidux.com/files/misc/sources.list">sources.list.</a>  As at 27/02/2007 0800 hrs UTC they are:</p>
+<pre>
+# See sources.list(5) for more information, especialy
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 
-deb http://ftp.debian.org/debian/ sid main
-#deb-src http://ftp.debian.org/debian/ sid main
+# Unstable
+deb http://ftp.de.debian.org/debian unstable main contrib non-free
+# deb-src http://ftp.de.debian.org/debian unstable main contrib non-free
 
-#deb http://ftp.debian.org/debian/ testing main
-#deb-src http://ftp.debian.org/debian/ testing main
+# Testing
+# deb http://ftp.de.debian.org/debian testing main contrib non-free
+# deb-src http://ftp.de.debian.org/debian testing main contrib non-free
 
-#deb http://ftp.debian.org/debian/ experimental main
-#deb-src http://ftp.debian.org/debian/ experimental main
+# Experimental
+# deb http://ftp.de.debian.org/debian experimental main contrib non-free
+# deb-src http://ftp.de.debian.org/debian experimental main contrib non-free
 
-deb http://sidux.com/debian/ sid main fix.main
-#deb-src http://sidux.com/debian/ sid main fix.main</pre>
+# sidux
+deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+#deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+</pre>
+				<p>NOTE: In this example ftp.de indicates its using german repositories.You may edit this file, as root, to use the repositories closest to you, simply by changing the country,ie change ftp.de to ftp.us, or ftp.uk. Most countries have local mirrors.Bandwidth is conserved; speeds improved.</p>
 
 			<p>To be able to obtain updated information on the packages APT uses a database.  This database contains the packages but also which other packages are needed for that package to work (called dependencies). The program apt-get uses this database when installing your chosen packages to resolve all the dependencies and thereby to guarantee that the chosen packages will work. The updating of this database is done by the command apt-get update.</p>
  
@@ -184,7 +210,7 @@ Get:6 http://ftp.de.debian.org unstable Release [79.6kB]
 	<div class="divider" id="apt-install">
  		<h2>Installing a new package</h2>
  
-			<p>Presuming the Apt-database is updated and the name of the package is known, then the following command will install a package called example and all its dependencies: (further on you will see how to search and find packages.)</p>
+			<p>Presuming the Apt-database is updated and the name of the package is known, then the following command will install a package called qemu, for example, and all its dependencies: (further on you will see how to search and find packages.)</p>
 
  
 <pre># apt-get install qemu
@@ -241,7 +267,7 @@ Removing gaim ...
 Purging configuration files for gaim ...
 </pre>
 
-			<p>Here the file /etc/gaim was not only deleted all config files were also purged/deleted, IF however an application holds or files because they were not created during the installation of the package that we want to delete, they will remain.</p>
+			<p>Here the files in directory /etc/gaim were not only deleted, all config files were also purged/deleted, IF however an application holds or files because they were not created during the installation of the package that we want to delete, they will remain.</p>
 
 			<p>After the database is updated, one can find out which packages have new/newer versions:</p>
 
@@ -279,7 +305,6 @@ gcc-4.0 is already the newest version.
 </pre>
 
 		</div>
-
 	<div class="divider" id="apt-upgrade">
 		<h2>Upgrade of an Installed System</h2>
 
@@ -306,36 +331,54 @@ Y
 (Y will download the upgraded packages without touching the installed system)
 </pre>
 
-				<p>After the 'dist-upgrade -d' has downloaded, and wish to complete the dist-upgrade  please follow these  instructions:</p>
+				<p>After the 'dist-upgrade -d' has downloaded, and wish to complete the dist-upgrade  please follow these instructions:</p>
 
-		<h4>Download and install</h4>
+		<h4>Download and install (example)</h4>
  
 <pre>
 # apt-get dist-upgrade
 Reading package lists... Done
 Building dependency tree... Done
 Calculating upgrade... Done
-The following packages will be REMOVED:
-  checkmem-kanotix ddcxinfo-kanotix etcskel-kanotix gprsconnect-kanotix
-  kanotix-dsl kanotix-graphics kanotix-kernelhacking kanotix-menu
-  kanotix-ndiswrapper kanotix-screenres kanotix-scripts kanotix-setpassword
-  kanotix-udev-config kdeservicemenus-kanotix modemlink-kanotix
-  netcardconfig-kanotix networkconfig-kanotix pdf-printerconfig-kanotix
-  rebuildfstab-kanotix rootshell-kanotix sambastart-kanotix
-  scanpartitions-kanotix smbconf-kanotix sshstart-kanotix user-profile-kanotix
-The following NEW packages will be installed:
-  busybox-sidux configure-dsl configure-freenx configure-gprs
-  configure-modemlink configure-ndiswrapper configure-networkcard
-  configure-screenres configure-xawtv ddcxinfo-sidux etcskel-sidux genisoimage
-  kdeservicemenus-sidux libdns22 libenchant1c2a libsexy2 networkconfig-sidux
-  ppp-scripts rebuildfstab rootshell scanpartitions sidux-kernelhacking
+The following packages have been kept back:
+  iceweasel
+The following packages will be upgraded:
+  alsa-base apt apt-utils bsdutils configure-screenres debconf debconf-i18n
+  debconf-utils findutils fontconfig fontconfig-config gconf2 gconf2-common
+  hwinfo ifplugd install-meta isdnutils-base kde-i18n-de libasound2 libc6
+  libc6-dev libdb4.3 libdebian-installer-extra4 libdebian-installer4
+  libfontconfig1 libgconf2-4 libgl1-mesa-dri libgl1-mesa-glx libglu1-mesa
+  libhd13 libkrb53 libmysqlclient15off libnss-mdns libpth20 libsepol1 libslp1
+  libssl0.9.8 libvolume-id0 libwrap0 lilo linux-sound-base locales login lvm2
+  mount mplayer mysql-client-5.0 mysql-common mysql-server mysql-server-5.0
+  openbsd-inetd openssl os-prober passwd phpmyadmin rebuildfstab scribus-ng
+  tcpd ttf-dejavu ucf udev update-inetd util-linux vpnc wpasupplicant
+65 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Need to get 3687kB/117MB of archives.
+After unpacking 263kB of additional disk space will be used.
+Do you want to continue [Y/n]?
 </pre>
 				
 
 
-			<p><span  class="highlight-2">NEVER EVER do a dist-upgrade nor upgrade whilst in X.</span><span  class="highlight-4">  Always check Current Warnings on the <a href="http://sidux.com">sidux</a> main web site. These warnings are there for a reason and because of the nature of Debian sid/unstable which is updated on a daily basis.  Log out of KDE. Go to Textmode by doing Ctrl+Alt+F1 ; logon as root, and then type init 3 ; apt-get update ; apt-get dist-upgrade ;run fix-fonts ; run fglrx or nvidia script if xorg updated and you have such a graphics adapter  otherwise do ;  init 5 &amp;&amp; exit [NEVER DIST-UPGRADE [or UPGRADE] with adept or synaptic]</span></p>
+			<p><span  class="highlight-2">NEVER EVER do a dist-upgrade nor upgrade whilst in X.</span><span  class="highlight-4">  Always check Current Warnings on the <a href="http://sidux.com">sidux</a> main web site. These warnings are there for a reason and because of the nature of Debian sid/unstable which is updated on a daily basis.  Log out of KDE. Go to Textmode by doing Ctrl+Alt+F1 ; logon as root, and then type init 3 ; apt-get update ; apt-get dist-upgrade ;run fix-fonts ; run install-binary-gfx script if xorg updated and you have such a graphics adapter  otherwise do ;  init 5 &amp;&amp; exit [NEVER DIST-UPGRADE [or UPGRADE] with adept, aptitude or synaptic ] There is one exception!! <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a> </span></p>
 
-			<p>If you do not go to init 3, well tough for you ,, you have been warned</p>
+			<p class="highlight-2">If you do not go to init 3, well tough for you ,, you have been warned!!!!!!!!!!!!!</p>
+
+				<h5>The Reasons NOT to use anything else but apt-get for a dist-upgrade</h5>
+
+				<p>Package managers like adept, aptitude, synaptic and kpackage  are not always able to account for the huge amount of changes which happen in Sid (depedency changes, name changes, maintainer script changes, ...). That's not the fault of the developers o those tools though, they write a excellant tools and fabulous for the debian stable branch, they are simply just not suitable for the very special needs of Debian Sid.</p>
+
+				<p>Use whatever you like to search for packages, but stick with apt-get for actually installing/removing/dist-upgrading</p>
+
+				<p>Package managers like adept, aptitude, synaptic and kpackage are at the least, non-deterministic (for complex package selection),  mix that with a quickly moving target like sid and even worse an external  repository of questionable quality (we don't use or recommend those,  but they're a reality on your user systems) and you will be courting disaster.</p>
+
+				<p>apt-get on the other hand strictly does what it is asked to do,  if there is any breakage you can pinpoint and debug/ fix the cause,  if apt-get wants to remove half of the system (due to library transitions) it's the admin's call (that means you) to have at least a serious look.</p>
+
+				<p>This is the reason why debian builds use apt-get, not the other package manager tools.</p>
+
+				<p class="highlight-3">There is one exception!! <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a> </p>
+
 	</div>
 	<div class="divider" id="apt-cache">
 			<h2>Searching for a package with apt-cache</h2>
@@ -419,7 +462,7 @@ Task: gnome-desktop</pre>
 			<p><a href= "http://www.debian.org/doc/user-manuals#apt-howto">A complete description of the APT-System can be found at APT-HOWTO</a> </p>
 
 	</div>
-			<div id="rev">Page last revised 08/02/2007 0100 UTC</div>
+			<div id="rev">Page last revised 12/03/2007 1200 UTC</div>
 
 </div>
 </div>

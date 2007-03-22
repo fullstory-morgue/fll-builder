@@ -1,5 +1,5 @@
 /*
-Last updated by h2 08/01/2007 1700hrs ADEST :: 08/01/2007 0600hrs UTC
+Last updated by bluewater & h2 17/03/2007 1700hrs ADEST :: 17/03/2007 0600hrs UTC
 */
 #menu {
 	width:164px;/* make 2px less than frame width, avoids ff/iw bottom scroll bar */
@@ -99,14 +99,15 @@ ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:
 
 #menu #flags {
 	text-align:center;
-	margin: 5px auto 0 auto;
+	margin: -1px 0 -1px 1px;
+	line-height:12px;
 	padding:0;
 }
 /* border for img must be same as background for this trick to work, then hover acts */
 #menu #flags img {
-	margin:2px;
-	width:26px;
-	height:16px;
+	margin:1px;
+	width:20px;
+	height:12px;
 	border:2px solid #EAEDF4;
 }
 #menu #flags a, #menu #flags a:visited {
