@@ -56,6 +56,7 @@ FLL_PACKAGES=(
 	kpoker
 	kpowersave
 	kreversi
+	krusader
 	ksnapshot
 	ktorrent
 	kvpnc
