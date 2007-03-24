@@ -44,9 +44,7 @@ install_local_debs() {
 		cp -v "$deb" "$TMPDEBDIR"
 	done
 
-	if [[ $(ls -A $TMPDEBDIR/*.deb) ]]; then
-		chroot_install_debs_from_dir "$TMPDEBDIR" && return 0
+	if [[ $(ls -A $TMPDEBDIR/*.deb 2>/dev/null) ]]; then
+		chroot_install_debs_from_dir "$TMPDEBDIR"
 	fi
-
-	return 1
 }
