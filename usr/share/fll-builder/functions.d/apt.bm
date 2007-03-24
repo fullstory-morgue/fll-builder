@@ -39,11 +39,10 @@ install_local_debs() {
 	local LOCDEBS="$1"
 	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.localdebs.XXXXX)
 
-	if [[ -d $LOCDEBS && $(ls -A $LOCDEBS/*.deb) ]]; then
-		cp -v "$LOCDEBS"/*.deb "$TMPDEBDIR"
-	elif [[ -f $LOCDEBS ]]; then
-		cp -v "$LOCDEBS" "$TMPDEBDIR"
-	fi
+	for deb in $LOCDEBS $LOCDEBS/*.deb; do
+		[[ $deb == *.deb && -f $deb ]] || continue
+		cp -v "$deb" "$TMPDEBDIR"
+	done
 
 	if [[ $(ls -A $TMPDEBDIR/*.deb) ]]; then
 		chroot_install_debs_from_dir "$TMPDEBDIR" && return 0
