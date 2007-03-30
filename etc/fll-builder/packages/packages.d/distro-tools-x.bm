@@ -14,7 +14,7 @@ FLL_PACKAGES+=(
 	rootshell
 	sidux-browser
 	sidux-irc
-	sidux-menu
+	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
 	xorgconfig-sidux

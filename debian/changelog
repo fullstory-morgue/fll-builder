@@ -62,7 +62,10 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * anally retentive error code function cleanup
   * manual update sid-man-snap-40-livecd-07-02
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 23 Mar 2007 02:08:17 +1100
+  [ Joaquim Boura ]
+  * use sidux-xdg instead of sidux-menu
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Fri, 30 Mar 2007 14:40:24 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 
