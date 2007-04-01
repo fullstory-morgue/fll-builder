@@ -18,6 +18,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * mkdosswapfile doesn't exist anymore.
   * shuffle lvm2 and fake RAID support around.
   * add mdadm to utils-fakeraid.
+  * add aufs option for menu.lst.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -65,7 +66,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
 
- -- Joaquim Boura <x-un-i@sidux.com>  Fri, 30 Mar 2007 14:40:24 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 01 Apr 2007 22:23:24 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 
