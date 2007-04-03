@@ -10,10 +10,10 @@
 	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
-<body id="sys-admin">
+<body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,7 +150,8 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
 	<div class="divider" id="apt-cook">
 		<h2 id="top-header">Ein kleines APT-Kochbuch</h2>
@@ -382,9 +382,27 @@ Richte sshstart-sidux ein (0.5.13) ...
 Richte infobash ein (2.53) ...
 </pre>
 
-		<p><span  class="highlight-2">Bitte NIEMALS "apt-get dist-upgrade" oder "apt-get upgrade" in der graphischen Umgebung X durchf&#252;hren.</span><br /><br /><span  class="highlight-4">  Besuchen Sie vor einem Upgrade die <a href="http://sidux.com">sidux-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungensind wegen der Struktur von Debian sid/unstable notwendig, welches t&#228;glich neue Programmpakete in seine Repositorien aufnimmt.<br /><br />Vorgehen: Abmeldung aus der KDE Desktop-Umgebung und mit Ctrl+Alt+F1 in den Textmodus wechseln; anmelden als root, im Anschluss Eingabe von "init 3" (ohne Anf&#252;hrungszeichen); die weiteren Befehle sind: apt-get update; apt-get dist-upgrade; fix-fonts; install-binary-gfx nach einem Upgrade von Xorg und bei Nutzung von propriet&#228;ren Grafiktreibern. Abschluss des Upgrades bildet "init 5 &amp;&amp; exit".<br /><br />Und nochmal unsere Warnung: Bitte NIEMALS ein dist-upgrade oder upgrade mit einem graphischen Programm wie synaptic, adept, aptitude oder kpackage durchf&#252;hren!</span> Ausgenommen ist das korrekt kodierte Skript <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a>.</p>
+<div class="box block">
+			<div class="highlight-2">Bitte NIEMALS "apt-get dist-upgrade" oder "apt-get upgrade" in der graphischen Umgebung X durchf&#252;hren.<div class="highlight-4">  Besuchen Sie vor einem Upgrade die <a href="http://sidux.com">sidux-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches t&#228;glich neue Programmpakete in seine Repositorien aufnimmt.</div>
+<pre>
+# Aus der KDE-Desktopumgebung abmelden
+# In den Textmodus gehen mit Ctrl+Alt+F1 
+# Einloggen als root
+init 3
+apt-get update
+apt-get dist-upgrade
+fix-fonts
+get-sidux-binary-gfx # Neuinstallation der benötigten Grafiktreiber, wenn xorg einen Upgrade erfahren hat
+init 5 &amp;&amp; exit 
+</pre>
 
-		<p class="highlight-2">Bitte in einem dynamischen System wie sidux obigen Warnhinweis wirklich ernst nehmen, da Fehler nach einem Dist-Upgrade in Runlevel 5 sehr schwer zu beheben und praktisch nicht supportbar sein k&#246;nnen.</p>
+		<div class="highlight-2">Und nochmal unsere Warnung: Bitte NIEMALS ein dist-upgrade oder upgrade mit einem graphischen Programm wie synaptic, adept, aptitude oder kpackage durchf&#252;hren!</div> Ausgenommen ist das korrekt kodierte Skript <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a>.</div>
+	</div>
+	</div>
+<div class="spacer02"></div>
+		<p>Für neue Nutzer von Sidux, kann das Skript <a href="http://techpatterns.com/forums/about736.html">!h2 d-u-fixes</a>eine große Hilfe bedeuten, da es den Prozess eines dist-upgrades halbautomatisiert.</p>
+
+			<p class="highlight-2">Und nochmal unser Warnhinweis: Ein dist-upgrade, das nicht im Runlevel 3 (init 3) durchgeführt wird, kann zu großen, nicht unterstützbaren Problemen führen!</p>
 
 				<h5>Gr&#252;nde, warum man nur apt-get f&#252;r einen Dist-Upgrade verwenden soll</h5>
 
@@ -399,7 +417,7 @@ Richte infobash ein (2.53) ...
 				<p>Dies ist der Grund, warum Debian-Builds apt-get nutzen und nicht andere Paketmanager.</p>
 
 				<p class="highlight-3">Zus&#228;tzlich empfohlen ist nur das korrekt kodierte Skript <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a>. </p>
-</div>
+	
 	<div class="divider" id="apt-cache">
 			<h2>Mit apt-cache nach Programmpaketen suchen</h2>
 		<p>Ein sehr nützlicher Befehl im APT-System ist apt-cache, damit werden die APT-Datenbank durchsucht und Informationen über die Pakete ausgegeben; z. B. die Liste aller Pakete, die einen "screensaver" enthalten oder ansprechen, erhält man durch folgenden Befehl:</p>
@@ -477,9 +495,9 @@ Task: gnome-desktop</pre>
 <p><a href= "http://www.debian.org/doc/user-manuals#apt-howto">Eine vollständige Beschreibung des APT-Systems findet man im APT-HOWTO</a> </p>
 
 	</div>
+	</div>
 
 
 	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
-</div>
 </body>
 </html>

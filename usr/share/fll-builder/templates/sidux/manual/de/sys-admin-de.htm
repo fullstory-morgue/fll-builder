@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,7 +150,8 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
 	<div class="divider" id="start-services">
 		<h2 id="top-header">Dienste starten in sidux</h2>
@@ -196,12 +196,126 @@ und verwende den passwd Befehl zum Erstellen eines neuen Passworts:
 
 	</div>
 	<div class="divider" id="mon-res">
-		<h2>Bildschirmauflösungen und Wechsel des Monitors</h2>
+					<h2>Bildschirmauflösungen, Monitore und Schriftarten</h2>
 
-			<h5>TBA</h5>
+				<h3>Änderung der Bildschirmauflösung</h3>
+					<p>Als Root wird in der Konsole folgendes durchgeführt:</p>
+<pre>
+change-res 1024x768
+oder  1600x1200 1400x1050 1280x1024 1152x864 800x600
+</pre>
+<pre>
+fix-res 1024x768
+oder 1600x1200 1400x1050 1280x1024 1152x864 800x600 
+</pre>
+				<p>Neustart von X mittels </p>
+<pre>
+ctrl+alt+backspace
+</pre>
+				<h3>Monitore</h3>
+				
+				<p class="highlight-2">Dazu muss man die Konfigurationsdatei von xorg editieren, daher muss unbedingt vorher ein Backup von xorg.conf angelegt werden!</p>
+				
+				<p>Folgende Anleitung wird aller Voraussicht nach mit Veröffentlichung von xorg 7.3 Ende 2007 obsolet sein.</p>
 
-	<div class="spacer05"></div>
-			<div id="rev">Content last revised UTC 06/02/2007 0800hrs</div>
+			<h4>Einfacher Monitor mit ATI</h4>
+<pre>
+Single head :    aticonfig --initial --input=/etc/X11/xorg.conf
+</pre>
+
+			<h4>Dual-Head (zwei) Monitore</h4>
+
+			<h5>Mit nativem ati-Treiber</h5>
+
+				<p><a href="http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794"> http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794</a>. In diesem Forums-Thread finden sich funktionierende xorg.conf-Einstellungen mit dem freien Radeon-Treiber.</p>
+
+			<h5>Nicht freier ati-Treiber</h5>
+
+				<p>Zunächst muss der nicht freie Treiber (fglrx) installiert werden.</p>
+<pre>
+get-sidux-gfx
+oder
+sgfxi / du-fixes-h2.sh
+</pre>
+				<p>Bitte die Anleitung im<a href="hw-dev-hw-dri-en.htm"> sidux-Handbuch</a> beachten.</p>
+
+				<p>Im Anschluss daran muss der Grafikserver X verlassen werden.</p>
+<pre>
+ctrl+alt+F1
+root
+[Passworteingabe] # wird nicht ausgegeben
+init 3
+</pre>
+				<p>Dann:</p>
+<pre>
+aticonfig --dtop=horizontal
+init 5 &amp;&amp; exit
+</pre>
+
+				<p>Falls die Monitoranordnung vertauscht ist:</p>
+<pre>
+aticonfig --dtop=horizontal,reverse
+</pre>
+
+				<p>Zur weiteren Information kann die Hilfe-Anleitung gelesen werden, welche sehr ausführlich ist und umfassende Optionen wie Beispiele bereit stellt:</p>
+<pre>
+aticonfig --help
+</pre>
+				<p>Zur Beachtung: Beide Monitore müssen dieselbe Auflösung besitzen. Im Regelfall stellt man die höchste Auflösung des leistungsschwächeren Monitors ein. Die Spezifikationen der Monitore bitte in den Handbüchern der Monitore nachschlagen, falls die maximale Auflösung unbekannt ist.</p>
+
+				<p>In dem Forumsthread <a href="http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=20231#20231"> http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=20231#20231</a> ist weitere Information zu finden.</p>
+				
+
+			<h5>nvidia</h5>
+				<p>Für den nicht freien nvidia-Treiber kann das Konfigurationsprogramm für xorg von nvidiaverwendet werden (<a href="http://www.sorgonet.com/linux/nv-online/"> http://www.sorgonet.com/linux/nv-online/</a>) und die Einstellungen können in diesem vorgenommen werden. Auch hier ist zu beachten: die maximale Auflösung des schwächeren Monitors soll gewählt werden bzw. beide Monitore müssen auf die gleiche Auflösung eingestellt sein.</p>
+
+
+
+
+			<h2>Schriftarten in sidux</h2>
+				<h5>Korrekte DPI-Einstellung und Grundlegendes</h5>
+
+				<p>DPI-Einstellungen sind schwierig zu ermitteln, aber letztlich durch xorg perfekt umgesetzt, wenn DisplaySize die korrekten physischen Bildschirmdimensionen in der Monitor-Sektion ("Monitor Section") von /etc/X11/xorg.conf angibt.</p>
+
+				<h6>Korrekte Bildschirmauflösungen und Bildwiederholungsraten</h6>
+
+				<p>Jeder Monitor hat seine eigene perfekte Einstellungskombination, aber leider übergeben nicht alle Monitore die perfekten DCC-Werte, so muss manchmal manuell eingegriffen werden, um die Grundeinstellungen zu überschreiben.</p>
+
+				<h5>Korrekte Grafiktreiber</h5>
+
+				<p>Einige neuere Grafikkarten von ATI und Nvidia harmonieren nicht besonders mit den freien Xorg-Treibern. Einzig vernünftige Lösung ist in diesen Fällen die Installation von kommerziellen closed-source Treibern. Aus rechtlichen Gründen kann sidux diese nicht vorinstallieren. Eine Anleitung zur Installation dieser Treiber finden Sie auf folgender Seite des<a href="hw-dev-hw-dri-de.htm"> Handbuchs</a>.</p>
+
+				<h5>Basisauswahl der Schriftarten, ihre Darstellungsart und ihre Größe</h5>
+
+				<p>sidux nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. Wenn eigene Schriftarten gewählt bzw. die DPI-Zahl in X oder Iceweasel bzw. Iceape verändert werden, müssen eventuell neue Konfigurationsanpassungen als Root vorgenommen werden, um das gewünschte Schriftbild zu erhalten:</p>
+<pre>
+dpkg-reconfigure fontconfig-config
+</pre>
+				<p>Falls dieser Befehl Änderungen nicht gestattet, kann der Neuaufbau des Font-Caches eine Lösung bedeuten (der zweite Befehl ist ohne Zeilenumbruch, d. h. in einer Zeile einzugeben):</p>
+<pre>
+rm -rf /etc/fonts
+apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config
+</pre>
+				<p>Zu beachten ist auch, dass nicht jede Schriftart in allen Größen die gleiche Schriftqualität liefert.</p>
+
+				<h5>Voreinstellungen in Firefox/Iceweasel</h5>
+				<p>Programme, die auf GTK2 basieren, sind bezüglich Schriftbild in KDE-Umgebungen problematisch. Eine der Lösungsmöglichkeiten ist die Installation von:</p>
+<pre>
+apt-get install gtk2-engines gtk-qt-engine 
+</pre>
+				<p>Im KDE-Kontrollzentrum unter Punkt "Erscheinungsbild" wird es nach Installation einen neuen Menüpunkt geben: "GTK-Stile und Schriftarten". Dort kann die Nutzung der KDE-Fonts in GTK2-Applikationen ausgewählt werden, und als GTK-Stil hat sich "Clearlooks" bewährt.</p>
+
+				<p>Bei Stabilitätsproblemen der gtk-qt-engine empfehlen wir eine Deinstallation, obwohl seit 2006 diese engine stabil lief (Stand: Ende März 2007). Die Einstellungen in den $HOMES bleiben erhalten.</p>
+<pre>
+apt-get remove gtk-qt-engine
+oder
+apt-get remove --purge gtk-qt-engine
+</pre>
+				<p>Dieses Vorgehen kann helfen, Probleme der Schriftendarstellung in GTK-Programmen zu lösen.</p>
+
+
+	<div class="spacer02"></div>
+			<div id="rev">Content last revised UTC 27/03/2007 0200hrs</div>
 </div>
 </div>
 </body>

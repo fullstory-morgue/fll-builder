@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,14 +150,16 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
 	<div class="divider" id="nvidia-3d">
 		<h2 id="top-header">3D-Treiber f&#252;r nVidia-Grafikkarten</h2>
 			
 			<p>Es gibt drei Methoden, 3D-nVidia-Treiber zu installieren</p>
-
-			<h5>Methode 1:</h5>
+			<ol>
+				<li>
+					<h3>install-binary-gfx</h3>
 			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden.</p>
 
 <pre>
@@ -167,7 +168,7 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 </pre>
 			<p>Damit wird der richtige Treiber f&#252;r die Grafikkarte ausgew&#228;hlt, eine Debian-Installationsdatei .deb gebaut und installiert. Auch wird automatisch die Konfigurationsdatei /etc/X11/xorg.conf angepasst. Damit der neue Treiber aktiviert werden kann, muss der Grafikserver X neu gestartet werden (Strg+Alt+R&#252;cktaste).</p>
 
-			<h6>Optionen</h6>
+			<h4>Optionen</h4>
 
 			<p>Folgende Optionen k&#246;nnen gesetzt werden:</p>
 <pre>
@@ -180,7 +181,7 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 --aiglx                Aktivierung von AIGLX
 </pre>
 
-			<h6>Beispiele</h6>
+			<h4>Beispiele</h4>
 <pre>
 install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository)
 install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
@@ -190,13 +191,12 @@ install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX UND 
 install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
 </pre>
 
-			<h5>Hilfe bei Problemen</h5>
+			<h4>Hilfe bei Problemen</h4>
 			<p>Falls das Skript die Grafiktreiber nicht installiert, kann der debug-Modus verwendet werden. Dieser erzeugt ein Protokolldatei /var/log/sidux-CARD-installer.log. Um Hilfe bekommen zu k&#246;nnen, kann im sidux-Forum der Inhalt dieser Datei gepostet werden, oder man speichert ihn auf http://paste.debian.net und wendet sich an den IRC #sidux, wo der erzeugte Link angegeben werden kann.</p>
 
-			<h5>Methode 2: !h2</h5>
-
-			<p>install-nvidia-debian.sh herunterladen:</p>
-
+				</li>
+				<li>
+					<h3>sgfxi / du-fixes-h2.sh</h3>
 <pre>
 cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
 chmod +x sgfxi
@@ -211,19 +211,22 @@ chmod +x sgfxi
 <pre>
 du-fixes-h2.sh -kiwdt
 </pre>
-
-			<h5>Methode 3:</h5>
+				</li>
+				<li>
+					<h3>Benutzung des Nvidia Binär Installers</h3>
 <pre>
 Aus dem Quellcode installieren
 </pre>
-
+				</li>
+			</ol>
 	</div>
 	<div class="divider" id="ati-3d">
 			<h2>ATI 3D-Treiber</h2>
 
 			<p>Es gibt drei Methoden, 3D-ATI-Treiber zu installieren</p>
-
-			<h5>Methode 1:</h5>
+			<ol>
+				<li>
+					<h3>install-binary-gfx</h3>
 			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden.</p>
 
 <pre>
@@ -232,7 +235,7 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 </pre>
 			<p>Damit wird der richtige Treiber f&#252;r die Grafikkarte ausgew&#228;hlt, eine Debian-Installationsdatei .deb gebaut und installiert. Auch wird automatisch die Konfigurationsdatei /etc/X11/xorg.conf angepasst. Damit der neue Treiber aktiviert werden kann, muss der Grafikserver X neu gestartet werden (Strg+Alt+R&#252;cktaste).</p>
 
-			<h6>Optionen</h6>
+			<h4>Optionen</h4>
 
 			<p>Folgende Optionen k&#246;nnen gesetzt werden:</p>
 <pre>
@@ -245,7 +248,7 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 --aiglx                Aktivierung von AIGLX <span class="highlight-2">(Aktivierung von AIGLX  AND ONLY with r200, r300, not for fglrx)</span>
 </pre>
 
-			<h6>Beispiele</h6>
+			<h4>Beispiele</h4>
 <pre>
 install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository)
 install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
@@ -255,10 +258,12 @@ install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX UND 
 install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
 </pre>
 
-			<h5>Hilfe bei Problemen</h5>
+			<h4>Hilfe bei Problemen</h4>
 			<p>Falls das Skript die Grafiktreiber nicht installiert, kann der debug-Modus verwendet werden. Dieser erzeugt ein Protokolldatei /var/log/sidux-CARD-installer.log. Um Hilfe bekommen zu k&#246;nnen, kann im sidux-Forum der Inhalt dieser Datei gepostet werden, oder man speichert ihn auf http://paste.debian.net und wendet sich an den IRC #sidux, wo der erzeugte Link angegeben werden kann.</p>
 
-			<h5>Methode 2: !h2</h5>
+				</li>
+				<li>
+					<h3>sgfxi / du-fixes-h2.sh</h3>
 
 <pre>
 cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
@@ -273,11 +278,14 @@ chmod +x sgfxi
 <pre>
 du-fixes-h2.sh -kiwdt
 </pre>
-
-			<h5>Methode 3:</h5>
+				</li>
+				<li>
+					<h3>Benutzung des ATI Binär Installers</h3>
 <pre>
 Aus dem Quellcode installieren
 </pre>
+				</li>
+			</ol>
 	</div>
 	<div class="divider" id="native-nv">
 			<h2>Nativer Treiber "nv" von X.Org f&#252;r nVidia-Grafikkarten</h2>
@@ -342,10 +350,10 @@ init 5 &amp;&amp; exit
 		<p>In eine Konsole das folgendes eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
 
 <pre>
-umount /dev/XdXX
-mount -o silent,umask=0,no_def_opts,allow_other -t ntfs-3g /dev/XdXX /media/XdXX
-exit
-exit
+apt-get update &amp;&amp; apt-get install ntfs-3g
+umount /media/xdxx
+mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
+To get out of the konsole type: exit
 </pre>
 
 		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen.</p> 
@@ -369,50 +377,82 @@ deb http://ftp.de.debian.org/debian unstable main contrib non-free
 deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
 #deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
 </pre>
-   				<p> * ATI-Radeon Grafikkarten: 3D-Beschleunigung f&#252;r &#228;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx-Karten ben&#246;tigen unfreie Treiber um 3D-beschleunigt zu funktionieren. <span class="highlight-1">Der unfreie Treiber kann mit dem sidux Skript <a href="../de/hw-dev-hw-dri-de.htm#ati-3d">get-sidux-binary-gfx</a> installiert werden.</span></p>
+			<ul>
+				<li>
+					ATI-Radeon Grafikkarten: 3D-Beschleunigung f&#252;r &#228;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx-Karten ben&#246;tigen unfreie Treiber um 3D-beschleunigt zu funktionieren. <span class="highlight-1">Der unfreie Treiber kann mit dem sidux Skript <a href="../de/hw-dev-hw-dri-de.htm#ati-3d">get-sidux-binary-gfx</a> installiert werden.</span>
+				</li>
+				<li>
+					Atheros/ "madwifi" wlan: In der Konsole:
+<pre>
+m-a a-i madwifi
+</pre>
+				</li>
+				<li>
+					Atmel AT76c50x 11 MBit/s wlan: In der Konsole:
+<pre>
+apt-get install atmel-firmware
+</pre>
+				</li>
+				<li>
+					AVM ISDN/ ADSL PCI/ USB Karten: AVMs Closed-Source-Treiber sind zu dem Kernel 2.6.19.x derzeit nicht kompatibel. Bitte den Kernel 2.6.18.x herunterladen (<a href="http://sidux.net/files/kernel/">http://sidux.net/files/kernel</a>) und in der Konsole den Treiber in der Konsole installieren:
+<pre>
+m-a a-i avm
+</pre>
+				</li>
+				<li>
+					Broadcom/bcm43xx wlan: In der Konsole:
+<pre>
+apt-get install bcm43xx-fwcutter
+</pre>
+				</li>
+				<li>
+					Eagle USB ADSL modem: Die Firmware gibt es bei <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und wird gespeichert unter: <span class="highlight-3">/lib/firmware/</span>
+				</li>
+				<li>
+					DVB Firmware f&#252;r diverse DVB-TV-Karten (die meisten einfacheren Karten ben&#246;tigen das nicht). Die ben&#246;tigte Firmware (<span class="highlight-3">dmesg</span> ansehen) bei <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+				<li>
+					hostap basierendes 11-MBit/s.WLAN mit ladbarer Firmware (z. B. D-Link DWL-520 rev. E1 und andere): <a href="http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html">http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</a>
+				</li>
+				<li>
+					Intel ipw2100, 11 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2100.sf.net/">http://ipw2100.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+				<li>
+					Intel ipw2200, 54 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2200.sf.net/">http://ipw2200.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+				<li>
+					Intel ipw3945, 54 Mbit/s WLAN:
+<pre>
+apt-get install ipw3945d firmware-ipw3945
+</pre>
+				</li>
+				<li>
+					Intersil prism54, 54-MBit/s-WLAN: Firmware herunterladen von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+				<li>
+					nVidia Grafikkarten: 3D-Beschleunigung ist bisher mit den freien Treibern nicht möglich. Unter Verwendung von <a href="../de/hw-dev-hw-dri-de.htm/#nvidia-3d">get-sidux-binary-gfx</a> lassen sich die unfreien Treiber jedoch nachtr&#228;glich installieren.
+				</li>
+				<li>
+					RaLink rt61 54-MBit/s-WLAN: Firmware von <a href="http://www.ralinktech.com/ralink/Home/Support/Linux.html">http://www.ralinktech.com/ralink/Home/Support/Linux.html</a> herunterladen.
+				</li>
+				<li>
+					Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) WLAN: Firmware bei <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+				<li>
+					ZyDAS zd1201 11 MBit/s-WLAN:
+<pre>
+apt-get install zd1201-firmware
+</pre>
+				</li>
+				<li>
+					ZyDAS zd1211 54 MBit/s WLAN: Firmware von <a href="http://sourceforge.net/project/showfiles.php?group_id=129083">http://sourceforge.net/project/showfiles.php?group_id=129083</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+				</li>
+			</ul>
 
-   				<p>* Atheros/ "madwifi" wlan: In der Konsole:</p>
-<pre>m-a a-i madwifi</pre>
-
-    				<p>* Atmel AT76c50x 11 MBit/s wlan: In der Konsole:</p>
-<pre>apt-get install atmel-firmware</pre>
-
-    				<p>* AVM ISDN/ ADSL PCI/ USB Karten: AVMs Closed-Source-Treiber sind zu dem Kernel 2.6.19.x derzeit nicht kompatibel. Bitte den Kernel 2.6.18.x herunterladen (<a href="http://sidux.net/files/kernel/">http://sidux.net/files/kernel</a>) und in der Konsole den Treiber in der Konsole installieren:</p>
-<pre>m-a a-i avm</pre>
-
-    				<p>* Broadcom/bcm43xx wlan: In der Konsole:</p>
-<pre>apt-get install bcm43xx-fwcutter</pre>
-
-    				<p>* Eagle USB ADSL modem: Die Firmware gibt es bei <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und wird gespeichert unter: <span class="highlight-3">/lib/firmware/</span></p>
-
-   				<p>* DVB Firmware f&#252;r diverse DVB-TV-Karten (die meisten einfacheren Karten ben&#246;tigen das nicht). Die ben&#246;tigte Firmware (<span class="highlight-3">dmesg</span> ansehen) bei <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-    				<p>* hostap basierendes 11-MBit/s.WLAN mit ladbarer Firmware (z. B. D-Link DWL-520 rev. E1 und andere): <a href="http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html">http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</a></p>
-
-    				<p>* Intel ipw2100, 11 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2100.sf.net/">http://ipw2100.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-    				<p>* Intel ipw2200, 54 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2200.sf.net/">http://ipw2200.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-   				<p>* Intel ipw3945, 54 Mbit/s WLAN:</p>
-<pre>apt-get install ipw3945d firmware-ipw3945</pre>
-
-   				<p>* Intersil prism54, 54-MBit/s-WLAN: Firmware herunterladen von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-   				<p>* nVidia Grafikkarten: 3D-Beschleunigung ist bisher mit den freien Treibern nicht möglich. Unter Verwendung von <a href="../de/hw-dev-hw-dri-de.htm/#nvidia-3d">get-sidux-binary-gfx</a> lassen sich die unfreien Treiber jedoch nachtr&#228;glich installieren.</p>
-
-    				<p>* RaLink rt61 54-MBit/s-WLAN: Firmware von <a href="http://www.ralinktech.com/ralink/Home/Support/Linux.html">http://www.ralinktech.com/ralink/Home/Support/Linux.html</a> herunterladen.</p>
-
-    				<p>* Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) WLAN: Firmware bei <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-    				<p>* ZyDAS zd1201 11 MBit/s-WLAN:</p>
-<pre>apt-get install zd1201-firmware</pre>
-
-   				<p>* ZyDAS zd1211 54 MBit/s WLAN: Firmware von <a href="http://sourceforge.net/project/showfiles.php?group_id=129083">http://sourceforge.net/project/showfiles.php?group_id=129083</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.</p>
-
-   				<p>* Wir untersuchen noch die M&#246;glichkeit, Treiber mancher Ger&#228;te mitzuliefern. Der rechtliche Status dieser Treiber ist leider h&#228;ufig kompliziert.</p>
+   				<p>Wir untersuchen noch die M&#246;glichkeit, Treiber mancher Ger&#228;te mitzuliefern. Der rechtliche Status dieser Treiber ist leider h&#228;ufig kompliziert.</p>
 
 		
-	<div id="rev">Content last revised UTC 10/03/2007 1700hrs UTC</div>
+		<div id="rev">Page last revised UTC 31/03/2007 2200hrs UTC</div>
 </div>
 </div>
 </body>

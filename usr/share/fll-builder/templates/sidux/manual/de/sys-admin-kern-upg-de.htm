@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,85 +150,59 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
-	<div class="divider" id="pw-lost">
+	<div class="divider" id="kern-upgrade">
 			<h2 id="top-header">Neue Kernel installieren</h2>
 
-			<p>Im linken Menü auf der sidux-Webseite findet man den aktuellen
-			Kernel in drei Varianten:</p>
-
-
-
+			<p>Die sidux-Kernel sind <a href="http://sidux.com/files/kernel/">hier</a> zu finden und in folgenden Formaten kompiliert:</p>
+			
 		<ul>
-  			<li><b>up</b> - Kernel für die i386 Prozessor-Familie</li>
-  			<li><b>smp</b> - Kernel für die i386 Prozessor-Familie mit dual core</li>
-  			<li><b>64-smp</b> - Kernel für die AMD64 Prozessor-Familie, wenn 64 bit sidux benutzt wird </li>
+  			<li><b>up</b> - Kernel für i686-Prozessoren mit einem CPU-Kern</li>
+  			<li><b>smp</b> - Kernel für i686-Prozessoren mit zwei oder mehr CPU-Kernen</li>
+  			<li><b>64-smp</b> - Kernel für AMD64-Prozessoren, wenn sidux 64 bit verwendet wird </li>
 		</ul>
+			<p>Es ist hilfreich, sich vor Installation die Kernelversion, die benötigt wird, zu notieren (im folgenden nennen wir das Archiv "kernel.zip", der wirkliche Name sieht aber zum Beispiel so aus: kernel-2.6.20.4-rc1-slh-smp-1.zip ). Der Kernel kann mit Hilfe der Konsole sowohl als normaler User wie auch als Root installiert werden:</p>
 
-
-			<p>Den Kernel für den eigenen Prozessor downloaden (wir nennen
-			dieses Archiv hier kernel.zip, es wird aber immer einen anderen Namen haben
-			- z. B. kernel-2.6.17.7-slh-up-1.zip )</p>
-
-			<p>Ein Terminal öffnen, in das Verzeichnis, wo man das
-			heruntergeladene Archiv gespeichert hat, wechseln und das Archiv
-			entpacken:</p>
-
-<pre>$ unzip kernel.zip -d kernel-current</pre>
-
-			In das erzeugte Verzeichnis <b>kernel-current</b> wechseln::
-<pre>$ cd kernel-current</pre>
-
-			<p>Die nächsten Schritte benötigen Rootrechte, also:</p>
-<pre>$ sux
-# ./install-kernel-sidux.sh</pre>
-
-
-			<p class="highlight-4">WICHTIG: wenn bestimmte Treibermodule benötigt
-			werden, z. B. für wlan, muss man die entsprechenden
-			deb-packages installieren, so z. B. falls man madwifi benutzt, dann
-			muss man das entsprechende deb-paket nachinstallieren.</p>
-
-			<p><b>Jetzt den PC neu starten.</b> Der neue Kernel wird erst bei einem Neustart automatisch
-			gewählt. <span class="highlight-3">Bei Problemen kann man hier auch einen
-			älteren Kernel auswählen.</span></p>
-
-			<p>Wenn man keinen ATI- oder NVIDIA-Grafiktreiber benötigt, passt
-			man die Lautstärke der Soundkarte an:</p>
+				<h5>Beispiel einer Installation als User (in der Konsole)</h5>
 <pre>
-alsaconf
+mkdir /home/username/kernel-downloads/
+cd ~/kernel-downloads
+wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
+unzip kernel-2.6.20.4-slh-up-1.zip -d kernel-2.6.20.4-slh-up-1
+cd kernel-2.6.20.4-slh-up-1
+./install-kernel-sidux.sh       # fragt nach dem Root-Passwort
 </pre>
-<p>Im Anschluss wird mit kmix oder alsamixergui die gew&#252;nschte Standardlautst&#228;rke gew&#228;hlt und gespeichert mit:</p>
+				<h5>Beispiel einer Installation als Root (in der Konsole)</h5>
 <pre>
-alsactl store
+sux
+cd /usr/src
+wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
+unzip kernel-2.6.20.4-slh-up-1.zip  -d kernel-current
+cd /usr/src/kernel-current
+sh install-kernel-sidux.sh
 </pre>
-			<p>, und das Update des	Kernels ist beendet</p>
+			<p>Der Computer muss jetzt neu gestartet werden, und der neue Kernel wird automatisch ausgewählt. <span class="highlight-3">Falls der neue Kernel Probleme bereitet, muss der Computer neu gestartet werden, und im Boot-Menu kann der alte funktionierende Kernel gewählt werden.</span></p>
 
-			<p>Falls man eine ATI- oder NVIDIA-Graphikkarte
-			hat, sollte der erste Reboot nach einem Kernel-Update mit Runlevel 3
-			gemacht werden (dies erreicht man, indem <b>3</b> in der
-			Grub-Boot-Zeile angehängt wird.</p>
-
-			<p>Darauf achten, dass der aktuellste gcc-Compiler
-			installiert ist - man kann dies mit folgendem Befehl herausfinden:</p>
-
-<pre># apt-cache policy $(dpkg -l |grep -v base |grep -e
-'gcc-'|awk '{print $2;}' |tail -1)</pre>
-
-			<p>Falls notwendig, bitte die neueste Version von gcc mittels apt-get installieren, und - falls gew&#252;nscht - die aktuellen Grafikkartentreiber zur 3D-Unterst&#252;tzung installieren <a href="hw-dev-hw-dri-de.htm">(hier unsere Infoseite zur Installation propriet&#228;rer Grafiktreiber im Handbuch).</a></p>
-
-			<p>Nach erfolgreicher Installation kann man die entpackten
-			Kernel-Pakete (und das Kernel-Archiv) löschen.</p>
-
-			<h4>Alte Kernel entfernen:</h4>
-
-			<p>Nach der erfolgreichen Installation können alle alten Kernel aus dem System entfernt werden. Dafür kann man das Skript <span class="highlight-3">kernel-remover</span> benutzen, welches sich im Paket sidux-kernelhacking befindet. Dieses Skript erm&#246;glicht eine Auswahl der Kernel, welche entfernt werden sollen.</p>
+			<p class="highlight-4">WICHTIG: wenn bestimmte Treiber-Module, zum Beispiel für WLAN, benötigt werden, müssen diese via .deb-Pakete installiert werden, die sich im Ordner des entpackten kernel.zip befinden. Die madwifi Treiber-Module werden als Root folgendermaßen installiert:</p>
 <pre>
-su -
-kernel-remover
+dpkg -i madwifi-modules*.deb
 </pre>
-	<div id="rev">Content last revised UTC 20/01/2007 0900hrs UTC </div>
+
+			<p>Das Kernel-Update ist nun abgeschlossen. Falls 3D-Grafiktreiber für NVIDIA oder ATI Grafikkarten installiert werden sollen, muss dies vor dem Aufruf des X-Grafikservers geschehen. Am einfachsten bootet man in den Runlevel 3 ("init 3"), indem man in die Befehlszeile des Bootmanagers Grub einfach eine <b>3</b> eintippt. Mehr Informationen dazu finden sich <a href="hw-dev-hw-dri-de.htm">hier</a>.</p>
+			
+
+			<h5> Eine halbautomatisierte Methode einen neuen Kernel zu installieren ist das Skript <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh</a>.</h5>
+
+			<h4>Entfernen alter Kernel</h4>
+
+			<p>Nach der erfolgreichen Installation eines neuen Kernel können kernel.zip und das Kernel-Archiv gelöscht werden, obwohl es empfehlenswert ist, diese und die älteren Kernel einige Tage zu behalten, falls es zu unvorhergesehenen Problemen kommt und mit einem älteren Kernel gebootet werden muss. Ältere Kernel sind im Menu des Bootmanagers Grub gelistet.</p>
+
+			<p>Alte Kernel können mit dem Skript <span class="highlight-3">kernel-remover</span> entfernt werden, welches sich im Paket sidux-kernelhacking befindet. <span class="highlight-3">Dieses Skript listet die Kernel, welche entfernt werden können.</span></p>
+
+			
+	<div id="rev">Content last revised UTC 02/04/2007 0900hrs UTC </div>
 </div>
 </div>
 </body>

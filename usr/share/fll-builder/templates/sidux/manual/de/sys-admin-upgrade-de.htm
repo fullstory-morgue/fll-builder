@@ -10,10 +10,10 @@
 	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
-<body>
+<body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,7 +150,8 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
 	<div class="divider" id="live-cd-upgrade">
 		<h2 id="top-header">Live-CD upgrade</h2>
@@ -170,24 +170,27 @@
 				<p>Nach der sidux-Installation auf eine Festplatte stellt sich die Frage, wie neue Programmpakete und Sicherheitsupdates eingespielt werden k&#246;nnen.</p>
 
 				<p>Bei sidux heißt das 'dist-upgrade' und geht nur mit bestehender Netzanbindung</p>
-				<p class="highlight-3"><b>Die empfohlene Methode hierzu ist ausf&#252;hrlich im <a href="sys-admin-apt-de.htm#apt-cook">APT-Kochbuch</a> beschrieben und hier kurz skizziert:</b></p>
+				<p class="highlight-3"><b>Die empfohlene Methode eines dist-upgrade ist folgende:</b></p>
 
 
 		<div class="box block">
-		<div class="highlight-2">Bitte NIEMALS ein dist-upgrade ausführen, während Du dich in X (KDE) befindest</div><div class="highlight-4"> Bitte immer vorher nach aktuellen Warnungen schauen auf der <a href="http://sidux.com/">sidux</a>-Seite.<br /><br />
-Dann gehe in den Textmodus mit Ctrl+Alt+F1; logge Dich als Root ein und
-tippe init 3; apt-get update; apt-get dist-upgrade; fix-fonts; fglrx-
-oder nvidia-script, wenn X oder KDE im Upgrade war und Du einen der
-beiden Grafikkarten besitzt. Ansonsten: init 5 &amp;&amp; exit [BITTE
-KEIN DIST-UPGRADE [oder UPGRADE] mit adept or synaptic!].</div>
-		
+			<div class="highlight-2">Bitte NIEMALS "apt-get dist-upgrade" oder "apt-get upgrade" in der graphischen Umgebung X durchf&#252;hren.<div class="highlight-4">  Besuchen Sie vor einem Upgrade die <a href="http://sidux.com">sidux-Homepage</a>, um eventuelle Upgradewarnungen in Erfahrung zu bringen. Diese Warnungen sind wegen der Struktur von Debian sid/unstable notwendig, welches t&#228;glich neue Programmpakete in seine Repositorien aufnimmt.</div>
+<pre>
+# Aus der KDE-Desktopumgebung abmelden
+# In den Textmodus gehen mit Ctrl+Alt+F1 
+# Einloggen als root
+init 3
+apt-get update
+apt-get dist-upgrade
+fix-fonts
+get-sidux-binary-gfx # Neuinstallation der benötigten Grafiktreiber, wenn xorg einen Upgrade erfahren hat
+init 5 &amp;&amp; exit 
+</pre>
+
+		<div class="highlight-2">Und nochmal unsere Warnung: Bitte NIEMALS ein dist-upgrade oder upgrade mit einem graphischen Programm wie synaptic, adept, aptitude oder kpackage durchf&#252;hren!</div> Ausgenommen ist das korrekt kodierte Skript <a href=" http://techpatterns.com/forums/about736.html - du-fixes-h2.sh">du-fixes-h2</a>.</div>
 	</div>
-				<p>Für
-neue (aber auch erfahrene) Nutzer bietet das hier verlinkte Skript
-Hilfe zu einem halbautomatischen Dist-Upgrade und weitere nützliche
-Hilfestellungen:<a href="http://techpatterns.com/forums/about736.html"> !h2 d-u fixes</a>.</p>
-	<div class="spacer05"></div>
+	</div>
+<div class="spacer02"></div>
 	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
-</div>
 </div>
 </body></html>

@@ -12,15 +12,15 @@
 </head>
 <body id="live-mode">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
 		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
 	<ul>
-		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to sidux</a>
+		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to Official sidux-manual</a>
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
 				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-en.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
@@ -135,15 +134,15 @@
 				<li><a href="sys-admin-meta-en.htm#meta-pack">Meta-Package Installer</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
-				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade of an Installed System</a></li>
-				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading using your Live-CD</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
+				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
-				<li><a href="sys-admin-rdiff-en.htm#rdiff">Backing Up with rdiff</a></li>
-				<li><a href="sys-admin-rsync-en.htm#rsync">Backing Up with rsync</a></li>
+				<li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
+				<li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
 				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
 				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
-				<li><a href="sys-admin-en.htm#mon-res">Screen Resolutions</a></li>
+				<li><a href="sys-admin-en.htm#mon-res">Screen Res, Monitors, Fonts</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
@@ -215,7 +214,7 @@ root@0[sidux]# apt-get update
 <i>(...)</i>
 root@0[sidux]# apt-get install kdegames</pre>
 
-			<p>There are three additional options to make a more permanent unionfs:</p>
+			<p>There are two additional methods to make a more permanent unionfs:</p>
 
 <pre >unionrw</pre> 
 			<p>and</p>
@@ -224,7 +223,7 @@ root@0[sidux]# apt-get install kdegames</pre>
 
 <pre >unionrw</pre>
 
-		<p>The unionrw cheat can be used in several ways:</p>
+		<p>The unionrw cheat can be used to:</p>
 
 	<ol>
 		<li>Point to a partition on the hard drive</li>
@@ -234,7 +233,7 @@ root@0[sidux]# apt-get install kdegames</pre>
 
 		<p>All three ways work to permanently store changes to a drive you designate - if you always use the same cheatcode you can have custom program selection at the place given by the user. This does not store the /home directly, you have to use the home cheat for that.</p>
 
-		<p>As already mentioned, there is a third cheatcode:</p>
+		<p>As already mentioned, there is a another cheatcode:</p>
 
 <pre >unionro</pre>
 
@@ -244,17 +243,18 @@ root@0[sidux]# apt-get install kdegames</pre>
 	<div class="divider" id="ntfs-3g">
 		<h2>How to write on NTFS-partitions with ntfs-3g</h2>
 
-		<p class="highlight-2"><b>Be warned</b>: ntfs-3g is an early beta driver, so never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
+		<p class="highlight-2"><b>Be warned</b>: Whislt the ntfs-3g is stated to be 'stable', never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
 
 		<p>Open a shell and enter the following commands:See <a href="part-cfdisk-en.htm" >Partitioning your HD - Disk Naming</a></p>
 <pre >su
 fix-unionfs
-umount /dev/XdXX
-mount -o silent,umask=0,no_def_opts,allow_other -t ntfs-3g /dev/XdXX /media/XdXX
-exit
+apt-get update &amp;&amp; apt-get install ntfs-3g
+umount /media/xdxx
+mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
+To get out of the konsole type: exit
 </pre>
 
-		<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! It's <span class="highlight-2">experimental!</span></p>
+		<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 
 </div>

@@ -10,10 +10,10 @@
 	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
 	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
-<body>
+<body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 22/03/2007 1700hrs ADEST 22/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -111,7 +111,6 @@
 				<li><a href="lamp-ppp-de.htm#serv-php">PHP in Apache</a></li>
 			</ul>
 		</li>
-
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
@@ -143,7 +142,7 @@
 				<li><a href="vir-rkits-de.htm#virus-rkits">Virus- und Rootkitscanner</a></li>
 				<li><a href="sys-admin-de.htm#start-services">Einen Dienst in sidux starten</a></li>
 				<li><a href="sys-admin-de.htm#pw-lost">Rootpasswort vergessen</a></li>
-				<li><a href="sys-admin-de.htm#mon-res">Aufl&#246;sung des Bildschirms</a></li>
+				<li><a href="sys-admin-de.htm#mon-res">Bildschirmauflösung, Monitore, Schriften</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#mbr-grub-boot">MBR-Bootsektor &#252;berschrieben</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#boot-grub-floppy">Eine Boot-Floppy erstellen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
@@ -151,7 +150,8 @@
 			</ul>
 		</li>
 	</ul>
-<!-- menu ends here --> </div>
+<!-- menu ends here -->
+</div>
 <div id="main-page">
 	<div class="divider" id="rootpw">
 		<h2 id="top-header">Das root-Passwort auf der Live-CD</h2>
@@ -161,7 +161,7 @@
 		<p>Auf der Live-CD ist kein root-Passwort gesetzt. Es gibt mehrere M&#246;glichkeiten, ein Programm mit root-Rechten auszuf&#252;hren:</p>
 
 		
-				<h6>Ein (tempor&#228;res) root-Passwort setzen:</h6>
+				<h5>Ein (tempor&#228;res) root-Passwort setzen:</h5>
 				<p>Eine Konsole &#246;ffnen:</p>
 				<pre >sidux@0[sidux]$ sudo passwd
 Enter new UNIX password:
@@ -177,13 +177,15 @@ sidux@0[sidux]$</pre>
 <pre >sudo
 oder
 su-me</pre>
-		Dr&#252;cke Alt+ F2 und Enter"
-<pre>sudo</pre>
-			<p>vor dem gew&#252;nschten Programmnamen, z. B.:</p>
+         Man drückt Alt+ F2 und gibt 
+        <pre>sudo</pre>
+			<p>
+          vor dem gewünschten Programmnamen ein, z. B.:
+        </p>
 <pre>sudo gparted</pre>
 			
-				<h6>Das Programm aus einem Root-Terminal starten:</h6>
-				<p>einen Terminal/eine Konsole &#246;ffnen</p>
+				<h5>Das Programm aus einem Root-Terminal starten:</h5>
+				<p>Man öffnet ein Terminal/eine Konsole und gibt z. B. ein:</p>
 <pre>
 sidux@0[sidux]$ su
 root@0[sidux]# gparted <em>(oder das gew&#252;nschte Programm)</em>
@@ -194,11 +196,8 @@ root@0[sidux]# gparted <em>(oder das gew&#252;nschte Programm)</em>
 exit
 </pre>
 				<p>danach nochmal:</p>
-<pre>
-exit
-(damit sollte der Terminal sich schlie&#223;en)
-</pre>
-	
+<pre> exit</pre>
+			<p>Damit sollte  das Terminal sich schließen.</p>
 
 	<div class="divider" id="unionfs">
 		<h2>Unionfs - Software im Live-Modus installieren</h2>
@@ -222,14 +221,14 @@ root@0[sidux]# apt-get update
 <i>(...)</i>
 root@0[sidux]# apt-get install kdegames</pre>
 
-		<p>Es gibt zwei zus&#228;tzliche M&#246;glichkeiten, Unionfs ein wenig permanenter auszuf&#252;hren:</p>
+		<p>Es gibt zwei zus&#228;tzliche M&#246;glichkeiten, Unionfs dauerhafter auszuf&#252;hren:</p>
 
 		<pre>unionrw</pre>
 		<p>und</p>
 		<pre>unionro</pre>
-		<p>Erster kann auch durch einen Boot-Cheatcode ausgef&#252;hrt werden:</p>
+		<p>Die erste Möglichkeit kann auch durch einen Boot-Cheatcode ausgef&#252;hrt werden:</p>
 <pre>unionrw</pre>
-		<p>Der unionrw Befehl kann auf unterschiedliche Weise genutzt werden:</p>
+		<p>Der Befehl unionrw kann auf unterschiedliche Weise genutzt werden:</p>
 
 		<ol>
 			<li>auf eine Partition auf der Festplatte verweisen</li>
@@ -239,7 +238,7 @@ root@0[sidux]# apt-get install kdegames</pre>
 
 		<p>All diese drei Wege erm&#246;glichen es, permanente &#196;nderungen zu machen und sie zu speichern. Verwendet man denselben Cheatcode, kann man eine eigene Programmauswahl wieder verf&#252;gbar machen. Das Heimverzeichnis <span class="highlight-3">/home</span> wird jedoch hiermit nicht gespeichert, dazu muss man den <i>home</i>-Cheat verwenden.</p>
 
-		<p>Nun zur dritten erw&#228;hnten M&#246;glichkeit:</p>
+		<p>Nun zur anderen erw&#228;hnten M&#246;glichkeit:</p>
 
 		<pre>unionro</pre>
 
@@ -253,12 +252,15 @@ root@0[sidux]# apt-get install kdegames</pre>
 
 		<p>In eine Konsole das folgende eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
 
-		<pre>sidux@9[sidux]$ su
+<pre>sidux@9[sidux]$ su
 root@0[sidux]# fix-unionfs
-root@0[sidux]# umount /dev/XdXX
-root@0[sidux]# mount -o silent,umask=0,no_def_opts,allow_other -t ntfs-3g /dev/XdXX /media/XdXX</pre>
+root@0[sidux]# apt-get update &amp;&amp; apt-get install ntfs-3g
+root@0[sidux]# umount /media/xdxx
+root@0[sidux]# mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
+To get out of the konsole type: exit
+</pre>
 
-		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Ein letztes Mal: Sei gewarnt! <i>Dieses Vorgehen ist als experimentell eingestuft!</i>!</p>
+		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Und noch einmal unsere Warnung: <i>Dieses Vorgehen ist als experimentell eingestuft!</i>!</p>
 	</div>
 	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
 </div>
