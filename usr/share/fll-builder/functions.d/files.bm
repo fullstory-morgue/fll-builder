@@ -6,22 +6,6 @@ cat_file_to_chroot() {
 
 	case "$FILE" in
 
-		apt_conf)
-			if [[ $FLL_HTTP_PROXY ]]; then
-				cat >> "$DEST" \
-<<EOF
-Acquire::http::Proxy "$FLL_HTTP_PROXY";
-EOF
-			fi
-			
-			if [[ $FLL_FTP_PROXY ]]; then
-				cat >> "$DEST" \
-<<EOF
-Acquire::ftp::Proxy "$FLL_FTP_PROXY";
-EOF
-			fi
-			;;
-
 		apt_sources)
 			cat > "$DEST" \
 <<EOF

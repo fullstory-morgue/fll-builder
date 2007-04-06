@@ -296,7 +296,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot fstab		/etc/fstab
 	cat_file_to_chroot interfaces		/etc/network/interfaces
 	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
-	cat_file_to_chroot apt_conf		/etc/apt/apt.conf
 	
 	copy_to_chroot /etc/hosts
 	copy_to_chroot /etc/resolv.conf
@@ -440,7 +439,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	remove_from_chroot /etc/debian_chroot
 	remove_from_chroot /etc/hosts
 	remove_from_chroot /etc/resolv.conf
-	remove_from_chroot /etc/apt/apt.conf
 	
 	# remove live-cd mode identifier
 	rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
