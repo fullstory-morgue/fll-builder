@@ -312,16 +312,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	chroot_exec apt-get update
 	
-	# install gpg keyring for fll mirror
-	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
-
 	# import key for extra mirror(s)
 	for ((i=0; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
 		[[ ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
 		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
-				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}"
+				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" | :
 		else
 			echo "Must provide GPG keyid for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			exit 6

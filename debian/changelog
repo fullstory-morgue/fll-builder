@@ -65,6 +65,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * Purge old DEBOOSTRAP_* variables, see default config for condensed method
     of handling target arch. Hardcode minimal boostrap option.
   * Annotate default config file with useful comments.
+  * Decouple FLLMIRROR from scripts, treat it as just another extra repository
+    to debian. Eliminate the need for $FLL_DISTRO_NAME-keyrings package,
+    explicitly define trusted gpg keyid for fll repo.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -81,7 +84,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 21:37:43 +1000
+ -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 21:59:37 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
