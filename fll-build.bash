@@ -273,8 +273,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		done
 	fi
 
-	##################################################################
-	#		chroot						#
+	#################################################################
+	#		create & prepare chroot				#
 	#################################################################
 	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
 		"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
@@ -312,31 +312,24 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | chroot_exec debconf-set-selections
 	
 	chroot_exec apt-get --assume-yes install locales
+
+	#################################################################
+	#	install kernel, make initial ramdisk			#
+	#################################################################
+	chroot_exec apt-get --assume-yes install live-initrd-sidux module-init-tools
 	
-	if [[ $FLL_BUILD_INITRAMFS ]]; then
-		if ! install_local_debs "$FLL_BUILD_INITRAMFS"; then
-			chroot_exec apt-get --assume-yes install fll-live-initramfs
-		fi
-		cat_file_to_chroot kernelimg-initramfs /etc/kernel-img.conf
-	else
-		chroot_exec apt-get --assume-yes install busybox-sidux live-initrd-sidux
-		# ask kernel postinst to call our desired hook -> mklive-initrd
-		cat_file_to_chroot kernelimg /etc/kernel-img.conf
-	fi
-	
-	# module-init-tools is required for installation of kernel and
-	# kernel-module binaries -> depmod
-	chroot_exec apt-get --assume-yes install module-init-tools
+	cat_file_to_chroot kernelimg /etc/kernel-img.conf
 	
 	install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 	
-	# mass package installation
+	#################################################################
+	#	mass package installation				#
+	#################################################################
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 	
 	echo
 	echo "Calculating source package URI list . . ."
 	echo
-	
 	fetch_source_uris
 	
 	# XXX: this hack is FOR TESTING PURPOSES ONLY
@@ -344,7 +337,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		install_local_debs "$FLL_BUILD_LOCAL_DEBS"
 	fi
 	
-	# create user in chroot
+	#################################################################
+	#	create user in chroot					#
+	#################################################################
 	chroot_exec adduser --no-create-home --disabled-password \
 		--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
 	
@@ -358,14 +353,21 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# lock down root and live user
 	sed -i "s#^\(root\|$FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
 		"$FLL_BUILD_CHROOT"/etc/shadow
-	
-	# hack inittab: init 5 by default, "immutable" bash login shells
+
+	#################################################################
+	#	hack inittab						#
+	#		- init 5 by default				#
+	#		- immutable bash login shells			#
+	#################################################################
 	sed -i	-e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
 		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
 		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
 		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
 		"$FLL_BUILD_CHROOT"/etc/inittab
 	
+	#################################################################
+	#	misc chroot preseeding					#
+	#################################################################
 	# run fix-fonts
 	if exists_in_chroot /usr/sbin/fix-fonts; then
 		chroot_exec fix-fonts
@@ -388,6 +390,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
 	fi
 	
+	#################################################################
+	#	cleanup & prepare final chroot				#
+	#################################################################
 	# purge unwanted packages
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	

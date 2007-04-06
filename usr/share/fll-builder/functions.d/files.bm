@@ -112,7 +112,7 @@ iface lo inet loopback
 EOF
 			;;
 
-		kernelimg-initramfs)
+		kernelimg)
 			cat > "$DEST" \
 <<EOF
 do_symlinks = NO
@@ -120,16 +120,11 @@ do_bootloader = NO
 warn_initrd = NO
 do_initrd = YES
 EOF
-			;;
-
-		kernelimg)
-			cat > "$DEST" \
-<<EOF
-do_symlinks = NO
-do_bootloader = NO
-warn_initrd = NO
-ramdisk = mklive-initrd
-EOF
+			
+			# live-initrd-sidux support
+			if exists_in_chroot /usr/sbin/mklive-initrd; then
+				echo 'ramdisk = mklive-initrd' >> "$DEST"
+			fi
 			;;
 
 		sudoers)
