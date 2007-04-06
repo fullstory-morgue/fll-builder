@@ -244,6 +244,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		exit 4
 	fi
 
+	if [[ $FLL_HTTP_PROXY ]]; then
+		export http_proxy=$FLL_HTTP_PROXY
+	fi
+
+	if [[ $FLL_FTP_PROXY ]]; then
+		export ftp_proxy=$FLL_FTP_PROXY
+	fi
+
 	#################################################################
 	#		process package array(s)			#
 	#################################################################
@@ -292,7 +300,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	copy_to_chroot /etc/hosts
 	copy_to_chroot /etc/resolv.conf
 	
-	# XXX: distro-defaults live environment detection
+	# distro-defaults live environment detection
 	mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 	
 	chroot_exec apt-get update
