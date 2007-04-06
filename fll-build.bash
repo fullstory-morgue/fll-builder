@@ -376,6 +376,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# set x-www-browser, use the popular firefox/iceweasel if present
 	if exists_in_chroot /usr/bin/iceweasel; then
 		chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
+	elif exists_in_chroot /usr/bin/epiphany-browser; then
+		chroot_exec update-alternatives --set x-www-browser /usr/bin/epiphany-browser
 	elif exists_in_chroot /usr/bin/konqueror; then
 		chroot_exec update-alternatives --set x-www-browser /usr/bin/konqueror
 	fi
@@ -388,6 +390,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# vimrc.local
 	if exists_in_chroot /etc/vim; then
 		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
+	fi
+
+	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
+	if exists_in_chroot /etc/ppp/peers/kppp-options; then
+		sed -i 's/^#\?noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 	
 	#################################################################

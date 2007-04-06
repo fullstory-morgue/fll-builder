@@ -55,6 +55,10 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * Begin cleanup for fll-live-initramfs transition. Remove if/else from here,
     and instead use a dummy live-initrd package to provide initramfs hook from
     an external repository.
+  * Support for setting x-www-browser in the case epiphany-browser is
+    installed (gnome package profile presumably).
+  * When kppp is installed, "fix" its ppp noauth settings via
+    /etc/ppp/peers/kppp-options as per /usr/share/doc/kppp/README.Debian.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -71,7 +75,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 14:28:12 +1000
+ -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 18:06:31 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
