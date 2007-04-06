@@ -310,7 +310,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
-				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" | :
+				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
 		else
 			echo "Must provide GPG keyid for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			exit 6
