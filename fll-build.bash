@@ -425,14 +425,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
 	if exists_in_chroot /etc/ppp/peers/kppp-options; then
-		sed -i 's/^#\?noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
+		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 	
 	#################################################################
 	#	cleanup & prepare final chroot				#
 	#################################################################
 	# purge unwanted packages
-	chroot_exec dpkg --purge cdebootstrap-helper-diverts
+	chroot_exec dpkg --purge cdebootstrap-helper-diverts live-initrd-sidux fll-live-initramfs
 	
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
