@@ -286,12 +286,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		create & prepare chroot				#
 	#################################################################
-	if [[ $DEBOOTSTRAP_ARCH ]]; then
-		echo "DEBOOTSTRAP_ARCH is not used anymore!"
-		echo "Time to look at $FLL_BUILD_DEFCONFIG"
-		exit 999
-	fi
-
 	cdebootstrap --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
 		"$FLL_BUILD_CHROOT" "$FLL_BUILD_DEBIANMIRROR"
 	
