@@ -391,9 +391,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		- immutable bash login shells			#
 	#################################################################
 	sed -i	-e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash\ -login\ >/dev/tty1\ 2>\&1\ </dev/tty1#' \
-		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
-		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash\ -login\ >/dev/tty\1\ 2>\&1\ </dev/tty\1#' \
+		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash -login >/dev/tty1 2>\&1 </dev/tty1#' \
+		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash -login >/dev/tty\1 2>\&1 </dev/tty\1#' \
+		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash -login >/dev/tty\1 2>\&1 </dev/tty\1#' \
 		"$FLL_BUILD_CHROOT"/etc/inittab
 	
 	#################################################################
@@ -432,7 +432,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#	cleanup & prepare final chroot				#
 	#################################################################
 	# purge unwanted packages
-	chroot_exec dpkg --purge cdebootstrap-helper-diverts live-initrd-sidux fll-live-initramfs
+	chroot_exec dpkg --purge cdebootstrap-helper-diverts fll-live-initramfs
 	
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
@@ -494,6 +494,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 		"$FLL_BUILD_RESULT"/boot/grub/
 	cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+
+	# ramdisk param for kernel cmdline
+	if exists_in_chroot /usr/sbin/mklive-initrd; then
+		sed -i 's#@RAMDISK@#ramdisk_size=100000 init=/etc/init#' "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	else
+		sed -i 's#@RAMDISK@#boot=fll#' "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	fi
 	
 	if exists_in_chroot /boot/memtest86+.bin; then
 		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
