@@ -12,7 +12,9 @@ cat_file_to_chroot() {
 <<EOF
 Acquire::http::Proxy "$FLL_HTTP_PROXY";
 EOF
-			elif [[ $FLL_FTP_PROXY ]]; then
+			fi
+			
+			if [[ $FLL_FTP_PROXY ]]; then
 				cat > "$DEST" \
 <<EOF
 Acquire::ftp::Proxy "$FLL_FTP_PROXY";
@@ -35,24 +37,41 @@ deb http://ftp.debian.org/debian/ sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb http://sidux.com/debian/ sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 #deb-src http://sidux.com/debian/ sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 EOF
+			
+			if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
+				cat >> "$DEST" \
+<<EOF
+
+deb $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
+#deb-src $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
+EOF
+			fi
 			;;
 
 		apt_sources_tmp)
 			cat > "$DEST" \
 <<EOF
-deb $FLL_BUILD_DEBIANMIRROR $DEBOOTSTRAP_DIST $FLL_BUILD_DEBIANMIRROR_COMPONENTS
-deb $FLL_BUILD_FLLMIRROR $DEBOOTSTRAP_DIST $FLL_BUILD_FLLMIRROR_COMPONENTS
-deb-src $FLL_BUILD_DEBIANMIRROR $DEBOOTSTRAP_DIST $FLL_BUILD_DEBIANMIRROR_COMPONENTS
-deb-src $FLL_BUILD_FLLMIRROR $DEBOOTSTRAP_DIST $FLL_BUILD_FLLMIRROR_COMPONENTS
+deb $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+deb $FLL_BUILD_FLLMIRROR sid $FLL_BUILD_FLLMIRROR_COMPONENTS
+deb-src $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+deb-src $FLL_BUILD_FLLMIRROR sid $FLL_BUILD_FLLMIRROR_COMPONENTS
 EOF
+
+			if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
+				cat >> "$DEST" \
+<<EOF
+deb $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
+deb-src $FLL_BUILD_EXTRAMIRROR sid $FLL_BUILD_EXTRAMIRROR_COMPONENTS
+EOF
+			fi
 			;;
 
 		chroot_policy)
 			cat > "$DEST" \
 <<EOF
 #!/bin/sh
-# disable init scripts: /usr/share/doc/sysv-rc/README.policy-rc.d.gz
-
+# policy: disable all init scripts
+# as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz
 exit 101
 EOF
 			chmod 0755 "$DEST"

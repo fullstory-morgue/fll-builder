@@ -123,8 +123,9 @@ fi
 # fll default configfile
 FLL_BUILD_DEFCONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
 
-# package profile dir
+# package profile dir and default
 FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
+FLL_BUILD_PACKAGE_PROFILE="kde-lite"
 
 # fll script and template location variables
 FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
@@ -233,7 +234,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		source "$FLL_BUILD_DEFCONFIG"
 	fi
 
-	DEBOOTSTRAP_ARCH="$DPKG_ARCH"
+	FLL_BUILD_ARCH="$DPKG_ARCH"
 
 	source "$config"
 
@@ -285,8 +286,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		create & prepare chroot				#
 	#################################################################
-	cdebootstrap --arch="$DEBOOTSTRAP_ARCH" --flavour="$DEBOOTSTRAP_FLAVOUR" \
-		"$DEBOOTSTRAP_DIST" "$FLL_BUILD_CHROOT" "$DEBOOTSTRAP_MIRROR"
+	if [[ $DEBOOTSTRAP_ARCH ]]; then
+		echo "DEBOOTSTRAP_ARCH is not used anymore!"
+		echo "Time to look at $FLL_BUILD_DEFCONFIG"
+		exit 999
+	fi
+
+	cdebootstrap --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
+		"$FLL_BUILD_CHROOT" "$FLL_BUILD_DEBIANMIRROR"
 	
 	chroot_virtfs mount
 
@@ -307,6 +314,20 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# install gpg keyring for fll mirror
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
+
+	# import key for extra mirror
+	if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
+		if [[ $FLL_BUILD_EXTRAMIRROR_GPGKEYID ]]; then
+			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
+				"$FLL_BUILD_EXTRAMIRROR_GPGKEYID"
+			chroot_exec apt-key add /root/.gnupg/pubring.gpg
+		else
+			echo "Must provide GPG KeyID for $FLL_BUILD_EXTRAMIRROR"
+			exit 6
+		fi
+	fi
+
+	# refresh lists now that "secure apt" is aware of required gpg keys
 	chroot_exec apt-get update
 	
 	# package timestamp for snapshot versioning
