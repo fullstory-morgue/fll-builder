@@ -307,8 +307,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get update
 	
 	# import key for extra mirror(s)
-	for ((i=0; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
-		[[ ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
+	for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
 		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
@@ -349,6 +348,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	cat_file_to_chroot kernelimg /etc/kernel-img.conf
 	install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+
+	# grab kernel and initial ramdisk before other packages are installed
+	cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
+	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 	
 	#################################################################
 	#	mass package installation				#
@@ -486,10 +489,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
 		popd >/dev/null
 	done
-
-	# populate /boot/
-	cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
-	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
 
 	# populate /boot/grub
 	cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
