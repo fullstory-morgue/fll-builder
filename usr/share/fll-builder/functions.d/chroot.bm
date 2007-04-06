@@ -7,6 +7,8 @@ chroot_exec() {
 		DEBIAN_FRONTEND="noninteractive" \
 		DEBIAN_PRIORITY="critical" \
 		DEBCONF_NOWARNINGS="yes" \
+		http_proxy="$http_proxy" \
+		ftp_proxy="$ftp_proxy" \
 		$@
 	
 	return $?
