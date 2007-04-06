@@ -520,9 +520,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
 		if [[ $FLL_BUILD_ISO_DIR ]]; then
 			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
-			echo "$SELF: creating iso in ../$FLL_BUILD_AREA"
+			echo "$SELF: creating iso in $FLL_BUILD_AREA"
 		fi
-		FLL_BUILD_ISO_DIR=../"$FLL_BUILD_AREA"
+		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
 	fi
 
 	make_fll_iso "$FLL_BUILD_ISO_DIR"
@@ -532,6 +532,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" \
 			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 	fi
+
+	echo
+	echo "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"
 
 	nuke_buildarea
 done
