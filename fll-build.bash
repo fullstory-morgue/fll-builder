@@ -315,16 +315,22 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# install gpg keyring for fll mirror
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install "$FLL_DISTRO_NAME"-keyrings
 
-	# import key for extra mirror
-	if [[ $FLL_BUILD_EXTRAMIRROR ]]; then
-		if [[ $FLL_BUILD_EXTRAMIRROR_GPGKEYID ]]; then
+	# import key for extra mirror(s)
+	for ((i=0; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
+		[[ ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
+		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
+			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
-				"$FLL_BUILD_EXTRAMIRROR_GPGKEYID"
-			chroot_exec apt-key add /root/.gnupg/pubring.gpg
+				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}"
 		else
-			echo "Must provide GPG KeyID for $FLL_BUILD_EXTRAMIRROR"
+			echo "Must provide GPG keyid for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			exit 6
 		fi
+	done
+
+	# add imported gpg keys to apt's trusted keyring
+	if exists_in_chroot /root/.gnupg/pubring.gpg; then
+		chroot_exec apt-key add /root/.gnupg/pubring.gpg
 	fi
 
 	# refresh lists now that "secure apt" is aware of required gpg keys

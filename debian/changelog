@@ -60,8 +60,8 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * When kppp is installed, "fix" its ppp noauth settings via
     /etc/ppp/peers/kppp-options as per /usr/share/doc/kppp/README.Debian.
   * Export fll_proxy and http_proxy if set in fll-build.conf.
-  * Again add support for one external repository, along with matching gpg
-    keyid.
+  * Again add support for external repositories, along with matching gpg
+    keyids and components.
   * Purge old DEBOOSTRAP_* variables, see default config for condensed method
     of handling target arch. Hardcode minimal boostrap option.
   * Annotate default config file with useful comments.
@@ -81,7 +81,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 20:39:06 +1000
+ -- Kel Modderman <kel@otaku42.de>  Fri, 06 Apr 2007 21:37:43 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
