@@ -36,6 +36,12 @@ deb http://ftp.debian.org/debian/ sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 EOF
 			
 			for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
+				case ${FLL_BUILD_EXTRAMIRROR[$i]} in
+					# hack to convert cached sidux repo into actual URL
+					*localhost*sidux*|*127\.0\.0\.1*sidux*)
+						eval FLL_BUILD_EXTRAMIRROR[$i]="http://sidux.com/debian/"
+						;;
+				esac
 				cat >> "$DEST" \
 <<EOF
 
