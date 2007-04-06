@@ -37,7 +37,7 @@ make_compressed_image() {
 		echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSION_LIST."
 		cat "$FLL_BUILD_EXCLUSION_LIST" > "$SQUASHFSEXCLUSIONSLIST"
 		pushd "$FLL_BUILD_CHROOT" >/dev/null
-			make_exclude_file "$SQUASHFSEXCLUSIONSLIST" > "$SQUASHFSEXCLUDEFILE"
+			make_exclude_file "$SQUASHFSEXCLUSIONSLIST" | tee "$SQUASHFSEXCLUDEFILE"
 		popd >/dev/null
 	fi
 	

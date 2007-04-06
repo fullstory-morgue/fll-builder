@@ -37,7 +37,7 @@ EOF
 	# generate md5sums
 	echo "> Calculate md5sums for the resulting ISO."
 	pushd "$FLL_BUILD_ISO_DIR" >/dev/null
-		md5sum -b "$FLL_ISO_NAME" > "$FLL_ISO_NAME".MD5
+		md5sum -b "$FLL_ISO_NAME" | tee "$FLL_ISO_NAME".MD5
 	popd >/dev/null
 	
 	# retrieve package and source lists created by fetch_source_uris
