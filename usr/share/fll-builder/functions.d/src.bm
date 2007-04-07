@@ -4,9 +4,9 @@ fetch_source_uris() {
 	
 	# create package manifest
 	chroot_exec dpkg-query --showformat='${Package;-50}${Version}\n' -W  | \
-		sort --unique --output="$CHROOTPKGLIST"
+		sort --unique | tee "$CHROOTPKGLIST"
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS => fragile hack
 	chroot_exec apt-get -qq --print-uris source $(awk '$1 !~ /'"$KVERS"'$/{ print $1 }' "$CHROOTPKGLIST") | \
-		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique --output="$CHROOTSRCLIST"
+		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique | tee "$CHROOTSRCLIST"
 } 
