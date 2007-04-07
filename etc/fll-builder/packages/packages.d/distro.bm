@@ -13,7 +13,3 @@ FLL_PACKAGES+=(
 	udev-config-sidux
 	user-profile-sidux
 )
-
-FLL_PACKAGES+=(
-	python-central/testing
-)

@@ -1,0 +1,3 @@
+FLL_PACKAGES+=(
+	python-central/testing
+)

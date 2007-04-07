@@ -17,4 +17,7 @@ source_package_profile() {
 	# unconditionally evaluate i18n requirements
 	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
 	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
+
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/broken.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/broken.bm
 }
