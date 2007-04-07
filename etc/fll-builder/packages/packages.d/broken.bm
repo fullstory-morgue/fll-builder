@@ -2,9 +2,10 @@
 # useful for pulling packages from testing when the version in unstable
 # is uninstallable. List the broken package in FLL_PACKAGES packages like
 # so: package/testing
-((FLL_BUILD_DEBIANTESTING++))
+#((FLL_BUILD_DEBIANTESTING++))
 
 # python-central - http://bugs.debian.org/418108
-FLL_PACKAGES+=(
-	python-central/testing
-)
+#FLL_PACKAGES+=(
+#	python-central/testing
+#)
+
