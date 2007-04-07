@@ -287,7 +287,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		create & prepare chroot				#
 	#################################################################
 	cdebootstrap --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
-		"$FLL_BUILD_CHROOT" "$FLL_BUILD_DEBIANMIRROR"
+		"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
 	
 	chroot_virtfs mount
 
