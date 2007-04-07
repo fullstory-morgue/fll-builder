@@ -22,7 +22,7 @@ EOF
 			for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
 				case ${FLL_BUILD_EXTRAMIRROR[$i]} in
 					# hack to convert cached sidux repo into actual URL
-					*localhost*sidux*|*[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*sidux*)
+					*localhost*sidux*|*[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*sidux*|*sidux\.com*)
 						eval FLL_BUILD_EXTRAMIRROR[$i]="http://sidux.com/debian/"
 						;;
 				esac
@@ -40,9 +40,14 @@ EOF
 <<EOF
 deb $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb-src $FLL_BUILD_DEBIANMIRROR sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+EOF
+			if [[ $FLL_BUILD_DEBIANTESTING ]]; then
+				cat >> "$DEST" \
+<<EOF
 deb $FLL_BUILD_DEBIANMIRROR testing $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 deb-src $FLL_BUILD_DEBIANMIRROR testing $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 EOF
+			fi
 
 			for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
 				cat >> "$DEST" \
