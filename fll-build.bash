@@ -453,7 +453,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 	
 	# create formatted package manifest
-	printf "%-50s%-15s%s\n" "<Package Name>" "<Installed Size>" "<Version>" > \
+	printf "%-50s%-15s%s\n" "<Package Name>" "<Size>" "<Version>" > \
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	chroot_exec dpkg-query --showformat='${Package;-50}${Installed-Size;-15}${Version}\n' -W | \
 		tee --append "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
