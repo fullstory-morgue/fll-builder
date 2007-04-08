@@ -590,7 +590,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_virtfs umount
 
 	# add templates (grub menu.lst/documentation/manual/autorun etc.)
-	for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
+	for dir in "$FLL_BUILD_TEMPLATES"/*; do
 		[[ -d $dir ]] || continue
 		pushd $dir >/dev/null
 			find . -not -path '*.svn*' -printf '%P\n' | \
@@ -626,7 +626,24 @@ EOF
 	#		build						#
 	#################################################################
 
-	make_compressed_image
+	FLL_BUILD_EXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP fll.exclude-file.XXXXX)
+	FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p $FLL_BUILD_TEMP fll.exclusions.XXXXX)
+	FLL_BUILD_MKSQUASHFSOPTS=( "-ef $FLL_BUILD_EXCLUDEFILE" )
+
+	echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSION_LIST."
+	cat "$FLL_BUILD_EXCLUSION_LIST" > "$FLL_BUILD_TMPEXCLUSION_LIST"
+	pushd "$FLL_BUILD_CHROOT" >/dev/null
+		make_exclude_file "$FLL_BUILD_TMPEXCLUSION_LIST" | tee "$FLL_BUILD_EXCLUDEFILE"
+	popd >/dev/null
+	
+	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
+		FLL_BUILD_MKSQUASHFSOPTS+=( "-sort $FLL_BUILD_SQUASHFS_SORTFILE" )
+	fi
+
+	echo "> Create squashfs."
+	pushd "$FLL_BUILD_CHROOT" >/dev/null
+		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
+	popd >/dev/null
 
 	# md5sums
 	pushd "$FLL_BUILD_RESULT" >/dev/null
