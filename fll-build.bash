@@ -454,7 +454,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# create formatted package manifest
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Installed Size>" "<Version>" > \
-		"$FLL_BUILD_TEMP"/manifest
+		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	chroot_exec dpkg-query --showformat='${Package;-50}${Installed-Size;-15}${Version}\n' -W | \
 		tee --append "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	
