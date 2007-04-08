@@ -256,7 +256,22 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		process package array(s)			#
 	#################################################################
-	source_package_profile "$FLL_BUILD_PACKAGE_PROFILE"
+	if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
+		echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
+		return 1
+	fi
+
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
+
+	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+		echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
+	done
+	
+	# unconditionally evaluate i18n requirements
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
 
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
