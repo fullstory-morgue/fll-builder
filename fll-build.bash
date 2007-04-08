@@ -375,7 +375,18 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	echo
 	echo "Calculating source package URI list . . ."
 	echo
-	fetch_source_uris
+
+	# create formatted package manifest
+	chroot_exec dpkg-query --showformat='${Package;-50}${Version}\n' -W  | \
+		sort --unique | tee "$FLL_BUILD_TEMP"/manifest
+	
+	# XXX: our kernel packages have no apt-gettable source, filter KVERS
+	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /'"$KVERS"'$/{ print $1 }' "$FLL_BUILD_TEMP"/manifest) )
+	
+	# generate source package URI list
+	chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
+		awk '{ gsub(/'\''/,"", $1); print $1 }' | \
+		sort --unique | tee "$FLL_BUILD_TEMP"/sources
 	
 	# XXX: this hack is FOR TESTING PURPOSES ONLY
 	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
