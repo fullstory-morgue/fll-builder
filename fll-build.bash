@@ -238,13 +238,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	source "$config"
 
-	if [[ ! $FLL_BUILD_LINUX_KERNEL ]]; then
-		echo "$SELF: you must define FLL_BUILD_LINUX_KERNEL in the config!"
-		echo
-		print_help
-		exit 4
-	fi
-
+	#################################################################
+	#		export proxy env vars				#
+	#################################################################
 	if [[ $FLL_HTTP_PROXY ]]; then
 		export http_proxy=$FLL_HTTP_PROXY
 	fi
@@ -252,34 +248,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [[ $FLL_FTP_PROXY ]]; then
 		export ftp_proxy=$FLL_FTP_PROXY
 	fi
-
-	#################################################################
-	#		process package array(s)			#
-	#################################################################
-	if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
-		echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
-		return 1
-	fi
-
-	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
-
-	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
-		echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
-		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
-	done
-	
-	# unconditionally evaluate i18n requirements
-	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
-
-	if [[ ! ${FLL_PACKAGES[@]} ]]; then
-		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
-		exit 5
-	fi
-	
-	# echo package list early for bfree :-)
-	echo "${FLL_PACKAGES[@]}"
 
 	#################################################################
 	#		prepare build area				#
@@ -297,6 +265,58 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$dir"
 		done
 	fi
+
+	#################################################################
+	#		prepare kernel zip package			#
+	#################################################################
+	if [[ $FLL_BUILD_LINUX_KERNEL =~ '.*kernel-(.*).zip$' ]]; then
+		KVERS=${BASH_REMATCH[1]}
+
+		FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
+
+		if [[ -f $FLL_BUILD_LINUX_KERNEL ]]; then
+			cp -v "$FLL_BUILD_LINUX_KERNEL" "$FLL_BUILD_LINUX_KERNELDIR"
+		else
+			wget "$FLL_BUILD_LINUX_KERNEL" \
+				-O "$FLL_BUILD_LINUX_KERNELDIR"/kernel-"$KVERS".zip
+		fi
+
+		pushd "$FLL_BUILD_LINUX_KERNELDIR" &>/dev/null
+			zip -T kernel-"$KVERS".zip
+			unzip kernel-"$KVERS".zip
+		popd &>/dev/null
+	else
+		echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
+		exit 4
+	fi
+
+	#################################################################
+	#		process package array(s)			#
+	#################################################################
+	if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
+		echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
+		exit 5
+	fi
+
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
+
+	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+		echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
+	done
+	
+	# unconditionally evaluate i18n requirements
+	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
+
+	if [[ ! ${FLL_PACKAGES[@]} ]]; then
+		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
+		exit 6
+	fi
+	
+	# echo package list early for bfree :-)
+	echo "${FLL_PACKAGES[@]}"
 
 	#################################################################
 	#		create & prepare chroot				#
@@ -347,36 +367,50 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get --assume-yes install distro-defaults
 	
 	#################################################################
-	#	preseed locales						#
+	#		preseed locales					#
 	#################################################################
 	chroot_exec apt-get --assume-yes install debconf
-	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | chroot_exec debconf-set-selections
-	echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | chroot_exec debconf-set-selections
+	
+	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
+		chroot_exec debconf-set-selections
+	
+	echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | \
+		chroot_exec debconf-set-selections
+	
 	chroot_exec apt-get --assume-yes install locales
 
 	#################################################################
-	#	install kernel, make initial ramdisk			#
+	#		install kernel, make initial ramdisk		#
 	#################################################################
 	# module-init-tools required for depmod, it may not be in minimal bootstrap
 	chroot_exec apt-get --assume-yes install live-initrd-sidux module-init-tools
 	
 	# ensure initrd is created by linux-image postinst hook
 	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
-	
-	install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
+
+	chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
+
+	# link-up kernel headers/documentation
+	rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
+	ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
+	ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
+	ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
+	cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
+		"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
+	rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+	ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
+		"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
 
 	# grab kernel and initial ramdisk before other packages are installed
-	cp -vL "$FLL_BUILD_CHROOT"/boot/miniroot.gz "$FLL_BUILD_RESULT"/boot/miniroot.gz
-	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz "$FLL_BUILD_RESULT"/boot/vmlinuz
+	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/miniroot.gz
+	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/vmlinuz
 	
 	#################################################################
-	#	mass package installation				#
+	#		mass package installation			#
 	#################################################################
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 	
-	echo
 	echo "Calculating source package URI list . . ."
-	echo
 
 	# create formatted package manifest
 	chroot_exec dpkg-query --showformat='${Package;-50}${Version}\n' -W  | \
@@ -396,7 +430,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 	
 	#################################################################
-	#	create user in chroot					#
+	#		create user in chroot				#
 	#################################################################
 	chroot_exec adduser --no-create-home --disabled-password \
 		--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
@@ -413,7 +447,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_CHROOT"/etc/shadow
 
 	#################################################################
-	#	hack inittab						#
+	#		hack inittab					#
 	#		- init 5 by default				#
 	#		- immutable bash login shells			#
 	#################################################################
@@ -424,7 +458,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_CHROOT"/etc/inittab
 	
 	#################################################################
-	#	misc chroot preseeding					#
+	#		misc chroot preseeding				#
 	#################################################################
 	# run fix-fonts
 	if exists_in_chroot /usr/sbin/fix-fonts; then
@@ -456,7 +490,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 	
 	#################################################################
-	#	cleanup & prepare final chroot				#
+	#		cleanup & prepare final chroot			#
 	#################################################################
 	# purge unwanted packages
 	chroot_exec apt-get --purge remove -y cdebootstrap-helper-diverts
@@ -501,12 +535,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	chroot_virtfs umount
 
-	[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
-
-	#################################################################
-	#		build						#
-	#################################################################
-
 	# add templates (grub menu.lst/documentation/manual/autorun etc.)
 	for dir in "$FLL_BUILD_TEMPLATES"/common "$FLL_BUILD_TEMPLATES"/"$FLL_DISTRO_NAME"; do
 		[[ -d $dir ]] || continue
@@ -537,6 +565,12 @@ title memtest86+
 kernel /boot/memtest86+.bin
 EOF
 	fi
+
+	[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
+
+	#################################################################
+	#		build						#
+	#################################################################
 
 	make_compressed_image
 
