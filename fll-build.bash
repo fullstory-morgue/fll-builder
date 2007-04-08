@@ -260,10 +260,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
 
 	# fix permissions to allow user access
-	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
-		for dir in "$FLL_BUILD_AREA" "$FLL_BUILD_TEMP" "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT"; do
-			chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$dir"
-		done
+	if ((FLL_BUILD_OUTPUT_UID)); then
+		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
 	fi
 
 	#################################################################
@@ -272,6 +270,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [[ $FLL_BUILD_LINUX_KERNEL =~ '.*kernel-(.*).zip$' ]]; then
 		KVERS=${BASH_REMATCH[1]}
 
+		# stage temporary dir within chroot
 		FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
 
 		if [[ -f $FLL_BUILD_LINUX_KERNEL ]]; then
@@ -285,6 +284,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			zip -T kernel-"$KVERS".zip
 			unzip kernel-"$KVERS".zip
 		popd &>/dev/null
+	elif [[ $FLL_BUILD_LINUX_KERNEL =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
+		KVERS="$FLL_BUILD_LINUX_KERNEL"
 	else
 		if [[ $FLL_BUILD_LINUX_KERNEL ]]; then
 			echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
@@ -367,9 +368,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# package timestamp for snapshot versioning
 	FLL_PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 	
-	# ensure distro-defaults is present
-	chroot_exec apt-get --assume-yes install distro-defaults
-	
 	#################################################################
 	#		preseed locales					#
 	#################################################################
@@ -391,19 +389,26 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# ensure initrd is created by linux-image postinst hook
 	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
+	
+	if [[ $FLL_BUILD_LINUX_KERNELDIR ]]; then
+		# install kernel via zip package from http://sidux.com/files/kernel/
+		chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
 
-	chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
-
-	# link-up kernel headers/documentation
-	rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
-	ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
-	ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
-	ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
-	cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
-		"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
-	rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
-	ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
-		"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+		# link-up kernel headers/documentation
+		rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
+		ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
+		ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
+		ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
+		cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
+			"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
+		rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+		ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
+			"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+	else
+		# debian kernel, just apt-get it
+		chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
+			squashfs-modules-"$KVERS" unionfs-modules-"$KVERS"
+	fi
 
 	# grab kernel and initial ramdisk before other packages are installed
 	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/miniroot.gz
@@ -412,6 +417,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		mass package installation			#
 	#################################################################
+	# ensure distro-defaults is present before distro packages are installed
+	chroot_exec apt-get --assume-yes install distro-defaults
+
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 	
 	# create formatted package manifest
@@ -518,9 +526,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot sudoers	/etc/sudoers
 	
 	# add version marker, this is the exact time stamp for our package list
-	echo -n "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
+	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
 		> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-	echo " - $FLL_DISTRO_CODENAME ($FLL_PACKAGE_TIMESTAMP)" \
+	printf " - $FLL_DISTRO_CODENAME ($FLL_PACKAGE_TIMESTAMP)\n" \
 		>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 	
 	# a few dæmons are broken if log files are missing, 
@@ -604,7 +612,7 @@ EOF
 	make_fll_iso "$FLL_BUILD_ISO_DIR"
 
 	# if started as user, apply user ownership to output (based on --uid)
-	if [[ $FLL_BUILD_OUTPUT_UID != 0 ]]; then
+	if ((FLL_BUILD_OUTPUT_UID)); then
 		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" \
 			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 	fi
