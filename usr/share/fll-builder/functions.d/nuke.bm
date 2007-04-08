@@ -1,9 +1,7 @@
 nuke_buildarea() {
-	#print out all variables used for debugging purposes
+	# print out all FLL variables for debugging purposes
 	if ((DEBUG)); then
-		for var in ${!FLL_*}; do
-			eval echo "${var}=\$${var}"
-		done
+		set | grep ^FLL
 	fi
 
 	[[ -d $FLL_BUILD_TEMP ]] || return 0
