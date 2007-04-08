@@ -414,8 +414,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 	
-	echo "Calculating source package URI list . . ."
-	
 	# create formatted package manifest
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Installed Size>" "<Version>" > \
 		"$FLL_BUILD_TEMP"/manifest
@@ -424,6 +422,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS
 	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' "$FLL_BUILD_TEMP"/manifest) )
+	
+	echo "Calculating source package URI list . . ."
 	
 	# generate source package URI list
 	chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
