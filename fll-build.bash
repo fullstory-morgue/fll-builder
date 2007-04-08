@@ -286,7 +286,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			unzip kernel-"$KVERS".zip
 		popd &>/dev/null
 	else
-		echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
+		if [[ $FLL_BUILD_LINUX_KERNEL ]]; then
+			echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
+		else
+			echo "Must define FLL_BUILD_LINUX_KERNEL in your conf"
+		fi
 		exit 4
 	fi
 
