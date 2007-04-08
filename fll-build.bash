@@ -451,6 +451,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get --assume-yes install distro-defaults
 
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
+
+	# purge unwanted packages
+	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	
 	# create formatted package manifest
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Size>" "<Version>" > \
@@ -549,9 +552,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
-	# purge unwanted packages
-	chroot_exec dpkg --purge cdebootstrap-helper-diverts
-	
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
 	remove_from_chroot /usr/sbin/policy-rc.d
