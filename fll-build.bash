@@ -550,7 +550,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		cleanup & prepare final chroot			#
 	#################################################################
 	# purge unwanted packages
-	chroot_exec apt-get --purge remove -y cdebootstrap-helper-diverts
+	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
