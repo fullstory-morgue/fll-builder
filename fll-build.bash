@@ -264,6 +264,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
 	fi
 
+	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
+		if [[ $FLL_BUILD_ISO_DIR ]]; then
+			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
+			echo "$SELF: creating iso in $FLL_BUILD_AREA"
+		fi
+		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
+	fi
+
 	#################################################################
 	#		prepare kernel zip package			#
 	#################################################################
@@ -286,6 +294,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		popd &>/dev/null
 	elif [[ $FLL_BUILD_LINUX_KERNEL =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
 		KVERS="$FLL_BUILD_LINUX_KERNEL"
+		unset FLL_BUILD_LINUX_KERNELDIR
 	else
 		if [[ $FLL_BUILD_LINUX_KERNEL ]]; then
 			echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
@@ -367,6 +376,24 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# package timestamp for snapshot versioning
 	FLL_PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
+
+	#################################################################
+	#		iso name (with package timestamp)		#
+	#################################################################
+	case "$FLL_BUILD_ARCH" in
+		i?86)
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}.ISO)
+			;;
+		amd64|x86_64)
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}.ISO)
+			;;
+		*)
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}.ISO)
+			;;
+	esac
 	
 	#################################################################
 	#		preseed locales					#
@@ -426,17 +453,30 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Installed Size>" "<Version>" > \
 		"$FLL_BUILD_TEMP"/manifest
 	chroot_exec dpkg-query --showformat='${Package;-50}${Installed-Size;-15}${Version}\n' -W | \
-		tee --append "$FLL_BUILD_TEMP"/manifest
+		tee --append "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS
-	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' "$FLL_BUILD_TEMP"/manifest) )
+	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' \
+		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
 	
 	echo "Calculating source package URI list . . ."
 	
 	# generate source package URI list
 	chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
 		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique | \
-		tee "$FLL_BUILD_TEMP"/sources
+		tee "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+	
+	# fix source URI's to use non cached address
+	if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
+		sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
+			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+	fi
+
+	for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR_CACHED[@]}; i++)); do
+		[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
+		sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
+			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+	done
 	
 	# XXX: this hack is FOR TESTING PURPOSES ONLY
 	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
@@ -601,15 +641,32 @@ EOF
 			-printf '%P\n' | sort | xargs md5sum -b | tee "$FLL_IMAGE_DIR"/md5sums
 	popd >/dev/null
 
-	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
-		if [[ $FLL_BUILD_ISO_DIR ]]; then
-			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
-			echo "$SELF: creating iso in $FLL_BUILD_AREA"
-		fi
-		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
-	fi
+	# create iso sortlist
+	FLL_BUILD_ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
 
-	make_fll_iso "$FLL_BUILD_ISO_DIR"
+	cat > "$FLL_BUILD_ISOSORTLIST" \
+<<EOF
+$FLL_BUILD_RESULT/boot/grub/* 111111
+$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
+EOF
+
+	# make the iso
+	echo "> Create ISO."
+	genisoimage -v -pad -l -r -J \
+		-V "$FLL_DISTRO_NAME_UC" \
+		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD" \
+		-no-emul-boot -boot-load-size 4 -boot-info-table -hide-rr-moved \
+		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
+		-sort "$FLL_BUILD_ISOSORTLIST" \
+		-o "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME" \
+		"$FLL_BUILD_RESULT"
+
+	# generate md5sums
+	echo "> Calculate md5sums for the resulting ISO."
+	pushd "$FLL_BUILD_ISO_DIR" >/dev/null
+		md5sum -b "$FLL_ISO_NAME" | tee "$FLL_ISO_NAME".md5
+	popd >/dev/null
 
 	# if started as user, apply user ownership to output (based on --uid)
 	if ((FLL_BUILD_OUTPUT_UID)); then
