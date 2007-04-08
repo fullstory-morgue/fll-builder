@@ -360,7 +360,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# module-init-tools required for depmod, it may not be in minimal bootstrap
 	chroot_exec apt-get --assume-yes install live-initrd-sidux module-init-tools
 	
-	cat_file_to_chroot kernelimg /etc/kernel-img.conf
+	# ensure initrd is created by linux-image postinst hook
+	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
+	
 	install_linux_kernel "$FLL_BUILD_LINUX_KERNEL"
 
 	# grab kernel and initial ramdisk before other packages are installed
@@ -528,9 +530,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	if exists_in_chroot /boot/memtest86+.bin; then
 		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
-		echo					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "title memtest86+"			>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "kernel /boot/memtest86+.bin"	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		cat >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst \
+<<EOF
+
+title memtest86+
+kernel /boot/memtest86+.bin
+EOF
 	fi
 
 	make_compressed_image
