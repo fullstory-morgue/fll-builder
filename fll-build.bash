@@ -169,7 +169,7 @@ while true; do
 			exit 0
 			;;
 		-d|--debug)
-			DEBUG=1
+			((DEBUG++))
 			set -x
 			;;
 		-h|--help)
@@ -177,14 +177,14 @@ while true; do
 			exit 0
 			;;
 		-n|--chroot-only)
-			FLL_BUILD_CHROOT_ONLY=1
+			((FLL_BUILD_CHROOT_ONLY++))
 			;;
 		-o|--output)
 			shift
 			FLL_BUILD_ISO_DIR=$1
 			;;
 		-p|--preserve)
-			FLL_BUILD_PRESERVE_CHROOT=1
+			((FLL_BUILD_PRESERVE_CHROOT++))
 			;;
 		--uid)
 			# this need not be a documented feature
