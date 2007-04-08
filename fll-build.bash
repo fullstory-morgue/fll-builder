@@ -170,7 +170,6 @@ while true; do
 			;;
 		-d|--debug)
 			((DEBUG++))
-			set -x
 			;;
 		-h|--help)
 			print_help
@@ -213,6 +212,10 @@ else
 	echo
 	print_help
 	exit 3
+fi
+
+if [[ $DEBUG -ge 2 ]]; then
+	set -x
 fi
 
 #################################################################
