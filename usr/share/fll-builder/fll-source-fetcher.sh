@@ -7,7 +7,7 @@ mkdir -p source
 # process args
 for arg in ${@}; do
 	case ${arg} in
-		*.SOURCES)
+		*.sources)
 			# concatenate url lists
 			[ -s ${arg} ] && cat ${arg} >> list
 			;;
