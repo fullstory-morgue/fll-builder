@@ -1,4 +1,11 @@
 nuke_buildarea() {
+	#print out all variables used for debugging purposes
+	if ((DEBUG)); then
+		for var in ${!FLL_*}; do
+			eval echo "${var}=\$${var}"
+		done
+	fi
+
 	[[ -d $FLL_BUILD_TEMP ]] || return 0
 
 	if chroot_virtfs umount; then
