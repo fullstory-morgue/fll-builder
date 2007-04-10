@@ -529,7 +529,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if exists_in_chroot /usr/bin/iceweasel; then
 		chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
 	elif exists_in_chroot /usr/bin/epiphany-browser; then
-		chroot_exec update-alternatives --set x-www-browser /usr/bin/epiphany-browser
+		chroot_exec update-alternatives --set x-www-browser /usr/bin/epiphany
 	elif exists_in_chroot /usr/bin/konqueror; then
 		chroot_exec update-alternatives --set x-www-browser /usr/bin/konqueror
 	fi
