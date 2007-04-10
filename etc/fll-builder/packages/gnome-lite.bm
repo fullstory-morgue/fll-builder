@@ -1,0 +1,30 @@
+FLL_PACKAGE_DEPMODS=(
+	distro
+	distro-gnome
+	hwsupport-essential
+	utils-essential
+	xserver
+)
+
+FLL_PACKAGES=(
+	gdm
+	gnome-core
+	xchat
+	checkmem
+	configure-cups
+	configure-gprs
+	configure-mouse
+	configure-screenres
+	configure-xawtv
+	ddcxinfo-sidux
+	fix-fonts
+	gparted
+	install-gui
+	install-meta
+	rootshell
+	sidux-browser
+	sidux-xdg
+	sidux-searchplugins
+	sidux-setpassword
+	xorgconfig-sidux
+)
