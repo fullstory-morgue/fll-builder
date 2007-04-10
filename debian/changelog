@@ -85,7 +85,10 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 08 Apr 2007 20:05:32 +1000
+  [ Horst Tritremmel ]
+  * add gnome-full.bm package 
+
+ -- Horst Tritremmel <hjt@sidux.com>  Tue, 10 Apr 2007 15:45:04 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 
