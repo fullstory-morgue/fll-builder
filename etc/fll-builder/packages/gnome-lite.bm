@@ -10,19 +10,26 @@ FLL_PACKAGES=(
 	gdm
 	gnome-core
 	xchat
+	infobash
 	checkmem
 	configure-cups
 	configure-gprs
 	configure-mouse
 	configure-screenres
 	configure-xawtv
+	configure-networkcard
+	configure-ndiswrapper
+	configure-isdn
 	ddcxinfo-sidux
 	fix-fonts
 	gparted
 	install-gui
 	install-meta
 	rootshell
+	epiphany-browser
+	epiphany-extensions
 	sidux-browser
+	sidux-irc
 	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
