@@ -1,8 +1,8 @@
 FLL_PACKAGE_DEPMODS=(
 	cli
 	distro
+	distro-gnome
 	distro-tools
-	distro-tools-x
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -11,57 +11,65 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	amarok
-	ark
-	bind9-host
-	digikam
-	digikamimageplugins
-	dnsutils
-	ekiga
-	esound
-	evince
-	file-roller
-	frozen-bubble
-	gcalctool
-	gconf-editor
 	gdm
-	gdm-themes
-	gdm-themes-sidux
-	gimp
-	gnome-backgrounds
-	gnome-cards-data
 	gnome-core
+	gnome-commander
+	gnome-applets
+	gnome-audio
+	gnome-btdownload
+	gnome-chess
+	gnome-find
 	gnome-games
+	gnome-gpg
+	gnome-keyring
 	gnome-keyring-manager
+	gnome-mag
 	gnome-media
-	gnome-netstatus-applet
+	gnome-art
+	gnome-mount
 	gnome-nettool
-	gnome-power-manager
-	gnome-screensaver
-	gnome-spell
-	gnome-splashscreen-manager
-	gnome-system-monitor
-	gnome-system-tools
-	gnome-themes
-	gnome-themes-extras
-	gnome-user-guide
+	gnome-osd
+	gnome-photo-printer
+	gnome-office
+	gnome-schedule
 	gnome-utils
-	gnome-volume-manager
-	gnomebaker
-	gucharmap
-	gwenview
-	icedove
+	gimp
+	gimp-print
+	xchat
 	iceweasel
-	industrial-cursor-theme
-	inkscape
-	kaffeine
-	myspell-en-us
-	nautilus-cd-burner
-	openoffice.org
-	pdfcube
+	icedove
 	scribus-ng
-	sound-juicer
-	synaptic
-	xchat-gnome
-	xdg-utils
+	gaim
+	infobash
+	checkmem
+	configure-cups
+	configure-gprs
+	configure-mouse
+	configure-screenres
+	configure-xawtv
+	configure-networkcard
+	configure-ndiswrapper
+	configure-isdn
+	compiz
+	ddcxinfo-sidux
+	fix-fonts
+	gparted
+	install-gui
+	install-meta
+	rootshell
+	epiphany-browser
+	epiphany-extensions
+	sidux-browser
+	sidux-irc
+	sidux-xdg
+	sidux-searchplugins
+	sidux-setpassword
+	xorgconfig-sidux
+	openoffice.org
+	openoffice.org-gnome
+	totem
+	streamripper
+	streamtuner
+	vlc
+	vlc-plugin-alsa
 )
