@@ -3,6 +3,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro
 	distro-gnome
 	distro-tools
+	distro-tools-x
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -12,7 +13,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	gdm
-	gnome-core
+	gnome
 	gnome-commander
 	gnome-applets
 	gnome-audio
@@ -41,30 +42,12 @@ FLL_PACKAGES=(
 	scribus-ng
 	gaim
 	infobash
-	checkmem
-	configure-cups
-	configure-gprs
-	configure-mouse
-	configure-screenres
-	configure-xawtv
 	configure-networkcard
 	configure-ndiswrapper
 	configure-isdn
 	compiz
-	ddcxinfo-sidux
-	fix-fonts
-	gparted
-	install-gui
-	install-meta
-	rootshell
 	epiphany-browser
 	epiphany-extensions
-	sidux-browser
-	sidux-irc
-	sidux-xdg
-	sidux-searchplugins
-	sidux-setpassword
-	xorgconfig-sidux
 	openoffice.org
 	openoffice.org-gnome
 	totem
