@@ -19,7 +19,7 @@ deb http://ftp.debian.org/debian/ sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 #deb-src http://ftp.debian.org/debian/ experimental $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 EOF
 			
-			for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
+			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
 				cat >> "$DEST" \
 <<EOF
 
@@ -36,7 +36,7 @@ deb ${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEB
 deb-src ${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 EOF
 
-			for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
+			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
 				if [[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} ]]; then
 					cat >> "$DEST" \
 <<EOF

@@ -358,7 +358,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get update
 	
 	# import key for extra mirror(s)
-	for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR[@]}; i++)); do
+	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
 		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
@@ -478,7 +478,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
 	fi
 
-	for ((i=1; i<=${#FLL_BUILD_EXTRAMIRROR_CACHED[@]}; i++)); do
+	for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
 		[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
 		sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
 			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
