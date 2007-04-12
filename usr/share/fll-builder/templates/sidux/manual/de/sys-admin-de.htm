@@ -12,7 +12,7 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
 <!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -287,10 +287,19 @@ aticonfig --help
 
 				<h5>Basisauswahl der Schriftarten, ihre Darstellungsart und ihre Größe</h5>
 
-				<p>sidux nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. Wenn eigene Schriftarten gewählt bzw. die DPI-Zahl in X oder Iceweasel bzw. Iceape verändert werden, müssen eventuell neue Konfigurationsanpassungen als Root vorgenommen werden, um das gewünschte Schriftbild zu erhalten:</p>
+				<p>sidux nutzt freie Fonts, die sich in Debian als ausgewogen bewährt haben. Wenn eigene Schriftarten gewählt werden, müssen eventuell neue Konfigurationsanpassungen als Root vorgenommen werden, um das gewünschte Schriftbild zu erhalten. Neben den Einstellungsmöglichkeiten im KDE-Kontrollzentrum (kcontrol) gibt es bei Debian einige mächtige Einstellungsoptionen zum Erzielen einer sauberen Schriftartendarstellung. Beachtet werden muss jedoch, dass jede Schriftart ein ideales Größenspektrum besitzt, sodass andere Größen mit der gleichen Schriftart nicht zum gleich optimalen Ergebnis führen müssen.</p>
+
+				<p>Eine Änderung der DPI-Größe kann auch zu einer besseren Schriftartendarstellung beitragen. Dazu wird dieser Befehl verwendet:</p>
+<pre>
+fix-dpi-kdm
+</pre>
+				<p>Dies sollte die passende DPI-Größe für den verwendeten Monitor anzeigen, aber sie kann geändert werden. Um die Änderungen wirksam werden zu lassen, muss der Grafikserver X neu gestartet (init 3 - init 5) oder ein Reboot durchgeführt werden.</p>
+
+				<p>Nach Änderung einer Schriftart oder der DPI-Größe (in X oder Firefox/Iceweasel), müssen eventuell noch einige Anpassungen vorgenommen werden, besonders wenn von einem Bitmap Font zu einem True Type Font gewechselt wurde (oder umgekehrt):</p>
 <pre>
 dpkg-reconfigure fontconfig-config
 </pre>
+				<p>Die ersten beiden Einstellungen sind am besten (1) "native" und (2) "autohinter" als "automatic". Andere Einstellungsmöglichkeiten können ausprobiert werden. Der dritte Menupunkt lässt für Bitmap-Schriften ("yes") oder True-Type-Schriften ("no") optimieren.</p>
 				<p>Falls dieser Befehl Änderungen nicht gestattet, kann der Neuaufbau des Font-Caches eine Lösung bedeuten (der zweite Befehl ist ohne Zeilenumbruch, d. h. in einer Zeile einzugeben):</p>
 <pre>
 rm -rf /etc/fonts

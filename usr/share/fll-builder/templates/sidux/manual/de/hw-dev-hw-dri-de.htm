@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
 <!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -187,7 +187,7 @@ install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automa
 install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
 install-binary-gfx -b nvidia (Damit wird nur das Modul f&#252;r nvidia gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und nvidia-legacy)
 install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX UND NUR für r200 und r300, nicht für fglrx)</span>
+install-binary-gfx --aiglx (Aktivierung von AIGLX)
 install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
 </pre>
 
@@ -201,7 +201,7 @@ install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine 
 cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
 chmod +x sgfxi
 </pre>
-			<p>sgfxi unterstützt im Augenblick ATI fglrx und Nvidia-Trivers. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterstützt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend für Grafiktreiber und fügt einige Optionen zur einfacheren Benutzung hinzu.</p>
+			<p>sgfxi unterstützt im Augenblick ATI fglrx und Nvidia-Treiber. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterstützt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend für Grafiktreiber und fügt einige Optionen zur einfacheren Benutzung hinzu.</p>
 
 			<p>sgfxi -h listet alle Optionen. Die Optionen werden im Laufe der Zeit ergänzt. Auch werden mit sgfxi -h die augenblicklich unterstützten Treiber angezeigt wie auch Spezifikationen des benutzten Systems wie Kernel und xorg-Version. Der Default-Treiber wird installiert, wenn keine weiteren Optionen für die Installation angegeben werden. Auch erkennt das Skript automatisch ältere Grafikkarten und installiert Legacy-Treiber ohne weiteres Zutun.</p>
 
@@ -245,7 +245,7 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 -d | --detect          nur Grafikkartenerkennung
 -u | --update          Update-Skript
 -v | --verbose         mit R&#252;ckmeldung
---aiglx                Aktivierung von AIGLX <span class="highlight-2">(Aktivierung von AIGLX  AND ONLY with r200, r300, not for fglrx)</span>
+--aiglx                Aktivierung von AIGLX <span class="highlight-2">(NUR für r200 und r300, nicht für fglrx)</span>
 </pre>
 
 			<h4>Beispiele</h4>
@@ -254,7 +254,7 @@ install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automa
 install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
 install-binary-gfx -b ati (Damit wird nur das Modul f&#252;r ati gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und ati-legacy)
 install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX UND NUR für r200 und r300, nicht für fglrx)</span>
+install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX: NUR für r200 und r300, nicht für fglrx)</span>
 install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
 </pre>
 
@@ -269,7 +269,7 @@ install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine 
 cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
 chmod +x sgfxi
 </pre>
-			<p>sgfxi unterstützt im Augenblick ATI fglrx und Nvidia-Trivers. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterstützt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend für Grafiktreiber und fügt einige Optionen zur einfacheren Benutzung hinzu.</p>
+			<p>sgfxi unterstützt im Augenblick ATI fglrx und Nvidia-Treiber. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterstützt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend für Grafiktreiber und fügt einige Optionen zur einfacheren Benutzung hinzu.</p>
 
 			<p>sgfxi -h listet alle Optionen. Die Optionen werden im Laufe der Zeit ergänzt. Auch werden mit sgfxi -h die augenblicklich unterstützten Treiber angezeigt wie auch Spezifikationen des benutzten Systems wie Kernel und xorg-Version. Der Default-Treiber wird installiert, wenn keine weiteren Optionen für die Installation angegeben werden. Auch erkennt das Skript automatisch ältere Grafikkarten und installiert Legacy-Treiber ohne weiteres Zutun.</p>
 
@@ -452,7 +452,7 @@ apt-get install zd1201-firmware
    				<p>Wir untersuchen noch die M&#246;glichkeit, Treiber mancher Ger&#228;te mitzuliefern. Der rechtliche Status dieser Treiber ist leider h&#228;ufig kompliziert.</p>
 
 		
-		<div id="rev">Page last revised UTC 31/03/2007 2200hrs UTC</div>
+		<div id="rev">Page last revised UTC -8/04/2007 2200hrs UTC</div>
 </div>
 </div>
 </body>

@@ -12,7 +12,7 @@
 </head>
 <body id="internet-samba">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
 <!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -205,13 +205,20 @@ iwconfig wlan0 essid 'ESSID'</pre>
 		<pre >remove-gateway.sh</pre>
 
 		<p>Setting up DHCP/DNS:</p>
+<pre >
+apt-get install dnsmasq 
+</pre>
+
 		<p>You have to edit the file by adding a line in /etc/dnsmasq.conf</p>
 <pre >
-dhcp-range=192.168.1.50,192.168.1.150</pre>
+dhcp-range=192.168.1.50,192.168.1.150
+</pre>
 		<p>Leave the rest of the file as is.</p>
 
 		<p>The DHCP-Server on the Desktop-PC can now be started with </p>
-		<pre >/etc/init.d/dnsmasq start</pre>.
+<pre>
+/etc/init.d/dnsmasq start
+</pre>.
 		<p>If the clients are now set to DHCP, an IP-Address will be assigned automatically.</p>
 
 		<p>To route the client's request to the Internet you must now run the script</p>
@@ -233,7 +240,7 @@ update-rc.d -f dnsmasq defaults
 				<p>The application has an internal help manual built in and provides a comprehensive guide to setting up your modem to enable you to get on line. </p>
 
 	</div>
-
+			<div id="rev"> Page last revised UTC 08/04/2007 0300hrs</div>
 </div>
 </body>
 </html>

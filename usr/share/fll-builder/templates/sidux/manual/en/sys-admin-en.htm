@@ -12,7 +12,7 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
 <!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -286,10 +286,17 @@ aticonfig --help
 
 				<p>sidux uses (Debian) pre-selected free fonts which have proved to be very balanced, your own fonts selection can/may deteriorate the quality of rendering. But there are a few powerful options in Debian (apart from settings in kcontrol) that can help providing spotless rendering with other fonts as well. But please be aware that every font has just a few real perfect sizes, other sizes may not play well.</p>
 
+				<p>Playing with the dpi size with the command may also be of assistance:</p>
+<pre>
+fix-dpi-kdm
+</pre>
+				<p>It should show the DPI for your screensize, but you can play with that as well.You will need to go to init 3 and back to init 5 to make it work or do a reboot.</p>
+
 				<p> After having changed font type or DPI (in X or Firefox/Iceweasel), you might need some readjustments to get results to your liking, especially. after a change from Bitmap Fonts to True Type Fonts or the other way round through:</p>		
 <pre>
 dpkg-reconfigure fontconfig-config
 </pre>
+					<p>Choose native and autohinter on automatic. Otherwise play around with it.</p>
 					<p>If that does not work you might need to redo your fonts cache by:</p>
 <pre>
 apt-get install --reinstall --yes -o DPkg::Options::=--force-confmiss -o DPkg::Options::=--force-confnew fontconfig fontconfig-config

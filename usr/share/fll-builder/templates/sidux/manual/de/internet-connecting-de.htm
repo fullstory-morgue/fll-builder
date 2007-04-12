@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual snapshot-40-03-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
+<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
 <!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -207,6 +207,9 @@ iwconfig wlan0 essid ESSIDNAME</pre>
 			<pre>remove-gateway.sh</pre></li>
 
 			<li><p>Einrichten von DHCP/DNS:</p>
+<pre >
+apt-get install dnsmasq 
+</pre>
 
 			<p>Editiere die Datei <b>/etc/dnsmasq.conf</b> durch Hinzuf&#252;gen einer Zeile wie</p>
 			<pre>dhcp-range=192.168.1.50,192.168.1.150</pre>
@@ -233,6 +236,7 @@ iwconfig wlan0 essid ESSIDNAME</pre>
 
 	</div>
 
+			<div id="rev"> Page last revised UTC 08/04/2007 0300hrs</div>
 </div>
 </body>
 </html>
