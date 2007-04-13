@@ -8,7 +8,7 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	wdm
+	gdm
 	xfce4
 	gksu
 	xchat
