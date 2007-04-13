@@ -1,0 +1,22 @@
+FLL_PACKAGE_DEPMODS=(
+	distro
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	utils-essential
+	xserver
+)
+
+FLL_PACKAGES=(
+	wdm
+	xfce4
+	gksu
+	xchat
+	infobash
+	configure-networkcard
+	configure-ndiswrapper
+	configure-isdn
+	iceweasel
+	icedove
+	vim
+)

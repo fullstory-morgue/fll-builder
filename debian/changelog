@@ -92,8 +92,11 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * add gnome-lite.bm package
   * add distro-gnome.bm
+  * add gnome-std.bm package
+  * add gnome-full.bm package
+  * add xfce-lite.bm package
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 12 Apr 2007 14:42:27 +1000
+ -- Andreas Weber <andreas@it-weber.com>  Fri, 13 Apr 2007 18:43:26 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 
