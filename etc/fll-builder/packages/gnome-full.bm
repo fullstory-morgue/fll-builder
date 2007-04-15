@@ -45,7 +45,6 @@ FLL_PACKAGES=(
 	configure-networkcard
 	configure-ndiswrapper
 	configure-isdn
-	compiz
 	epiphany-browser
 	epiphany-extensions
 	openoffice.org
