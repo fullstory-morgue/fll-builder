@@ -19,6 +19,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * shuffle lvm2 and fake RAID support around.
   * add mdadm to utils-fakeraid.
   * add aufs option for menu.lst.
+  * create netdev group, if it doesn't already exist.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -96,7 +97,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add gnome-full.bm package
   * add xfce-lite.bm package
 
- -- Andreas Weber <andreas@it-weber.com>  Fri, 13 Apr 2007 18:43:26 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 15 Apr 2007 20:16:41 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 

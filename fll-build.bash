@@ -548,6 +548,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if exists_in_chroot /etc/ppp/peers/kppp-options; then
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
+
+	# XXX: dbus complains if tzhe netdev group is missing (provided by avahi), shut it up.
+	if ! chroot_exec getent group netdev >/dev/null; then
+		chroot_exec addgroup --quiet --system netdev
+	fi
 	
 	#################################################################
 	#		cleanup & prepare final chroot			#
