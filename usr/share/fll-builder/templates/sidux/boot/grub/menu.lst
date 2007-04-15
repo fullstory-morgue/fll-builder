@@ -5,7 +5,7 @@ foreground EE0000
 background 400000
 gfxmenu /boot/message
 
-title  sidux Default (unionfs)
+title  sidux Default (unionfs 2.x)
 kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 unionfs 
 initrd /boot/miniroot.gz
 
