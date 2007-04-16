@@ -20,6 +20,8 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add mdadm to utils-fakeraid.
   * add aufs option for menu.lst.
   * create netdev group, if it doesn't already exist.
+  * don't depend on unionfs-tools, neither uninfs 2.x nor aufs strictly need
+    it.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -99,7 +101,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add gnome-full.bm package
   * add xfce-lite.bm package
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 16 Apr 2007 13:08:46 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 16 Apr 2007 14:22:09 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 

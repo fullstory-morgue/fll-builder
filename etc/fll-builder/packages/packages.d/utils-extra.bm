@@ -23,7 +23,6 @@ FLL_PACKAGES+=(
 	strace
 	testdisk
 	traceroute
-	unionfs-tools
 	xfsprogs
 	unzip
 	vpnc
