@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-16-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -86,11 +86,12 @@
 		</li>
 		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-en.htm">Graphic Cards, Hardware Devices and Drivers</a>
 			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#mon-res">Screen Resolution and Monitors</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
@@ -140,9 +141,9 @@
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
 				<li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
-				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
-				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
-				<li><a href="sys-admin-en.htm#mon-res">Screen Res, Monitors, Fonts</a></li>
+				<li><a href="sys-admin-gen-en.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
@@ -192,83 +193,7 @@ and use the passwd command to set a new password:
 # passwd</pre>
 
 	</div>
-	<div class="divider" id="mon-res">
-			<h2>Screen Resolutions, Monitors and Fonts</h2>
-
-				<h3>Changing the Screen Resolution</h3>
-					<p>In a konsole as root</p>
-<pre>
-change-res 1024x768
-or  1600x1200 1400x1050 1280x1024 1152x864 800x600
-</pre>
-<pre>
-fix-res 1024x768
-or 1600x1200 1400x1050 1280x1024 1152x864 800x600 
-</pre>
-				<p>Restart X by doing </p>
-<pre>
-ctrl+alt+backspace
-</pre>
-				<h3>Monitors</h3>
-				
-				<p class="highlight-2">You are about to dive into xorg config files, please, please, please make a back-up of xorg.conf, before going any further!</p>
-				
-				<p>All this may change when xorg 7.3 appears in late 2007.</p>
-
-			<h4>ATI Single monitor changeover</h4>
-<pre>
-Single head :    aticonfig --initial --input=/etc/X11/xorg.conf
-</pre>
-
-			<h4>Dual monitors</h4>
-
-			<h5>native ati</h5>
-
-				<p><a href="http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794"> http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794</a> has some working xorg.confs with the free radeon driver.</p>
-
-			<h5>non-free ati</h5>
-
-				<p>First install the non-free driver (fglrx)</p>
-<pre>
-get-sidux-gfx
-or
-sgfxi / du-fixes-h2.sh
-</pre>
-				<p><a href="hw-dev-hw-dri-en.htm"> Please refer to Installing 3D drivers for full instructions</a></p>
-
-				<p>Next: You must get out of X</p>
-<pre>
-ctrl+alt+F1
-type: root
-enter your password:
-init 3
-</pre>
-				<p>Then:</p>
-<pre>
-aticonfig --dtop=horizontal
-init 5 &amp;&amp; exit
-</pre>
-
-				<p>If your monitors end up in the wrong place, you can do</p>
-<pre>
-aticonfig --dtop=horizontal,reverse
-</pre>
-
-				<p>Please read the help which is very comprehensive with options and examples:</p>
-<pre>
-aticonfig --help
-</pre>
-				<p>Note: Both monitors have to have the same resolution. So check in the manual of the monitors and MATCH the highest resolution of both.</p>
-
-				<p><a href="http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=20231#20231"> http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=20231#20231</a> may be able to provide additional information.</p>
-				
-
-			<h5>nvidia</h5>
-				<p>For nvidia non-free simply use the nvidia xorg configurator <a href="http://www.sorgonet.com/linux/nv-online/"> http://www.sorgonet.com/linux/nv-online/</a> and alter your xorg files accordingly.</p>
-
-
-
-
+	<div class="divider" id="fonts">
 			<h2>Fonts in sidux</h2>
 				<h5>Correct dpi settings - Basic Philosophy</h5>
 
@@ -318,7 +243,7 @@ apt-get remove --purge gtk-qt-engine
 
 				<p>This MAY fix your font rendering in gtk apps</p>
 	<div class="spacer02"></div>
-			<div id="rev">Content last revised UTC 27/03/2007 0200hrs</div>	
+			<div id="rev">Content last revised UTC 13/04/2007 0400hrs</div>	
 </div>
 </div>
 </body>

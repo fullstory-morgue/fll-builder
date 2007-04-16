@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-11-04-07-livecd-sidux-2007-02 "Τάρταρος"-->
-<!-- menu last updated by bluewater 29/03/2007 1600hrs AEST 29/03/2007 0600hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-16-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -86,11 +86,12 @@
 		</li>
 		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-en.htm">Graphic Cards, Hardware Devices and Drivers</a>
 			<ul class="sub-menu" id="sm10">
+				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#mon-res">Screen Resolution and Monitors</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
@@ -140,9 +141,9 @@
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
 				<li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
-				<li><a href="sys-admin-en.htm#start-services">Enabling services in sidux</a></li>
-				<li><a href="sys-admin-en.htm#pw-lost">Lost root passwords</a></li>
-				<li><a href="sys-admin-en.htm#mon-res">Screen Res, Monitors, Fonts</a></li>
+				<li><a href="sys-admin-gen-en.htm#start-services">Enabling services in sidux</a></li>
+				<li><a href="sys-admin-gen-en.htm#pw-lost">Lost root passwords</a></li>
+				<li><a href="sys-admin-gen-en.htm#fonts">Fonts</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
@@ -203,13 +204,13 @@ $su
 		<h2>Booting with "fromiso"</h2>
 		<p  class="highlight-2">For normal use we recommend the ext3 file system. It is the default file system for sidux and well maintained.</p>
 
-		<p>With this cheatcode you can start from an iso out of a partition, which is much faster then from a CD (HD installations with "fromiso" only takes a fraction of time,).</p>
+		<p>With this cheatcode you can start from an iso out of a partition ,(ext2/3), which is much faster then from a CD (HD installations with "fromiso" only takes a fraction of time,).</p>
 		<p>'fromiso' is of course much faster then from the CD- /DVD-drive and keeps the drive available. As an alternative you could use QEMU as well.</p>
 
 		<h6>Requirements:</h6>
 
 		    <p>* a functioning grub (on a floppy, a HD-Installation or the Live-CD)<br />
-		    * a sidux ISO Image e.g.: sidux.iso</p>
+		    * a sidux ISO Image e.g.: sidux.iso and a linux file system like ext2/3 </p>
 
 
 		<p>First we choose a place for the iso and 2 files we need, so we get shorter names. Therefore we create a base-directory: for example /dev/hda5, create the directory "sidux" and copy the iso into it:</p>
