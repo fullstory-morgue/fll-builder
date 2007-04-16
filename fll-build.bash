@@ -264,6 +264,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	# fix permissions to allow user access
 	if ((FLL_BUILD_OUTPUT_UID)); then
+		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_AREA"
 		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
 	fi
 
