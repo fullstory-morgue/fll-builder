@@ -9,6 +9,10 @@ title  sidux Default (unionfs 2.x)
 kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 unionfs 
 initrd /boot/miniroot.gz
 
+title  sidux Debug (aufs, serial console)
+kernel /boot/vmlinuz @RAMDISK@ vga=0 aufs console=ttyS0,115200
+initrd /boot/miniroot.gz
+
 title  sidux Default (aufs)
 kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 aufs 
 initrd /boot/miniroot.gz
