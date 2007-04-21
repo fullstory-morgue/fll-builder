@@ -16,10 +16,8 @@ FLL_PACKAGES=(
 	ark
 	digikam
 	digikamimageplugins
-	frozen-bubble
 	gimp
 	gwenview
-	icedove
 	iceweasel
 	inkscape
 	k3b
@@ -53,7 +51,6 @@ FLL_PACKAGES=(
 	knemo
 	kpat
 	kpdf
-	kpoker
 	kpowersave
 	kreversi
 	krusader
