@@ -22,6 +22,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * create netdev group, if it doesn't already exist.
   * don't depend on unionfs-tools, neither uninfs 2.x nor aufs strictly need
     it.
+  * change menu.lst to reflect the most common uses.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -103,7 +104,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add gnome-full.bm package
   * add xfce-lite.bm package
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 19 Apr 2007 16:55:52 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 23 Apr 2007 23:43:05 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 
