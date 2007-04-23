@@ -13,7 +13,7 @@ initrd /boot/miniroot.gz
 #kernel /boot/vmlinuz @RAMDISK@ quiet vga=0 aufs console=ttyS0,115200
 #initrd /boot/miniroot.gz
 
-title  sidux Default (unionfs 2.x)
+title  sidux Default (unionfs 2.x, broken)
 kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 unionfs 
 initrd /boot/miniroot.gz
 
