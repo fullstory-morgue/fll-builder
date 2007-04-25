@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!--Welcome to the Official sidux-manual 0.3-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
 <!-- menu last updated by bluewater 19/04/2007 11000hrs AEST 19/04/2007 010hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -162,7 +162,7 @@
 
 			<h5>Ab hier wird das klassische, selbstbestimmte Verfahren beschrieben.</h5>
 
-			<h6>rdiff-backup</h6>
+			<h5>rdiff-backup</h5>
 				<p>* besonders geeignet zur Wiederherstellung des Systems nach einem missgl&#252;ckten dist-upgrade, bei Problemen nach einem kernel-upgrade u. a., oder einfach zur Wiederherstellung &#228;lterer Fassungen einzelner Dateien.<br /></p>
 				<p>* wie bei rsync wird nur gesichert, was ver&#228;ndert wurde (sehr schneller Sicherungsvorgang!)<br /></p>
 				<p>* verschiedene Sicherungsebenen werden angelegt - "Sicherungsgeschichte" (das bedeutet, es kann auch eine Datei wiederhergestellt werden, welche drei Wochen zuvor am Arbeitssystem bereits gel&#246;scht wurde!)<br /></p>
@@ -173,10 +173,10 @@
 				<p>* es ist eine Kommandozeilenapplikation, womit es besonders geeignet ist, automatisierte Backups einzurichten (z. B. &#252;ber ein Bash-Script, welches &#252;ber cron aufgerufen wird)<br /></p>
 				<p>* kann mit Angaben zu Dateibesitzer und Dateiberechtigungen umgehen wie auch mit symbolischen Verkn&#252;pfungen (und noch viel mehr), sodass nach einer R&#252;ckspielung von Daten ein exaktes Abbild des urspr&#252;nglichen Zustands wiederhergestellt wird.</p>
 
-			<h6>Was ben&#246;tigt wird</h6>
+			<h5>Was ben&#246;tigt wird</h5>
 				<p>rdiff-backup legt eine nichtkomprimierte Kopie der Dateien, welche gesichert werden, an, und es wird eine Backup-"Geschichte", ein inkrementelles Backup angelegt. Somit muss der Speicherplatz des Backups gr&#246;&#223;er sein als die Gr&#246;&#223;e der Dateien, welche gesichert werden. Wenn z. B. 100 GB gesichert werden sollen, sollte ein Speicherplatz von etwa 120 GB vorhanden sein, am besten auf einer eigenen Festplatte. Der ben&#246;tigte Speicherplatz kann nat&#252;rlich variieren.</p>
 
-			<h6>Einrichtung</h6>
+			<h5>Einrichtung</h5>
 				<p>Gehen wir von folgenden Spezifikationen des PCs aus:<br /></p>
 				<p>* eine Festplatte mit 100 GB (hda), hda1 ist die Rootpartition, hda5 ist die Partition f&#252;r Musik und andere Dateien, hda6 ist die Swap-Partition.<br /></p>
 				<p>* eine extra Festplatte (hdb) mit 200 GB, welche nicht im Produktivsystem aktiv ist und die nach hdb1 eingebunden wird. Diese Festplatte wird f&#252;r Sicherheitsbackups verwendet.<br /></p>
@@ -193,7 +193,7 @@
 </pre>
 				<p>Die IP-Adresse wird angegeben f&#252;r den Fall, dass von einem anderen Computer ebenfalls Backups auf dieser Festplatte gespeichert werden sollen (siehe unten).</p>
 
-			<h6>Das Backup</h6>
+			<h5>Das Backup</h5>
 
 				<p>rdiff-backup verwendet folgende Syntax: <span class="highlight-3">rdiff-backup Quellverzeichnis Zielverzeichnis</span>. Beachte: es werden immer Verzeichnisnamen, nicht Dateinamen angegeben!</p>
 
@@ -203,8 +203,7 @@
 </pre>
 				<p>Um ein Backup der Root-Partition anzulegen, wird folgender Befehl eingegeben::</p>
 <pre>
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' \
-> --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
 </pre>
 				<p>Fehlermeldungen mit "AF_UNIX path too long" k&#246;nnen ignoriert werden. Der Backupvorgang kann beim ersten Mal l&#228;ngere Zeit beanspruchen, da die gesamte Partition gesichert wird. Beachte auch, dass /tmp nicht gesichert wird, da dieses Verzeichnis st&#228;ndigen Ver&#228;nderungen unterworfen ist. Ebensowenig werden /proc und /sys gesichert, da diese Verzeichnisse keine reellen Dateien beinhalten. Auch werden eingebundene Datentr&#228;ger nicht gesichert, da in diesem Falle hdb1 ebenfalls gesichert w&#252;rde, was in einer unendlichen Schleife, einem unendlichen Loop enden k&#246;nnte! Um dies zu verhindern, k&#246;nnen andere eingebundene Datentr&#228;ger separat gesichert werden.</p>
 
@@ -212,7 +211,7 @@
 
 				 <p>Das bedeutet, nach einer Zerst&#246;rung der Root-Partition kann ein vollst&#228;ndiges Backup wieder eingespielt werden, die Mountpunkte /tmp, /proc, /sys und alle weiteren originale Mountpunkte werden wieder angelegt (genau, wie es sein soll). Wenn z. B. /tmp beim Start von X nicht existieren w&#252;rde, k&#246;nnte ein Problem gegeben sein (siehe die man-page f&#252;r mehr Optionen bez&#252;glich --exclude und --include).</p>
 
-			<h6>Wiederherstellung von Verzeichnissen aus dem Backup</h6>
+			<h5>Wiederherstellung von Verzeichnissen aus dem Backup</h5>
 
 				<p>rdiff-backup verwendet folgende Syntax:</p>
 <pre>
@@ -223,8 +222,7 @@ rdiff-backup -r from-when source-dir dest-dir
 				dest-dir: Zielverzeichnis</p>
 				<p>Angenommen, das Verzeichnis /media/hda7/photos wurde irrt&#252;mlich gel&#246;scht, so kann es mit folgendem Befehl wiederhergestellt werden:</p>
 <pre>
-# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/hda5/photos\
-> /media/hda5/photos
+# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/hda5/photos /media/hda5/photos
 </pre>
 				<p>Die Option "-r now" bedeutet eine Wiederherstellung des letzten Backups. Wenn nun periodisch (via crontab etwa) ein Backup erstellt und erst einige Tage nach der L&#246;schung bemerkt wurde, dass das Verzeichnis photos fehlt, muss ein &#228;lteres Backup zur Wiederherstellung herangezogen werden (damit nicht die Option "now"). Ein anderes Anwendungsgebiet w&#228;re die Wiederherstellung einer &#228;lteren Version einer gegebenen Datei.</p>
 
@@ -261,7 +259,7 @@ $ sudo su
 # apt-get update
 # apt-get install rdiff-backup
 </pre>
-				<h6>Und jetzt die Wiederherstellung:</h6>
+				<h5>Und jetzt die Wiederherstellung:</h5>
 <pre>
 # mount /dev/hda1 /media/hda1
 # mount /dev/hdb1 /media/hdb1
@@ -270,8 +268,7 @@ $ sudo su
 
 				<p>Beachte: Bei Nutzung einer anderen Live-CD als sidux und im Falle, dass diese klik unterst&#252;tzt, kann rdiff-backup unter Verwendung von klik mit folgendem Befehl installiert werden:</p>
 <pre>
-$ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
-> -r now /media/hdb1/rdiff-backups/192.168.0.1/root /media/hda1
+$ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root /media/hda1
 </pre>
 
 				<p>Es ist empfohlen, dass die Wiederherstellung einer Root-Partition mit rdiff-backup getestet wird, um im Ernstfall nicht auf unerwartete Probleme zu sto&#223;en.</p>
@@ -296,20 +293,17 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
 				<p>Um den entfernten (remote) PC am lokalen PC zu sichern, wird am lokalen PC (192.168.0.1) gestartet <span class="highlight-4">(beachte den doppelten Doppelpunkt ::) </span>:</p>
 <pre>
 # mkdir /media/hdb1/rdiff-backups/192.168.0.2/root
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*'\
-> --exclude '/media/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
 </pre>
 				<p>Um nun ein Verzeichnis auf dem entfernten (remote) PC wiederherzustellen, wird der Wiederherstellungsprozess entweder am lokalen oder am entfernten (remote) PC in Gang gesetzt.</p>
 
 				<p>So wird das Verzeichnis /usr/local/games auf dem entfernten (remote) PC wiederhergestellt, indem der Prozess am entfernten (remote) PC initiiert wird:</p>
 <pre>
-# rdiff-backup -r now 192.168.0.1::/media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games\
-> /usr/local/games
+# rdiff-backup -r now 192.168.0.1::/media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games /usr/local/games
 </pre>
 				<p>So wird das Verzeichnis /usr/local/games auf dem entfernten (remote) PC wiederhergestellt, indem der Prozess am lokalen PC initiiert wird:</p>
 <pre>
-# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games\
-> 192.168.0.2::/usr/local/games
+# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games 192.168.0.2::/usr/local/games
 </pre>
 				<p>Die gleiche Syntax wird verwendet, wenn die Root-Partition von einer Live-CD wiederhergestellt wird (wenn der entfernte (remote) PC durch eine Live-CD gebootet wurde ... siehe oben).</p>
 
@@ -323,8 +317,7 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
 </pre>
 				<p>F&#252;r leere Passw&#246;rter wird zweimal die Entertaste gedr&#252;ckt. Danach:</p>
 <pre>
-# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\
-> cat - >>/root/.ssh/authorized_keys2'
+# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh; cat - >>/root/.ssh/authorized_keys2'
 </pre>
 				<p>Das Root-Passwort wird angefragt.</p>
 
@@ -373,8 +366,7 @@ ${RDIFF} --remove-older-than 1M\
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-	
-	<div class="spacer05"></div>
+		<div id="rev">Page last revised UTC 24/04/2007 0930hrs UTC</div>
 </div>
 </div>
 </body>

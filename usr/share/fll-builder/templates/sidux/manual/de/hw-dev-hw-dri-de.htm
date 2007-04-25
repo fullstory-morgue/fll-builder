@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!--Welcome to the Official sidux-manual 0.4-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
 <!-- menu last updated by bluewater 19/04/2007 11000hrs AEST 19/04/2007 010hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -178,17 +178,14 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 -d | --detect          nur Grafikkartenerkennung
 -u | --update          Update-Skript
 -v | --verbose         mit R&#252;ckmeldung
---aiglx                Aktivierung von AIGLX
 </pre>
 
 			<h4>Beispiele</h4>
 <pre>
 install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository)
-install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
 install-binary-gfx -b nvidia (Damit wird nur das Modul f&#252;r nvidia gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und nvidia-legacy)
 install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx --aiglx (Aktivierung von AIGLX)
-install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
+install-binary-gfx -u (Damit wird das Skript aktualisiert.)
 </pre>
 
 			<h4>Hilfe bei Problemen</h4>
@@ -245,17 +242,14 @@ install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
 -d | --detect          nur Grafikkartenerkennung
 -u | --update          Update-Skript
 -v | --verbose         mit R&#252;ckmeldung
---aiglx                Aktivierung von AIGLX <span class="highlight-2">(NUR für r200 und r300, nicht für fglrx)</span>
 </pre>
 
 			<h4>Beispiele</h4>
 <pre>
 install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository)
-install-binary-gfx -a --aiglx (Dies ermittelt die Grafikkarte, installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository und aktiviert AIGLX.)
 install-binary-gfx -b ati (Damit wird nur das Modul f&#252;r ati gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und ati-legacy)
 install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx --aiglx <span class="highlight-2">(Aktivierung von AIGLX: NUR für r200 und r300, nicht für fglrx)</span>
-install-binary-gfx -u (Damit wird das Skript aktualisiert. Bitte beachten: eine Aktualisierung des Skripts geschieht nicht mittels dist-upgrade, solange "contrib" des sidux-Repository in /etc/apt/sources.list aktiviert ist)
+install-binary-gfx -u (Damit wird das Skript aktualisiert.)
 </pre>
 
 			<h4>Hilfe bei Problemen</h4>
@@ -317,7 +311,7 @@ init 5 &amp;&amp; exit
 	<div class="divider" id="native-ati">
 			<h2>Nativer Treiber "ati" von X.Org f&#252;r ATI-Grafikkarten</h2>
 
-				<p>Dieser X-Server-Treiber von X.Org (siehe xserver-xorg f&#252;r eine eingehendere Beschreibung) bietet Unterst&#252;tzung f&#252;r die Grafikkartenserien Mach, Rage, Radeon und FireGL von ATI. Er beinhaltet die Subtreiber 'atimisc', 'r128' and 'radeon'.</p>
+				<p>Dieser X-Server-Treiber von X.Org bietet Unterst&#252;tzung f&#252;r die Grafikkartenserien Mach, Rage, Radeon und FireGL von ATI. Er beinhaltet die Subtreiber 'atimisc', 'r128' and 'radeon'.</p>
 
 				<p>Er wird installiert mit:</p>
 <pre>
@@ -331,15 +325,15 @@ apt-get update
 apt-get install xserver-xorg-video-ati
 init 5 &amp;&amp; exit
 </pre>
-				<p>Anmerkung: Dies ist nicht der bin&#228;re ATI-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re ATI-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
+				<p>Anmerkung: Dies ist nicht der bin&#228;re ATI-Treiber, welcher zusätzliche 3D-Unterst&#252;tzung für einige neuere Radeon-Karten bietet, aber nicht unterstützt ist.</p>
 
-				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
+				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Zuvor sollte eine <b>Sicherungskopie dieser Datei</b> erstellt werden, <span class="highlight-2">da ein fehlerhaftes Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> den Grafikserver unbrauchbar machen und eventuell viel Zeit und Tränen zur Fehlersuche kosten kann.</span></p>
 
-				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display Treiber in <span class="highlight-1">ati</span> &#228;ndern.</p>
+				<p><span class="highlight-3">/etc/X11/xorg.conf</span> kann zum Editieren, Rootrechte vorrausgesetzt, per Rechtsklick ge&#246;ffnet werden. Siehe Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display Treiber in <span class="highlight-1">ati</span> &#228;ndern.</p>
 
-				<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
+				<p class="highlight-2"><b>Editieren der xorg.conf geschieht auf eigenes Risiko.</b></p>
 
-				<p>Mehr Informationen &#252;ber <a href= "http://xorg.freedesktop.org">X.Org</a></p>
+				<p>Mehr Informationen &#252;ber X.Org <a href= "http://xorg.freedesktop.org">hier</a>.</p>
 </div>
 
 	<div class="divider" id="mon-res">
@@ -558,10 +552,9 @@ To get out of the konsole type: exit
 </pre>
 
 		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen.</p> 
-		<p>Ein letztes Mal der Hinweis: <strong><i>dies ist ein experimentelles Verfahren, bei einer Verwendung muss man die Risiken selbst abw&#228;gen</i>!</strong></p>
+		<p>Ein letztes Mal der Hinweis: <strong><i>dieses Verfahren wird nicht für den alltäglichen bzw. produktiven Gebrauch empfohlen, bei einer Verwendung muss man die Risiken selbst abw&#228;gen</i>!</strong></p>
 </div>
-		
-		<div id="rev">Page last revised UTC -8/04/2007 2200hrs UTC</div>
+		<div id="rev">Page last revised UTC 24/04/2007 0200hrs UTC</div>
 </div>
 </div>
 </body>

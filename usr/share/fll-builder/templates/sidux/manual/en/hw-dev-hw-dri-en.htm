@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!--Welcome to the Official sidux-manual 0.4-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
 <!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -178,17 +178,13 @@ install-binary-gfx -a (to build sid source)
 -d | --detect          Detect Card only
 -u | --update          Update Script
 -v | --verbose         Verbose
---aiglx                Activate AIGLX
 </pre>
 					<h4>Examples</h4>
 <pre>
 install-binary-gfx -a (This will detect you Card and install the sid Drivers automatically.)
-install-binary-gfx -a --aiglx (This will detect your Card and install the sid Drivers automatically and activate AIGLX.)
 install-binary-gfx -b nvidia (This will just build the nvidia-module....deb in /usr/src. The same works with fglrx and nvidia-legacy.)
 install-binary-gfx -d (This will detect your Card and just print out the Information.)
-install-binary-gfx --aiglx (This will activate AIGLX.)
-install-binary-gfx -u (This will update this Script. Please note that will not be done by dist-upgrade as long as you
-have contrib for the sidux repository activated in your sources.list.)
+install-binary-gfx -u (This will update this Script.)
 </pre>
      		 		<h4>Troubleshooting</h4>
 
@@ -247,17 +243,13 @@ install-binary-gfx -a (to build sid source)
 -d | --detect          Detect Card only
 -u | --update          Update Script
 -v | --verbose         Verbose
---aiglx                Activate AIGLX <span class="highlight-2">(This will activate AIGLX AND ONLY with r200, r300, not for fglrx)</span>
 </pre>
 					<h4>Examples</h4>
 <pre>
 install-binary-gfx -a (This will detect you Card and install the sid Drivers automatically.)
-install-binary-gfx -a --aiglx (This will detect your Card and install the sid Drivers automatically and activate AIGLX.)
 install-binary-gfx -b ati (This will just build the ati-module....deb in /usr/src. The same works with fglrx and ati-legacy.)
 install-binary-gfx -d (This will detect your Card and just print out the Information.)
-install-binary-gfx --aiglx <span class="highlight-2">(This will activate AIGLX AND ONLY with r200, r300, not for fglrx)</span>
-install-binary-gfx -u (This will update this Script. Please note that will not be done by dist-upgrade as long as you
-have contrib for the sidux repository activated in your sources.list.)
+install-binary-gfx -u (This will update this Script. )
 </pre>
 					<h4>Troubleshooting</h4>
 
@@ -559,7 +551,7 @@ To get out of the konsole type: exit
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 		</div>	
-		<div id="rev">Page last revised UTC 13/04/2007 1000hrs UTC</div>
+		<div id="rev">Page last revised UTC 24/04/2007 0200hrs UTC</div>
 </div>
 </div>
 </body>

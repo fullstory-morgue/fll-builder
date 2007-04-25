@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
+<!--Welcome to the Official sidux-manual 0.5-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
 <!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -206,8 +206,7 @@
 </pre>
 				<p>And to back up the root partition, run:</p>
 <pre>
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' \
-> --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
 </pre>
 				<p>Any "AF_UNIX path too long" errors can be ignored. This may take a while as it's the first time the partition has been backed up, so rdiff-backup will have to back up the entire partition (not just the differences). Notice that we don't want to back up /tmp as this always changes, nor /proc or /sys as these don't contain real files, and also we don't want to back up mounts. If you did back up mounts, then you would be backing up hdb1, and could get into an infinite loop! One way around this is to backup the mounts separately.</p>
 
@@ -223,8 +222,7 @@ rdiff-backup -r &lt;from-when&gt; &lt;source-dir&gt; &lt;dest-dir&gt;
 </pre>
 				<p>Now if you were to accidentally delete the directory /media/hda7/photos, you can restore it by doing:</p>
 <pre>
-# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/hda5/photos\
-> /media/hda5/photos
+# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/hda5/photos /media/hda5/photos
 </pre>
 				<p>The "-r now" option means restore from the latest backup. If you have been backing everything up periodically (via crontab, say), and didn't realise that the photos directory were missing until a few days later, you would need to restore from a backup from a few days ago (and not "now", as the latest backup says that the photos directory doesn't exist). Or perhaps you just want to get back to a previous version of something.</p>
 
@@ -268,8 +266,7 @@ $ sudo su
 
 				<p>Note: If you don't have a sidux CD and your Live-CD is supported by klik you can install rdiff-backup using the Klik and calling:</p>
 <pre>
-$ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
-> -r now /media/hdb1/rdiff-backups/192.168.0.1/root /media/hda1
+$ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root /media/hda1
 </pre>
 
 				<p>It is recommended that anyone backing up their root partition (with the intention of restoring from it if they have to) should test the restoring process. Nothing worse than thinking everything will be fine, and then coming across something unexpected during an emergency.</p>
@@ -294,20 +291,17 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
 				<p>To back the remote pc up onto the local pc, run on the local pc (ie 192.168.0.1): <span class="highlight-4">Note the use of the double colons :: </span></p>
 <pre>
 # mkdir /media/hdb1/rdiff-backups/192.168.0.2/root
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*'\
-> --exclude '/media/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
 </pre>
 				<p>Now if you want to restore a directory on the remote pc, initiate the restore on either the local pc, or the remote pc.</p>
 
 				<p>This is how you would restore the directory /usr/local/games on the remote pc, by initiating it from the remote pc:</p>
 <pre>
-# rdiff-backup -r now 192.168.0.1::/media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games\
-> /usr/local/games
+# rdiff-backup -r now 192.168.0.1::/media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games /usr/local/games
 </pre>
 				<p>This is how you would restore the directory /usr/local/games on the remote pc, by initiating it from the local pc:</p>
 <pre>
-# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games\
-> 192.168.0.2::/usr/local/games
+# rdiff-backup -r now /media/hdb1/rdiff-backups/192.168.0.1/root/usr/local/games 192.168.0.2::/usr/local/games
 </pre>
 				<p>Use the same sort of syntax when restoring your root partition from a live cd (where the remote pc has been booted up via live cd ... see above).</p>
 
@@ -321,8 +315,7 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup \
 </pre>
 				<p>And press enter twice for blank passwords. Then do:</p>
 <pre>
-# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\
-> cat - >>/root/.ssh/authorized_keys2'
+# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh; cat - >>/root/.ssh/authorized_keys2'
 </pre>
 				<p>You will be prompted for your root password.</p>
 
@@ -369,8 +362,7 @@ and insert the following line
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-	
-	<div class="spacer05"></div>
+		<div id="rev">Page last revised UTC 24/04/2007 0930hrs UTC</div>
 </div>
 </div>
 </body>

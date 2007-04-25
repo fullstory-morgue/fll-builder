@@ -90,6 +90,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * manual update sidux-manual-0.0-16-04-2007-live-cd-07-02
   * manual update sidux-manual-0.0-18-04-2007-live-cd-07-02
   * manual update sidux-manual-0.1-18-04-2007-live-cd-07-02
+  * manual update sidux-manual-0.5-18-04-2007-live-cd-07-02
 
   [ Joaquim Boura ]
   * use sidux-xdg instead of sidux-menu
@@ -104,7 +105,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add gnome-full.bm package
   * add xfce-lite.bm package
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 23 Apr 2007 23:43:05 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 25 Apr 2007 12:18:23 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
