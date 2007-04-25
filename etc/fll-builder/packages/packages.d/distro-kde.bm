@@ -1,5 +1,5 @@
 FLL_PACKAGES+=(
 	kde-services-sidux
 	kdeservicemenus-sidux
-	ksplash-theme-sidux-preview
+	sidux-art-kde
 )

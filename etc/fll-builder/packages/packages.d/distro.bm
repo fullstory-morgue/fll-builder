@@ -6,6 +6,7 @@ FLL_PACKAGES+=(
 	knx-installer
 	rebuildfstab
 	rsync
+	sidux-art-wallpaper
 	sidux-graphics
 	sidux-keyrings
 	sidux-scripts
