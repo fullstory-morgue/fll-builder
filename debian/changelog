@@ -107,11 +107,12 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add xfce-lite.bm package
 
   [ Bernard Gray ]
-  * add sidux-art-wallpaper to package list 
-  * add sidux-art-kde to package list 
+  * add sidux-art-wallpaper to package list
+  * add sidux-art-kde to package list
   * remove chaos ksplash from package list
+  * set sidux.png to distro default wallpaper 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 25 Apr 2007 21:57:12 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 25 Apr 2007 22:01:20 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
