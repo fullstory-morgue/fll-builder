@@ -339,7 +339,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		create & prepare chroot				#
 	#################################################################
-	cdebootstrap --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
+	if [[ $DEBUG ]]; then
+		FLL_DEBOOSTRAP_VERBOSITY="--debug"
+	else
+		FLL_DEBOOSTRAP_VERBOSITY="--verbose"
+	fi
+
+	cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
 		"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
 	
 	chroot_virtfs mount

@@ -73,6 +73,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     to debian. Eliminate the need for $FLL_DISTRO_NAME-keyrings package,
     explicitly define trusted gpg keyid for fll repo.
   * Support for using debian kernels as alternative.
+  * Impove cdebootstrap verbosity.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -105,7 +106,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add gnome-full.bm package
   * add xfce-lite.bm package
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 25 Apr 2007 12:18:23 +1000
+ -- Kel Modderman <kel@otaku42.de>  Wed, 25 Apr 2007 17:50:26 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
