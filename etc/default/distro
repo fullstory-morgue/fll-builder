@@ -20,9 +20,7 @@ FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 FLL_MOUNTPOINT="/SIDUX"
 
 # As a match to the above though only relevant to sidux fromiso
-FLL_MEDIA_DIR="SIDUX"
-FLL_MEDIA_NAME="SIDUX.ISO"
-FLL_MEDIA_MOUNTPOINT="/isosrc"
+FLL_MEDIA_NAME="sidux.iso"
 
 # specify default user name on a single user system
 FLL_LIVE_USER="sidux"
@@ -44,14 +42,6 @@ FLL_WALLPAPER="/usr/share/wallpapers/sidux.png"
 FLL_IRC_SERVER="irc.oftc.net"
 FLL_IRC_PORT="6667"
 FLL_IRC_CHANNEL="#sidux"
-
-# configure unionfs
-FLL_UNION_SOURCE="/ramdisk/var/tmp/union"
-FLL_UNION_TARGET="$FLL_MOUNTPOINT"
-FLL_UNION_OPTIONS="rw"
-
-# configure persistent home location
-FLL_PERSISTENT_HOME="sidux.img"
 
 # preferred X toolkit for various helper tools (gtk|gtk2|kde).
 FLL_XTOOLKIT="kde"

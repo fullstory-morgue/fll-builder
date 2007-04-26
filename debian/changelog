@@ -74,6 +74,8 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
     explicitly define trusted gpg keyid for fll repo.
   * Support for using debian kernels as alternative.
   * Impove cdebootstrap verbosity.
+  * Remove obsolete variable declarations from etc/default/distro. Lower
+    casify FLL_MEDIA_NAME default.
 
   [ Bernard Gray ]
   * manual update sid-man-snap-32-PRE-5-Chaos-2007
@@ -110,9 +112,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * add sidux-art-wallpaper to package list
   * add sidux-art-kde to package list
   * remove chaos ksplash from package list
-  * set sidux.png to distro default wallpaper 
+  * set sidux.png to distro default wallpaper
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 25 Apr 2007 22:01:20 +1000
+ -- Kel Modderman <kel@otaku42.de>  Thu, 26 Apr 2007 23:00:19 +1000
 
 fll-builder (1.0.3) unstable; urgency=low
 
