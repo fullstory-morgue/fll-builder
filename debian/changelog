@@ -23,6 +23,9 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * don't depend on unionfs-tools, neither uninfs 2.x nor aufs strictly need
     it.
   * change menu.lst to reflect the most common uses.
+  * remove obsolete FLL_DISTRO_VERSION, FLL_DISTRO_CODENAME from
+    distro-defaults, it set by the fll-builder configuration and shouldn't be
+    overrideable on the installed system.
 
   [ Kel Modderman ]
   * Update copyright year stamp.
@@ -114,7 +117,7 @@ fll-builder (1.0.4) UNRELEASED; urgency=low
   * remove chaos ksplash from package list
   * set sidux.png to distro default wallpaper
 
- -- Kel Modderman <kel@otaku42.de>  Thu, 26 Apr 2007 23:00:19 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 26 Apr 2007 17:59:40 +0200
 
 fll-builder (1.0.3) unstable; urgency=low
 

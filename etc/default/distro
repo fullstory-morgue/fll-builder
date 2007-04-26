@@ -8,8 +8,6 @@
 
 # specify distribution name
 FLL_DISTRO_NAME="sidux"
-FLL_DISTRO_VERSION="2007-01"
-FLL_DISTRO_CODENAME=""
 
 # where is the compressed image located (from the media root, no leading /)
 FLL_IMAGE_DIR="SIDUX"
