@@ -1,12 +1,15 @@
 fll-builder (1.0.5) UNRELEASED; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
 
-  [ Bernard Gray ]
-  * fix typo 
+  [ Stefan Lippers-Hollmann ]
+  * disable kdeservicemenus-sidux for now, imagemagick is uninstallable due to
+    the libjasper-dev-1.701 --> libjasper-dev-1.701 transition.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 27 Apr 2007 13:43:26 +1000
+  [ Bernard Gray ]
+  * fix typo
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 29 Apr 2007 03:30:52 +0200
 
 fll-builder (1.0.4) unstable; urgency=low
 
