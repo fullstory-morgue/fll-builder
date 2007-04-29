@@ -126,11 +126,6 @@ do_bootloader = NO
 warn_initrd = NO
 do_initrd = YES
 EOF
-			
-			# live-initrd-sidux support
-			if exists_in_chroot /usr/sbin/mklive-initrd; then
-				echo 'ramdisk = mklive-initrd' >> "$DEST"
-			fi
 			;;
 
 		sudoers)
