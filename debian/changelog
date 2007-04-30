@@ -13,7 +13,11 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * fix typo
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 30 Apr 2007 13:56:44 +0200
+  [ Kel Modderman ]
+  * Add powersaved to distro-tools-x module. kpowersaved no longer depends on
+    it, plus is also indirectly depends on X related libs.
+
+ -- Kel Modderman <kel@otaku42.de>  Mon, 30 Apr 2007 22:08:19 +1000
 
 fll-builder (1.0.4) unstable; urgency=low
 

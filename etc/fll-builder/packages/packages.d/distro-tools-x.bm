@@ -10,6 +10,7 @@ FLL_PACKAGES+=(
 	gparted
 	install-gui
 	install-meta
+	powersaved
 	rootshell
 	sidux-browser
 	sidux-irc
