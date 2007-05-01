@@ -525,6 +525,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_CHROOT"/etc/inittab
 	
 	#################################################################
+	#		hack powersaved to act on powerbutton events	#
+	#################################################################
+	[[ -w /etc/powersave/events ]] && \
+		sed -i 's/^\(EVENT_BUTTON_POWER=\).*/\1"wm_shutdown"/' "${FLL_BUILD_CHROOT}/etc/powersave/events"
+
+	#################################################################
 	#		misc chroot preseeding				#
 	#################################################################
 	# run fix-fonts
