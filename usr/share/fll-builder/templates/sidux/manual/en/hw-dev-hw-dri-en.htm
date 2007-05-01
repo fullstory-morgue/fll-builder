@@ -12,13 +12,16 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.4-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
-<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags">
+<a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a>
+<a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a>
+	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to Official sidux-manual</a>
 			<ul class="sub-menu" id="sm1">
@@ -46,7 +49,8 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
-				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -115,6 +119,7 @@
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="internet-connecting-en.htm#firewalls">Mini-Firewall</a></li>
 				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
 				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
 				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
@@ -184,7 +189,7 @@ install-binary-gfx -a (to build sid source)
 install-binary-gfx -a (This will detect you Card and install the sid Drivers automatically.)
 install-binary-gfx -b nvidia (This will just build the nvidia-module....deb in /usr/src. The same works with fglrx and nvidia-legacy.)
 install-binary-gfx -d (This will detect your Card and just print out the Information.)
-install-binary-gfx -u (This will update this Script.)
+install-binary-gfx -u (This will update this Script. )
 </pre>
      		 		<h4>Troubleshooting</h4>
 
@@ -222,6 +227,7 @@ Download the binary driver installers directly from Nvidia
 			<h2>ATI 3d Drivers</h2>
 
 			<p>There are 3 methods to install 3d ATI drivers into your system</p>
+
 			<ol>
 				<li>
 					<h3>install-binary-gfx</h3>
@@ -551,7 +557,7 @@ To get out of the konsole type: exit
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 		</div>	
-		<div id="rev">Page last revised UTC 24/04/2007 0200hrs UTC</div>
+		<div id="rev">Page last revised UTC 13/04/2007 1000hrs UTC</div>
 </div>
 </div>
 </body>

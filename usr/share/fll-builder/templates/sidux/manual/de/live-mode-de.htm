@@ -12,13 +12,16 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
-<!-- menu last updated by bluewater 19/04/2007 11000hrs AEST 19/04/2007 010hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
-		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags">
+<a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a>
+<a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a>
+	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
 			<ul class="sub-menu" id="sm1">
@@ -46,7 +49,8 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#unionfs">Unionfs - Software im Live-CD-Modus installieren</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-de.htm#live-cd-perm-store">Dauerhaftes speichern der Änderungen auf eine HD wann man die  Live-CD verwendet</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -115,6 +119,7 @@
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-de.htm">Internet und Netzwerk</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-de.htm#ntp-server">Zeitserver-Setup</a></li>
+				<li><a href="internet-connecting-de.htm#firewalls">Mini-Firewall</a></li>
 				<li><a href="ssh-de.htm#ssh-fs">SSH:Einbindung eines entfernten Computers</a></li>
 				<li><a href="ssh-de.htm#ssh-x">X-Window-Programme via SSH verwenden</a></li>
 				<li><a href="ssh-de.htm#ssh-f">SSH: GUI mit Konqueror</a></li>
@@ -198,8 +203,9 @@ exit
 				<p>danach nochmal:</p>
 <pre> exit</pre>
 			<p>Damit sollte  das Terminal sich schließen.</p>
+	</div>
 
-	<div class="divider" id="unionfs">
+<!--	<div class="divider" id="unionfs">
 		<h2>Unionfs - Software im Live-Modus installieren</h2>
 
 		<p>Unionfs erzeugt ein &#252;berlagerndes Dateisystem im Arbeitsspeicher, das es erm&#246;glicht, im Live-Modus apt-get zu verwenden oder Nvidia/Radeon-Treiber zu installieren. sidux' Nvidia/Radeon-Skripte aktivieren Unionfs im Live-Modus automatisch. Ansonsten muss man Unionfs mit einem Cheatcode in der Boot-Kommandozeile aktivieren. Hierzu f&#252;gt man der Zeile dies hinzu:</p>
@@ -222,12 +228,28 @@ root@0[sidux]# apt-get update
 root@0[sidux]# apt-get install kdegames</pre>
 
 		<p>Es gibt zwei zus&#228;tzliche M&#246;glichkeiten, Unionfs dauerhafter auszuf&#252;hren:</p>
+	</div>
+-->
+	
+	<div class="divider" id="live-cd-installsoft">
+					<h2>Installing software whilst on a Live-CD</h2>
+<pre>
+apt-get update
+apt-get install your-preferred-package
+</pre>
+					<p>Note: when you power off the Live-CD, no changes will be kept</p>
+	</div>
+	<div class="divider" id="live-cd-perm-store">
 
-		<pre>unionrw</pre>
-		<p>und</p>
-		<pre>unionro</pre>
-		<p>Die erste Möglichkeit kann auch durch einen Boot-Cheatcode ausgef&#252;hrt werden:</p>
-<pre>unionrw</pre>
+					<h2>Storing permanent changes to a HD using the Live-cd</h2>
+						<h4>Permanent $HOME</h4>
+<pre>
+home  /dev/sda1/sidux.img  mount loopback file as /home/sidux
+</pre>
+					<h4> unionrw</h4>
+<pre>
+unionrw
+</pre>
 		<p>Der Befehl unionrw kann auf unterschiedliche Weise genutzt werden:</p>
 
 		<ol>
@@ -236,11 +258,11 @@ root@0[sidux]# apt-get install kdegames</pre>
 			<li>auf ein Verzeichnis verweisen</li>
 		</ol>
 
-		<p>All diese drei Wege erm&#246;glichen es, permanente &#196;nderungen zu machen und sie zu speichern. Verwendet man denselben Cheatcode, kann man eine eigene Programmauswahl wieder verf&#252;gbar machen. Das Heimverzeichnis <span class="highlight-3">/home</span> wird jedoch hiermit nicht gespeichert, dazu muss man den <i>home</i>-Cheat verwenden.</p>
+				<p>All diese drei Wege erm&#246;glichen es, permanente &#196;nderungen zu machen und sie zu speichern. Verwendet man denselben Cheatcode, kann man eine eigene Programmauswahl wieder verf&#252;gbar machen. <span class="highlight-3">Das Heimverzeichnis /home wird jedoch hiermit nicht gespeichert, dazu muss man den <i>home</i>-Cheat verwenden.</span></p>
 
-		<p>Nun zur anderen erw&#228;hnten M&#246;glichkeit:</p>
 
-		<pre>unionro</pre>
+				<h4> unionro</h4>
+<pre>unionro</pre>
 
 		<p>Dies ist im Prinzip &#228;hnlich zu unionrw, erzeugt aber einen read-only Zugang auf bereits vorher installierte Modifikationen. Man kann auch unionro mit einem neuen unionrw-Cheat verbinden. Achtung: Diese Cheats sind experimentell, keiner von ihnen wird in der sidux-Boothilfe erw&#228;hnt</p>
 
@@ -253,7 +275,7 @@ root@0[sidux]# apt-get install kdegames</pre>
 		<p>In eine Konsole das folgende eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
 
 <pre>sidux@9[sidux]$ su
-root@0[sidux]# fix-unionfs
+<!--root@0[sidux]# fix-unionfs -->
 root@0[sidux]# apt-get update &amp;&amp; apt-get install ntfs-3g
 root@0[sidux]# umount /media/xdxx
 root@0[sidux]# mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
@@ -262,8 +284,8 @@ To get out of the konsole type: exit
 
 		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Und noch einmal unsere Warnung: <i>Dieses Vorgehen ist für Situationen gedacht, für die es keine anderen Lösungsmöglichkeiten gibt. Für die tägliche Routinenutzung es nicht empfohlen!</i>!</p>
 	</div>
-	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
-</div>
+	<div id="rev">Content last revised UTC 30/04/2007 0100hrs UTC </div>
+
 </div>
 </body>
 </html>

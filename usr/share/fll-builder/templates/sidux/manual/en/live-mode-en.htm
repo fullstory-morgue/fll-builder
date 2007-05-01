@@ -12,13 +12,16 @@
 </head>
 <body id="live-mode">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
-<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags">
+<a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a>
+<a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a>
+	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to Official sidux-manual</a>
 			<ul class="sub-menu" id="sm1">
@@ -46,7 +49,8 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
-				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -115,6 +119,7 @@
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="internet-connecting-en.htm#firewalls">Mini-Firewall</a></li>
 				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
 				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
 				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
@@ -194,7 +199,8 @@ exit
 (where upon the konsole should close)
 </pre>
 	</div>
-	<div class="divider" id="unionfs">
+
+<!--	<div class="divider" id="unionfs">
 		<h2>Unionfs - or how to install software in live mode</h2>
 		<p>Unionfs is an overlay filesystem which makes it possible to use apt-get or install nvidia or radeon drivers whilst in live-cd mode. sidux's nvidia/radeon scripts detect the live mode and activate unionfs if needed. To enable unionfs at boot up, simply to type this cheatcode on the boot command line:</p>
 
@@ -214,41 +220,52 @@ Activating Unionfs now.</pre>
 root@0[sidux]# apt-get update
 <i>(...)</i>
 root@0[sidux]# apt-get install kdegames</pre>
+	</div>
+-->
+	<div class="divider" id="live-cd-installsoft">
+					<h2>Installing software whilst on a Live-CD</h2>
+<pre>
+apt-get update
+apt-get install your-preferred-package
+</pre>
+					<p>Note: when you power off the Live-CD, no changes will be kept</p>
+	</div>
+	<div class="divider" id="live-cd-perm-store">
 
-			<p>There are two additional methods to make a more permanent unionfs:</p>
+					<h2>Storing permanent changes to a HD using the Live-cd</h2>
+						<h4>Permanent $HOME</h4>
+<pre>
+home  /dev/sda1/sidux.img  mount loopback file as /home/sidux
+</pre>
+					<h4> unionrw</h4>
+<pre>
+unionrw
+</pre>
+						<p>The unionrw cheat can be used to:</p>
 
-<pre >unionrw</pre> 
-			<p>and</p>
-<pre >unionro</pre>. 
-			<p>The first can be created with this cheatcode:</p>
+				<ol>
+					<li>Point to a partition on the hard drive</li>
+					<li>Point to a loop file (like an ext2 loopback file)</li>
+					<li>Point to a directory</li>
+				</ol>
 
-<pre >unionrw</pre>
+					<p>All three ways work to permanently store changes to a drive you designate - if you always use the same cheatcode you can have custom program selection at the place given by the user. <span class="highlight-3">This does not store the /home directly, you have to use the home code for that.</span></p>
 
-		<p>The unionrw cheat can be used to:</p>
-
-	<ol>
-		<li>Point to a partition on the hard drive</li>
-		<li>Point to a loop file (like an ext2 loopback file)</li>
-		<li>Point to a directory</li>
-	</ol>
-
-		<p>All three ways work to permanently store changes to a drive you designate - if you always use the same cheatcode you can have custom program selection at the place given by the user. This does not store the /home directly, you have to use the home cheat for that.</p>
-
-		<p>As already mentioned, there is a another cheatcode:</p>
-
+				<h4> unionro</h4>
+	
 <pre >unionro</pre>
 
-		<p>This is basically like unionrw, but you are not able to overwrite files in the place where you've stored them. However you could combine a new unionrw and the unionro cheatcode at the same time. Not everyone will find this useful, but remember, this is all experimental. Note that none of these cheatcodes are mentioned in the help file that is visible when you press F1 when booting sidux.</p>
+					<p>This is basically like unionrw, but you are not able to overwrite files in the place where you've stored them. However you could combine a new unionrw and the unionro cheatcode at the same time. Not everyone will find this useful, but remember, this is all experimental. Note that none of these cheatcodes are mentioned in the help file that is visible when you press F1 when booting sidux.</p>
 
 	</div>
 	<div class="divider" id="ntfs-3g">
 		<h2>How to write on NTFS-partitions with ntfs-3g</h2>
 
-		<p class="highlight-2"><b>Be warned</b>: Whislt the ntfs-3g is stated to be 'stable', never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
+		<p class="highlight-2"><b>Be warned</b>: Whilst the ntfs-3g is stated to be 'stable', never use it without external backup, and of course not on production systems! If you do, it's your fault if your data gets lost, so use at your own risk!</p>
 
 		<p>Open a shell and enter the following commands:See <a href="part-cfdisk-en.htm" >Partitioning your HD - Disk Naming</a></p>
 <pre >su
-fix-unionfs
+<!--fix-unionfs -->
 apt-get update &amp;&amp; apt-get install ntfs-3g
 umount /media/xdxx
 mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
@@ -256,9 +273,8 @@ To get out of the konsole type: exit
 </pre>
 
 		<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
-
-
-</div>
+	</div>
+	<div id="rev">Content last revised UTC 30/04/2007 0100hrs UTC </div>
 </div>
 </body>
 </html>

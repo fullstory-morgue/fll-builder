@@ -9,6 +9,7 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
   * temporarily enable serial console debugging entry for grub again.
   * hide implicit aufs cheat in menu.lst.
   * add versioning defaults to the default config.
+  * update embedded manual version to 0.1-30-04-2007-live-cd-07-02.
 
   [ Bernard Gray ]
   * fix typo
@@ -17,7 +18,7 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
   * Add powersaved to distro-tools-x module. kpowersaved no longer depends on
     it, plus is also indirectly depends on X related libs.
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 30 Apr 2007 22:08:19 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 01 May 2007 16:03:36 +0200
 
 fll-builder (1.0.4) unstable; urgency=low
 

@@ -12,13 +12,16 @@
 </head>
 <body id="cd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
-<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.1-30-04-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags">
+<a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a>
+<a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a>
+	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to Official sidux-manual</a>
 			<ul class="sub-menu" id="sm1">
@@ -46,7 +49,8 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
-				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -115,6 +119,7 @@
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="internet-connecting-en.htm#firewalls">Mini-Firewall</a></li>
 				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
 				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
 				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
@@ -153,7 +158,6 @@
 	</ul>
 <!-- menu ends here --> </div>
 <div id="main-page">
-
 	<div class="divider" id="burning-no-gui">
 		<h2 id="top-header">Burning CD/DVD without a GUI</h2>
 
@@ -167,93 +171,58 @@
 
 		<p>wodim:</p>
  <pre>
- $ wodim -dev=ATAPI -scanbus
- 		scsibus0:
- 		0,0,0 0) 'AOPEN ' 'CD-RW CRW2440 ' '2.02' Removable CD-ROM
- 		0,1,0 1) '_NEC ' 'DVD_RW ND-3540A ' '1.01' Removable CD-ROM
- 		0,2,0 2) *
+$ wodim --devices
+wodim: Overview of accessible drives (2 found) :
+---------------------------------------------------------
+ 0  dev='/dev/hdc'      rwrw-- : 'AOPEN' 'CD-RW CRW2440'
+ 1  dev='/dev/hdd'      rwrw-- : '_NEC' 'DVD_RW ND-3540A'
+---------------------------------------------------------
  </pre>
-
-		<p>This means: wodim uses ATAPI:0,0,0 or ATAPI:0,1,0 as device
-		in the following examples we use ATAPI:0,0,0 for CD-ROM and/or the second device for DVD.</p>
-
-
-		<p>The same check with cdrdao:</p>
-<pre>
-$ cdrdao scanbus
-Cdrdao version 1.2.1 - (C)  <a href="mailto:andreas@daneb.de">Andreas Mueller</a>
-ATA:1,0,0 AOPEN , CD-RW CRW2440 , 2.02
-ATA:1,1,0 _NEC , DVD_RW ND-3540A , 1.01
-</pre>
-
-
-		<p>For cdrdao you can use the output from wodim as well: </p>
-<pre>
-ATAPI:0,0,0 zB or ATA:1,0,0</pre>
-
-		<p>We use the output from wodim in the following examples:</p>
-
-
-		<p>With SCSI-devices:</p>
-<pre>
-$ wodim -scanbus
-scsibus0:
-0,0,0 0) 'RICOH ' 'CD-R/RW MP7060S ' '1.80' Removable CD-ROM
-0,1,0 1) *
-0,2,0 2) *
-</pre>
-
-		<p>In this case we use 0,0,0 for the scsi device</p>
-
 
 		<h4>Here are some useful examples:</h4>
 
 		<h5>Info about a blank CD/DVD:</h5>
 <pre>
-$ wodim -dev ATAPI:0,0,0 -atip
+$ wodim dev=/dev/hdc -atip
 </pre>
 		<p>or</p>
+
 <pre>
-$ cdrdao disk-info --device ATAPI:0,0,0$
-</pre>
-		<p>or, as stated above:</p>
-<pre>
-cdrdao disk-info --device ATA:1,0,0 )
+$ cdrdao disk-info --device ATA:1,0,0
 </pre>
 
 		<h5>Delete a rewritable disk:</h5>
 <pre>
-$ wodim -v -dev ATAPI:0,0,0 blank=fast -force
+$ wodim -blank=fast -v dev=/dev/hdc
 </pre>
 		<p>or</p>
 <pre>
-$ cdrdao blank --device ATAPI:0,0,0 --blank-mode minimal
+$ cdrdao blank --device ATA:1,0,0 --blank-mode minimal
 </pre>
 
 		<h5>Clone a cd:</h5>
 <pre>
-$ cdrdao copy --fast-toc --device ATAPI:0,0,0 --buffers 256 -v2
+$ cdrdao copy --fast-toc --device ATA:1,0,0 --buffers 256 -v2
 </pre>
 
 		<h5>Clone a cd on the fly:</h5>
 <pre>
-$ cdrdao copy --fast-toc --source-device ATAPI:0,1,0 --device ATAPI:0,0,0 \
-		--on-the-fly --buffers 256 --eject -v2
+$ cdrdao copy --fast-toc --source-device ATA:1,1,0 --device ATA:1,0,0 --on-the-fly --buffers 256 --eject -v2
 </pre>
 
 		<h5>Create an audio cd from wav files with 12x speed:</h5>
 <pre>
-$ wodim -v -eject -pad -dao speed=12 dev=ATAPI:0,0,0 defpregap=0 -audio *.wav
+$ wodim -v -eject -pad -dao speed=12 dev=/hdc defpregap=0 -audio *.wav
 </pre>
 
 		<h5>Burn a cd from bin/cue files:</h5>
 <pre>
-$ cdrdao write --speed 24 --device ATAPI:0,0,0 --eject filename.cue
+$ cdrdao write --speed 24 --device ATA:1,0,0 --eject filenam.cue
 </pre>
 
 		<h5>Burn an ISO image:</h5>
 <pre>
-$ wodim -v -eject speed=12 dev=ATAPI:0.0.0 driveropts=burnfree -overburn \-ignsize data "iso_File_name"
+$ wodim dev=/dev/hdc driveropts=burnfree,noforcespeed fs=14M speed=10 -dao -eject -overburn -v something.iso
 </pre>
 
 		<h5>Create an ISO image with all files (and subdirs) of a directory.</h5>
@@ -283,7 +252,7 @@ $ growisofs -M /dev/dvd -R -J anotherfile andanotherfile...
 $ growisofs -M /dev/dvd=/dev/zero
 </pre>
 	</div>
-			<div id="rev">Page last revised 16/01/2007 1300 UTC</div>
+			<div id="rev">Page last revised 01/05/2007 1330 UTC</div>
 </div>
 </body>
 </html>

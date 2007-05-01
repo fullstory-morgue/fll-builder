@@ -12,13 +12,16 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.3-18-04-07-livecd-sidux-2007-02 "Τάρταρος" de and en languages maintained by hubi and bluewater-->
-<!-- menu last updated by bluewater 16/04/2007 1230hrs AEST 16/04/2007 0230hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
 	</ul>
-		<div id="flags"><a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a><a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a></div>
+	<div id="flags">
+<a href="../de/welcome-de.htm"><img src="../lib/flags/de-flag.png" title="DE" alt="DE" /></a>
+<a href="../en/welcome-en.htm"><img src="../lib/flags/en-flag.png" title="EN" alt="EN" /></a>
+	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-en.htm">Welcome to Official sidux-manual</a>
 			<ul class="sub-menu" id="sm1">
@@ -46,7 +49,8 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-en.htm">Live Mode</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
-				<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -115,6 +119,7 @@
 		<li  onmouseover="showHide( 3 );" onmouseout="startTime();" ><a href="internet-connecting-en.htm">Internet and Networking</a>
 			<ul class="sub-menu" id="sm3">
 				<li><a href="ntp-server-en.htm#ntp-server">Timeserver Setup</a></li>
+				<li><a href="internet-connecting-en.htm#firewalls">Mini-Firewall</a></li>
 				<li><a href="samba-en.htm#configure">Configuring SAMBA (Windows)</a></li>
 				<li><a href="samba-en.htm#setup">Samba-Server Setup</a></li>
 				<li><a href="ssh-en.htm#ssh-fs">SSH Remote Mounting</a></li>
@@ -161,9 +166,9 @@
 				<p class="highlight-3">Be prepared!</p>
 				<p>sidux will challenge your belief system compared with every other release you have previously tried or used. sidux is not only based on <a href="http:www.debian.org"> Debian</a> and Debian 'sid' GNU/Linux, sidux holds fast to the core values and social contract of Debian.</p>
 
-				<p>You no longer need to wait for a new release to always have the latest of anything, including kernels. Once you have installed sidux, all it needs is a dist-upgrade, which is a system-wide software update from debian and sidux at regular intervals, and to upgrade the kernel as required.</p>
+				<p>You no longer need to wait for a new release to always have the latest of anything, including kernels. Once you have installed sidux, all it needs is a dist-upgrade, which is a system-wide software update from debian and sidux.</p>
 
-				<p>This means that re-installing yet another release every 6-12 months on your PC is unnecessary with sidux.</p>
+				<p>This means that re-installing yet another release every 6-12 months on your PC is unnecessary with sidux, as the weekly or monthly dist-upgrade brings everything up-to-date, except the kernel; which may be upgraded separately as required.</p>
 
 				<p>As it is, an install with sidux usually does not take longer than 20 minutes.</p>
 
@@ -186,7 +191,7 @@
 
 		<p>As the body of work grows, more documentation will be added and we at sidux are sure that this will prove to be a very valuable resource for you and we thank you for being a part of sidux. </p>
 
-		<p>All content is © 2006 by the sidux Foundation, Inc. and released under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.</p>
+		<p>All content is © 2006-2007 by the sidux Foundation, Inc. and released under <a href="http://www.gnu.org/licenses/fdl.txt">GNU Free Documentation License</a>.Permission is granted to copy, distribute and/or modify this document under the terms of the GNU Free Documentation License, Version 1.2 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.</p>
 	</div>
 
 	<div>
@@ -216,9 +221,10 @@
 		</ul>
 		<h6><a href="live-mode-en.htm">Live Mode</a></h6>
 		<ul>			
-			<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
-			<li><a href="live-mode-en.htm#unionfs">Unionfs - Install software in live mode</a></li>
-			<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
+				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD?</a></li>
+				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
+				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 		</ul>
 		<h6><a href="cheatcodes-en.htm">CheatCodes</a></h6>
 		<ul>
@@ -228,6 +234,7 @@
 		<h6><a href="internet-connecting-en.htm">Internet and Networking</a></h6>
 		<ul>			
 			<li><a href="internet-connecting-en.htm#netcardconfig">Getting online-Configuring the Network</a></li>
+			<li><a href="internet-connecting-en.htm#firewalls">Mini-Firewall</a></li>
 			<li><a href="internet-connecting-en.htm#dial-mod">56k Modems</a></li>
 			<li><a href="internet-connecting-en.htm#ndiswrapper">Activating Ndiswrapper</a></li>
 			<li><a href="internet-connecting-wpa-en.htm#wpa">WIFI-WLAN</a></li>
