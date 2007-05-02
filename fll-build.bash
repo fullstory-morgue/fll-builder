@@ -74,6 +74,8 @@ Options:
 
   -P|--package-profiledir	Package profile directory
 
+  -S|--source-release		Fetch all source code for release
+
 EOF
 }
 
@@ -149,8 +151,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhno:pP: \
-	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,uid: \
+	--options c:Cdhno:pP:S \
+	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,source-releaseuid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -190,6 +192,9 @@ while true; do
 		-P|--package-profiledir)
 			shift
 			FLL_BUILD_PACKAGE_PROFDIR=$1
+			;;
+		-S|--source-release)
+			((FLL_SOURCE_RELEASE++))
 			;;
 		--uid)
 			# this need not be a documented feature
@@ -478,24 +483,26 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' \
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
 	
-	echo "Calculating source package URI list . . ."
+	if [[ $FLL_SOURCE_RELEASE ]]; then
+		echo "Calculating source package URI list . . ."
 	
-	# generate source package URI list
-	chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
-		awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique | \
-		tee "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+		# generate source package URI list
+		chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
+			awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique | \
+			tee "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
 	
-	# fix source URI's to use non cached address
-	if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
-		sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
-			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
-	fi
+		# fix source URI's to use non cached address
+		if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
+			sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
+				"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+		fi
 
-	for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
-		[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
-		sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
-			"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
-	done
+		for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
+			[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
+			sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
+				"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+		done
+	fi
 	
 	# XXX: this hack is FOR TESTING PURPOSES ONLY
 	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
