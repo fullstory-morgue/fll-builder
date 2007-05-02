@@ -72,6 +72,8 @@ Options:
 
   -p|--preserve			Preserve build area when finished
 
+  -P|--package-profiledir	Package profile directory
+
 EOF
 }
 
@@ -147,8 +149,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhno:p \
-	--long configfile:,chroot-only,copyright,debug,help,output,preserve,uid: \
+	--options c:Cdhno:pP: \
+	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -184,6 +186,10 @@ while true; do
 			;;
 		-p|--preserve)
 			((FLL_BUILD_PRESERVE_CHROOT++))
+			;;
+		-P|--package-profiledir)
+			shift
+			FLL_BUILD_PACKAGE_PROFDIR=$1
 			;;
 		--uid)
 			# this need not be a documented feature
