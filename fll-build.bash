@@ -152,7 +152,7 @@ done
 #################################################################
 ARGS=$( getopt --name "$SELF" \
 	--options c:Cdhno:pP:S \
-	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,source-releaseuid: \
+	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,source-release,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
