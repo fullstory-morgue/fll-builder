@@ -538,12 +538,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_CHROOT"/etc/inittab
 	
 	#################################################################
-	#		hack powersaved to act on powerbutton events	#
-	#################################################################
-	[[ -w /etc/powersave/events ]] && \
-		sed -i 's/^\(EVENT_BUTTON_POWER=\).*/\1"wm_shutdown"/' "${FLL_BUILD_CHROOT}/etc/powersave/events"
-
-	#################################################################
 	#		misc chroot preseeding				#
 	#################################################################
 	# run fix-fonts
@@ -573,6 +567,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
 	if exists_in_chroot /etc/ppp/peers/kppp-options; then
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
+	fi
+
+	# hack powersaved to act on powerbutton events
+	if exists_in_chroot /etc/powersave/events; then
+		sed -i 's/^\(EVENT_BUTTON_POWER=\).*/\1"wm_shutdown"/' "$FLL_BUILD_CHROOT"/etc/powersave/events
 	fi
 
 	#################################################################
