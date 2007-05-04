@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -172,7 +172,7 @@
 
 				<p>Es ist nicht sicher Root-Anmeldung via SSH zu erlauben. Es gilt, Anmeldungen als Root nicht zum Standard zu machen, denn Debian sollte sicher sein, nicht unsicher. Ebenso sollen User nicht die M&#246;glichkeit haben, &#252;ber zehn Minuten einen wortlistenbasierten Passwort Angriff (brute force attack) auf den SSH-Login durchzuf&#252;hren. Deshalb ist es sinnvoll, das Zeitfenster der Anmeldung sowie die Anzahl m&#246;glicher Versuche einzuschr&#228;nken.</p>
 
- 				<p>Um dein SSH sicherer zu machen, verwende deinen bevorzugten Texteditor, um folgende Datei zu editieren:</p>
+ 				<p>Um SSH sicherer zu machen, verwendet man den bevorzugten Texteditor, um folgende Datei zu editieren:</p>
 <pre>
 /etc/ssh/sshd_config
 </pre>
@@ -180,11 +180,11 @@
 
 				<h5>Folgende Einstellungen m&#252;ssen ge&#228;ndert werden:</h5>
 
- 				<p><span class="highlight-3">Port &lt;gew&#252;nschter Port&gt;:</span> Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn du nicht weißt, was das heißt, solltest Du den Einsatz von SSH zur Remote Steuerung noch einmal &#252;berdenken. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:</p>
+ 				<p><span class="highlight-3">Port &lt;gew&#252;nschter Port&gt;:</span> Dieser Eintrag muss auf den Port verweisen, der auf dem Router zur Weiterleitung freigeschaltet ist. Wenn nicht bekannt ist, was gemacht werden soll, soll der Einsatz von SSH zur Remote Steuerung noch einmal &#252;berdacht werden. Debian setzt den Port 22 als Standard. Es ist jedoch ratsam, einen Port ausserhalb des Standardscanbereichs zu verwenden, deswegen verwenden wir z.B. Port 5874:</p>
 <pre>
 Port 5874
 </pre>
- 				<p><span class="highlight-3">ListenAddress &lt;IP des Rechners oder der Netzwerkschnittstelle&gt;:</span> Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern Du keinen lokalen DNS Server verwendest. Aber wenn Du etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS Servers aufsetzen willst und diese Anweisungen benötigst, machst Du möglicherweise einen großen Fehler. Wir verwenden eine statische IP f&#252;r das Beispiel:</p>
+ 				<p><span class="highlight-3">ListenAddress &lt;IP des Rechners oder der Netzwerkschnittstelle&gt;:</span> Da der Port vom Router weitergeleitet wird, muss der Rechner eine statische IP-Adresse benutzen, sofern kein lokaler DNS-Server verwendet wird. Aber wenn etwas so Kompliziertes wie SSH unter Benutzung eines lokalen DNS-Servers aufgesetzt werden soll und diese Anweisungen benötigt werden, kann sich leicht ein gravierender Fehler einschleichen. Wir verwenden eine statische IP f&#252;r das Beispiel:</p>
 <pre>
 ListenAddress 192.168.2.134
 </pre>
@@ -204,7 +204,7 @@ PermitRootLogin no
 <pre>
 StrictModes yes
 </pre>
- 				<p><span class="highlight-3">MaxAuthTries &lt;Anzahl der erlaubten Anmeldungsversuche&gt;:</span> Mehr als 3 oder 4 Versuche solltest Du nicht erm&#246;glichen:</p>
+ 				<p><span class="highlight-3">MaxAuthTries &lt;Anzahl der erlaubten Anmeldungsversuche&gt;:</span> Mehr als 3 oder 4 Versuche sollten nicht erm&#246;glicht werden:</p>
 <pre>
 MaxAuthTries 2
 </pre>
@@ -215,7 +215,7 @@ MaxAuthTries 2
 <pre>
 AllowUsers werauchimmer
 </pre>
- 				<p><span class="highlight-3">PermitEmptyPasswords &lt;xxx&gt;:</span> gib deinem Benutzer ein sch&#246;nes langes Passwort, das man in einer Millionen Jahren nicht erraten kann. Der Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit <span class="highlight-3">su</span> Root werden.:</p>
+ 				<p><span class="highlight-3">PermitEmptyPasswords &lt;xxx&gt;:</span> dem Benutzer soll ein sch&#246;nes langes Passwort gegeben werden, das man in einer Millionen Jahren nicht erraten kann. Der Benutzer sollte der einzige mit SSH Zugriff sein. Ist er einmal angemeldet, kann er mit <span class="highlight-3">su</span> Root werden.:</p>
 <pre>
 PermitEmptyPasswords no
 </pre>
@@ -227,7 +227,7 @@ PasswordAuthentication yes [wenn man keine keys verwendet]
 <pre>
 /etc/init.d/ssh restart
 </pre>
- 				<p>Nun hast Du eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn Du einen Benutzer hinzugef&#252;gt hast, der speziell zur Verwendung mit SSH dient.</p>
+ 				<p>Nun hat man eine etwas sichere SSH-Konfiguration. Nicht vollkommen sicher, nur besser, vor allem wenn man einen Benutzer hinzugef&#252;gt hat, der speziell zur Verwendung mit SSH dient.</p>
 
 	</div>
 
@@ -292,7 +292,7 @@ ssh -X username@xxx.xxx.xxx.xxx
 
 		<p>Wie's gemacht wird:<br />
 		1) Ein Konqueror Fenster &#246;ffnen<br />
-		2) In das Adressfeld: <span class="highlight-3">fish://username@ssh-server.com</span> eingeben.</p>
+		2) In das Adressfeld <span class="highlight-3">fish://username@ssh-server.com</span> eingeben.</p>
 		<p>Beispiel 1: Ein Popup &#246;ffnet sich und fragt nach dem SSH Passwort, nun das Passwort eingeben und OK klicken:</p>
 <pre>
 fish://sidux1@my-home-server.dyndns.org
@@ -301,10 +301,10 @@ fish://sidux1@my-home-server.dyndns.org
 <pre>
 fish://username:password@ssh-server.com
 </pre>
-				<p>For a LAN environment</p>
+				<p>Für eine LAN-Umgebung</p>
 <pre>
-fish://username@10.x.x.x or 198.x.x.x.x
-(Note: A popup opens that asks for your ssh password, enter it and click OK)
+fish://username:password@10.x.x.x or 198.x.x.x.x
+(Anmerkung: Ein Popup-Fenster fragt nach der Eingabe des ssh-Passworts: dieses eingeben und auf OK klicken)
 </pre>
 		<p>Die Konqueror SSH GUI Verbindung ist nun hergestellt. In diesem Konqueror Fenster kann man mit den Dateien auf dem SSH Server arbeiten, als w&#228;ren es lokale Dateien.</p>
 	</div>

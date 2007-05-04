@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -208,7 +208,7 @@
 </pre>
 				<p>Um ein Backup der Root-Partition anzulegen, wird folgender Befehl eingegeben::</p>
 <pre>
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' /media/hdb1/rdiff-backups/192.168.0.1/root
 </pre>
 				<p>Fehlermeldungen mit "AF_UNIX path too long" k&#246;nnen ignoriert werden. Der Backupvorgang kann beim ersten Mal l&#228;ngere Zeit beanspruchen, da die gesamte Partition gesichert wird. Beachte auch, dass /tmp nicht gesichert wird, da dieses Verzeichnis st&#228;ndigen Ver&#228;nderungen unterworfen ist. Ebensowenig werden /proc und /sys gesichert, da diese Verzeichnisse keine reellen Dateien beinhalten. Auch werden eingebundene Datentr&#228;ger nicht gesichert, da in diesem Falle hdb1 ebenfalls gesichert w&#252;rde, was in einer unendlichen Schleife, einem unendlichen Loop enden k&#246;nnte! Um dies zu verhindern, k&#246;nnen andere eingebundene Datentr&#228;ger separat gesichert werden.</p>
 
@@ -372,8 +372,8 @@ ${RDIFF} --remove-older-than 1M\
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-	
-	<div class="spacer05"></div>
+			<div id="rev">Page last revised 04/05/2007 0330 UTC</div>
+
 </div>
 </div>
 </body>

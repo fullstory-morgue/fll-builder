@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -205,7 +205,7 @@ iwconfig wlan0 essid ESSIDNAME</pre>
 			<li><p>Konfigurieren der ersten Karte mit:</p>
 			<pre>netcardconfig</pre></li>
 
-			<li><p>F&#252;r die 2. Karte w&#228;hlen wir eine feste IP-Addresse in einer privaten Domain, z. B. 192.168.1.1, und konfigurieren auch diese:</p>
+			<li><p>F&#252;r die 2. Karte w&#228;hlen wir eine feste IP-Adresse in einer privaten Domain, z. B. 192.168.1.1, und konfigurieren auch diese:</p>
 			<pre>netcardconfig</pre>
 
 			<p>Achtung: Deine IP muss im gleichen Subnetz sein wie die IPs, die per DHCP zugeteilt werden. Wenn f&auml;lschlicherweise ein Gateway w&auml;hrend der Konfiguration festgelegt wurde, muss folgendes Script ausgef&#252;hrt werden:</p>
@@ -219,9 +219,9 @@ apt-get install dnsmasq
 			<p>Editiere die Datei <b>/etc/dnsmasq.conf</b> durch Hinzuf&#252;gen einer Zeile wie</p>
 			<pre>dhcp-range=192.168.1.50,192.168.1.150</pre>
 
-			<p>Der Rest der Datei bleibt so, wie sie ist.</p></li>
+			<p>Der Rest der Datei bleibt so, wie er ist.</p></li>
 
-			<li><p>Der DHCP-Server des Desktop-PCs kann jetzt gestartet werden. Wenn die Clients jetzt auf DHCP eingestellt sind, wird automatisch eine IP-Addresse zugeteilt.</p>
+			<li><p>Der DHCP-Server des Desktop-PCs kann jetzt gestartet werden. Wenn die Clients jetzt auf DHCP eingestellt sind, wird automatisch eine IP-Adresse zugeteilt.</p>
 			<pre>/etc/init.d/dnsmasq start</pre></li>
 
 			<li><p>Um die Anfrage des Clients ins Netz zu routen, musst du folgendes Script ausf&uuml;hren:</p>
@@ -238,22 +238,27 @@ apt-get install dnsmasq
 			<h2>Internetverbindung mit einem 56k Dial-up Modem</h2>
 				<p>KDE hat ein Frontend f&#252;r Dial-up Modems: <span class="highlight-1">KPPP (Internet Dial-up Tool)</span>. Es befindet sich in K-Men&#252; > Internet.</p>
 				<p>Die Anwendung hat eine interne Hilfe und bietet eine gut verst&#228;ndliche Anleitung zum Aufsetzen der Verbindung.</p>
-
 	</div>
 	<div class="divider" id="firewalls">
-			<h2>A Mini Firewall</h2>
-				<p>If you need a little firewall script try this one:</p>
+			<h2>Eine Mini-Firewall</h2>
+				<p>Wenn Sie ein kleines Firewall-Skript ben&#246;tigen, können Sie folgendes versuchen:</p>
 <pre>
 wget http://rebelhomicide.demon.nl/scripts/mini-miyagi.sh
 chmod 755 mini-miyagi.sh 
 apt-get remove --purge {firestarter,guarddog}
 </pre>
-				<p>Run it with</p>
+				<p>Starten Sie es mit</p>
 <pre>
-./mini-myagi.sh
+./mini-miyagi.sh
 </pre>
+				<p>To stop mini-miyagi</p>
+
+<pre>
+/etc/init.d/mini_miyagi_fw.sh stop
+</pre>
+
 	</div>
-			<div id="rev"> Page last revised UTC 29/04/2007 1430hrs</div>
+			<div id="rev"> Page last revised UTC 03/05/2007 1400hrs</div>
 </div>
 </body>
 </html>

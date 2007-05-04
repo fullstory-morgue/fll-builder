@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -160,7 +160,7 @@
 <div id="main-page">
 	<div class="divider" id="Inst-prep">
 		<h2 id="top-header">Installationsvorbereitungen</h2>
-			<p  class="highlight-2">Im Regelfall empfehlen wir das Dateisystem ext3, welches sidux als Default-Dateisystem verwendet. ext3 ist im Upstream sehr gut gewartet.</p>
+			<p  class="highlight-2">Im Regelfall empfehlen wir das Dateisystem ext3, welches sidux als Default-Dateisystem verwendet. ext3 wird im Upstream sehr gut gewartet.</p>
 
 		<p><span class="highlight-2">Vor der Installation bitte alle USB-Sticks, Kameras etc. entfernen.</span> <a href="hd-install-opts-de.htm">Die Installation auf einem USB-Device</a> ben&#246;tigt ein anderes Verfahren und ist an anderer Stelle beschrieben. Es ist auch m&#246;glich, die Installationsdatei <span class="highlight-3">~/.sidconf</span> zu &#228;ndern, um dort ein anderes Dateisystem zu w&#228;hlen oder die Installation auf mehrere Partitionen aufzuteilen.</p>
 
@@ -175,9 +175,9 @@
 
 		<p>Eine Installation auf der Festplatte ist ungleich komfortabler und schneller als ein System, das nur von CD-ROM l&#228;uft.</p>
 
-		<p>Zuerst stellt man im BIOS die Bootreihenfolge auf CD-ROM um. Bei den meisten Computern kommt man durch Dr&#252;cken der 'Entf'-Taste w&#228;hrend des Bootvorgangs in das BIOS-Setup (bei einigen BIOS-Versionen kann man auch w&#228;hrend des Bootens das Startlaufwerk ausw&#228;hlen, beim AMI-BIOS z.B. mit F11 oder F8).</p>
+		<p>Zuerst stellt man im BIOS die Bootreihenfolge auf CD-ROM um. Bei den meisten Computern kommt man durch Dr&#252;cken der 'Entf'-Taste w&#228;hrend des Bootvorgangs in das BIOS-Setup (bei einigen BIOS-Versionen kann man auch w&#228;hrend des Bootens das Startlaufwerk ausw&#228;hlen, beim AMI-BIOS z. B. mit F11 oder F8).</p>
 
-		<p>Sidux startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &#252;bergeben werden k&#246;nnen. Einige Bootparameter (z. B. f&#252;r die Bildschirmaufl&#246;sung oder Wahl der Sprache) k&#246;nnen sehr viel Konfigurationsarbeit sparen. F4 l&#228;sst zum Beispiel beim Booten der Live-CD die Sprache w&#228;hlen. <a href="cheatcodes-de.htm">Siehe auch Cheatcodes</a> und <a href="cheatcodes-vga-de.htm">VGA Aufl&#246;sungen</a></p>
+		<p>sidux startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &#252;bergeben werden k&#246;nnen. Einige Bootparameter (z. B. f&#252;r die Bildschirmaufl&#246;sung oder Wahl der Sprache) k&#246;nnen sehr viel Konfigurationsarbeit sparen. Mit F4 l&#228;sst sich beispielsweise beim Booten der Live-CD die Sprache w&#228;hlen. <a href="cheatcodes-de.htm">Siehe auch Cheatcodes</a> und <a href="cheatcodes-vga-de.htm">VGA Aufl&#246;sungen</a></p>
 
 		<p>Jetzt kann man erstmal &#252;berpr&#252;fen, ob die Hardware vollst&#228;ndig erkannt wurde. Das Netzwerk <a href="internet-connecting-de.htm">(Internet-Verbindung)</a> richtet man sehr komfortabel mit den Tools im sidux-Men&#252; ein. Informationen zu drahtlosen Netzwerk erhält man unter <a href="internet-connecting-wpa-de.htm">WIFI-WLAN</a></p>
 
@@ -196,8 +196,8 @@ sudo install-gui
 		<div class="screenshot"><img src="../lib/images-de/installer-de/installer2-de.png" alt="sidux-Installer" /></div>
 
 		<p>Nun wird ausgew&#228;hlt, wohin installiert wird, und die Mountpunkte werden festgelegt. Die Mountpunkte von Partitionen, f&#252;r die kein Mountpunkt gew&#228;hlt wurde, werden vom Installationsprogramm zugewiesen. F&#252;r die Root-Partition ("/") muss jetzt der Mountpunkt festgelegt werden. Auch kann jetzt eine Datenpartition erstellt werden.</p>
-		<p class="highlight-2">Bitte sich nochmal vergewissern, ob für alle Daten ein Backup angelegt wurde.</p>		
-		<p>Wenn die Festplatte noch nicht partitoniert ist, muss auf den Knopf <span class="highlight-3">start-part-manager</span> geklickt werden, oder man liest im Handbuch die Kapitel <a href="part-cfdisk-de.htm">Partitionieren der Festplatte</a> bzw. <a href="part-gparted-de.htm">Partitonieren mit Gparted</a>.</p>
+		<p class="highlight-2">Bitte vergewissern Sie sich nochmal, ob für alle Daten ein Backup angelegt wurde.</p>		
+		<p>Wenn die Festplatte noch nicht partitioniert ist, muss auf den Knopf <span class="highlight-3">start-part-manager</span> geklickt werden, oder man liest im Handbuch die Kapitel <a href="part-cfdisk-de.htm">Partitionieren der Festplatte</a> bzw. <a href="part-gparted-de.htm">Partitonieren mit Gparted</a>.</p>
 		<p> Die Partitionierungsprogramme k&#246;nnen auch von der Konsole gestartet werden:</p>
  <pre>su
 gparted
@@ -207,7 +207,7 @@ gparted
 cfdisk
 </pre>
 	<div class="spacer02"></div>
-		<p><b>3.</b> Als Bootmanger verwenden wir <b>Grub im MBR</b>! Eine andere Wahl ist nur erfahrenen Nutzern empfohlen, die wissen, welche Folgen diese Entscheidung mit sich zieht. Grub erkennt automatisch, ob noch andere Betriebssysteme auf dem Computer installiert sind (z. B. Windows), und f&#252;gt diese seinem Bootmen&#252; hinzu.</p>
+		<p><b>3.</b> Als Bootmanager verwenden wir <b>Grub im MBR</b>! Eine andere Wahl ist nur erfahrenen Nutzern empfohlen, die wissen, welche Folgen diese Entscheidung mit sich zieht. Grub erkennt automatisch, ob noch andere Betriebssysteme auf dem Computer installiert sind (z. B. Windows), und f&#252;gt diese seinem Bootmen&#252; hinzu.</p>
 		<div class="screenshot"><img src="../lib/images-de/installer-de/installer3-de.png" alt="sidux-Installer" /></div>
 
 		<p><b>4.</b> Als n&#228;chstes werden Benutzername, Benutzerpasswort und Rootpasswort festgelegt (bitte gut merken!). Die Passw&#246;rter sollen aus Sicherheitsgr&#252;nden nicht zu einfach gew&#228;hlt werden. Wer weitere Benutzer einrichten m&#246;chte, kann dies nach der Installation mit der KDE-Benutzerverwaltung <span class="highlight-3">kuser</span> tun.  </p>
@@ -245,7 +245,7 @@ cfdisk
 
 			
 	</div>
-			<div id="rev">Content last revised 21/01/2007 1700 UTC</div>
+			<div id="rev">Content last revised 30/04/2007 1904 UTC</div>
 </div>
 </div>
 </body>

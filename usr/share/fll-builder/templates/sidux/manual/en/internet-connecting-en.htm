@@ -12,8 +12,8 @@
 </head>
 <body id="internet-samba">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -247,7 +247,8 @@ update-rc.d -f dnsmasq defaults
 	</div>
 	<div class="divider" id="firewalls">
 			<h2>A Mini Firewall</h2>
-				<p>If you need a little firewall script try this one:</p>
+			<h2>A Mini Firewall</h2>
+				<p>If you need a little firewall script when you have to connect direct to the net, try this one (not needed if behind a router):</p>
 <pre>
 wget http://rebelhomicide.demon.nl/scripts/mini-miyagi.sh
 chmod 755 mini-miyagi.sh 
@@ -255,10 +256,16 @@ apt-get remove --purge {firestarter,guarddog}
 </pre>
 				<p>Run it with</p>
 <pre>
-./mini-myagi.sh
+./mini-miyagi.sh
 </pre>
+				<p>To stop mini-miyagi</p>
+
+<pre>
+/etc/init.d/mini_miyagi_fw.sh stop
+</pre>
+
 	</div>
-			<div id="rev"> Page last revised UTC 29/04/2007 1430hrs</div>
+			<div id="rev"> Page last revised UTC 03/05/2007 1400hrs</div>
 </div>
 </body>
 </html>

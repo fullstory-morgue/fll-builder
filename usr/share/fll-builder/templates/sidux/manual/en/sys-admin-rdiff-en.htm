@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -211,7 +211,7 @@
 </pre>
 				<p>And to back up the root partition, run:</p>
 <pre>
-# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
+# rdiff-backup --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' /media/hdb1/rdiff-backups/192.168.0.1/root
 </pre>
 				<p>Any "AF_UNIX path too long" errors can be ignored. This may take a while as it's the first time the partition has been backed up, so rdiff-backup will have to back up the entire partition (not just the differences). Notice that we don't want to back up /tmp as this always changes, nor /proc or /sys as these don't contain real files, and also we don't want to back up mounts. If you did back up mounts, then you would be backing up hdb1, and could get into an infinite loop! One way around this is to backup the mounts separately.</p>
 
@@ -368,8 +368,8 @@ and insert the following line
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-	
-	<div class="spacer05"></div>
+			<div id="rev">Page last revised 04/05/2007 0330 UTC</div>
+
 </div>
 </div>
 </body>

@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -165,22 +165,13 @@
 
 		<p>Mit der sidux Live-CD kann man ein permanentes $HOME-Verzeichnis einrichten, um Konfiguration, Benutzerdaten und zus&#228;tzlich installierte Pakete zu speichern.</p>
 
-		<p>Es gibt 2 Wege, um die Live-CD zu nutzen:<br /></p>
-		<p>1) Aus dem CD- /DVD-Laufwerk, oder <br />
+		<p>Es gibt zwei Wege, um die Live-CD zu nutzen:<br /></p>
+		<p>1) Aus dem CD/DVD-Laufwerk, oder <br />
 		2) man legt das ISO auf die Festplatte und nutzt es von dort. <span class="highlight-1">Mehr unter: <a href="hd-install-opts-de.htm#fromiso">"fromiso"</a>.</span></p>
 
 		<p>Methode 2 (das ISO auf der Festplatte) ist ungleich schneller und hat den Vorteil, dass das Laufwerk frei ist.</p>
 
-		<p>Das permamente $HOME-Verzeichnis kann auf dem PC gespeichert werden, aber auch auf einem USB-Stick.</p>
-
-		<p>Zuerst muss <a href="live-mode-de.htm#unionfs">Unionfs</a> aktiviert werden. Dazu kann man den Unionfs-Cheatcode in der Bootzeile hinzuf&#252;gen</p>
-<pre>
-unionfs
-</pre>
-		<p>oder das Unionfs-Skript in der Shell verwenden:</p>
-
-<pre>$ su
-# fix-unionfs</pre>
+		<p>Das permanente $HOME-Verzeichnis kann auf dem PC gespeichert werden, aber auch auf einem USB-Stick.</p>
 
 
 		<p>Jetzt bootet man von der Live-CD oder vom installierten fromiso-ISO und startet das Skript zur Erzeugung der Konfigurationsdatei (config.tbz). Diese wird auf der Festplatte oder dem USB-Stick gespeichert.</p>
@@ -190,7 +181,7 @@ unionfs
 		<pre>sidux-Men&#252; > Konfiguration > Permanentes sidux-Homverzeichnis einrichten</pre>
 
 
-		<p>Der Speicherplatz sollte gro&#223; genug gew&#228;hlt werden, um zuk&#252;nftigen Anspr&#252;chen gerecht werden zu k&#246;nnen. Als n&#228;chstes wird im Homeverzeichnis des Benutzers sidux ein leeren Ordner mit der Bezeichnung unionfs angelegt: /home/sidux/unionfs. Dies kann mit dem Konqueror, mittels Konsole oder einer Appikation der Wahl geschehen.</p>
+		<p>Der Speicherplatz sollte gro&#223; genug gew&#228;hlt werden, um zuk&#252;nftigen Anspr&#252;chen gerecht werden zu k&#246;nnen. Als n&#228;chstes wird im Home-Verzeichnis des Benutzers sidux ein leerer Ordner mit der Bezeichnung unionfs angelegt: /home/sidux/unionfs. Dies kann mit dem Konqueror, mittels Konsole oder einer Applikation der Wahl geschehen.</p>
 
 		<p>Im Anschluss daran wird neu gebootet und am Grub-Bootscreen werden folgende Cheatcodes eingegeben:</p>
 
@@ -213,10 +204,11 @@ unionfs
 
 		<p>Dies ist nat&#252;rlich viel schneller als von einer CD, und das Laufwerk steht zur Verf&#252;gung. Alternativ kann man auch <a href="hd-install-opts-de.htm">QEMU</a> verwenden.</p>
 
-		<h5>Vorraussetzungen:</h5>
+		<h5>Voraussetzungen:</h5>
 
 		<p>* eine funktionierende Grub-Installation (auf Floppy, einer Festplatteninstallation oder der Live-CD)(ext2/3)<br />
-		* ein sidux ISO-Abbild , z. B. sidux.iso</p>
+			* a sidux ISO Image e.g.: sidux.ISO and a linux file system like ext2/3 <br />
+			* If you rename your image to sidux.iso you will need to alter the commands accordingly as a unix file naming system is case sensitive.</p>
 
 		<p>Zuerst suchen wir einen Ort f&#252;r die ISO-Datei. Um kurze Pfadnamen zu erhalten, erstellen wir ein Basis-Verzeichnis namens sidux, z. B. auf /dev/hda5, und kopieren das ISO hinein:</p>
 
@@ -251,7 +243,7 @@ initrd (hd0,4)/sidux/miniroot.gz</pre>
 
 		<p>Die empfohlene minimale Grösse für eine Installation auf einen USB-Stick ist:<br /><br />
 		sidux "Lite" braucht 1.2 GB. Dazu kommt noch Platz für die Daten.<br />
-		sidux"FULL" braucht 2.1 GB. Dazu kommt noch Platz für die Daten.<br /><br />
+		sidux "Full" braucht 2.1 GB. Dazu kommt noch Platz für die Daten.<br /><br />
 		<span class="highlight-3">Für die Lite-Installation sind daher USB-Sticks mit mindestens 2 GB, für eine Full-Installation USB-Sticks mit mindestens 3 GB empfohlen.</span></p>
 
 		<p>Die USB-Installation ist jetzt ein Teil des <a href="../de/hd-install-de.htm">sidux-installers</a> und kann mit diesem durchgef&#252;hrt werden.</p>
@@ -289,7 +281,7 @@ qemu-img create -f qcow sidux.qcow 3G
 
 			<h4>Installation des Betriebssystems</h4>
 
-				<p>Jetzt wird zum ersten Mal der Emulator gestartet. Eines muss dabei beachtet werden: wenn man innerhalb des qemu-Fensters mit der Maus klickt, wird der Mauszeiger "gefangen". Um ihn wieder frei zu geben, dr&#252;ckt man Ctrl+Alt.</p>
+				<p>Jetzt wird zum ersten Mal der Emulator gestartet. Eines muss dabei beachtet werden: Wenn man innerhalb des qemu-Fensters mit der Maus klickt, wird der Mauszeiger "gefangen". Um ihn wieder frei zu geben, dr&#252;ckt man Ctrl+Alt.</p>
 
 				<p>Falls man eine bootbare Diskette ben&#246;tigt, wird Qemu so gestartet:</p>
 <pre>
@@ -323,7 +315,7 @@ qemu [overlay_image]
 
 			<h4>Wie man jede echte Partiton als prim&#228;re Partition eines Festplattenimages benutzen kann</h4>
 
-				<p>Manchmal m&#246;chte man eine Systempartiton aus qemu heraus benutzen (man m&#246;chte zum Beispiel sowohl die echte Installation wie auch die virtuelle qemu-Installation mit einer gegebenen Partition als root starten). Dies erfolgt durch ein Software-RAID im Linearmodus (dazu braucht man den linear.ko Kernel-Treiber) und ein Loopback-Ger&#228;t: der Trick dabei ist, dynamisch einen Master Boot Record (MBR) an den Beginn der realen Partiton zu stellen, welche in das Raw-Disk-Image von qemu eingebettet werden soll.</p>
+				<p>Manchmal m&#246;chte man eine Systempartiton aus qemu heraus benutzen (man m&#246;chte zum Beispiel sowohl die echte Installation wie auch die virtuelle qemu-Installation mit einer gegebenen Partition als root starten). Dies erfolgt durch ein Software-RAID im Linearmodus (dazu braucht man den linear.ko Kernel-Treiber) und ein Loopback-Ger&#228;t: der Trick dabei ist, dynamisch einen Master Boot Record (MBR) an den Beginn der realen Partition zu stellen, welche in das Raw-Disk-Image von qemu eingebettet werden soll.</p>
 
 				<p>Angenommen, man hat eine einfache, nicht eingebundene Partition /dev/hdaN mit einem Dateisystem, welche Teil eines qemu-Festplattenimages werden soll. Als erstes erstellt man eine kleine Datei, welche den MBR beinhalten soll:</p>
 <pre>
@@ -377,7 +369,7 @@ qemu -cdrom /tmp/pkg/sidux-debug.iso -net nic -net user -m 512
 		
 	</div>
 	<div class="spacer05"></div>
-	<div id="rev">Content last revised UTC 04/02/2007 1230hrs UTC </div>
+	<div id="rev">Content last revised 21/01/2007 1933 UTC</div>
 </div>
 </div>
 </body>

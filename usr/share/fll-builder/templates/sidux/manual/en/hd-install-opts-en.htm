@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -170,18 +170,6 @@
 
 		<p>This persistent $HOME can be installed to your PC hard drive or to your USB stick.</p>
 		
-		<p>First we need to activate <a href="live-mode-en.htm#unionfs">unionfs</a>, do this by using the unionfs cheatcode in the grubline by typing in:</p>
-
-<pre>
-unionfs
-</pre>
-
-		<p>Or, via the terminal/konsole if already booted up with:</p>
-
-<pre>
-$su
-#fix-unionfs
-</pre>
 
 		<p>Now we boot from the Live-CD or the installed fromiso ISO and run the script to create the config-file (config.tbz) to save it on your USB stick or hard drive</p>
 		<pre>sidux-Menu - Configuration - save configuration</pre>
@@ -215,7 +203,8 @@ $su
 		<h6>Requirements:</h6>
 
 		    <p>* a functioning grub (on a floppy, a HD-Installation or the Live-CD)<br />
-		    * a sidux ISO Image e.g.: sidux.iso and a linux file system like ext2/3 </p>
+			* a sidux ISO Image e.g.: sidux.ISO and a linux file system like ext2/3 <br />
+			* If you rename your image to sidux.iso you will need to alter the commands accordingly as a unix file naming system is case sensitive.</p>
 
 
 		<p>First we choose a place for the iso and 2 files we need, so we get shorter names. Therefore we create a base-directory: for example /dev/hda5, create the directory "sidux" and copy the iso into it:</p>

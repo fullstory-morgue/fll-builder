@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -304,9 +304,9 @@ init 5 &amp;&amp; exit
 </pre>
 				<p>Anmerkung: Dies ist nicht der bin&#228;re NVidia-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re NVidia-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
 
-				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Du solltest zuvor eine Sicherungskopie erstellen, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> wird dir sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche bringen.</span></p>
+				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Auch sollte zuvor eine Sicherungskopie erstellt werden, <span class="highlight-2"> fälschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> kann sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche mit sich führen.</span></p>
 
-				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kannst Du sie, Rootrechte vorrausgesetzt, per Rechtsklick &#246;ffnen. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-1">nv</span> &#228;ndern.</p>
+				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kann sie mit Rootrechten per Rechtsklick ge&#246;ffnet werden. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-1">nv</span> &#228;ndern.</p>
 
 				<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
 
@@ -545,22 +545,22 @@ apt-get install zd1201-firmware
 	<div class="divider" id="hd-ntfs3g">
 		<h2>HD NTFS-Partitionen mit ntfs-3g beschreibbar machen</h2>
 
-		<p class="highlight-2"><b>Achtung</b>: ntfs-3g ist ein fr&#252;her Betatreiber. Nicht benutzen ohne vorher Daten zu sichern, vor allem nicht auf Arbeitsplattformen! Benutzung auf eigenes Risiko, Datenverlust nicht ausgeschlossen!</p>
+		<p class="highlight-2"><b>Achtung</b>: Obwohl der Treiber ntfs-3g nun stabil erkl&#228;rt ist, empfehlen wir keine Benutzung ohne vorher Daten zu sichern, vor allem nicht auf Arbeitsplattformen! Die Benutzung erfolgt auf eigene Gefahr, da ein Datenverlust nicht g&#228;nzlich ausgeschlossen werden kann!</p>
 
-		<p>In eine Konsole das folgendes eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
+		<p>In eine Konsole das folgende eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
 
-<pre>
-apt-get update &amp;&amp; apt-get install ntfs-3g
-umount /media/xdxx
-mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
-To get out of the konsole type: exit
+<pre>sidux@9[sidux]$ su
+<!--root@0[sidux]# fix-unionfs -->
+root@0[sidux]# apt-get update &amp;&amp; apt-get install ntfs-3g
+root@0[sidux]# umount /media/xdxx
+root@0[sidux]# mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
+Zum Verlassen der Konsole gibt man nur ein: exit
 </pre>
 
-		<p>Die NTFS-Partition sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen.</p> 
-		<p>Ein letztes Mal der Hinweis: <strong><i>dieses Verfahren wird nicht für den alltäglichen bzw. produktiven Gebrauch empfohlen, bei einer Verwendung muss man die Risiken selbst abw&#228;gen</i>!</strong></p>
+		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Und noch einmal unsere Warnung: <i>Dieses Vorgehen ist f&#252;r Situationen gedacht, f&#252;r die es keine anderen L&#246;sungsm&#246;glichkeiten gibt. F&#252;r die t&#228;gliche Routinenutzung es nicht empfohlen!</i>!</p>
 </div>
 		
-		<div id="rev">Page last revised UTC -8/04/2007 2200hrs UTC</div>
+		<div id="rev">Page last revised UTC 02/05/2007 1100hrs UTC</div>
 </div>
 </div>
 </body>

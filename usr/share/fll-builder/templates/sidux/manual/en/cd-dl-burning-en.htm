@@ -12,8 +12,8 @@
 </head>
 <body id="cd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.0-30-04-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 30/04/2007 0030hrs AEST 29/04/2007 1430hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.0-03-05-2007 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 03/05/2007 1100hrs AEST 03/05/2007 0100hrs UTC -->
 <img src="../lib/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -234,20 +234,10 @@ md5sum: Warning: calculated checksum does not match!"
 
 		<p>K3B initially calculates the MD5-sum for the ISO-file (this takes a moment). If the shown checksum is similar to the checksum in the MD5-file (i.e. sidux.iso.md5), your download was successful and you can burn the file by simply hitting "Start".</p>
 
-		<p>You can burn it directly from the shell with:</p>
-<pre>$ wodim dev=0,0,0 driveropts=burnfree -dao -overburn -v sidux.iso</pre>
+		<p>You can burn it directly from the shell, <a href="cd-no-gui-burn-en.htm">more information is here</a></p>
 
-		<p>If you prefer to put it o­nto a CD-RW, you should empty the disk before, using</p>
-<pre>$ wodim dev=x,y,z blank=fast</pre>
-
-		<p>The values for dev=x,x,x (in our example x,y,z) can be obtained with</p>
-<pre>$ wodim --scanbus</pre>
-
-		<p>or for ATAPI-CD-Rom with</p>
-<pre>$ wodim --scanbus dev=ATAPI</pre>
 	</div>
 	
-
 	<div class="divider" id="xdelta">
 		<h2>Creating a sidux-CD using XDELTA-Patch</h2>
 
@@ -271,7 +261,7 @@ $ xdelta patch PATCH-RC1-RC2.XDELTA
 
 		<p>Here is a link, <a href="http://evanjones.ca/software/xdelta.exe">for xdelta.exe for Windows</a>, to patch your sidux- LiveCD in Windows. <a href="http://evanjones.ca/software/xdelta-win32.html">Information and execution for xdelta with Windows</a></p>
 	</div>
-			<div id="rev">Page last revised 15/01/2007 0400 UTC</div>
+			<div id="rev">Page last revised 02/01/2007 0100 UTC</div>
 </div>
 </body>
 </html>
