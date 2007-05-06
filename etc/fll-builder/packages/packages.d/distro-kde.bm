@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	kde-services-sidux
+	kdeservicemenus-sidux
 	sidux-art-kde
 )
-#	kdeservicemenus-sidux	# libjasper-dev-1.701 --> libjasper-dev  transition
+

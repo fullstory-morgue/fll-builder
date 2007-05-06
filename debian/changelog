@@ -11,6 +11,7 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
   * add versioning defaults to the default config.
   * update embedded manual version to 0.1-30-04-2007-live-cd-07-02.
   * hack powersaved to act on powerbutton events.
+  * kdeservicemenus-sidux is installable again.
 
   [ Bernard Gray ]
   * fix typo
@@ -24,7 +25,7 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
   * Add switch to use alternate package profile directory location.
   * Reinstate -S|--source-release option, default builds are now binary only.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sun, 06 May 2007 22:47:30 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 May 2007 00:48:32 +0200
 
 fll-builder (1.0.4) unstable; urgency=low
 
