@@ -152,3 +152,26 @@ pre {
 	margin:5px 5px 5px 25px;
 }
 
+
+/*this is just stuffing around with the flags for the flag-index file*/
+
+#flags {
+	text-align:center;
+	margin: 5px 5 5px 5px;
+	line-height:12px;
+	padding:0;
+}
+/* border for img must be same as background for this trick to work, then hover acts */
+#flags img {
+	margin:3px;
+	width:30px;
+	height:20px;
+	border:2px solid #EAEDF4;
+}
+#flags a, #menu #flags a:visited {
+	display:inline;
+}
+#flags img:hover {
+	border:2px dotted #6F9796;
+}
+

@@ -92,6 +92,11 @@ ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:
 	width:140px;
 	height:50px;
 }
+
+#menu #menu-header1 {
+	width:23px;
+	height:30px;
+}
 /* note: we're going to let the #flags div handle this margin stuff */
 #menu ul#top-list {
 	margin-bottom:0;
@@ -114,5 +119,26 @@ ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:
 	display:inline;
 }
 #menu #flags img:hover {
+	border:2px dotted #6F9796;
+}
+
+/* flag-2*/
+#menu #flags-2 {
+	text-align:center;
+	margin: -1px 0 -1px 1px;
+	line-height:12px;
+	padding:0;
+}
+/* border for img must be same as background for this trick to work, then hover acts */
+#menu #flags-2 img {
+	margin:1px;
+	width:60px;
+	height:60px;
+	border:2px solid #EAEDF4;
+}
+#menu #flags-2 a, #menu #flags-2 a:visited {
+	display:inline;
+}
+#menu #flags-2 img:hover {
 	border:2px dotted #6F9796;
 }
