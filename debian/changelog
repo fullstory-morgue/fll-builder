@@ -1,6 +1,4 @@
-fll-builder (1.0.5) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.0.5) unstable; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * disable kdeservicemenus-sidux for now, imagemagick is uninstallable due to
