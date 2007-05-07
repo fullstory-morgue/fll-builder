@@ -24,8 +24,9 @@ fll-builder (1.0.5) UNRELEASED; urgency=low
     it, plus is also indirectly depends on X related libs.
   * Add switch to use alternate package profile directory location.
   * Reinstate -S|--source-release option, default builds are now binary only.
+  * Update Manual icon variable to somethig more useful.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 May 2007 00:48:32 +0200
+ -- Kel Modderman <kel@otaku42.de>  Mon, 07 May 2007 22:09:49 +1000
 
 fll-builder (1.0.4) unstable; urgency=low
 
