@@ -377,8 +377,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# import key for extra mirror(s)
 	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
-		if [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
-			echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
+		echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
+		if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
+			cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec gpg --import
+		elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
 				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
 		else
