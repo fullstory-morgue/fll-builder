@@ -1,4 +1,4 @@
-fll-builder (1.0.7) UNRELEASED; urgency=low
+fll-builder (1.0.7) unstable; urgency=low
 
   * Add union specific mount point variables, FLL_UNION_MOUNTPOINT and
     FLL_UNION_COWDIR.
