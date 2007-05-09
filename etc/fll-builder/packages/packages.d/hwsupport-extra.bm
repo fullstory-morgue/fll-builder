@@ -25,6 +25,7 @@ FLL_PACKAGES+=(
 	powersaved
 	sane
 	sane-utils
-	uswsusp
 	vbetool
 )
+
+# uswsusp: uninstallable on 20070510
