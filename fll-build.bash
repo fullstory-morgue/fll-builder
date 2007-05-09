@@ -379,7 +379,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
 		echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 		if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
-			cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec gpg --import
+			cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec apt-key add -
 		elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
 				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
