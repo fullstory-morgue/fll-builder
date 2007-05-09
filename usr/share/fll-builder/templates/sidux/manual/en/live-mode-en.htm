@@ -12,8 +12,8 @@
 </head>
 <body id="live-mode">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-05-05-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 05/05/2007 1100rs AEST 05/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual tartaros live cd 0.2-2007-05-08 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 08/05/2007 2000rs AEST 08/05/2007 1000hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -49,7 +49,6 @@
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD</a></li>
 				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
-				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -81,7 +80,6 @@
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
 				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
 				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
-				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
 				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
 				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
 				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
@@ -199,28 +197,6 @@ exit
 </pre>
 	</div>
 
-<!--	<div class="divider" id="unionfs">
-		<h2>Unionfs - or how to install software in live mode</h2>
-		<p>Unionfs is an overlay filesystem which makes it possible to use apt-get or install nvidia or radeon drivers whilst in live-cd mode. sidux's nvidia/radeon scripts detect the live mode and activate unionfs if needed. To enable unionfs at boot up, simply to type this cheatcode on the boot command line:</p>
-
-<pre >unionfs</pre>
-
-		<p>By using this cheatcode, file changes will be stored at /tmp/unionfs (which will be lost after poweroff).</p>
-
-		<p>If you do not use the cheatcode at bootup time, you can still activate unionfs in live mode by opening a shell and running fix-unionfs:</p>
-
-<pre >sidux@0[sidux]$ sudo su
-fix-unionfs
-Activating Unionfs now.</pre>
-
-		<p>Now you could use apt-get to install additional software:</p>
-
-<pre >sidux@0[sidux]$ sudo
-root@0[sidux]# apt-get update
-<i>(...)</i>
-root@0[sidux]# apt-get install kdegames</pre>
-	</div>
--->
 	<div class="divider" id="live-cd-installsoft">
 					<h2>Installing software whilst on a Live-CD</h2>
 <pre>
@@ -229,34 +205,7 @@ apt-get install your-preferred-package
 </pre>
 					<p>Note: when you power off the Live-CD, no changes will be kept</p>
 	</div>
-	<div class="divider" id="live-cd-perm-store">
 
-					<h2>Storing permanent changes to a HD using the Live-cd</h2>
-						<h4>Permanent $HOME</h4>
-<pre>
-home  /dev/sda1/sidux.img  mount loopback file as /home/sidux
-</pre>
-					<h4> unionrw</h4>
-<pre>
-unionrw
-</pre>
-						<p>The unionrw cheat can be used to:</p>
-
-				<ol>
-					<li>Point to a partition on the hard drive</li>
-					<li>Point to a loop file (like an ext2 loopback file)</li>
-					<li>Point to a directory</li>
-				</ol>
-
-					<p>All three ways work to permanently store changes to a drive you designate - if you always use the same cheatcode you can have custom program selection at the place given by the user. <span class="highlight-3">This does not store the /home directly, you have to use the home code for that.</span></p>
-
-				<h4> unionro</h4>
-	
-<pre >unionro</pre>
-
-					<p>This is basically like unionrw, but you are not able to overwrite files in the place where you've stored them. However you could combine a new unionrw and the unionro cheatcode at the same time. Not everyone will find this useful, but remember, this is all experimental. Note that none of these cheatcodes are mentioned in the help file that is visible when you press F1 when booting sidux.</p>
-
-	</div>
 	<div class="divider" id="ntfs-3g">
 		<h2>How to write on NTFS-partitions with ntfs-3g</h2>
 
@@ -264,7 +213,6 @@ unionrw
 
 		<p>Open a shell and enter the following commands:See <a href="part-cfdisk-en.htm" >Partitioning your HD - Disk Naming</a></p>
 <pre >su
-<!--fix-unionfs -->
 apt-get update &amp;&amp; apt-get install ntfs-3g
 umount /media/xdxx
 mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
@@ -273,7 +221,7 @@ To get out of the konsole type: exit
 
 		<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 	</div>
-	<div id="rev">Content last revised UTC 30/04/2007 0100hrs UTC </div>
+	<div id="rev">Content last revised 08/05/2007 0500 UTC</div>
 </div>
 </body>
 </html>

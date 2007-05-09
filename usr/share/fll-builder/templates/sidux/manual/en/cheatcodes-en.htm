@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-05-05-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 05/05/2007 1100rs AEST 05/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual tartaros live cd 0.2-2007-05-08 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 08/05/2007 2000rs AEST 08/05/2007 1000hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -49,7 +49,6 @@
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD</a></li>
 				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
-				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -81,7 +80,6 @@
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
 				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
 				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
-				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
 				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
 				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
 				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
@@ -158,8 +156,11 @@
 <!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="cheatcodes">
-
 		<h2 id="top-header">Cheat codes</h2>
+
+			<p> If the possible values are listed in the "Values" field of the table, they must be appended to the "cheatcode" with an <span class="highlight-2">=</span> sign. For example, if 1280x1024 was the desired value for the screen cheatcode, then you would type <span class="highlight-3">screen=1280x1024</span> into the grub boot prompt, or for xmodules <span class="highlight-3">xmodule=vesa</span>, or for acpi, <span class="highlight-3">acpi=off</span></p>			
+
+
 		<table>
 			<tbody>
 				<tr>
@@ -168,7 +169,7 @@
 					<th>Description</th>
 				</tr>
 				<tr>
-					<td>acpi</td>
+					<td><b>acpi</b></td>
 					<td>off</td>
 					<td>turn ACPI completely off</td>
 				</tr>
@@ -183,19 +184,9 @@
 					<td>force ACPI on</td>
 				</tr>
 				<tr>
-					<td><b>alsa</b></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
 					<td><b>apm </b></td>
 					<td>off</td>
 					<td>power-off</td>
-				</tr>
-				<tr>
-					<td><b>bootfirewire</b></td>
-					<td></td>
-					<td>boot from Firewire CD</td>
 				</tr>
 				<tr>
 					<td><b>desktop</b></td>
@@ -219,48 +210,18 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td>larswm</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>twm</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>wmaker</td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>xfce4</td>
+					<td>xfce</td>
 					<td></td>
 				</tr>
 				<tr>
 					<td><b>dpi</b></td>
-					<td>XX bzw. auto</td>
-					<td>set desired  Dots Per Inch for your display (e.g. my 15" 1600x1200 laptop is 1600/(15*(4/5)) = 133 so dpi=133</td>
-				</tr>
-				<tr>
-					<td><b>expert</b></td>
-					<td></td>
-					<td>interactive boot mode</td>
+					<td>auto or XX</td>
+					<td>set desired  Dots Per Inch for your display (e.g. my 15" 1600x1200 laptop is 1600/(15*(4/5)) = 133 so dpi=133)</td>
 				</tr>
 				<tr>
 					<td><b>failsafe</b></td>
 					<td></td>
 					<td>minimal auto detection</td>
-				</tr>
-				<tr>
-					<td><b>firewire</b></td>
-					<td></td>
-					<td>activate Firewire </td>
-				</tr>
-				<tr>
-					<td><b>floppyconfig</b></td>
-					<td></td>
-					<td>run sidux.sh from floppy</td>
 				</tr>
 				<tr>
 					<td><b>fromhd</b></td>
@@ -269,28 +230,13 @@
 				</tr>
 				<tr>
 					<td><b>fromiso</b></td>
-					<td>some/path/sid*.iso</td>
+					<td>some/path/sidux.iso</td>
 					<td>like fromhd, but uses the sidux iso image. Also does not require a cd to boot from, only requires the correct kernel and initrd/minirt</td>
 				</tr>
 				<tr>
-					<td><b>home</b></td>
-					<td>/dev/sda1/sidux.img</td>
-					<td>mount loopback file as /home/sidux</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>scan</td>
-					<td>search for sidux home dir</td>
-				</tr>
-				<tr>
 					<td><b>hsync</b></td>
-					<td>80 (zB)</td>
+					<td>80 (e.g.)</td>
 					<td>horizontal monitor refresh rate (kHz)</td>
-				</tr>
-				<tr>
-					<td><b>ide2</b></td>
-					<td>0x180 nopcmcia</td>
-					<td>boot from PCMCIA-CD-Rom</td>
 				</tr>
 				<tr>
 					<td><b>irqpoll</b></td>
@@ -299,23 +245,13 @@
 				</tr>
 				<tr>
 					<td><b>mem</b></td>
-					<td>128MB (zB)</td>
+					<td>128MB</td>
 					<td>ram size to be used</td>
 				</tr>
 				<tr>
-					<td><b>myconf</b></td>
-					<td>/dev/sda1</td>
-					<td>load configuration from device</td>
-				</tr>
-				<tr>
-					<td><b>MyNewHostname</b></td>
-					<td></td>
+					<td><b>hostname</b></td>
+					<td>whateveryourhostnameis</td>
 					<td>hostname, changes hostname of live-cd system</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>scan</td>
-					<td>try to find  "sidux.sh"</td>
 				</tr>
 				<tr>
 					<td><b>noacpi</b></td>
@@ -338,11 +274,6 @@
 					<td>disable audio</td>
 				</tr>
 				<tr>
-					<td><b>noautomount</b></td>
-					<td></td>
-					<td>disable automount </td>
-				</tr>
-				<tr>
 					<td><b>noddc</b></td>
 					<td></td>
 					<td>disable automatic Direct Digital Calibration (attempts to configure your monitor settings)</td>
@@ -361,16 +292,6 @@
 					<td><b>noeject</b></td>
 					<td></td>
 					<td>do not prompt to eject the cd on shutdown</td>
-				</tr>
-				<tr>
-					<td><b>nofc</b></td>
-					<td></td>
-					<td>skip Fritzcard (ISDN) setup </td>
-				</tr>
-				<tr>
-					<td><b>nofirewire</b></td>
-					<td></td>
-					<td>disable automatic firewire detection</td>
 				</tr>
 				<tr>
 					<td><b>nofloppy</b></td>
@@ -398,24 +319,9 @@
 					<td>discards all the modelines provided. asks display about settings to use</td>
 				</tr>
 				<tr>
-					<td><b>nomodem</b></td>
-					<td></td>
-					<td>skip Winmodem setup </td>
-				</tr>
-				<tr>
-					<td><b>nopcmcia</b></td>
-					<td></td>
-					<td>disables pcmcia support</td>
-				</tr>
-				<tr>
 					<td><b>nocpufreq</b></td>
 					<td></td>
 					<td>do not activate Speedstep/Powernow</td>
-				</tr>
-				<tr>
-					<td><b>noscsi</b></td>
-					<td></td>
-					<td>do not automatically detect scsi</td>
 				</tr>
 				<tr>
 					<td><b>nosmp</b></td>
@@ -431,16 +337,6 @@
 					<td><b>notouchpad</b></td>
 					<td></td>
 					<td>disable touchpad support</td>
-				</tr>
-				<tr>
-					<td><b>nousb</b></td>
-					<td></td>
-					<td>disable automatic usb detection</td>
-				</tr>
-				<tr>
-					<td><b>noudev</b></td>
-					<td></td>
-					<td>disable udev support</td>
 				</tr>
 				<tr>
 					<td><b>nowheel</b></td>
@@ -468,44 +364,14 @@
 					<td>sets you screen resolution, 1024x768, 1600x1200 etc</td>
 				</tr>
 				<tr>
-					<td><b>scsiisa</b></td>
-					<td></td>
-					<td>activate some ISA SCSI driver ????????????</td>
-				</tr>
-				<tr>
 					<td><b>testcd</b></td>
 					<td></td>
 					<td>test integrity of medium</td>
 				</tr>
 				<tr>
-					<td><b>tohd</b></td>
-					<td></td>
-					<td>copy CD to HD Partition and run from there</td>
-				</tr>
-				<tr>
 					<td><b>toram</b></td>
 					<td></td>
 					<td>copy CD to RAM and start from there</td>
-				</tr>
-				<tr>
-					<td><b>union</b>*</td><td></td>
-					<td>uses unionfs to merge a second directory/partition.  Can be combined (e.g. using unionro and unionrw togther)</td>
-				</tr>
-<!--				<tr>
-					<td><b>unionfs</b></td>
-					<td>fix-unionfs</td>
-					<td>allows you to make changes to the running system by storing changes in ram </td>
-				</tr>
--->
-				<tr>
-					<td><b>unionro</b></td>
-					<td>/media/hda5/unionro.img</td>
-					<td>allows you to restore changes to the running system from the supplied partition or loopback filesystem. This partition or loopback filesystem will be mounted read only so it will not allow more exchanges to it </td>
-				</tr>
-				<tr>
-					<td><b>unionrw</b></td>
-					<td>/media/hda5/</td>
-					<td>allows you to make changes to the running system by storing changes in the supplied partition or loopback filesystem (05-02)</td>
 				</tr>
 				<tr>
 					<td><b>vga</b></td>
@@ -514,7 +380,7 @@
 				</tr>
 				<tr>
 					<td><b>vsync</b></td>
-					<td>60</td>
+					<td>60 (e.g.)</td>
 					<td>vertical monitor refresh rate (Hz)</td>
 				</tr>
 				<tr>
@@ -559,19 +425,19 @@
 				</tr>
 				<tr>
 					<td><b>xhrefresh</b></td>
-					<td>80</td>
-					<td>horizontal monitor refresh rate (kHz)</td>
+					<td>80 (e.g.)</td>
+					<td>horizontal monitor refresh rate in X (kHz)</td>
 				</tr>
 				<tr>
 					<td><b>xvrefresh</b></td>
-					<td>60</td>
-					<td>vertical monitor refresh rate </td>
+					<td>60 (e.g.)</td>
+					<td>vertical monitor refresh rate in X (Hz)</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 	<div class="spacer02"></div>
-	<div id="rev">Content last revised UTC 22/01/2007 1400hrs UTC </div>
+	<div id="rev">Content last revised 07/05/2007 1636 UTC</div>
 </div>
 </body>
 </html>

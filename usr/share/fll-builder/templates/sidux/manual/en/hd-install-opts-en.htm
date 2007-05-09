@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.1-05-05-2007 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 05/05/2007 1100rs AEST 05/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual tartaros live cd 0.2-2007-05-08 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 08/05/2007 2000rs AEST 08/05/2007 1000hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -49,7 +49,6 @@
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-en.htm#rootpw">Root-password on the sidux-LiveCD</a></li>
 				<li><a href="live-mode-en.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
-				<li><a href="live-mode-en.htm#live-cd-perm-store">Storing permanent changes to a HD using the Live-CD</a></li>
 				<li><a href="live-mode-en.htm#ntfs-3g">Writing on NTFS-partitions with ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -81,7 +80,6 @@
 				<li><a href="hd-install-en.htm#Inst-prep">Install Preparation</a></li>
 				<li><a href="hd-install-en.htm#Installation">Installing to your HD</a></li>
 				<li><a href="hd-install-en.htm#first-hd-boot">First Boot Up</a></li>
-				<li><a href="hd-install-opts-en.htm#perst-home">Persistent Home</a></li>
 				<li><a href="hd-install-opts-en.htm#fromiso">Booting 'fromiso'</a></li>
 				<li><a href="hd-install-opts-en.htm#usb-hd">Installing on a USB-HD</a></li>
 				<li><a href="hd-install-opts-en.htm#qemu">Installing by QEMU</a></li>
@@ -157,43 +155,8 @@
 	</ul>
 <!-- menu ends here --> </div>
 <div id="main-page">
-	<div class="divider" id="perst-home">
-		<h2 id="top-header">Setting a persistent home for the Live-CD</h2>
-		<p  class="highlight-2">For normal use we recommend the ext3 file system. It is the default file system for sidux and well maintained.</p>
-
-		<p>While using the sidux Live-CD you can set up a persistent $HOME directory to be able to save your config, user-data and additional installed programs.</p>
-		
-		<p>The most common methods to boot-up the Live-CD are (but not limited to):<br />
-		1) From the CD/DVD-drive, or <br />
-		2) Boot up the ISO from the harddisk. <a href="hd-install-opts-en.htm#fromiso">"fromiso"</a></p>
-
-		<p>This persistent $HOME can be installed to your PC hard drive or to your USB stick.</p>
-		
-
-		<p>Now we boot from the Live-CD or the installed fromiso ISO and run the script to create the config-file (config.tbz) to save it on your USB stick or hard drive</p>
-		<pre>sidux-Menu - Configuration - save configuration</pre>
-
-		<p>Next we create the image-file for the home directory:</p>
-		<pre>sidux-Menu - Configuration - install permanent sidux home directory</pre>
-		
-		<p>Make this big enough to hold software you may want to install in the future. Now we create an empty directory named unionfs in the /home of user sidex (/home/sidux) with konqueror, konsole or a tool of your choice.</p>
-
-		<p>Then we boot the Live-CD or the fromiso-ISO and enter at the Grub-Bootscreen:</p>
-
-		<pre>myconfig=scan home=scan unionrw=/home/sidux/unionfs</pre>
-
-		<p>Now you are ready for installing new software to your new home-dir on your hard drive or stick.</p>
-
-		<p>This is done in the usual way:</p>
-
-<pre>#sux
-#apt-get update
-#apt-get install packagename</pre>
-
-		<p>Booting up next time by entering myconfig=scan home=scan unionrw=/home/sidux/unionfs you can use your newly installed software.</p>
-	</div>
 	<div class="divider" id="fromiso">
-		<h2>Booting with "fromiso"</h2>
+		<h2 id="top-header">Booting with "fromiso"</h2>
 		<p  class="highlight-2">For normal use we recommend the ext3 file system. It is the default file system for sidux and well maintained.</p>
 
 		<p>With this cheatcode you can start from an iso out of a partition ,(ext2/3), which is much faster then from a CD (HD installations with "fromiso" only takes a fraction of time,).</p>
@@ -202,19 +165,19 @@
 		<h6>Requirements:</h6>
 
 			<p>* a functioning grub (on a floppy, a HD-Installation or the Live-CD)<br />
-			* a sidux ISO Image e.g.: sidux.ISO and a linux file system like ext2/3 <br />
-			* If you rename your image to sidux.iso you will need to alter the commands accordingly as a unix file naming system is case sensitive.</p>
+			* a sidux ISO Image e.g.: sidux.iso and a linux file system like ext2/3 <br />
+			* If you rename your image to sidux.ISO you will need to alter the commands accordingly as a unix file naming system is case sensitive.</p>
 
 
 		<p>First we choose a place for the iso and 2 files we need, so we get shorter names. Therefore we create a base-directory: for example /dev/hda5, create the directory "sidux" and copy the iso into it:</p>
 
 <pre># mkdir /media/hda5/sidux
-# mv sidux.ISO /media/hda5/sidux</pre>
+# mv sidux.iso /media/hda5/sidux</pre>
 
 		<p>now we move to that directory and mount the ISO image:</p>
 
 <pre># mkdir -p /mnt/test
-# mount -t iso9660 -o loop,ro /media/hda5/sidux/sidux.ISO /mnt/test</pre>
+# mount -t iso9660 -o loop,ro /media/hda5/sidux/sidux.iso /mnt/test</pre>
 
 		<p>Now copy the files miniroot.gz and vmlinuz from the mounted iso image to our directory:</p>
 
@@ -225,7 +188,7 @@
 
 <pre>### ISO boot
 title sidux 32bit from ISO
-kernel (hd0,4)/sidux/vmlinuz ramdisk_size=100000 init=/etc/init fromiso=/sidux/*.ISO noprompt noeject lang=en apm=power-off nomce quiet vga=791
+kernel (hd0,4)/sidux/vmlinuz ramdisk_size=100000 init=/etc/init fromiso=/sidux/sidux.iso noprompt noeject lang=en apm=power-off nomce quiet vga=791
 initrd (hd0,4)/sidux/miniroot.gz</pre>
 
 		<p>With next boot you have a new menu item in grub to start the iso image.</p>
@@ -366,7 +329,7 @@ qemu -cdrom /tmp/pkg/sidux-debug.iso -net nic -net user -m 512
 
 		
 	</div>
-			<div id="rev"> Content last revised UTC 04/0/2007 1230hrs</div>
+	<div id="rev">Content last revised 08/05/2007 0500 UTC</div>
 </div>
 </div>
 </body>
