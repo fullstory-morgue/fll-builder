@@ -3,23 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>Sidux Manuals - rdiff-de</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /><style type="text/css" media="all">@import url("../lib/css-js/content.css");</style><style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style><style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" /><script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.2-2007-05-08 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 08/05/2007 2000rs AEST 08/05/2007 1000hrs UTC -->
+<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Choose another language" alt="lang-switch" /></a>
+			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Wählen Sie eine andere Sprache" alt="lang-switch" /></a>
 	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
@@ -48,7 +44,7 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software während einer Live-CD Sitzung</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -319,7 +315,7 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media
 </pre>
 				<p>F&#252;r leere Passw&#246;rter wird zweimal die Entertaste gedr&#252;ckt. Danach:</p>
 <pre>
-# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\
+# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\ <!--dunno if this wrong-->
 > cat - >>/root/.ssh/authorized_keys2'
 </pre>
 				<p>Das Root-Passwort wird angefragt.</p>
@@ -329,33 +325,23 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media
 				<p>Als n&#228;chstes wird ein Bash-Script geschrieben, welches alle rdiff-backup-Befehle enth&#228;lt. Dieses Bash-Script kann folgenderma&#223;en aussehen:</p>
 
 
-<pre>
-#!/bin/bash
+<pre> #!/bin/bash
 RDIFF=/usr/bin/rdiff-backup
 echo
 echo "=======Backing up 192.168.0.1 root======="
-${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*'\
- --exclude '/sys/*' --exclude '/media/*/*'\
- / /media/hdb1/rdiff-backups/192.168.0.1/root
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
 echo "(and purge increments older than 1 month)"
-${RDIFF} --remove-older-than 1M\
- --force /media/hdb1/rdiff-backups/192.168.0.1/root
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.1/root
 echo
 echo "=======Backing up 192.168.0.1 mount hda5======="
-${RDIFF} --ssh-no-compression --exclude /media/hda5/myjunk /media/hda5\
- /media/hdb1/rdiff-backups/192.168.0.1/hda5
+${RDIFF} --ssh-no-compression --exclude /media/hda5/myjunk /media/hda5 /media/hdb1/rdiff-backups/192.168.0.1/hda5
 echo "(and purge increments older than 1 months)"
-${RDIFF} --remove-older-than 1M\
- --force /media/hdb1/rdiff-backups/192.168.0.1/hda5
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.1/hda5
 echo
 echo "=======Backing up 192.168.0.2 root======="
-${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*'\
- --exclude '/sys/*' --exclude '/media/*/*' --exclude '/mnt/*/*'\
- 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' --exclude '/mnt/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
 echo "(and purge increments older than 1 months)"
-${RDIFF} --remove-older-than 1M
- --force /media/hdb1/rdiff-backups/192.168.0.2/root
-</pre>
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.2/root </pre>
 
 
 				<p>Wir nennen das Bash-Script "myrdiff-backups.bash" und speichern es unter /usr/local/bin auf unserem lokalen PC, der als Backup-Server dient, und machen es ausf&#252;hrbar (executable). Zum Testen wird das Script nun ausgef&#252;hrt, um sicherzugehen, dass es funktioniert.</p>
@@ -369,7 +355,7 @@ ${RDIFF} --remove-older-than 1M
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-			<div id="rev">Page last revised 04/05/2007 0330 UTC</div>
+			<div id="rev">Page last revised 09/05/2007 0330 UTC</div>
 </div>
 </div>
 </body>

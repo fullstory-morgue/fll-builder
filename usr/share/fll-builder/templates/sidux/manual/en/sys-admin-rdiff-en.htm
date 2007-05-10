@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.2-2007-05-08 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 08/05/2007 2000rs AEST 08/05/2007 1000hrs UTC -->
+<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -317,7 +317,7 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media
 </pre>
 				<p>And press enter twice for blank passwords. Then do:</p>
 <pre>
-# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\
+# cat /root/.ssh/id_rsa.pub | ssh 192.168.0.2 'mkdir -p /root/.ssh;\<!--dunno if this is wrong-->
 > cat - >>/root/.ssh/authorized_keys2'
 </pre>
 				<p>You will be prompted for your root password.</p>
@@ -332,27 +332,19 @@ $ sudo ~/.zAppRun ~/Desktop/rdiff-backup_0.13.4-5.cmg rdiff-backup -r now /media
 RDIFF=/usr/bin/rdiff-backup
 echo
 echo "=======Backing up 192.168.0.1 root======="
-${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*'\
- --exclude '/sys/*' --exclude '/media/*/*'\
- / /media/hdb1/rdiff-backups/192.168.0.1/root
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' / /media/hdb1/rdiff-backups/192.168.0.1/root
 echo "(and purge increments older than 1 month)"
-${RDIFF} --remove-older-than 1M\
- --force /media/hdb1/rdiff-backups/192.168.0.1/root
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.1/root
 echo
 echo "=======Backing up 192.168.0.1 mount hda5======="
-${RDIFF} --ssh-no-compression --exclude /media/hda5/myjunk /media/hda5\
- /media/hdb1/rdiff-backups/192.168.0.1/hda5
+${RDIFF} --ssh-no-compression --exclude /media/hda5/myjunk /media/hda5 /media/hdb1/rdiff-backups/192.168.0.1/hda5
 echo "(and purge increments older than 1 months)"
-${RDIFF} --remove-older-than 1M\
- --force /media/hdb1/rdiff-backups/192.168.0.1/hda5
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.1/hda5
 echo
 echo "=======Backing up 192.168.0.2 root======="
-${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*'\
- --exclude '/sys/*' --exclude '/media/*/*' --exclude '/mnt/*/*'\
- 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
+${RDIFF} --ssh-no-compression --exclude '/tmp/*' --exclude '/proc/*' --exclude '/sys/*' --exclude '/media/*/*' --exclude '/mnt/*/*' 192.168.0.2::/ /media/hdb1/rdiff-backups/192.168.0.2/root
 echo "(and purge increments older than 1 months)"
-${RDIFF} --remove-older-than 1M
- --force /media/hdb1/rdiff-backups/192.168.0.2/root
+${RDIFF} --remove-older-than 1M --force /media/hdb1/rdiff-backups/192.168.0.2/root
 </pre>
 
 
@@ -365,7 +357,7 @@ and insert the following line
 0 20 * * * /usr/local/bin/myrdiff-backups.bash
 </pre>
 
-			<div id="rev">Page last revised 06/05/2007 0800 UTC</div>
+			<div id="rev">Page last revised 09/05/2007 0800 UTC</div>
 </div>
 </div>
 </body>
