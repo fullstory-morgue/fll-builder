@@ -1,7 +1,9 @@
 fll-builder (1.0.8) UNRELEASED; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
+
+  [ Stefan Lippers-Hollmann ]
+  * hack around broken cdebootstrap #398844.
 
   [ Bernard Gray ]
   * livecd manual update to sidux-manual-0.3.2007.05.08-live-cd-2007-02
@@ -13,7 +15,7 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   [ Kel Modderman ]
   * Mark uswsusp as broken in package module.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 10 May 2007 16:39:04 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 10 May 2007 14:33:49 +0200
 
 fll-builder (1.0.7) unstable; urgency=low
 
