@@ -475,9 +475,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# purge unwanted packages
 	# XXX: this is a really nasty hack around the long standing bug #398844 against cdebootstrap
 	if [[ $(md5sum ${FLL_BUILD_CHROOT}/var/lib/dpkg/info/cdebootstrap-helper-diverts.postrm | awk '{ print $1 }') = 16ba33d5c6e434e4167a0a5de35446de ]]; then
-		sed -i	-e "s/\(dpkg-divert.*\)/\[\ \-f \"\$i\"\ \]\ \&\&\ \1/" \
-			-e "s/\(.*start-stop-daemon\)/\1\n\1\\.REAL/" \
-			-e "s/\(.*invoke\-rc\\.d\)/\1\n\1\\.REAL/" \
+		sed -i	-e "s/\(.*start-stop-daemon\)/\1\n\1\\.REAL/" \
+			-e "s/\(dpkg-divert.*\)/\[\ \-f \"\$i\"\ \]\ \&\&\ \1/" \
 				"${FLL_BUILD_CHROOT}/var/lib/dpkg/info/cdebootstrap-helper-diverts.postrm"
 	fi
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
