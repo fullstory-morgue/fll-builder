@@ -7,11 +7,12 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-0.3.2007.05.08-live-cd-2007-02
   * offline gpg apt-key fix
   * discard cd root dir README
+  * livecd manual update to sidux-manual-0.4.2007.05.10-live-cd-2007-02
 
   [ Kel Modderman ]
   * Mark uswsusp as broken in package module.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 10 May 2007 10:57:10 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 10 May 2007 12:36:04 +1000
 
 fll-builder (1.0.7) unstable; urgency=low
 
