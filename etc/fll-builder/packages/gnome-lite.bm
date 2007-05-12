@@ -18,4 +18,5 @@ FLL_PACKAGES=(
 	configure-isdn
 	epiphany-browser
 	epiphany-extensions
+	vim
 )
