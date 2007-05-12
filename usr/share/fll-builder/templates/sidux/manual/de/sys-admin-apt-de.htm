@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="de">
 <head>
-	<title>Sidux Handbuch - APT-Leitfaden-de</title>
+	<title>sidux Handbuch - APT-Leitfaden-de</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
@@ -19,7 +19,7 @@
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Wählen Sie eine andere Sprache" alt="lang-switch" /></a>
+			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="W&#228;hlen Sie eine andere Sprache" alt="lang-switch" /></a>
 	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
@@ -48,7 +48,7 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software während einer Live-CD Sitzung</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software w&#228;hrend einer Live-CD Sitzung</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -88,12 +88,12 @@
 		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-de.htm">Graphikkarten, Hardware, Ger&#228;te und Treiber</a>
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmauflösung und Monitoreinstellungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
@@ -159,12 +159,12 @@
 		<h2 id="top-header">Ein kleines APT-Kochbuch</h2>
 
 		<h3>Was bedeutet APT?</h3>
- 		<p>APT ist eine Abkürzung für Advanced Packaging Tool und stellt eine Sammlung von Programmen und Skripten, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterstützen.</p>
+ 		<p>APT ist eine Abk&#252;rzung f&#252;r Advanced Packaging Tool und stellt eine Sammlung von Programmen und Skripten, welche das System und den Administrator bei der Installation und Verwaltung von Debian-Paketen unterst&#252;tzen.</p>
 	</div>
 	<div class="divider" id="sources-list">
 			<h2>Liste der Quellen (sources.list)</h2>
 
-		<p>Das "APT"-System benötigt dafür eine Konfigurationsdatei: <span class="highlight-3">/etc/apt/sources.list</span>, diese enthält die Information, aus welchen Quellen die zu installierenden Pakete geholt werden sollen. Ein Beispiel einer solchen Datei aus einer typischen sidux-Installation wird nachfolgend pr&#228;sentiert.</p>
+		<p>Das "APT"-System ben&#246;tigt daf&#252;r eine Konfigurationsdatei: <span class="highlight-3">/etc/apt/sources.list</span>, diese enth&#228;lt die Information, aus welchen Quellen die zu installierenden Pakete geholt werden sollen. Ein Beispiel einer solchen Datei aus einer typischen sidux-Installation wird nachfolgend pr&#228;sentiert.</p>
 
 		<p>Alle ISOs von sidux nutzen folgende sources.list in der Grundeinstellung:</p>
 
@@ -198,7 +198,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 
 		<p>ZUR BEACHTUNG: in diesem Beispiel wird der deutsche Debian-Mirrorserver beginnend mit ftp.de verwendet. Diese Einstellung kann als Root ge&#228;ndert werden, indem der Landes-Code angepasst wird wie ftp.at, ftp.us, ftp.uk. Die meisten L&#228;nder haben lokale Debian-Mirrors zur Verf&#252;gung. Dies bietet f&#252;r den Anwender eine h&#246;here Anbindungsgeschwindigkeit und spart auch Bandbreite.</p>
  
-		<p>Um aktualisierte Informationen über die Pakete zu erhalten, wird eine Datenbank mit den benötigten Einträgen vorgehalten. Das Programm apt-get benutzt sie bei der Installation eines Paketes, um alle Abhängigkeiten aufzulösen und somit zu garantieren, dass die ausgewählten Pakete funktionieren. Die Erneuerung bzw. Aktualisierung dieser Datenbank wird durch das Kommando 'apt-get update' durchgeführt.</p>
+		<p>Um aktualisierte Informationen &#252;ber die Pakete zu erhalten, wird eine Datenbank mit den ben&#246;tigten Eintr&#228;gen vorgehalten. Das Programm apt-get benutzt sie bei der Installation eines Paketes, um alle Abh&#228;ngigkeiten aufzul&#246;sen und somit zu garantieren, dass die ausgew&#228;hlten Pakete funktionieren. Die Erneuerung bzw. Aktualisierung dieser Datenbank wird durch das Kommando 'apt-get update' durchgef&#252;hrt.</p>
  
 <pre># apt-get update
 Get:1 http://sidux.com sid Release.gpg [189B]
@@ -220,8 +220,8 @@ Get:6 http://ftp.de.debian.org unstable Release [79.6kB]
  
 <pre># apt-get install gaim
 Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
-Die folgenden zusätzlichen Pakete werden installiert:
+Abh&#228;ngigkeitsbaum wird aufgebaut... Fertig
+Die folgenden zus&#228;tzlichen Pakete werden installiert:
   libavahi-compat-howl0 libgstreamer0.10-0
 Vorgeschlagene Pakete:
   libgadu3 libmeanwhile1 libzephyr3 gstreamer0.10-tools gstreamer0.10-plugins
@@ -230,19 +230,19 @@ Empfohlene Pakete:
 Die folgenden NEUEN Pakete werden installiert:
   gaim libavahi-compat-howl0 libgstreamer0.10-0
 0 aktualisiert, 3 neu installiert, 0 zu entfernen und 1 nicht aktualisiert.
-Es müssen 2365kB Archive geholt werden.
-Nach dem Auspacken werden 6578kB Plattenplatz zusätzlich benutzt.
-Möchten Sie fortfahren [J/n]?
+Es m&#252;ssen 2365kB Archive geholt werden.
+Nach dem Auspacken werden 6578kB Plattenplatz zus&#228;tzlich benutzt.
+M&#246;chten Sie fortfahren [J/n]?
 Hole:1 http://ftp.de.debian.org unstable/main libavahi-compat-howl0 0.6.15-2 [35,4kB]
 Hole:2 http://ftp.de.debian.org unstable/main libgstreamer0.10-0 0.10.10-2 [651kB]
 Hole:3 http://ftp.de.debian.org unstable/main gaim 1:2.0.0+beta5-8 [1679kB]
 Es wurden 2365kB in 4s geholt (518kB/s)
-Wähle vormals abgewähltes Paket libavahi-compat-howl0.
+W&#228;hle vormals abgew&#228;hltes Paket libavahi-compat-howl0.
 (Lese Datenbank ... 138649 Dateien und Verzeichnisse sind derzeit installiert.)
 Entpacke libavahi-compat-howl0 (aus .../libavahi-compat-howl0_0.6.15-2_i386.deb) ...
-Wähle vormals abgewähltes Paket libgstreamer0.10-0.
+W&#228;hle vormals abgew&#228;hltes Paket libgstreamer0.10-0.
 Entpacke libgstreamer0.10-0 (aus .../libgstreamer0.10-0_0.10.10-2_i386.deb) ...
-Wähle vormals abgewähltes Paket gaim.
+W&#228;hle vormals abgew&#228;hltes Paket gaim.
 Entpacke gaim (aus .../gaim_1%3a2.0.0+beta5-8_i386.deb) ...
 Richte libavahi-compat-howl0 ein (0.6.15-2) ...
 
@@ -260,36 +260,36 @@ Richte gaim ein (2.0.0+beta5-8) ...
 
 <pre># apt-get remove gaim
 Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
+Abh&#228;ngigkeitsbaum wird aufgebaut... Fertig
 Die folgenden Pakete werden ENTFERNT:
   gaim
 0 aktualisiert, 0 neu installiert, 1 zu entfernen und 1 nicht aktualisiert.
-Es müssen 0B Archive geholt werden.
+Es m&#252;ssen 0B Archive geholt werden.
 Nach dem Auspacken werden 4678kB Plattenplatz freigegeben worden sein.
-Möchten Sie fortfahren [J/n]?
+M&#246;chten Sie fortfahren [J/n]?
 (Lese Datenbank ... 138763 Dateien und Verzeichnisse sind derzeit installiert.)
 Entferne gaim ...
 </pre>
 
-		<p>In dem letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie k&#246;nnen bei einer sp&#228;teren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf benötigt:</p>
+		<p>In dem letzten Fall werden die Konfigurationsdateien nicht vom System entfernt, sie k&#246;nnen bei einer sp&#228;teren Neuinstallation des Programmpakets (im Beispielfall gaim) wieder verwendet werden. Sollen auch die Konfigurationsdateien entfernt werden, dann wird folgender Aufruf ben&#246;tigt:</p>
  
 <pre># apt-get remove --purge gaim
 Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
+Abh&#228;ngigkeitsbaum wird aufgebaut... Fertig
 Die folgenden Pakete werden ENTFERNT:
   gaim*
 0 aktualisiert, 0 neu installiert, 1 zu entfernen und 1 nicht aktualisiert.
-Es müssen 0B Archive geholt werden.
+Es m&#252;ssen 0B Archive geholt werden.
 Nach dem Auspacken werden 4678kB Plattenplatz freigegeben worden sein.
-Möchten Sie fortfahren [J/n]?
+M&#246;chten Sie fortfahren [J/n]?
 (Lese Datenbank ... 138763 Dateien und Verzeichnisse sind derzeit installiert.)
 Entferne gaim ...
-Lösche Konfigurationsdateien von gaim ...
+L&#246;sche Konfigurationsdateien von gaim ...
 </pre>
 
 		<p>In diesem Fall wurden die Konfigurationseinstellungen mit dem Programmpaket gaim gel&#246;scht, jedoch nicht die Programmpakete, von denen gaim abh&#228;ngig ist.</p>
 
-		<p>Nachdem die interne Datenbank aktualisiert wurde, kann man herausfinden, für welche Pakete eine neuere Version existiert:</p>
+		<p>Nachdem die interne Datenbank aktualisiert wurde, kann man herausfinden, f&#252;r welche Pakete eine neuere Version existiert:</p>
 
 <pre># apt-show-versions -u |grep upgrade
 libpam-runtime/unstable upgradeable from 0.79-1 to 0.79-3
@@ -302,28 +302,28 @@ sysv-rc/unstable upgradeable from 2.86.ds1-3 to 2.86.ds1-4
 libpam0g/unstable upgradeable from 0.79-1 to 0.79-3
 unionfs-utils/unstable upgradeable from 1.0.14+cvs2005092318w-M1 to 1.0.14+cvs2005092908w-�2</pre>
 
-		<p>Die Aktualisierung eines einzelnes Paketes (hier z. B. debtags-1.6.6.0) kann unter Berücksichtigung der Abhängigkeiten vorgenommen werden mit:</p>
+		<p>Die Aktualisierung eines einzelnes Paketes (hier z. B. debtags-1.6.6.0) kann unter Ber&#252;cksichtigung der Abh&#228;ngigkeiten vorgenommen werden mit:</p>
 
  
 
 <pre># apt-get install debtags-1.6.6.0
 Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
+Abh&#228;ngigkeitsbaum wird aufgebaut... Fertig
 Die folgenden Pakete werden ENTFERNT:
   apt-index-watcher
 Die folgenden Pakete werden aktualisiert:
   debtags
 1 aktualisiert, 0 neu installiert, 1 zu entfernen und 0 nicht aktualisiert.
-Es müssen 660kB Archive geholt werden.
+Es m&#252;ssen 660kB Archive geholt werden.
 Nach dem Auspacken werden 1991kB Plattenplatz freigegeben worden sein.
-Möchten Sie fortfahren [J/n]?
+M&#246;chten Sie fortfahren [J/n]?
 Hole:1 http://ftp.de.debian.org unstable/main debtags 1.6.6 [660kB]
 Es wurden 660kB in 1s geholt (513kB/s)
 (Lese Datenbank ... 138695 Dateien und Verzeichnisse sind derzeit installiert.)
 Entferne apt-index-watcher ...
 (Lese Datenbank ... 138692 Dateien und Verzeichnisse sind derzeit installiert.)
 Vorbereiten zum Ersetzen von debtags 1.6.2 (durch .../debtags_1.6.6_i386.deb) ...
-Entpacke Ersatz für debtags ...
+Entpacke Ersatz f&#252;r debtags ...
 Richte debtags ein (1.6.6) ...
 Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 </pre>
@@ -335,7 +335,7 @@ Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 
 		<p>Wenn das Gesamtsystem aktualisiert werden soll, dann ist dies durch ein "dist-upgrade" zu machen. Bitte immer genau beachten, welche Programmpakete ein Upgrade erfahren.</p>
  
-		<p>F&#252;r Upgrades soll grunds&#228;tzlich die graphische Oberfläche verlassen und die Aktualisierung in einer Textkonsole durchgef&#252;hrt werden. Es ist m&#246;glich, die Pakete zuerst herunterzuladen und im Anschluss in die TextKonsole zu wechseln). Diese kleine Vorsichtsma&#223;nahme kann unter Umst&#228;nden Stunden an Rekonfigurationsarbeit ersparen.</p>
+		<p>F&#252;r Upgrades soll grunds&#228;tzlich die graphische Oberfl&#228;che verlassen und die Aktualisierung in einer Textkonsole durchgef&#252;hrt werden. Es ist m&#246;glich, die Pakete zuerst herunterzuladen und im Anschluss in die TextKonsole zu wechseln). Diese kleine Vorsichtsma&#223;nahme kann unter Umst&#228;nden Stunden an Rekonfigurationsarbeit ersparen.</p>
 
 		<h2>(Nur) Downloaden:</h2>
 
@@ -358,27 +358,27 @@ Y
 <pre># apt-get dist-upgrade
 
 Paketlisten werden gelesen... Fertig
-Abhängigkeitsbaum wird aufgebaut... Fertig
+Abh&#228;ngigkeitsbaum wird aufgebaut... Fertig
 Berechne Upgrade...Fertig
-Die folgenden Pakete sind zurückgehalten worden:
+Die folgenden Pakete sind zur&#252;ckgehalten worden:
   debtags
 Die folgenden Pakete werden aktualisiert:
   configure-dsl infobash sshstart-sidux
 3 aktualisiert, 0 neu installiert, 0 zu entfernen und 1 nicht aktualisiert.
-Es müssen 33,9kB Archive geholt werden.
+Es m&#252;ssen 33,9kB Archive geholt werden.
 Nach dem Auspacken werden 4096B Plattenplatz freigegeben worden sein.
-Möchten Sie fortfahren [J/n]?
+M&#246;chten Sie fortfahren [J/n]?
 Hole:1 http://sidux.com sid/main configure-dsl 0.4.12 [10,2kB]
 Hole:2 http://sidux.com sid/main sshstart-sidux 0.5.13 [9608B]
 Hole:3 http://sidux.com sid/main infobash 2.53 [14,1kB]
 Es wurden 33,9kB in 0s geholt (161kB/s)
 (Lese Datenbank ... 138649 Dateien und Verzeichnisse sind derzeit installiert.)
 Vorbereiten zum Ersetzen von configure-dsl 0.4.11 (durch .../configure-dsl_0.4.12_all.deb) ...
-Entpacke Ersatz für configure-dsl ...
+Entpacke Ersatz f&#252;r configure-dsl ...
 Vorbereiten zum Ersetzen von sshstart-sidux 0.5.12 (durch .../sshstart-sidux_0.5.13_all.deb) ...
-Entpacke Ersatz für sshstart-sidux ...
+Entpacke Ersatz f&#252;r sshstart-sidux ...
 Vorbereiten zum Ersetzen von infobash 2.52 (durch .../archives/infobash_2.53_all.deb) ...
-Entpacke Ersatz für infobash ...
+Entpacke Ersatz f&#252;r infobash ...
 Richte configure-dsl ein (0.4.12) ...
 Richte sshstart-sidux ein (0.5.13) ...
 Richte infobash ein (2.53) ...
@@ -394,7 +394,7 @@ init 3
 apt-get update
 apt-get dist-upgrade
 fix-fonts
-get-sidux-binary-gfx # Neuinstallation der benötigten Grafiktreiber, wenn xorg einen Upgrade erfahren hat
+get-sidux-binary-gfx # Neuinstallation der ben&#246;tigten Grafiktreiber, wenn xorg einen Upgrade erfahren hat
 init 5 &amp;&amp; exit 
 </pre>
 
@@ -402,9 +402,9 @@ init 5 &amp;&amp; exit
 	</div>
 	</div>
 <div class="spacer02"></div>
-		<p>Für neue Nutzer von Sidux, kann das Skript <a href="http://techpatterns.com/forums/about736.html">!h2 d-u-fixes</a>eine große Hilfe bedeuten, da es den Prozess eines dist-upgrades halbautomatisiert.</p>
+		<p>F&#252;r neue Nutzer von sidux, kann das Skript <a href="http://techpatterns.com/forums/about736.html">!h2 d-u-fixes</a>eine gro&#223;e Hilfe bedeuten, da es den Prozess eines dist-upgrades halbautomatisiert.</p>
 
-			<p class="highlight-2">Und nochmal unser Warnhinweis: Ein dist-upgrade, das nicht im Runlevel 3 (init 3) durchgeführt wird, kann zu großen, nicht unterstützbaren Problemen führen!</p>
+			<p class="highlight-2">Und nochmal unser Warnhinweis: Ein dist-upgrade, das nicht im Runlevel 3 (init 3) durchgef&#252;hrt wird, kann zu gro&#223;en, nicht unterst&#252;tzbaren Problemen f&#252;hren!</p>
 
 				<h5>Gr&#252;nde, warum man nur apt-get f&#252;r einen Dist-Upgrade verwenden soll</h5>
 
@@ -422,7 +422,7 @@ init 5 &amp;&amp; exit
 	
 	<div class="divider" id="apt-cache">
 			<h2>Mit apt-cache nach Programmpaketen suchen</h2>
-		<p>Ein sehr nützlicher Befehl im APT-System ist apt-cache, damit werden die APT-Datenbank durchsucht und Informationen über die Pakete ausgegeben; z. B. die Liste aller Pakete, die einen "screensaver" enthalten oder ansprechen, erhält man durch folgenden Befehl:</p>
+		<p>Ein sehr n&#252;tzlicher Befehl im APT-System ist apt-cache, damit werden die APT-Datenbank durchsucht und Informationen &#252;ber die Pakete ausgegeben; z. B. die Liste aller Pakete, die einen "screensaver" enthalten oder ansprechen, erh&#228;lt man durch folgenden Befehl:</p>
 
 <pre># apt-cache search screensaver
 brightside - Add reactivity to the corners and edges of your GNOME desktop
@@ -443,7 +443,7 @@ xscreensaver - Automatic screensaver for X
 xscreensaver-gl - GL(Mesa) screen hacks for xscreensaver
 ksetisaver - SETI screensaver for KDE</pre>
 
-	<p>Möchte man mehr Informationen über die aktuellen Versionen eines Paketes, dann benutzt man:</p>
+	<p>M&#246;chte man mehr Informationen &#252;ber die aktuellen Versionen eines Paketes, dann benutzt man:</p>
 
 <pre># apt-cache show xscreensaver
 Package: xscreensaver
@@ -494,7 +494,7 @@ The purpose of xscreensaver is to display pretty pictures on your screen when it
 Task: gnome-desktop</pre>
  
  
-<p><a href= "http://www.debian.org/doc/user-manuals#apt-howto">Eine vollständige Beschreibung des APT-Systems findet man im APT-HOWTO</a> </p>
+<p><a href= "http://www.debian.org/doc/user-manuals#apt-howto">Eine vollst&#228;ndige Beschreibung des APT-Systems findet man im APT-HOWTO</a> </p>
 
 	</div>
 	</div>

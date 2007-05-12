@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Sidux Manuals Master - Kernel Upgrading-de</title>
+	<title>sidux Manuals Master - Kernel Upgrading-de</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
@@ -19,7 +19,7 @@
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Wählen Sie eine andere Sprache" alt="lang-switch" /></a>
+			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="W&#228;hlen Sie eine andere Sprache" alt="lang-switch" /></a>
 	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
@@ -48,7 +48,7 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software während einer Live-CD Sitzung</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software w&#228;hrend einer Live-CD Sitzung</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -88,12 +88,12 @@
 		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-de.htm">Graphikkarten, Hardware, Ger&#228;te und Treiber</a>
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmauflösung und Monitoreinstellungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
@@ -161,11 +161,11 @@
 			<p>Die sidux-Kernel sind <a href="http://sidux.com/files/kernel/">hier</a> zu finden und in folgenden Formaten kompiliert:</p>
 			
 		<ul>
-  			<li><b>up</b> - Kernel für i686-Prozessoren mit einem CPU-Kern</li>
-  			<li><b>smp</b> - Kernel für i686-Prozessoren mit zwei oder mehr CPU-Kernen</li>
-  			<li><b>64-smp</b> - Kernel für AMD64-Prozessoren, wenn sidux 64 bit verwendet wird </li>
+  			<li><b>up</b> - Kernel f&#252;r i686-Prozessoren mit einem CPU-Kern</li>
+  			<li><b>smp</b> - Kernel f&#252;r i686-Prozessoren mit zwei oder mehr CPU-Kernen</li>
+  			<li><b>64-smp</b> - Kernel f&#252;r AMD64-Prozessoren, wenn sidux 64 bit verwendet wird </li>
 		</ul>
-			<p>Es ist hilfreich, sich vor Installation die Kernelversion, die benötigt wird, zu notieren (im folgenden nennen wir das Archiv "kernel.zip", der wirkliche Name sieht aber zum Beispiel so aus: kernel-2.6.20.4-rc1-slh-smp-1.zip ). Der Kernel kann mit Hilfe der Konsole sowohl als normaler User wie auch als Root installiert werden:</p>
+			<p>Es ist hilfreich, sich vor Installation die Kernelversion, die ben&#246;tigt wird, zu notieren (im folgenden nennen wir das Archiv "kernel.zip", der wirkliche Name sieht aber zum Beispiel so aus: kernel-2.6.20.4-rc1-slh-smp-1.zip ). Der Kernel kann mit Hilfe der Konsole sowohl als normaler User wie auch als Root installiert werden:</p>
 
 				<h5>Beispiel einer Installation als User (in der Konsole)</h5>
 <pre>
@@ -185,23 +185,23 @@ unzip kernel-2.6.20.4-slh-up-1.zip  -d kernel-current
 cd /usr/src/kernel-current
 sh install-kernel-sidux.sh
 </pre>
-			<p>Der Computer muss jetzt neu gestartet werden, und der neue Kernel wird automatisch ausgewählt. <span class="highlight-3">Falls der neue Kernel Probleme bereitet, muss der Computer neu gestartet werden, und im Boot-Menu kann der alte funktionierende Kernel gewählt werden.</span></p>
+			<p>Der Computer muss jetzt neu gestartet werden, und der neue Kernel wird automatisch ausgew&#228;hlt. <span class="highlight-3">Falls der neue Kernel Probleme bereitet, muss der Computer neu gestartet werden, und im Boot-Menu kann der alte funktionierende Kernel gew&#228;hlt werden.</span></p>
 
-			<p class="highlight-4">WICHTIG: wenn bestimmte Treiber-Module, zum Beispiel für WLAN, benötigt werden, müssen diese via .deb-Pakete installiert werden, die sich im Ordner des entpackten kernel.zip befinden. Die madwifi Treiber-Module werden als Root folgendermaßen installiert:</p>
+			<p class="highlight-4">WICHTIG: wenn bestimmte Treiber-Module, zum Beispiel f&#252;r WLAN, ben&#246;tigt werden, m&#252;ssen diese via .deb-Pakete installiert werden, die sich im Ordner des entpackten kernel.zip befinden. Die madwifi Treiber-Module werden als Root folgenderma&#223;en installiert:</p>
 <pre>
 dpkg -i madwifi-modules*.deb
 </pre>
 
-			<p>Das Kernel-Update ist nun abgeschlossen. Falls 3D-Grafiktreiber für NVIDIA oder ATI Grafikkarten installiert werden sollen, muss dies vor dem Aufruf des X-Grafikservers geschehen. Am einfachsten bootet man in den Runlevel 3 ("init 3"), indem man in die Befehlszeile des Bootmanagers Grub einfach eine <b>3</b> eintippt. Mehr Informationen dazu finden sich <a href="hw-dev-hw-dri-de.htm">hier</a>.</p>
+			<p>Das Kernel-Update ist nun abgeschlossen. Falls 3D-Grafiktreiber f&#252;r NVIDIA oder ATI Grafikkarten installiert werden sollen, muss dies vor dem Aufruf des X-Grafikservers geschehen. Am einfachsten bootet man in den Runlevel 3 ("init 3"), indem man in die Befehlszeile des Bootmanagers Grub einfach eine <b>3</b> eintippt. Mehr Informationen dazu finden sich <a href="hw-dev-hw-dri-de.htm">hier</a>.</p>
 			
 
 			<h5> Eine halbautomatisierte Methode einen neuen Kernel zu installieren ist das Skript <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh</a>.</h5>
 
 			<h4>Entfernen alter Kernel</h4>
 
-			<p>Nach der erfolgreichen Installation eines neuen Kernel können kernel.zip und das Kernel-Archiv gelöscht werden, obwohl es empfehlenswert ist, diese und die älteren Kernel einige Tage zu behalten, falls es zu unvorhergesehenen Problemen kommt und mit einem älteren Kernel gebootet werden muss. Ältere Kernel sind im Menu des Bootmanagers Grub gelistet.</p>
+			<p>Nach der erfolgreichen Installation eines neuen Kernel k&#246;nnen kernel.zip und das Kernel-Archiv gel&#246;scht werden, obwohl es empfehlenswert ist, diese und die &#228;lteren Kernel einige Tage zu behalten, falls es zu unvorhergesehenen Problemen kommt und mit einem &#228;lteren Kernel gebootet werden muss. &#196;ltere Kernel sind im Menu des Bootmanagers Grub gelistet.</p>
 
-			<p>Alte Kernel können mit dem Skript <span class="highlight-3">kernel-remover</span> entfernt werden, welches sich im Paket sidux-kernelhacking befindet. <span class="highlight-3">Dieses Skript listet die Kernel, welche entfernt werden können.</span></p>
+			<p>Alte Kernel k&#246;nnen mit dem Skript <span class="highlight-3">kernel-remover</span> entfernt werden, welches sich im Paket sidux-kernelhacking befindet. <span class="highlight-3">Dieses Skript listet die Kernel, welche entfernt werden k&#246;nnen.</span></p>
 
 			
 	<div id="rev">Content last revised UTC 02/04/2007 0900hrs UTC </div>

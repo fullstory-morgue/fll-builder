@@ -12,12 +12,13 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   * discard cd root dir README
   * livecd manual update to sidux-manual-0.4.2007.05.10-live-cd-2007-02
   * livecd manual update to sidux-manual-0.5.2007.05.10-live-cd-2007-02
+  * livecd manual update to sidux-manual-0.6.2007.05.12-live-cd-2007-02
 
   [ Kel Modderman ]
   * Mark uswsusp as broken in package module.
   * Drop acpi-support in favour of pm-utils.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 12 May 2007 00:44:26 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 12 May 2007 17:38:26 +1000
 
 fll-builder (1.0.7) unstable; urgency=low
 

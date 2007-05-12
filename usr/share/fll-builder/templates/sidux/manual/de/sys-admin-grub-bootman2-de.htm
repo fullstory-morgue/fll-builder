@@ -2,7 +2,7 @@
    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Sidux Manuals - Grub-de</title>
+	<title>sidux Manuals - Grub-de</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
 	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
@@ -19,7 +19,7 @@
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
 	</ul>
 	<div id="flags-2">
-			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Wählen Sie eine andere Sprache" alt="lang-switch" /></a>
+			<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="W&#228;hlen Sie eine andere Sprache" alt="lang-switch" /></a>
 	</div>
 	<ul>
 		<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="welcome-de.htm">Willkommen bei sidux</a>
@@ -48,7 +48,7 @@
 		<li  onmouseover="showHide( 4 );" onmouseout="startTime();" ><a href="live-mode-de.htm">Live-CD-Modus</a>
 			<ul class="sub-menu" id="sm4">
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software während einer Live-CD Sitzung</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Installieren von Software w&#228;hrend einer Live-CD Sitzung</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 		</li>
@@ -88,12 +88,12 @@
 		<li  onmouseover="showHide( 10 );" onmouseout="startTime();" ><a href="hw-dev-hw-dri-de.htm">Graphikkarten, Hardware, Ger&#228;te und Treiber</a>
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmauflösung und Monitoreinstellungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit proprietären Anforderungen</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
 		<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="wm-kde-de.htm">Fenstermanager</a>
@@ -156,13 +156,13 @@
 <!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="mbr-grub-boot">
-		<h2 id="top-header">Windows hat meinen Bootsektor überschrieben. Wie kann ich Grub wiederherstellen</h2>
+		<h2 id="top-header">Windows hat meinen Bootsektor &#252;berschrieben. Wie kann ich Grub wiederherstellen</h2>
 
 		<p>Im folgenden gehen wir davon aus, dass zwei Festplatten im PC sind.
                  Auf der ersten Platte ist Windows installiert, und in einer Partition
                  dieser Platte ist sidux installiert, z. B. hdb5</p>
 
-		<p>Jetzt boote die Live-Cd, öffne eine Konsole und werde Root mit:</p>
+		<p>Jetzt boote die Live-Cd, &#246;ffne eine Konsole und werde Root mit:</p>
 <pre>
 sudo su
 </pre>
@@ -178,9 +178,9 @@ sudo su
 	<div class="divider" id="boot-grub-floppy">
 		<h2>Erstellen einer bootf&#228;higen Diskette (Floppy)</h2>
 
-		<p>Während der Festplatteninstallation von sidux kann man eine
+		<p>W&#228;hrend der Festplatteninstallation von sidux kann man eine
                  Boot-Diskette erstellen. Hier wird gezeigt, wie man diese
-                 nachträglich machen kann. Dafür sind von Dir folgende Schritte auszuführen:</p>
+                 nachtr&#228;glich machen kann. Daf&#252;r sind von Dir folgende Schritte auszuf&#252;hren:</p>
 
 		<p>1.Formatiere eine Floppy</p>
 		<pre>fdformat /dev/fd0</pre>
@@ -195,7 +195,7 @@ sudo su
 		<p>4. Verzeichnisstruktur auf der Diskette erzeugen</p>
 		<pre>mkdir -p /floppy/boot/grub</pre>
 
-		<p>5. Benötigte Dateien auf die Diskette kopieren</p>
+		<p>5. Ben&#246;tigte Dateien auf die Diskette kopieren</p>
 <pre>cp /boot/grub/stage1 /floppy/boot/grub
 cp /boot/grub/stage2 /floppy/boot/grub</pre>
 
@@ -216,9 +216,9 @@ cp /boot/grub/stage2 /floppy/boot/grub</pre>
 		<pre>grub grub> root (fd0) grub> setup (fd0) grub> quit</pre>
 
 		<p>Damit haben wir uns eine bootbare Diskette erstellt, mit der sidux
-                 zuverlässig gebootet werden kann.</p>
+                 zuverl&#228;ssig gebootet werden kann.</p>
 		<p>Muss man die Diskette aus einer gestarteten Live-CD erzeugen,
-                 ist der Ablauf ein bisschen anders. Nehmen wir an, sidux ist auf der /dev/hda5 Partition installiert, dann muss folgendes zusätzlich gemacht werden anstelle von
+                 ist der Ablauf ein bisschen anders. Nehmen wir an, sidux ist auf der /dev/hda5 Partition installiert, dann muss folgendes zus&#228;tzlich gemacht werden anstelle von
                  Punkt 7</p>
 
 		<p>10. Mounte die sidux Partition</p>
@@ -248,7 +248,7 @@ cp /boot/grub/stage2 /floppy/boot/grub</pre>
 
 		<p>Grub ist ein Bootmanager, der geeignet ist, Betriebssysteme von
                  verschiedenen Partitionen zu starten. Grub ist nicht auf Blocklisten
-                 zum Finden der Dateien für den Systemstart angewiesen und kann
+                 zum Finden der Dateien f&#252;r den Systemstart angewiesen und kann
                  eine ganze Reihe von Dateisystemen direkt lesen: ext2, ext3, reiserfs,
 ...              (Linux), Fat32, Fat16 (Windows), UFS (BSD), Minix und viele andere.</p>
 
@@ -256,20 +256,20 @@ cp /boot/grub/stage2 /floppy/boot/grub</pre>
                  GByte booten!) und kennt keine 1024-Zylindergrenze. Grub ist es
                  ziemlich egal, wo der Kernel physikalisch liegt, er braucht nur die
                  Angabe der Partition und den Pfad des zu bootenden Kernels (dies kann
-                 auch ein Symlink sein). Nach Änderung der Konfiguration (also
-                 der menu.lst) ist kein Programmaufruf wie bei Lilo nötig, die
-                 neue Konfiguration wird beim nächsten Booten eingelesen.</p>
+                 auch ein Symlink sein). Nach &#196;nderung der Konfiguration (also
+                 der menu.lst) ist kein Programmaufruf wie bei Lilo n&#246;tig, die
+                 neue Konfiguration wird beim n&#228;chsten Booten eingelesen.</p>
 
                 <p>sidux verwendet Grub beim Booten von CD. und bei einer HD-Installtion
                  wird als Standard Grub verwendet. Grub kann dennoch
-                 problemlos nachträglich installiert werden. Grub wird mit
+                 problemlos nachtr&#228;glich installiert werden. Grub wird mit
                  folgendem Befehl aus einer Root-Shell in den MBR installiert werden:</p>
 
 		<pre>grub-install --root-directory=/media/hdaX /dev/hdY</pre>
 
-		<p>/media/hdaX steht hierbei für die
+		<p>/media/hdaX steht hierbei f&#252;r die
 schreibend gemountete Partition, auf der im Verzeichnis <i>/boot/grub</i>
-die benötigten Dateien (stage2, stage1_5xxx) abgelegt werden.<br />
+die ben&#246;tigten Dateien (stage2, stage1_5xxx) abgelegt werden.<br />
 Die Konfigurationsdatei menu.lst muss
 ebenfalls in diesem Verzeichnis erstellt werden. /dev/hdY
 ist die Platte, in deren MBR Grub installiert wird, normalerweise
@@ -280,10 +280,10 @@ ist die Platte, in deren MBR Grub installiert wird, normalerweise
 		<p>Grub unterscheidet nicht zwischen SCSI- und IDE-Festplatten. (hd0) ist
 immer die erste Festplatte, die in der Bootreihenfolge (Einstellung im
 BIOS) auch die erste ist, egal ob nun IDE oder SCSI.
-Ungewöhlich ist die Zählweise, die 1. Partition auf
-der ersten Festplatte heisst (hd0,0). Die primären
+Ungew&#246;hlich ist die Z&#228;hlweise, die 1. Partition auf
+der ersten Festplatte heisst (hd0,0). Die prim&#228;ren
 Partitionen haben die Ziffernfolge von 0-3 und die logischen
-Partitionen zählen dann ab 4 aufwärts.</p>
+Partitionen z&#228;hlen dann ab 4 aufw&#228;rts.</p>
 
 		<table>
 			<tbody>
@@ -315,13 +315,13 @@ Partitionen zählen dann ab 4 aufwärts.</p>
 			</tbody>
 		</table>
 	<div class="spacer05"></div>
-		<p>Alle Bezeichnungen für Geräte werden für
-                Grub in Klammern () gesetzt. Man beachte jedoch die Einträge
-		hinter dem Kernel, im Gegensatz zu Grub benötigt der Kernel
-		die Angaben in der für Linux üblichen Art. Die
-		Einträge im folgenden Beispiel zeigen beide auf die gleiche
-		Partition, nämlich die vierte auf der ersten Platte. Der
-		obere Eintrag in der Grub-Schreibweise, der untere in der für
+		<p>Alle Bezeichnungen f&#252;r Ger&#228;te werden f&#252;r
+                Grub in Klammern () gesetzt. Man beachte jedoch die Eintr&#228;ge
+		hinter dem Kernel, im Gegensatz zu Grub ben&#246;tigt der Kernel
+		die Angaben in der f&#252;r Linux &#252;blichen Art. Die
+		Eintr&#228;ge im folgenden Beispiel zeigen beide auf die gleiche
+		Partition, n&#228;mlich die vierte auf der ersten Platte. Der
+		obere Eintrag in der Grub-Schreibweise, der untere in der f&#252;r
 		Linux typischen Art:</p>
 		<pre>root (hd0,3)
 		kernel /boot/vmlinuz root=/dev/hda4</pre>
@@ -337,16 +337,16 @@ Partitionen zählen dann ab 4 aufwärts.</p>
 		<p>Um ein wenig zu testen, kann Grub auch aus einem gebooteten sidux einer
 		Root-Shell mit <span># grub</span> gestartet werden. In
 		der Grub-Shell kann man sich mit "<b>help</b>" alle
-		verfügbaren Befehle anzeigen lassen. Detailierte Hilfe zu
+		verf&#252;gbaren Befehle anzeigen lassen. Detailierte Hilfe zu
 		jedem Befel gibt es mit "<b>help befehl</b>", zur
-		Linux-Shell kehrt man mit <b>quit</b>" zurück
+		Linux-Shell kehrt man mit <b>quit</b>" zur&#252;ck
 		(die Grub-Shell wird beendet). In der Grub-Shell funktioniert die
-		Tabulatortaste ähnlich wie in der Linux-Shell, das ist eine
+		Tabulatortaste &#228;hnlich wie in der Linux-Shell, das ist eine
 		sehr grosse Erleichterung. Kommandos, Laufwerksbezeichnungen
 		und Dateinamen lassen sich mit der TAB-Taste automatisch
-		vervollständigen.</p>
+		vervollst&#228;ndigen.</p>
 
-		<p>Grub bietet hierbei z. B. die Möglichkeit, die Lage des Kernels
+		<p>Grub bietet hierbei z. B. die M&#246;glichkeit, die Lage des Kernels
 		und der initrd noch vor dem eigentlichen Booten mittels "<b>find</b>"
 		festzustellen, z. B. gibt Grub auf den Befehl</p>
 		<pre>find /boot/vmlinuz</pre>
@@ -355,7 +355,7 @@ Partitionen zählen dann ab 4 aufwärts.</p>
 		im Verzeichnis <i>/boot</i> enthalten:</p>
 		<pre>(hd0,3) (hd1,0)</pre>
 
-		<p>Die verfürgbaren Partitionen kann man mit dem Befehl "<b>geometry</b>"
+		<p>Die verf&#252;rgbaren Partitionen kann man mit dem Befehl "<b>geometry</b>"
 		festellen, ein</p>
 		<pre>geometry (hd0)</pre>
 
@@ -375,24 +375,24 @@ Partitionen zählen dann ab 4 aufwärts.</p>
 
 		<h3>Edit-Modus</h3>
 
-		<p>Dieser Modus ermöglicht es, die Einträge der Datei <i>menu.lst</i>
-		während des Bootens zu ändern. Dies geht auch, wenn
-		Grub von CD gebootet wird und die Datei schreibgeschützt ist.
+		<p>Dieser Modus erm&#246;glicht es, die Eintr&#228;ge der Datei <i>menu.lst</i>
+		w&#228;hrend des Bootens zu &#228;ndern. Dies geht auch, wenn
+		Grub von CD gebootet wird und die Datei schreibgesch&#252;tzt ist.
 		Dazu muss zuerst die <b>ESC</b>-Taste, dann
-		bestätigen mit <b>Return</b> und dann die Taste
-		"e" gedrückt werden. Die Parameter werden dann einfach ans
+		best&#228;tigen mit <b>Return</b> und dann die Taste
+		"e" gedr&#252;ckt werden. Die Parameter werden dann einfach ans
 		Ende der Zeile geschrieben oder man bewegt sich in der Zeile mit den
 		Cursor-Tasten.</p>
 
 
-		<h3>menu.lst (Beispiele für mögliche Einträge)</h3>
+		<h3>menu.lst (Beispiele f&#252;r m&#246;gliche Eintr&#228;ge)</h3>
 
-		<p>Kommentarzeilen werden mit # eingeleitet und stören den
-		Bootvorgang nicht, sie können also in der Datei verbleiben.</p>
+		<p>Kommentarzeilen werden mit # eingeleitet und st&#246;ren den
+		Bootvorgang nicht, sie k&#246;nnen also in der Datei verbleiben.</p>
 
 <pre># Beispiele: /boot/grub/menu.lst
 ################################################
-# setkey verändert die Tastaturbelegung auf die deutsche
+# setkey ver&#228;ndert die Tastaturbelegung auf die deutsche
 Tastatur
 setkey y z
 setkey z y
@@ -423,7 +423,7 @@ default 0
 # # merkt sich die zuletzt gebootete Partition wenn "savedefault" unter
 Title steht
 #default saved
-# # wird gebootet, falls das Booten des Default-Eintrages fehlschlägt
+# # wird gebootet, falls das Booten des Default-Eintrages fehlschl&#228;gt
 fallback 1
 # Vordergrund/Hintergrund-Farben festlegen
 # Auswahl: blinkt rot Hintergrund: blau color white/blue blink-red/blue
@@ -467,13 +467,13 @@ chainloader (fd0)+1
 
 
 
-		<h3>Von sekundärer Platte booten (z. B. mehrere Windows-Installationen)</h3>
+		<h3>Von sekund&#228;rer Platte booten (z. B. mehrere Windows-Installationen)</h3>
 
 		<p>Manche Leute brauchen/wollen mehrere Windows-Installationen. Windows
-		will aber immer von der 1. Platte starten. Wir müssen also eine
+		will aber immer von der 1. Platte starten. Wir m&#252;ssen also eine
 		Partition verstecken und eine andere aktivieren. Die folgenden Befehle
 		sollte man auf der GRUB-Kommandozeile eingeben und bei Erfolg in die
-		menu.lst eintragen. Das sollte dann für jede Windows-Partition
+		menu.lst eintragen. Das sollte dann f&#252;r jede Windows-Partition
 		geschehen. Backup nicht vergessen! ;-)</p>
 
 <pre>hide (hd0,0) # versteckt Partition 1 der Platte 1
@@ -485,7 +485,7 @@ boot # bootet das Betriebssystem</pre>
 
 		<p>Wenn man von der 2. Platte ein 2. Windows starten will, vertauscht man
 		virtuell Platte 1 und 2. Dadurch wird Windows eine erste Platte
-		vorgegetäuscht:</p>
+		vorgeget&#228;uscht:</p>
 <pre>map (hd0) (hd1)
 map (hd1) (hd0)
 </pre>
@@ -497,9 +497,9 @@ map (hd1) (hd0)
 		1024 Zylindern booten, <b>aber</b> /boot/grub/stage2
 		muss durch das Bios erreichbar sein (also davor liegen).
 		stage2 darf nach der Installation nicht verschoben oder in seiner Lage
-		verändert werden (z. B. könnte Defrag sowas
+		ver&#228;ndert werden (z. B. k&#246;nnte Defrag sowas
 		versuchen). Beim Setup werden Daten geschrieben, die dann nicht mehr
-		stimmen würden. Es ist sinnvoll, stage2 mit einem
+		stimmen w&#252;rden. Es ist sinnvoll, stage2 mit einem
 		Schreibschutz zu versehen (man muss sich im aktuellen
 		Verzeichnis befinden):</p>
 <pre>Dos: attrib +r +s stage2
@@ -518,11 +518,11 @@ LINUX: # chmod a -w ./stage2
 		<p>Du kannst auch die <a href="http://www.gnu.org/software/grub/grub-faq.de.html">offizielle
 		FAQ zu Grub</a> nachlesen..</p>
 
-		<p>Sofern man eine unterstützte Netzwerkkarte besitzt, kann Grub
-		auch über das Netzwerk booten. Eine entsprechende <a href="http://os.inf.tu-dresden.de/%7Efm3/grub.html">Boot-Disk
+		<p>Sofern man eine unterst&#252;tzte Netzwerkkarte besitzt, kann Grub
+		auch &#252;ber das Netzwerk booten. Eine entsprechende <a href="http://os.inf.tu-dresden.de/%7Efm3/grub.html">Boot-Disk
 		kann man sich hier</a> erstellen lassen und
 		anschlie&#223;end downloaden (allerdings mit einer
-		älteren Version von Grub).</p>
+		&#228;lteren Version von Grub).</p>
 		
 		
 
