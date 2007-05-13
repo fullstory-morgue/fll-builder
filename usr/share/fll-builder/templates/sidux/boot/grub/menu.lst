@@ -6,38 +6,38 @@ background 400000
 gfxmenu /boot/message
 
 title  sidux Default (aufs)
-kernel /boot/vmlinuz @RAMDISK@ quiet vga=791
+kernel /boot/vmlinuz boot=fll quiet vga=791
 initrd /boot/miniroot.gz
 #
 #title  sidux Debug (aufs, serial console)
-#kernel /boot/vmlinuz @RAMDISK@ quiet vga=0 aufs console=ttyS0,115200
+#kernel /boot/vmlinuz boot=fll quiet vga=0 aufs console=ttyS0,115200
 #initrd /boot/miniroot.gz
 #
 #title  sidux Default (unionfs 2.x, broken)
-#kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 unionfs 
+#kernel /boot/vmlinuz boot=fll quiet vga=791 unionfs 
 #initrd /boot/miniroot.gz
 #
 #title  sidux Debug (unionfs 2.x, serial console)
-#kernel /boot/vmlinuz @RAMDISK@ quiet vga=0 unionfs console=ttyS0,115200
+#kernel /boot/vmlinuz boot=fll quiet vga=0 unionfs console=ttyS0,115200
 #initrd /boot/miniroot.gz
 #
 #title  sidux Default (link farm)
-#kernel /boot/vmlinuz @RAMDISK@ quiet vga=791 
+#kernel /boot/vmlinuz boot=fll quiet vga=791 
 #initrd /boot/miniroot.gz
 
 title  sidux ACPI off - DMA off
-kernel /boot/vmlinuz @RAMDISK@ apm=power-off nomce quiet acpi=off nodma vga=791 
+kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet acpi=off nodma vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux APIC off
-kernel /boot/vmlinuz @RAMDISK@ apm=power-off nomce quiet nosmp noapic vga=791 
+kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet nosmp noapic vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux Framebuffer Mode
-kernel /boot/vmlinuz @RAMDISK@ apm=power-off vga=791 xmodule=fbdev nomce quiet 
+kernel /boot/vmlinuz boot=fll apm=power-off vga=791 xmodule=fbdev nomce quiet 
 initrd /boot/miniroot.gz
 
 title  sidux Failsafe
-kernel /boot/vmlinuz @RAMDISK@ vga=normal noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp nodbus nocpufreq nobluetooth xmodule=vesa 
+kernel /boot/vmlinuz boot=fll vga=normal noapic noscsi nodma noapm nousb nopcmcia nofirewire noagp nomce nodhcp nodbus nocpufreq nobluetooth xmodule=vesa 
 initrd /boot/miniroot.gz
 

@@ -638,13 +638,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_RESULT"/boot/grub/
 	cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
 
-	# ramdisk param for kernel cmdline
-	if exists_in_chroot /usr/sbin/mklive-initrd; then
-		sed -i 's#@RAMDISK@#ramdisk_size=100000 init=/etc/init#' "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-	else
-		sed -i 's#@RAMDISK@#boot=fll#' "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-	fi
-	
 	if exists_in_chroot /boot/memtest86+.bin; then
 		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
 		cat >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst \
