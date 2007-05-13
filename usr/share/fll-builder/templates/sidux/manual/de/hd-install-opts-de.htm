@@ -185,11 +185,11 @@
 <pre># cp /mnt/test/boot/vmlinuz /media/hda5/sidux/
 # cp /mnt/test/boot/miniroot.gz /media/hda5/sidux/</pre>
 
-		<p>Nun muss Grub noch angepasst werden. Dazu &#246;ffnen wir die <span class="highlight-3">/boot/grub/menu.lst</span> und f&#252;gen folgendes hinzu:</p>
+		<p>Nun muss Grub noch angepasst werden. Dazu editieren wir die Datei <span class="highlight-3">/boot/grub/menu.lst</span> und f&#252;gen folgendes hinzu:</p>
 
 <pre>### ISO boot
 title sidux 32bit from ISO
-kernel (hd0,4)/sidux/vmlinuz ramdisk_size=100000 init=/etc/init fromiso=/sidux/sidux.iso noprompt noeject lang=de apm=power-off nomce quiet vga=791
+kernel (hd0,4)/sidux/vmlinuz boot=fll quiet vga=791 fromiso=/sidux/sidux.iso
 initrd (hd0,4)/sidux/miniroot.gz</pre>
 
 		<p>Beim n&#228;chsten Booten ist eine neue Auswahl im Grub-Men&#252;: "sidux 32bit from ISO".</p>

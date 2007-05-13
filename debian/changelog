@@ -23,7 +23,10 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * vim added to gnome-lite
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 13 May 2007 21:02:11 +1000
+  [ Joaquim Boura ]
+  * uploaded fixed fromiso  live-cd manual page.
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Sun, 13 May 2007 16:55:22 +0200
 
 fll-builder (1.0.7) unstable; urgency=low
 
