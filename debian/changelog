@@ -18,11 +18,12 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   * Mark uswsusp as broken in package module.
   * Drop acpi-support in favour of pm-utils.
   * Remove old initrd support.
+  * Remove bogus failsafe stuff from menu.lst.
 
   [ Andreas Weber ]
   * vim added to gnome-lite
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 13 May 2007 20:59:59 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 13 May 2007 21:02:11 +1000
 
 fll-builder (1.0.7) unstable; urgency=low
 
