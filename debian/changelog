@@ -24,11 +24,12 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * vim added to gnome-lite
   * removed vim again and added cli
+  * 4 broken Packages removed and xmms added
 
   [ Joaquim Boura ]
   * uploaded fixed fromiso  live-cd manual page.
 
- -- Andreas Weber <andreas@it-weber.com>  Mon, 14 May 2007 11:40:41 +0200
+ -- Andreas Weber <andreas@it-weber.com>  Mon, 14 May 2007 15:25:11 +0200
 
 fll-builder (1.0.7) unstable; urgency=low
 

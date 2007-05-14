@@ -50,8 +50,5 @@ FLL_PACKAGES=(
 	openoffice.org
 	openoffice.org-gnome
 	totem
-	streamripper
-	streamtuner
-	vlc
-	vlc-plugin-alsa
+	xmms
 )
