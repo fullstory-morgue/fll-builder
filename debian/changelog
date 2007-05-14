@@ -13,6 +13,7 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-0.4.2007.05.10-live-cd-2007-02
   * livecd manual update to sidux-manual-0.5.2007.05.10-live-cd-2007-02
   * livecd manual update to sidux-manual-0.6.2007.05.12-live-cd-2007-02
+  * lowercase 'sidux' for sidux Manual
 
   [ Kel Modderman ]
   * Mark uswsusp as broken in package module.
@@ -26,7 +27,7 @@ fll-builder (1.0.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * uploaded fixed fromiso  live-cd manual page.
 
- -- Joaquim Boura <x-un-i@sidux.com>  Sun, 13 May 2007 16:55:22 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 14 May 2007 11:57:42 +1000
 
 fll-builder (1.0.7) unstable; urgency=low
 
