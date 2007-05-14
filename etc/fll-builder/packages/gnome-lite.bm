@@ -1,4 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
+	cli
 	distro
 	distro-gnome
 	distro-tools
@@ -18,5 +19,4 @@ FLL_PACKAGES=(
 	configure-isdn
 	epiphany-browser
 	epiphany-extensions
-	vim
 )
