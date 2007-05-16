@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.10-2007-05-16 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -26,6 +26,7 @@
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
 				<li><a href="welcome-de.htm#how-to">Tipps zum Handbuch</a></li>
+				<li><a href="welcome-de.htm#table-contents">Index</a></li>
 				<li><a href="help-de.htm#help-gen">Wo es Hilfe gibt</a></li>
 				<li><a href="credits-de.htm#cred-team">Danksagung</a></li>
 			</ul>
@@ -69,6 +70,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
 				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
+				<li><a href="part-uuid-de.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
 				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
 				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
@@ -160,19 +162,19 @@
 		<h2 id="top-header">Willkommen zum sidux-Handbuch</h2>
 				
 				<p class="highlight-3">Seien Sie bereit!</p>
-				<p>sidux wird alles, was Sie von bisher benutzten Betriebssystemen gewohnt waren, auf den Kopf stellen. sidux basiert nicht nur auf <a href="http:www.debian.org">Debian</a> und Debian 'sid' GNU/Linux, sidux ist auch den Grundwerten und dem Gesellschaftsvertrag von Debian verpflichtet.</p>
+				<p>sidux wird alles, was Sie von bisher benutzten Betriebssystemen gewohnt waren, auf den Kopf stellen. sidux basiert nicht nur auf <a href="http://www.debian.org">Debian</a> und Debian 'sid' GNU/Linux, sidux ist auch den Grundwerten und dem Gesellschaftsvertrag von Debian verpflichtet.</p>
 
-				<p>Um die neuesten Programmversionen inklusive Linux-Kernel zu erhalten, muss nicht mehr l&#228;nger auf einen neuen Release gewartet werden. Nach der Erstinstallation muss nur mehr ein sogenannter  dist-upgrade, d. h. ein systemweiter Update der Software von Debian und sidux.</p>
+				<p>Um die neuesten Programmversionen inklusive Linux-Kernel zu erhalten, muss nicht mehr l&#228;nger auf einen neuen Release gewartet werden. Nach der Erstinstallation muss nur mehr ein sogenannter  dist-upgrade, d. h. ein systemweiter Update der Software von Debian und sidux durchgeführt werden.</p>
 
 				<p>Dies bedeutet, dass eine Neuinstallation eines aktuelleren Releases alle sechs bis zw&#246;lf Monate hinf&#228;llig ist, wenn sidux installiert ist. Ein w&#246;chentlicher oder monatlicher dist-upgrade aktualisiert die Installation mit Ausnahme des Kernels, welcher bei Bedarf separat auf eine neue Version gebracht werden kann.</p>
 				
-				<p>Wie dem auch sei: Eine sidux Installation dauert nicht l&#228;nger als 20 Minuten.</p>
+				<p>Wie dem auch sei: Eine Installation von sidux dauert nicht l&#228;nger als 20 Minuten.</p>
 
-				<p>sidux bietet vier Versionen der installierbaren Live-CD an:<br />
+				<p>sidux bietet vier Versionen der installierbaren Live-CD an:<br /><br />
 				32 bit lite,<br />
-				32 bit heavy,<br />
+				32 bit full,<br />
 				64 bit lite,<br />
-				64 bit heavy.</p>
+				64 bit full.</p>
 
 				<p>Auf 'sidux-Art' wird das System immer aktuell sein und alles bieten, was zum gegebenen Zeitpunkt sidux und Debian gemeinsam im Angebot haben. Auch ohne Neuinstallation.</p>
 
@@ -181,7 +183,7 @@
 	</div>
 	<div class="divider" id="how-to">
 		<h2>Benutzungshinweise</h2>
-			<p>Das Handbuch ist nach gleichartigen Themen unterteilt: Alles was zum Beispiel das Partitionieren betrifft, befindet sich im Kapitel "Partitionieren der Festplatte" und Themen, die WLAN betreffen, befinden sich im Kapitel "Internet und Netzwerk".</p>
+			<p>Das Handbuch ist nach gleichartigen Themen unterteilt: Alles was zum Beispiel das Partitionieren betrifft, befindet sich im Kapitel "Partitionieren der Festplatte", und Themen, die WLAN betreffen, befinden sich im Kapitel "Internet und Netzwerk".</p>
 
 			<p>Manche Themen lassen sich schlecht einordnen oder stehen f&#252;r sich allein. Weiterhin werden hier, wie in vielen neuen Handb&#252;chern, noch Tippfehler oder sogar echte Fehler enthalten sein. Dies m&#246;ge entschuldigt sein. Wir hoffen, dass keine echten Fehler enthalten sind, mit den Tippfehlern k&#246;nnen wir vorerst leben.</p>
 
@@ -222,7 +224,7 @@
 			<h5><a href="live-mode-de.htm">Live-CD-Modus</a></h5>
 			<ul>
 				<li><a href="live-mode-de.htm#rootpw">Das Rootpasswort auf der sidux-Live-CD</a></li>
-				<li><a href="live-mode-de.htm#live-cd-installsoft">Installing software whilst on a Live-CD</a></li>
+				<li><a href="live-mode-de.htm#live-cd-installsoft">Softwareinstallation im Live-CD-Modus</a></li>
 				<li><a href="live-mode-de.htm#ntfs-3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 			</ul>
 			<h5><a href="cheatcodes-de.htm">Boot-Cheatcodes</a></h5>
@@ -305,7 +307,7 @@
 				<li><a href="sys-admin-grub-bootman2-de.htm#remove-grub">Grub aus MBR entfernen</a></li>
 				<li><a href="sys-admin-grub-bootman2-de.htm#what-is-grub">Grub, der Bootmanager</a></li>
 			</ul>
-			<div id="rev">Page last revised UTC 06/05/2007 0900hrs </div>
+			<div id="rev">Page last revised UTC 16/05/2007 1800hrs </div>
 		</div>
 
 

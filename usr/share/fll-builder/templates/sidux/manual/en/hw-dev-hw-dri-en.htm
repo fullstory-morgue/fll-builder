@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.10-2007-05-16 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -26,6 +26,7 @@
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
 				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+				<li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
 				<li><a href="help-en.htm#help-gen">Where to get Help</a></li>
 				<li><a href="credits-en.htm#cred-team">Credits</a></li>
 			</ul>
@@ -69,6 +70,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
 				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-uuid-en.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
 				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
 				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
@@ -139,7 +141,7 @@
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-CD</a></li>
-				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
 				<li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
@@ -149,7 +151,7 @@
 				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
-				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the bootmanager</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the boot manager</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -466,7 +468,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 </pre>
 			<ul>
 				<li>
-					ATi Radeon graphics: 3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance, please use <span class= "highlight-3">get-sidux-binary-gfx</span> to fetch install scripts for these cards.
+					ATi Radeon graphics: 3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance which are not yet compatible with X.org 7.2.
 				</li>
 				<li>
 					Atheros/ "madwifi" wlan:
@@ -481,49 +483,60 @@ apt-get install atmel-firmware
 </pre>
 				</li>
 				<li>
-					AVM ISDN/ ADSL PCI/ USB Karten: AVM's closed source driver are not compatible with kernel 2.6.19.x yet, please download kernel 2.6.18.x (<a href="http://sidux.net/files/kernel/">http://sidux.net/files/kernel</a>) for now and use
-<pre>
- m-a a-i avm.
-</pre>
+					AVM ISDN/ ADSL PCI/ USB cards: AVM's closed source drivers are not compatible with kernel 2.6.21 yet.
 				</li>
 				<li>
 					Broadcom/ bcm43xx wlan:
 <pre>
-apt-get install bcm43xx-fwcutter.
+apt-get install bcm43xx-fwcutter
 </pre>
 				</li>
 				<li>
-					Eagle USB ADSL modem: fetch the firmware from <a href=" http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> and place it under /lib/firmware/.
+					Eagle USB ADSL modem: fetch the firmware from <a href=" http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 				</li>
 				<li>
-					DVB firmwares for various full featured DVB TV cards (most budget cards won't need this): fetch the needed firmeware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under /lib/firmware/.
+					DVB firmwares for various full featured DVB TV cards (most budget cards won't need this): fetch the needed firmeware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 				</li>
 				<li>
-					hostap based 11 MBit/s wlan with loadable firmware (e.g. D-Link DWL-520 rev. E1 and others): <a href="http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html">http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</a>
-				</li>
-				<li>
-					Intel ipw2100, 11 MBit/s wlan: fetch the firmware from <a href="http://ipw2100.sf.net/">http://ipw2100.sf.net/</a> and place it under /lib/firmware/.
-				</li>
-				<li>
-					Intel ipw2200, 54 MBit/s wlan: fetch the firmware from <a href="http://ipw2200.sf.net/"></a> and place it under /lib/firmware/.
-				</li>
-				<li>
-					Intel ipw3945, 54 Mbit/s wlan:
+					Intel ipw2100, 11 MBit/s wlan: 
 <pre>
-apt-get install ipw3945d firmware-ipw3945
+apt-get install ipw2100-firmware
 </pre>
 				</li>
 				<li>
-					Intersil prism54, 54 MBit/s wlan: fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under /lib/firmware/.
+					Intel ipw2200, 54 MBit/s wlan: 
+<pre>
+apt-get install ipw2200-firmware
+</pre>
+				</li>
+				<li>
+				Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:
+<pre>
+apt-get install iwlwifi-ucode
+</pre>
+			You can activate the old non-free driver, if iwlwifi creates problems:
+<pre>
+apt-get update
+apt-get install ipw3945d firmware-ipw3945
+update-rc.d ipw3945d start 39 S . start 36 0 6
+LANG= m-a a-i --text-mode ipw3945-source
+echo "blacklist iwlwifi" > /etc/modprobe.d/mac80211
+</pre>
+				</li>
+				<li>
+					Intersil prism54, 54 MBit/s wlan: fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 				</li>
 				<li>
 					nVidia graphics: 3d acceleration isn't possible with free drivers yet, please use <span class= "highlight-3">get-sidux-binary-gfx</span> to fetch install scripts for these cards.
 				</li>
 				<li>
-					RaLink rt61 54 MBit/s wlan, fetch the firmware from <a href="http://www.ralinktech.com/ralink/Home/Support/Linux.html">http://www.ralinktech.com/ralink/Home/Support/Linux.html</a>
+					RaLink rt61 54 MBit/s wlan,:
+<pre>
+apt-get install rt61-fwcutter
+</pre>
 				</li>
 				<li>
-					Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan, fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under /lib/firmware/.
+					Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan, fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 				</li>
 				<li>
 					ZyDAS zd1201 11 MBit/s wlan:
@@ -532,11 +545,14 @@ apt-get install zd1201-firmware
 </pre>
 				</li>
 				<li>
-					ZyDAS zd1211 54 MBit/s wlan: fetch the firmware from <a href="http://sourceforge.net/project/showfiles.php?group_id=129083">http://sourceforge.net/project/showfiles.php?group_id=129083</a> and place it under /lib/firmware/.
+					ZyDAS zd1211 54 MBit/s wlan:
+<pre>
+apt-get install zd1211-firmware
+</pre>
 				</li>
 			</ul>
 			<p>We will check if we can provide packages for at least some of these devices, but the legal status isn't necessarily easy.</p>
-</div>
+		</div>
 		<div class="divider" id="hd-ntfs3g">
 			<h2>Writing to NTFS-partitions with ntfs-3g</h2>
 
@@ -554,7 +570,7 @@ To get out of the konsole type: exit
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 		</div>	
-		<div id="rev">Page last revised UTC 13/04/2007 1000hrs UTC</div>
+	<div id="rev">Content last revised  13/04/2007 1000hrs UTC</div>
 </div>
 </div>
 </body>

@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.10-2007-05-16 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -26,6 +26,7 @@
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-en.htm#welcome-gen">Official Manual</a></li>
 				<li><a href="welcome-en.htm#how-to">How to use this manual</a></li>
+				<li><a href="welcome-en.htm#table-contents">Table of Contents</a></li>
 				<li><a href="help-en.htm#help-gen">Where to get Help</a></li>
 				<li><a href="credits-en.htm#cred-team">Credits</a></li>
 			</ul>
@@ -69,6 +70,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-en.htm#partition">Partitioning your HD using GParted</a></li>
 				<li><a href="part-gparted-en.htm#ntfs">NTFS partition Resizing using GParted</a></li>
+				<li><a href="part-uuid-en.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-en.htm#uuid">UUID, Partition Labelling and fstab</a></li>
 				<li><a href="part-cfdisk-en.htm#partition">Partitioning  your HD using cfdisk</a></li>
 				<li><a href="part-cfdisk-en.htm#formating">Formatting after partitioning with cfdisk</a></li>
@@ -139,7 +141,7 @@
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-CD</a></li>
-				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Uprading the kernel</a></li>
+				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
 				<li><a href="sys-admin-rdiff-en.htm#rdiff">Back-Up with rdiff</a></li>
 				<li><a href="sys-admin-rsync-en.htm#rsync">Back-Up with rsync</a></li>
 				<li><a href="vir-rkits-en.htm#virus-rkits">Virus and Rootkit Scanners</a></li>
@@ -149,7 +151,7 @@
 				<li><a href="sys-admin-grub-bootman2-en.htm#mbr-grub-boot">MBR Overwritten bootsector</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#boot-grub-floppy">Creating a Boot-Floppy</a></li>
 				<li><a href="sys-admin-grub-bootman2-en.htm#remove-grub">Removing grub from MBR</a></li>
-				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the bootmanager</a></li>
+				<li><a href="sys-admin-grub-bootman2-en.htm#what-is-grub">Grub the boot manager</a></li>
 			</ul>
 		</li>
 	</ul>
@@ -159,7 +161,7 @@
 		<h2 id="top-header">Contents of the Live CD</h2>
 				<p class="highlight-3">Due to the complexity of law, sidux will only provide dfsg-free software on the live-cd, <a href="hw-dev-hw-dri-en.htm#non-free">please check this link for additional information on non-free sources for firmware</a></p>
 
-				<p>The ISO is completely based on Debian Sid (up to date as of 2007-05-12) enriched and stabilized with sidux' own packages and scripts. <a href="http://www.kernel.org/">It comes with kernel 2.6.20.1,</a> which is based on the most recent vanilla kernel together with several patches for improved hardware support and allows initial testing of kvm for pacifica or vanderpool compatible CPUs (AMD64 for socket AM2, Intel Core2).</p>
+				<p>The ISO is completely based on Debian Sid (up to date as of 2007-05-13) enriched and stabilized with sidux' own packages and scripts. <a href="http://www.kernel.org/"> It comes with kernel 2.6.21.1,</a> which is based on the most recent vanilla kernel together with sidux enhanced patches.</p>
 
 				<p>ACPI and DMA are enabled by default (can be disabled with acpi=off and nodma respectively in grub bootline)</p>
 
@@ -170,10 +172,10 @@
 				<h6>Applications and Tools</h6>
     				<p>The sidux-CD holds a variety of different programs and tools that cover almost any need of a desktop-user in everyday life.</p>
 
-    				<p><a href="http://www.kde.org/">KDE 3.5.5</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications</p>
+    				<p><a href="http://www.kde.org/">KDE 3.5.6</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications</p>
 
 
-    				<p>For Networking and the Internet connecting there is<a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> along with <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a> and <a href=" internet-connecting-wpa-en.htm"> see our internal WIFI documentation</a>.</p>
+    				<p>For Networking and the Internet connecting there is<a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> along with <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a> and <a href=" internet-connecting-wpa-en.htm"> see our internal WIFI documentation.</a>  It now also includes driver support by mac80211 <a href="http://sidux.com/Article212.html"> details are on main sidux site </a>and <a href="hw-dev-hw-dri-en.htm#non-free">here</a> .</p>
 
 				<p>You wish to partition a hard drive, we have provided <a href="http://gparted.sourceforge.net/">GParted</a> and also <a href="part-cfdisk-en.htm">cfdisk</a> and gparted also now has an ntfs resize facility!</p>
 
@@ -190,7 +192,7 @@
 
 
 	</div>
-			<div id="rev">Content last revised 02/05/2007 1100 UTC</div>
+			<div id="rev">Content last revised 15/05/2007 0900 UTC</div>
 
 </div>
 </body>

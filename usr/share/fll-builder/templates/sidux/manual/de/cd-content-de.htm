@@ -12,8 +12,8 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.10-2007-05-16 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -26,6 +26,7 @@
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
 				<li><a href="welcome-de.htm#how-to">Tipps zum Handbuch</a></li>
+				<li><a href="welcome-de.htm#table-contents">Index</a></li>
 				<li><a href="help-de.htm#help-gen">Wo es Hilfe gibt</a></li>
 				<li><a href="credits-de.htm#cred-team">Danksagung</a></li>
 			</ul>
@@ -69,6 +70,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
 				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
+				<li><a href="part-uuid-de.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
 				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
 				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
@@ -159,7 +161,8 @@
 		<h2 id="top-header">Inhalt der Live-CD</h2>
 				<p class="highlight-4">Auf Grund der Komplexit&#228;t der Gesetzgebung enth&#228;lt die sidux Live-CD nur DFSG-Freie Software, Hinweise zur Installation propriet&#228;rer Software bzw. Firmware findet sich <a href="hw-dev-hw-dri-de.htm#non-free">hier</a> im Handbuch.</p>
 
-				<p>Das ISO basiert ausschlie&#223;lich auf Debian Sid (vom 12. 05. 2007), bereichert und stabilisiert durch eigene Pakete und Skripte von sidux. sidux l&#228;uft auf dem <a href="http://www.kernel.org/">Kernel 2.6.20.1,</a> welcher auf dem aktuellsten Vanilla-Kernel basiert, jedoch zahlreiche Patches zur verbesserten Hardwareunterst&#252;tzung enth&#228;lt, sowie kvm-Unterst&#252;tzung zum erstmaligen Testen von Pacifica- und Vanderpool-Kompatiblen CPUs (AMD64 auf Socket AM2, Intel Core2).</p>
+				<p>Das ISO basiert ausschlie&#223;lich auf Debian Sid (vom 13. 05. 2007), bereichert und stabilisiert durch eigene Pakete und Skripte von sidux. sidux l&#228;uft auf dem <a href="http://www.kernel.org/">Kernel 2.6.21.1,</a> der auf dem aktuellsten Vanilla-Kernel von <a href="http://www.kernel.org">kernel.org</a> basiert und von sidux mit Patches versehen ist.</p>
+
 				<p>ACPI und DMA sind aktiviert, k&#246;nnen aber per Cheatcode in der Grubbootzeile durch 'acpi=off' und 'nodma' deaktiviert werden.</p>
 				<p>i686 optimiert - nicht gedacht zur Benutzung mit &#228;lteren CPUs!</p>
 				<p>192 MB RAM ben&#246;tigt, 256 MB RAM empfohlen</p>
@@ -167,16 +170,16 @@
 				<h6>Applikationen und Tools</h6>
     				<p>Die sidux-CD enth&#228;lt diverse Programme und Werkzeuge, welche die t&#228;glichen Anforderungen von Desktop-Nutzern abdecken.</p>
 
-    				<p><a href="http://www.kde.org/">KDE 3.5.5</a> Der grafische Benutzerdesktop, der einem den Zugang zu Programmen und Anwendungen durch Mausklick erm&#246;glicht.</p>
+    				<p><a href="http://www.kde.org/">KDE 3.5.6</a>: Der grafische Benutzerdesktop, der einem den Zugang zu Programmen und Anwendungen durch Mausklick erm&#246;glicht.</p>
 
-				<p>Zum Surfen im Internet <a href="http://www.konqueror.org/">Konqueror</a>, ein Webbrowser mit extra Kick: <span class="highlight-1">er enth&#228;lt einen FTP-Client und ssh (fish Protokoll) eingebaut: sehr seltene Funktionalit&#228;ten in der Webbrowser Welt</span>, <a href="http://www.mozilla.com/">und es gibt den sidux Standardbrowser iceweasel</a>.</p>
+				<p>Zum Surfen im Internet ist <a href="http://www.konqueror.org/">Konqueror</a>, ein Webbrowser mit extra Kick, integriert. <span class="highlight-1">Als zusätzliche Funktionen enth&#228;lt er einen FTP-Client und das fish-Protokoll (ssh), eine Funktionalität, welche andere Webbrowser selten aufweisen</span>. Standardbrowser in sidux ist <a href="http://www.mozilla.com/">iceweasel</a>, der auf Firefox basierende Browser von Debian.</p>
 
-    				<p>Zum Einrichten von Netzwerken und der Internetverbindung gibt es den <a href="http://ndiswrapper.sourceforge.net/">ndiswrapper</a> mit <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a>, siehe auch die Handbuch <a href=" internet-connecting-wpa-de.htm"> WIFI Dokumentation</a>.</p>
+    				<p>Zum Einrichten von Netzwerken und der Internetverbindung gibt es den <a href="http://ndiswrapper.sourceforge.net/">ndiswrapper</a> mit <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a>, siehe auch die Handbuch <a href=" internet-connecting-wpa-de.htm"> WIFI-Dokumentation</a>. Neu ist die Treiber-Unterstützung durch mac80211. Details dazu finden sich auf der <a href="http://sidux.com/Article213.html">Hauptseite von sidux.</a>.</p>
 
 				<p>Zum Partitionieren der Festplatte gibt es <a href="http://gparted.sourceforge.net/">GParted</a> sowie <a href="part-cfdisk-de.htm">cfdisk</a>. GParted kann auch die Gr&#246;&#223;e von NTFS-Partitionen ver&#228;ndern.</p>
 
 
-				<p>Diagnostikwerkzeuge wie <a href="http://www.memtest.org/">Memtest86+</a> -Advanced Memory Diagnostic Tool</p>
+				<p>Inkludiert sind Diagnostikwerkzeuge wie <a href="http://www.memtest.org/">Memtest86+</a>, einem umfassenden Tool zur Speicherdiagnostik.</p>
 
 				<h5>Meta-Pakete</h5>
 				<p><a href="sys-admin-meta-de.htm">Siehe diese Handbuchseite</a></p>
@@ -185,12 +188,12 @@
 
 				<h5>Haftungsausschluss (Disclaimer)</h5>
 
-				<p>Dies ist experimentelle Software. Benutzung auf eigene Gefahr. Das sidux Projekt, seine Entwickler und Team-Mitglieder (alle repr&#228;sentiert von der sidux Foundation, Inc.) k&#246;nnen unter keinen Umst&#228;nden wegen Besch&#228;digung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Sch&#228;den des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder weiter verwenden noch verteilen.</p>
+				<p>Dies ist experimentelle Software. Benutzung auf eigene Gefahr. Das sidux-Projekt, seine Entwickler und Team-Mitglieder (alle repr&#228;sentiert von der sidux Foundation, Inc.) k&#246;nnen unter keinen Umst&#228;nden wegen Besch&#228;digung von Hardware oder Software, verlorener Daten oder anderer direkter oder indirekter Sch&#228;den des Nutzers durch Nutzung dieser Software zur Rechenschaft gezogen werden. Wer diesen Bedingungen nicht zustimmt, darf diese Software weder weiter verwenden noch verteilen.</p>
 
 
 
 	</div>
-			<div id="rev">Content last revised 02/05/2007 1100 UTC</div>
+			<div id="rev">Content last revised 13/05/2007 1100 UTC</div>
 </div>
 </body>
 </html>

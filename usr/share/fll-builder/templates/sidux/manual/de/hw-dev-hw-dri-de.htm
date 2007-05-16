@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual tartaros live cd 0.5-2007-05-10 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 10/05/2007 1700rs AEST 10/05/2007 0700hrs UTC -->
+<!--Welcome to the Official sidux-manual 0.10-2007-05-16 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -26,6 +26,7 @@
 			<ul class="sub-menu" id="sm1">
 				<li><a href="welcome-de.htm#welcome-gen">Offizielles Handbuch</a></li>
 				<li><a href="welcome-de.htm#how-to">Tipps zum Handbuch</a></li>
+				<li><a href="welcome-de.htm#table-contents">Index</a></li>
 				<li><a href="help-de.htm#help-gen">Wo es Hilfe gibt</a></li>
 				<li><a href="credits-de.htm#cred-team">Danksagung</a></li>
 			</ul>
@@ -69,6 +70,7 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
 				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
+				<li><a href="part-uuid-de.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
 				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
 				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
@@ -467,7 +469,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 </pre>
 			<ul>
 				<li>
-					ATI-Radeon Grafikkarten: 3D-Beschleunigung f&#252;r &#228;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx-Karten ben&#246;tigen unfreie Treiber um 3D-beschleunigt zu funktionieren. <span class="highlight-1">Der unfreie Treiber kann mit dem sidux Skript <a href="../de/hw-dev-hw-dri-de.htm#ati-3d">get-sidux-binary-gfx</a> installiert werden.</span>
+					ATI Radeon: 3D-Beschleunigung für ältere Karten bis r35x sollte funktionieren. Neuere Grafikkarten X1xxx von Radeon benötigen unfreie Treiber für beschleunigte Performanz, die jedoch noch nicht mit X.org 7.2 kompatibel sind.<br /><br />
 				</li>
 				<li>
 					Atheros/ "madwifi" wlan: In der Konsole:
@@ -482,10 +484,7 @@ apt-get install atmel-firmware
 </pre>
 				</li>
 				<li>
-					AVM ISDN/ ADSL PCI/ USB Karten: AVMs Closed-Source-Treiber sind zu dem Kernel 2.6.19.x derzeit nicht kompatibel. Bitte den Kernel 2.6.18.x herunterladen (<a href="http://sidux.net/files/kernel/">http://sidux.net/files/kernel</a>) und in der Konsole den Treiber in der Konsole installieren:
-<pre>
-m-a a-i avm
-</pre>
+					AVM-Karten (ISDN/ ADSL PCI/ USB): Die nicht offenen Treiber von AVM sind noch nicht kompatibel mit Kernel 2.6.21.<br /><br />
 				</li>
 				<li>
 					Broadcom/bcm43xx wlan: In der Konsole:
@@ -494,46 +493,63 @@ apt-get install bcm43xx-fwcutter
 </pre>
 				</li>
 				<li>
-					Eagle USB ADSL modem: Die Firmware gibt es bei <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und wird gespeichert unter: <span class="highlight-3">/lib/firmware/</span>
+					Eagle USB ADSL modem: Die Firmware gibt es bei <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und wird gespeichert unter: <span class="highlight-3">/lib/firmware/</span><br /><br />
 				</li>
 				<li>
-					DVB Firmware f&#252;r diverse DVB-TV-Karten (die meisten einfacheren Karten ben&#246;tigen das nicht). Die ben&#246;tigte Firmware (<span class="highlight-3">dmesg</span> ansehen) bei <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+					DVB Firmware f&#252;r diverse DVB-TV-Karten (die meisten einfacheren Karten ben&#246;tigen das nicht). Die ben&#246;tigte Firmware (<span class="highlight-3">dmesg</span> ansehen) bei <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.<br /><br />
 				</li>
 				<li>
-					hostap basierendes 11-MBit/s.WLAN mit ladbarer Firmware (z. B. D-Link DWL-520 rev. E1 und andere): <a href="http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html">http://www.oakcourt.dyndns.org/~andrew/dwl520e1.html</a>
-				</li>
-				<li>
-					Intel ipw2100, 11 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2100.sf.net/">http://ipw2100.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
-				</li>
-				<li>
-					Intel ipw2200, 54 MBit/s WLAN: Firmware herunterladen von <a href="http://ipw2200.sf.net/">http://ipw2200.sf.net</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
-				</li>
-				<li>
-					Intel ipw3945, 54 Mbit/s WLAN:
+					Intel ipw2100, 11 MBit/s wlan: 
 <pre>
-apt-get install ipw3945d firmware-ipw3945
+apt-get install ipw2100-firmware
 </pre>
 				</li>
 				<li>
-					Intersil prism54, 54-MBit/s-WLAN: Firmware herunterladen von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+					Intel ipw2200, 54 MBit/s wlan: 
+<pre>
+apt-get install ipw2200-firmware
+</pre>
 				</li>
 				<li>
-					nVidia Grafikkarten: 3D-Beschleunigung ist bisher mit den freien Treibern nicht m&#246;glich. Unter Verwendung von <a href="../de/hw-dev-hw-dri-de.htm#nvidia-3d">get-sidux-binary-gfx</a> lassen sich die unfreien Treiber jedoch nachtr&#228;glich installieren.
+				Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:
+<pre>
+apt-get install iwlwifi-ucode
+</pre>
+			Die alten unfreien Treiber können aktiviert werden. Falls iwlwifi Probleme bereitet:
+<pre>
+apt-get update
+apt-get install ipw3945d firmware-ipw3945
+update-rc.d ipw3945d start 39 S . start 36 0 6
+LANG= m-a a-i --text-mode ipw3945-source
+echo "blacklist iwlwifi" > /etc/modprobe.d/mac80211
+</pre>
 				</li>
 				<li>
-					RaLink rt61 54-MBit/s-WLAN: Firmware von <a href="http://www.ralinktech.com/ralink/Home/Support/Linux.html">http://www.ralinktech.com/ralink/Home/Support/Linux.html</a> herunterladen.
+					Intersil prism54, 54-MBit/s-WLAN: Firmware herunterladen von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und unter <span class="highlight-3">/lib/firmware/</span> speichern.<br /><br />
 				</li>
 				<li>
-					Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) WLAN: Firmware bei <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+					nVidia Grafikkarten: 3D-Beschleunigung ist bisher mit den freien Treibern nicht m&#246;glich. Unter Verwendung von <a href="../de/hw-dev-hw-dri-de.htm#nvidia-3d">get-sidux-binary-gfx</a> lassen sich die unfreien Treiber jedoch nachtr&#228;glich installieren.<br /><br />
 				</li>
 				<li>
-					ZyDAS zd1201 11 MBit/s-WLAN:
+					RaLink rt61 54-MBit/s-WLAN: 
+<pre>
+apt-get install rt61-fwcutter
+</pre>
+				</li>
+				<li>
+					Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) WLAN: Firmware bei <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.<br /><br />
+				</li>
+				<li>
+					ZyDAS zd1201 11 MBit/s wlan:
 <pre>
 apt-get install zd1201-firmware
 </pre>
 				</li>
 				<li>
-					ZyDAS zd1211 54 MBit/s WLAN: Firmware von <a href="http://sourceforge.net/project/showfiles.php?group_id=129083">http://sourceforge.net/project/showfiles.php?group_id=129083</a> herunterladen und unter <span class="highlight-3">/lib/firmware/</span> speichern.
+					ZyDAS zd1211 54 MBit/s wlan:
+<pre>
+apt-get install zd1211-firmware
+</pre>
 				</li>
 			</ul>
 
@@ -547,17 +563,16 @@ apt-get install zd1201-firmware
 		<p>In eine Konsole das folgende eingeben: <i>Siehe <a href="part-cfdisk-de.htm" >Partitionieren der Festplatte</a>, um Benennungskonventionen der Festplatte in Linux nachzulesen.</i></p>
 
 <pre>sidux@9[sidux]$ su
-<!--root@0[sidux]# fix-unionfs -->
 root@0[sidux]# apt-get update &amp;&amp; apt-get install ntfs-3g
 root@0[sidux]# umount /media/xdxx
 root@0[sidux]# mount -t ntfs-3g /dev/disk/by-uuid/xxyyzz[etc] /media/xdxx
 Zum Verlassen der Konsole gibt man nur ein: exit
 </pre>
 
-		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Und noch einmal unsere Warnung: <i>Dieses Vorgehen ist f&#252;r Situationen gedacht, f&#252;r die es keine anderen L&#246;sungsm&#246;glichkeiten gibt. F&#252;r die t&#228;gliche Routinenutzung es nicht empfohlen!</i>!</p>
+		<p>Das NTFS-Volume sollte jetzt <b>mit Schreibzugriff</b> eingeh&#228;ngt sein und man sollte Daten darauf speichern k&#246;nnen. Und noch einmal unsere Warnung: <i>Dieses Vorgehen ist f&#252;r Situationen gedacht, f&#252;r die es keine anderen L&#246;sungsm&#246;glichkeiten gibt. F&#252;r die t&#228;gliche Routinenutzung es nicht empfohlen!</i></p>
 </div>
 		
-		<div id="rev">Page last revised UTC -8/04/2007 2200hrs UTC</div>
+		<div id="rev">Page last revised UTC 14/05/2007 1520hrs UTC</div>
 </div>
 </div>
 </body>
