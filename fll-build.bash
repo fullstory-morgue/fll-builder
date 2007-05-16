@@ -477,6 +477,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [[ $(md5sum ${FLL_BUILD_CHROOT}/var/lib/dpkg/info/cdebootstrap-helper-diverts.postrm | awk '{ print $1 }') = 16ba33d5c6e434e4167a0a5de35446de ]]; then
 		sed -i "s/\(dpkg-divert\).*/\1\ \\-\\-remove\ \\-\\-rename\ \\-\\-package\ cdebootstrap-helper-diverts\ \\-\\-divert\ \$i\\.REAL\ \$i/" \
 			"${FLL_BUILD_CHROOT}/var/lib/dpkg/info/cdebootstrap-helper-diverts.postrm"
+	else
+		for i in $((seq 1 25)); do
+			echo "WARNING: cdebootstrap-helper-diverts.postrm has changed, check if #398844 is still broken!"
+		done
 	fi
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	

@@ -60,5 +60,4 @@ FLL_PACKAGES=(
 	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
-	scribus-ng
 )

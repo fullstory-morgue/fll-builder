@@ -3,6 +3,7 @@ FLL_PACKAGES+=(
 	cdebootstrap
 	cdrdao
 	dvd+rw-tools
+	dvb-utils
 	dosfstools
 	fuse-utils
 	genisoimage
@@ -29,3 +30,4 @@ FLL_PACKAGES+=(
 	wodim
 	zip
 )
+

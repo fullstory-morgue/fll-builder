@@ -2,7 +2,11 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
 
   * NOT RELEASED YET
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 14 May 2007 15:31:26 +0200
+  [ Stefan Lippers-Hollmann ]
+  * add dvb-utils to utils-extra.
+  * remove scribus-ng from kde-full, we need to save 12 MB.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 16 May 2007 02:04:46 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
