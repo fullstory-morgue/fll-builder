@@ -13,6 +13,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	gdm
+	gdm-themes-sidux
 	gnome
 	gnome-commander
 	gnome-applets
@@ -37,6 +38,7 @@ FLL_PACKAGES=(
 	gimp
 	gimp-print
 	xchat
+	xchat-systray
 	iceweasel
 	icedove
 	scribus-ng
