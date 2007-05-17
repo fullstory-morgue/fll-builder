@@ -13,9 +13,12 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.00.2007.05.16-live-cd-2007-02
 
   [ Andreas Weber ]
-  * gnome-support added for iceweasel and icedove 
+  * gnome-support added for iceweasel and icedove
 
- -- Andreas Weber <webera@anddesktop1>  Thu, 17 May 2007 10:25:00 +0200
+  [ Horst Tritremmel ]
+  * change the size of sidux-book.gif from 72x72 to 48x48 for gnome 
+
+ -- Horst Tritremmel <hjt@sidux.com>  Thu, 17 May 2007 13:37:53 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
