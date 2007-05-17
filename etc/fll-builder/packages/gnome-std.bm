@@ -40,7 +40,9 @@ FLL_PACKAGES=(
 	xchat
 	xchat-systray
 	iceweasel
+	iceweasel-gnome-support
 	icedove
+	icedove-gnome-support
 	scribus-ng
 	gaim
 	infobash
