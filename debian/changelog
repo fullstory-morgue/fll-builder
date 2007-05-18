@@ -14,6 +14,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
+  * Burning Applicaction and unzip added for gnome-std
 
   [ Horst Tritremmel ]
   * change the size of sidux-book.gif from 72x72 to 48x48 for gnome
@@ -21,7 +22,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   [ Kel Modderman ]
   * Put md5sums file on root of iso9660 filesystem.
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 18 May 2007 17:13:15 +1000
+ -- Andreas Weber <andreas@it-weber.com>  Fri, 18 May 2007 23:00:38 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 

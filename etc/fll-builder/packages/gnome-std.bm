@@ -54,4 +54,9 @@ FLL_PACKAGES=(
 	configure-isdn
 	epiphany-browser
 	epiphany-extensions
+	mpg123
+	vorbis-tools
+	gnomebaker
+	bluefish
+	unzip
 )
