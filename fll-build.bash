@@ -155,8 +155,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhno:pP:S \
-	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,source-release,uid: \
+	--options c:Cdhno:pP:St: \
+	--long configfile:,chroot-only,copyright,debug,help,output,package-profiledir,preserve,source-release,template-dir:,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
