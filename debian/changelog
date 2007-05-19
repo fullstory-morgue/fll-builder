@@ -22,7 +22,11 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   [ Kel Modderman ]
   * Put md5sums file on root of iso9660 filesystem.
 
- -- Andreas Weber <andreas@it-weber.com>  Fri, 18 May 2007 23:00:38 +0200
+  [ Bernard Gray ]
+  * add -t|--template-dir option to man page
+  * accept -t|--template-dir FLL_BUILD_TEMPLATES override for fll_builder 
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 16:50:09 +1000
 
 fll-builder (1.0.8) unstable; urgency=low
 

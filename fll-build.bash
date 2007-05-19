@@ -76,6 +76,10 @@ Options:
 
   -S|--source-release		Fetch all source code for release
 
+
+  -t|--template-dir		Path to alternate Live CD root template dir
+
+
 EOF
 }
 
@@ -195,6 +199,9 @@ while true; do
 			;;
 		-S|--source-release)
 			((FLL_SOURCE_RELEASE++))
+			;;
+		-t|--template-dir)
+			FLL_BUILD_TEMPLATES=$1
 			;;
 		--uid)
 			# this need not be a documented feature
