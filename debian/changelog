@@ -26,9 +26,10 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * add -t|--template-dir option to man page
   * accept -t|--template-dir FLL_BUILD_TEMPLATES override for fll_builder
   * forgot to add the t: template-dir: bits
-  * --output requires an argument 
+  * --output requires an argument
+  * fix formatting and add shift for the -t case 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 16:57:31 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 19 May 2007 17:00:04 +1000
 
 fll-builder (1.0.8) unstable; urgency=low
 
