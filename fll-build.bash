@@ -685,7 +685,7 @@ EOF
 				-o -name 'iso9660_stage1_5' \
 				-o -name 'stage2_eltorito' \
 			\) \
-			-printf '%P\n' | sort | xargs md5sum -b | tee md5sums
+			-printf '%P\n' | xargs md5sum -b | sort -k 2 --ignore-case --output=md5sums
 	popd >/dev/null
 
 	# create iso sortlist
