@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.10-2007-05-16 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.04-2007-05-20 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -137,6 +137,7 @@
 			<ul class="sub-menu" id="sm11">
 				<li><a href="sys-admin-apt-de.htm#apt-cook">APT-Kochbuch, sources.list</a></li>
 				<li><a href="sys-admin-meta-de.htm#meta-pack">Meta-Pakete installieren</a></li>
+				<li><a href="sys-admin-meta-de.htm#meta-proxy">Meta installieren und Proxies</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-install">Neue Pakete installieren</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-delete">Pakete l&#246;schen</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-upgrade">Upgrade eines installierten Systems</a></li>
@@ -175,17 +176,40 @@
 				Fluxbox (Desktop-Umgebung)<br />
 				fvwm-crystal (Desktop-Umgebung)</p>
 
-				<p>Zur Beachtung: Nach Beendigung der Metapaket-Installationsroutine kommt folgende Meldung:</p>
+				<p>Zu Beachten: Nach Beendigung der Metapaket-Installationsroutine kommt folgende Meldung:</p>
 <pre>
 paste your code here: (not necessary for normal install, only for preconfig)
 </pre>
 				<p>Man muss nur die <span class="highlight-3">Entertaste</span> dr&#252;cken.</p>
 
-				<p>Diese Liste im Handbuch wird von Zeit zu Zeit aktualisiert. Um den aktuellen Stand abzufragen, schaut man am besten im Menupunkt f&#252;r die Metapaket-Installationsroutine im sidux-Men&#252;. Obigeliste spiegelt den Stand von 07-03-07 UTC 0600hrs.</p>
+				<p>Diese Liste im Handbuch wird von Zeit zu Zeit aktualisiert. Um den aktuellen Stand abzufragen, schaut man am besten im Menupunkt f&#252;r die Metapaket-Installationsroutine im sidux-Men&#252;. Obige Liste spiegelt den Stand von 07-03-07</p>
+
+	</div>
+	<div class="divider" id="meta-proxy">
+				<h2>Meta-Installer mit Proxies benutzen</h2>
+								<p>Der Meta Installer muss als root laufen. Wenn die Einstellungen nicht in der apt.conf stehen k&#246;nnen sie nicht gelesen werden. Es gubt zwei Methoden hier einen Proxy zu verwenden. <span class="highlight-3">Methode 1 ist besser, da sie eine permanente &Auml;nderung bewirkt:</span></p>
+
+								<h4>Methode 1</h4>
+								<p>Definiere den Proxy in der apt.conf. Dazu editierst du als root mit z.B. kwrite  <span class="highlight-3">/etc/apt/apt.conf </span>und fuegst folgendes hinzu:</p>
+<pre>
+Acquire{
+HTTP::proxy "http://192.168.1.1:3128";
+FTP::proxy "http://192.168.1.1:3128";
+}
+</pre>
+
+								<h4>Methode 2</h4>
+								<p>&Ouml;ffne einen Terminal und werde mit <span class="highlight-3">sux</span> root. Jetzt aenderst du die Umgebungsvariablen http_proxy and ftp_proxy. Danach benutzt der Meta Installer diese Proxies. <span class="highlight-3">Das muss man nach jedem Systemneustart wiederholen, wenn man den Meta Installer wieder benutzen will. :</span></p>
+
+<pre>
+export http:proxy=http://192.168.1.1:3128"
+export ftp_proxy="ftp://192.168.1.1:3128/"
+</pre>
+
 
 
 	</div>
-			<div id="rev">Content last revised 07/03/2007 0800 UTC</div>
+			<div id="rev">Content last revised 17/05/2007 1130 UTC</div>
 
 </div>
 </body>

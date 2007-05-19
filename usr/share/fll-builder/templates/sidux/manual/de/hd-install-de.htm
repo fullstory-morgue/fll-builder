@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.10-2007-05-16 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.04-2007-05-20 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -137,6 +137,7 @@
 			<ul class="sub-menu" id="sm11">
 				<li><a href="sys-admin-apt-de.htm#apt-cook">APT-Kochbuch, sources.list</a></li>
 				<li><a href="sys-admin-meta-de.htm#meta-pack">Meta-Pakete installieren</a></li>
+				<li><a href="sys-admin-meta-de.htm#meta-proxy">Meta installieren und Proxies</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-install">Neue Pakete installieren</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-delete">Pakete l&#246;schen</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-upgrade">Upgrade eines installierten Systems</a></li>
@@ -177,6 +178,11 @@
 		<p>Zuerst stellt man im BIOS die Bootreihenfolge auf CD-ROM um. Bei den meisten Computern kommt man durch Dr&#252;cken der 'Entf'-Taste w&#228;hrend des Bootvorgangs in das BIOS-Setup (bei einigen BIOS-Versionen kann man auch w&#228;hrend des Bootens das Startlaufwerk ausw&#228;hlen, beim AMI-BIOS z. B. mit F11 oder F8).</p>
 
 		<p>sidux startet jetzt in der Regel problemlos. Sollte das nicht der Fall sein, helfen Bootoptionen (Cheatcodes), die an den Bootmanager &#252;bergeben werden k&#246;nnen. Einige Bootparameter (z. B. f&#252;r die Bildschirmaufl&#246;sung oder Wahl der Sprache) k&#246;nnen sehr viel Konfigurationsarbeit sparen. Mit F4 l&#228;sst sich beispielsweise beim Booten der Live-CD die Sprache w&#228;hlen. <a href="cheatcodes-de.htm">Siehe auch Cheatcodes</a> und <a href="cheatcodes-vga-de.htm">VGA Aufl&#246;sungen</a></p>
+					<h6><span class="highlight-3">Anderssprachige Installationen</span></h6>
+					<p>1. Benutzen Sie im Live-CD grub F4, um eine andere Sprache ( z.B. fr, pl ,es) zu w&#228;hlen<br />
+					2. Starten Sie die Installation und installieren Sie zus&#228;tzliche Pakete Ihrer Wahl mit dem meta-installer (falls gew&#252;nscht)<br />
+					3. Neustart<br />
+					4. Entfernen Sie ungew&#252;nschte Sprachen, wenn Sie m&#246;chten.</p>
 
 		<p>Jetzt kann man erstmal &#252;berpr&#252;fen, ob die Hardware vollst&#228;ndig erkannt wurde. Das Netzwerk <a href="internet-connecting-de.htm">(Internet-Verbindung)</a> richtet man sehr komfortabel mit den Tools im sidux-Men&#252; ein. Informationen zu drahtlosen Netzwerk erh&#228;lt man unter <a href="internet-connecting-wpa-de.htm">WIFI-WLAN</a></p>
 
@@ -186,7 +192,7 @@
 
 		<p><b>1.</b> Das Installationsprogramm startet man bequem &#252;ber: Kmenu > sidux > SIDUX installer oder in einer Konsole mit</p>
 <pre>
-sudo install-gui
+su-me sidux-installer
 </pre>
 		<div class="screenshot"><img src="../lib/images-de/installer-de/installer1-de.png" alt="sidux-Installer" /></div>
 
@@ -244,7 +250,7 @@ cfdisk
 
 			
 	</div>
-			<div id="rev">Content last revised 30/04/2007 1904 UTC</div>
+	<div id="rev">Page  last revised UTC 19/05/2007 0900 UTC</div>
 </div>
 </div>
 </body>

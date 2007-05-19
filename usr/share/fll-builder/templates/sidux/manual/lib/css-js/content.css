@@ -1,5 +1,5 @@
 /*
-Last updated by bluewater 10/01/2007 1400hrs ADEST :: 10/01/2007 0300hrs UTC
+Last updated by bluewater  19/05/2007 1700hrs ADEST :: 19/05/2007 0700hrs UTC
 */
 
 body,html,object,div{
@@ -7,7 +7,7 @@ body,html,object,div{
 	padding:0;
 }
 body {
-	font:normal 14px "bitstream vera serif", times, "times new roman", serif;
+	font:normal 14px "dejavu serif", times, "times new roman", serif;
 	background:#EAEDF4;
 	color:#000611;
 }
@@ -46,7 +46,7 @@ li {
 }
 h1,h2,h3,h4,h5,h6 {
 	font-weight:bold;
-	font-family:"bitstream vera sans", arial,sans-serif;
+	font-family:"dejavu sans", arial,sans-serif;
 	margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
 	color:#040A2F;
 	margin-bottom:.1em;
@@ -92,9 +92,15 @@ img {
 }
 
  #rev {
-	font:italic 8px "bitstream vera serif", times, "times new roman", serif;
+	font:italic 8px "dejavu serif", times, "times new roman", serif;
 	margin-top:4em;
 	text-align:right;
+	color:#9893E8;/* light blueish */
+}
+#rev-f {
+	font:italic 8px "dejavu serif", times, "times new roman", serif;
+	margin-top:4em;
+	text-align:center;
 	color:#9893E8;/* light blueish */
 }
 
@@ -102,7 +108,7 @@ pre {
 	color:#000;
 	background:#ffffee;
 	border:1px solid #888;
-	font:normal 14px "Courier New", "Lucida Console", monospace;
+	font:normal 13px "dejavu", "Lucida Console", monospace;
 	width:95%;
 	margin:0 auto 1em auto;
 	padding:6px;
@@ -157,7 +163,7 @@ pre {
 
 #flags {
 	text-align:center;
-	margin: 5px 5 5px 5px;
+	margin: 5px 5px 5px 5px;
 	line-height:12px;
 	padding:0;
 }

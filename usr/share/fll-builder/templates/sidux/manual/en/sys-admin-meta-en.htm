@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 0.10-2007-05-16 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 15/05/2007 1700rs AEST 15/05/2007 0900hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.04-2007-05-20 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -137,6 +137,7 @@
 			<ul class="sub-menu" id="sm11">
 				<li><a href="sys-admin-apt-en.htm#apt-cook">APT-Guide Cookbook and Sources list</a></li>
 				<li><a href="sys-admin-meta-en.htm#meta-pack">Meta-Package Installer</a></li>
+				<li><a href="sys-admin-meta-en.htm#meta-proxy">Meta Installer and Proxies</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
@@ -181,11 +182,33 @@ paste your code here: (not necessary for normal install, only for preconfig)
 </pre>
 				<p>All you need to do is hit <span class="highlight-3">enter</span>.</p>
 
-				<p>This list is being updated from time to time (check the meta-installer in sidux menu, list is correct as at 07-03-07 UTC 0600hrs)</p>
+				<p>This list is being updated from time to time (check the meta-installer in sidux menu, list is correct as at 07-03-07 </p>
+	</div>
+	<div class="divider" id="meta-proxy">
+				<h2>Meta-Installer and Proxies</h2>
+								<p>install meta must run as root and if the settings are not in the apt.conf file they can not be read. There are 2 methods to enable the use of a proxy, and of the two,  <span class="highlight-3">Method 1 is better, as it is permanent:</span></p>
+
+								<h4>Method 1</h4>
+								<p>Define the proxy in the apt.conf file, edit as root with kwrite   <span class="highlight-3">/etc/apt/apt.conf </span>and add in the following:</p>
+<pre>
+Acquire{
+HTTP::proxy "http://192.168.1.1:3128";
+FTP::proxy "http://192.168.1.1:3128";
+}
+</pre>
+
+								<h4>Method 2</h4>
+								<p>Open a terminal use <span class="highlight-3">sux </span>to become root to set the http_proxy and ftp_proxy environment variables and then call the install meta. <span class="highlight-3">You will need to do this each time . you want to access the meta-installer:</span></p>
+
+<pre>
+export http:proxy=http://192.168.1.1:3128"
+export ftp_proxy="ftp://192.168.1.1:3128/"
+</pre>
+
 
 
 	</div>
-			<div id="rev">Content last revised 07/03/2007 0800 UTC</div>
+			<div id="rev">Content last revised 17/05/2007 0900 UTC</div>
 
 </div>
 </body>
