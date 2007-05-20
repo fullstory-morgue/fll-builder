@@ -17,12 +17,12 @@ FLL_PACKAGES=(
 	audacity
 	audacious
 	audacious-plugins
-	digikam
-	digikamimageplugins
+#	digikam	# XXX: currently (2007-05-20) broken in sid
+#	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
 	foobillard
 	frozen-bubble
 	gimp
-	gwenview
+#	gwenview	# XXX: currently (2007-05-20) broken in sid
 	iceape
 	icedove
 	iceweasel

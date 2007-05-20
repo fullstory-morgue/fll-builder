@@ -14,10 +14,10 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	amarok
 	ark
-	digikam
-	digikamimageplugins
+#	digikam	# XXX: currently (2007-05-20) broken in sid
+#	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
 	gimp
-	gwenview
+#	gwenview	# XXX: currently (2007-05-20) broken in sid
 	iceweasel
 	inkscape
 	k3b
@@ -42,7 +42,7 @@ FLL_PACKAGES=(
 	kghostview
 	kicker-applets
 	kiconedit
-	kipi-plugins
+#	kipi-plugins	# XXX: currently (2007-05-20) broken in sid
 	kmahjongg
 	konq-plugins
 	konversation

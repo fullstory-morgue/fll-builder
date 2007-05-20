@@ -8,6 +8,8 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * make a potentially fixed cdebootstrap-helper-diverts more obvious while
     building.
   * #398844 is fixed, remove the nasty hack around it.
+  * disable digikam, digikamimageplugins, gwenview and kipi-plugins for the
+    time being, as they're currently inconsistent in sid.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
@@ -30,7 +32,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.00.2007.05.16-live-cd-2007-02
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
 
- -- Bernard Gray <bernard.gray@gmail.com>  Sun, 20 May 2007 02:02:27 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 20 May 2007 02:37:53 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
