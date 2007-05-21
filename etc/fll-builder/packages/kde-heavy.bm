@@ -18,7 +18,6 @@ FLL_PACKAGES=(
 	audacious
 	audacious-plugins
 #	digikam	# XXX: currently (2007-05-20) broken in sid
-#	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
 	foobillard
 	frozen-bubble
 	gimp

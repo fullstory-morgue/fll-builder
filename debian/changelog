@@ -11,6 +11,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * disable digikam, digikamimageplugins, gwenview and kipi-plugins for the
     time being, as they're currently inconsistent in sid.
   * add gwenview and kipi-plugins again.
+  * digikamimageplugins have been merged into digikam itself.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
@@ -35,7 +36,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.00.2007.05.16-live-cd-2007-02
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 May 2007 01:15:04 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 May 2007 01:17:43 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 

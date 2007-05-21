@@ -14,7 +14,6 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	ark
 #	digikam	# XXX: currently (2007-05-20) broken in sid
-#	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
 	gwenview
 	k3b
 	kaffeine
