@@ -17,7 +17,7 @@ FLL_PACKAGES=(
 #	digikam	# XXX: currently (2007-05-20) broken in sid
 #	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
 	gimp
-#	gwenview	# XXX: currently (2007-05-20) broken in sid
+	gwenview
 	iceweasel
 	inkscape
 	k3b
@@ -42,7 +42,7 @@ FLL_PACKAGES=(
 	kghostview
 	kicker-applets
 	kiconedit
-#	kipi-plugins	# XXX: currently (2007-05-20) broken in sid
+	kipi-plugins
 	kmahjongg
 	konq-plugins
 	konversation

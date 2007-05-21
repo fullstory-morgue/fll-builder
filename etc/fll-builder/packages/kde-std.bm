@@ -15,7 +15,7 @@ FLL_PACKAGES=(
 	ark
 #	digikam	# XXX: currently (2007-05-20) broken in sid
 #	digikamimageplugins	# XXX: currently (2007-05-20) broken in sid
-#	gwenview	# XXX: currently (2007-05-20) broken in sid
+	gwenview
 	k3b
 	kaffeine
 	kdeadmin
@@ -28,7 +28,7 @@ FLL_PACKAGES=(
 	kdeprint
 	kdeutils
 	kdm
-#	kipi-plugins	# XXX: currently (2007-05-20) broken in sid
+	kipi-plugins
 	koffice
 	konversation
 	kopete

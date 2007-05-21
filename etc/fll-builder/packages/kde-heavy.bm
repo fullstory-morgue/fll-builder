@@ -22,7 +22,7 @@ FLL_PACKAGES=(
 	foobillard
 	frozen-bubble
 	gimp
-#	gwenview	# XXX: currently (2007-05-20) broken in sid
+	gwenview
 	iceape
 	icedove
 	iceweasel
