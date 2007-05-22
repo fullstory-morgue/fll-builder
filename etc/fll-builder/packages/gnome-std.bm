@@ -34,10 +34,12 @@ FLL_PACKAGES=(
 	gnome-photo-printer
 	gnome-office
 	gnome-schedule
+	gnome-system-tools
 	gnome-icon-theme
 	gnome-themes
 	gnome-themes-extras
 	gnome-utils
+	gconf-editor
 	gimp
 	gimp-print
 	xchat

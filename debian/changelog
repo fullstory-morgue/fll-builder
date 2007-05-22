@@ -37,9 +37,10 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
 
   [ Andreas Weber ]
-  * Mail client fixed for gnome-std 
+  * Mail client fixed for gnome-std
+  * gnome-system-tools and gconf-editor added for gnome-std 
 
- -- Andreas Weber <andreas@it-weber.com>  Tue, 22 May 2007 18:32:34 +0200
+ -- Andreas Weber <andreas@it-weber.com>  Tue, 22 May 2007 22:11:50 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
