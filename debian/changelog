@@ -36,7 +36,10 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.00.2007.05.16-live-cd-2007-02
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 May 2007 01:17:43 +0200
+  [ Andreas Weber ]
+  * Mail client fixed for gnome-std 
+
+ -- Andreas Weber <andreas@it-weber.com>  Tue, 22 May 2007 18:32:34 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
