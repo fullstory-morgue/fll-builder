@@ -41,7 +41,10 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * Mail client fixed for gnome-std
   * gnome-system-tools and gconf-editor added for gnome-std
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 23 May 2007 17:13:18 +1000
+  [ Horst Tritremmel ]
+  * change the size of sidux-book.gif from 72x72 to 48x48 for gnome 
+
+ -- Horst Tritremmel <hjt@sidux.com>  Wed, 23 May 2007 09:30:02 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
