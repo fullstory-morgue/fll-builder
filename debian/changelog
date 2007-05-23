@@ -13,6 +13,8 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * add gwenview and kipi-plugins again.
   * digikamimageplugins have been merged into digikam itself.
   * add kde-ltag.bm, thanks to devil.
+  * fix --login shell invocation.
+  * specify /root/.bashrc to initialize the immutable login shells.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
@@ -44,7 +46,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * Mail client fixed for gnome-std
   * gnome-system-tools and gconf-editor added for gnome-std
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 23 May 2007 14:53:05 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 23 May 2007 18:35:49 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
