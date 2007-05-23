@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 01.04-2007-05-20 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.05-2007-05-22 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -140,6 +140,7 @@
 				<li><a href="sys-admin-meta-en.htm#meta-proxy">Meta Installer and Proxies</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-downgrade">Downgrading a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
@@ -159,41 +160,42 @@
 <!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="cd-content">
-		<h2 id="top-header">Contents of the Live CD</h2>
-				<p class="highlight-3">Due to the complexity of law, sidux will only provide dfsg-free software on the live-cd, <a href="hw-dev-hw-dri-en.htm#non-free">please check this link for additional information on non-free sources for firmware</a></p>
+			<h2 id="top-header">Contents of the Live CD</h2>
+							<p class="highlight-3">Due to the complexity of law, sidux will only provide dfsg-free software on the live-cd, <a href="hw-dev-hw-dri-en.htm#non-free">please check this link for additional information on non-free sources for firmware</a></p>
 
-				<p>The ISO is completely based on Debian Sid (up to date as of 2007-05-13) enriched and stabilized with sidux' own packages and scripts. <a href="http://www.kernel.org/"> It comes with kernel 2.6.21.1,</a> which is based on the most recent vanilla kernel together with sidux enhanced patches.</p>
+							<p>The ISO is completely based on Debian Sid (up to date as of 27/05/2007) enriched and stabilised with sidux' own packages and scripts. <a href="http://www.kernel.org/"> It comes with kernel 2.6.21.x,</a> which is based on the most recent vanilla kernel together with sidux enhanced patches.</p>
 
-				<p>ACPI and DMA are enabled by default (can be disabled with acpi=off and nodma respectively in grub bootline)</p>
+							<p>ACPI and DMA are enabled by default (can be disabled with acpi=off and nodma respectively in grub bootline)</p>
 
-				<p>i686 optimisation - not for use with older CPUs!</p>
+							<p>i686 optimisation - not for use with older CPUs!</p>
 
-				<p>192 MB RAM required, 256 MB RAM recommended</p>
+							<p>192 MB RAM required, 256 MB RAM recommended</p>
 
-				<h6>Applications and Tools</h6>
-    				<p>The sidux-CD holds a variety of different programs and tools that cover almost any need of a desktop-user in everyday life.</p>
+					<h6>Applications and Tools</h6>
+    							<p>The sidux-CD holds a variety of different programs and tools that cover almost any need of a desktop-user in everyday life.</p>
 
-    				<p><a href="http://www.kde.org/">KDE 3.5.6</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications</p>
+    							<p><a href="http://www.kde.org/">KDE 3.5.7</a> The graphical user-desktop that,  enables you at a click of a button, to access programs/applications</p>
+
+							<p>For the Internet surfing  <a href="http://www.konqueror.org/">Konqueror</a> one of the worlds smartest web browsers  with an extra kick: it has a file manager, FTP client and ssh -gui  data transfer built in (fish): <a href="ssh-en.htm#ssh-f">very rare in web browsing world, </a> and secondly <a href="http://www.mozilla.com/">iceweasel</a> as an alternative.</p>
+
+    							<p>For Networking and the Internet connecting there is <a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> along with <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a> and <a href=" internet-connecting-wpa-en.htm"> see our internal WIFI documentation.</a>  It now also includes driver support by mac80211 <a href="http://sidux.com/Article212.html"> details are on main sidux site </a>and <a href="hw-dev-hw-dri-en.htm#non-free">here</a> .</p>
+
+							<p>You wish to partition a hard drive, we have provided <a href="http://gparted.sourceforge.net/">GParted</a> and also <a href="part-cfdisk-en.htm">cfdisk</a> and gparted also now has an ntfs resize facility!</p>
 
 
-    				<p>For Networking and the Internet connecting there is<a href="http://ndiswrapper.sourceforge.net/"> ndiswrapper</a> along with <a href="http://hostap.epitest.fi/wpa_supplicant">wpa/wlan</a> and <a href=" internet-connecting-wpa-en.htm"> see our internal WIFI documentation.</a>  It now also includes driver support by mac80211 <a href="http://sidux.com/Article212.html"> details are on main sidux site </a>and <a href="hw-dev-hw-dri-en.htm#non-free">here</a> .</p>
+							<p>Diagnostic tools like <a href="http://www.memtest.org/">Memtest86+</a> -Advanced Memory Diagnostic Tool</p>
 
-				<p>You wish to partition a hard drive, we have provided <a href="http://gparted.sourceforge.net/">GParted</a> and also <a href="part-cfdisk-en.htm">cfdisk</a> and gparted also now has an ntfs resize facility!</p>
-
-
-				<p>Diagnostic tools like <a href="http://www.memtest.org/">Memtest86+</a> -Advanced Memory Diagnostic Tool</p>
-
-				<h6>Meta-Packages</h6>
-				<p><a href="sys-admin-meta-en.htm">Please refer to this page</a></p>
+					<h6>Meta-Packages</h6>
+							<p><a href="sys-admin-meta-en.htm">Please refer to this page</a></p>
 
 				<h6>Disclaimer</h6>
 
-				<p>This is experimental software. Use at your own risk. The sidux project, it's developers and team members (all represented by the sidux Foundation, Inc) cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software. If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.</p>
+							<p>This is experimental software. Use at your own risk. The sidux project, it's developers and team members (all represented by the sidux Foundation, Inc) cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software. If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.</p>
 
 
 
 	</div>
-			<div id="rev">Content last revised 15/05/2007 0900 UTC</div>
+			<div id="rev">Content last revised 21/05/2007 1300 UTC</div>
 
 </div>
 </body>

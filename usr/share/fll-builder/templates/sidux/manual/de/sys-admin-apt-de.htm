@@ -12,8 +12,8 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 01.04-2007-05-20 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.05-2007-05-22 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -140,6 +140,7 @@
 				<li><a href="sys-admin-meta-de.htm#meta-proxy">Meta installieren und Proxies</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-install">Neue Pakete installieren</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-delete">Pakete l&#246;schen</a></li>
+				<li><a href="sys-admin-apt-de.htm#apt-downgrade">Downgraden eines Pakets</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-upgrade">Upgrade eines installierten Systems</a></li>
 				<li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Upgrade durch die Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Upgrade des Kernels</a></li>
@@ -332,6 +333,24 @@ Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 </pre>
 
 		</div>
+	<div class="divider" id="apt-downgrade">
+						<h2>Downgraden eines Pakets</h2>
+								<p>Manchmal ist es notwenig, aufgrund eines gr&#246;&#223;eren Bugs innerhalb der neusten installierten Version eines Pakets, eine ältere Version des Pakets wieder einzuspielen. In den folgendes Schritten wird <span class="highlight-3">kmahjongg</span> als Beispiel benutzt:</p>
+
+							<ol>
+							<li><pre>Aktiviere/Entkommentiere die testing-Quellen in <span class="highlight-3">/etc/apt/sources.list </span><br />(Entferne das #), sodass dort steht <br />deb http://ftp.nl.debian.org/debian/ testing main contrib non-free</pre></li>
+							<li><pre>apt-get install -t testing kmahjongg</pre></li>
+							<li><pre>Setzte das neuinstallierte Paket auf "hold" mit:<br />echo kmahjongg hold|dpkg --set-selections</pre></li>
+							<li><pre>Kommentiere die testing-Quellen wieder in /etc/apt/sources.list </pre></li>
+							</ol>
+
+							<p>Wenn man wieder die neueste Versiondes Pakets bekommen m&#246;chte, f&#252;hrt man einfach folgendes aus:</p>
+<pre>
+echo kmahjongg install|dpkg --set-selections
+apt-get update
+apt-get install kmahjongg
+</pre>
+		</div>
 
 	<div class="divider" id="apt-upgrade">
 		<h2>Aktualisierung des installierten Systems:</h2>
@@ -469,7 +488,7 @@ when it is not in use, in keeping with the philosophy that unattended
 monitors should always be doing something interesting, just like they do
 in the movies.</pre>
 
-<pre>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</pre>
+							<p>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</p>
 
 <pre>Tag: interface::x11, uitoolkit::gtk, x11::screensaver
 Task: gnome-desktop
@@ -491,7 +510,7 @@ MD5sum: 4c4d20ef312359cf836f3164a6eac293</pre>
 <pre>Description: Automatic screensaver for X
 The purpose of xscreensaver is to display pretty pictures on your screen when it is not in use, in keeping with the philosophy that unattended monitors should always be doing something interesting, just like they do in the movies.</pre>
 
-<pre>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</pre>
+								<p>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</p>
 
 <pre>Tag: interface::x11, uitoolkit::gtk, x11::screensaver
 Task: gnome-desktop</pre>
@@ -503,6 +522,6 @@ Task: gnome-desktop</pre>
 	</div>
 
 
-	<div id="rev">Content last revised UTC 11/01/2007 0200hrs UTC </div>
+	<div id="rev">Content last revised UTC 22/05/2007 1530hrs UTC </div>
 </body>
 </html>

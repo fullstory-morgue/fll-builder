@@ -12,8 +12,8 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 01.04-2007-05-20 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.05-2007-05-22 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -140,6 +140,7 @@
 				<li><a href="sys-admin-meta-de.htm#meta-proxy">Meta installieren und Proxies</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-install">Neue Pakete installieren</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-delete">Pakete l&#246;schen</a></li>
+				<li><a href="sys-admin-apt-de.htm#apt-downgrade">Downgraden eines Pakets</a></li>
 				<li><a href="sys-admin-apt-de.htm#apt-upgrade">Upgrade eines installierten Systems</a></li>
 				<li><a href="sys-admin-upgrade-de.htm#live-cd-upgrade">Upgrade durch die Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-de.htm#kern-upgrade">Upgrade des Kernels</a></li>
@@ -159,16 +160,16 @@
 <!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="uuid">
-			<h2 id="top-header">Re-building fstab</h2>
-					<p>Should  you change the partition layout on a installed system, then you will need to re-create the fstab, and this can be done automatically by running the following in a konsole as root:</p>
+			<h2 id="top-header">Die Wiederherstellung der fstab</h2>
+					<p>Sollten man einmal die Partitionsbelegung auf einem installierten System ver&#228;ndern, muss die fstab wiederhergestellt werden. Dies kann automatisch erledigt werden, indem man als Root folgendes in der konsole ausf&#252;hrt:</p>
 <pre>
 rebuildfstab -Uawm 
 </pre>
-					<p>You may need to reboot for it to be come effective.</p>
-					<p>To see other options:</p>
+					<p>Nun sollte neugestartet werden, um die &#196;nderungen zu &#252;bernehmen.</p>
+					<p>Um andere Optionen zu sehen:</p>
 <pre>
 man rebuildfstab
-or
+oder
 rebuildfstab -h
 </pre>
 
@@ -287,7 +288,7 @@ kernel /boot/vmlinuz26 root=/dev/disk/by-uuid/2d781b26-0285-421a-b9d0-d4a0d3b556
 				<p>Mehr &#252;ber Labels findet man auf <a href="http://www.lissot.net/partition/ext2fs/labels.html">lissot.net</a> </p>
 
 	</div>
-			<div id="rev">Content last revised UTC 24/02/2007 1500hrs</div>
+			<div id="rev">Content last revised UTC 22/05/2007 1300hrs</div>
 </div>
 </body>
 </html>

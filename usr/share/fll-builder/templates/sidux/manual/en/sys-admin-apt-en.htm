@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 01.04-2007-05-20 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 20/05/2007 0030rs AEST 19/05/2007 15300hrs UTC -->
+<!--Welcome to the Official sidux-manual 01.05-2007-05-22 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
 <img src="../lib//logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -140,6 +140,7 @@
 				<li><a href="sys-admin-meta-en.htm#meta-proxy">Meta Installer and Proxies</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-install">Installing a new package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-delete">Deleting a package</a></li>
+				<li><a href="sys-admin-apt-en.htm#apt-downgrade">Downgrading a package</a></li>
 				<li><a href="sys-admin-apt-en.htm#apt-upgrade">Upgrade an Installed System</a></li>
 				<li><a href="sys-admin-upgrade-en.htm#live-cd-upgrade">Upgrading by Live-CD</a></li>
 				<li><a href="sys-admin-kern-upg-en.htm#kern-upgrade">Upgrading the kernel</a></li>
@@ -308,6 +309,24 @@ Building dependency tree... Done
 gcc-4.0 is already the newest version.
 0 upgraded, 0 newly installed, 0 to remove and xxx not upgraded
 </pre>
+		</div>
+	<div class="divider" id="apt-downgrade">
+						<h2>Downgrading a package</h2>
+								<p>Sometimes it may be necessary to rollback to a previous version of a package, due to a major bug with the latest version you have just installed. The steps are using <span class="highlight-3">kmahjongg</span> as an example:</p>
+
+							<ol>
+							<li><pre>enable/uncomment testing sources in <span class="highlight-3">/etc/apt/sources.list </span><br />(delete the #) so that it reads <br />deb http://ftp.nl.debian.org/debian/ testing main contrib non-free</pre></li>
+							<li><pre>apt-get install -t testing kmahjongg</pre></li>
+							<li><pre>Put the newly installed package on hold with:<br />echo kmahjongg hold|dpkg --set-selections</pre></li>
+							<li><pre>comment the testing sources in /etc/apt/sources.list </pre></li>
+							</ol>
+
+							<p>When you do want to get the latest version of the package just do this:</p>
+<pre>
+echo kmahjongg install|dpkg --set-selections
+apt-get update
+apt-get install kmahjongg
+</pre>
 
 		</div>
 	<div class="divider" id="apt-upgrade">
@@ -448,7 +467,7 @@ when it is not in use, in keeping with the philosophy that unattended
 monitors should always be doing something interesting, just like they do
 in the movies.</pre>
 
-<pre>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</pre>
+							<p>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode, you just change some resource settings. Any program which can be invoked in such a way that it draws on the root window of the screen can now be used as a screensaver without modification. The programs that are being run as screensavers don't need to have any special knowledge about what it means to be a screensaver.</p>
 
 <pre>Tag: interface::x11, uitoolkit::gtk, x11::screensaver
 Task: gnome-desktop
@@ -470,11 +489,11 @@ MD5sum: 4c4d20ef312359cf836f3164a6eac293</pre>
 <pre>Description: Automatic screensaver for X
 The purpose of xscreensaver is to display pretty pictures on your screen when it is not in use, in keeping with the philosophy that unattended monitors should always be doing something interesting, just like they do in the movies.</pre>
 
-<pre>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with
+<p>The benefit that this program has over the combination of the xlock and xautolock programs is the ease with
  which new graphics hacks can be installed: you don't need to recompile this program to add a new display mode,
  you just change some resource settings. Any program which can be invoked in such a way that it draws on the root
  window of the screen can now be used as a screensaver without modification. The programs that are being run as
- screensavers don't need to have any special knowledge about what it means to be a screensaver.</pre>
+ screensavers don't need to have any special knowledge about what it means to be a screensaver.</p>
 
 <pre>Tag: interface::x11, uitoolkit::gtk, x11::screensaver
 Task: gnome-desktop</pre>
