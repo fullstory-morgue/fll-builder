@@ -26,6 +26,8 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
     case.
   * Allow DEBIAN_FRONTEND, DEBIAN_PRIORITY and DEBCONF_NOWARNINGS to be
     overriden.
+  * remove pwrbtn hack for now, it leads to an unclean shutdown on the live
+    CD, add it to the installer instead.
 
   [ Bernard Gray ]
   * add -t|--template-dir option to man page
@@ -41,10 +43,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * Mail client fixed for gnome-std
   * gnome-system-tools and gconf-editor added for gnome-std
 
-  [ Horst Tritremmel ]
-  * change the size of sidux-book.gif from 72x72 to 48x48 for gnome 
-
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 23 May 2007 09:30:02 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 23 May 2007 10:52:18 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 

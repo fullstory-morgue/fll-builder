@@ -578,11 +578,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 
-	# hack powersaved to act on powerbutton events
-	if exists_in_chroot /etc/powersave/events; then
-		sed -i 's/^\(EVENT_BUTTON_POWER=\).*/\1"wm_shutdown"/' "$FLL_BUILD_CHROOT"/etc/powersave/events
-	fi
-
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
