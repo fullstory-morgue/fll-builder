@@ -21,7 +21,7 @@ FLL_PACKAGES=(
 	gnome-btdownload
 	gnome-chess
 	gnome-find
-#	gnome-games
+	gnome-games
 	gnome-gpg
 	gnome-keyring
 	gnome-keyring-manager

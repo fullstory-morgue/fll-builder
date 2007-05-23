@@ -45,8 +45,9 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * Mail client fixed for gnome-std
   * gnome-system-tools and gconf-editor added for gnome-std
+  * gnome-games activated in gnome-std. Working again.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 23 May 2007 18:35:49 +0200
+ -- Andreas Weber <andreas@it-weber.com>  Wed, 23 May 2007 19:46:15 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
