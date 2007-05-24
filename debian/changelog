@@ -18,13 +18,20 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * strip --login from bash invocation, we do want to actually source the
     default rcfile and its environment.
   * livecd manual update to sidux-manual-01.06.2007.05.22-live-cd-2007-02.
+  * /etc/hwsetup is just supposed to be a file, not a directory.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
   * Burning Applicaction and unzip added for gnome-std
+  * Mail client fixed for gnome-std
+  * gnome-system-tools and gconf-editor added for gnome-std
+  * gnome-games activated in gnome-std. Working again.
+  * gaim replaced by pidgin
 
   [ Horst Tritremmel ]
   * change the size of sidux-book.gif from 72x72 to 48x48 for gnome
+  * gnome-games deactivated, broken again
+  * libgnome2-perl added for gnome-std
 
   [ Kel Modderman ]
   * Put md5sums file on root of iso9660 filesystem.
@@ -50,17 +57,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
   * livecd manual update to sidux-manual-01.05.2007.05.22-live-cd-2007-02
 
-  [ Andreas Weber ]
-  * Mail client fixed for gnome-std
-  * gnome-system-tools and gconf-editor added for gnome-std
-  * gnome-games activated in gnome-std. Working again.
-  * gaim replaced by pidgin
-
-  [ Horst Tritremmel ]
-  * gnome-games deactivated, broken again
-  * libgnome2-perl added for gnome-std
-
- -- Andreas Weber <webera@WFRKWEBERALIN>  Thu, 24 May 2007 20:50:52 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 24 May 2007 21:23:45 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
