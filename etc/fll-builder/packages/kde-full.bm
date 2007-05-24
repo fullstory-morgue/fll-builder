@@ -21,26 +21,34 @@ FLL_PACKAGES=(
 	kaffeine
 	kaddressbook
 	kaddressbook-plugins
+	kate
 	kate-plugins
+	kcalc
+	kcharselect
 	kbattleship
 	kdeaccessibility
 	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebluetooth
 	kdegraphics-kfile-plugins
+	kdelirc
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins
-	kdenetwork
+	kdenetwork-kfile-plugins
 	kdepim-kfile-plugins
 	kdepim-kio-plugins
 	kdepim-kresources
 	kdepim-wizards
 	kdeprint
-	kdeutils
+	kdf
+	kdict
+	kdnssd
 	kdm
 	kfax
 	kfaxview
+	kget
 	kghostview
+	kgpg
 	kicker-applets
 	kiconedit
 	kipi-plugins
@@ -58,13 +66,18 @@ FLL_PACKAGES=(
 	kpat
 	kpdf
 	kpowersave
+	kppp
+	krdc
 	kreversi
 	krusader
 	ksnapshot
 	ktorrent
 	kvpnc
+	kwalletmanager
+	kwifimanager
 	libqt-perl
 	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
+	superkaramba
 )
