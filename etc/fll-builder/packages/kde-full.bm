@@ -19,6 +19,7 @@ FLL_PACKAGES=(
 	iceweasel
 	k3b
 	kaffeine
+	kaddressbook
 	kaddressbook-plugins
 	kate-plugins
 	kbattleship
@@ -30,7 +31,10 @@ FLL_PACKAGES=(
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins
 	kdenetwork
-	kdepim
+	kdepim-kfile-plugins
+	kdepim-kio-plugins
+	kdepim-kresources
+	kdepim-wizards
 	kdeprint
 	kdeutils
 	kdm
@@ -41,10 +45,15 @@ FLL_PACKAGES=(
 	kiconedit
 	kipi-plugins
 	kmahjongg
+	kmail
+	kmailcvt
 	konq-plugins
+	kontact
 	konversation
 	kooka
 	kopete
+	korganizer
+	kpilot
 	knemo
 	kpat
 	kpdf
