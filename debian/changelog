@@ -17,6 +17,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * specify /root/.bashrc to initialize the immutable login shells.
   * strip --login from bash invocation, we do want to actually source the
     default rcfile and its environment.
+  * livecd manual update to sidux-manual-01.06.2007.05.22-live-cd-2007-02.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
@@ -53,7 +54,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * gnome-system-tools and gconf-editor added for gnome-std
   * gnome-games activated in gnome-std. Working again.
 
- -- Kel Modderman <kel@otaku42.de>  Thu, 24 May 2007 20:58:08 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 24 May 2007 14:31:31 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 

@@ -12,7 +12,7 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual 01.05-2007-05-22 de lang maintainer hubi-->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.06-2007-05-22 de lang maintainer hubi-->
 <!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
@@ -335,16 +335,18 @@ Installiere neue Version der Konfigurationsdatei /etc/debtags/sources.list ...
 		</div>
 	<div class="divider" id="apt-downgrade">
 						<h2>Downgraden eines Pakets</h2>
-								<p>Manchmal ist es notwenig, aufgrund eines gr&#246;&#223;eren Bugs innerhalb der neusten installierten Version eines Pakets, eine ältere Version des Pakets wieder einzuspielen. In den folgendes Schritten wird <span class="highlight-3">kmahjongg</span> als Beispiel benutzt:</p>
+								<p>Manchmal kann es notwendig sein, auf eine frühere Version eines Paketes zurückzugreifen, da die neueste Version einen gravierenden Fehler aufweist. Die Vorgangsweise wird am Paket <span class="highlight-3">kmahjongg</span> demonstriert:</p>
 
 							<ol>
-							<li><pre>Aktiviere/Entkommentiere die testing-Quellen in <span class="highlight-3">/etc/apt/sources.list </span><br />(Entferne das #), sodass dort steht <br />deb http://ftp.nl.debian.org/debian/ testing main contrib non-free</pre></li>
+							<li><pre>Aktivierung (Auskommentierung) von "testing" in <span class="highlight-3">/etc/apt/sources.list </span><br />(die Raute # zu Beginn der Zeile muss gelöscht werden), womit die betreffende Zeile so aussieht: <br />deb http://ftp.de.debian.org/debian/ testing main contrib non-free</pre></li>
+						 	<li><pre>apt-get update</pre></li>
 							<li><pre>apt-get install -t testing kmahjongg</pre></li>
-							<li><pre>Setzte das neuinstallierte Paket auf "hold" mit:<br />echo kmahjongg hold|dpkg --set-selections</pre></li>
-							<li><pre>Kommentiere die testing-Quellen wieder in /etc/apt/sources.list </pre></li>
+							<li><pre>Das neu installierte Paket darf nun keinem Upgrade unterzogen werden, man setzt es auf "hold":<br />echo kmahjongg hold|dpkg --set-selections</pre></li>
+							<li><pre>Nun wird testing in /etc/apt/sources.list wieder deaktiviert (Raute # am Beginn der betreffenden Zeile)</pre></li>
+							<li><pre>apt-get update</pre></li>
 							</ol>
 
-							<p>Wenn man wieder die neueste Versiondes Pakets bekommen m&#246;chte, f&#252;hrt man einfach folgendes aus:</p>
+							<p>Wenn ein neues, fehlerfreies Paket in sid eintrifft, kann man die neueste Version wieder installieren, wenn man den "hold"-Status beendet:</p>
 <pre>
 echo kmahjongg install|dpkg --set-selections
 apt-get update
