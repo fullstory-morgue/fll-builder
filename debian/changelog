@@ -36,6 +36,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * reinstate --login option to immutable bash shells spawned by our inittab
     hack. We just need to make sure we've exported the correct HOME variable
     for it to source the correct rcfiles.
+  * Protect the double dash long option during sed hack of inittab.
 
   [ Bernard Gray ]
   * add -t|--template-dir option to man page
@@ -52,7 +53,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * gnome-system-tools and gconf-editor added for gnome-std
   * gnome-games activated in gnome-std. Working again.
 
- -- Kel Modderman <kel@otaku42.de>  Thu, 24 May 2007 20:50:52 +1000
+ -- Kel Modderman <kel@otaku42.de>  Thu, 24 May 2007 20:58:08 +1000
 
 fll-builder (1.0.8) unstable; urgency=low
 

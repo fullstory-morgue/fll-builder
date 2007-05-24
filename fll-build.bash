@@ -465,6 +465,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# debian kernel, just apt-get it
 		chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
 			squashfs-modules-"$KVERS" unionfs-modules-"$KVERS"
+			# aufs-modules-"$KVERS"
 	fi
 
 	# grab kernel and initial ramdisk before other packages are installed
@@ -541,9 +542,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		- immutable bash login shells			#
 	#################################################################
 	sed -i	-e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash --login >/dev/tty1 2>\&1 </dev/tty1#' \
-		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash --login >/dev/tty\1 2>\&1 </dev/tty\1#' \
-		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash --login >/dev/tty\1 2>\&1 </dev/tty\1#' \
+		-e 's#^\(~~:S:wait:\).\+#\1/bin/bash \-\-login >/dev/tty1 2>\&1 </dev/tty1#' \
+		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/bin/bash \-\-login >/dev/tty\1 2>\&1 </dev/tty\1#' \
+		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/bin/bash \-\-login >/dev/tty\1 2>\&1 </dev/tty\1#' \
 			"$FLL_BUILD_CHROOT"/etc/inittab
 	
 	#################################################################
