@@ -33,6 +33,9 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
     overriden.
   * remove pwrbtn hack for now, it leads to an unclean shutdown on the live
     CD, add it to the installer instead.
+  * reinstate --login option to immutable bash shells spawned by our inittab
+    hack. We just need to make sure we've exported the correct HOME variable
+    for it to source the correct rcfiles.
 
   [ Bernard Gray ]
   * add -t|--template-dir option to man page
@@ -49,7 +52,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * gnome-system-tools and gconf-editor added for gnome-std
   * gnome-games activated in gnome-std. Working again.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 24 May 2007 04:39:42 +0200
+ -- Kel Modderman <kel@otaku42.de>  Thu, 24 May 2007 20:50:52 +1000
 
 fll-builder (1.0.8) unstable; urgency=low
 
