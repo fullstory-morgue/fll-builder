@@ -50,7 +50,6 @@ FLL_PACKAGES=(
 #	icedove-gnome-support
 	evolution
 	scribus-ng
-	gaim
 	infobash
 	configure-networkcard
 	configure-ndiswrapper
@@ -63,4 +62,9 @@ FLL_PACKAGES=(
 	bluefish
 	unzip
 	libgnome2-perl
+	openoffice.org-gnome
+	openoffice.org
+	pidgin
+	pidgin-data
+	pidgin-encryption
 )

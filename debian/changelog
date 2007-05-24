@@ -54,12 +54,13 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * Mail client fixed for gnome-std
   * gnome-system-tools and gconf-editor added for gnome-std
   * gnome-games activated in gnome-std. Working again.
+  * gaim replaced by pidgin
 
   [ Horst Tritremmel ]
   * gnome-games deactivated, broken again
   * libgnome2-perl added for gnome-std
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 25 May 2007 00:00:22 +1000
+ -- Andreas Weber <webera@WFRKWEBERALIN>  Thu, 24 May 2007 20:50:52 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
