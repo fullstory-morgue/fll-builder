@@ -12,6 +12,7 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
+	akregator
 	amarok
 	ark
 	gimp
