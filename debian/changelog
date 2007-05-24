@@ -38,6 +38,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
     hack. We just need to make sure we've exported the correct HOME variable
     for it to source the correct rcfiles.
   * Protect the double dash long option during sed hack of inittab.
+  * Add libqt-perl to "heavier" kde builds.
 
   [ Bernard Gray ]
   * add -t|--template-dir option to man page
@@ -58,7 +59,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * gnome-games deactivated, broken again
   * libgnome2-perl added for gnome-std
 
- -- Horst Tritremmel <hjt@sidux.com>  Thu, 24 May 2007 14:36:49 +0200
+ -- Kel Modderman <kel@otaku42.de>  Fri, 25 May 2007 00:00:22 +1000
 
 fll-builder (1.0.8) unstable; urgency=low
 

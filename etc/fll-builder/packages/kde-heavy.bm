@@ -39,6 +39,7 @@ FLL_PACKAGES=(
 	kpowersave
 	ktorrent
 	kvpnc
+	libqt-perl
 	nmapfe
 	myspell-en-us
 	openarena

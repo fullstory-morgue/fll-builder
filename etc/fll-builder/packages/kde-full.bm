@@ -56,6 +56,7 @@ FLL_PACKAGES=(
 	ksnapshot
 	ktorrent
 	kvpnc
+	libqt-perl
 	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
