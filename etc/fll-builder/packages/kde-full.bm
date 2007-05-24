@@ -14,11 +14,9 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	amarok
 	ark
-#	digikam	# XXX: currently (2007-05-20) broken in sid
 	gimp
 	gwenview
 	iceweasel
-	inkscape
 	k3b
 	kaffeine
 	kaddressbook-plugins
