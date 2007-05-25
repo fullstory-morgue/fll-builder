@@ -22,6 +22,7 @@ FLL_PACKAGES=(
 	kaffeine
 	kaddressbook
 	kaddressbook-plugins
+	karm
 	kate
 	kate-plugins
 	kcalc
@@ -41,6 +42,7 @@ FLL_PACKAGES=(
 	kdepim-kresources
 	kdepim-wizards
 	kdeprint
+	kdetv
 	kdf
 	kdict
 	kdnssd
