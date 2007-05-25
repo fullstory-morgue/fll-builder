@@ -17,7 +17,6 @@ f	./etc/timezone
 f	./etc/hwsetup
 f	./etc/ssh/ssh_host_*key*
 f	./etc/sysconfig/*
-f	./etc/udev/rules.d/*
 f	./etc/X11/xorg.conf
 f	./var/backups/*.gz
 f	./var/cache/apt/archives/*
