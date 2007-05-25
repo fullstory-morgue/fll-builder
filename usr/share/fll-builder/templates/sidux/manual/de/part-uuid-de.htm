@@ -12,8 +12,8 @@
 </head>
 <body id="welcome">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.06-2007-05-22 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 22/05/2007 1400rs AEST 22/05/2007 0400hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.08-2007-05-25 de lang maintainer hubi-->
+<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -70,7 +70,6 @@
 			<ul class="sub-menu" id="sm5">
 				<li><a href="part-gparted-de.htm#partition">mit GParted</a></li>
 				<li><a href="part-gparted-de.htm#ntfs">NTFS-Partitionen mit GParted &#228;ndern</a></li>
-				<li><a href="part-uuid-de.htm#uuid">Re-building fstab</a></li>
 				<li><a href="part-uuid-de.htm#uuid">UUID, Partitionsbezeichnung und fstab</a></li>
 				<li><a href="part-cfdisk-de.htm#partition">mit cfdisk</a></li>
 				<li><a href="part-cfdisk-de.htm#formating">Formatieren mit cfdisk</a></li>
@@ -160,20 +159,7 @@
 <!-- menu ends here --> </div>
 <div id="main-page">
 	<div class="divider" id="uuid">
-			<h2 id="top-header">Die Wiederherstellung der fstab</h2>
-					<p>Sollten man einmal die Partitionsbelegung auf einem installierten System ver&#228;ndern, muss die fstab wiederhergestellt werden. Dies kann automatisch erledigt werden, indem man als Root folgendes in der konsole ausf&#252;hrt:</p>
-<pre>
-rebuildfstab -Uawm 
-</pre>
-					<p>Nun sollte neugestartet werden, um die &#196;nderungen zu &#252;bernehmen.</p>
-					<p>Um andere Optionen zu sehen:</p>
-<pre>
-man rebuildfstab
-oder
-rebuildfstab -h
-</pre>
-
-			<h2>&#220;bersicht: UUID, Partitions-Label und fstab</h2>
+			<h2 id="top-header">&#220;bersicht: UUID, Partitions-Label und fstab</h2>
 				<p>Die dauerhafte Benennung (persistent naming) von Blockger&#228;ten wurde mit Einf&#252;hrung von udev erm&#246;glicht und hat einige Vorteile gegen&#252;ber der Bennenung auf Bus-Basis. Im folgenden nennen wir eine Kennzeichnung nach dieser Methode einen "dauerhaften Bezeichner".</p>
 
 				<p>Die Weiterentwicklung von udev und von Linux-Distributionen hat die Hardware-Erkennung verl&#228;sslicher gemacht, auch wenn Ver&#228;nderungen und neue Herausforderungen damit verbunden sind oder sein k&#246;nnen:<br /><br />

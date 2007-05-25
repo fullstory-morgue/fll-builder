@@ -19,6 +19,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
     default rcfile and its environment.
   * livecd manual update to sidux-manual-01.06.2007.05.22-live-cd-2007-02.
   * /etc/hwsetup is just supposed to be a file, not a directory.
+  * livecd manual update to sidux-manual-01.09.2007.05.25-live-cd-2007-02.
 
   [ Andreas Weber ]
   * gnome-support added for iceweasel and icedove
@@ -60,7 +61,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
   * livecd manual update to sidux-manual-01.05.2007.05.22-live-cd-2007-02
 
- -- Andreas Weber <webera@WFRKWEBERALIN>  Fri, 25 May 2007 10:59:55 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 25 May 2007 21:04:16 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
