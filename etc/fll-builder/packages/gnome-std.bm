@@ -67,4 +67,8 @@ FLL_PACKAGES=(
 	pidgin
 	pidgin-data
 	pidgin-encryption
+	totem
+	wireshark
+	netcat
+	synaptic
 )

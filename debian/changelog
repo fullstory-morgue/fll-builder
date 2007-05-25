@@ -27,6 +27,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * gnome-system-tools and gconf-editor added for gnome-std
   * gnome-games activated in gnome-std. Working again.
   * gaim replaced by pidgin
+  * synaptic added for gnome-std
 
   [ Horst Tritremmel ]
   * change the size of sidux-book.gif from 72x72 to 48x48 for gnome
@@ -59,7 +60,7 @@ fll-builder (1.0.9) UNRELEASED; urgency=low
   * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
   * livecd manual update to sidux-manual-01.05.2007.05.22-live-cd-2007-02
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 25 May 2007 12:22:58 +1000
+ -- Andreas Weber <webera@WFRKWEBERALIN>  Fri, 25 May 2007 10:59:55 +0200
 
 fll-builder (1.0.8) unstable; urgency=low
 
