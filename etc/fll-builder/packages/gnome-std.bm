@@ -21,7 +21,7 @@ FLL_PACKAGES=(
 	gnome-btdownload
 	gnome-chess
 	gnome-find
-#	gnome-games
+	gnome-games
 	gnome-gpg
 	gnome-keyring
 	gnome-keyring-manager
@@ -32,13 +32,14 @@ FLL_PACKAGES=(
 	gnome-nettool
 	gnome-osd
 	gnome-photo-printer
-	gnome-office
+#	gnome-office
 	gnome-schedule
 	gnome-system-tools
 	gnome-icon-theme
 	gnome-themes
 	gnome-themes-extras
 	gnome-utils
+	gnome-cups-manager
 	gconf-editor
 	gimp
 	gimp-print
@@ -64,11 +65,13 @@ FLL_PACKAGES=(
 	libgnome2-perl
 	openoffice.org-gnome
 	openoffice.org
-	pidgin
-	pidgin-data
-	pidgin-encryption
+#	pidgin
+#	pidgin-data
+#	pidgin-encryption
+	gaim
 	totem
 	wireshark
 	netcat
 	synaptic
+	etherape
 )
