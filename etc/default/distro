@@ -14,11 +14,6 @@ FLL_IMAGE_DIR="SIDUX"
 FLL_IMAGE_FILE="SIDUX"
 FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 
-# specifiy mount point for union filesystem
-FLL_UNION_MOUNTPOINT="/UNIONFS"
-# copy on write dir (delta of FLL_MOUNTPOINT and FLL_UNION_MOUNTPOINT)
-FLL_UNION_COWDIR="/COW"
-
 # specify the mountpoint for the compressed file system
 FLL_MOUNTPOINT="/SIDUX"
 
