@@ -1,6 +1,4 @@
-fll-builder (1.0.9) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.0.9) unstable; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * add dvb-utils to utils-extra.
