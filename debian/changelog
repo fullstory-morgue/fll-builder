@@ -2,11 +2,13 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
 
   [ Kel Modderman ]
   * Add yakuake to kde-full line up.
+  * Don't ship cpufreq-utils for now, it provides its own detection mechanism
+    now and could possibly conflict with our current detection.
 
   [ Bernard Gray ]
-  * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02 
+  * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 28 May 2007 15:05:58 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 28 May 2007 15:34:31 +1000
 
 fll-builder (1.0.9) unstable; urgency=low
 

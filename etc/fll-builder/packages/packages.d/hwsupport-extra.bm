@@ -1,7 +1,7 @@
 FLL_PACKAGES+=(
 	915resolution
 	alsa-utils
-	cpufrequtils
+#	cpufrequtils -> now provides cpufreq module detection. possible confliction
 	cupsys
 	cupsys-client
 	cupsys-bsd
