@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.08-2007-05-25 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -90,10 +90,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#mon-res">Screen Resolution and Monitors</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#non-free-3d">Binary, non-free drivers for: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv-ati">Free xorg drivers for nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
@@ -161,35 +159,26 @@
 	<div class="divider" id="kern-upgrade">
 			<h2 id="top-header">Installing new kernels</h2>
 
-			<p><a href="http://sidux.com/files/kernel/">The sidux kernels reside here</a> and are available in the following forms:</p>
+<pre>
+<a href="http://sidux.com/files/kernel/">The sidux kernels reside here</a> and are available in the following forms:
+</pre>
 			
 		<ul>
   			<li><b>up</b> - Kernel for the i686 Processor Family</li>
   			<li><b>smp</b> - Kernel for the i686 Processor Family with dual core or more CPUs</li>
   			<li><b>64-smp</b> - Kernel for the AMD64- Processor Family, when using 64 bit sidux </li>
 		</ul>
-			<p>Note down the kernel name you require for your processor (we call this archive kernel.zip, but its going to have a name like: kernel-2.6.20.4-slh-up-1.zip ), make a note of it then:</p>
+			<p>Note down the kernel name you require for your processor (we call this archive kernel.zip, but its going to have a name like: kernel-2.6.21.3-slh-up-2.zip ), make a note of it then:</p>
 
-				<h6>To install as user</h6>
+				<h5>Its 5 lines to do it manually in a konsole as user:</h5>
 <pre>
-Its 5 lines to do it manually in a konsole:
 mkdir /home/username/kernel-downloads/
 cd ~/kernel-downloads
-wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
-unzip kernel-2.6.20.4-slh-smp-1.zip -d kernel-2.6.20.4-rc1-slh-smp-1
-cd kernel-2.6.20.4-rc1-slh-smp-1
+wget -Nc http://sidux.com/files/kernel/kernel-2.6.21.3-slh-up-2.zip
+unzip kernel-2.6.21.3-slh-up-2.zip -d kernel-2.6.21.3-slh-up-2
+cd kernel-2.6.21.3-slh-up-2
 ./install-kernel-sidux.sh (it will ask for your root password)
 </pre>
-				<h6>To install as root</h6>
-<pre>
-sux
-cd /usr/src
-wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
-unzip kernel-2.6.20.4-slh-up-1.zip  -d kernel-current
-cd /usr/src/kernel-current
-sh install-kernel-sidux.sh
-</pre>
-			
 			<p>Now restart your computer. The new kernel will boot up by default. <span class="highlight-3">Should the new kernel give problems, you can reboot and choose an older kernel try this stage again</span></p>
 
 			<p class="highlight-4">IMPORTANT: if you need certain driver modules, e.g. for wlan,you have to install the proper .deb packages for them, e.g., if using madwifi, you have to install the .deb package for madwifi: # dpkg -i madwifi-modules*.deb</p>

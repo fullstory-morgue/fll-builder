@@ -12,8 +12,8 @@
 </head>
 <body id="hd">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.08-2007-05-25 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26  de lang maintainer hubi-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -90,10 +90,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free-3d">Binäre, non-free Trieber für: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#native-nv-ati">Freie xorg Treiber für nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
@@ -188,7 +186,7 @@
 <pre># cp /mnt/test/boot/vmlinuz /media/hda5/sidux/
 # cp /mnt/test/boot/miniroot.gz /media/hda5/sidux/</pre>
 
-		<p>Nun muss Grub noch angepasst werden. Dazu editieren wir die Datei <span class="highlight-3">/boot/grub/menu.lst</span> und f&#252;gen folgendes hinzu:</p>
+		<p>Nun muss Grub noch angepasst werden. Dazu editieren wir die Datei <span class="highlight-3">/boot/grub/menu.lst</span> und f&#252;gen folgendes hinzu: nach dem Eintrag <span class="highlight-3">### END DEBIAN AUTOMAGIC KERNELS LIST</span>: <span class="highlight-2">Bemerkung: keine "wildcards" in der Grubzeile für Dateinamem erlaubt! </span></p>
 
 <pre>### ISO boot
 title sidux 32bit from ISO

@@ -12,8 +12,8 @@
 </head>
 <body id="sys-admin">
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.08-2007-05-25 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26  de lang maintainer hubi-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -90,10 +90,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free-3d">Binäre, non-free Trieber für: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#native-nv-ati">Freie xorg Treiber für nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
@@ -161,33 +159,27 @@
 	<div class="divider" id="kern-upgrade">
 			<h2 id="top-header">Neue Kernel installieren</h2>
 
-			<p>Die sidux-Kernel sind <a href="http://sidux.com/files/kernel/">hier</a> zu finden und in folgenden Formaten kompiliert:</p>
+<pre>
+Die sidux-Kernel sind <a href="http://sidux.com/files/kernel/">hier</a> zu finden und in folgenden Formaten kompiliert:
+</pre>
 			
 		<ul>
   			<li><b>up</b> - Kernel f&#252;r i686-Prozessoren mit einem CPU-Kern</li>
   			<li><b>smp</b> - Kernel f&#252;r i686-Prozessoren mit zwei oder mehr CPU-Kernen</li>
   			<li><b>64-smp</b> - Kernel f&#252;r AMD64-Prozessoren, wenn sidux 64 bit verwendet wird </li>
 		</ul>
-			<p>Es ist hilfreich, sich vor Installation die Kernelversion, die ben&#246;tigt wird, zu notieren (im folgenden nennen wir das Archiv "kernel.zip", der wirkliche Name sieht aber zum Beispiel so aus: kernel-2.6.20.4-rc1-slh-smp-1.zip ). Der Kernel kann mit Hilfe der Konsole sowohl als normaler User wie auch als Root installiert werden:</p>
+			<p>Es ist hilfreich, sich vor Installation die Kernelversion, die ben&#246;tigt wird, zu notieren (im folgenden nennen wir das Archiv "kernel.zip", der wirkliche Name sieht aber zum Beispiel so aus: kernel-2.6.21.3-slh-up-2.zip  ). Der Kernel kann mit Hilfe der Konsole sowohl als normaler User wie auch als Root installiert werden:</p>
 
 				<h5>Beispiel einer Installation als User (in der Konsole)</h5>
 <pre>
 mkdir /home/username/kernel-downloads/
 cd ~/kernel-downloads
-wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
-unzip kernel-2.6.20.4-slh-up-1.zip -d kernel-2.6.20.4-slh-up-1
-cd kernel-2.6.20.4-slh-up-1
+wget -Nc http://sidux.com/files/kernel/kernel-2.6.21.3-slh-up-2.zip
+unzip kernel-2.6.21.3-slh-up-2.zip -d kernel-2.6.21.3-slh-up-2
+cd kernel-2.6.21.3-slh-up-2
 ./install-kernel-sidux.sh       # fragt nach dem Root-Passwort
 </pre>
-				<h5>Beispiel einer Installation als Root (in der Konsole)</h5>
-<pre>
-sux
-cd /usr/src
-wget -Nc http://sidux.com/files/kernel/kernel-2.6.20.4-slh-up-1.zip
-unzip kernel-2.6.20.4-slh-up-1.zip  -d kernel-current
-cd /usr/src/kernel-current
-sh install-kernel-sidux.sh
-</pre>
+
 			<p>Der Computer muss jetzt neu gestartet werden, und der neue Kernel wird automatisch ausgew&#228;hlt. <span class="highlight-3">Falls der neue Kernel Probleme bereitet, muss der Computer neu gestartet werden, und im Boot-Menu kann der alte funktionierende Kernel gew&#228;hlt werden.</span></p>
 
 			<p class="highlight-4">WICHTIG: wenn bestimmte Treiber-Module, zum Beispiel f&#252;r WLAN, ben&#246;tigt werden, m&#252;ssen diese via .deb-Pakete installiert werden, die sich im Ordner des entpackten kernel.zip befinden. Die madwifi Treiber-Module werden als Root folgenderma&#223;en installiert:</p>

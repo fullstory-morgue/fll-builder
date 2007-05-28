@@ -12,8 +12,8 @@
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.09-2007-05-25 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -90,10 +90,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#mon-res">Screen Resolution and Monitors</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#non-free-3d">Binary, non-free drivers for: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv-ati">Free xorg drivers for nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>
@@ -158,10 +156,10 @@
 	</ul>
 <!-- menu ends here --> </div>
 <div id="main-page">
-	<div class="divider" id="nvidia-3d">
-		<h2 id="top-header">nVidia 3d Drivers</h2>
+	<div class="divider" id="non-free-3d">
+		<h2 id="top-header">Binary, non-free drivers for: Nvidia / ATI</h2>
 
-			<p>There are 3 methods to install 3d nVidia drivers into your system</p>
+			<p>There are 4 methods to install 3d  drivers into your system</p>
 			<ol>
 				<li>
 					<h3>install-binary-gfx</h3>
@@ -179,7 +177,7 @@ install-binary-gfx -a (to build sid source)
 <pre>
  Usage: ./install-binary-gfx [options]
 -a | --auto            Automatic mode
--b | --build           MOD Build only (nvidia|nvidia-legacy|fglrx)
+-b | --build           MOD Build only (nvidia|nvidia-legacy|ati|ati-legacy|fglrx)
 -d | --detect          Detect Card only
 -u | --update          Update Script
 -v | --verbose         Verbose
@@ -188,6 +186,7 @@ install-binary-gfx -a (to build sid source)
 <pre>
 install-binary-gfx -a (This will detect you Card and install the sid Drivers automatically.)
 install-binary-gfx -b nvidia (This will just build the nvidia-module....deb in /usr/src. The same works with fglrx and nvidia-legacy.)
+install-binary-gfx -b ati (This will just build the ati-module....deb in /usr/src. The same works with fglrx and ati-legacy.)
 install-binary-gfx -d (This will detect your Card and just print out the Information.)
 install-binary-gfx -u (This will update this Script. )
 </pre>
@@ -200,37 +199,46 @@ install-binary-gfx -u (This will update this Script. )
 					<h3>sgfxi / du-fixes-h2.sh</h3>
 
 <pre>
-cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
-chmod +x sgfxi
+apt-get update
+apt-get install sidux-scripts
+sgfxi
 </pre>
 					<p>sgfxi currently supports ATI fglrx and Nvidia drivers. It also supports converting from or to xorg free drivers like ati, intel, or nv. du-fixes-h2.sh uses sgfxi as its graphics driver installer engine, but simply adds some option support for users.</p>
 	
-					<p>See sgfxi -h for complete option list. Options will be updated as time goes on. When you use the -h option you will also see a list of all currently supported drivers, as well as a brief printout of your current system specifications, kernel, xorg version. The default driver is the driver that is installed if no arguments are used to override it. Unless your card is too old, and requires a legacy driver, in which case the script will it determine for you.</p>
+					<p> The default driver is the driver that is installed if no arguments are used to override it. Unless your card is too old, and requires a legacy driver, in which case the script will it determine for you.</p>
 	
 					<p>When you run the script, it will stop, and tell you what driver it is going to install. You can accept that, or exit and redo it with an override option if you want something different.</p>
 
-					<p><a href="http://techpatterns.com/forums/about736.html">OR::Get the !h2 d-u-fixes, then: to use to install 3d drivers only </a></p>
+					<p class="highlight-3"><b>You can also run the sgfxi installer using du-fixes-h2.sh, which uses sgfxi to install your graphics drivers. First, read the <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh homepage </a>for more information, then run this command:</b></p>
+
 <pre>
 du-fixes-h2.sh -kiwdt
 </pre>
-				</li>
-				<li>
-					<h3>Use Nvidia binary installer</h3>
+								<p>sgfxi-h: When you use the -h option you will also see a list of all currently supported drivers, as well as a brief printout of your current system specifications, kernel, xorg version. Here are some useful sgfxi options:</p>
 <pre>
-Download the binary driver installers directly from Nvidia
+-c Use composite mode (nVidia cards only).
+-d Remove IgnoreDisplayDevices, allow TV for example (nVidia cards only).
+-h View this help menu.
+-n Automatically installs correct native xorg nv, intel, or ati driver for your system.
+   Cleans up old binary driver stuff, updates xorg.conf with new driver information,
+   and cleans nvidia and fgrlx stuff out of xorg.conf
+-N Force install of specific xorg driver. 
+Syntax: sgfxi -N &lt;one of the drivers from the list, like -N radeon&gt;
+   Supported Xorg drivers: ati i128 i740 i810 i810-modesetting intel mga neomagic nv radeon sis tdfx vesa vga voodoo
+   Also configures xorg.conf as required. Full radeon xorg 3d configuration automatically.
+-o Override default: install a specific driver, this is an absolute override - syntax:
+   -o 9746 (for nVidia, do not use the 1.0- part) or: -o 8.32.5 (for fglrx)
+-r Remove mode lines from xorg.conf
+-t Enables dynamic twinview (nVidia only)
 </pre>
 				</li>
-
-			
 				<li>
-							<h3>For live-cd nvidia-install:</h3>
+							<h3>For live-cd Binary, non-free driver install:</h3>
 
 <pre>
 sudo sgfxi
 </pre>
-
 							<p>this gets the latest script, then:</p>
-
 <pre>
 ctrl+alt+f1
 </pre>
@@ -242,105 +250,65 @@ sgfxi
 sgfxi -h,
 to see options
 </pre>
-
 							<p>X is restarted after the driver installs</p>
 				</li>
-			</ol>
-	</div>
-	<div class="divider" id="ati-3d">
-			<h2>ATI 3d Drivers</h2>
-
-			<p>There are 3 methods to install 3d ATI drivers into your system</p>
-
-			<ol>
 				<li>
-					<h3>install-binary-gfx</h3>
-		
-					<p>The new script for installation of graphics drivers is called: <span class="highlight-1">install-binary-gfx</span>. To get that script run get-sidux-binary-gfx once, in konsole as root.</p>
+					<h5>Use Nvidia/ATI binary installer</h5>
 <pre>
-get-sidux-binary-gfx
-install-binary-gfx -a (to build sid source)
-</pre>
-					<p>It will choose the right driver for your card, build a deb, install it and it will automatically change your xorg.conf accordingly. <span class="highlight-3">For the new driver to take effect you must restart X (Ctrl+Alt+Backspace)</span>.</p>
-		
-					<h4>Options</h4>
-		
-					<p>There are options you may want to manually enable:</p>
-<pre>
- Usage: ./install-binary-gfx [options]
--a | --auto            Automatic mode
--b | --build           MOD Build only (ati|ati-legacy|fglrx)
--d | --detect          Detect Card only
--u | --update          Update Script
--v | --verbose         Verbose
-</pre>
-					<h4>Examples</h4>
-<pre>
-install-binary-gfx -a (This will detect you Card and install the sid Drivers automatically.)
-install-binary-gfx -b ati (This will just build the ati-module....deb in /usr/src. The same works with fglrx and ati-legacy.)
-install-binary-gfx -d (This will detect your Card and just print out the Information.)
-install-binary-gfx -u (This will update this Script. )
-</pre>
-					<h4>Troubleshooting</h4>
-
-      			<p>If the Script fails for your Card please run the Script in debug mode and post the output as well as the log file /var/log/sidux-CARD-installer.log in the sidux Forum or use http://paste.debian.net and go to #sidux and give them the link to get IRC help</p>
-				</li>
-				<li>
-					<h3>sgfxi / du-fixes-h2.sh</h3>
-
-<pre>
-cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
-chmod +x sgfxi
-</pre>
-					<p>sgfxi currently supports ATI fglrx and Nvidia drivers. It also supports converting from or to xorg free drivers like ati, intel, or nv. du-fixes-h2.sh uses sgfxi as its graphics driver installer engine, but simply adds some option support for users.</p>
-	
-					<p>See sgfxi -h for complete option list. Options will be updated as time goes on. When you use the -h option you will also see a list of all currently supported drivers, as well as a brief printout of your current system specifications, kernel, xorg version. The default driver is the driver that is installed if no arguments are used to override it. Unless your card is too old, and requires a legacy driver, in which case the script will it determine for you.</p>
-	
-					<p>When you run the script, it will stop, and tell you what driver it is going to install. You can accept that, or exit and redo it with an override option if you want something different.</p>
-
-					<p><a href="http://techpatterns.com/forums/about736.html">OR::Get the !h2 d-u-fixes, then: to use to install 3d drivers only </a></p>
-<pre>
-du-fixes-h2.sh -kiwdt
-</pre>
-				</li>
-				<li>
-					<h3>Use ATI binary installer</h3>
-<pre>
+Download the binary driver installers directly from Nvidia
 Download the binary driver installers directly from ATI
 </pre>
 				</li>
-			
-				<li>
-							<h3>For live-cd ati-install:</h3>
-
-<pre>
-sudo sgfxi
-</pre>
-
-							<p>this gets the latest script, then:</p>
-
-<pre>
-ctrl+alt+f1
-</pre>
-							<p>and run</p>
-<pre>
-sgfxi
-</pre>
-<pre>
-sgfxi -h,
-to see options
-</pre>
-
-							<p>X is restarted after the driver installs</p>
-				</li>
 			</ol>
 
-		</div>
-		<div class="divider" id="native-nv">
-			<h2>nVidia X.Org X server-Native nv display driver</h2>
-			<p>This driver for the X.Org X server (see xserver-xorg for a further description) provides support for NVIDIA Riva, TNT, GeForce, and Quadro cards.</p>
+					<p class="highlight-2">Alert: April/May 2007 ATI had no working fglrx drivers for xorg 7.2</p>
 
-			<p>To install it:</p>
+		</div>
+		<div class="divider" id="native-nv-ati">
+			<h2>Free xorg drivers for nVidia, ATI, Radeon, Intel</h2>
+
+					<ol>
+						<li>
+					<h3>sgfxi </h3>
+
+									<p>You can also use sgfxi to move between free and non-free drivers or roll back to native free drivers: Key commands are:</p>
+<pre>
+-n Automatically installs correct native xorg nv, intel, or ati driver for your system.
+   Cleans up old binary driver stuff, updates xorg.conf with new driver information,
+   and cleans nvidia and fgrlx stuff out of xorg.conf
+-N Force install of specific xorg driver. 
+Syntax: sgfxi -N &lt;one of the drivers from the list, like -N radeon&gt;
+ Supported Xorg drivers: ati i128 i740 i810 i810-modesetting intel mga neomagic nv radeon sis tdfx vesa vga voodoo
+ Also configures xorg.conf as required. Full radeon xorg 3d configuration automatically.
+</pre>
+											<p>First</p>
+<pre>
+apt-get update
+apt-get install sidux-scripts
+sgfxi
+</pre>
+											<p>The to install or rollback to a native driver</p>
+<pre>
+sgfxi -n &lt;xorg driver&gt;
+OR
+sgfxi -N &lt;xorg driver&gt;
+</pre>
+					</li>
+					<li>
+					<h3>sgfxi / du-fixes-h2.sh</h3>
+							<p class="highlight-3">Use sgfxi via du-fixes-h2.sh. Simply start the script using the following options and it will take you straight to the graphics installer section. If you using du-fixes you don't need to install sgfxi, as du-fixes installs it automatically.</p>
+
+										<p><a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh homepage </a>for more information, then run this command:</p>
+<pre>
+du-fixes-h2.sh -kiwdt
+</pre>
+					</li>
+					<li>
+					<h3>The hard way</h3>
+
+							<p>The drivers for the X.Org X server (see xserver-xorg for a further description) provides support in 2d for NVIDIA Riva, TNT, GeForce, and Quadro  cards and the ATI Mach, Rage, Radeon, and FireGLcards along with atimisc', 'r128' and 'radeon' sub-drivers. Also provides for the Intel free series in 3d</p>
+
+							<p>To install it:</p>
 <pre>
 Log out of KDE by Going into Textmode by doing Ctrl+Alt+F1
 logon as root user
@@ -348,47 +316,23 @@ and then in type init 3
 (this should state that X no longer is running
 apt-get update
 apt-get install xserver-xorg-video-nv
-init 5 &amp;&amp; exit
-</pre>
-			<p>Note that this is not the same as the binary-only 'nvidia' driver, which adds 3D support, but is binary-only and not supported.</p>
-
-			<p class="highlight-2">Next you need to edit /etc/X11/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing /etc/X11/xorg.conf incorrectly will result in many tears by you.</p>
-
-			<p>To edit /etc/X11/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">nv</span></p>
-
-			<p class="highlight-2">YOU HAVE BEEN WARNED!! EDITING XORG.CONF IS ENTIRELY AT YOUR OWN RISK!!</p>
-
-			<p><a href= "http://xorg.freedesktop.org">More information about X.Org</a></p>
-
-		</div>
-		<div class="divider" id="native-ati">
-			<h2>ATI X.Org X server-Native ati Driver</h2>
-
-			<p>This driver for the X.Org X server provides support for the ATI Mach, Rage, Radeon, and FireGL series. It provides the 'atimisc', 'r128' and 'radeon' sub-drivers.</p>
-
-			<p>To install it:</p>
-<pre>
-Log out of KDE by Going into Textmode by doing Ctrl+Alt+F1
-logon as root user
-and then in type init 3
-(this should state that X no longer is running
-apt-get update
+OR
 apt-get install xserver-xorg-video-ati
 init 5 &amp;&amp; exit
 </pre>
-			<p>Note that this is not the same as the ATI-provided, binary-only, 'fglrx' driver, which provides additional 3D functionality for some newer Radeon cards, but is not supported.</p>
+							<p>Note that this is not the same as the binary-only 'nvidia/ati" driver, which adds 3D support, but is binary-only and not supported.</p>
 
-			<p class="highlight-2">Next you need to edit /etc/X11/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing /etc/X11/xorg.conf incorrectly will result in many tears by you.</p>
+							<p class="highlight-2">Next you need to edit /etc/X11/xorg.conf, HOWEVER YOU MUST MAKE A BACKUP COPY FIRST, as editing /etc/X11/xorg.conf incorrectly will result in many tears by you.</p>
 
-			<p>To edit /etc/X11/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">ati</span></p>
+							<p>To edit /etc/X11/xorg.conf right click it, open it with root permissions. Find the section that reads SECTION DEVICE and change the display driver to read <span class="highlight-2">nv</span> OR <span class="highlight-2">ati</span></p>
 
-			<p class="highlight-2">YOU HAVE BEEN WARNED!! EDITING XORG.CONF IS ENTIRELY AT YOUR OWN RISK!!</p>
+							<p class="highlight-2">YOU HAVE BEEN WARNED!! EDITING XORG.CONF IS ENTIRELY AT YOUR OWN RISK!!</p>
 
-			<p>More : <a href="http://xorg.freedesktop.org">More information about X.Org</a></p>
+							<p><a href= "http://xorg.freedesktop.org">More information about X.Org</a></p>
+					</li>
+</ol>
 
 		</div>
-		
-
 	<div class="divider" id="mon-res">
 			<h2>Screen Resolutions and Monitors </h2>
 
@@ -619,7 +563,7 @@ To get out of the konsole type: exit
 			<p>Now your NTFS-Volume should be mounted <b>rw</b> and you should be able to store data on it. But again, be warned! <span class="highlight-3">Use it in emergency situations, it is not recommended  for use on a daily basis.</span></p>
 
 		</div>	
-	<div id="rev">Content last revised  13/04/2007 1000hrs UTC</div>
+	<div id="rev">Content last revised  26/05/2007 0400hrs UTC</div>
 </div>
 </div>
 </body>

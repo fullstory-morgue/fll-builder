@@ -1,6 +1,6 @@
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.08-2007-05-25 en lang maintainer bluewater-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26 en lang maintainer bluewater-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Back to main sidux menu</a></li>
@@ -77,10 +77,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-en.htm#hd-ntfs3g">Writing to NTFS</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#mon-res">Screen Resolution and Monitors</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#nvidia-3d">nVidia 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#ati-3d">ATI 3d</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-nv">Native nv</a></li>
-				<li><a href="hw-dev-hw-dri-en.htm#native-ati">Native ati</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#non-free-3d">Binary, non-free drivers for: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-en.htm#native-nv-ati">Free xorg drivers for nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-en.htm#non-free">Hardware with non-free needs</a></li>
 			</ul>
 		</li>

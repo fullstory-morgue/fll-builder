@@ -3,17 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>sidux Manuals - Hardware Drivers and Device Drivers-de</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" /><style type="text/css" media="all">@import url("../lib/css-js/content.css");</style><style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style><style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
+	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" /><script type="text/javascript" src="../lib/css-js/menu2.js"></script>
 </head>
 <body>
 <div id="menu"> <!-- menu starts here -->
-<!--Welcome to the Official sidux-manual live-cd version tartaros 01.09-2007-05-25 de lang maintainer hubi-->
-<!-- menu last updated by bluewater 25/05/2007 1100rs AEST 25/05/2007 0100hrs UTC -->
+<!--Welcome to the Official sidux-manual live-cd version tartaros 01.10-2007-05-26  de lang maintainer hubi-->
+<!-- menu last updated by bluewater 26/05/2007 1600rs AEST 26/05/2007 0600hrs UTC -->
 <img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
 	<ul id="top-list">
 		<li><a href="http://sidux.com/">Zur&#252;ck zum sidux Hauptmen&#252;</a></li>
@@ -90,10 +86,8 @@
 			<ul class="sub-menu" id="sm10">
 				<li><a href="hw-dev-hw-dri-de.htm#hd-ntfs3g">Schreiben auf NTFS-Partitionen mit ntfs-3g</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#mon-res">Bildschirmaufl&#246;sung und Monitoreinstellungen</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#nvidia-3d">nVidia 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#ati-3d">ATI 3D</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-nv">Natives nv</a></li>
-				<li><a href="hw-dev-hw-dri-de.htm#native-ati">Natives ati</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#non-free-3d">Binäre, non-free Trieber für: Nvidia / ATI</a></li>
+				<li><a href="hw-dev-hw-dri-de.htm#native-nv-ati">Freie xorg Treiber für nVidia, ATI, Radeon, Intel</a></li>
 				<li><a href="hw-dev-hw-dri-de.htm#non-free">Hardware mit propriet&#228;ren Anforderungen</a></li>
 			</ul>
 		</li>
@@ -158,13 +152,13 @@
 	</ul>
 <!-- menu ends here --> </div>
 <div id="main-page">
-	<div class="divider" id="nvidia-3d">
-		<h2 id="top-header">3D-Treiber f&#252;r nVidia-Grafikkarten</h2>
+	<div class="divider" id="non-free-3d">
+		<h2 id="top-header">Binäre, non-free Treiber für: Nvidia / ATI</h2>
 			
 			<p>Es gibt drei Methoden, 3D-nVidia-Treiber zu installieren</p>
 			<ol>
 				<li>
-					<h3>install-binary-gfx</h3>
+			<h3>install-binary-gfx</h3>
 			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden.</p>
 
 <pre>
@@ -194,149 +188,115 @@ install-binary-gfx -u (Damit wird das Skript aktualisiert. )
 </pre>
 
 			<h4>Hilfe bei Problemen</h4>
-			<p>Falls das Skript die Grafiktreiber nicht installiert, kann der debug-Modus verwendet werden. Dieser erzeugt ein Protokolldatei /var/log/sidux-CARD-installer.log. Um Hilfe bekommen zu k&#246;nnen, kann im sidux-Forum der Inhalt dieser Datei gepostet werden, oder man speichert ihn auf http://paste.debian.net und wendet sich an den IRC #sidux, wo der erzeugte Link angegeben werden kann.</p>
+					<p>
+              Falls das Skript die Grafiktreiber nicht installiert, kann der debug-Modus verwendet werden. Dieser erzeugt eine Protokolldatei /var/log/sidux-CARD-installer.log. Um Hilfe bekommen zu können, kann im sidux-Forum der Inhalt dieser Datei gepostet werden, oder man speichert ihn auf http://paste.debian.net und wendet sich an den IRC #sidux, wo der erzeugte Link angegeben werden kann.
+            </p>
 
 				</li>
 				<li>
 					<h3>sgfxi / du-fixes-h2.sh</h3>
 <pre>
-cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
-chmod +x sgfxi
+apt-get update
+apt-get install sidux-scripts
+sgfxi
 </pre>
 			<p>sgfxi unterst&#252;tzt im Augenblick ATI fglrx und Nvidia-Treiber. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterst&#252;tzt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend f&#252;r Grafiktreiber und f&#252;gt einige Optionen zur einfacheren Benutzung hinzu.</p>
 
-			<p>sgfxi -h listet alle Optionen. Die Optionen werden im Laufe der Zeit erg&#228;nzt. Auch werden mit sgfxi -h die augenblicklich unterst&#252;tzten Treiber angezeigt wie auch Spezifikationen des benutzten Systems wie Kernel und xorg-Version. Der Default-Treiber wird installiert, wenn keine weiteren Optionen f&#252;r die Installation angegeben werden. Auch erkennt das Skript automatisch &#228;ltere Grafikkarten und installiert Legacy-Treiber ohne weiteres Zutun.</p>
+			<p>Der Default-Treiber wird installiert, wenn keine weiteren Optionen f&#252;r die Installation angegeben werden. Auch erkennt das Skript automatisch &#228;ltere Grafikkarten und installiert Legacy-Treiber ohne weiteres Zutun.</p>
 
 			<p>Nach Start des Skriptes und Erkennung der Grafikkarte wird ausgegeben, welcher Treiber installiert werden soll. Man hat die M&#246;glichkeit, diese Auswahl zu best&#228;tigen und den Treiber zu installieren oder den Installationsvorgang abzubrechen und mit einer selbstgew&#228;hlten Option das Skript neu zu starten.</p>
 
-			<p>ODER: man verwendet h2-fixes-du.sh um die Grafiktreiber zu installieren: <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh</a>. Um nur 3D Treiber zu installieren, ist der Befehl:</p>
+			<p class="highlight-3"><b>Sie können auch den sgfxi installer ausführen mit du-fixes-h2.sh, welches auch sgfxi benutzt um die Grafik-Treiber zu installieren. Zuerst, besuchen sie die <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh homepage </a>für mehr Information, und dann führen sie dieses Kommando aus:</b></p>
 <pre>
 du-fixes-h2.sh -kiwdt
 </pre>
-				</li>
-				<li>
-					<h3>Benutzung des Nvidia Bin&#228;r Installers</h3>
+
+			<p>sgfxi -h listet alle Optionen. Die Optionen werden im Laufe der Zeit erg&#228;nzt. Auch werden mit sgfxi -h die augenblicklich unterst&#252;tzten Treiber angezeigt wie auch Spezifikationen des benutzten Systems wie Kernel und xorg-Version. Hier sind einige nützlichen sgfxi Optionen gelistet:</p>
 <pre>
-Aus dem Quellcode installieren
+-c Benutze den Composite Modus (nur f&uuml;r nVidia Karten).
+-d Entferne IgnoreDisplayDevices, lasse zum Beispiel TV zu (nur f&uuml;r nVidia Karten).
+-h &ouml;ffne dieses Hilfe Men&uuml;.
+-n Installiert automatisch den korrekten nativen xorg nv, intel, oder ati Treiber f&uuml;r ihr System.
+   S&auml;ubert alte Bin&auml;r-Treiber Reste, erneuert die xorg.conf mit neuen Treiberinformationen,
+   und entfernt nvidia und fglrx Reste aus der xorg.conf
+-N Erzwinge Installation eines spezifischen xorg Treibers. 
+Syntax: sgfxi -N &lt;einer der Treiber aus der Liste, wie z.B. -N radeon&gt;
+   Unterstützte Xorg Treiber: ati i128 i740 i810 i810-modesetting intel mga neomagic nv radeon sis tdfx vesa vga voodoo
+   Konfiguriert auch die xorg.conf sofern notwendig. Vollautomatische radeon xorg 3d Konfiguration.
+-o Override default: Installiere einen spezifischen Treiber, Dies ist ein die Syntax eines völligen Overrides:
+   -o 9746 (für nVidia, benutzen sie nicht den Teil 1.0- ) oder: -o 8.32.5 (für fglrx)
+-r Entferne Zeilen aus der xorg.conf
+-t Aktiviert dynamic twinview (nur nVidia)
 </pre>
-				</li>
+			</li>
 				<li>
-							<h3>For live-cd nvidia-install:</h3>
+							<h3>Für die Live-CD nvidia-Installation:</h3>
 
 <pre>
 sudo sgfxi
 </pre>
-
-							<p>this gets the latest script, then:</p>
-
+							<p>das lädt das neueste Skript herunter, dann:</p>
 <pre>
 ctrl+alt+f1
 </pre>
-							<p>and run</p>
+							<p>und</p>
 <pre>
 sgfxi
 </pre>
 <pre>
 sgfxi -h,
-to see options
+um die Optionen zu sehen
 </pre>
-
-							<p>X is restarted after the driver installs</p>
-				</li>
-			</ol>
-	</div>
-	<div class="divider" id="ati-3d">
-			<h2>ATI 3D-Treiber</h2>
-
-			<p>Es gibt drei Methoden, 3D-ATI-Treiber zu installieren</p>
-			<ol>
-				<li>
-					<h3>install-binary-gfx</h3>
-			<p>Das neue Skript zur Installation von Grafikkartentreibern nennt sich: <span class="highlight-1">install-binary-gfx</span>. Um das Skript zu installieren, muss einmal der Befehl get-sidux-binary-gfx als Root in einer Konsole ausgef&#252;hrt werden.</p>
-
-<pre>
-get-sidux-binary-gfx
-install-binary-gfx -a (Verwendung des Quellcodes aus dem sid-Repository)
-</pre>
-			<p>Damit wird der richtige Treiber f&#252;r die Grafikkarte ausgew&#228;hlt, eine Debian-Installationsdatei .deb gebaut und installiert. Auch wird automatisch die Konfigurationsdatei /etc/X11/xorg.conf angepasst. Damit der neue Treiber aktiviert werden kann, muss der Grafikserver X neu gestartet werden (Strg+Alt+R&#252;cktaste).</p>
-
-			<h4>Optionen</h4>
-
-			<p>Folgende Optionen k&#246;nnen gesetzt werden:</p>
-<pre>
- Usage: ./install-binary-gfx [options]
--a | --auto            automatischer Modus
--b | --build           nur Bau eines MODs (Moduls) (ati|ati-legacy|fglrx)
--d | --detect          nur Grafikkartenerkennung
--u | --update          Update-Skript
--v | --verbose         mit R&#252;ckmeldung
-</pre>
-
-			<h4>Beispiele</h4>
-<pre>
-install-binary-gfx -a (Dies ermittelt die Grafikkarte und installiert die automatisch die ben&#246;tigten Treiber aus dem sid-Repository)
-install-binary-gfx -b ati (Damit wird nur das Modul f&#252;r ati gebaut, ein deb-File in /usr/src. Gleiches gilt f&#252;r fglrx (ATI) und ati-legacy)
-install-binary-gfx -d (Dies ermittelt die Grafikkarte und gibt Informationen &#252;ber diese aus)
-install-binary-gfx -u (Damit wird das Skript aktualisiert.)
-</pre>
-
-			<h4>Hilfe bei Problemen</h4>
-			<p>Falls das Skript die Grafiktreiber nicht installiert, kann der debug-Modus verwendet werden. Dieser erzeugt ein Protokolldatei /var/log/sidux-CARD-installer.log. Um Hilfe bekommen zu k&#246;nnen, kann im sidux-Forum der Inhalt dieser Datei gepostet werden, oder man speichert ihn auf http://paste.debian.net und wendet sich an den IRC #sidux, wo der erzeugte Link angegeben werden kann.</p>
-
+							<p>X wird gestartet nach der Treiber-Installation</p>
 				</li>
 				<li>
-					<h3>sgfxi / du-fixes-h2.sh</h3>
-
-<pre>
-cd /usr/local/bin ; wget -Nc http://techpatterns.com/sgfxi
-chmod +x sgfxi
-</pre>
-			<p>sgfxi unterst&#252;tzt im Augenblick ATI fglrx und Nvidia-Treiber. Auch wird die Konvertierung von oder nach freien xorg-Treibern wie ati, intel oder nv unterst&#252;tzt. du-fixes-h2.sh nutzt sgfxi als Installationsbackend f&#252;r Grafiktreiber und f&#252;gt einige Optionen zur einfacheren Benutzung hinzu.</p>
-
-			<p>sgfxi -h listet alle Optionen. Die Optionen werden im Laufe der Zeit erg&#228;nzt. Auch werden mit sgfxi -h die augenblicklich unterst&#252;tzten Treiber angezeigt wie auch Spezifikationen des benutzten Systems wie Kernel und xorg-Version. Der Default-Treiber wird installiert, wenn keine weiteren Optionen f&#252;r die Installation angegeben werden. Auch erkennt das Skript automatisch &#228;ltere Grafikkarten und installiert Legacy-Treiber ohne weiteres Zutun.</p>
-
-			<p>Nach Start des Skriptes und Erkennung der Grafikkarte wird ausgegeben, welcher Treiber installiert werden soll. Man hat die M&#246;glichkeit, diese Auswahl zu best&#228;tigen und den Treiber zu installieren oder den Installationsvorgang abzubrechen und mit einer selbstgew&#228;hlten Option das Skript neu zu starten.</p>
-			<p>ODER: man verwendet h2-fixes-du.sh um die Grafiktreiber zu installieren: <a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh</a>. Um nur 3D Treiber zu installieren, ist der Befehl:</p>
-<pre>
-du-fixes-h2.sh -kiwdt
-</pre>
-				</li>
-				<li>
-					<h3>Benutzung des ATI Bin&#228;r Installers</h3>
+					<h5>Benutzung des Nvidia/ATI Bin&#228;r Installers</h5>
 <pre>
 Aus dem Quellcode installieren
 </pre>
 				</li>
-				<li>
-							<h3>For live-cd ati-install:</h3>
+			</ol>
+					<p class="highlight-2">Vorsicht: ATI hatte im April/Mai 2007 ATI keine funktionierenden fglrx Treiber für xorg 7.2</p>
+	</div>
+		<div class="divider" id="native-nv-ati">
+			<h2>Freie xorg Treiber für nVidia, ATI, Radeon, Intel</h2>
 
-<pre>
-sudo sgfxi
-</pre>
+					<ol>
+						<li>
+					<h3>sgfxi </h3>
 
-							<p>this gets the latest script, then:</p>
+					<p>Sie können sgfxi nutzen um zwischen freien und und non-free Treibern zu wechseln, oder auf nativee freie Treiber zurückzusetzen: Die Schlüsselkommandos sind:</p>
 
+
+					<p>Zuerst</p>
 <pre>
-ctrl+alt+f1
-</pre>
-							<p>and run</p>
-<pre>
+apt-get update
+apt-get install sidux-scripts
 sgfxi
 </pre>
+					<p>Dann der zu installierende Treiber oder zurücksetzen auf einen nativen Treiber</p>
+
 <pre>
-sgfxi -h,
-to see options
+sgfxi -n &lt;xorg driver&gt;
+ODER
+sgfxi -N &lt;xorg driver&gt;
+</pre>
+					</li>
+					<li>
+			<h3>sgfxi / du-fixes-h2.sh</h3>
+			<p class="highlight-3">Sie können sgfxi auch via du-fixes-h2.sh benutzen. Starten sie einfach das Skript mit den folgenden Optionen, und es wird sie direkt zur Grafiktreiber Sektion führen. Wenn sie du-fixes nutzen brauchen sie sgfxi nicht zu installieren, da du-fixes es automatisch installiert.</p>
+
+			<p><a href="http://techpatterns.com/forums/about736.html">du-fixes-h2.sh homepage </a>für mehr  Informationen, und dann führen sie dieses Kommando aus:</p>
+<pre>
+du-fixes-h2.sh -kiwdt
 </pre>
 
-							<p>X is restarted after the driver installs</p>
-				</li>
-			</ol>
-	</div>
-	<div class="divider" id="native-nv">
-			<h2>Nativer Treiber "nv" von X.Org f&#252;r nVidia-Grafikkarten</h2>
-				<p>Dieser X-Server-Treiber von X.Org (siehe xserver-xorg f&#252;r eine eingehendere Beschreibung) bietet Unterst&#252;tzung f&#252;r die NVIDIA Riva-, TNT-, GeForce- und Quadro-Karten.</p>
+					</li>
+					<li>
+			<h3>Der harte Weg</h3>
+			<p>Dieser X-Server-Treiber von X.Org (siehe xserver-xorg f&#252;r eine eingehendere Beschreibung) bietet Unterst&#252;tzung f&#252;r die NVIDIA Riva-, TNT-, GeForce- und Quadro-Karten. and the Mach, Rage, Radeon und FireGL von ATI. Er beinhaltet die Subtreiber 'atimisc', 'r128' and 'radeon'. Es wird auch Ünterstützung angeboten für die the Intel free 3D-Serie</p>
 
-				<p>Er wird installiert mit:</p>
+							<p>Er wird installiert mit:</p>
 <pre>
 Aus KDE Abmelden mit Ctrl+Alt+F1.
 Anmelden als root.
@@ -346,47 +306,23 @@ ausf&#252;hren.
 (Eine Nachricht sollte anzeigen, dass der X-Server angehalten wurde.)
 apt-get update
 apt-get install xserver-xorg-video-nv
-init 5 &amp;&amp; exit
-</pre>
-				<p>Anmerkung: Dies ist nicht der bin&#228;re NVidia-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re NVidia-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
-
-				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Auch sollte zuvor eine Sicherungskopie erstellt werden, <span class="highlight-2"> f&#228;lschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> kann sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche mit sich f&#252;hren.</span></p>
-
-				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kann sie mit Rootrechten per Rechtsklick ge&#246;ffnet werden. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-1">nv</span> &#228;ndern.</p>
-
-				<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
-
-				<p>Mehr Informationen &#252;ber <a href= "http://xorg.freedesktop.org">X.Org</a></p>
-
-	</div>
-	<div class="divider" id="native-ati">
-			<h2>Nativer Treiber "ati" von X.Org f&#252;r ATI-Grafikkarten</h2>
-
-				<p>Dieser X-Server-Treiber von X.Org bietet Unterst&#252;tzung f&#252;r die Grafikkartenserien Mach, Rage, Radeon und FireGL von ATI. Er beinhaltet die Subtreiber 'atimisc', 'r128' and 'radeon'.</p>
-
-				<p>Er wird installiert mit:</p>
-<pre>
-Aus KDE Abmelden mit Ctrl+Alt+F1.
-Anmelden als root.
-Dann: 
-# init 3 
-ausf&#252;hren.
-(Eine Nachricht sollte anzeigen, dass der X-Server angehalten wurde.)
-apt-get update
+OR
 apt-get install xserver-xorg-video-ati
 init 5 &amp;&amp; exit
 </pre>
-				<p>Anmerkung: Dies ist nicht der bin&#228;re ATI-Treiber, welcher zus&#228;tzliche 3D-Unterst&#252;tzung f&#252;r einige neuere Radeon-Karten bietet, aber nicht unterst&#252;tzt ist.</p>
+				<p>Anmerkung: Dies ist nicht der bin&#228;re NVidia/ATI-Treiber, welcher 3D-Unterst&#252;tzung bietet. Der bin&#228;re NVidia/ATI-Treiber ist aber ausschlie&#223;lich bin&#228;r zu erhalten und im Grunde nicht von Linux unterst&#252;tzt.</p>
 
-				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Zuvor sollte eine <b>Sicherungskopie dieser Datei</b> erstellt werden, <span class="highlight-2">da ein fehlerhaftes Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> den Grafikserver unbrauchbar machen und eventuell viel Zeit und Tr&#228;nen zur Fehlersuche kosten kann.</span></p>
+				<p>Nun muss die <span class="highlight-3">/etc/X11/xorg.conf</span> editiert werden. Auch sollte zuvor eine Sicherungskopie erstellt werden, <span class="highlight-2"> f&#228;lschliches Editieren der <span class="highlight-3">/etc/X11/xorg.conf</span> kann sonst viele Tr&#228;nen und eine zeitaufwendige Fehlersuche mit sich f&#252;hren.</span></p>
 
-				<p><span class="highlight-3">/etc/X11/xorg.conf</span> kann zum Editieren, Rootrechte vorrausgesetzt, per Rechtsklick ge&#246;ffnet werden. Siehe Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display Treiber in <span class="highlight-1">ati</span> &#228;ndern.</p>
+				<p>Um <span class="highlight-3">/etc/X11/xorg.conf</span> zu editieren, kann sie mit Rootrechten per Rechtsklick ge&#246;ffnet werden. Im Abschnitt <span class="highlight-1">SECTION DEVICE</span> den Display-Treiber in <span class="highlight-2">nv</span> &#228;ndern.  OR <span class="highlight-2">ati</span> &#228;ndern.</p>
 
-				<p class="highlight-2"><b>Editieren der xorg.conf geschieht auf eigenes Risiko.</b></p>
+							<p class="highlight-2">Editieren der xorg.conf geschieht auf eigenes Risiko.</p>
 
-				<p>Mehr Informationen &#252;ber X.Org <a href= "http://xorg.freedesktop.org">hier</a>.</p>
-</div>
+							<p>Mehr Informationen &#252;ber <a href= "http://xorg.freedesktop.org">X.Org</a></p>
+				</li>
+		</ol>
 
+	</div>
 	<div class="divider" id="mon-res">
 					<h2>Bildschirmaufl&#246;sungen, Monitore und Schriftarten</h2>
 
@@ -415,7 +351,7 @@ ctrl+alt+backspace
 
 				<p>Im Forums-Thread<a href="http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794"> http://sidux.com/index.php?name=PNphpBB2&amp;file=viewtopic&amp;p=19794#19794</a> gibt es einige funktionierende Beispiele f&#252;r die xorg.conf mit dem freien Radeon-Treiber.</p>
 
-				<p>ZUR BEACHTUNG: Um die Konfigurationsinformationen des zweiten Monitors zu erhalten, muss der erste abgeh&#228;ngt werdeun und mit der Live-CD gebootet werden, um eine xorg.conf generieren zu lassen. Von dieser xorg.conf muss eine Kopie angelegt werden. Um die Konfigurationsinformationen des ersten Monitors zu erhalten, wird das gleiche Verfahren angewendet.</p>
+				<p>ZUR BEACHTUNG: Um die Konfigurationsinformationen des zweiten Monitors zu erhalten, muss der erste abgeh&#228;ngt werden und mit der Live-CD gebootet werden, um eine xorg.conf generieren zu lassen. Von dieser xorg.conf muss eine Kopie angelegt werden. Um die Konfigurationsinformationen des ersten Monitors zu erhalten, wird das gleiche Verfahren angewendet.</p>
 
 			<h5>Nativer ATI-Treiber - Methode 2</h5>
 					<p>Zuerst muss die Aufl&#246;sung des ersten (prim&#228;ren) Monitors festgelegt werden. Der zweite Monitor nutzt die Aufl&#246;sungseinstellungen des ersten (prim&#228;ren) Monitors. Beachtet muss werden, dass der zweite Monitor die Aufl&#246;sungseinstellungen des ersten technisch umsetzen kann.</p>
