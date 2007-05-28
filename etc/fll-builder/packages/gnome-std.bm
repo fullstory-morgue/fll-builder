@@ -74,4 +74,9 @@ FLL_PACKAGES=(
 	netcat
 	synaptic
 	etherape
+	wengophone
+	pdfedit
+	gkrellm
+	moto4lin
+
 )

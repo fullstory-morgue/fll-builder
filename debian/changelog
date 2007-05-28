@@ -14,7 +14,10 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Stefan Lippers-Hollmann ]
   * final package list for Τάρταρος.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 28 May 2007 17:10:01 +0200
+  [ Andreas Weber ]
+  * Some Packages picked from the kde Profile. 
+
+ -- Andreas Weber <andreas@it-weber.com>  Mon, 28 May 2007 17:51:00 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
