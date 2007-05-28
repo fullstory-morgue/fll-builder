@@ -84,4 +84,5 @@ FLL_PACKAGES=(
 	openoffice.org-kde
 	rdiff-backup
 	superkaramba
+	yakuake
 )
