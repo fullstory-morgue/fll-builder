@@ -1,5 +1,7 @@
 fll-builder (1.0.10) UNRELEASED; urgency=low
 
+  * NOT RELEASED YET
+
   [ Kel Modderman ]
   * Add yakuake to kde-full line up.
   * Don't ship cpufreq-utils for now, it provides its own detection mechanism
@@ -7,9 +9,12 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
-  * remove "resume" cheatcode option 
+  * remove "resume" cheatcode option
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 28 May 2007 16:21:39 +1000
+  [ Stefan Lippers-Hollmann ]
+  * final package list for Τάρταρος.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 28 May 2007 17:10:01 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 

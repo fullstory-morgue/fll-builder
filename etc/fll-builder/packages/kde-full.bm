@@ -15,6 +15,8 @@ FLL_PACKAGES=(
 	akregator
 	amarok
 	ark
+	basket
+	digikam
 	gimp
 	gwenview
 	iceweasel
@@ -78,11 +80,17 @@ FLL_PACKAGES=(
 	kvpnc
 	kwalletmanager
 	kwifimanager
+	libkdcraw-runtime	# digikam raw images
 	libqt-perl
+	moto4lin
 	myspell-en-us
 	openoffice.org
 	openoffice.org-kde
+	nano
+	pdfedit
 	rdiff-backup
 	superkaramba
+	wengophone
 	yakuake
 )
+
