@@ -27,7 +27,7 @@ FLL_PACKAGES=(
 	gnome-keyring-manager
 	gnome-mag
 	gnome-media
-	gnome-art
+#	gnome-art
 	gnome-mount
 	gnome-nettool
 	gnome-osd
@@ -65,10 +65,9 @@ FLL_PACKAGES=(
 	libgnome2-perl
 	openoffice.org-gnome
 	openoffice.org
-#	pidgin
-#	pidgin-data
-#	pidgin-encryption
-	gaim
+	pidgin
+	pidgin-data
+	pidgin-encryption
 	totem
 	wireshark
 	netcat
@@ -78,5 +77,4 @@ FLL_PACKAGES=(
 	pdfedit
 	gkrellm
 	moto4lin
-
 )
