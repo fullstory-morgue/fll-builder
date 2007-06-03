@@ -2,7 +2,7 @@ FLL_PACKAGES+=(
 	etcskel-sidux
 	grub-gfxboot
 	hwsetup-ng
-	initscripts-sidux-live
+	fll-live-initscripts
 	knx-installer
 	rebuildfstab
 	rsync
