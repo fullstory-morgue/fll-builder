@@ -520,30 +520,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 	
 	#################################################################
-	#		create user in chroot				#
-	#################################################################
-	if [[ -z $FLL_DISABLE_ADDUSER ]]; then
-		chroot_exec adduser --no-create-home --disabled-password \
-			--gecos "$FLL_LIVE_USER" "$FLL_LIVE_USER"
-	
-		# add to groups, check if group exists first
-		for group in $FLL_LIVE_USER_GROUPS; do
-			if chroot_exec getent group "$group"; then
-				chroot_exec adduser "$FLL_LIVE_USER" "$group"
-			fi
-		done
-
-		# lock down live user
-		sed -i "s#^\($FLL_LIVE_USER\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-			"$FLL_BUILD_CHROOT"/etc/shadow
-	fi
-
-	# lock down root
-	sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-		"$FLL_BUILD_CHROOT"/etc/shadow
-
-	#################################################################
-	#		hack inittab					#
+	#		hack inittab and shadow				#
 	#		- init 5 by default				#
 	#		- immutable bash login shells			#
 	#################################################################
@@ -560,6 +537,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /bin/bash 38400 tty\1#' \
 				"$FLL_BUILD_CHROOT"/etc/inittab
 	fi
+
+	# lock down root
+	sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+		"$FLL_BUILD_CHROOT"/etc/shadow
 	
 	#################################################################
 	#		misc chroot preseeding				#

@@ -1,6 +1,6 @@
 FLL_PACKAGES+=(
-	kde-services-sidux
 	kdeservicemenus-sidux
 	sidux-art-kde
+	desktop-defaults-kde
 )
 
