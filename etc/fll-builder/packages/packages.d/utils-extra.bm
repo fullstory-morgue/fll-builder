@@ -16,7 +16,6 @@ FLL_PACKAGES+=(
 	ntfsprogs
 	nmap
 	openssh-client
-	partimage
 	reiserfsprogs
 	sshfs
 	smbclient
