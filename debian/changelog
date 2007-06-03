@@ -25,7 +25,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * final package list for Τάρταρος.
   * checkmem has been orphaned.
   * partimage is broken crap, which produces broken backups that can't be 
-    restored at random, remove it again.
+    restored at random, remove it again (#391046).
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
