@@ -14,6 +14,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Make way for fll-live-initramfs
     - don't create user in build
     - add desktop-defaults packages to package profiles
+  * Make inittab hack unconditional.
 
   [ Bernard Gray ]
   * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
@@ -27,7 +28,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Some Packages picked from the kde Profile.
   * Pidgin reactivated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 03 Jun 2007 15:21:06 +0200
+ -- Kel Modderman <kel@otaku42.de>  Sun, 03 Jun 2007 23:51:14 +1000
 
 fll-builder (1.0.9) unstable; urgency=low
 
