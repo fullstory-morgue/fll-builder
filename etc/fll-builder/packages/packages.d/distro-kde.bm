@@ -1,6 +1,7 @@
 FLL_PACKAGES+=(
-	kdeservicemenus-sidux
-	sidux-art-kde
 	desktop-defaults-kde
+	kdeservicemenus-sidux
+	libxine1-kde	# we should never have to depend directly on a library
+	sidux-art-kde
 )
 

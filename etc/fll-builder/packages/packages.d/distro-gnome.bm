@@ -1,4 +1,6 @@
 FLL_PACKAGES+=(
 	desktop-defaults-gnome
 	gksu
+	libxine1-gnome #we should never have to depend directly on a library
 )
+

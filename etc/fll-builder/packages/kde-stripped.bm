@@ -11,11 +11,12 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	ark
+	build-essential
+	cdebootstrap
 	kde-core
 	kdm
 	konversation
 	kpowersave
-	build-essential
-	cdebootstrap
+	libxine1-ffmpeg	#we should never have to depend directly on a library
 )
 

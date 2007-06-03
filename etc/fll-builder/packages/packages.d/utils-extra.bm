@@ -8,6 +8,7 @@ FLL_PACKAGES+=(
 	fuse-utils
 	genisoimage
 	jfsutils
+	libxine1-ffmpeg	#we should never have to depend directly on a library
 	man-db
 	manpages
 	module-assistant

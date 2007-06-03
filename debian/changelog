@@ -24,14 +24,17 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Stefan Lippers-Hollmann ]
   * final package list for Τάρταρος.
   * checkmem has been orphaned.
-  * partimage is broken crap, which produces broken backups that can't be 
+  * partimage is broken crap, which produces broken backups that can't be
     restored at random, remove it again (#391046).
+  * hack around the recent xine-libs changes and depend on libxine1-ffmpeg/
+    libxine1-{gnome,kde} directly - revisit this as soon as the major
+    applications are fixed.
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
   * Pidgin reactivated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 03 Jun 2007 17:33:15 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 03 Jun 2007 22:13:07 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
