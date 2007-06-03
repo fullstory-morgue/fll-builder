@@ -30,12 +30,13 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
     libxine1-{gnome,kde} directly - revisit this as soon as the major
     applications are fixed.
   * enable debugging options in menu.lst again.
+  * enable console=tty in addition to the serial console for debug entries.
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
   * Pidgin reactivated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 04 Jun 2007 00:38:00 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 04 Jun 2007 01:12:49 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
