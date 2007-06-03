@@ -8,19 +8,19 @@ gfxmenu /boot/message
 title  sidux Default (aufs)
 kernel /boot/vmlinuz boot=fll quiet vga=791
 initrd /boot/miniroot.gz
-#
-#title  sidux Debug (aufs, serial console)
-#kernel /boot/vmlinuz boot=fll quiet vga=0 aufs console=ttyS0,115200
-#initrd /boot/miniroot.gz
-#
-#title  sidux Default (unionfs 2.x, broken)
-#kernel /boot/vmlinuz boot=fll quiet vga=791 unionfs 
-#initrd /boot/miniroot.gz
-#
-#title  sidux Debug (unionfs 2.x, serial console)
-#kernel /boot/vmlinuz boot=fll quiet vga=0 unionfs console=ttyS0,115200
-#initrd /boot/miniroot.gz
-#
+
+title  sidux Debug (aufs, serial console)
+kernel /boot/vmlinuz boot=fll quiet vga=0 aufs console=ttyS0,115200
+initrd /boot/miniroot.gz
+
+title  sidux Default (unionfs 2.x, broken)
+kernel /boot/vmlinuz boot=fll quiet vga=791 unionfs 
+initrd /boot/miniroot.gz
+
+title  sidux Debug (unionfs 2.x, serial console)
+kernel /boot/vmlinuz boot=fll quiet vga=0 unionfs console=ttyS0,115200
+initrd /boot/miniroot.gz
+
 #title  sidux Default (link farm)
 #kernel /boot/vmlinuz boot=fll quiet vga=791 
 #initrd /boot/miniroot.gz
