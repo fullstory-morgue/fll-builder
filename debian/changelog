@@ -17,6 +17,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Make inittab hack unconditional.
   * rm initscripts-sidux-live, add fll-live-initrscripts.
   * Add ttf-dejavu to xserver lineup.
+  * Don't hack /etc/sudoers.
 
   [ Bernard Gray ]
   * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
@@ -37,7 +38,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Some Packages picked from the kde Profile.
   * Pidgin reactivated
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 04 Jun 2007 18:27:16 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 04 Jun 2007 22:44:37 +1000
 
 fll-builder (1.0.9) unstable; urgency=low
 

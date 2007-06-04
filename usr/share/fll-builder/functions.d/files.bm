@@ -145,21 +145,6 @@ do_initrd = YES
 EOF
 			;;
 
-		sudoers)
-			[[ -f "$DEST" ]] || return 1
-			# append
-			cat >> "$DEST" \
-<<EOF
-
-# WARNING: This allows the unprivileged $FLL_LIVE_USER user to start commands as root
-# WARNING: This is totally insecure and (almost) makes $FLL_LIVE_USER a second root account.
-# WARNING: Never allow external access to the $FLL_LIVE_USER user!!!
-$FLL_LIVE_USER	ALL=NOPASSWD: ALL
-EOF
-			
-			chmod 0440 "$DEST"
-			;;
-
 		vimrc_local)
 			cat > "$DEST" \
 <<EOF

@@ -583,7 +583,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot hosts	/etc/hosts
 	cat_file_to_chroot hostname	/etc/hostname
 	cat_file_to_chroot apt_sources	/etc/apt/sources.list
-	cat_file_to_chroot sudoers	/etc/sudoers
 	
 	# add version marker, this is the exact time stamp for our package list
 	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION" \
