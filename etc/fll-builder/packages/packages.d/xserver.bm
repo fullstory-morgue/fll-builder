@@ -5,6 +5,7 @@ FLL_PACKAGES+=(
 	mesa-utils
 	sux
 	ttf-bitstream-vera
+	ttf-dejavu
 	ttf-freefont
 	xfonts-base
 	xfonts-75dpi
