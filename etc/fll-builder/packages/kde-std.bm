@@ -17,6 +17,7 @@ FLL_PACKAGES=(
 	gwenview
 	k3b
 	kaffeine
+	kde-core
 	kdeadmin
 	kdebluetooth
 	kdegraphics
