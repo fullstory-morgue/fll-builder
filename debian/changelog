@@ -38,9 +38,12 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Some Packages picked from the kde Profile.
   * Pidgin reactivated
   * evolution added for gnome-lite
-  * Desktop Icon fixed 
+  * Desktop Icon fixed
 
- -- Andreas Weber <webera@WFRKWEBERALIN>  Mon, 04 Jun 2007 15:17:32 +0200
+  [ Horst Tritremmel ]
+  * add kde-core to kde-profiles
+
+ -- Horst Tritremmel <hjt@sidux.com>  Tue, 05 Jun 2007 13:17:54 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 

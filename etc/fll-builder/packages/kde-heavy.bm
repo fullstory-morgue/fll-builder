@@ -28,6 +28,7 @@ FLL_PACKAGES=(
 	inkscape
 	k3b
 	kaffeine
+	kde-core
 	kde
 	kdesvn
 	kdesvn-kio-plugins

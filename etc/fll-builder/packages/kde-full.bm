@@ -30,6 +30,7 @@ FLL_PACKAGES=(
 	kcalc
 	kcharselect
 	kbattleship
+	kde-core
 	kdeaccessibility
 	kdeaddons-kfile-plugins
 	kdeadmin

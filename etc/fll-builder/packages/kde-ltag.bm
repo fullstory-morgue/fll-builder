@@ -23,6 +23,7 @@ FLL_PACKAGES=(
 	kaddressbook-plugins
 	kate-plugins
 	kbattleship
+	kde-core
 	kdeaccessibility
 	kdeaddons-kfile-plugins
 	kdeadmin
