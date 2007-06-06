@@ -17,6 +17,5 @@ FLL_PACKAGES=(
 	kdm
 	konversation
 	kpowersave
-	libxine1-ffmpeg	#we should never have to depend directly on a library
 )
 

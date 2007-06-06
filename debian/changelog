@@ -33,6 +33,9 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
     applications are fixed.
   * enable debugging options in menu.lst again.
   * enable console=tty in addition to the serial console for debug entries.
+  * the popular media players have tightened their depdendencies on
+    libxine1-ffmpeg by now, it is no longer required to explicitly depend on
+    it.
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
@@ -43,7 +46,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Horst Tritremmel <hjt@sidux.com>  Tue, 05 Jun 2007 13:17:54 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 06 Jun 2007 02:22:12 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
