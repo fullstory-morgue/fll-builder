@@ -1,5 +1,4 @@
 FLL_PACKAGES+=(
-	etcskel-sidux
 	grub-gfxboot
 	hwsetup-ng
 	fll-live-initscripts
