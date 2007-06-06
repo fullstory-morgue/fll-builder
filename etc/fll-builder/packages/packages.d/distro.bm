@@ -11,5 +11,5 @@ FLL_PACKAGES+=(
 	sidux-scripts
 	su-me
 	udev-config-sidux
-	user-profile-sidux
 )
+

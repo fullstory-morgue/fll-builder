@@ -37,6 +37,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
     libxine1-ffmpeg by now, it is no longer required to explicitly depend on
     it.
   * etcskel-sidux has been orphaned, remove it from the package lists.
+  * user-profile-sidux has been orphaned, remove it from the package lists.
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
@@ -47,7 +48,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 06 Jun 2007 15:13:08 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 06 Jun 2007 16:40:16 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
