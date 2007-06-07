@@ -18,6 +18,7 @@ FLL_PACKAGES=(
 	basket
 	digikam
 	gimp
+	gtk2-engines-qtcurve
 	gwenview
 	iceweasel
 	k3b
