@@ -2,7 +2,6 @@ FLL_PACKAGES+=(
 	grub-gfxboot
 	hwsetup-ng
 	fll-live-initscripts
-	knx-installer
 	rebuildfstab
 	rsync
 	sidux-art-wallpaper
