@@ -539,16 +539,28 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	# preconfigure fontconfig-config
 	
-	# hinting select Native|Autohinter|None
-	#echo "fontconfig-config fontconfig/hinting_type select Autohinter" | chroot_exec debconf-set-selections
-	echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
-	# subpixel select Automatic|Always|Never
-	echo "fontconfig-config fontconfig/subpixel_rendering select Automatic" | chroot_exec debconf-set-selections
-	# bitmaps boolean true|false
-	echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
+	if exists_in_chroot /etc/fonts/conf.d; then
+		# hinting select Native|Autohinter|None
+		echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
+		# subpixel select Automatic|Always|Never
+		echo "fontconfig-config fontconfig/subpixel_rendering select Automatic" | chroot_exec debconf-set-selections
+		# bitmaps boolean true|false
+		echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
 	
-	chroot_exec dpkg-reconfigure fontconfig-config
-	chroot_exec dpkg-reconfigure fontconfig
+		# fonconfig-config.postinst is f**ked :: #412159
+		# this reverts fontconfig/enable_bitmaps to boolean value of true
+		#chroot_exec dpkg-reconfigure fontconfig-config
+		
+		# create the symlink ourselves
+		#no_bitmaps="70-no-bitmaps.conf"
+		#CONFAVAIL=/etc/fonts/conf.avail
+		#CONFDIR=/etc/fonts/conf.d
+		if exists_in_chroot /etc/fonts/conf.avail/70-no-bitmaps.conf; then
+			chroot_exec ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
+		fi
+
+		chroot_exec dpkg-reconfigure fontconfig
+	fi
 
 	# run fix-fonts
 	if exists_in_chroot /usr/sbin/fix-fonts; then
