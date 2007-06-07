@@ -1,6 +1,6 @@
 FLL_PACKAGES+=(
 	adduser
-	aumix
+	apt-utils
 	bzip2
 	console-data
 	console-common
