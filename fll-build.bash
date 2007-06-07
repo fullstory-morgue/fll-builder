@@ -547,6 +547,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# bitmaps boolean true|false
 	echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
 	
+	chroot_exec dpkg-reconfigure fontconfig-config
 	chroot_exec dpkg-reconfigure fontconfig
 
 	# run fix-fonts
