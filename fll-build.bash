@@ -542,7 +542,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# hinting select Native|Autohinter|None
 	#echo "fontconfig-config fontconfig/hinting_type select Autohinter" | chroot_exec debconf-set-selections
 	echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
-	# subpixel select Automatic|Always|None
+	# subpixel select Automatic|Always|Never
 	echo "fontconfig-config fontconfig/subpixel_rendering select Automatic" | chroot_exec debconf-set-selections
 	# bitmaps boolean true|false
 	echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
