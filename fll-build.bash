@@ -428,7 +428,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		preseed locales					#
 	#################################################################
-	chroot_exec apt-get --assume-yes install debconf
+	chroot_exec apt-get --assume-yes install debconf apt-utils
 	
 	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
 		chroot_exec debconf-set-selections
