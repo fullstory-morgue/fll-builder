@@ -26,7 +26,7 @@ initrd /boot/miniroot.gz
 #initrd /boot/miniroot.gz
 
 title  sidux ACPI off - DMA off
-kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet acpi=off nodma vga=791 
+kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet acpi=off ide=nodma vga=791 
 initrd /boot/miniroot.gz
 
 title  sidux APIC off
@@ -38,6 +38,6 @@ kernel /boot/vmlinuz boot=fll apm=power-off vga=791 xmodule=fbdev nomce quiet
 initrd /boot/miniroot.gz
 
 title  sidux Failsafe
-kernel /boot/vmlinuz boot=fll vga=normal noacpi noapic noapm noagp nomce nodhcp nodbus nocpufreq nobluetooth xmodule=vesa 
+kernel /boot/vmlinuz boot=fll apm=power-off vga=normal ide=nodma acpi=off noacpi noapic nomce nosmp nousb nohz=off nohwsetup nocpufreq xmodule=vesa 
 initrd /boot/miniroot.gz
 

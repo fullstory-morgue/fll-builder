@@ -18,6 +18,9 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * rm initscripts-sidux-live, add fll-live-initrscripts.
   * Add ttf-dejavu to xserver lineup.
   * Don't hack /etc/sudoers.
+  * Revise failsafe target of menu.lst.
+  * Also adjust nodma usage. We don't handle that in out scripts anymore, just
+    pass that param onto ide subsystem.
 
   [ Bernard Gray ]
   * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
@@ -48,7 +51,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 06 Jun 2007 16:40:16 +0200
+ -- Kel Modderman <kel@otaku42.de>  Thu, 07 Jun 2007 11:22:22 +1000
 
 fll-builder (1.0.9) unstable; urgency=low
 
