@@ -69,6 +69,7 @@ FLL_PACKAGES=(
 	kopete
 	korganizer
 	kpilot
+	kmix
 	knemo
 	kpat
 	kpdf
