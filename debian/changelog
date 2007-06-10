@@ -46,6 +46,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * etcskel-sidux has been orphaned, remove it from the package lists.
   * user-profile-sidux has been orphaned, remove it from the package lists.
   * knx-installer has been orphaned, remove it from the package lists.
+  * configure-mouse is obsolete, don't install it.
 
   [ Andreas Weber ]
   * Some Packages picked from the kde Profile.
@@ -56,7 +57,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 07 Jun 2007 23:13:54 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 10 Jun 2007 14:28:58 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 

@@ -1,7 +1,6 @@
 FLL_PACKAGES+=(
 	configure-cups
 	configure-gprs
-	configure-mouse
 	configure-screenres
 	configure-xawtv
 	ddcxinfo-sidux
