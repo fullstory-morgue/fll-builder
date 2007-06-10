@@ -53,11 +53,12 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Pidgin reactivated
   * evolution added for gnome-lite
   * Desktop Icon fixed
+  * xdialog added for gnome (required for scripts with dialog wrapper)
 
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 10 Jun 2007 14:28:58 +0200
+ -- Andreas Weber <andreas@it-weber.com>  Sun, 10 Jun 2007 17:19:47 +0200
 
 fll-builder (1.0.9) unstable; urgency=low
 
