@@ -548,10 +548,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
 	
 		# fonconfig-config.postinst is f**ked :: #412159
-		# this reverts fontconfig/enable_bitmaps to boolean value of true
 		#chroot_exec dpkg-reconfigure fontconfig-config
 		
-		# create the symlink ourselves
+		# create the symlink ourselves, derived from fontconfig-config.postinst
 		#no_bitmaps="70-no-bitmaps.conf"
 		#CONFAVAIL=/etc/fonts/conf.avail
 		#CONFDIR=/etc/fonts/conf.d
@@ -565,27 +564,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# run fix-fonts
 	if exists_in_chroot /usr/sbin/fix-fonts; then
 		chroot_exec fix-fonts
-	fi
-	
-	# set x-www-browser, use the popular firefox/iceweasel if present
-	if exists_in_chroot /usr/bin/iceweasel; then
-		chroot_exec update-alternatives --set x-www-browser /usr/bin/iceweasel
-		###
-		# make our preferences global and persistent
-		###
-		if exists_in_chroot /etc/iceweasel/pref/iceweasel.js; then
-			echo >> "$FLL_BUILD_CHROOT"/etc/iceweasel/pref/iceweasel.js
-			echo '// Misc. tweaks' >> \
-				"$FLL_BUILD_CHROOT"/etc/iceweasel/pref/iceweasel.js
-			echo 'pref("layout.css.dpi", 0);' >> \
-				"$FLL_BUILD_CHROOT"/etc/iceweasel/pref/iceweasel.js
-			echo 'pref("ui.allow_platform_file_picker", false);' >> \
-				"$FLL_BUILD_CHROOT"/etc/iceweasel/pref/iceweasel.js
-		fi
-	elif exists_in_chroot /usr/bin/epiphany-browser; then
-		chroot_exec update-alternatives --set x-www-browser /usr/bin/epiphany
-	elif exists_in_chroot /usr/bin/konqueror; then
-		chroot_exec update-alternatives --set x-www-browser /usr/bin/konqueror
 	fi
 	
 	# use most as PAGER if installed in chroot
