@@ -15,7 +15,7 @@ FLL_IMAGE_FILE="SIDUX"
 FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 
 # specify the mountpoint for the compressed file system
-FLL_MOUNTPOINT="/SIDUX"
+FLL_MOUNTPOINT="/fll/SIDUX"
 
 # As a match to the above though only relevant to sidux fromiso
 FLL_MEDIA_NAME="sidux.iso"

@@ -25,6 +25,11 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   * Add our own defaults preferences to iceweasal.
   * Hardcode installation of apt-utils alongside debconf for preconfiguration
     enhancements.
+  * Move FLL_MOUNTPOINT to position under /fll/* namespace.
+    - adjust creation/removal of FLL_MOUNTPOINT in build chroot to fool
+      packages that check for that
+    - exclude ./fll* at mksquashfs time
+  * Add iceweasel and gtk2 engine to light build for a period of testing.
 
   [ Bernard Gray ]
   * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
@@ -58,7 +63,7 @@ fll-builder (1.0.10) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * add kde-core to kde-profiles
 
- -- Andreas Weber <andreas@it-weber.com>  Sun, 10 Jun 2007 17:19:47 +0200
+ -- Kel Modderman <kel@otaku42.de>  Thu, 14 Jun 2007 20:20:47 +1000
 
 fll-builder (1.0.9) unstable; urgency=low
 

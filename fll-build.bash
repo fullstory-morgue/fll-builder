@@ -278,7 +278,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
 	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
 
-	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}${FLL_MOUNTPOINT}"
+	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
 
 	# fix permissions to allow user access
 	if ((FLL_BUILD_OUTPUT_UID)); then
@@ -592,7 +592,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	remove_from_chroot /etc/resolv.conf
 	
 	# remove live-cd mode identifier
-	rmdir -v "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
+	pushd "${FLL_BUILD_CHROOT}"
+		rmdir -vp "${FLL_MOUNTPOINT}"
+	popd
 	
 	# create final config files
 	cat_file_to_chroot hosts	/etc/hosts
