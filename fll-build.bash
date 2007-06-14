@@ -584,17 +584,15 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
+	# remove live-cd mode identifier
+	chroot_exec rmdir -vp "${FLL_MOUNTPOINT}"
+
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
 	remove_from_chroot /usr/sbin/policy-rc.d
 	remove_from_chroot /etc/debian_chroot
 	remove_from_chroot /etc/hosts
 	remove_from_chroot /etc/resolv.conf
-	
-	# remove live-cd mode identifier
-	pushd "${FLL_BUILD_CHROOT}"
-		rmdir -vp ."${FLL_MOUNTPOINT}"
-	popd
 	
 	# create final config files
 	cat_file_to_chroot hosts	/etc/hosts
