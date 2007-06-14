@@ -593,7 +593,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# remove live-cd mode identifier
 	pushd "${FLL_BUILD_CHROOT}"
-		rmdir -vp "${FLL_MOUNTPOINT}"
+		rmdir -vp ."${FLL_MOUNTPOINT}"
 	popd
 	
 	# create final config files
