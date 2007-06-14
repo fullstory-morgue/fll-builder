@@ -1,8 +1,5 @@
-fll-builder (1.0.11) UNRELEASED; urgency=low
+fll-builder (1.1.0) unstable; urgency=low
 
-  * NOT RELEASED YET
-
-  [ Kel Modderman ]
   * Rename vmlinux and miniroot.gz to vmlinuz-$KVERS and initrd.img-$KVERS
     respectively.
 
