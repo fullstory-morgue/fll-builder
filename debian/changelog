@@ -1,3 +1,9 @@
+fll-builder (1.1.2) UNRELEASED; urgency=low
+
+  * NOT RELEASED YET
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 14 Jun 2007 14:03:15 +0200
+
 fll-builder (1.1.1) unstable; urgency=low
 
   * Fix sed hack that renamed vmlinuz and initrd.img entries in menu.lst.
