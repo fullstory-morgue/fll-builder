@@ -469,8 +469,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 
 	# grab kernel and initial ramdisk before other packages are installed
-	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/miniroot.gz
-	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/vmlinuz
+	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
 	
 	#################################################################
 	#		mass package installation			#
@@ -638,6 +638,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
 		"$FLL_BUILD_RESULT"/boot/grub/
 	cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+
+	# fixup the initrd.img and vmlinuz tokens
+	sed -i	-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'
+		-e 's|@initrd@|initrd\.img-'"$KVERS"'|'
+			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
 	if exists_in_chroot /boot/memtest86+.bin; then
 		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin

@@ -6,38 +6,38 @@ background 400000
 gfxmenu /boot/message
 
 title  sidux Default (aufs)
-kernel /boot/vmlinuz boot=fll quiet vga=791
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll quiet vga=791
+initrd /boot/@initrd@
 
 title  sidux Debug (aufs, serial console)
-kernel /boot/vmlinuz boot=fll quiet vga=791 aufs console=ttyS0,115200 console=tty
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll quiet vga=791 aufs console=ttyS0,115200 console=tty
+initrd /boot/@initrd@
 
 title  sidux Default (unionfs 2.x)
-kernel /boot/vmlinuz boot=fll quiet vga=791 unionfs 
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs 
+initrd /boot/@initrd@
 
 title  sidux Debug (unionfs 2.x, serial console)
-kernel /boot/vmlinuz boot=fll quiet vga=791 unionfs console=ttyS0,115200 console=tty
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs console=ttyS0,115200 console=tty
+initrd /boot/@initrd@
 
 #title  sidux Default (link farm)
-#kernel /boot/vmlinuz boot=fll quiet vga=791 
-#initrd /boot/miniroot.gz
+#kernel /boot/@vmlinuz@ boot=fll quiet vga=791 
+#initrd /boot/@initrd@
 
 title  sidux ACPI off - DMA off
-kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet acpi=off ide=nodma vga=791 
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll apm=power-off nomce quiet acpi=off ide=nodma vga=791 
+initrd /boot/@initrd@
 
 title  sidux APIC off
-kernel /boot/vmlinuz boot=fll apm=power-off nomce quiet nosmp noapic vga=791 
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll apm=power-off nomce quiet nosmp noapic vga=791 
+initrd /boot/@initrd@
 
 title  sidux Framebuffer Mode
-kernel /boot/vmlinuz boot=fll apm=power-off vga=791 xmodule=fbdev nomce quiet 
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll apm=power-off vga=791 xmodule=fbdev nomce quiet 
+initrd /boot/@initrd@
 
 title  sidux Failsafe
-kernel /boot/vmlinuz boot=fll apm=power-off vga=normal ide=nodma acpi=off noacpi noapic nomce nosmp nousb nohz=off nohwsetup nocpufreq xmodule=vesa 
-initrd /boot/miniroot.gz
+kernel /boot/@vmlinuz@ boot=fll apm=power-off vga=normal ide=nodma acpi=off noacpi noapic nomce nosmp nousb nohz=off nohwsetup nocpufreq xmodule=vesa 
+initrd /boot/@initrd@
 
