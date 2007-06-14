@@ -1,6 +1,4 @@
-fll-builder (1.0.10) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.0.10) unstable; urgency=low
 
   [ Kel Modderman ]
   * Add yakuake to kde-full line up.
