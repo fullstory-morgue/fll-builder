@@ -585,7 +585,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		cleanup & prepare final chroot			#
 	#################################################################
 	# remove live-cd mode identifier
-	chroot_exec rmdir -vp "${FLL_MOUNTPOINT}"
+	pushd "${FLL_BUILD_CHROOT}"
+		rmdir -vp "${FLL_MOUNTPOINT#/}"
+	popd
 
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
