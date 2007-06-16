@@ -584,6 +584,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
+	chroot_exec dpkg --purge fll-live-initramfs
+
 	# remove live-cd mode identifier
 	pushd "${FLL_BUILD_CHROOT}"
 		rmdir -vp "${FLL_MOUNTPOINT#/}"
