@@ -5,8 +5,9 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * don't follow the braindead aptitude extended state info.
+  * install apt-conf-sidux.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Jun 2007 16:00:26 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Jun 2007 23:41:31 +0200
 
 fll-builder (1.1.1) unstable; urgency=low
 
