@@ -22,6 +22,7 @@ f	./var/cache/apt/archives/*
 d	./var/cache/bootstrap
 f	./var/cache/debconf/*-old
 f	./var/lib/apt/lists/*
+f	./var/lib/apt/extended_states
 f	./var/lib/dpkg/*-old
 f	./var/lib/initramfs-tools/*
 f	./var/lock/*
