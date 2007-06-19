@@ -14,7 +14,7 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	ark
 	k3b
-#	kaffeine
+	kaffeine
 	kde-core
 	kdm
 	konversation
