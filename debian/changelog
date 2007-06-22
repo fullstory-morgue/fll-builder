@@ -7,7 +7,10 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   * don't follow the braindead aptitude extended state info.
   * install apt-conf-sidux.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Jun 2007 23:41:31 +0200
+  [ Chris Hildebrandt ]
+  * added libsane-extras for extended hardware support
+
+ -- Chris Hildebrandt <slam@sidux.com>  Fri, 22 Jun 2007 19:23:27 +0200
 
 fll-builder (1.1.1) unstable; urgency=low
 

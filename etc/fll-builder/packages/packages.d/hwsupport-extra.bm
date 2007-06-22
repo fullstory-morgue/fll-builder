@@ -25,6 +25,7 @@ FLL_PACKAGES+=(
 	pm-utils
 	sane
 	sane-utils
+	libsane-extras
 	vbetool
 )
 
