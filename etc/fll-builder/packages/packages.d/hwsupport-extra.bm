@@ -28,5 +28,3 @@ FLL_PACKAGES+=(
 	libsane-extras
 	vbetool
 )
-
-# uswsusp: uninstallable on 20070510
