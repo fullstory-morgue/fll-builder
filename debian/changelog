@@ -2,6 +2,8 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
 
   [ Kel Modderman ]
   * Purge fll-live-initramfs.
+  * Purge /etc/initramfs-tools/conf.d/resume that is created by
+    initramfs-tools.preinst.
 
   [ Stefan Lippers-Hollmann ]
   * don't follow the braindead aptitude extended state info.
@@ -10,7 +12,7 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   [ Chris Hildebrandt ]
   * added libsane-extras for extended hardware support
 
- -- Chris Hildebrandt <slam@sidux.com>  Fri, 22 Jun 2007 19:23:27 +0200
+ -- Kel Modderman <kel@otaku42.de>  Mon, 25 Jun 2007 14:25:45 +1000
 
 fll-builder (1.1.1) unstable; urgency=low
 

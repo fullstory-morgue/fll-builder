@@ -443,6 +443,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	# module-init-tools required for depmod, it may not be in minimal bootstrap
 	chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
+
+	# created by initramfs-tools.preinst
+	if exists_in_chroot /etc/initramfs-tools/conf.d/resume; then
+		rm -vf "$FLL_BUILD_CHROOT"/etc/initramfs-tools/conf.d/resume
+	fi
 	
 	# ensure initrd is created by linux-image postinst hook
 	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
