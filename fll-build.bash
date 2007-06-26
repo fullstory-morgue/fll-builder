@@ -407,6 +407,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# package timestamp for snapshot versioning
 	FLL_PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
 
+	# grab any fixes from fix.main
+	chroot_exec apt-get --assume-yes dist-upgrade
+
 	#################################################################
 	#		iso name (with package timestamp)		#
 	#################################################################

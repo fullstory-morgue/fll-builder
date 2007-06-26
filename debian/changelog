@@ -4,6 +4,8 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   * Purge fll-live-initramfs.
   * Purge /etc/initramfs-tools/conf.d/resume that is created by
     initramfs-tools.preinst.
+  * Do dist-upgrade just after bootstrap to grab any fixes from fix.main that
+    may concern essential packages (sysvinit-libata for example).
 
   [ Stefan Lippers-Hollmann ]
   * don't follow the braindead aptitude extended state info.
@@ -12,7 +14,7 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   [ Chris Hildebrandt ]
   * added libsane-extras for extended hardware support
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 25 Jun 2007 14:25:45 +1000
+ -- Kel Modderman <kel@otaku42.de>  Tue, 26 Jun 2007 19:45:32 +1000
 
 fll-builder (1.1.1) unstable; urgency=low
 
