@@ -59,6 +59,9 @@ case ${FLL_PACKAGES[*]} in
 					# Missing
 					:
 					;;
+				pt)
+					FLL_PACKAGES+=( icedove-locale-pt-${lang} )
+					;;
 				*)
 					FLL_PACKAGES+=( icedove-locale-${lang} )
 					;;
@@ -80,6 +83,9 @@ case ${FLL_PACKAGES[*]} in
 				au)
 					# Missing
 					:
+					;;
+				pt)
+					FLL_PACKAGES+=( iceweasel-l10n-pt-${lang} )
 					;;
 				*)
 					FLL_PACKAGES+=( iceweasel-l10n-${lang} )
@@ -117,6 +123,9 @@ case ${FLL_PACKAGES[*]} in
 					;;
 				au|gb)
 					FLL_PACKAGES+=( myspell-en-${lang} )
+					;;
+				pt)
+					FLL_PACKAGES+=( myspell-pt-${lang} )
 					;;
 				*)
 					FLL_PACKAGES+=( myspell-${lang} )
