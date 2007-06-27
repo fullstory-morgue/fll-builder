@@ -14,7 +14,10 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   [ Chris Hildebrandt ]
   * added libsane-extras for extended hardware support
 
- -- Kel Modderman <kel@otaku42.de>  Tue, 26 Jun 2007 19:45:32 +1000
+  [ Joaquim Boura ]
+  * pt language is a special case
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Wed, 27 Jun 2007 17:10:02 +0200
 
 fll-builder (1.1.1) unstable; urgency=low
 
