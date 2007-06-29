@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	apt-conf-sidux
+	desktop-defaults-common
 	grub-gfxboot
 	hwsetup-ng
 	fll-live-initscripts
