@@ -13,6 +13,7 @@ FLL_PACKAGES+=(
 	less
 	locales
 	netbase
+	rsync
 	sudo
 	wget
 	wireless-tools

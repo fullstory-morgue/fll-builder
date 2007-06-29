@@ -4,8 +4,8 @@ FLL_PACKAGES+=(
 	hwsetup-ng
 	fll-live-initscripts
 	rebuildfstab
-	rsync
 	sidux-art-wallpaper
+	sidux-art-wallpaper-gaia
 	sidux-graphics
 	sidux-keyrings
 	sidux-scripts
