@@ -7,6 +7,7 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   * Do dist-upgrade just after bootstrap to grab any fixes from fix.main that
     may concern essential packages (sysvinit-libata for example).
   * Depend on new gaia specific art.
+  * Update distro-defaults for new wallpaper name.
 
   [ Stefan Lippers-Hollmann ]
   * don't follow the braindead aptitude extended state info.
@@ -18,7 +19,7 @@ fll-builder (1.1.2) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * pt language is a special case
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 29 Jun 2007 23:10:45 +1000
+ -- Kel Modderman <kel@otaku42.de>  Fri, 29 Jun 2007 23:16:17 +1000
 
 fll-builder (1.1.1) unstable; urgency=low
 
