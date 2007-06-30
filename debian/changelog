@@ -1,4 +1,4 @@
-fll-builder (1.1.2) UNRELEASED; urgency=low
+fll-builder (1.1.2) unstable; urgency=low
 
   [ Kel Modderman ]
   * Purge fll-live-initramfs.
