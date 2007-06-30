@@ -23,6 +23,7 @@ FLL_PACKAGES=(
 	kpowersave
 	kppp
 	kpdf
+	ksnapshot
 	ktorrent
 	kuickshow
 	gtk2-engines-qtcurve
