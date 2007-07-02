@@ -21,8 +21,9 @@ FLL_PACKAGES+=(
 	linuxprinting.org-ppds
 	lirc
 	min12xxw
-	powersaved
 	pm-utils
+	pnm2ppa
+	powersaved
 	sane
 	sane-utils
 	libsane-extras
