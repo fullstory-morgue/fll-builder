@@ -46,6 +46,7 @@ FLL_PACKAGES=(
 	kdepim-kresources
 	kdepim-wizards
 	kdeprint
+	kdeservicemenus-sidux
 	kdetv
 	kdf
 	kdict
