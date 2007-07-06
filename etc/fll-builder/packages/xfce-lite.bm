@@ -9,9 +9,11 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	gdm
+	gdm-themes-sidux
 	xfce4
 	gksu
 	xchat
+	xchat-systray
 	infobash
 	configure-networkcard
 	configure-ndiswrapper

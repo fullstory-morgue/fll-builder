@@ -8,9 +8,10 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * Make kdeservicemenus-sidux specific to kde-full profile.
 
   [ Horst Tritremmel ]
-  * add zenity to gnome and xfce modules for sidux-irc in gnome 
+  * add zenity to gnome and xfce modules for sidux-irc in gnome
+  * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Horst Tritremmel <hjt@sidux.com>  Thu, 05 Jul 2007 22:42:41 +0200
+ -- Horst Tritremmel <hjt@sidux.com>  Fri, 06 Jul 2007 11:40:26 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
