@@ -6,7 +6,7 @@ FLL_PACKAGES+=(
 	configure-networkcard
 	infobash
 	ppp-scripts
-	sshstart-sidux
+	#sshstart-sidux # broken
 	#startsyslog-sidux # broken
 )
 
