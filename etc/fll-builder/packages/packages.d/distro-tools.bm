@@ -7,6 +7,6 @@ FLL_PACKAGES+=(
 	infobash
 	ppp-scripts
 	sshstart-sidux
-	startsyslog-sidux
+	#startsyslog-sidux # broken
 )
 
