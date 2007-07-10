@@ -1,6 +1,7 @@
 FLL_PACKAGES+=(
 	915resolution
 	alsa-utils
+	cryptsetup
 #	cpufrequtils -> now provides cpufreq module detection. possible confliction
 	cupsys
 	cupsys-client
