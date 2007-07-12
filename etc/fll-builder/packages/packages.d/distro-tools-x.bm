@@ -15,6 +15,7 @@ FLL_PACKAGES+=(
 	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
+	xdialog		# this must die!
 	xorgconfig-sidux
 )
 
