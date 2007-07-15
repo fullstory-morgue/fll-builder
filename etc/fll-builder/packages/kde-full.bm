@@ -84,7 +84,6 @@ FLL_PACKAGES=(
 	kvpnc
 	kwalletmanager
 	kwifimanager
-	libkdcraw-runtime	# digikam raw images
 	libqt-perl
 	moto4lin
 	myspell-en-us
