@@ -225,11 +225,18 @@ done
 if [[ $1 ]]; then
 	FLL_BUILD_AREA="$1"
 	mkdir -p "$FLL_BUILD_AREA"
+	mknod "$FLL_BUILD_AREA"/test-dev-null c 1 3
+	if echo test > "$FLL_BUILD_AREA"/test-dev-null 2>/dev/null; then
+		rm -f "$FLL_BUILD_AREA"/test-dev-null
+	else
+		echo "$SELF: build area mounted with 'nodev' option, aborting"
+		exit 3
+	fi
 else
 	echo "$SELF: must supply a build directory as first and only command line argument!"
 	echo
 	print_help
-	exit 3
+	exit 4
 fi
 
 if [[ $DEBUG -ge 2 ]]; then
@@ -323,7 +330,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		else
 			echo "Must define FLL_BUILD_LINUX_KERNEL in your conf"
 		fi
-		exit 4
+		exit 5
 	fi
 
 	#################################################################
@@ -331,7 +338,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
 		echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
-		exit 5
+		exit 6
 	fi
 
 	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
@@ -348,7 +355,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
-		exit 6
+		exit 7
 	fi
 	
 	# echo package list early for bfree :-)
@@ -392,7 +399,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
 		else
 			echo "Must provide GPG keyid for ${FLL_BUILD_EXTRAMIRROR[$i]}"
-			exit 6
+			exit 8
 		fi
 	done
 
