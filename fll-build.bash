@@ -619,7 +619,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot apt_sources	/etc/apt/sources.list
 	
 	# add version marker, this is the exact time stamp for our package list
-	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION - $FLL_DISTRO_CODENAME - $FLL_BUILD_PACKAGE_PROFILE - ($FLL_PACKAGE_TIMESTAMP)\n" \
+	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION - $(sed s/\ \-\ /\ /g <<< $FLL_DISTRO_CODENAME) - $FLL_BUILD_PACKAGE_PROFILE - ($FLL_PACKAGE_TIMESTAMP)\n" \
 		>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 	
 	# a few dæmons are broken if log files are missing, 
