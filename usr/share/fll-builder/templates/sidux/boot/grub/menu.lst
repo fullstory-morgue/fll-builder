@@ -9,20 +9,16 @@ title  sidux Default (aufs)
 kernel /boot/@vmlinuz@ boot=fll quiet vga=791
 initrd /boot/@initrd@
 
-title  sidux Debug (aufs, serial console)
-kernel /boot/@vmlinuz@ boot=fll quiet vga=791 aufs console=ttyS0,115200 console=tty
-initrd /boot/@initrd@
+#title  sidux Debug (aufs, serial console)
+#kernel /boot/@vmlinuz@ boot=fll quiet vga=791 aufs console=ttyS0,115200 console=tty
+#initrd /boot/@initrd@
 
-title  sidux Default (unionfs 2.x)
-kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs 
-initrd /boot/@initrd@
+#title  sidux Default (unionfs 2.x)
+#kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs 
+#initrd /boot/@initrd@
 
-title  sidux Debug (unionfs 2.x, serial console)
-kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs console=ttyS0,115200 console=tty
-initrd /boot/@initrd@
-
-#title  sidux Default (link farm)
-#kernel /boot/@vmlinuz@ boot=fll quiet vga=791 
+#title  sidux Debug (unionfs 2.x, serial console)
+#kernel /boot/@vmlinuz@ boot=fll quiet vga=791 unionfs console=ttyS0,115200 console=tty
 #initrd /boot/@initrd@
 
 title  sidux ACPI off - DMA off
