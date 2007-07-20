@@ -8,6 +8,8 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * libkdcraw-runtime is no longer needed/ available.
   * add $FLL_BUILD_PACKAGE_PROFILE to /etc/${FLL_DISTRO_NAME_LC}-version and
     ISO filename.
+  * digikam is fine again.
+  * remove kde-ltag package list.
 
   [ Kel Modderman ]
   * Make kdeservicemenus-sidux specific to kde-full profile.
@@ -22,7 +24,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * add zenity to gnome and xfce modules for sidux-irc in gnome
   * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 20 Jul 2007 13:57:44 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 20 Jul 2007 20:35:40 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
