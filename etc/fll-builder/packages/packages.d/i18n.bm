@@ -135,3 +135,15 @@ case ${FLL_PACKAGES[*]} in
 		;;
 esac
 
+case ${FLL_PACKAGES[*]} in
+	*sidux-manual*)
+		for lang in ${FLL_I18N_SUPPORT[@]}; do
+			case $lang in
+				*)
+					FLL_PACKAGES+=( sidux-manual-${lang} )
+					;;
+			esac
+		done
+		;;
+esac
+
