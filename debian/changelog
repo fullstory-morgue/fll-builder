@@ -19,6 +19,8 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * move release notes one level to the top.
   * dispose release/.
   * update the release note's feature list.
+  * update roadmap.
+  * ditch existing introduction.
 
   [ Kel Modderman ]
   * Make kdeservicemenus-sidux specific to kde-full profile.
@@ -33,7 +35,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * add zenity to gnome and xfce modules for sidux-irc in gnome
   * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 21 Jul 2007 14:15:17 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 21 Jul 2007 15:50:31 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
