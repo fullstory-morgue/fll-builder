@@ -109,7 +109,7 @@
 					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the "lm" flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer).</li>
 					<li>debian sid.</li>
 					<li>kernel 2.6.22.1 (smp, hard preemption).</li>
-					<li>KDE 3.5.7 (en + de).</li>
+					<li>minimal, but fully functional KDE 3.5.7 (en + de).</li>
 					<li>completely overhauled init sequence.</li>
 					<li>refactored installer backend.</li>
 					<li>new artwork created by cleary and the sidux art team.</li>
@@ -118,8 +118,10 @@
 					<li>iwlwifi3945/ iwlwifi4965 0.0.42.</li>
 					<li>support for RealTek RTL8187 wlan cards.</li>
 					<li>libata support for parallel ATA systems.</li>
-					<li>further Xdialog &rarr; ssft consolidation.</li>
-					<li>fw-detect to probe for hwardware with non-free needs.</li>
+					<li>further Xdialog &rarr; ssft consolidation works, patches welcome.</li>
+					<li>fw-detect to probe for hardware with non-free needs.</li>
+					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on th live CD now, please consult the manual for fromiso syntax changes.</li>
+					<li>enhance hardware support libraries.</li>
 				</ul>
 			</div>
 	
@@ -211,6 +213,16 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 				</p>
 			</div>
 	
+			<div class="divider" id="disclaim">
+				<h2>Disclaimer:</h2>
+				<p>
+					This is experimental software.
+					Use at your own risk.
+					The sidux project, it's developers and team members (all represented by the sidux e.V.) cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software.
+					If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.
+				</p>
+			</div>
+	
 			<div class="divider" id="howto-involve">
 				<h2>How to get involved</h2>
 				<p>
@@ -292,16 +304,6 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 				<p>
 					On behalf of the sidux team:<br />
 					Stefan Lippers-Hollmann (slh)
-				</p>
-			</div>
-	
-			<div class="divider" id="disclaim">
-				<h2>Disclaimer:</h2>
-				<p>
-					This is experimental software.
-					Use at your own risk.
-					The sidux project, it's developers and team members (all represented by the sidux e.V.) cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software.
-					If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.
 				</p>
 			</div>
 		</div>
