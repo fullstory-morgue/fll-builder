@@ -13,6 +13,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * unionfs 2.x is still broken.
   * hook english + localized manuals into distro-tools-x.
   * add basic release note template to CD root.
+  * re- indent neglish release notes.
 
   [ Kel Modderman ]
   * Make kdeservicemenus-sidux specific to kde-full profile.
@@ -27,7 +28,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * add zenity to gnome and xfce modules for sidux-irc in gnome
   * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 21 Jul 2007 12:33:35 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 21 Jul 2007 13:13:26 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
