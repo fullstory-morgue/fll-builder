@@ -117,20 +117,17 @@
 					<li>iwlwifi3945/ iwlwifi4965 0.0.42.</li>
 					<li>support for RealTek RTL8187 wlan cards.</li>
 					<li>libata support for parallel ATA systems.</li>
-					<li>further Xdialog --&gt; ssft consolidation.</li>
+					<li>further Xdialog &rarr; ssft consolidation.</li>
+					<li>fw-detect to probe for hwardware with non-free needs.</li>
 				</ul>
 			</div>
 	
 			<div class="divider" id="non-free">
 				<h2>Hints for hardware with non-free needs:</h2>
-				<p class="highlight-3">
-					Due to the complexity of law, sidux live-cd will only provide dfsg-free software.
-				</p>
-		
 				<p>
-					As sidux contains only dfsg free software, you will probably want to add contrib/ non-free to your /etc/apt/sources.list and ensure internet access:
+					sidux contains only <a href="http://www.debian.org/social_contract">dfsg</a> free software, so you'll probably want to add contrib/ non-free to your <a href="http://sidux.com/files/misc/sources.list">/etc/apt/sources.list</a> and ensure internet access.
 				</p>
-		<pre># See sources.list(5) for more information, especialy
+		<pre># See sources.list(5) for more information, especially
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 
@@ -141,6 +138,11 @@ deb http://ftp.de.debian.org/debian unstable main contrib non-free
 # sidux
 deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
 #deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+
+				<p>
+					Which firmware might be required to employ affected hardware can be determined with the following device/ firmware enumeration or by using the newly developed fw-detect script (packaged in configure networkcard) from the live cd.
+				</p>
+
 				<ul>
 					<li>
 						ATi Radeon graphics: 3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance which are not yet compatible with X.org 7.2.
@@ -174,10 +176,12 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					<li>
 						Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:
 						<pre>apt-get install firmware-iwl3945</pre>
+						please remove iwlwifi-ucode and iwlwifi-3945, if already installed.
 					</li>
 					<li>
 						Intel ipw4965/ iwlwifi, draft-n wlan:
 						<pre>apt-get install firmware-iwl4965</pre>
+						please remove iwlwifi-4965, if already installed.
 					</li>
 					<li>
 						Intersil prism54, 54 MBit/s wlan: fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
@@ -202,7 +206,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 				</ul>
 	
 				<p>
-					We will check if we can provide packages for at least some of these devices, but the legal status isn't necessarily easy.
+					We try to provide packages for all legally redistributable firmwares from our non-free repositories, but the legal status unfortunately doesn't always allow this.
 				</p>
 			</div>
 	
