@@ -1,0 +1,35 @@
+body {
+background: transparent;
+font-size: 12pt;
+}
+#menu {display:none;}
+#main-page {
+margin:0 5em 0 2em;
+}
+#top-header {
+display: list-item;
+list-style-image: url(../logos/sidux-book.gif);
+list-style-position: inside;
+}
+
+.highlight-1 {color:#000;}
+.highlight-2 {color:#000;}
+.highlight-3 {color:#000;}
+.highlight-4 {color:#000;}
+
+p {
+page-break-inside:avoid;
+}
+
+a:link, a:visited {
+	color: #000;
+	background: transparent;
+	font-weight: normal;
+	text-decoration: none;
+   }
+
+
+#main-page a:link:after, #main-page a:visited:after {
+	content: " (" attr(href) ") ";
+	font-size:90%;
+   }

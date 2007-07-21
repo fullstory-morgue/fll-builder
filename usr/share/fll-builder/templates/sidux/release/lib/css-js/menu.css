@@ -1,0 +1,145 @@
+/*
+Last updated by bluewater/h2  11/06/2007 1600hrs ADEST :: 11/06/2007 0600hrs UTC
+*/
+#menu {
+        width:164px;/* make 2px less than frame width, avoids ff/iw bottom scroll bar */
+        font:normal 14px "dejavu sans", arial,sans-serif;
+        position:fixed;
+        height:100%;
+        z-index:4;
+}
+#menu h2 {
+	color:#E4D0CC;
+	font-size:17px;
+	font-weight:normal;
+	text-align:center;
+}
+
+#menu ul {
+	margin:0;
+	padding:0;
+}
+#menu li {
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+/* note: top li has bottom margin to create space under each main menu item
+ nested ul ul li does not have this space */
+#menu ul li {
+	margin-bottom:2px;
+	position:relative;
+	font-size:11px;
+	font-weight:normal;
+	background:#7BA7A6;
+	color:white;
+}
+#menu ul ul li {
+	margin-bottom:0;
+}
+
+#menu a {
+	display:block;
+	text-decoration:none;
+}
+#menu ul ul {
+	position:absolute;
+	left:165px;
+	bottom:-4px;
+	width:170px;
+	border:1px dotted #A9BAB8;
+}	
+#menu ul li a, #menu ul li a:visited {
+	color:white;
+	padding:2px 0px 2px 4px;
+}
+#menu ul li a:hover, #menu ul li:hover {
+	background:#2B2F2F;
+	color:#E6FDFA;
+}
+
+#menu .sub-menu {
+	display:none;
+}
+/*
+#welcome #sm1, #internet-samba #sm2, #live-mode #sm3, #part #sm4, #cd #sm5, #cheatcodes #sm6, #hd #sm7, #sys-admin #sm8, #term-konsole #sm9 {
+	display:block;
+}
+*/
+
+ul li:hover #sm1, ul li:hover  #sm2, ul li:hover  #sm3, ul li:hover #sm4, ul li:hover #sm5, ul li:hover #sm6, ul li:hover #sm7, ul li:hover #sm8, ul li:hover #sm9, ul li:hover #sm10, ul li:hover #sm11, ul li:hover #sm12, ul li:hover #sm13, ul li:hover #sm14, ul li:hover #sm15, ul li:hover #sm16, ul li:hover #sm17, ul li:hover #sm18, ul li:hover #sm19, ul li:hover #sm20, ul li:hover #sm21, ul li:hover #sm22, ul li:hover #sm23, ul li:hover #sm24, ul li:hover #sm25, ul li:hover #sm26, ul li:hover #sm27, ul li:hover #sm28, ul li:hover #sm29, ul li:hover #sm30 {
+	display:block;
+}
+
+#menu ul ul li {
+	font-size:9px;
+	font-weight:normal;
+	background:#fff;
+	color:#1224CC;
+	border-bottom:1px solid #8D9B99;
+}
+#menu ul ul li a, #menu ul ul li a:visited {
+	color:blue;
+	padding:2px 0px 2px 6px;
+}
+#menu ul ul li a:hover, #menu ul ul li:hover {
+	text-decoration:underline;
+	color:#005555;
+	background:#fff;
+}
+
+
+#menu #menu-header {
+	width:140px;
+	height:50px;
+}
+
+#menu #menu-header1 {
+	width:23px;
+	height:30px;
+}
+/* note: we're going to let the #flags div handle this margin stuff */
+#menu ul#top-list {
+	margin-bottom:0;
+}
+
+#menu #flags {
+	text-align:center;
+	margin: -1px 0 -1px 1px;
+	line-height:12px;
+	padding:0;
+}
+/* border for img must be same as background for this trick to work, then hover acts */
+#menu #flags img {
+	margin:1px;
+	width:20px;
+	height:12px;
+	border:2px solid #EAEDF4;
+}
+#menu #flags a, #menu #flags a:visited {
+	display:inline;
+}
+#menu #flags img:hover {
+	border:2px dotted #6F9796;
+}
+
+/* flag-2*/
+#menu #flags-2 {
+	text-align:center;
+	margin: -1px 0 -1px 1px;
+	line-height:12px;
+	padding:0;
+}
+/* border for img must be same as background for this trick to work, then hover acts */
+#menu #flags-2 img {
+	margin:1px;
+	width:60px;
+	height:60px;
+	border:2px solid #EAEDF4;
+}
+#menu #flags-2 a, #menu #flags-2 a:visited {
+	display:inline;
+}
+#menu #flags-2 img:hover {
+	border:2px dotted #6F9796;
+}
