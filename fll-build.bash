@@ -645,7 +645,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		[[ -d $dir ]] || continue
 		pushd $dir >/dev/null
 			find . -not -path '*.svn*' -printf '%P\n' | \
-				cpio -admpv --no-preserve-owner "$FLL_BUILD_RESULT"
+				cpio -Ladmpv --no-preserve-owner "$FLL_BUILD_RESULT"
 		popd >/dev/null
 	done
 
