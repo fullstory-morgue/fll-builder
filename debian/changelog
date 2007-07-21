@@ -29,6 +29,8 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
     - split after each sentence.
     - move the disclaimer above the signatures.
     - further feature additions.
+    - XHTML syntax checks.
+    - add the offline manual to the menu.
 
   [ Kel Modderman ]
   * Make kdeservicemenus-sidux specific to kde-full profile.
@@ -43,7 +45,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * add zenity to gnome and xfce modules for sidux-irc in gnome
   * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 22 Jul 2007 01:34:28 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 22 Jul 2007 01:56:55 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
