@@ -18,69 +18,33 @@
 	<body>
 		<div id="menu">
 			<img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
+
 			<ul id="top-list">
 				<li><a href="http://sidux.com/">sidux.com main site</a></li>
 				<li><a href="http://manual.sidux.com/">sidux Operating System Manual</a></li>
 				<li><a href="http://manual.sidux.com/meta-manual">sidux Meta-Manual</a></li>
+				<li><a href="file:///usr/share/sidux-manual/index.html">Offline Manual (only on the Live CD)</a></li>
 			</ul>
-	
+
+			<ul>
+				<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="release.html#release-notes">Release notes</a>
+					<ul class="sub-menu" id="sm2">
+						<li><a href="release.html#welcome">Welcome</a></li>
+						<li><a href="release.html#release-notes">Release Notes</a></li>
+						<li><a href="release.html#whats-new">Whats New</a></li>
+						<li><a href="release.html#pending">Pending changes</a></li>
+						<li><a href="release.html#non-free">Non-Free sources and Drivers</a></li>
+						<li><a href="release.html#disclaimer">Disclaimer</a></li>
+						<li><a href="release.html#howto-involve">Get Involved</a></li>
+						<li><a href="release.html#roadmap">Roadmap</a></li>
+						<li><a href="release.html#credits">Credits</a></li>
+					</ul>
+				</li>
+			</ul>
+
 			<div id="flags-2">
 				<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Choose another language" alt="lang-switch" /></a>
 			</div>
-	
-			<ul>
-				<li  onmouseover="showHide( 1 );" onmouseout="startTime();" ><a href="release.html">Welcome to sidux Gaia Release</a>
-					<ul class="sub-menu" id="sm1">
-						<li><a href="release.html#welcome-gen">Welcome to sidux</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="release.html#release-notes">RELEASE NOTES for GAIA, PLEASE READ</a>
-					<ul class="sub-menu" id="sm2">
-						<li><a href="release.html#disclaim">Disclaimer</a></li>
-						<li><a href="release.html#credits">Credits</a></li>
-						<li><a href="release.html#howto-involve">Get Involved</a></li>
-						<li><a href="release.html#roadmap">Roadmap</a></li>
-						<li><a href="release.html#non-free">Non-Free sources and Drivers</a></li>
-						<li><a href="release.html#whats-new">Whats New</a></li>
-						<li><a href="release.html#release-notes">Release Notes</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 6 );" onmouseout="startTime();" ><a href="release.html#whats-new">Whats New</a>
-					<ul class="sub-menu" id="sm6">
-						<li><a href="release.html#whats-new">Whats New</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 7 );" onmouseout="startTime();" ><a href="release.html#non-free">Non-Free sources and Drivers</a>
-					<ul class="sub-menu" id="sm7">
-						<li><a href="release.html#non-free">Non-Free sources and Drivers</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 8 );" onmouseout="startTime();" ><a href="release.html#roadmap">Roadmap</a>
-					<ul class="sub-menu" id="sm8">
-						<li><a href="release.html#roadmap">Roadmap</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 9 );" onmouseout="startTime();" ><a href="release.html#howto-involve">Get Involved</a>
-					<ul class="sub-menu" id="sm9">
-						<li><a href="release.html#howto-involve">Get Involved</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 11 );" onmouseout="startTime();" ><a href="release.html#credits">Credits</a>
-					<ul class="sub-menu" id="sm11">
-						<li><a href="release.html#credits">Credits</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 12 );" onmouseout="startTime();" ><a href="release.html#disclaim">Disclaimer</a>
-					<ul class="sub-menu" id="sm12">
-						<li><a href="release.html#disclaim">Disclaimer</a></li>
-					</ul>
-				</li>
-				<li  onmouseover="showHide( 13 );" onmouseout="startTime();" ><a href="file:///usr/share/sidux-manual/index.html">Offline Manual (only on the Live CD)</a>
-					<ul class="sub-menu" id="sm13">
-						<li><a href="file:///usr/share/sidux-manual/index.html">Offline Manual</a></li>
-					</ul>
-				</li>
-			</ul>
 			<!-- menu ends here -->
 		</div>
 		
@@ -88,23 +52,23 @@
 		<!--[if lt IE 7]>
 			<div class="center warning-box data">Please Note :: Your version of Internet Explorer&#8482; is obsolete, please install <a href="http://mozilla.com/">Firefox from Mozilla Corp&#8482;</a> for Windows&#8482;. The menu distortions you see are the result of using a legacy browser like MSIE 5 or 6.</div>
 		<![endif]-->
-			<div class="divider" id="welcome-gen">
+			<div class="divider" id="welcome">
 				<h2 id="top-header">sidux 2007-03 preview 1</h2>
 
 				<p>
-					After some late trouble with Xdialog due to the libglib1.2ldbl transition and unscheduled downtime of debian's i386 buildd, we're now ready to enter the preview season leading to sidux 2007-03 &#915;&#945;&#8150;&#945;.
+					After some late trouble with Xdialog due to the libglib1.2ldbl transition and unscheduled downtime of debian's i386 buildd, we're now ready to enter the preview season leading to sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot;.
 				</p>
 			</div>
 	
 			<div class="divider" id="release-notes">
-				<h2>Release notes for Gaia </h2>
+				<h2>Release notes for &#915;&#945;&#8150;&#945;</h2>
 				<p>
 					After 3 months of development we are proud to announce the immediate availability of the sidux-2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; (Gaia) release for amd64 and i686 systems, shipping in a &asymp;425 MB lite KDE and a &asymp;690 MB full KDE.
 					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
 				</p>
 		
 				<p>
-					The full featured final release of sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; will be ready in about 2 weeks, intermediate xdeltas will be provided as needed until then.
+					The full featured final release of sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; will be ready in about 2-3 weeks, intermediate xdeltas will be provided as needed until then.
 				</p>
 			</div>
 	
@@ -118,7 +82,7 @@
 					<li>completely overhauled init sequence.</li>
 					<li>refactored installer backend.</li>
 					<li>new artwork created by cleary and the sidux art team.</li>
-					<li>offline manual for en + de directly on the disc, online manuals for more languages online at <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
 					<li>lots of changes for the manual.</li>
 					<li>iwlwifi3945/ iwlwifi4965 0.1.2.</li>
 					<li>rt2x00 2.0.3 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
@@ -131,8 +95,9 @@
 			</div>
 
 			<div class="divider" id="pending">
-				<h2>Pending changes:</h2>
+				<h2>What hasn't made it into the preview yet:</h2>
 				<ul>
+					<li>we're working with a small package list for now, to ease up testing, further xdelta patches and to leave some headroom for discussions which of your package wishes can become part of the final ISO.</li>
 					<li>new X.org lice configuration.</li>
 					<li>installer localisations/ locale heuristics.</li>
 					<li>further Xdialog &rarr; ssft consolidation works, patches welcome.</li>
@@ -230,7 +195,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 				</p>
 			</div>
 	
-			<div class="divider" id="disclaim">
+			<div class="divider" id="disclaimer">
 				<h2>Disclaimer:</h2>
 				<p>
 					This is experimental software.
@@ -320,10 +285,9 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 		
 				<p>
 					On behalf of the sidux team:<br />
-					Stefan Lippers-Hollmann (slh)
+					&mdash;&mdash;&mdash;Stefan Lippers-Hollmann (slh)
 				</p>
 			</div>
 		</div>
 	</body>
 </html>
-
