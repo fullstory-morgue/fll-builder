@@ -49,7 +49,7 @@ FLL_I18N_SUPPORT="de"
 
 # cdrom html index.html custom info
 # for sidux it's the manual
-FLL_CDROM_INDEX="sidux Manual"
+FLL_CDROM_INDEX="sidux release notes"
 # icon pathname relative to index.html without extension
 # .gif, .ico and .png extensions automatically searched for
-FLL_CDROM_INDEX_ICON="manual/lib/logos/sidux-book"
+FLL_CDROM_INDEX_ICON="lib/logos/sidux-book"
