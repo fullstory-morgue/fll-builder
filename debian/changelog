@@ -33,6 +33,8 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
     - add the offline manual to the menu.
     - roadmap cosmetics.
     - clarify firmware post scriptum.
+    - iwlwifi3945/ iwlwifi4965 0.1.2.
+    - rt2x00 2.0.3.
   * let the desktop icon point to the release notes instead of the manual.
 
   [ Kel Modderman ]
@@ -48,7 +50,7 @@ fll-builder (1.1.3) UNRELEASED; urgency=low
   * add zenity to gnome and xfce modules for sidux-irc in gnome
   * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 22 Jul 2007 02:20:52 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 22 Jul 2007 12:38:24 +0200
 
 fll-builder (1.1.2) unstable; urgency=low
 
