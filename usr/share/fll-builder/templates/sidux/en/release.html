@@ -63,10 +63,11 @@
 			<div class="divider" id="release-notes">
 				<h2>Release notes for &#915;&#945;&#8150;&#945;</h2>
 				<p>
-					After 3 months of development we are proud to announce the immediate availability of the sidux-2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; (Gaia) release for amd64 and i686 systems, shipping in a &asymp;425 MB lite KDE and a &asymp;690 MB full KDE.
+					This release is meant to check for potential regressions introduced by kernel 2.6.22 and the switch to libata for most parallel ATA chipsets (except VIA), to confirm kernel bugfixes introduced over the last few weeks and to test serious changes in sidux' 2nd live boot stage and other sidux core packages.
+					As usual the preview ships only as kde-lite variant, featuring a small (&asymp;430 MB), but fully functional KDE based package list, to ease up testing and xdelta uploads.
 					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
 				</p>
-		
+
 				<p>
 					The full featured final release of sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; will be ready in about 2-3 weeks, intermediate xdeltas will be provided as needed until then.
 				</p>
@@ -80,7 +81,7 @@
 					<li>kernel 2.6.22.1 (smp, hard preemption).</li>
 					<li>minimal, but fully functional KDE 3.5.7 (en + de).</li>
 					<li>completely overhauled init sequence.</li>
-					<li>refactored installer backend.</li>
+					<li>completely refactored installer backend.</li>
 					<li>new artwork created by cleary and the sidux art team.</li>
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
 					<li>lots of changes for the manual.</li>
@@ -88,7 +89,7 @@
 					<li>rt2x00 2.0.3 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
 					<li>support for RealTek RTL8187 wlan cards.</li>
 					<li>libata support for parallel ATA systems.</li>
-					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on th live CD now, please consult the manual for fromiso syntax changes.</li>
+					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on the live CD now, please consult the manual for fromiso syntax changes.</li>
 					<li>enhance hardware support libraries.</li>
 					<li>support for &quot;smxi&quot;, replacing &quot;sm&quot; and &quot;du-fixes-h2.sh&quot;.</li>
 				</ul>
@@ -97,8 +98,8 @@
 			<div class="divider" id="pending">
 				<h2>What hasn't made it into the preview yet:</h2>
 				<ul>
-					<li>we're working with a small package list for now, to ease up testing, further xdelta patches and to leave some headroom for discussions which of your package wishes can become part of the final ISO.</li>
-					<li>new X.org lice configuration.</li>
+					<li>we're working with a small package list for now to ease up testing, further xdelta patches and to leave some headroom for discussions which of your package wishes can become part of the final ISO.</li>
+					<li>new X.org live configuration.</li>
 					<li>installer localisations/ locale heuristics.</li>
 					<li>further Xdialog &rarr; ssft consolidation works, patches welcome.</li>
 					<li>fw-detect to probe for hardware with non-free needs.</li>
@@ -125,67 +126,74 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 #deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
 
 				<p>
-					Which firmware might be required to employ affected hardware can be determined with the following device/ firmware enumeration or by using the newly developed fw-detect script (packaged in configure networkcard) from the live cd.
+					Which firmware might be required to employ affected hardware can be determined with the following device/ firmware enumeration or by using the newly developed fw-detect script (packaged in configure-networkcard).
 				</p>
 
 				<ul>
 					<li>
-						ATi Radeon graphics: 3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance which are not yet compatible with X.org 7.2.
+						ATi Radeon graphics:<br />
+						3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance which are not yet compatible with X.org 7.2. Depending on the particular chipset "xmodule=vesa" or "xmodule=fbdev" as cheatcode might be in order for later Radeon X1xxx models.
 					</li>
 					<li>
-						Atheros/ "madwifi" wlan:
+						Atheros/ "madwifi" wlan:<br />
 						<pre>m-a a-i madwifi</pre>
 					</li>
 					<li>
-						Atmel AT76c50x 11 MBit/s wlan:
+						Atmel AT76c50x 11 MBit/s wlan:<br />
 						<pre>apt-get install atmel-firmware</pre>
 					</li>
 					<li>
-						Broadcom/ bcm43xx wlan:
+						Broadcom/ bcm43xx wlan:<br />
 						<pre>apt-get install bcm43xx-fwcutter</pre>
 					</li>
 					<li>
-						Eagle USB ADSL modem: fetch the firmware from <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
+						Eagle USB ADSL modem:<br />
+						fetch the firmware from <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 					</li>
 					<li>
-						DVB firmwares for various full featured DVB TV cards (most budget cards won't need this): fetch the needed firmeware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
+						DVB firmware for various full featured DVB TV cards (most budget cards won't need this):<br />
+						fetch the needed firmeware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 						</li>
 					<li>
-						Intel ipw2100, 11 MBit/s wlan: 
+						Intel ipw2100, 11 MBit/s wlan:<br />
 						<pre>apt-get install ipw2100-firmware</pre>
 					</li>
 					<li>
-						Intel ipw2200, 54 MBit/s wlan: 
+						Intel ipw2200, 54 MBit/s wlan:<br />
 						<pre>apt-get install ipw2200-firmware</pre>
 					</li>
 					<li>
-						Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:
+						Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:<br />
 						<pre>apt-get install firmware-iwl3945</pre>
-						please remove iwlwifi-ucode and iwlwifi-3945, if already installed.
+						<em>please remove iwlwifi-ucode and iwlwifi-3945, if already installed.</em>
 					</li>
 					<li>
-						Intel ipw4965/ iwlwifi, draft-n wlan:
+						Intel ipw4965/ iwlwifi, draft-n wlan:<br />
 						<pre>apt-get install firmware-iwl4965</pre>
-						please remove iwlwifi-4965, if already installed.
+						<em>please remove iwlwifi-4965, if already installed.</em>
 					</li>
 					<li>
-						Intersil prism54, 54 MBit/s wlan: fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
+						Intersil prism54, 54 MBit/s wlan:<br />
+						fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 					</li>
 					<li>
-						nVidia graphics: 3d acceleration isn't possible with free drivers yet, please use <span class= "highlight-3">get-sidux-binary-gfx</span> to fetch install scripts for these cards.
+						nVidia graphics:<br />
+						3d acceleration isn't possible with free drivers yet, please use <span class= "highlight-3">get-sidux-binary-gfx</span> to fetch install scripts for these cards.
 					</li>
 					<li>
-						RaLink rt61 54 MBit/s wlan,:
+						RaLink rt61 54 MBit/s wlan:<br />
 						<pre>apt-get install rt61-fwcutter</pre>
 					</li>
 					<li>
-						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan, fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
+						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
+						fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 					</li>
 					<li>
-						ZyDAS zd1201 11 MBit/s wlan, fetch the firmware from <a href="http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz">http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
+						ZyDAS zd1201 11 MBit/s wlan:<br />
+						fetch the firmware from <a href="http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz">http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 					</li>
 					<li>
-						ZyDAS zd1211 54 MBit/s wlan:
+						ZyDAS zd1211 54 MBit/s wlan:<br />
 						<pre>apt-get install zd1211-firmware</pre>
 					</li>
 				</ul>
@@ -285,7 +293,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 		
 				<p>
 					On behalf of the sidux team:<br />
-					&emsp;&emsp;&emsp;Stefan Lippers-Hollmann (slh)
+					<em>&emsp;&emsp;&emsp;Stefan Lippers-Hollmann (slh)</em>
 				</p>
 			</div>
 		</div>
