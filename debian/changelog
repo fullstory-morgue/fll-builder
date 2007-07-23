@@ -7,8 +7,9 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
     - USB scanner support is fixed now.
     - XkbLayout workaround.
     - adapt introduction.
+    - import devil's german translation.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 23 Jul 2007 11:37:07 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 23 Jul 2007 12:29:16 +0200
 
 fll-builder (1.1.3) unstable; urgency=low
 
