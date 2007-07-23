@@ -28,4 +28,6 @@ FLL_PACKAGES=(
 	kuickshow
 	gtk2-engines-qtcurve
 	iceweasel
+	siduxcc
 )
+
