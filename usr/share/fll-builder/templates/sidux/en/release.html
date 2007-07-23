@@ -93,6 +93,11 @@
 					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on the live CD now, please consult the manual for fromiso syntax changes.</li>
 					<li>enhance hardware support libraries.</li>
 					<li>support for &quot;smxi&quot;, replacing &quot;sm&quot; and &quot;du-fixes-h2.sh&quot;.</li>
+					<li>
+						bugfix for keyboard layout selections in X, please use the following to fix &#915;&#945;&#8150;&#945; preview 1 installations (if logging into X fails due to password mismatches, you can either use a german keyboard layout or log in from cli). Please replace "us" with your local keyboard layout:
+						<pre>sed -i "s|\(.*\"XkbLayout\"\).*|\1\t\t\"us\"|" /etc/X11/xorg.conf</pre>
+					</li>
+					<li>USB scanner support has been fixed in kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7.</li>
 				</ul>
 			</div>
 
@@ -100,7 +105,6 @@
 				<h2>What hasn't made it into the preview yet:</h2>
 				<ul>
 					<li>we're working with a small package list for now to ease up testing, further xdelta patches and to leave some headroom for discussions which of your package wishes can become part of the final ISO.</li>
-					<li>There seem to be some problems with USB scanners and kernel 2.6.22 at the moment, hopefully to be fixed until the final release - feedback appreciated.</li>
 					<li>new X.org live configuration.</li>
 					<li>installer localisations/ locale heuristics.</li>
 					<li>further Xdialog &rarr; ssft consolidation works, patches welcome.</li>
