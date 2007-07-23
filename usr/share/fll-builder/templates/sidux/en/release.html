@@ -57,7 +57,8 @@
 				<h2 id="top-header">sidux 2007-03 preview 1</h2>
 
 				<p>
-					Thanks to your feedback the issues on non-german keyboard layouts and scanner misbehaviour in preview 1 could be fixed in sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2. This is a mere bugfix release and doesn't require reinstalling, instructions to fix the issues in preview 1 are described below (updating to the new kernel and adapting /etc/X11/xorg.conf to your keyboard layout).
+					Thanks to your feedback the issues on non-german keyboard layouts and scanner misbehaviour in preview 1 could be fixed in sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2.
+					This is a mere bugfix release and doesn't require reinstalling, instructions to fix the issues in preview 1 are described below (updating to the new kernel and adapting /etc/X11/xorg.conf to your keyboard layout).
 				</p>
 			</div>
 	
@@ -94,10 +95,12 @@
 					<li>enhance hardware support libraries.</li>
 					<li>support for &quot;smxi&quot;, replacing &quot;sm&quot; and &quot;du-fixes-h2.sh&quot;.</li>
 					<li>
-						bugfix for keyboard layout selections in X, please use the following to fix &#915;&#945;&#8150;&#945; preview 1 installations (if logging into X fails due to password mismatches, you can either use a german keyboard layout or log in from cli). Please replace "us" with your local keyboard layout:
+						bugfix for keyboard layout selections in X, please use the following to fix &#915;&#945;&#8150;&#945; preview 1 installations (if logging into X fails due to password mismatches, you can either use a german keyboard layout or log in from cli).
+						Please replace "us" with your local keyboard layout:
 						<pre>sed -i &quot;s|\(.*\&quot;XkbLayout\&quot;\).*|\1\t\t\&quot;us\&quot;|&quot; /etc/X11/xorg.conf</pre>
 					</li>
 					<li>USB scanner support has been fixed in kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7.</li>
+					<li>fix XDG menu entry for My-PPPoE Conf</li>
 				</ul>
 			</div>
 

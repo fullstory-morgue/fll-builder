@@ -57,7 +57,8 @@
 				<h2 id="top-header">sidux 2007-03 preview 1</h2>
 
 				<p>
-					Dank der konstruktiven Benutzerr&#252;ckmeldungen konnten die Probleme bez&#252;glich fehlerhafter Tastaturlayouteinstellungen auf nicht deutschen Tastaturen und fehlerhafter Scannerunterst&#252;tzung in Preview 1 f&#252;r sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2 behoben werden. Dies ist ein reines Bugfixrelease und erfordert keine Neuinstallation, Hinweise um die genannten Problem zu korrigieren sind im folgenden erkl&#228;rt (auf den neuen Kernel updaten und die Anpassung von /etc/X11/xorg.conf an das verwendete Tastaturlayout.
+					Dank der konstruktiven Benutzerr&#252;ckmeldungen konnten die Probleme bez&#252;glich fehlerhafter Tastaturlayouteinstellungen auf nicht deutschen Tastaturen und fehlerhafter Scannerunterst&#252;tzung in Preview 1 f&#252;r sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2 behoben werden.
+					Dies ist ein reines Bugfixrelease und erfordert keine Neuinstallation, Hinweise um die genannten Probleme zu korrigieren sind im folgenden erkl&#228;rt (auf den neuen Kernel updaten und die Anpassung von /etc/X11/xorg.conf an das verwendete Tastaturlayout).
 				</p>
 			</div>
 
@@ -94,10 +95,12 @@
 					<li>erweiterte Hardware Support Libraries.</li>
 					<li>Support für &quot;smxi&quot;, welches &quot;sm&quot; und &quot;du-fixes-h2.sh&quot; ersetzt.</li>
 					<li>
-						Bugfix f&#252;r die Tastaturlayouteinstellungen unter X, die folgenden &#196;nderungen &#915;&#945;&#8150;&#945; k&#246;nnen Installationen der Preview 1 korrigieren (sofern das einloggen unter X wegen fehlerhafter Pa&#223;w&#246;rter fehlschl&#228;gt, kann entweder ein deutsches Tastaturlayout verwendet werden oder der Login von der Textkonsole aus erfolgen). Bitte "us" durch das K&#252;rzel des erforderlichen Tastaturlayouts ersetzen:
+						Bugfix f&#252;r die Tastaturlayouteinstellungen unter X, die folgenden &#196;nderungen k&#246;nnen Installationen der &#915;&#945;&#8150;&#945; Preview 1 korrigieren (sofern das einloggen unter X wegen fehlerhafter Pa&#223;w&#246;rter fehlschl&#228;gt, kann entweder ein deutsches Tastaturlayout verwendet werden oder der Login von der Textkonsole aus erfolgen).
+						Bitte "us" durch das K&#252;rzel des erforderlichen Tastaturlayouts ersetzen:
 						<pre>sed -i &quot;s|\(.*\&quot;XkbLayout\&quot;\).*|\1\t\t\&quot;us\&quot;|&quot; /etc/X11/xorg.conf</pre>
 					</li>
 					<li>die USB Scanner Unterst&#252;tzung wurde in Kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7 korrigiert.</li>
+					<li>Korrektur des XDG Men&#252;eintrages f&#252;r My-PPPoE Conf</li>
 				</ul>
 			</div>
 
