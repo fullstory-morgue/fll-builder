@@ -3,6 +3,6 @@ FLL_PACKAGES+=(
 	sidux-art-kde
 	sidux-art-kde-gaia
 	kdmtheme
-	siduxcc
+	kooka
 )
 

@@ -20,7 +20,6 @@ FLL_PACKAGES=(
 	konversation
 	kmix
 	knemo
-	kooka
 	kpowersave
 	kppp
 	kpdf
