@@ -92,7 +92,6 @@ FLL_PACKAGES=(
 	nano
 	pdfedit
 	rdiff-backup
-	siduxcc
 	superkaramba
 	wengophone
 	yakuake
