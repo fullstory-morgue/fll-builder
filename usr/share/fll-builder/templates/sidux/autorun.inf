@@ -1,4 +1,4 @@
 [autorun]
-open=shellexecute=index.html
+shellexecute=index.html
 icon=cdrom.ico
 
