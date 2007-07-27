@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	fluxbox
+	fontconfig
 	libgl1-mesa-dri
 	menu
 	mesa-utils
