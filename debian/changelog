@@ -19,6 +19,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
     - add xadras.
   * add siduxcc to kde-lite and kde-full.
   * add kooka to hwsupport-extra.
+  * autorun release notes on NT >= 5.0.
 
   [ Bernard Gray ]
   * release notes:
@@ -29,7 +30,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
   * Add fontconfig to xserver package module.
   * Add xorgconfig-sidux to minimal-x profile.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 27 Jul 2007 14:21:45 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 27 Jul 2007 23:26:52 +0200
 
 fll-builder (1.1.3) unstable; urgency=low
 
