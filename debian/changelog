@@ -1,7 +1,8 @@
 fll-builder (1.1.4) UNRELEASED; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
+
+  [ Stefan Lippers-Hollmann ]
   * release notes:
     - add download mirror section.
     - fix download links to link to the preview, not the old release.
@@ -20,6 +21,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
   * add siduxcc to kde-lite and kde-full.
   * add kooka to hwsupport-extra.
   * autorun release notes on NT >= 5.0.
+  * exclude bootstrap log.
 
   [ Bernard Gray ]
   * release notes:
@@ -33,7 +35,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
     XORG_CONFIG=custom, in chroot_exec() (chroot.bm).
   * Nuke resolv.conf.
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 29 Jul 2007 23:40:17 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 29 Jul 2007 19:27:52 +0200
 
 fll-builder (1.1.3) unstable; urgency=low
 

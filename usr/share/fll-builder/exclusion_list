@@ -9,6 +9,7 @@
 *	./sys/*
 *	./tmp/*
 *	./var/local/*
+f	./var/log/bootstrap.log
 *	./var/tmp/*
 *	./boot/miniroot*
 f	./boot/initrd.img*
