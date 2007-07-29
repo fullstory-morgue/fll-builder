@@ -611,7 +611,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	remove_from_chroot /usr/sbin/policy-rc.d
 	remove_from_chroot /etc/debian_chroot
 	remove_from_chroot /etc/hosts
-	remove_from_chroot /etc/resolv.conf
+	# nuke this one
+	:> "${FLL_BUILD_CHROOT}"/etc/resolv.conf
 	
 	# create final config files
 	cat_file_to_chroot hosts	/etc/hosts
