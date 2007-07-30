@@ -23,10 +23,10 @@ module-init-tools
 netbase
 pcmciautils
 #ppp
-#procps
+procps
 #screen
 #setserial
-#sudo
+sudo
 #sysklogd
 sysv-rc
 udev
