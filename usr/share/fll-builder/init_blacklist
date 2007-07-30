@@ -3,7 +3,6 @@
 # live system, but they are provided by packages
 # in the package whitelist
 #################################################
-bootclean
 bootlogd
 checkfs.sh
 checkroot.sh
