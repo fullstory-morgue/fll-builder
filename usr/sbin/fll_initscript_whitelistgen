@@ -1,0 +1,59 @@
+#!/usr/bin/perl -w
+
+use strict;
+use Getopt::Long qw(:config bundling);
+
+my (%i, @pkg_list, %blacklist);
+my ($chroot, $p_list, $b_list);
+
+GetOptions(
+		'b|blacklist=s' => \$b_list,
+		'c|chroot=s' => \$chroot,
+		'p|packages=s' => \$p_list,
+	);
+
+if ($p_list and -s $p_list) {
+	@pkg_list = ();
+	open(my $fh, '<', $p_list);
+	while (<$fh>) {
+		chomp;
+		/^#/ and next;
+		push(@pkg_list, $_);
+	}
+	close($fh);
+}
+else {
+	die("Must supply a package list.\n");
+}
+
+if ($b_list and -s $b_list) {
+	%blacklist = ();
+	open(my $fh, '<', $b_list);
+	while (<$fh>) {
+		chomp;
+		/^#/ and next;
+		$blacklist{$_} = 1;
+	}
+	close($fh);
+}
+else {
+	die("Must supply a package blacklist.\n");
+}
+
+unless ($chroot and -d $chroot) {
+	die("Must specify path to chroot.\n");
+}
+
+for my $pkg (@pkg_list) {
+	open(my $fh, '-|', "chroot $chroot dpkg-query -L $pkg 2>/dev/null");
+	while (<$fh>) {
+		chomp;
+		if (m|/etc/init\.d/(.+)|) {
+			next unless -x $chroot . '/etc/init.d/' . $1;
+			$i{$1} = 1 unless $blacklist{$1};
+		}
+	}
+	close($fh)
+}
+
+printf("%s\n", $_) for (sort keys %i);

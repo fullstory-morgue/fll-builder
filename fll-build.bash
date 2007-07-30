@@ -530,6 +530,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
 		install_local_debs "$FLL_BUILD_LOCAL_DEBS"
 	fi
+
+	#################################################################
+	# 		init whitelist generation			#
+	#################################################################
+	$FLL_BUILD_BASE/usr/sbin/fll_initscript_whitelistgen --chroot "$FLL_BUILD_CHROOT" \
+		--packages "$FLL_BUILD_SHARED/init_package_list" \
+		--blacklist "$FLL_BUILD_SHARED/init_blacklist" | \
+			tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
 	
 	#################################################################
 	#		hack inittab and shadow				#

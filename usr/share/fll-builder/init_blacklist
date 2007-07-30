@@ -1,0 +1,17 @@
+#################################################
+# these initscripts should never be executed on
+# live system, but they are provided by packages
+# in the package whitelist
+#################################################
+bootclean
+bootlogd
+checkfs.sh
+checkroot.sh
+halt
+hwclock.sh
+reboot
+stop-bootlogd
+stop-bootlogd-single
+umountfs
+umountroot
+urandom
