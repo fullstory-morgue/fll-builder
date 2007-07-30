@@ -13,7 +13,6 @@ GetOptions(
 	);
 
 if ($p_list and -s $p_list) {
-	@pkg_list = ();
 	open(my $fh, '<', $p_list);
 	while (<$fh>) {
 		chomp;
@@ -27,7 +26,6 @@ else {
 }
 
 if ($b_list and -s $b_list) {
-	%blacklist = ();
 	open(my $fh, '<', $b_list);
 	while (<$fh>) {
 		chomp;
