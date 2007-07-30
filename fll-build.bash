@@ -82,6 +82,16 @@ Options:
 EOF
 }
 
+header() {
+	cat \
+<<EOF
+
+#################################################################
+# $@
+#################################################################
+EOF
+}
+
 #################################################################
 #		root?						#
 #################################################################
@@ -480,6 +490,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			# aufs-modules-"$KVERS"
 	fi
 
+	header "Grabbing kernel and initramfs now"
 	# grab kernel and initial ramdisk before other packages are installed
 	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
 	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
@@ -495,6 +506,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# purge unwanted packages
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	
+	header "Creating package manifest file"
 	# create formatted package manifest
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Size>" "<Version>" > \
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
@@ -506,7 +518,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
 	
 	if [[ $FLL_SOURCE_RELEASE ]]; then
-		echo "Calculating source package URI list . . ."
+		header "Calculating source package URI list . . ."
 	
 		# generate source package URI list
 		chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
@@ -526,15 +538,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		done
 	fi
 	
-	# XXX: this hack is FOR TESTING PURPOSES ONLY
-	if [[ $FLL_BUILD_LOCAL_DEBS ]]; then
-		install_local_debs "$FLL_BUILD_LOCAL_DEBS"
-	fi
-
 	#################################################################
 	# 		init whitelist generation			#
 	#################################################################
-	$FLL_BUILD_BASE/usr/sbin/fll_initscript_whitelistgen --chroot "$FLL_BUILD_CHROOT" \
+	header "Creating initscript whitelist..."
+	"$FLL_BUILD_BASE"/usr/sbin/fll_initscript_whitelistgen --chroot "$FLL_BUILD_CHROOT" \
 		--packages "$FLL_BUILD_SHARED/init_package_list" \
 		--blacklist "$FLL_BUILD_SHARED/init_blacklist" | \
 			tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
@@ -559,6 +567,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	# preconfigure fontconfig-config
 	if exists_in_chroot /etc/fonts/conf.d; then
+		header "Fixing fontconfig"
 		# hinting select Native|Autohinter|None
 		echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
 		# subpixel select Automatic|Always|Never
@@ -583,6 +592,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
 	if exists_in_chroot /etc/X11/X; then
 		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
+			header "Fixing /etc/X11/X symlink"
 			remove_from_chroot /etc/X11/X
 			chroot_exec ln -vsf /usr/bin/Xorg /etc/X11/X
 			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
@@ -693,7 +703,7 @@ EOF
 	FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p $FLL_BUILD_TEMP fll.exclusions.XXXXX)
 	FLL_BUILD_MKSQUASHFSOPTS=( "-ef $FLL_BUILD_EXCLUDEFILE" )
 
-	echo "> Create squashfs exclusions file based on $FLL_BUILD_EXCLUSION_LIST."
+	header "Creating squashfs exclusions file..."
 	cat "$FLL_BUILD_EXCLUSION_LIST" > "$FLL_BUILD_TMPEXCLUSION_LIST"
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		make_exclude_file "$FLL_BUILD_TMPEXCLUSION_LIST" | tee "$FLL_BUILD_EXCLUDEFILE"
@@ -703,7 +713,7 @@ EOF
 		FLL_BUILD_MKSQUASHFSOPTS+=( "-sort $FLL_BUILD_SQUASHFS_SORTFILE" )
 	fi
 
-	echo "> Create squashfs."
+	header "Creating squashfs..."
 	pushd "$FLL_BUILD_CHROOT" >/dev/null
 		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
 	popd >/dev/null
@@ -732,7 +742,7 @@ ${FLL_BUILD_RESULT}${FLL_MOUNTPOINT} 100001
 EOF
 
 	# make the iso
-	echo "> Create ISO."
+	header "Creating ISO..."
 	genisoimage -v -pad -l -r -J \
 		-V "$FLL_DISTRO_NAME_UC" \
 		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD" \
