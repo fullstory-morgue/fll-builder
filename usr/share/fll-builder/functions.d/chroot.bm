@@ -14,17 +14,6 @@ chroot_exec() {
 	return $?
 }
 
-copy_to_chroot() {
-	local ORIGFILE="$1"
-	local DESTFILE="${FLL_BUILD_CHROOT}${1}"
-	
-	if [[ -f "$DESTFILE" ]]; then
-		mv -v "$DESTFILE" "$DESTFILE".orig
-	fi
-
-	cp -v "$ORIGFILE" "$DESTFILE"
-}
-
 remove_from_chroot() {
 	local OBJ="${FLL_BUILD_CHROOT}${1}"
 

@@ -381,9 +381,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot interfaces		/etc/network/interfaces
 	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
 	
-	copy_to_chroot /etc/hosts
-	copy_to_chroot /etc/resolv.conf
-	
 	# distro-defaults live environment detection
 	mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 	
@@ -553,7 +550,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		misc chroot preseeding				#
 	#################################################################
 	# preconfigure fontconfig-config
-	
 	if exists_in_chroot /etc/fonts/conf.d; then
 		# hinting select Native|Autohinter|None
 		echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
@@ -570,10 +566,19 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#CONFAVAIL=/etc/fonts/conf.avail
 		#CONFDIR=/etc/fonts/conf.d
 		if exists_in_chroot /etc/fonts/conf.avail/70-no-bitmaps.conf; then
-			chroot_exec ln -s /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
+			chroot_exec ln -vs /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
 		fi
 
 		chroot_exec dpkg-reconfigure fontconfig
+	fi
+
+	# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
+	if exists_in_chroot /etc/X11/X; then
+		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
+			remove_from_chroot /etc/X11/X
+			chroot_exec ln -vsf /usr/bin/Xorg /etc/X11/X
+			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
+		fi
 	fi
 
 	# run fix-fonts
