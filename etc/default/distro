@@ -52,4 +52,4 @@ FLL_I18N_SUPPORT="de"
 FLL_CDROM_INDEX="sidux release notes"
 # icon pathname relative to index.html without extension
 # .gif, .ico and .png extensions automatically searched for
-FLL_CDROM_INDEX_ICON="lib/logos/sidux-book"
+FLL_CDROM_INDEX_ICON="lib/logos/sidux-release-notes_128x128"
