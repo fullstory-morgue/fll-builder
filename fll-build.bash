@@ -645,6 +645,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# add version marker, this is the exact time stamp for our package list
 	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION - $FLL_DISTRO_CODENAME - $FLL_BUILD_PACKAGE_PROFILE - ($FLL_PACKAGE_TIMESTAMP)\n" \
 		>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	chmod 0444 "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 	
 	# a few dæmons are broken if log files are missing, 
 	# therefore nuke log and spool files while preserving permissions
