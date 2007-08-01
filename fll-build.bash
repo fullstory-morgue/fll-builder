@@ -543,7 +543,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	header "Creating initscript whitelist..."
 	"$FLL_BUILD_BASE"/usr/sbin/fll_initscript_whitelistgen --chroot "$FLL_BUILD_CHROOT" \
-		--packages "$FLL_BUILD_SHARED/init_package_list" \
+		--packages "$FLL_BUILD_SHARED/init_package_whitelist" \
 		--blacklist "$FLL_BUILD_SHARED/init_blacklist" | \
 			tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
 	
