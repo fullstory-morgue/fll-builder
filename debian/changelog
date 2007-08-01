@@ -1,6 +1,4 @@
-fll-builder (1.1.4) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.1.4) unstable; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * release notes:
@@ -23,6 +21,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
   * autorun release notes on NT >= 5.0.
   * exclude bootstrap log.
   * make /etc/sidux-version read only, nothing should ever write to it.
+  * move release notes icon.
 
   [ Bernard Gray ]
   * release notes:
@@ -50,7 +49,7 @@ fll-builder (1.1.4) UNRELEASED; urgency=low
   * Uncomment procps and sudo in init_package_list.
   * s/init_package_list/init_package_whitelist/.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 01 Aug 2007 03:19:45 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 01 Aug 2007 13:59:46 +0200
 
 fll-builder (1.1.3) unstable; urgency=low
 
