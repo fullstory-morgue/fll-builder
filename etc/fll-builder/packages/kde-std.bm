@@ -36,5 +36,4 @@ FLL_PACKAGES=(
 	kpowersave
 	ktorrent
 	kvpnc
-	zenity
 )

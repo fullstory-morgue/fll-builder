@@ -29,6 +29,5 @@ FLL_PACKAGES=(
 	gtk2-engines-qtcurve
 	iceweasel
 	siduxcc
-	zenity
 )
 

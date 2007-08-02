@@ -96,6 +96,5 @@ FLL_PACKAGES=(
 	superkaramba
 	wengophone
 	yakuake
-	zenity
 )
 
