@@ -56,4 +56,5 @@ FLL_PACKAGES=(
 	supertux
 	vlc
 	wireshark
+	zenity
 )
