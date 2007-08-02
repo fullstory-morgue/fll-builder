@@ -5,7 +5,10 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Stefan Lippers-Hollmann ]
   * revert r9657, remove xdialog alltogether and switch to zenity for now.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 02 Aug 2007 14:04:39 +0200
+  [ Kel Modderman ]
+  * memtest86+ reinstated.
+
+ -- Kel Modderman <kel@otaku42.de>  Thu, 02 Aug 2007 22:40:03 +1000
 
 fll-builder (1.1.4) unstable; urgency=low
 

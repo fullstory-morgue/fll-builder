@@ -10,6 +10,7 @@ FLL_PACKAGES+=(
 	jfsutils
 	man-db
 	manpages
+	memtest86+
 	module-assistant
 	ntpdate
 	ntfs-3g
@@ -29,5 +30,3 @@ FLL_PACKAGES+=(
 	wodim
 	zip
 )
-
-# memtest86+ :: http://bugs.debian.org/425221
