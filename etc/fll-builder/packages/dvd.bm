@@ -35,7 +35,7 @@ FLL_PACKAGES=(
 	eclipse
 	ekiga
 	epiphany
-	fileroller
+	file-roller
 	emacs
 	geany
 	gimp
