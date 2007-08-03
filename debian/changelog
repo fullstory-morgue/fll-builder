@@ -10,7 +10,10 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Kel Modderman ]
   * memtest86+ reinstated.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 02 Aug 2007 17:49:04 +0200
+  [ Bernard Gray ]
+  * add fll-build.conf man page 
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 03 Aug 2007 17:25:15 +1000
 
 fll-builder (1.1.4) unstable; urgency=low
 

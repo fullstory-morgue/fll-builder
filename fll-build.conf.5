@@ -1,0 +1,26 @@
+.TH FLL-BUILD.CONF "5" "August 2007" "" ""
+.SH NAME
+fll-build.conf \- the configuration file for fll-builder
+.SH SYNOPSIS
+The \fIfll-build.conf\fR file is a configuration file for the 
+\fBfll-builder\fR Linux livecd creation tool. It contains 
+variables which define or override the default values used
+by \fBfll-builder\fR.
+.PP
+This manpage is designed to be an incomplete reference of 
+variables accepted by \fBfll-builder\fR.
+.SH FILE FORMAT
+The file is a valid \fBbash\fR script containing variable 
+assignments.
+In most cases, variables are defined in the following way:
+.PP
+\fIVARIABLE="OPTION"\fR
+.PP
+.SH MANDATORY VARIABLES
+.TP
+\fIFLL_BUILD_LINUX_KERNEL="/path/or/url/to/kernel.zip"\fR
+The local path or remote url to the sidux kernel zip file
+.PP
+.SH AUTHOR
+This manual page was written by Bernard Gray <bernard.gray@gmail.com> for
+the Debian GNU system (but may be used by others).
