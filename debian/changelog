@@ -6,6 +6,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * revert r9657, remove xdialog alltogether and switch to zenity for now.
   * release notes:
     - celebrate Xdialog-free builds.
+    - prepare for pre3.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -20,7 +21,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 05 Aug 2007 10:43:19 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 05 Aug 2007 19:39:36 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

@@ -57,21 +57,17 @@
 				<h2 id="top-header">sidux 2007-03 preview 3</h2>
 
 				<p>
-					Thanks to your feedback the issues on non-german keyboard layouts and scanner misbehaviour in preview 1 could be fixed in sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2.
-					This is a mere bugfix release and doesn't require reinstalling, instructions to fix the issues in preview 1 are described below (updating to the new kernel and adapting /etc/X11/xorg.conf to your keyboard layout).
+					Leading towards the final release of sidux 2007-03 &#915;&#945;&#8150;&#945; and despite some vacancies during the holiday season, some pretty far reaching transitions could be completed to remove hard dependencies on gtk+ 1.2, which not only required a siginificant amount of ISO storage, but also imposed an additional maintenance and security support burden on our toolset.
+					Now we're proud to announce the third preview for sidux 2007-03 &#915;&#945;&#8150;&#945; and are looking forward to the full featured final release in about a week.
 				</p>
 			</div>
 	
 			<div class="divider" id="release-notes">
 				<h2>Release notes for &#915;&#945;&#8150;&#945;</h2>
 				<p>
-					This release is meant to check for potential regressions introduced by kernel 2.6.22 and the switch to libata for most parallel ATA chipsets (except VIA), to confirm kernel bugfixes introduced over the last few weeks and to test serious changes in sidux' 2nd live boot stage and other sidux core packages.
-					As usual the preview ships only as kde-lite variant, featuring a small (&asymp;430 MB), but fully functional KDE based package list, to ease up testing and xdelta uploads.
+					After Kernel and the new live boot infrastructure have been proven to be stable, preview 3 is now targetted at regression testing the partly rewritten and massively overhauled configuration tools and improving translations and localisations.
+					As usual the preview ships only as kde-lite variant, featuring a small (&asymp;440 MB), but fully functional KDE based package list, to ease up testing and xdelta uploads.
 					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
-				</p>
-
-				<p>
-					The full featured final release of sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; will be ready in about 2-3 weeks, intermediate xdeltas will be provided as needed until then.
 				</p>
 			</div>
 	
@@ -87,22 +83,22 @@
 					<li>new artwork created by cleary and the sidux art team.</li>
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
 					<li>lots of changes for the manual.</li>
-					<li>iwlwifi3945/ iwlwifi4965 0.1.2.</li>
-					<li>rt2x00 2.0.3 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
+					<li>iwlwifi3945/ iwlwifi4965 0.1.8+git20070804.</li>
+					<li>rt2x00 2.0.6+git20060804 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
 					<li>support for RealTek RTL8187 wlan cards.</li>
 					<li>libata support for parallel ATA systems.</li>
 					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on the live CD now, please consult the manual for fromiso syntax changes.</li>
 					<li>enhance hardware support libraries.</li>
 					<li>support for &quot;smxi&quot;, replacing &quot;sm&quot; and &quot;du-fixes-h2.sh&quot;.</li>
-					<li>
-						bugfix for keyboard layout selections in X, please use the following to fix &#915;&#945;&#8150;&#945; preview 1 installations (if logging into X fails due to password mismatches, you can either use a german keyboard layout or log in from cli).
-						Please replace "us" with your local keyboard layout:
-						<pre>sed -i &quot;s|\(.*\&quot;XkbLayout\&quot;\).*|\1\t\t\&quot;us\&quot;|&quot; /etc/X11/xorg.conf</pre>
-					</li>
+					<li>bugfix for keyboard layout selections in X.</li>
 					<li>USB scanner support has been fixed in kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7.</li>
 					<li>fix XDG menu entry for My-PPPoE Conf</li>
 					<li>add siduxcc and kooka.</li>
 					<li>thanks to concerted team efforts, the dependencies on Xdialog and therefore gtk+ 1.2 could be removed.</li>
+					<li>support for Agere Systems et131x ethernet controllers.</li>
+					<li>fw-detect to probe for hardware with non-free needs.</li>
+					<li>rt73-legacy driver.</li>
+					<li>memtest86+</li>
 				</ul>
 			</div>
 
@@ -111,10 +107,7 @@
 				<ul>
 					<li>we're working with a small package list for now to ease up testing, further xdelta patches and to leave some headroom for discussions which of your package wishes can become part of the final ISO.</li>
 					<li>new X.org live configuration.</li>
-					<li>installer localisations/ locale heuristics.</li>
-					<li>fw-detect to probe for hardware with non-free needs.</li>
 					<li>manual adaptions for &#915;&#945;&#8150;&#945;.</li>
-					<li>release notes translations.</li>
 				</ul>
 			</div>
 	
@@ -197,6 +190,10 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 						<pre>apt-get install rt61-fwcutter</pre>
 					</li>
 					<li>
+						RaLink rt73 54 MBit/s wlan:<br />
+						<pre>apt-get install rt73-fwcutter</pre>
+					</li>
+					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
 						fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under <span class="highlight-3">/lib/firmware/</span>.
 					</li>
@@ -228,8 +225,14 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 			<div class="divider" id="mirror">
 				<h2>Download URLs, please give the mirrors some time to sync:</h2>
 				<ul>
-					<li><a href="http://debian.tu-bs.de/project/sidux/preview/">http://debian.tu-bs.de/project/sidux/preview/ (Technische Universität Carolo-Wilhelmina zu Braunschweig, Germany)</a></li>
-					<li><a href="ftp://ftp.spline.de/mirrors/sidux/preview/">ftp://ftp.spline.de/mirrors/sidux/preview/ (Freie Universität Berlin/ Institut für Informatik, Germany)</a></li>
+<!-- preview -->
+					<li><a href="http://debian.tu-bs.de/project/sidux/preview/">http://debian.tu-bs.de/project/sidux/preview/ (Technical University Carolo-Wilhelmina at Brunswick, Germany)</a></li>
+					<li><a href="ftp://ftp.spline.de/mirrors/sidux/preview/">ftp://ftp.spline.de/mirrors/sidux/preview/ (Free University Berlin/ Institute of Computer Science, Germany)</a></li>
+<!-- preview -->
+<!-- RELEASE
+					<li><a href="http://debian.tu-bs.de/project/sidux/release/">http://debian.tu-bs.de/project/sidux/release/ (Technical University Carolo-Wilhelmina at Brunswick, Germany)</a></li>
+					<li><a href="ftp://ftp.spline.de/mirrors/sidux/release/">ftp://ftp.spline.de/mirrors/sidux/release/ (Free University Berlin/ Institute of Computer Science, Germany)</a></li>
+RELEASE -->
 				</ul>
 				<em>If anyone can provide additional download mirrors, especially in the U.S. and the pacific region, it would be appreciated. Please contact us if you're able to provide a mirror capable to stand heavy volume ISO downloads.</em>
 			</div>

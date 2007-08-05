@@ -57,21 +57,23 @@
 				<h2 id="top-header">sidux 2007-03 preview 3</h2>
 
 				<p>
-					Dank der konstruktiven Benutzerr&#252;ckmeldungen konnten die Probleme bez&#252;glich fehlerhafter Tastaturlayouteinstellungen auf nicht deutschen Tastaturen und fehlerhafter Scannerunterst&#252;tzung in Preview 1 f&#252;r sidux 2007-03 &#915;&#945;&#8150;&#945; Preview 2 behoben werden.
-					Dies ist ein reines Bugfixrelease und erfordert keine Neuinstallation, Hinweise um die genannten Probleme zu korrigieren sind im folgenden erkl&#228;rt (auf den neuen Kernel updaten und die Anpassung von /etc/X11/xorg.conf an das verwendete Tastaturlayout).
+					In Hinblick auf die finale Veröffentlichung von sidux 2007-03 &#915;&#945;&#8150;&#945; und trotz der durch die Urlaubssaison bedingten Ausf&auml;lle, konnten einige weitreichende Transitionen zur Vermeidung harter Abhängigkeiten von gtk+ 1.2 vollendet werden, welches nicht nur einen signifikanten Anteil Speicherplatz auf dem ISO einfordert, sondern auch zus&auml;tzlichen Aufwand für Wartung und Sicherheitssupport bedeutete.
+				</p>
+				<p>
+					Nun sind wir stolz die dritte Preview f&uuml;r sidux 2007-03 &#915;&#945;&#8150;&#945; zu ver&ouml;ffentlichen und erwarten das vollausgestattete finale Release in etwa einer Woche.
 				</p>
 			</div>
 
 			<div class="divider" id="release-notes">
 				<h2>Release Notes für &#915;&#945;&#8150;&#945;</h2>
 				<p>
-					Dieses Release soll uns helfen, mögliche Regressionen durch Kernel 2.6.22 und den Wechsel zu libata für die meisten ATA chipsets (except VIA) zu finden, zur Bestätigung von Kernel Bugfixes der letzten Wochen, und um umfangreiche &Auml;nderungen in sidux' 2ter Live Boot Phase und anderen sidux Core Paketen zu verifizieren.
-					Wie üblich erscheint dieses Preview Release nur als KDE-Lite Variante, mit einer kleinen (&asymp;430 MB), aber voll funktionalen KDE basierten Paketliste, um das Testen und eventuelle xdelta Uploads zu erleichtern.
+					Nachdem sich Kernel und die Neue Livebootinfrastruktur als stabil bew&auml;hrt haben, ist Preview 3 nun auf Regressionstests der teilweise neu geschriebenen und massiv &uuml;berholten Konfigurationstools und die Verbesserung von &Uuml;bersetzungen und Lokalisierungen ausgelegt,
+					Wie üblich erscheint dieses Preview Release nur als KDE-Lite Variante, mit einer kleinen (&asymp;440 MB), aber voll funktionalen KDE basierten Paketliste, um das Testen und eventuelle xdelta Uploads zu erleichtern.
 					sidux ist eine vollausgestattete Debian sid basierende Live CD mit einem  speziellen Fokus  auf Festplatteninstallation, einem sauberen Upgrade Pfad in sid und zusätzlichem Hard- und Software Support.
 				</p>
 
 				<p>
-					Das vollausgestattete final Release von sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; wird in etwa 2-3 Wochen fertig sein zwischenzeitlich gibt es X-Deltas nach Bedarf.
+					Das vollausgestattete final Release von sidux 2007-03 &quot;&#915;&#945;&#8150;&#945;&quot; wird in etwa einer Woche fertig sein zwischenzeitlich gibt es X-Deltas nach Bedarf.
 				</p>
 			</div>
 
@@ -87,22 +89,22 @@
 					<li>neues Artwork gestaltet von cleary und dem sidux art team.</li>
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handbücher für weitere Sprachen auf:  <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>und verfügbar via apt; ein grosses Dankeschön geht wieder einmal an das DoKumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
 					<li>viele &Auml;nderungen im und am Handbuch.</li>
-					<li>iwlwifi3945/ iwlwifi4965 0.1.2.</li>
-					<li>rt2x00 2.0.3 Support für RaLink Karten die wpasupplicant unterstützen, bitte entfernt /etc/modprobe.d/mac80211 um es dem RaLink legacy Treiber vorzuziehen</li>
+					<li>iwlwifi3945/ iwlwifi4965 0.1.8+git20070804.</li>
+					<li>rt2x00 2.0.6+git20070804 Support für RaLink Karten die wpasupplicant unterstützen, bitte entfernt /etc/modprobe.d/mac80211 um es dem RaLink legacy Treiber vorzuziehen</li>
 					<li>Support für RealTek RTL8187 wlan Karten.</li>
 					<li>libata Support für parallel ATA Systeme.</li>
 					<li>native vmlinuz-$KVERS und initrd.img-$KVERS Namensschemata werden jetzt auf der Live CD benutzt, bitte schaut ins Handbuch wegen der fromiso Syntax &Auml;nderungen.</li>
 					<li>erweiterte Hardware Support Libraries.</li>
 					<li>Support für &quot;smxi&quot;, welches &quot;sm&quot; und &quot;du-fixes-h2.sh&quot; ersetzt.</li>
-					<li>
-						Bugfix f&#252;r die Tastaturlayouteinstellungen unter X, die folgenden &#196;nderungen k&#246;nnen Installationen der &#915;&#945;&#8150;&#945; Preview 1 korrigieren (sofern das einloggen unter X wegen fehlerhafter Pa&#223;w&#246;rter fehlschl&#228;gt, kann entweder ein deutsches Tastaturlayout verwendet werden oder der Login von der Textkonsole aus erfolgen).
-						Bitte "us" durch das K&#252;rzel des erforderlichen Tastaturlayouts ersetzen:
-						<pre>sed -i &quot;s|\(.*\&quot;XkbLayout\&quot;\).*|\1\t\t\&quot;us\&quot;|&quot; /etc/X11/xorg.conf</pre>
-					</li>
+					<li>Bugfix f&#252;r die Tastaturlayouteinstellungen unter X.</li>
 					<li>die USB Scanner Unterst&#252;tzung wurde in Kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7 korrigiert.</li>
 					<li>Korrektur des XDG Men&#252;eintrages f&#252;r My-PPPoE Conf.</li>
 					<li>Installation von siduxcc und kooka.</li>
 					<li>Dank konzertierten Teamanstrengungen, konnten die Abhängigkeiten von Xdialog und damit gtk+ 1.2 aufgel&ouml;st werden.</li>
+					<li>Unterstützung für Agere Systems et131x Ethernetkarten.</li>
+					<li>fw-detect für Hardware, die non-free Pakete braucht.</li>
+					<li>rt73-legacy Treiber.</li>
+					<li>memtest86+</li>
 				</ul>
 			</div>
 
@@ -111,8 +113,6 @@
 				<ul>
 					<li>Wir arbeiten mit einer kleinen Packagelist im Moment, um die Tests zu erleichtern, ebenso die xdeltas, und um etwas Raum für Diskussionen zu lassen, welche eurer Paketwünsche bei der finalen Version berücksichtigt werden können.</li>
 					<li>neue X.org Live Konfiguration.</li>
-					<li>Installer Lokalisationen/ locale Heuristik.</li>
-					<li>fw-detect für Hardware, die non-free Pakete braucht.</li>
 					<li>Ergänzungen im Handbuch für &#915;&#945;&#8150;&#945;.</li>
 				</ul>
 			</div>
@@ -194,6 +194,10 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 						<pre>apt-get install rt61-fwcutter</pre>
 					</li>
 					<li>
+						RaLink rt73 54 MBit/s wlan:<br />
+						<pre>apt-get install rt73-fwcutter</pre>
+					</li>
+					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
 						hole die firmware von <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
 					</li>
@@ -223,8 +227,14 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 			<div class="divider" id="mirror">
 				<h2>Download URLs, bitte gebt den Servern etwas Zeit zum synchronisieren:</h2>
 				<ul>
-					<li><a href="http://debian.tu-bs.de/project/sidux/preview/">http://debian.tu-bs.de/project/sidux/preview/ (Technische Universit&auml;t Carolo-Wilhelmina zu Braunschweig, Deutschland)</a></li>
-					<li><a href="ftp://ftp.spline.de/mirrors/sidux/preview/">ftp://ftp.spline.de/mirrors/sidux/preview/ (Freie Universit&auml;t Berlin/ Institut f&uuml;r Informatik, Deutschland)</a></li>
+<!-- preview -->
+					<li><a href="http://debian.tu-bs.de/project/sidux/preview/">http://debian.tu-bs.de/project/sidux/preview/ (Technische Universität Carolo-Wilhelmina zu Braunschweig, Germany)</a></li>
+					<li><a href="ftp://ftp.spline.de/mirrors/sidux/preview/">ftp://ftp.spline.de/mirrors/sidux/preview/ (Freie Universität Berlin/ Institut für Informatik, Germany)</a></li>
+<!-- preview -->
+<!-- RELEASE
+					<li><a href="http://debian.tu-bs.de/project/sidux/release/">http://debian.tu-bs.de/project/sidux/release/ (Technische Universität Carolo-Wilhelmina zu Braunschweig, Germany)</a></li>
+					<li><a href="ftp://ftp.spline.de/mirrors/sidux/release/">ftp://ftp.spline.de/mirrors/sidux/release/ (Freie Universität Berlin/ Institut für Informatik, Germany)</a></li>
+RELEASE -->
 				</ul>
 				<em>Zusätzliche Download Mirror, besonders in denU.S.A. und dem Pazifikraum sind sehr erwünscht, bitte kontaktiert uns wenn Ihr einen Server zur Verfügung stellen könnt, der den hohen Downloadraten eines Iso-Servers gewachsen ist.</em>
 			</div>
