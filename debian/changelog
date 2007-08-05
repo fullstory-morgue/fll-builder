@@ -9,6 +9,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
+  * determine absolute dirname of FLL_BUILD_AREA.
 
   [ Bernard Gray ]
   * add fll-build.conf man page
@@ -19,7 +20,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
 
- -- Joaquim Boura <x-un-i@sidux.com>  Fri, 03 Aug 2007 19:25:57 +0200
+ -- Kel Modderman <kel@otaku42.de>  Sun, 05 Aug 2007 10:43:19 +1000
 
 fll-builder (1.1.4) unstable; urgency=low
 
