@@ -12,13 +12,20 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	acpid
 	abakus
 	abiword
+	acpid
         akregator
+	albumshaper
 	amarok
 	amsn
 	amule
+	apache2
+	apache2
+	apache2-mpm-prefork
+	apache2-mpm-prefork
+	apache2-utils
+	apache2-utils
 	ardour-i686
 	ark
 	atlantik
@@ -48,24 +55,26 @@ FLL_PACKAGES=(
 	ekiga
 	emacs
 	epiphany
-	f-spot
 	file-roller
 	filezilla
 	firestarter
 	fluxbox
+	f-spot
 	gambas
 	geany
 	gftp
 	gimp
+	gkrellm
+	glade
+	gnucash
 	gnumeric
 	gnusound
 	gossip
 	gparted
 	gplanarity
-	gkrellm
-	guarddog
 	gthumb
 	gtk2-engines-qtcurve
+	guarddog
 	gwenview
 	hibernate
 	highlight
@@ -75,33 +84,41 @@ FLL_PACKAGES=(
         hydrogen-drumkits
 	iceape
 	icedove
+        icemc 
 	iceweasel
+        icewm 
+        icewm-common 
+        icewm-gnome-support 
+        icewm-themes 
+        idesk 
 	idle
 	imagemagick
 	inkscape
 	irssi
 	istanbul
 	k3b
-	kaffeine
 	kaddressbook
 	kaddressbook-plugins
+	kaffeine
 	kalgebra
 	kallery
+	kanjisaver
+	kannasaver
 	karbon
 	karm
 	katapult
 	kate
 	kate-plugins
 	kbabel
+	kbattleship
 	kbibtex
 	kcalc
 	kcharselect
-	kbattleship
-	kde-core
 	kdeaccessibility
 	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebluetooth
+	kde-core
 	kdegraphics-kfile-plugins
 	kdelirc
 	kdemultimedia-kfile-plugins
@@ -116,11 +133,13 @@ FLL_PACKAGES=(
 	kdetoys
 	kdetv
 	kdevelop
+	kdevelop
 	kdf
 	kdict
 	kdiff3
-	kdnssd
 	kdm
+	kdnssd
+	keep 
 	kfax
 	kfaxview
 	kfilereplace
@@ -131,49 +150,57 @@ FLL_PACKAGES=(
 	kiconedit
 	kino
 	kipi-plugins
-	klaptopdaemon
 	klamav
+	klaptopdaemon
 	klogic
 	kmahjongg
 	kmail
 	kmailcvt
+	kmix
 	kmobiletools
+	knemo
 	knode
 	koffice
+	koffice-i18n-de
+	koffice-i18n-engb
+	kommander
 	kompare
 	konq-plugins
+        konserve
 	kontact
 	konversation
 	kooka
 	kopete
 	korganizer
-	kpilot
-	kmix
-	knemo
+	kpackage
 	kpat
 	kpdf
-	kpackage
+	kpilot
 	kpowersave
 	kppp
 	krdc
 	krecordmydesktop
 	kreversi
 	krusader
+ 	kscreensaver
+        kscreensaver-xsavers
+	kscreensaver-xsavers-webcollage
 	ksirc
 	ksnapshot
+	ksynaptics
 	ktechlab
-	ktouch
 	ktorrent
+	ktouch
 	kturtle
 	kuickshow
 	kvpnc
 	kwalletmanager
 	kwifimanager
 	kxmleditor
-	ksynaptics
 	lazarus
 	less
-	libquicktime1
+	libapache2-mod-php5
+	libapache2-mod-php5
 	libqt-perl
 	libwine
 	licq
@@ -187,29 +214,40 @@ FLL_PACKAGES=(
 	mc
 	meterbridge
 	mhwaveedit
+        mindi
+        mondo
 	moto4lin
 	mozilla-mplayer
 	mplayer
 	multisync
 	mutt
-	myspell-en-us
 	myspell-de-de
+	myspell-en-us
+	mysql-common
+	mysql-common
+	mysql-server
+	mysql-server
+	nano
 	noteedit
+        openclipart-openoffice.org 
 	openoffice.org
+        openoffice.org-filter-so52
+	openoffice.org-help-de 
 	openoffice.org-kde
 	openoffice.org-l10n-de
-	openoffice.org-help-de 
-        openclipart-openoffice.org 
-        openoffice.org-filter-so52
-        openoffice.org-hyphenation-de
-        openoffice.org2-thesaurus-de 
         openoffice.org-officebean 
-	nano
+	p7zip-full
 	parted
 	partimage
 	pdfedit
 	photon
 	photoprint
+	php5-mysql
+	php5-mysql
+	php5 php5-common
+	php5 php5-common
+	phpmyadmin
+	phpmyadmin
 	pidgin
 	pidgin-encryption
 	pidgin-extprefs
@@ -218,38 +256,53 @@ FLL_PACKAGES=(
 	pidgin-libnotify
 	pidgin-librvp
 	pidgin-plugin-pack
+	praat
 	qt4-designer
 	quanta
 	quodlibet
-	reiserfsprogs
 	rdiff-backup
+	reiserfsprogs
 	rosegarden4
+	rox-filer
+        rss-glx
 	ruby
 	samba
 	sane
-	scribus
-	scribus-ng
-	sidux-manual
-	siduxcc
-	sidux-vdr
-	sidux-vdr-server-extra
+	scite
 	screen
 	scribus
+	scribus
+	scribus-ng
 	showimg
+	siduxcc
+	sidux-manual
+	sidux-vdr
+	sidux-vdr-server-extra
 	smb4k
 	smbfs
 	ssh
-	streamtuner
 	streamripper
+	streamtuner
+	subversion
 	superkaramba
+	svn-buildpackage
 	swscanner
 	sylpheed
 	sylpheed-i18n
+	tar
 	teclasat
 	testdisk
 	texlive
-	tar
+	thunar
+	thunar-archive-plugin
+	thunar-media-tags-plugin
+	thunar-volman
+	tipa
+	tipa-doc
+	transcriber
+       	ttf-thryomanes
 	ufraw
+        unison
 	unp
 	unzip
 	vcdimager
@@ -260,10 +313,17 @@ FLL_PACKAGES=(
 	wine
 	wine-utils
 	wlassistant
+	xfce4
+	xfce4-goodies
+       	xfonts-intl-phonetic
+ 	xfonts-tipa
 	xfsprogs
+	xine-ui
 	xmms
+	xpaint
 	xpdf
 	xsane
+ 	xscreensaver-gl
 	yakuake
 	zip
 
