@@ -12,59 +12,92 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
+	acpid
 	abakus
 	abiword
         akregator
 	amarok
 	amsn
 	amule
+	ardour-i686
 	ark
 	atlantik
 	audacious
 	audacity
 	basket
 	blender
-	brutalchess
+	brasero
+	camorama
 	centericq
+	chkrootkit
+	clamav
+	clamav-freshclam
 	conky
+	cupsys
+	dar
+	debconf
+	denemo
 	dia
 	dia2code
 	digikam
 	dillo
+	dnsmasq
 	dolphin
+	easytag
 	eclipse
 	ekiga
+	emacs
 	epiphany
+<<<<<<< .mine
+	f-spot
+	file-roller
+	filezilla
+	firestarter
+	fluxbox
+	gambas
+=======
 	file-roller
 	emacs
+>>>>>>> .r9767
 	geany
+	gftp
 	gimp
 	gnumeric
+	gnusound
+	gossip
 	gparted
 	gplanarity
 	gkrellm
+	guarddog
 	gthumb
 	gtk2-engines-qtcurve
 	gwenview
-	gwenview
+	hibernate
 	highlight
 	htop
 	hugs
+	hydrogen
+        hydrogen-drumkits
+	iceape
 	icedove
 	iceweasel
 	idle
+	imagemagick
 	inkscape
 	irssi
+	istanbul
 	k3b
 	kaffeine
 	kaddressbook
 	kaddressbook-plugins
 	kalgebra
 	kallery
+	karbon
 	karm
 	katapult
 	kate
 	kate-plugins
+	kbabel
 	kbibtex
 	kcalc
 	kcharselect
@@ -103,9 +136,15 @@ FLL_PACKAGES=(
 	kiconedit
 	kino
 	kipi-plugins
+	klaptopdaemon
+	klamav
+	klogic
 	kmahjongg
 	kmail
 	kmailcvt
+	kmobiletools
+	knode
+	koffice
 	kompare
 	konq-plugins
 	kontact
@@ -127,30 +166,55 @@ FLL_PACKAGES=(
 	krusader
 	ksirc
 	ksnapshot
+	ktechlab
 	ktouch
 	ktorrent
+	kturtle
+	kuickshow
 	kvpnc
 	kwalletmanager
 	kwifimanager
 	kxmleditor
 	ksynaptics
+	lazarus
+	less
+	libquicktime1
 	libqt-perl
+	libwine
+	licq
+	lilypond
 	links2
 	linphone
+	lmms
 	lynx
 	lyx
+	magicrescue
 	mc
 	meterbridge
+	mhwaveedit
 	moto4lin
 	mozilla-mplayer
+	mplayer
+	multisync
+	mutt
 	myspell-en-us
 	myspell-de-de
+	noteedit
 	openoffice.org
 	openoffice.org-kde
+	openoffice.org-l10n-de
+	openoffice.org-help-de 
+        openclipart-openoffice.org 
+        openoffice.org-filter-so52
+        openoffice.org-hyphenation-de
+        openoffice.org2-thesaurus-de 
+        openoffice.org-officebean 
 	nano
 	parted
+	partimage
 	pdfedit
 	photon
+	photoprint
 	pidgin
 	pidgin-encryption
 	pidgin-extprefs
@@ -162,22 +226,51 @@ FLL_PACKAGES=(
 	qt4-designer
 	quanta
 	quodlibet
+	reiserfsprogs
 	rdiff-backup
+	rosegarden4
+	ruby
+	samba
+	sane
 	scribus
+	scribus-ng
+	sidux-manual
 	siduxcc
+	sidux-vdr
+	sidux-vdr-server-extra
 	screen
 	scribus
+	showimg
+	smb4k
+	smbfs
+	ssh
 	streamtuner
 	streamripper
 	superkaramba
 	swscanner
+	sylpheed
+	sylpheed-i18n
+	teclasat
+	testdisk
 	texlive
+	tar
+	ufraw
+	unp
+	unzip
+	vcdimager
+	vdr-gui
 	vim-full
+	vlc
 	wengophone
 	wine
 	wine-utils
 	wlassistant
+	xfsprogs
+	xmms
+	xpdf
+	xsane
 	yakuake
+	zip
 
 )
 
