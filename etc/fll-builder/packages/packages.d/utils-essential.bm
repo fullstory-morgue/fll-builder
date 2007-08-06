@@ -10,6 +10,7 @@ FLL_PACKAGES+=(
 	e2fsprogs
 	initramfs-tools
 	iptables
+	iputils-ping
 	less
 	locales
 	netbase

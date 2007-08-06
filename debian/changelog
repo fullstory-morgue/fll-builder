@@ -8,6 +8,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - celebrate Xdialog-free builds.
     - prepare for pre3.
   * fix commited svn conflict introduced by r9770.
+  * add iputils-ping to utils-essential.bm.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -26,7 +27,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Ferdinand Thommes ]
   * updated dvd.bm to 1.6 gb
 
- -- Ferdinand Thommes <devil@sidux.com>  Mon, 06 Aug 2007 13:48:56 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 06 Aug 2007 20:35:12 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
