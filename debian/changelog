@@ -7,6 +7,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * release notes:
     - celebrate Xdialog-free builds.
     - prepare for pre3.
+  * fix commited svn conflict introduced by r9770.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -17,14 +18,12 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
 
   [ Ferdinand Thommes ]
   * package.list for sidux-dvd
+  * updated dvd.bm to 1.5 gb
 
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
 
-  [ Ferdinand Thommes ]
-  * updated dvd.bm to 1.5 gb
-
- -- Ferdinand Thommes <devil@sidux.com>  Mon, 06 Aug 2007 13:31:29 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 06 Aug 2007 13:39:12 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

@@ -48,17 +48,12 @@ FLL_PACKAGES=(
 	ekiga
 	emacs
 	epiphany
-<<<<<<< .mine
 	f-spot
 	file-roller
 	filezilla
 	firestarter
 	fluxbox
 	gambas
-=======
-	file-roller
-	emacs
->>>>>>> .r9767
 	geany
 	gftp
 	gimp
