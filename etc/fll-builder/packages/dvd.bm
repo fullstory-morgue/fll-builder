@@ -14,17 +14,13 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	abakus
 	abiword
-	acpid
         akregator
 	albumshaper
 	amarok
 	amsn
 	amule
 	apache2
-	apache2
 	apache2-mpm-prefork
-	apache2-mpm-prefork
-	apache2-utils
 	apache2-utils
 	ardour-i686
 	ark
@@ -32,6 +28,9 @@ FLL_PACKAGES=(
 	audacious
 	audacity
 	basket
+	bitchx
+	bittorrent
+	bittorrent-gui
 	blender
 	brasero
 	camorama
@@ -39,29 +38,38 @@ FLL_PACKAGES=(
 	chkrootkit
 	clamav
 	clamav-freshclam
+	compiz
+	compiz-kde
 	conky
-	cupsys
 	dar
+	ddrescue
+	debarchiver
 	debconf
 	denemo
 	dia
 	dia2code
+	dict
 	digikam
 	dillo
+	ding
+	djtools
 	dnsmasq
+	docbook2x
 	dolphin
+	dvdauthor
 	easytag
 	eclipse
 	ekiga
 	emacs
 	epiphany
+	evolution
+	fakechroot
 	file-roller
 	filezilla
 	firestarter
-	fluxbox
 	f-spot
-	gambas
 	geany
+	gettext-base
 	gftp
 	gimp
 	gkrellm
@@ -70,15 +78,14 @@ FLL_PACKAGES=(
 	gnumeric
 	gnusound
 	gossip
-	gparted
 	gplanarity
 	gthumb
 	gtk2-engines-qtcurve
 	guarddog
+	gutenbrowser
 	gwenview
 	hibernate
 	highlight
-	htop
 	hugs
 	hydrogen
         hydrogen-drumkits
@@ -92,16 +99,21 @@ FLL_PACKAGES=(
         icewm-themes 
         idesk 
 	idle
+	ifupdown
 	imagemagick
 	inkscape
+	iproute
 	irssi
 	istanbul
+	juk
 	k3b
 	kaddressbook
 	kaddressbook-plugins
 	kaffeine
 	kalgebra
 	kallery
+	kalzium
+	kalzium-data
 	kanjisaver
 	kannasaver
 	karbon
@@ -115,14 +127,19 @@ FLL_PACKAGES=(
 	kcalc
 	kcharselect
 	kdeaccessibility
+	kdeaddons
 	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebluetooth
 	kde-core
 	kdegraphics-kfile-plugins
+	kde-icons-crystalclear
+	kde-icons-crystalproject
 	kdelirc
+	kdemultimedia
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins
+	kdenetwork
 	kdenetwork-kfile-plugins
 	kdepim-kfile-plugins
 	kdepim-kio-plugins
@@ -130,40 +147,95 @@ FLL_PACKAGES=(
 	kdepim-wizards
 	kdeprint
 	kdeservicemenus-sidux
+	kdesktop
+	kdessh
+	kde-style-klearlook
+	kde-style-lipstik
+	kde-style-qtcurve
+	kdesvn
+	kdesvn-kio-plugins	
 	kdetoys
 	kdetv
+	kdeutils
 	kdevelop
-	kdevelop
+	kdevelop3
+	kdewallpapers
+	kdewebdev
 	kdf
 	kdict
 	kdiff3
+	kdirstat
 	kdm
 	kdnssd
 	keep 
+	kerry
 	kfax
 	kfaxview
 	kfilereplace
+	kfind
+	kflickr
+	kfloppy
+	kfocus
+	kformula
+	kftpgrabber
+	kgeography
+	kgeography-data
 	kget
 	kghostview
 	kgpg
+	kguitar
 	kicker-applets
 	kiconedit
+	kid3
+	kid3-qt
+	kig
+	kile
+	kimagemapeditor
 	kino
+	kio-apt
+	kiosktool
 	kipi-plugins
+	kitty
+	kjots
 	klamav
 	klaptopdaemon
+	klash
+	klatin
+	kleopatra
+	klettres
+	klettres-data
+	klineakconfig
+	klog
 	klogic
+	kmag
 	kmahjongg
 	kmail
 	kmailcvt
+	kmess
+	kmid
+	kmidimon
+	kmilo
 	kmix
 	kmobiletools
+	kmoon
+	kmousetool
+	kmouth
+	kmplayer
+	kmplayer-common
+	kmplayer-plugin
+	kmplot
 	knemo
+	knetload
+	knetworkconf
+	knewsticker
+	knewsticker-scripts
 	knode
+	knotes
 	koffice
 	koffice-i18n-de
 	koffice-i18n-engb
 	kommander
+	komparator
 	kompare
 	konq-plugins
         konserve
@@ -172,30 +244,55 @@ FLL_PACKAGES=(
 	kooka
 	kopete
 	korganizer
+	korn
 	kpackage
 	kpat
 	kpdf
+	kpercentage
+	kpf
+	kphotoalbum
+	kpilot
 	kpilot
 	kpowersave
 	kppp
+	kradio
 	krdc
+	krecipes
+	krecipes-data
 	krecordmydesktop
+	kregexpeditor
+	krename
 	kreversi
+	krfb
 	krusader
  	kscreensaver
         kscreensaver-xsavers
 	kscreensaver-xsavers-webcollage
+	ksensors
+	ksig
 	ksirc
 	ksnapshot
+	kstars
+	kstars-data
+	kstreamripper
+	ksvg
 	ksynaptics
+	ksysguard
+	kteatime
 	ktechlab
+	kthesaurus
 	ktorrent
 	ktouch
 	kturtle
 	kuickshow
+	kuser
 	kvpnc
 	kwalletmanager
+	kwavecontrol
+	kweather
 	kwifimanager
+	kwirelessmonitor
+	kwlan
 	kxmleditor
 	lazarus
 	less
@@ -204,30 +301,34 @@ FLL_PACKAGES=(
 	libqt-perl
 	libwine
 	licq
+	licq-plugin-kde
+	licq-plugin-qt
 	lilypond
+	lineak-kdeplugins
 	links2
 	linphone
+	lisa
 	lmms
 	lynx
 	lyx
 	magicrescue
-	mc
 	meterbridge
 	mhwaveedit
         mindi
+	module-init-tools
         mondo
 	moto4lin
 	mozilla-mplayer
+	mozilla-plugin-vlc
 	mplayer
 	multisync
 	mutt
 	myspell-de-de
 	myspell-en-us
 	mysql-common
-	mysql-common
-	mysql-server
 	mysql-server
 	nano
+	ndiswrapper-utils-1.9
 	noteedit
         openclipart-openoffice.org 
 	openoffice.org
@@ -243,10 +344,7 @@ FLL_PACKAGES=(
 	photon
 	photoprint
 	php5-mysql
-	php5-mysql
 	php5 php5-common
-	php5 php5-common
-	phpmyadmin
 	phpmyadmin
 	pidgin
 	pidgin-encryption
@@ -261,29 +359,32 @@ FLL_PACKAGES=(
 	quanta
 	quodlibet
 	rdiff-backup
-	reiserfsprogs
+	ripperx
 	rosegarden4
 	rox-filer
         rss-glx
 	ruby
 	samba
-	sane
 	scite
 	screen
 	scribus
-	scribus
 	scribus-ng
+	sendemail
 	showimg
+	sidux-art-kde-tartaros
 	siduxcc
-	sidux-manual
+	sidux-kernelhacking
 	sidux-vdr
 	sidux-vdr-server-extra
+	smartmontools
 	smb4k
-	smbfs
+	squashfs-tools
+	ssft
 	ssh
 	streamripper
 	streamtuner
 	subversion
+	subversion-tools
 	superkaramba
 	svn-buildpackage
 	swscanner
@@ -291,8 +392,9 @@ FLL_PACKAGES=(
 	sylpheed-i18n
 	tar
 	teclasat
-	testdisk
+	tellico
 	texlive
+	texmaker
 	thunar
 	thunar-archive-plugin
 	thunar-media-tags-plugin
@@ -301,31 +403,36 @@ FLL_PACKAGES=(
 	tipa-doc
 	transcriber
        	ttf-thryomanes
+	twinkle
 	ufraw
         unison
 	unp
-	unzip
 	vcdimager
 	vdr-gui
 	vim-full
 	vlc
+	vorbis-tools
+	wacom-tools
 	wengophone
 	wine
 	wine-utils
+	wireless-tools
 	wlassistant
+	xchat
+	xchat-systray
+	xdelta
 	xfce4
 	xfce4-goodies
+	xfce4-utils
        	xfonts-intl-phonetic
  	xfonts-tipa
 	xfsprogs
+	xfwm4
 	xine-ui
 	xmms
 	xpaint
-	xpdf
 	xsane
  	xscreensaver-gl
 	yakuake
-	zip
-
 )
 

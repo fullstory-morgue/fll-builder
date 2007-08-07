@@ -25,7 +25,10 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 06 Aug 2007 20:35:12 +0200
+  [ Ferdinand Thommes ]
+  * dvd.bm updated to 1.75 gb
+
+ -- Ferdinand Thommes <devil@sidux.com>  Tue, 07 Aug 2007 23:04:58 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
