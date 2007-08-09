@@ -14,8 +14,12 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	abakus
 	abiword
-        akregator
+	abiword-plugins
+	akregator
 	albumshaper
+	alsa-base
+	alsa-utils
+	alsamixergui
 	amarok
 	amsn
 	amule
@@ -26,22 +30,39 @@ FLL_PACKAGES=(
 	ark
 	atlantik
 	audacious
+	audacious-plugins
+	audacious-plugins-extra
 	audacity
+	autoconf
+	automake
 	basket
+	bazaar
+	binutils
 	bitchx
 	bittorrent
 	bittorrent-gui
 	blender
 	brasero
+	bsh
+	camediaplay
 	camorama
+	camserv
+	camserv-relay
+	cdbs
+	cdparanoia
 	centericq
 	chkrootkit
 	clamav
 	clamav-freshclam
-	compiz
-	compiz-kde
+	claws-mail
+	claws-mail-extra-plugins
 	conky
+	cvs
 	dar
+	dcraw
+	debconf-utils
+	debhelper
+	devscripts
 	ddrescue
 	debarchiver
 	debconf
@@ -49,6 +70,7 @@ FLL_PACKAGES=(
 	dia
 	dia2code
 	dict
+	diffstat
 	digikam
 	dillo
 	ding
@@ -60,19 +82,41 @@ FLL_PACKAGES=(
 	easytag
 	eclipse
 	ekiga
+	elinks
 	emacs
+	enigmail
 	epiphany
 	evolution
 	fakechroot
+	fetchmail
+	fetchmailconf
+	ffmpeg
+	ffmpeg2theora
 	file-roller
 	filezilla
 	firestarter
 	f-spot
+	fujiplay
+	flac
+	g++-4.1
+	gawk
+	gcc
 	geany
 	gettext-base
+	gdancer
 	gftp
 	gimp
+	gimp-data-extras
+	gimp-print
+	gimp-texturize
+	gimp-ufraw
 	gkrellm
+	gkrellm-mailwatch
+	gkrellmoon
+	gkrellmitime
+	gkrellm-volume
+	gkrellm-hdplop
+	gkrellm-alltraxclock
 	glade
 	gnucash
 	gnumeric
@@ -81,16 +125,25 @@ FLL_PACKAGES=(
 	gplanarity
 	gthumb
 	gtk2-engines-qtcurve
+	gtk2-engines-xfce
+	gtkam
+	gtkam-gimp
+	gtkpod
 	guarddog
 	gutenbrowser
 	gwenview
+	hexedit
 	hibernate
 	highlight
+	html2text
+	httrack
 	hugs
 	hydrogen
         hydrogen-drumkits
 	iceape
+	iceape-l10n-de
 	icedove
+	icedove-locale-de
         icemc 
 	iceweasel
         icewm 
@@ -99,12 +152,16 @@ FLL_PACKAGES=(
         icewm-themes 
         idesk 
 	idle
+	idjc
 	ifupdown
 	imagemagick
 	inkscape
 	iproute
 	irssi
 	istanbul
+	jackd
+	jack-tools
+	java2html
 	juk
 	k3b
 	kaddressbook
@@ -114,6 +171,7 @@ FLL_PACKAGES=(
 	kallery
 	kalzium
 	kalzium-data
+	kamera
 	kanjisaver
 	kannasaver
 	karbon
@@ -130,6 +188,7 @@ FLL_PACKAGES=(
 	kdeaddons
 	kdeaddons-kfile-plugins
 	kdeadmin
+	kdebase-dev
 	kdebluetooth
 	kde-core
 	kdegraphics-kfile-plugins
@@ -204,6 +263,7 @@ FLL_PACKAGES=(
 	kleopatra
 	klettres
 	klettres-data
+	klik
 	klineakconfig
 	klog
 	klogic
@@ -293,6 +353,7 @@ FLL_PACKAGES=(
 	kwifimanager
 	kwirelessmonitor
 	kwlan
+	kwiki
 	kxmleditor
 	lazarus
 	less
@@ -312,17 +373,27 @@ FLL_PACKAGES=(
 	lynx
 	lyx
 	magicrescue
+	make
+	mediawiki
+	mediawiki-extensions
+	metacam
 	meterbridge
 	mhwaveedit
         mindi
+	module-assistant
 	module-init-tools
+	mono
         mondo
+	mousepad
 	moto4lin
 	mozilla-mplayer
 	mozilla-plugin-vlc
+	mozplugger
 	mplayer
 	multisync
 	mutt
+	muttprint
+	muttprofile
 	myspell-de-de
 	myspell-en-us
 	mysql-common
@@ -337,9 +408,11 @@ FLL_PACKAGES=(
 	openoffice.org-kde
 	openoffice.org-l10n-de
         openoffice.org-officebean 
+	original-awk
 	p7zip-full
 	parted
 	partimage
+	pbuilder
 	pdfedit
 	photon
 	photoprint
@@ -354,20 +427,31 @@ FLL_PACKAGES=(
 	pidgin-libnotify
 	pidgin-librvp
 	pidgin-plugin-pack
+	pixelize
+	postfix
+	postfix-ldap
+	postfix-mysql
 	praat
+	qt3-dev-tools
 	qt4-designer
+	qt4-dev-tools
 	quanta
+	qcad
+	qemu
+	qtemu
 	quodlibet
 	rdiff-backup
 	ripperx
 	rosegarden4
 	rox-filer
         rss-glx
-	ruby
+	ruby-full
+	ruby1.8
+	ruby1.8-examples
 	samba
 	scite
 	screen
-	scribus
+	screenkast
 	scribus-ng
 	sendemail
 	showimg
@@ -378,7 +462,9 @@ FLL_PACKAGES=(
 	sidux-vdr-server-extra
 	smartmontools
 	smb4k
+	spamassassin
 	squashfs-tools
+	squid
 	ssft
 	ssh
 	streamripper
@@ -387,7 +473,6 @@ FLL_PACKAGES=(
 	subversion-tools
 	superkaramba
 	svn-buildpackage
-	swscanner
 	sylpheed
 	sylpheed-i18n
 	tar
@@ -399,20 +484,21 @@ FLL_PACKAGES=(
 	thunar-archive-plugin
 	thunar-media-tags-plugin
 	thunar-volman
+	tidy
 	tipa
 	tipa-doc
 	transcriber
-       	ttf-thryomanes
-	twinkle
+	tripod
+	tuxpaint
 	ufraw
         unison
 	unp
 	vcdimager
 	vdr-gui
 	vim-full
+	vim-latexsuite
 	vlc
 	vorbis-tools
-	wacom-tools
 	wengophone
 	wine
 	wine-utils
@@ -423,7 +509,36 @@ FLL_PACKAGES=(
 	xdelta
 	xfce4
 	xfce4-goodies
+	xfce4-clipman-plugin
+	xfce4-cpufreq-plugin
+	xfce4-cpugraph-plugin
+	xfce4-dev-tools
+	xfce4-icon-theme
+	xfce4-mcs-manager
+	xfce4-mcs-plugins
+	xfce4-minicmd-plugin
+	xfce4-mixer
+	xfce4-mixer-alsa
+	xfce4-mount-plugin
+	xfce4-netload-plugin
+	xfce4-notes-plugin
+	xfce4-panel
+	xfce4-quicklauncher-plugin
+	xfce4-screenshooter-plugin
+	xfce4-sensors-plugin
+	xfce4-session
+	xfce4-smartbookmark-plugin
+	xfce4-systemload-plugin
+	xfce4-terminal
 	xfce4-utils
+	xfce4-verve-plugin
+	xfce4-wavelan-plugin
+	xfce4-weather-plugin
+	xfdesktop4
+	xfdesktop4-data
+	xfprint4
+	xfwm4
+	xfwm4-themes 
        	xfonts-intl-phonetic
  	xfonts-tipa
 	xfsprogs
@@ -434,5 +549,6 @@ FLL_PACKAGES=(
 	xsane
  	xscreensaver-gl
 	yakuake
+	zsh
 )
 
