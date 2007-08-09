@@ -27,12 +27,11 @@ FLL_PACKAGES=(
 	gnome-keyring-manager
 	gnome-mag
 	gnome-media
-#	gnome-art
+	gnome-art
 	gnome-mount
 	gnome-nettool
 	gnome-osd
 	gnome-photo-printer
-#	gnome-office
 	gnome-schedule
 	gnome-system-tools
 	gnome-icon-theme
@@ -47,8 +46,6 @@ FLL_PACKAGES=(
 	xchat-systray
 	iceweasel
 	iceweasel-gnome-support
-#	icedove
-#	icedove-gnome-support
 	evolution
 	scribus-ng
 	infobash

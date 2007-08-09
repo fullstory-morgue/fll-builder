@@ -32,7 +32,10 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Ferdinand Thommes ]
   * xfce-lite.bm updated with basic plugins
 
- -- Ferdinand Thommes <devil@sidux.com>  Thu, 09 Aug 2007 12:22:25 +0200
+  [ Andreas Weber ]
+  * Package List gnome-std fixed. 
+
+ -- webera <webera@srv-1>  Thu, 09 Aug 2007 17:32:55 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
