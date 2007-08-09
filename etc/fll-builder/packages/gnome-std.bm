@@ -20,7 +20,6 @@ FLL_PACKAGES=(
 	gnome-audio
 	gnome-btdownload
 	gnome-chess
-	gnome-find
 	gnome-games
 	gnome-gpg
 	gnome-keyring

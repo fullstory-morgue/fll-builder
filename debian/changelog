@@ -33,9 +33,10 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * xfce-lite.bm updated with basic plugins
 
   [ Andreas Weber ]
-  * Package List gnome-std fixed. 
+  * Package List gnome-std fixed.
+  * gnome-find removed (not available for 64bit).
 
- -- webera <webera@srv-1>  Thu, 09 Aug 2007 17:32:55 +0200
+ -- webera <webera@srv-1>  Thu, 09 Aug 2007 19:04:09 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
