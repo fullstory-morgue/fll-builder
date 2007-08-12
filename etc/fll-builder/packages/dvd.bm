@@ -80,7 +80,6 @@ FLL_PACKAGES=(
 	dolphin
 	dvdauthor
 	easytag
-	eclipse
 	ekiga
 	elinks
 	emacs
@@ -401,6 +400,7 @@ FLL_PACKAGES=(
 	nano
 	ndiswrapper-utils-1.9
 	noteedit
+	nvram
         openclipart-openoffice.org 
 	openoffice.org
         openoffice.org-filter-so52
@@ -476,7 +476,6 @@ FLL_PACKAGES=(
 	sylpheed
 	sylpheed-i18n
 	tar
-	teclasat
 	tellico
 	texlive
 	texmaker
