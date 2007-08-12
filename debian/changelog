@@ -23,14 +23,18 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * updated dvd.bm to 1.5 gb
   * updated dvd.bm to 1.6 gb
   * dvd.bm updated to 1.75 gb
+  * expanded xfce-lite.bm
   * removed teclasat from dvd.bm
 
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
 
+  [ Andreas Weber ]
+  * Package List gnome-std fixed.
+  * gnome-find removed (not available for 64bit).
+
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
-  * expanded xfce-lite.bm
 
  -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 12 Aug 2007 16:57:25 +0200
 
