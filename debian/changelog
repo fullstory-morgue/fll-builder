@@ -13,6 +13,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - fix relative anchors.
     - rework index.html.
     - navigate between english and german variants.
+    - re- indent print.css.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
 
@@ -41,7 +42,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 00:33:24 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 00:43:15 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
