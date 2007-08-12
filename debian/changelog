@@ -7,6 +7,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * release notes:
     - celebrate Xdialog-free builds.
     - prepare for pre3.
+    - simplify firmware paragraphs, thanks to etorix.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
 
@@ -22,6 +23,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * updated dvd.bm to 1.5 gb
   * updated dvd.bm to 1.6 gb
   * dvd.bm updated to 1.75 gb
+  * removed teclasat from dvd.bm
 
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
@@ -30,13 +32,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
   * expanded xfce-lite.bm
 
-  [ Ferdinand Thommes ]
-  * removed teclasat from dvd.bm
-
- -- Ferdinand Thommes <devil@sidux.com>  Sun, 12 Aug 2007 16:57:09 +0200
-=======
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 08 Aug 2007 10:18:56 +0200
->>>>>>> .r9794
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 12 Aug 2007 16:57:25 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
