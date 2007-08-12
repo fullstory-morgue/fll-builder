@@ -8,6 +8,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - celebrate Xdialog-free builds.
     - prepare for pre3.
     - simplify firmware paragraphs, thanks to etorix.
+    - initial restructuring.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
 
@@ -36,7 +37,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 12 Aug 2007 16:57:25 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 00:15:41 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

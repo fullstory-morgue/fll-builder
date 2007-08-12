@@ -3,21 +3,13 @@
 <head>
 	<title>sidux release notes</title>
 	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-	<style type="text/css" media="all">@import url("../lib/css-js/content.css");</style>
-	<style type="text/css" media="all">@import url("../lib/css-js/menu.css");</style>
-	<style type="text/css" media="print">@import url("../lib/css-js/print.css");</style>
-	<link rel ="shortcut icon" href="../lib/favicon/manual.ico" />
-	<script type="text/javascript" src="../lib/css-js/menu2.js"></script>
-	<!--[if lt IE 8]>
-		<link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-7_override.css">
-	<![endif]-->
-	<!--[if lt IE 7]>
-		<link rel="stylesheet" type="text/css" href="../lib/css-js/ie_5-6_override.css">
-	<![endif]-->
+	<style type="text/css" media="all">@import url("screen.css");</style>
+	<style type="text/css" media="print">@import url("print.css");</style>
+	<link rel ="shortcut icon" href="cdrom.ico" />
 </head>
 	<body>
 		<div id="menu">
-			<img src="../lib/logos/sidux-logo.png" alt="logo" id="menu-header" />
+			<img src="sidux-logo.png" alt="logo" id="menu-header" />
 
 			<ul id="top-list">
 				<li><a href="http://sidux.com/">sidux.com main site</a></li>
@@ -27,7 +19,7 @@
 			</ul>
 
 			<ul>
-				<li  onmouseover="showHide( 2 );" onmouseout="startTime();" ><a href="release.html#release-notes">Release notes</a>
+				<li><a href="release.html#release-notes">Release notes</a>
 					<ul class="sub-menu" id="sm2">
 						<li><a href="release.html#welcome">Welcome</a></li>
 						<li><a href="release.html#release-notes">Release Notes</a></li>
@@ -42,17 +34,9 @@
 					</ul>
 				</li>
 			</ul>
-
-			<div id="flags-2">
-				<a href="../flag-index.html"><img src="../lib/logos/sidux-lang-50.png" title="Choose another language" alt="lang-switch" /></a>
-			</div>
-			<!-- menu ends here -->
 		</div>
 
 		<div id="main-page">
-		<!--[if lt IE 7]>
-			<div class="center warning-box data">Please Note :: Your version of Internet Explorer&#8482; is obsolete, please install <a href="http://mozilla.com/">Firefox from Mozilla Corp&#8482;</a> for Windows&#8482;. The menu distortions you see are the result of using a legacy browser like MSIE 5 or 6.</div>
-		<![endif]-->
 			<div class="divider" id="welcome">
 				<h2 id="top-header">sidux 2007-03</h2>
 
@@ -158,11 +142,11 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					</li>
 					<li>
 						Eagle USB ADSL modem:<br />
-						hole die Firmware von <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
+						hole die Firmware von <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
 						DVB Firmware für verschiedene full featured DVB TV Karten (die meisten budget Karten brauchen das nicht): <br />
-						 hole die benötigte Firmware (nachschauen mit dmesg) von:  <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
+						 hole die benötigte Firmware (nachschauen mit dmesg) von:  <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> und kopiere sie nach /lib/firmware/.
 						</li>
 					<li>
 						Intel ipw2100, 11 MBit/s wlan:<br />
@@ -185,11 +169,11 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					</li>
 					<li>
 						Intersil prism54, 54 MBit/s wlan:<br />
-						hole die Firmware von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
+						hole die Firmware von <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
 						nVidia graphics:<br />
-						3d Beschleunigung geht mit freien Treibern noch nicht, bitte benutzt <span class= "highlight-3">get-sidux-binary-gfx</span> um Install Skripte für diese Karten zu bekommen.
+						3d Beschleunigung geht mit freien Treibern noch nicht, bitte benutzt get-sidux-binary-gfx um Install Skripte für diese Karten zu bekommen.
 					</li>
 					<li>
 						RaLink rt61 54 MBit/s wlan:<br />
@@ -201,11 +185,11 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					</li>
 					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
-						hole die firmware von <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
+						hole die firmware von <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
 						ZyDAS zd1201 11 MBit/s wlan:<br />
-						hole die firmware von <a href="http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz">http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz</a> und kopiere sie nach <span class="highlight-3">/lib/firmware/</span>.
+						hole die firmware von <a href="http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz">http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
 						ZyDAS zd1211 54 MBit/s wlan:<br />
@@ -229,14 +213,14 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 			<div class="divider" id="mirror">
 				<h2>Download URLs, bitte gebt den Servern etwas Zeit zum synchronisieren:</h2>
 				<ul>
-<!-- preview -->
+<!-- preview
 					<li><a href="http://debian.tu-bs.de/project/sidux/preview/">http://debian.tu-bs.de/project/sidux/preview/ (Technische Universität Carolo-Wilhelmina zu Braunschweig, Germany)</a></li>
 					<li><a href="ftp://ftp.spline.de/mirrors/sidux/preview/">ftp://ftp.spline.de/mirrors/sidux/preview/ (Freie Universität Berlin/ Institut für Informatik, Germany)</a></li>
-<!-- preview -->
-<!-- RELEASE
+preview -->
+<!-- RELEASE -->
 					<li><a href="http://debian.tu-bs.de/project/sidux/release/">http://debian.tu-bs.de/project/sidux/release/ (Technische Universität Carolo-Wilhelmina zu Braunschweig, Germany)</a></li>
 					<li><a href="ftp://ftp.spline.de/mirrors/sidux/release/">ftp://ftp.spline.de/mirrors/sidux/release/ (Freie Universität Berlin/ Institut für Informatik, Germany)</a></li>
-RELEASE -->
+<!-- RELEASE -->
 				</ul>
 				<em>Zusätzliche Download Mirror, besonders in denU.S.A. und dem Pazifikraum sind sehr erwünscht, bitte kontaktiert uns wenn Ihr einen Server zur Verfügung stellen könnt, der den hohen Downloadraten eines Iso-Servers gewachsen ist.</em>
 			</div>
