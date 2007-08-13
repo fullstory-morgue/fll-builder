@@ -85,6 +85,7 @@ FLL_PACKAGES=(
 	emacs
 	enigmail
 	epiphany
+	etherwake
 	evolution
 	fakechroot
 	fetchmail
@@ -400,7 +401,7 @@ FLL_PACKAGES=(
 	nano
 	ndiswrapper-utils-1.9
 	noteedit
-	nvram
+	nvram-wakeup
         openclipart-openoffice.org 
 	openoffice.org
         openoffice.org-filter-so52
