@@ -21,6 +21,8 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - first stage of CSS overhaul.
     - further CSS style tweaking.
     - make ie happy about our release names.
+    - rework mirror info.
+    - mention sgfxi.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -55,7 +57,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 13:44:15 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 14:58:39 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
