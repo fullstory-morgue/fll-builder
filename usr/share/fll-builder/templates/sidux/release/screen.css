@@ -1,8 +1,8 @@
 /* <![CDATA[ */
 
-body, html, object, div {
-	margin:0;
-	padding:0;
+body, html, div {
+	margin:0px;
+	padding:0px;
 }
 
 body {
@@ -19,25 +19,25 @@ body {
 }
 
 p {
-	margin-top:0;
+	margin-top:0px;
 }
 
-ul {
-	margin: 0 0 1em 0;
-	padding:0;
+#main-page ul {
+	margin:0em 0em 1em 0em;
+	padding:0px;
 }
 
-li {
-	margin:0 0 1em 18px;
-	padding:0;
+#main-page li {
+	margin:0em 0em .5em 1.5em;
+	padding:0px;
 }
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight:bold;
 	font-family:"dejavu sans", arial, sans-serif;
-	margin-top:0;/* this must be 0 to fix a firefox css issue with this layout */
-	color:#040a2f;
+	margin-top:0px;	/* this must be 0 to fix a firefox css issue with this layout */
 	margin-bottom:.1em;
+	color:#040a2f;
 	padding:.2em;
 }
 
@@ -48,10 +48,7 @@ h1 {
 }
 
 h2 {
-	border-top-width:1px;
-	border-bottom-width:0px;
-	border-left-width:0px;
-	border-right-width:0px;
+	border-width:1px 0px 0px 0px;
 	border-style:solid;
 	border-color:#040a2f;
 	font-size:125%;
@@ -87,7 +84,9 @@ img {
 pre {
 	color:#000000;
 	background:#ffffee;
-	border:1px solid #888888;
+	border-width:1px;
+	border-style:solid;
+	border-color:#888888;
 	font-family:"dejavu", "Lucida Console", monospace;
 	font-size:85%;
 	width:95%;
@@ -105,16 +104,14 @@ pre {
 	height:auto;
 	background-color:#eaedf4;
 	width:164px;
-	font:normal 14px "dejavu sans", arial,sans-serif;
+	font-family:"dejavu sans", arial, sans-serif;
+	font-size:105%;
 }
 
 #menu .menubutton {
 	background-color:#7ba7a6;
 	padding:2%;
-	border-top-width:1px;
-	border-bottom-width:1px;
-	border-left-width:2px;
-	border-right-width:2px;
+	border-width:1px 2px 1px 1px;
 	border-style:solid;
 	border-color:#eaedf4;
 	font-size:90%;
@@ -128,9 +125,16 @@ pre {
 	display:block;
 }
 
-#menu ul li {
-	font-size:40%;
-	color:#eaedf4;
+#menu ul {
+	margin:3px 0px;
+	padding:0px 5px 0px 20px;
+	list-style-type:disc;
+}
+
+#menu li a {
+	font-size:70%;
+	line-height:1.1em;
+	color:#000000;
 	text-decoration:none;
 }
 

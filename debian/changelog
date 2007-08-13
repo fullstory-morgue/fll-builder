@@ -19,6 +19,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - update kernel info.
     - fix language navigation.
     - first stage of CSS overhaul.
+    - further CSS style tweaking.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -49,7 +50,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 10:48:47 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 11:48:42 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
