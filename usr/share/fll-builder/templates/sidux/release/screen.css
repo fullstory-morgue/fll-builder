@@ -6,7 +6,7 @@ body, html, div {
 }
 
 body {
-	font-family:"dejavu serif", times, "times new roman", serif;
+	font-family:"dejavu serif", "times new roman", serif;
 	font-size:100%;
 	background:#eaedf4;
 	color:#000611;

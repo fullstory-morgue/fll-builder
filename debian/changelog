@@ -20,6 +20,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - fix language navigation.
     - first stage of CSS overhaul.
     - further CSS style tweaking.
+    - make ie happy about our release names.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -39,6 +40,8 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * dvd.bm updated to 1.75 gb
   * expanded xfce-lite.bm
   * removed teclasat from dvd.bm
+  * added nvram-wakeup
+  * added nvram-wakeup and etherwake
 
   [ Joaquim Boura ]
   * fixed mispelling of file-roller
@@ -50,11 +53,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
-  [ Ferdinand Thommes ]
-  * added nvram-wakeup
-  * added nvram-wakeup and etherwake
-
- -- Ferdinand Thommes <devil@sidux.com>  Mon, 13 Aug 2007 13:24:33 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 13:32:06 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

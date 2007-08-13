@@ -3,7 +3,9 @@ body {
 	font-size: 12pt;
 }
 
-#menu {display:none;}
+#menu {
+	display:none;
+}
 
 #main-page {
 	margin:0 5em 0 2em;
@@ -20,7 +22,7 @@ p {
 }
 
 a:link, a:visited {
-	color: #000;
+	color: #000000;
 	background: transparent;
 	font-weight: normal;
 	text-decoration: none;
