@@ -26,6 +26,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * add vdr to kde-full.
   * add ftp on popular demand.
   * fix autorun.
+  * fix german contact translation.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -54,7 +55,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 13:42:55 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 13 Aug 2007 13:44:15 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
