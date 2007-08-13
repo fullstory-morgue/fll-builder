@@ -1,3 +1,0 @@
-@echo Starting "index.html"...
-@start index.html
-@exit
