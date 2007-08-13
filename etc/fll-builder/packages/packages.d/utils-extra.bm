@@ -5,6 +5,7 @@ FLL_PACKAGES+=(
 	dvd+rw-tools
 	dvb-utils
 	dosfstools
+	ftp
 	fuse-utils
 	genisoimage
 	jfsutils

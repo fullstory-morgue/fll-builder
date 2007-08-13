@@ -93,7 +93,9 @@ FLL_PACKAGES=(
 	pdfedit
 	rdiff-backup
 	siduxcc
+	sidux-vdr
 	superkaramba
+	vdr-gui
 	wengophone
 	yakuake
 )
