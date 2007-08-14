@@ -35,6 +35,7 @@ FLL_PACKAGES=(
 	gnome-office
 	gnome-schedule
 	gnome-utils
+	libgnomevfs2-extra
 	gimp
 	gimp-print
 	xchat

@@ -38,6 +38,7 @@ FLL_PACKAGES=(
 	gnome-themes-extras
 	gnome-utils
 	gnome-cups-manager
+	libgnomevfs2-extra
 	gconf-editor
 	gimp
 	gimp-print
