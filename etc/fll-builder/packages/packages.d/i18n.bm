@@ -139,7 +139,7 @@ case ${FLL_PACKAGES[*]} in
 	*sidux-manual*)
 		for lang in ${FLL_I18N_SUPPORT[@]}; do
 			case $lang in
-				*)
+				de|dk|es|hr|nl|pl|ro|ru)
 					FLL_PACKAGES+=( sidux-manual-${lang} )
 					;;
 			esac
