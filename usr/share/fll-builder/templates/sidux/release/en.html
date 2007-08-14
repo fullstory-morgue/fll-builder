@@ -52,17 +52,26 @@ preview -->
 				<h1 id="top-header">sidux 2007-03</h1>
 
 				<p>
-					Leading towards the final release of sidux 2007-03 &Gamma;&alpha;&iota;&alpha; and despite some vacancies during the holiday season, some pretty far reaching transitions could be completed to remove hard dependencies on gtk+ 1.2, which not only required a siginificant amount of ISO storage, but also imposed an additional maintenance and security support burden on our toolset.
-					Now we're proud to announce the third preview for sidux 2007-03 &Gamma;&alpha;&iota;&alpha; and are looking forward to the full featured final release in about a week.
+					After less than 3 months of development, we are proud to announce the immediate availability of the sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; release for amd64 and i686 systems, shipping in a &asymp;440 MB lite KDE and a &asymp;700 MB full KDE flavor.
+					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
 				</p>
 			</div>
 	
 			<div class="divider" id="release-notes">
 				<h2>Release notes for &Gamma;&alpha;&iota;&alpha;</h2>
+
 				<p>
-					After Kernel and the new live boot infrastructure have been proven to be stable, preview 3 is now targetted at regression testing the partly rewritten and massively overhauled configuration tools and improving translations and localisations.
-					As usual the preview ships only as kde-lite variant, featuring a small (&asymp;440 MB), but fully functional KDE based package list, to ease up testing and xdelta uploads.
-					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
+					Our third official sidux release concentrates on overhauling the SysV initsequence of the live CD, refactoring the installer backend and laying the foundation for proper gettext based localisations of our toolset, with additional efforts regarding general clean up, obsoletion of gtk+ 1.2 based tools and especially the kernel.
+					While shipping kernel 2.6.22.3(-rc1), using libata for most PATA chipsets, additional support for Intel IPW3945/ IPW4965 (iwlwifi 1.0.0-1), Realtek RTL8187 and RT2x00 wireless LAN devices has been added based on <a href="http://sidux.com/Article212.html">mac80211</a>.
+				</p>
+
+				<p>
+					Again this release only ships in two KDE flavors (lite and full), we're looking for interested maintainers contributing to special purpose releases or tweaking support for other desktop environments and window managers.
+					Even though there seems to be interest in xfce and gnome variants, the required developer support quorum hasn't been reached yet.
+				</p>
+
+				<p>
+					The ISO is completely based on Debian Sid, enriched and stabilized with sidux' own packages and scripts.
 				</p>
 			</div>
 	
@@ -70,13 +79,13 @@ preview -->
 				<h2>Now to the interesting topics, like what's on the menu for now:</h2>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer).</li>
-					<li>debian sid.</li>
-					<li>kernel 2.6.22.2 (smp, hard preemption).</li>
+					<li>debian sid, as of 2007-08-14.</li>
+					<li>kernel 2.6.22.3-rc1 (smp, hard preemption).</li>
 					<li>minimal, but fully functional KDE 3.5.7 (en + de).</li>
 					<li>completely overhauled init sequence.</li>
 					<li>completely refactored installer backend.</li>
 					<li>new artwork created by cleary and the sidux art team.</li>
-					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
 					<li>lots of changes for the manual.</li>
 					<li>iwlwifi3945/ iwlwifi4965 1.0.0-1.</li>
 					<li>rt2x00 2.0.6+git20060810 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
@@ -95,6 +104,8 @@ preview -->
 					<li>rt73-legacy driver.</li>
 					<li>memtest86+.</li>
 					<li>add iputils-ping.</li>
+					<li>add VDR 1.4.7.</li>
+					<li>bugfix for partition detection.</li>
 				</ul>
 			</div>
 <!-- preview
@@ -151,7 +162,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					<li>
 						DVB firmware for various full featured DVB TV cards (most budget cards won't need this):<br />
 						fetch the needed firmeware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under /lib/firmware/.
-						</li>
+					</li>
 					<li>
 						Intel ipw2100, 11 MBit/s wlan:<br />
 						<pre>apt-get install ipw2100-firmware</pre>

@@ -52,23 +52,25 @@ preview -->
 				<h1 id="top-header">sidux 2007-03</h1>
 
 				<p>
-					In Hinblick auf die finale Ver&ouml;ffentlichung von sidux 2007-03 &Gamma;&alpha;&iota;&alpha; und trotz der durch die Urlaubssaison bedingten Ausf&auml;lle, konnten einige weitreichende Transitionen zur Vermeidung harter Abh&auml;ngigkeiten von gtk+ 1.2 vollendet werden, welches nicht nur einen signifikanten Anteil Speicherplatz auf dem ISO einfordert, sondern auch zus&auml;tzlichen Aufwand f&uuml;r Wartung und Sicherheitssupport bedeutete.
-				</p>
-				<p>
-					Nun sind wir stolz die dritte Preview f&uuml;r sidux 2007-03 &Gamma;&alpha;&iota;&alpha; zu ver&ouml;ffentlichen und erwarten das vollausgestattete finale Release in etwa einer Woche.
+					Nach weniger als drei Monaten Entwicklungszeit geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;440 MB gro&szlig;en kde-lite&ndash; und einer &#8776;700 MB  gro&szlig;en kde-full Variante.
+					sidux ist eine umfassende Debian sid basierte Live-CD mit besonderem Augenmerk auf Festplatteninstallationen, einem sauberen Upgradepfad innerhalb sids und zus&auml;tzlichem Hard- und Softwaresupport.
 				</p>
 			</div>
 
 			<div class="divider" id="release-notes">
 				<h2>Release Notes f&uuml;r &Gamma;&alpha;&iota;&alpha;</h2>
 				<p>
-					Nachdem sich Kernel und die Neue Livebootinfrastruktur als stabil bew&auml;hrt haben, ist Preview 3 nun auf Regressionstests der teilweise neu geschriebenen und massiv &uuml;berholten Konfigurationstools und die Verbesserung von &Uuml;bersetzungen und Lokalisierungen ausgelegt,
-					Wie &uuml;blich erscheint dieses Preview Release nur als KDE-Lite Variante, mit einer kleinen (&asymp;440 MB), aber voll funktionalen KDE basierten Paketliste, um das Testen und eventuelle xdelta Uploads zu erleichtern.
-					sidux ist eine vollausgestattete Debian sid basierende Live CD mit einem  speziellen Fokus  auf Festplatteninstallation, einem sauberen Upgrade Pfad in sid und zus&auml;tzlichem Hard- und Software Support.
+					Unser drittes offizielles sidux Release konzentriert sich auf die &Uuml;berholung der SysV Initsequenz der Live CD, der Refaktorierung des Installer Backends und der Grundsteinlegung f&uuml;r regelrechte gettext basierte Lokalisierungen unseres Toolsets, mit zus&auml;tzlichen Anstrengungen bez&uuml;glich einer allgemeinen Codebereinigung, der Revision von gtk+ 1.2 basierten Tools und insbesondere dem Kernel.
+					Obwohl Kernel 2.6.22.3(-rc1) unter Verwendung von libata f&uuml;r die meisten PATA Chips&auml;tze verwendet wird, konnte eine zus&auml;tzliche Unterst&uuml;tzung f&uuml;r Intel IPW3945/ IPW4965 (iwlwifi 1.0.0-1), Realtek 8187 und RT2x00 wlan Karten basierend auf <a href="http://sidux.com/Article212.html">mac80211</a> hinzugef&uuml;gt werden.
 				</p>
 
 				<p>
-					Das vollausgestattete final Release von sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; wird in etwa einer Woche fertig sein zwischenzeitlich gibt es X-Deltas nach Bedarf.
+					Erneut ist dieses Release nur in zwei KDE basierten Varianten (lite und full) verf&uuml;gbar, wir suchen interessierte Maintainer, die sich f&uuml;r andere Desktop Environments oder Fenstermamager, deren Optimierung oder spezielle Releases engagieren m&ouml;chten.
+					Gleichwohl es Bestrebungen f&uuml;r XFCE und gnome Varianten gibt, konnte bislang das erforderliche Entwicklerquorum nicht erreicht werden.
+				</p>
+
+				<p>
+					Das ISO basiert vollst&auml;ndig auf Debian sid, angereichert und stabilisiert mit sidux eigenen Paketen und Skripten.
 				</p>
 			</div>
 
@@ -76,13 +78,13 @@ preview -->
 				<h2>Jetzt zu den interessanten Themen, was steht nun auf dem Plan:  </h2>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, neuere 64 bit f&auml;hige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
-					<li>Debian sid.</li>
-					<li>kernel 2.6.22.2 (smp, hard preemption).</li>
+					<li>Debian sid, Stand 2007-08-14.</li>
+					<li>kernel 2.6.22.3-rc1 (smp, hard preemption).</li>
 					<li>minimales, aber voll funktionelles KDE 3.5.7 (en + de).</li>
 					<li>vollkommen &uuml;berholte init Sequenz.</li>
 					<li>komplett &uuml;berholtes Installer Backend.</li>
 					<li>neues Artwork gestaltet von cleary und dem sidux art team.</li>
-					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handb&uuml;cher f&uuml;r weitere Sprachen auf:  <a href="http:/manual.sidux.com/ "> http://manual.sidux.com/ </a>und verf&uuml;gbar via apt; ein grosses Dankesch&ouml;n geht wieder einmal an das DoKumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handb&uuml;cher f&uuml;r weitere Sprachen auf: <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> und verf&uuml;gbar via apt; ein gro&szlig;es Dankesch&ouml;n geht wieder einmal an das DoKumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
 					<li>viele &Auml;nderungen im und am Handbuch.</li>
 					<li>iwlwifi3945/ iwlwifi4965 1.0.0-1.</li>
 					<li>rt2x00 2.0.6+git20070810 Support f&uuml;r RaLink Karten die wpasupplicant unterst&uuml;tzen, bitte entfernt /etc/modprobe.d/mac80211 um es dem RaLink legacy Treiber vorzuziehen</li>
@@ -101,6 +103,8 @@ preview -->
 					<li>rt73-legacy Treiber.</li>
 					<li>memtest86+</li>
 					<li>iputils-ping.</li>
+					<li>VDR 1.4.7.</li>
+					<li>Bugfix der Partitionserkennung.</li>
 				</ul>
 			</div>
 
