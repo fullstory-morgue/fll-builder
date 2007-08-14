@@ -58,6 +58,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * Package List gnome-std fixed.
   * gnome-find removed (not available for 64bit).
+  * p7zip-full and samba added for gnome-std/full
 
   [ Horst Tritremmel ]
   * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
@@ -65,7 +66,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 14 Aug 2007 16:35:58 +0200
+ -- Andreas Weber <webera@srv-1>  Tue, 14 Aug 2007 22:06:36 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

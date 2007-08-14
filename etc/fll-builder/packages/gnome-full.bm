@@ -44,7 +44,10 @@ FLL_PACKAGES=(
 	icedove
 	icedove-gnome-support
 	scribus-ng
-	gaim
+	p7zip-full
+	pidgin
+	pidgin-data
+	pidgin-encryption
 	infobash
 	configure-networkcard
 	configure-ndiswrapper
@@ -56,4 +59,5 @@ FLL_PACKAGES=(
 	totem
 	xmms
 	zenity
+	samba
 )
