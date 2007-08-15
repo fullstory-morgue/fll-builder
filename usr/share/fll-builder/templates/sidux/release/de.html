@@ -49,10 +49,21 @@ preview -->
 
 		<div id="main-page">
 			<div class="divider" id="welcome">
-				<h1 id="top-header">sidux 2007-03</h1>
+				<h1 id="top-header">sidux 2007-03.1 Hotfix</h1>
 
 				<p>
-					Nach weniger als drei Monaten Entwicklungszeit geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;440 MB gro&szlig;en kde-lite&ndash; und einer &#8776;700 MB  gro&szlig;en kde-full Variante.
+					Ein last minute Update von xine-lib (1.1.7-2) in Debian sid hat bei libxine1 alle bisherigen Paketabh&auml;ngigkeiten von den erforderlichen Audio-/ Videoplugins (in Vorbereitung auf &quot;<a href="http://lists.debian.org/debian-devel-announce/2007/08/msg00000.html">Installation of Recommends by default on October 1st</a>&quot;) zu &quot;Recommends&quot; herabgestuft und verursachte in unserem initialen sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; Release den Verlust der gewohnten Audio-/ Videounterst&uuml;tzung (<a href="http://bugs.debian.org/437693">#437693</a>). 
+					Bereits existierende Installationen von 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; k&ouml;nnen durch das Update von &quot;libxine1&quot; und &quot;libxine1-ffmpeg&quot; korrigiert werden.
+					<pre>apt-get update
+apt-get install libxine1 libxine1-ffmpeg</pre>
+				</p>
+
+				<p>
+					Dieses aktualisierte Hotfixrelease korrigiert die genannten Probleme f&uuml;r Livezwecke und zielt darauf ab diese Schwierigkeiten in Neuinstallationen zu vermeiden.
+				</p>
+
+				<p>
+					Nach weniger als drei Monaten Entwicklungszeit geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-03.1 &quot;&Gamma;&alpha;&iota;&alpha;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;440 MB gro&szlig;en kde-lite&ndash; und einer &#8776;700 MB  gro&szlig;en kde-full Variante.
 					sidux ist eine umfassende Debian sid basierte Live-CD mit besonderem Augenmerk auf Festplatteninstallationen, einem sauberen Upgradepfad innerhalb sids und zus&auml;tzlichem Hard- und Softwaresupport.
 				</p>
 			</div>
@@ -80,7 +91,7 @@ preview -->
 					<li>amd64 (AMD64, Intel Core2, neuere 64 bit f&auml;hige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
 					<li>Debian sid, Stand 2007-08-14.</li>
 					<li>kernel 2.6.22.3-rc1 (smp, hard preemption).</li>
-					<li>minimales, aber voll funktionelles KDE 3.5.7 (en + de).</li>
+					<li>KDE 3.5.7 (en + de).</li>
 					<li>vollkommen &uuml;berholte init Sequenz.</li>
 					<li>komplett &uuml;berholtes Installer Backend.</li>
 					<li>neues Artwork gestaltet von cleary und dem sidux art team.</li>
@@ -105,6 +116,8 @@ preview -->
 					<li>iputils-ping.</li>
 					<li>VDR 1.4.7.</li>
 					<li>Bugfix der Partitionserkennung.</li>
+					<li>CUPS 1.3.0.</li>
+					<li>Bugfix der Audio-/ Videoplaybackprobleme, zur Korrektur bereits existierender 2007-03 Installationen sollten libxine1 und libxine1-ffmpeg upgedated werden.</li>
 				</ul>
 			</div>
 
@@ -279,7 +292,10 @@ preview -->
 						sidux 2007-02 &quot;&Tau;&alpha;&rho;&tau;&alpha;&rho;&sigmaf;&quot; &mdash; 2007-05-28
 					</li>
 					<li>
-						sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-12
+						sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-14
+					</li>
+					<li>
+						sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-15
 					</li>
 history -->
 					<li>
