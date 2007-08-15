@@ -53,9 +53,10 @@ preview -->
 
 				<p>
 					Ein last minute Update von xine-lib (1.1.7-2) in Debian sid hat bei libxine1 alle bisherigen Paketabh&auml;ngigkeiten von den erforderlichen Audio-/ Videoplugins (in Vorbereitung auf &quot;<a href="http://lists.debian.org/debian-devel-announce/2007/08/msg00000.html">Installation of Recommends by default on October 1st</a>&quot;) zu &quot;Recommends&quot; herabgestuft und verursachte in unserem initialen sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; Release den Verlust der gewohnten Audio-/ Videounterst&uuml;tzung (<a href="http://bugs.debian.org/437693">#437693</a>). 
-					Bereits existierende Installationen von 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; k&ouml;nnen durch das Update von &quot;libxine1&quot; und &quot;libxine1-ffmpeg&quot; korrigiert werden.
+					Bereits existierende Installationen von 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; k&ouml;nnen durch das Update von &quot;libxine1&quot; und &quot;libxine1-ffmpeg&quot;, sowie der Anpassung der Gruppenzugeh&ouml;rigkeit der &quot;video&quot; Gruppe korrigiert werden.
 					<pre>apt-get update
-apt-get install libxine1 libxine1-ffmpeg</pre>
+apt-get install libxine1 libxine1-ffmpeg
+sed -i "s/\,sidux/\,$(getent passwd 1000 | cut -d\: -f1)/" /etc/group</pre>
 				</p>
 
 				<p>
@@ -118,6 +119,7 @@ apt-get install libxine1 libxine1-ffmpeg</pre>
 					<li>Bugfix der Partitionserkennung.</li>
 					<li>CUPS 1.3.0.</li>
 					<li>Bugfix der Audio-/ Videoplaybackprobleme, zur Korrektur bereits existierender 2007-03 Installationen sollten libxine1 und libxine1-ffmpeg upgedated werden.</li>
+					<li>Korrektur der Gruppenzugeh&ouml;rigkeiten f&uuml;r Gruppen mit mehreren Benutzern.</li>
 				</ul>
 			</div>
 

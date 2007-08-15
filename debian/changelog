@@ -25,6 +25,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - tab := 8 spaces.
     - finalize release notes for 2007-03.
     - adapt release notes for 2007-03.1.
+    - fix video group.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -69,7 +70,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 15 Aug 2007 13:24:19 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 15 Aug 2007 15:41:05 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
