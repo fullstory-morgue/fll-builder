@@ -26,6 +26,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - finalize release notes for 2007-03.
     - adapt release notes for 2007-03.1.
     - fix video group.
+    - get-sidux-binary-gfx versus sgfxi.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -70,7 +71,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 15 Aug 2007 15:41:05 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 15 Aug 2007 15:43:20 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
