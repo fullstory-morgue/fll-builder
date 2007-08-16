@@ -29,6 +29,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - get-sidux-binary-gfx versus sgfxi.
     - various spelling/ case fixes.
     - fix contributor's section, thanks to makke.
+    - add Washington State University mirror, thanks to UncleDeadly.
   * fix commited svn conflict introduced by r9770.
   * add iputils-ping to utils-essential.bm.
   * add vdr to kde-full.
@@ -73,7 +74,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 15 Aug 2007 22:18:47 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 17 Aug 2007 00:48:32 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
