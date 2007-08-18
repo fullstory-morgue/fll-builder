@@ -39,6 +39,35 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * fix german contact translation.
   * finalize package lists for Γαια.
   * update default fallback config.
+  * DVD package list:
+    - ardour-i686 doesn't exist for amd64.
+    - remove hungarian media player.
+    - apache2 is a bogus meta package, use apache2-mpm-prefork directly.
+    - kdevelop3 is a transitional dummy package, remove it.
+    - klettres depends on klettres-data anyways, remove bogus predetermined
+      breaking point.
+    - list libapache2-mod-php5 only once.
+    - do not ship something as utterly broken as partimage!
+    - do not depend explicitly on ssft, enough tools pull it in already and it
+      serves no standalone purpose.
+    - ssh is an obsolete meta package, depend on openssh-server explicitly,
+      openssh-client is already covered by utils-extra.
+    - remove xmms, it's about to be removed from debian soon.
+    - remove bogus dependencies on kalzium-data, kgeography-data,
+      krecipes-data, kstars-data and xfdesktop4-data.
+    - depend on sidux-manual as meta package.
+    - remove bogus dependencies on base packages:
+      + ifupdown
+      + module-init-tools
+      + tar
+    - remove screensavers, whick lock up X hard without user password:
+      + kscreensaver
+      + kscreensaver-xsavers
+      + kscreensaver-xsavers-webcollage
+      + xscreensaver-gl
+    - remove indirect dependencies:
+      + debconf
+      + icewm-common
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -74,7 +103,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 17 Aug 2007 00:48:32 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 18 Aug 2007 11:34:34 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

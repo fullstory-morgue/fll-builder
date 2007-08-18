@@ -1,13 +1,20 @@
 FLL_PACKAGE_DEPMODS=(
 	cli
+	devel-basic
+	devel-debian
+	devel-qt3
+	devel-qt4
+	devel-web
 	distro
 	distro-kde
 	distro-tools
 	distro-tools-x
+	distro-xfce
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
 	utils-extra
+	webserver-lamp
 	xserver
 )
 
@@ -23,21 +30,15 @@ FLL_PACKAGES=(
 	amarok
 	amsn
 	amule
-	apache2
-	apache2-mpm-prefork
-	apache2-utils
-	ardour-i686
+	ardour
 	ark
 	atlantik
 	audacious
 	audacious-plugins
 	audacious-plugins-extra
 	audacity
-	autoconf
-	automake
 	basket
 	bazaar
-	binutils
 	bitchx
 	bittorrent
 	bittorrent-gui
@@ -48,7 +49,6 @@ FLL_PACKAGES=(
 	camorama
 	camserv
 	camserv-relay
-	cdbs
 	cdparanoia
 	centericq
 	chkrootkit
@@ -60,17 +60,12 @@ FLL_PACKAGES=(
 	cvs
 	dar
 	dcraw
-	debconf-utils
-	debhelper
-	devscripts
 	ddrescue
 	debarchiver
-	debconf
 	denemo
 	dia
 	dia2code
 	dict
-	diffstat
 	digikam
 	dillo
 	ding
@@ -98,11 +93,8 @@ FLL_PACKAGES=(
 	f-spot
 	fujiplay
 	flac
-	g++-4.1
 	gawk
-	gcc
 	geany
-	gettext-base
 	gdancer
 	gftp
 	gimp
@@ -117,7 +109,6 @@ FLL_PACKAGES=(
 	gkrellm-volume
 	gkrellm-hdplop
 	gkrellm-alltraxclock
-	glade
 	gnucash
 	gnumeric
 	gnusound
@@ -125,7 +116,6 @@ FLL_PACKAGES=(
 	gplanarity
 	gthumb
 	gtk2-engines-qtcurve
-	gtk2-engines-xfce
 	gtkam
 	gtkam-gimp
 	gtkpod
@@ -147,13 +137,11 @@ FLL_PACKAGES=(
         icemc 
 	iceweasel
         icewm 
-        icewm-common 
         icewm-gnome-support 
         icewm-themes 
         idesk 
 	idle
 	idjc
-	ifupdown
 	imagemagick
 	inkscape
 	iproute
@@ -170,7 +158,6 @@ FLL_PACKAGES=(
 	kalgebra
 	kallery
 	kalzium
-	kalzium-data
 	kamera
 	kanjisaver
 	kannasaver
@@ -217,7 +204,6 @@ FLL_PACKAGES=(
 	kdetv
 	kdeutils
 	kdevelop
-	kdevelop3
 	kdewallpapers
 	kdewebdev
 	kdf
@@ -238,7 +224,6 @@ FLL_PACKAGES=(
 	kformula
 	kftpgrabber
 	kgeography
-	kgeography-data
 	kget
 	kghostview
 	kgpg
@@ -262,7 +247,6 @@ FLL_PACKAGES=(
 	klatin
 	kleopatra
 	klettres
-	klettres-data
 	klik
 	klineakconfig
 	klog
@@ -280,9 +264,6 @@ FLL_PACKAGES=(
 	kmoon
 	kmousetool
 	kmouth
-	kmplayer
-	kmplayer-common
-	kmplayer-plugin
 	kmplot
 	knemo
 	knetload
@@ -318,22 +299,17 @@ FLL_PACKAGES=(
 	kradio
 	krdc
 	krecipes
-	krecipes-data
 	krecordmydesktop
 	kregexpeditor
 	krename
 	kreversi
 	krfb
 	krusader
- 	kscreensaver
-        kscreensaver-xsavers
-	kscreensaver-xsavers-webcollage
 	ksensors
 	ksig
 	ksirc
 	ksnapshot
 	kstars
-	kstars-data
 	kstreamripper
 	ksvg
 	ksynaptics
@@ -357,8 +333,6 @@ FLL_PACKAGES=(
 	kxmleditor
 	lazarus
 	less
-	libapache2-mod-php5
-	libapache2-mod-php5
 	libqt-perl
 	libwine
 	licq
@@ -373,31 +347,24 @@ FLL_PACKAGES=(
 	lynx
 	lyx
 	magicrescue
-	make
 	mediawiki
 	mediawiki-extensions
 	metacam
 	meterbridge
 	mhwaveedit
         mindi
-	module-assistant
-	module-init-tools
 	mono
         mondo
 	mousepad
 	moto4lin
-	mozilla-mplayer
 	mozilla-plugin-vlc
 	mozplugger
-	mplayer
 	multisync
 	mutt
 	muttprint
 	muttprofile
 	myspell-de-de
 	myspell-en-us
-	mysql-common
-	mysql-server
 	nano
 	ndiswrapper-utils-1.9
 	noteedit
@@ -408,18 +375,14 @@ FLL_PACKAGES=(
 	openoffice.org-help-de 
 	openoffice.org-kde
 	openoffice.org-l10n-de
-        openoffice.org-officebean 
+        openoffice.org-officebean
+	openssh-server
 	original-awk
 	p7zip-full
 	parted
-	partimage
-	pbuilder
 	pdfedit
 	photon
 	photoprint
-	php5-mysql
-	php5 php5-common
-	phpmyadmin
 	pidgin
 	pidgin-encryption
 	pidgin-extprefs
@@ -433,10 +396,6 @@ FLL_PACKAGES=(
 	postfix-ldap
 	postfix-mysql
 	praat
-	qt3-dev-tools
-	qt4-designer
-	qt4-dev-tools
-	quanta
 	qcad
 	qemu
 	qtemu
@@ -459,6 +418,7 @@ FLL_PACKAGES=(
 	sidux-art-kde-tartaros
 	siduxcc
 	sidux-kernelhacking
+	sidux-manual
 	sidux-vdr
 	sidux-vdr-server-extra
 	smartmontools
@@ -466,8 +426,6 @@ FLL_PACKAGES=(
 	spamassassin
 	squashfs-tools
 	squid
-	ssft
-	ssh
 	streamripper
 	streamtuner
 	subversion
@@ -476,15 +434,9 @@ FLL_PACKAGES=(
 	svn-buildpackage
 	sylpheed
 	sylpheed-i18n
-	tar
 	tellico
 	texlive
 	texmaker
-	thunar
-	thunar-archive-plugin
-	thunar-media-tags-plugin
-	thunar-volman
-	tidy
 	tipa
 	tipa-doc
 	transcriber
@@ -507,47 +459,12 @@ FLL_PACKAGES=(
 	xchat
 	xchat-systray
 	xdelta
-	xfce4
-	xfce4-goodies
-	xfce4-clipman-plugin
-	xfce4-cpufreq-plugin
-	xfce4-cpugraph-plugin
-	xfce4-dev-tools
-	xfce4-icon-theme
-	xfce4-mcs-manager
-	xfce4-mcs-plugins
-	xfce4-minicmd-plugin
-	xfce4-mixer
-	xfce4-mixer-alsa
-	xfce4-mount-plugin
-	xfce4-netload-plugin
-	xfce4-notes-plugin
-	xfce4-panel
-	xfce4-quicklauncher-plugin
-	xfce4-screenshooter-plugin
-	xfce4-sensors-plugin
-	xfce4-session
-	xfce4-smartbookmark-plugin
-	xfce4-systemload-plugin
-	xfce4-terminal
-	xfce4-utils
-	xfce4-verve-plugin
-	xfce4-wavelan-plugin
-	xfce4-weather-plugin
-	xfdesktop4
-	xfdesktop4-data
-	xfprint4
-	xfwm4
-	xfwm4-themes 
        	xfonts-intl-phonetic
  	xfonts-tipa
 	xfsprogs
-	xfwm4
 	xine-ui
-	xmms
 	xpaint
 	xsane
- 	xscreensaver-gl
 	yakuake
 	zsh
 )

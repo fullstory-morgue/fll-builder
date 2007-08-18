@@ -1,0 +1,9 @@
+FLL_PACKAGES=(
+	cdbs
+	debhelper
+	debconf-utils
+	devscripts
+	fakeroot
+	pbuilder
+)
+

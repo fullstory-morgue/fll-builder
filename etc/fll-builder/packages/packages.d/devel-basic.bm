@@ -1,0 +1,12 @@
+FLL_PACKAGES=(
+	automake1.10
+	autoconf
+	build-essential
+	cmake
+	diff
+	diffstat
+	gettext
+	libtool
+	patchutils
+)
+
