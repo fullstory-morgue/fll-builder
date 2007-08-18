@@ -1,4 +1,4 @@
-FLL_PACKAGES=(
+FLL_PACKAGES+=(
 	qt4-designer
 	qt4-dev-tools
 )

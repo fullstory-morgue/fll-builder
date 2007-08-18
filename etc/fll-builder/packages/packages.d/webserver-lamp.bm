@@ -1,4 +1,4 @@
-FLL_PACKAGES=(
+FLL_PACKAGES+=(
 	apache2-mpm-prefork
 	libapache2-mod-php5
 	mysql-server

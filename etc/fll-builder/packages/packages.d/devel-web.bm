@@ -1,4 +1,4 @@
-FLL_PACKAGES=(
+FLL_PACKAGES+=(
 	dnsutils
 	iputils-ping
 	kdewebdev
