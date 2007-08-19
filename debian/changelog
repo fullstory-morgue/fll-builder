@@ -79,6 +79,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - kontact
     - libxine1
   * gimp-basic/ gimp-heavy meta tasks.
+  * standardize on gimp meta tasks.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -114,7 +115,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 19:41:18 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 19:43:36 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

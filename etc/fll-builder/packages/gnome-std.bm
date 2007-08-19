@@ -4,6 +4,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-gnome
 	distro-tools
 	distro-tools-x
+	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -40,8 +41,6 @@ FLL_PACKAGES=(
 	gnome-cups-manager
 	libgnomevfs2-extra
 	gconf-editor
-	gimp
-	gimp-print
 	xchat
 	xchat-systray
 	iceweasel

@@ -4,6 +4,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-kde
 	distro-tools
 	distro-tools-x
+	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -17,7 +18,6 @@ FLL_PACKAGES=(
 	ark
 	basket
 	digikam
-	gimp
 	gtk2-engines-qtcurve
 	gwenview
 	iceweasel

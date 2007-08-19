@@ -4,6 +4,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-kde
 	distro-tools
 	distro-tools-x
+	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -20,7 +21,6 @@ FLL_PACKAGES=(
 	digikam
 	foobillard
 	frozen-bubble
-	gimp
 	gwenview
 	iceape
 	icedove
