@@ -72,6 +72,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     FLL_PACKAGES_RECOMMENDS and
     ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm to the external
     package API.
+  * prettify recommends processing.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -107,7 +108,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 14:34:23 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 15:51:08 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
