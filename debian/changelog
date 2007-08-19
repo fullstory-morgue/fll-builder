@@ -68,6 +68,8 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - remove indirect dependencies:
       + debconf
       + icewm-common
+    - temporarily remove broken packages:
+      + gimp-ufraw is broken, remove it for now.
   * add framework to install Recommends for specified packages, adds
     FLL_PACKAGES_RECOMMENDS and
     ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm to the external
@@ -108,7 +110,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 15:51:08 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 16:02:16 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 

@@ -101,7 +101,6 @@ FLL_PACKAGES=(
 	gimp-data-extras
 	gimp-print
 	gimp-texturize
-	gimp-ufraw
 	gkrellm
 	gkrellm-mailwatch
 	gkrellmoon
@@ -469,3 +468,4 @@ FLL_PACKAGES=(
 	zsh
 )
 
+#	gimp-ufraw
