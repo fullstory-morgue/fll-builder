@@ -13,6 +13,7 @@ FLL_PACKAGES=(
 	ark
 	build-essential
 	cdebootstrap
+	kaffeine
 	kde-core
 	kdm
 	konversation

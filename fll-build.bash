@@ -513,6 +513,25 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
+	# handle recommends for specified packages
+	echo "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
+	source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
+
+	unset FLL_PACKAGES_EXTRA
+	if [[ ${FLL_PACKAGES_RECOMMENDS[@]} ]]; then
+		if [[ ! -x $(which grep-dctrl) ]]; then
+			echo "$SELF: grep-dctrl missing!" 1>&2 
+			exit 9
+		fi
+
+		for i in ${FLL_PACKAGES_RECOMMENDS[@]}; do
+			grep-status -s Status -PX "$i" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | grep -q '^Status: install ok installed$' || continue
+			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$i" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | awk -F, '!/^$/{ for (i = 1; i <= NF; i++) { gsub(/(^[ \t]+|[ \t]+\|.*|\([^)]+\))/, "", $i); print $i } }') )
+		done
+
+		[[ ${FLL_PACKAGES_EXTRA[@]} ]] && chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
+	fi
+
 	# purge unwanted packages
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	

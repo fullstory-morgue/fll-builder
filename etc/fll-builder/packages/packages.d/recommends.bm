@@ -1,0 +1,4 @@
+FLL_PACKAGES_RECOMMENDS=(
+	libxine1
+)
+
