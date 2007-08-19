@@ -10,6 +10,8 @@ FLL_PACKAGE_DEPMODS=(
 	distro-tools
 	distro-tools-x
 	distro-xfce
+	gimp-basic
+	gimp-heavy
 	hwsupport-essential
 	hwsupport-extra
 	utils-essential
@@ -97,10 +99,6 @@ FLL_PACKAGES=(
 	geany
 	gdancer
 	gftp
-	gimp
-	gimp-data-extras
-	gimp-print
-	gimp-texturize
 	gkrellm
 	gkrellm-mailwatch
 	gkrellmoon
@@ -468,4 +466,3 @@ FLL_PACKAGES=(
 	zsh
 )
 
-#	gimp-ufraw

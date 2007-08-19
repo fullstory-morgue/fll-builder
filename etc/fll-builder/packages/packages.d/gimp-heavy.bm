@@ -1,0 +1,6 @@
+FLL_PACKAGES+=(
+	gimp-data-extras
+	gimp-texturize
+)
+
+#	gimp-ufraw
