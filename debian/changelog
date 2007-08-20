@@ -6,10 +6,12 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add FLL_I18N_SUPPORT to example config
   * dvd package list:
     - unmet dependencies:
-      + disable gimp-svg for now.
-      + disable wengophone for now.
+      + gimp-svg
+      + wengophone
+      + kig
+      + klash
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 20 Aug 2007 18:46:05 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 20 Aug 2007 18:51:21 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 

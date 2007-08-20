@@ -229,7 +229,6 @@ FLL_PACKAGES=(
 	kiconedit
 	kid3
 	kid3-qt
-	kig
 	kile
 	kimagemapeditor
 	kino
@@ -240,7 +239,6 @@ FLL_PACKAGES=(
 	kjots
 	klamav
 	klaptopdaemon
-	klash
 	klatin
 	kleopatra
 	klettres
@@ -465,4 +463,6 @@ FLL_PACKAGES=(
 	zsh
 )
 
+#	kig
+#	klash
 #	wengophone
