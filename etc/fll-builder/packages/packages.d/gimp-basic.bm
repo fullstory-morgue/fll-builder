@@ -1,6 +1,6 @@
 FLL_PACKAGES+=(
 	gimp
 	gimp-print
-	gimp-svg
 )
 
+#	gimp-svg
