@@ -17,11 +17,18 @@ grep_i18n_string() {
 }
 
 detect_i18n_support_packages() {
-	for p in gwenview icedove iceweasel k3b kdebase koffice myspell-en-us openoffice.org sidux-manual; do
+	for p in gcompris gimp gwenview icedove iceweasel k3b kdebase koffice myspell-en-us \
+		openoffice.org sidux-manual; do
 		installed_in_chroot "$p" || continue
 		case "$p" in
 			k3b|gwenview)
 				echo "${p}-i18n"
+				;;
+			gcompris)
+				grep_i18n_string gcompris-sound $@
+				;;
+			gimp)
+				grep_i18n_string gimp-help $@
 				;;
 			icedove)
 				grep_i18n_string icedove-locale $@
