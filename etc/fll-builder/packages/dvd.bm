@@ -448,7 +448,6 @@ FLL_PACKAGES=(
 	vim-latexsuite
 	vlc
 	vorbis-tools
-	wengophone
 	wine
 	wine-utils
 	wireless-tools
@@ -466,3 +465,4 @@ FLL_PACKAGES=(
 	zsh
 )
 
+#	wengophone
