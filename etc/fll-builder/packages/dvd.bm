@@ -109,7 +109,6 @@ FLL_PACKAGES=(
 	gnucash
 	gnumeric
 	gnusound
-	gossip
 	gplanarity
 	gthumb
 	gtk2-engines-qtcurve
@@ -463,6 +462,7 @@ FLL_PACKAGES=(
 	zsh
 )
 
+#	gossip
 #	kig
 #	klash
 #	wengophone
