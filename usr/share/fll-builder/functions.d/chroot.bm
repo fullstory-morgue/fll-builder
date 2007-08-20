@@ -34,6 +34,12 @@ exists_in_chroot() {
 	return 1
 }
 
+installed_in_chroot() {
+	[[ $1 && $(grep-dctrl -n -s Status -XP $1 "$FLL_BUILD_CHROOT"/var/lib/dpkg/status) == 'install ok installed' ]]
+	
+	return $?
+}
+
 chroot_virtfs() {
 	local ACTION="$1"
 	local PROC="$FLL_BUILD_CHROOT"/proc

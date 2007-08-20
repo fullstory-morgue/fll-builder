@@ -84,6 +84,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Kel Modderman ]
   * memtest86+ reinstated.
   * determine absolute dirname of FLL_BUILD_AREA.
+  * Add installed_in_chroot() to chroot.bm.
 
   [ Bernard Gray ]
   * add fll-build.conf man page
@@ -115,7 +116,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 19 Aug 2007 19:43:36 +0200
+ -- Kel Modderman <kel@otaku42.de>  Mon, 20 Aug 2007 22:04:12 +1000
 
 fll-builder (1.1.4) unstable; urgency=low
 
