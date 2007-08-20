@@ -87,6 +87,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   * Add installed_in_chroot() to chroot.bm.
   * Use installed_in_chroot() where applicable.
   * Introduce new i18n handling.
+  * packages.d/i18n.bm is no more.
 
   [ Bernard Gray ]
   * add fll-build.conf man page
@@ -118,7 +119,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 20 Aug 2007 23:03:37 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 20 Aug 2007 23:09:18 +1000
 
 fll-builder (1.1.4) unstable; urgency=low
 

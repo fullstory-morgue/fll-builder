@@ -369,10 +369,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
 	done
 	
-	# unconditionally evaluate i18n requirements
-	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/i18n.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/i18n.bm
-
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
 		exit 7
