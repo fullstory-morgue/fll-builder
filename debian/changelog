@@ -1,4 +1,4 @@
-fll-builder (1.1.5) UNRELEASED; urgency=low
+fll-builder (1.1.5) unstable; urgency=low
 
   * NOT RELEASED YET
 
@@ -80,6 +80,8 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
     - libxine1
   * gimp-basic/ gimp-heavy meta tasks.
   * standardize on gimp meta tasks.
+  * remove FLL_I18N_SUPPORT from distro-defaults.
+  * move FLL_CDROM_INDEX_ICON below release/.
 
   [ Kel Modderman ]
   * memtest86+ reinstated.
@@ -119,7 +121,7 @@ fll-builder (1.1.5) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Do not try to install nonexistent sidux-manual packages (i18n.bm)
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 20 Aug 2007 23:09:18 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 20 Aug 2007 15:20:12 +0200
 
 fll-builder (1.1.4) unstable; urgency=low
 
