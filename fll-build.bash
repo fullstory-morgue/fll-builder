@@ -525,7 +525,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		fi
 
 		for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
-			[[ $(grep-dctrl -n -s Status -XP "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status") =~ "^install ok installed$" ]] || continue
+			installed_in_chroot "$p" || continue
 			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | awk -F, '!/^$/{ for (i = 1; i <= NF; i++) { gsub(/(^[ \t]+|[ \t]+\|.*|\([^)]+\))/, "", $i); print $i } }') )
 		done
 
@@ -595,7 +595,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		misc chroot preseeding				#
 	#################################################################
 	# preconfigure fontconfig-config
-	if exists_in_chroot /etc/fonts/conf.d; then
+	if installed_in_chroot fontconfig-config; then
 		header "Fixing fontconfig"
 		# hinting select Native|Autohinter|None
 		echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
@@ -619,7 +619,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 
 	# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
-	if exists_in_chroot /etc/X11/X; then
+	if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
 		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
 			header "Fixing /etc/X11/X symlink"
 			remove_from_chroot /etc/X11/X
@@ -629,22 +629,22 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 
 	# run fix-fonts
-	if exists_in_chroot /usr/sbin/fix-fonts; then
+	if installed_in_chroot fix-fonts; then
 		chroot_exec fix-fonts
 	fi
 	
 	# use most as PAGER if installed in chroot
-	if exists_in_chroot /usr/bin/most; then
+	if installed_in_chroot most; then
 		chroot_exec update-alternatives --set pager /usr/bin/most
 	fi
 	
 	# vimrc.local
-	if exists_in_chroot /etc/vim; then
+	if installed_in_chroot vim; then
 		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
 	fi
 
 	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
-	if exists_in_chroot /etc/ppp/peers/kppp-options; then
+	if installed_in_chroot kppp && exists_in_chroot /etc/ppp/peers/kppp-options; then
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 
