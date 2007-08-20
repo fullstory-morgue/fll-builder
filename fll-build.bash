@@ -513,6 +513,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
+	# handle locale support packages
+	if [[ $FLL_I18N_SUPPORT ]]; then
+		FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
+		if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
+			chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}
+		fi
+	fi
+
 	# handle recommends for specified packages
 	echo "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
 	source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
