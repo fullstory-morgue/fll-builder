@@ -16,7 +16,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * Filter generic i18n packages (non-lang specific) for english or english
     variant only builds.
 
- -- Kel Modderman <kel@otaku42.de>  Tue, 21 Aug 2007 16:28:39 +1000
+  [ Bernard Gray ]
+  * populate fll-build.conf.5 skeleton some more
+ 
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 21 Aug 2007 21:51:05 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
