@@ -22,7 +22,11 @@ detect_i18n_support_packages() {
 		installed_in_chroot "$p" || continue
 		case "$p" in
 			k3b|gwenview)
-				echo "${p}-i18n"
+				for l in $@; do
+					[[ "$l" =~ '^(au|en|gb|us)$' ]] && continue
+					echo "${p}-i18n"
+					break
+				done
 				;;
 			gcompris)
 				grep_i18n_string gcompris-sound $@
