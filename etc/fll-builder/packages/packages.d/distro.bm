@@ -4,7 +4,6 @@ FLL_PACKAGES+=(
 	grub-gfxboot
 	hwsetup-ng
 	fll-live-initscripts
-	fll-fshelper
 	sidux-art-wallpaper
 	sidux-art-wallpaper-gaia
 	sidux-graphics
