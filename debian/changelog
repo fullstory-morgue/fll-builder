@@ -11,6 +11,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + kig
       + klash
       + gossip
+  * install recommends for siduxcc (apt-show-versions).
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
