@@ -12,6 +12,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + klash
       + gossip
   * install recommends for siduxcc (apt-show-versions).
+  * fll-fshelper.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -19,8 +20,8 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
- 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 21 Aug 2007 21:51:05 +1000
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 22 Aug 2007 15:47:01 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
