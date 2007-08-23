@@ -582,19 +582,26 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	#################################################################
 	#		hack inittab and shadow				#
-	#		- init 5 by default				#
-	#		- immutable bash login shells			#
-	#################################################################
-	sed -i	-e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-		-e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
-		-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-		-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-			"$FLL_BUILD_CHROOT"/etc/inittab
+        #################################################################
+        # init 5 by default
+        sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
+                        "$FLL_BUILD_CHROOT"/etc/inittab
 
-	# lock down root
-	sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-		"$FLL_BUILD_CHROOT"/etc/shadow
-	
+        if [[ -z $FLL_ROOT_PASSWD ]]; then
+                # immutable bash login shells
+                sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
+                        -e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+                        -e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+                                "$FLL_BUILD_CHROOT"/etc/inittab
+
+                # lock down root
+                sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+                        "$FLL_BUILD_CHROOT"/etc/shadow
+        else
+                # $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
+                sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
+                        "$FLL_BUILD_CHROOT"/etc/shadow
+        fi 
 	#################################################################
 	#		misc chroot preseeding				#
 	#################################################################

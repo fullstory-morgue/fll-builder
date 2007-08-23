@@ -19,8 +19,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
+  * add patch for optional root password 
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 22 Aug 2007 15:47:01 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 23 Aug 2007 12:31:23 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
