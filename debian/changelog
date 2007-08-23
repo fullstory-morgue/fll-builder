@@ -13,6 +13,8 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + gossip
   * install recommends for siduxcc (apt-show-versions).
   * add mirror at the university of Kent, thanks to etorix.
+  * add missing line break to mirror section, list ftp over http for the
+    university of Kent.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -24,7 +26,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add desktop-defaults-xfce to distro-xfce.bm
   * bash the xfce pkg list into something recognisable
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 23 Aug 2007 21:07:45 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 23 Aug 2007 21:20:07 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
