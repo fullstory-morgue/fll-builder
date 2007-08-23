@@ -19,9 +19,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
-  * add patch for optional root password 
+  * add patch for optional root password
+  * add desktop-defaults-xfce to distro-xfce.bm 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 23 Aug 2007 12:31:23 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 23 Aug 2007 21:37:05 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
