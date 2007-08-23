@@ -2,6 +2,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro
 	distro-tools
 	distro-tools-x
+	distro-xfce
 	hwsupport-essential
 	utils-essential
 	xserver
@@ -26,6 +27,8 @@ FLL_PACKAGES=(
 	icedove
 	iceweasel
 	infobash
+        thunar-archive-plugin
+        thunar-media-tags-plugin
 	thunar-volman
 	xchat
 	xchat-systray
@@ -34,6 +37,7 @@ FLL_PACKAGES=(
 	xfce4-cpufreq-plugin
 	xfce4-cpugraph-plugin
 	xfce4-dev-tools
+        xfce4-goodies
 	xfce4-icon-theme
 	xfce4-mcs-manager
 	xfce4-mcs-plugins

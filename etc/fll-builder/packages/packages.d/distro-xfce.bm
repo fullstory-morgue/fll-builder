@@ -1,30 +1,5 @@
 FLL_PACKAGES+=(
 	desktop-defaults-xfce
-	thunar-archive-plugin
-	thunar-media-tags-plugin
-	thunar-volman
-	xfce4
-	xfce4-goodies
-	xfce4-clipman-plugin
-	xfce4-cpufreq-plugin
-	xfce4-cpugraph-plugin
-	xfce4-dev-tools
-	xfce4-mcs-manager
-	xfce4-minicmd-plugin
-	xfce4-mixer
-	xfce4-mixer-alsa
-	xfce4-mount-plugin
-	xfce4-netload-plugin
-	xfce4-notes-plugin
-	xfce4-quicklauncher-plugin
-	xfce4-screenshooter-plugin
-	xfce4-sensors-plugin
-	xfce4-smartbookmark-plugin
-	xfce4-systemload-plugin
-	xfce4-terminal
-	xfce4-verve-plugin
-	xfce4-wavelan-plugin
-	xfce4-weather-plugin
-	xfprint4
+	sidux-art-gnome-gaia
 )
 
