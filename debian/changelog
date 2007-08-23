@@ -12,6 +12,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + klash
       + gossip
   * install recommends for siduxcc (apt-show-versions).
+  * add mirror at the university of Kent, thanks to etorix.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -21,9 +22,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * populate fll-build.conf.5 skeleton some more
   * add patch for optional root password
   * add desktop-defaults-xfce to distro-xfce.bm
-  * bash the xfce pkg list into something recognisable 
+  * bash the xfce pkg list into something recognisable
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 23 Aug 2007 21:48:26 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 23 Aug 2007 21:07:45 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
