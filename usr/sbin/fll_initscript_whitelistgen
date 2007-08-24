@@ -54,5 +54,4 @@ for my $pkg (@pkg_list) {
 	close($fh)
 }
 
-#printf("# %s\n", $_) for (sort keys %i);
-printf("%s\n", $_) for (sort keys %i);
+printf("# %s\n", $_) for (sort keys %i);
