@@ -12,11 +12,13 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + klash
       + gossip
   * install recommends for siduxcc (apt-show-versions).
-  * add mirror at the university of Kent, thanks to etorix.
-  * add missing line break to mirror section, list ftp over http for the
-    university of Kent.
-  * add mirror at the university of Tennessee/ SunSITE, thanks to etorix and
-    Tirian.
+  * release notes:
+    - add mirror at the university of Kent, thanks to etorix.
+    - add missing line break to mirror section, list ftp over http for the
+      university of Kent.
+    - add mirror at the university of Tennessee/ SunSITE, thanks to etorix and
+      Tirian.
+  * don't store a dummy fstab.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
