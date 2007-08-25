@@ -36,8 +36,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * bash the xfce pkg list into something recognisable
   * remove configure* and zenity from xfce-lite.bm (managed in other lists)
   * hack together a starting point for xfce.bm (XXX: NEEDS LOOKING AT!)
+  * remove gstreamer really-ugly plugins from xfce.bm 
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 25 Aug 2007 01:47:43 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Sat, 25 Aug 2007 16:13:10 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 

@@ -37,7 +37,6 @@ FLL_PACKAGES=(
 	gstreamer0.10-ffmpeg
 	gstreamer0.10-plugins-base
 	gstreamer0.10-plugins-good
-	gstreamer0.10-plugins-really-bad
 	gstreamer0.10-plugins-ugly
 	gtk2-engines-xfce
 	icedove
