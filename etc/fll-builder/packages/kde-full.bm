@@ -59,6 +59,7 @@ FLL_PACKAGES=(
 	kgpg
 	kicker-applets
 	kiconedit
+	kio-apt
 	kipi-plugins
 	kmahjongg
 	kmail
