@@ -74,6 +74,8 @@ Options:
 
   -P|--package-profiledir	Package profile directory
 
+  -B|--binary-release		Build binary product only
+
   -S|--source-release		Create source code URI list for release
 
   -t|--template-dir		Path to alternate Live CD root template dir
@@ -153,6 +155,9 @@ FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 # store current UID, override later if executed by !root
 FLL_BUILD_OUTPUT_UID=$UID
 
+# by default, make source URI list
+FLL_SOURCE_RELEASE=1
+
 #################################################################
 #		source functions				#
 #################################################################
@@ -164,8 +169,8 @@ done
 #		parse command line				#
 #################################################################
 ARGS=$( getopt --name "$SELF" \
-	--options c:Cdhno:pP:St: \
-	--long configfile:,chroot-only,copyright,debug,help,output:,package-profiledir,preserve,source-release,template-dir:,uid: \
+	--options Bc:Cdhno:pP:St: \
+	--long binary-release,configfile:,chroot-only,copyright,debug,help,output:,package-profiledir,preserve,source-release,template-dir:,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
@@ -177,6 +182,9 @@ eval set -- "$ARGS"
 
 while true; do
 	case $1 in
+		-B|--binary-release)
+			((FLL_SOURCE_RELEASE--))
+			;;
 		-c|--configfile)
 			shift
 			FLL_BUILD_CONFIGS+=( $1 )
@@ -534,7 +542,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' \
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
 	
-	if [[ $FLL_SOURCE_RELEASE ]]; then
+	if [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
 		header "Calculating source package URI list..."
 	
 		# generate source package URI list

@@ -51,7 +51,7 @@ EOF
 				fi
 			done
 
-			[[ $FLL_SOURCE_RELEASE ]] || return 0
+			[[ $FLL_SOURCE_RELEASE -ge 1 ]] || return 0
 			
 			cat >> "$DEST" \
 <<EOF
