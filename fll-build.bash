@@ -74,7 +74,7 @@ Options:
 
   -P|--package-profiledir	Package profile directory
 
-  -S|--source-release		Fetch all source code for release
+  -S|--source-release		Create source code URI list for release
 
   -t|--template-dir		Path to alternate Live CD root template dir
 

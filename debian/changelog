@@ -32,6 +32,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * Add lots more "headers".
   * Cleanup some old cruft todo with fontconfig-config and initramfs-tools.
   * Remove nodev test, little value for us.
+  * Fix comment for -S|--source-release option.
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
@@ -45,7 +46,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add lite office tools (abiword/gnumeric) to xfce-lite.bm
   * add heavy office tools (openoffice.org) to xfce.bm
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 17:06:20 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 17:07:38 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
