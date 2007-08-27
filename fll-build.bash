@@ -238,20 +238,8 @@ done
 absdirname() { [[ -n $1 ]] && ( pushd $1 >/dev/null && echo $PWD; ) }
 
 if [[ $1 ]]; then
-	#
 	# make build dir and determine its absolute path
-	#
 	mkdir -p $1 && FLL_BUILD_AREA="$(absdirname $1)"
-	
-	#
-	# test for 'nodev' mount option
-	#
-	mknod "$FLL_BUILD_AREA"/test-dev-null c 1 3
-	if ! echo testing 1 2 3 > "$FLL_BUILD_AREA"/test-dev-null 2>/dev/null; then
-		echo "$SELF: build area mounted with 'nodev' option, aborting"
-		exit 3
-	fi
-	rm -f "$FLL_BUILD_AREA"/test-dev-null
 else
 	echo "$SELF: must supply a build directory as first and only command line argument!"
 	echo
