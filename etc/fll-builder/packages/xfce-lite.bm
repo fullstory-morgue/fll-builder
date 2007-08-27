@@ -9,6 +9,10 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
+        abiword
+        abiword-help
+        abiword-plugins
+	exaile
 	gdm
 	gdm-themes-sidux
 	gkrellm
@@ -18,9 +22,11 @@ FLL_PACKAGES=(
 	gkrellm-volume
 	gkrellm-hdplop
 	gkrellm-alltraxclock
-	gtk2-engines-xfce
-	exaile
 	gksu
+        gnumeric
+        gnumeric-doc
+        gnumeric-plugins-extra
+	gtk2-engines-xfce
 	icedove
 	iceweasel
 	infobash
