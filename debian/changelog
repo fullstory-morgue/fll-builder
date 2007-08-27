@@ -35,6 +35,8 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * Fix comment for -S|--source-release option.
   * Make source URI generation default action again. Introduce
     -B|--binary-release for old behaviour.
+  * No longer create strange ($FLL_MOUNTPOINT) directory in build chroot, this
+    may be disruptive and break build.
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
@@ -48,7 +50,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add lite office tools (abiword/gnumeric) to xfce-lite.bm
   * add heavy office tools (openoffice.org) to xfce.bm
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 17:22:30 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 17:24:34 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 

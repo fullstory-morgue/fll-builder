@@ -301,7 +301,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
 	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
 
-	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
+	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot"
 
 	# fix permissions to allow user access
 	if ((FLL_BUILD_OUTPUT_UID)); then
@@ -649,11 +649,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		cleanup & prepare final chroot			#
 	#################################################################
 	chroot_exec dpkg --purge fll-live-initramfs
-
-	# remove live-cd mode identifier
-	pushd "${FLL_BUILD_CHROOT}"
-		rmdir -vp "${FLL_MOUNTPOINT#/}"
-	popd
 
 	# remove used hacks and patches
 	remove_from_chroot /etc/kernel-img.conf
