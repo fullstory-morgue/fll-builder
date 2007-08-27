@@ -301,7 +301,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
 	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
 
-	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot"
+	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}${FLL_IMAGE_DIR}"
 
 	# fix permissions to allow user access
 	if ((FLL_BUILD_OUTPUT_UID)); then
@@ -393,9 +393,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot fstab		/etc/fstab
 	cat_file_to_chroot interfaces		/etc/network/interfaces
 	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
-	
-	# distro-defaults live environment detection
-	mkdir -vp "${FLL_BUILD_CHROOT}${FLL_MOUNTPOINT}"
 	
 	chroot_exec apt-get update
 	

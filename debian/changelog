@@ -38,6 +38,8 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * No longer create strange ($FLL_MOUNTPOINT) directory in build chroot, this
     may be disruptive and break build.
   * Add en to default FLL_I18N_SUPPORT in config.
+  * Fix breakage from first attempt to get rid of $FLL_MOUNTPOINT in build
+    chroot.
 
   [ Bernard Gray ]
   * populate fll-build.conf.5 skeleton some more
@@ -55,7 +57,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * remove vim from xfce-lite (subset of cli.bm)
   * cleanup xchat entries in xfce and xfce-lite
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 18:19:06 +1000
+ -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 18:32:49 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
