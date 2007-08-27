@@ -49,8 +49,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add brasero (cd/dvd burning) + recommends to xfce.bm
   * add lite office tools (abiword/gnumeric) to xfce-lite.bm
   * add heavy office tools (openoffice.org) to xfce.bm
+  * add gimp and inkscape to xfce.bm 
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 27 Aug 2007 17:24:34 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 27 Aug 2007 17:38:23 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 

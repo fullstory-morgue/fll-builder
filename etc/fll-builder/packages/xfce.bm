@@ -25,6 +25,7 @@ FLL_PACKAGES=(
 	gconf2-common
 	gdk-imlib11
 	gdm
+	gimp
 	gkrellm
 	gkrellm-mailwatch
 	gkrellmoon
@@ -43,6 +44,7 @@ FLL_PACKAGES=(
 	gtk2-engines-xfce
 	icedove
 	iceweasel
+	inkscape
 	mousepad
 	openoffice.org
 	quodlibet
