@@ -38,8 +38,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * remove configure* and zenity from xfce-lite.bm (managed in other lists)
   * hack together a starting point for xfce.bm (XXX: NEEDS LOOKING AT!)
   * remove gstreamer really-ugly plugins from xfce.bm
+  * add brasero (cd/dvd burning) + recommends to xfce.bm
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 26 Aug 2007 10:34:06 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 27 Aug 2007 15:14:19 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
