@@ -1,4 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
+	cli
 	distro
 	distro-tools
 	distro-tools-x
@@ -67,7 +68,4 @@ FLL_PACKAGES=(
 	xfprint4
 	xfwm4
 	xfwm4-themes
-	xchat
-	xchat-systray
-	vim
 )

@@ -1,4 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
+	cli
 	distro
 	distro-tools
 	distro-tools-x
@@ -67,7 +68,6 @@ FLL_PACKAGES=(
 	xbase-clients
 	xbitmaps
 	xchat
-	xchat-common
 	xchat-systray
 	xfce4
 	xfce4-artwork
