@@ -361,11 +361,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		exit 6
 	fi
 
-	echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
+	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
 	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
 
 	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
-		echo "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
 		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
 	done
 	
@@ -386,6 +386,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_DEBOOSTRAP_VERBOSITY="--verbose"
 	fi
 
+	header "running cdebootstrap..."
 	cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
 		"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
 	
@@ -404,7 +405,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	
 	# import key for extra mirror(s)
 	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
-		echo "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
+		header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
 		if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec apt-key add -
 		elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
@@ -465,13 +466,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		install kernel, make initial ramdisk		#
 	#################################################################
 	# module-init-tools required for depmod, it may not be in minimal bootstrap
-	chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
+	chroot_exec apt-get --assume-yes install distro-defaults fll-live-initramfs module-init-tools
 
-	# created by initramfs-tools.preinst
-	if exists_in_chroot /etc/initramfs-tools/conf.d/resume; then
-		rm -vf "$FLL_BUILD_CHROOT"/etc/initramfs-tools/conf.d/resume
-	fi
-	
 	# ensure initrd is created by linux-image postinst hook
 	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
 	
@@ -504,12 +500,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		mass package installation			#
 	#################################################################
-	# ensure distro-defaults is present before distro packages are installed
-	chroot_exec apt-get --assume-yes install distro-defaults
-
+	header "Installing packages..."
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
 	# handle locale support packages
+	header "processing locale support packages for: $FLL_I18N_SUPPORT"
 	if [[ $FLL_I18N_SUPPORT ]]; then
 		FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
 		if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
@@ -518,7 +513,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 
 	# handle recommends for specified packages
-	echo "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
+	header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
 	source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
 
 	unset FLL_PACKAGES_EXTRA
@@ -530,7 +525,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
 			installed_in_chroot "$p" || continue
-			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | awk -F, '!/^$/{ for (i = 1; i <= NF; i++) { gsub(/(^[ \t]+|[ \t]+\|.*|\([^)]+\))/, "", $i); print $i } }') )
+			header "Installing recommended packages for $p"
+			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | awk -F, '/^$/{ for (i = 1; i <= NF; i++) { gsub(/(^[ \t]+|[ \t]+\|.*|\([^)]+\))/, "", $i); print $i } }') )
 		done
 
 		[[ ${FLL_PACKAGES_EXTRA[@]} ]] && chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
@@ -551,7 +547,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
 	
 	if [[ $FLL_SOURCE_RELEASE ]]; then
-		header "Calculating source package URI list . . ."
+		header "Calculating source package URI list..."
 	
 		# generate source package URI list
 		chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
@@ -615,13 +611,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# bitmaps boolean true|false
 		echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
 	
-		# fonconfig-config.postinst is f**ked :: #412159
-		#chroot_exec dpkg-reconfigure fontconfig-config
-		
-		# create the symlink ourselves, derived from fontconfig-config.postinst
-		#no_bitmaps="70-no-bitmaps.conf"
-		#CONFAVAIL=/etc/fonts/conf.avail
-		#CONFDIR=/etc/fonts/conf.d
+		# disable bitmap fonts. create the symlink ourselves, derived from fontconfig-config.postinst
 		if exists_in_chroot /etc/fonts/conf.avail/70-no-bitmaps.conf; then
 			chroot_exec ln -vs /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
 		fi
@@ -634,7 +624,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
 			header "Fixing /etc/X11/X symlink"
 			remove_from_chroot /etc/X11/X
-			chroot_exec ln -vsf /usr/bin/Xorg /etc/X11/X
+			chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
 			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
 		fi
 	fi
