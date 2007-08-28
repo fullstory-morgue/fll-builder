@@ -64,6 +64,7 @@ FLL_PACKAGES=(
 	xfce4-weather-plugin
 	xfdesktop4
 	xfdesktop4-data
+	xfmedia
 	xfprint4
 	xfwm4
 	xfwm4-themes
