@@ -21,6 +21,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - fix rsync address for the university of Tennessee/ SunSITE.
     - add zonker to the team.
     - standardize field delimiter for mirrors.
+    - add russian and south african mirrors, order by continent.
   * don't store a dummy fstab.
 
   [ Kel Modderman ]
@@ -62,7 +63,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 28 Aug 2007 13:26:54 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 28 Aug 2007 14:45:53 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
