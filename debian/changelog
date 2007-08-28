@@ -60,8 +60,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * remove gdm-themes-sidux from xfce-lite
   * add xfce4-dev-tools to xfce.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm
+  * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 28 Aug 2007 13:19:44 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 28 Aug 2007 13:26:54 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
