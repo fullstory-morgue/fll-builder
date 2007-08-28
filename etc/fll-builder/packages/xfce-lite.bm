@@ -15,7 +15,6 @@ FLL_PACKAGES=(
         abiword-plugins
 	exaile
 	gdm
-	gdm-themes-sidux
 	gkrellm
 	gkrellm-mailwatch
 	gkrellmoon
