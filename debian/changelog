@@ -57,9 +57,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add cli group to xfce and xfce-lite
   * remove vim from xfce-lite (subset of cli.bm)
   * cleanup xchat entries in xfce and xfce-lite
-  * remove gdm-themes-sidux from xfce-lite 
+  * remove gdm-themes-sidux from xfce-lite
+  * add xfce4-dev-tools to xfce.bm 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 28 Aug 2007 13:04:50 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 28 Aug 2007 13:16:31 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
