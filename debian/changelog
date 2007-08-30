@@ -23,9 +23,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - standardize field delimiter for mirrors.
     - add russian and south african mirrors, order by continent.
     - slight rephrasing of the german mirror wish.
-    - add new zealand mirror.
+    - add new mirror for New Zealand.
     - add deb-src lines.
     - add pt_BR manual translator Jose Tadeu Barros (ceti) to the credit list.
+    - add new mirror for the Republic of China/ Taiwan.
   * don't store a dummy fstab.
 
   [ Kel Modderman ]
@@ -67,7 +68,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 30 Aug 2007 01:36:45 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 30 Aug 2007 13:35:47 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
