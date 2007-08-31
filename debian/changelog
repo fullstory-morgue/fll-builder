@@ -28,6 +28,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add pt_BR manual translator Jose Tadeu Barros (ceti) to the credit list.
     - add new mirror for the Republic of China/ Taiwan.
   * don't store a dummy fstab.
+  * just store the year in the default config.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -68,7 +69,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
- -- Ferdinand Thommes <devil@sidux.com>  Fri, 31 Aug 2007 18:03:09 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 18:43:29 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 

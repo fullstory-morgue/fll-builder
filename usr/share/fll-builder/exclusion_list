@@ -15,7 +15,6 @@ f	./var/log/bootstrap.log
 f	./boot/initrd.img*
 f	./etc/adjtime
 f	./etc/timezone
-f	./etc/fstab
 f	./etc/hwsetup
 f	./etc/ssh/ssh_host_*key*
 f	./etc/X11/xorg.conf
