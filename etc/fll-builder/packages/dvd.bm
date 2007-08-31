@@ -96,6 +96,7 @@ FLL_PACKAGES=(
 	gnucash
 	gnumeric
 	gnusound
+	gossip
 	gplanarity
 	gthumb
 	gtk2-engines-qtcurve
@@ -171,12 +172,14 @@ FLL_PACKAGES=(
 	kgeography
 	kguitar
 	kid3-qt
+	kig
 	kino
 	kio-apt
 	kiosktool
 	kipi-plugins
 	kitty
 	klamav
+	klash
 	klik
 	klineakconfig
 	kmag
@@ -299,6 +302,3 @@ FLL_PACKAGES=(
 	zsh
 )
 
-#	gossip
-#	kig
-#	klash
