@@ -1,5 +1,4 @@
 FLL_PACKAGE_DEPMODS=(
-	alsastuff
 	cli
 	devel-basic
 	devel-debian
@@ -114,9 +113,7 @@ FLL_PACKAGES=(
 	hydrogen
         hydrogen-drumkits
 	iceape
-	iceape-l10n-de
 	icedove
-	icedove-locale-de
         icemc 
 	iceweasel
         icewm 

@@ -11,6 +11,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
       + kig
       + klash
       + gossip
+   - remove duplicates
+   - fix meta package names.
+   - fix changelog abuse.
+   - fix pidgin task.
   * install recommends for siduxcc (apt-show-versions).
   * release notes:
     - add mirror at the university of Kent, thanks to etorix.
@@ -29,9 +33,6 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add new mirror for the Republic of China/ Taiwan.
   * don't store a dummy fstab.
   * just store the year in the default config.
-  * fix meta package names.
-  * fix changelog abuse.
-  * fix pidgin task.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -81,7 +82,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * fixed wine-base.bm
   * fixed alsastuff.bm
 
- -- Ferdinand Thommes <devil@sidux.com>  Fri, 31 Aug 2007 21:37:36 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 22:58:30 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
