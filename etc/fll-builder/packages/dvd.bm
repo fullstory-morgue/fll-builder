@@ -1,4 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
+	alsa
 	cli
 	devel-basic
 	devel-debian
@@ -12,12 +13,16 @@ FLL_PACKAGE_DEPMODS=(
 	distro-xfce
 	gimp-basic
 	gimp-heavy
+	gkrellm
 	hwsupport-essential
 	hwsupport-extra
+	openoffice.org
+	pidgin
 	tex-latex
 	utils-essential
 	utils-extra
 	webserver-lamp
+	wine-base
 	xserver
 )
 
@@ -25,8 +30,6 @@ FLL_PACKAGES=(
 	abiword
 	abiword-plugins
 	albumshaper
-	alsa-base
-	alsa-utils
 	alsamixergui
 	amsn
 	amule
@@ -42,7 +45,6 @@ FLL_PACKAGES=(
 	bittorrent-gui
 	blender
 	brasero
-	bsh
 	camediaplay
 	camorama
 	camserv
@@ -94,13 +96,6 @@ FLL_PACKAGES=(
 	geany
 	gdancer
 	gftp
-	gkrellm
-	gkrellm-mailwatch
-	gkrellmoon
-	gkrellmitime
-	gkrellm-volume
-	gkrellm-hdplop
-	gkrellm-alltraxclock
 	gnucash
 	gnumeric
 	gnusound
@@ -112,7 +107,6 @@ FLL_PACKAGES=(
 	gtkpod
 	gutenbrowser
 	hexedit
-	hibernate
 	highlight
 	html2text
 	httrack
@@ -214,7 +208,6 @@ FLL_PACKAGES=(
 	kwirelessmonitor
 	kwiki
 	lazarus
-	less
 	libqt-perl
 	libwine
 	licq
@@ -250,13 +243,6 @@ FLL_PACKAGES=(
 	nano
 	ndiswrapper-utils-1.9
 	nvram-wakeup
-        openclipart-openoffice.org 
-	openoffice.org
-        openoffice.org-filter-so52
-	openoffice.org-help-de 
-	openoffice.org-kde
-	openoffice.org-l10n-de
-        openoffice.org-officebean
 	openssh-server
 	original-awk
 	p7zip-full
@@ -264,14 +250,6 @@ FLL_PACKAGES=(
 	pdfedit
 	photon
 	photoprint
-	pidgin
-	pidgin-encryption
-	pidgin-extprefs
-	pidgin-guifications
-	pidgin-hotkeys
-	pidgin-libnotify
-	pidgin-librvp
-	pidgin-plugin-pack
 	pixelize
 	postfix
 	postfix-ldap
@@ -325,9 +303,6 @@ FLL_PACKAGES=(
 	vlc
 	vorbis-tools
 	wengophone
-	wine
-	wine-utils
-	wireless-tools
 	xchat
 	xchat-systray
 	xdelta
