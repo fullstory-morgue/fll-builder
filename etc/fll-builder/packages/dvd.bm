@@ -22,25 +22,20 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	abakus
 	abiword
 	abiword-plugins
-	akregator
 	albumshaper
 	alsa-base
 	alsa-utils
 	alsamixergui
-	amarok
 	amsn
 	amule
 	ardour
-	ark
 	atlantik
 	audacious
 	audacious-plugins
 	audacious-plugins-extra
 	audacity
-	basket
 	bazaar
 	bitchx
 	bittorrent
@@ -69,7 +64,6 @@ FLL_PACKAGES=(
 	dia
 	dia2code
 	dict
-	digikam
 	dillo
 	ding
 	djtools
@@ -116,9 +110,7 @@ FLL_PACKAGES=(
 	gtkam
 	gtkam-gimp
 	gtkpod
-	guarddog
 	gutenbrowser
-	gwenview
 	hexedit
 	hibernate
 	highlight
@@ -147,51 +139,33 @@ FLL_PACKAGES=(
 	jackd
 	jack-tools
 	java2html
-	juk
-	k3b
-	kaddressbook
-	kaddressbook-plugins
-	kaffeine
 	kalgebra
 	kallery
-	kalzium
-	kamera
 	kanjisaver
 	kannasaver
 	karbon
-	karm
 	katapult
 	kate
-	kate-plugins
-	kbabel
 	kbattleship
 	kbibtex
-	kcalc
-	kcharselect
 	kdeaccessibility
 	kdeaddons
-	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebase-dev
 	kdebluetooth
 	kde-core
-	kdegraphics-kfile-plugins
+	kdeedu
+	kde-extras
+	kdegraphics
 	kde-icons-crystalclear
 	kde-icons-crystalproject
-	kdelirc
 	kdemultimedia
-	kdemultimedia-kfile-plugins
-	kdemultimedia-kio-plugins
 	kdenetwork
-	kdenetwork-kfile-plugins
-	kdepim-kfile-plugins
-	kdepim-kio-plugins
-	kdepim-kresources
-	kdepim-wizards
+	kdepim
 	kdeprint
+	kdesdk
 	kdeservicemenus-sidux
 	kdesktop
-	kdessh
 	kde-style-klearlook
 	kde-style-lipstik
 	kde-style-qtcurve
@@ -203,128 +177,42 @@ FLL_PACKAGES=(
 	kdevelop
 	kdewallpapers
 	kdewebdev
-	kdf
-	kdict
-	kdiff3
-	kdirstat
 	kdm
-	kdnssd
-	keep 
-	kerry
-	kfax
-	kfaxview
-	kfilereplace
 	kfind
 	kflickr
-	kfloppy
-	kfocus
 	kformula
-	kftpgrabber
 	kgeography
-	kget
-	kghostview
-	kgpg
 	kguitar
-	kicker-applets
-	kiconedit
-	kid3
 	kid3-qt
-	kimagemapeditor
 	kino
 	kio-apt
 	kiosktool
 	kipi-plugins
 	kitty
-	kjots
 	klamav
-	klaptopdaemon
-	klatin
-	kleopatra
-	klettres
 	klik
 	klineakconfig
-	klog
-	klogic
 	kmag
 	kmahjongg
-	kmail
-	kmailcvt
 	kmess
-	kmid
 	kmidimon
-	kmilo
-	kmix
 	kmobiletools
-	kmoon
 	kmousetool
 	kmouth
-	kmplot
-	knemo
-	knetload
-	knetworkconf
-	knewsticker
-	knewsticker-scripts
-	knode
-	knotes
-	koffice
 	koffice-i18n-de
 	koffice-i18n-engb
-	kommander
-	komparator
-	kompare
-	konq-plugins
         konserve
-	kontact
-	konversation
-	kooka
-	kopete
-	korganizer
-	korn
-	kpackage
 	kpat
-	kpdf
-	kpercentage
-	kpf
-	kphotoalbum
-	kpilot
-	kpilot
-	kpowersave
-	kppp
 	kradio
-	krdc
-	krecipes
 	krecordmydesktop
-	kregexpeditor
 	krename
 	kreversi
-	krfb
-	krusader
-	ksensors
-	ksig
-	ksirc
-	ksnapshot
-	kstars
 	kstreamripper
-	ksvg
 	ksynaptics
 	ksysguard
-	kteatime
-	ktechlab
 	kthesaurus
-	ktorrent
-	ktouch
-	kturtle
-	kuickshow
-	kuser
-	kvpnc
-	kwalletmanager
-	kwavecontrol
-	kweather
-	kwifimanager
 	kwirelessmonitor
-	kwlan
 	kwiki
-	kxmleditor
 	lazarus
 	less
 	libqt-perl
@@ -361,7 +249,6 @@ FLL_PACKAGES=(
 	myspell-en-us
 	nano
 	ndiswrapper-utils-1.9
-	noteedit
 	nvram-wakeup
         openclipart-openoffice.org 
 	openoffice.org
@@ -408,7 +295,6 @@ FLL_PACKAGES=(
 	screenkast
 	scribus-ng
 	sendemail
-	showimg
 	sidux-art-kde-tartaros
 	siduxcc
 	sidux-kernelhacking
@@ -416,7 +302,6 @@ FLL_PACKAGES=(
 	sidux-vdr
 	sidux-vdr-server-extra
 	smartmontools
-	smb4k
 	spamassassin
 	squashfs-tools
 	squid
@@ -424,15 +309,12 @@ FLL_PACKAGES=(
 	streamtuner
 	subversion
 	subversion-tools
-	superkaramba
 	svn-buildpackage
 	sylpheed
 	sylpheed-i18n
-	tellico
 	tipa
 	tipa-doc
 	transcriber
-	tripod
 	tuxpaint
 	ufraw
         unison
@@ -446,7 +328,6 @@ FLL_PACKAGES=(
 	wine
 	wine-utils
 	wireless-tools
-	wlassistant
 	xchat
 	xchat-systray
 	xdelta
@@ -456,7 +337,6 @@ FLL_PACKAGES=(
 	xine-ui
 	xpaint
 	xsane
-	yakuake
 	zsh
 )
 

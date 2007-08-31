@@ -1,4 +1,5 @@
 FLL_PACKAGES_RECOMMENDS=(
+	kde-extras
 	kontact
 	libxine1
 	siduxcc
