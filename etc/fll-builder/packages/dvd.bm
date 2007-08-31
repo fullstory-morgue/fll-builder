@@ -1,5 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
-	alsa
+	alsastuff
 	cli
 	devel-basic
 	devel-debian
