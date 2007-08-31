@@ -14,6 +14,7 @@ FLL_PACKAGE_DEPMODS=(
 	gimp-heavy
 	hwsupport-essential
 	hwsupport-extra
+	tex-latex
 	utils-essential
 	utils-extra
 	webserver-lamp
@@ -228,7 +229,6 @@ FLL_PACKAGES=(
 	kiconedit
 	kid3
 	kid3-qt
-	kile
 	kimagemapeditor
 	kino
 	kio-apt
@@ -429,8 +429,6 @@ FLL_PACKAGES=(
 	sylpheed
 	sylpheed-i18n
 	tellico
-	texlive
-	texmaker
 	tipa
 	tipa-doc
 	transcriber
@@ -442,9 +440,9 @@ FLL_PACKAGES=(
 	vcdimager
 	vdr-gui
 	vim-full
-	vim-latexsuite
 	vlc
 	vorbis-tools
+	wengophone
 	wine
 	wine-utils
 	wireless-tools
@@ -465,4 +463,3 @@ FLL_PACKAGES=(
 #	gossip
 #	kig
 #	klash
-#	wengophone
