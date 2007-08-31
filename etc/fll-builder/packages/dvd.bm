@@ -306,7 +306,7 @@ FLL_PACKAGES=(
 	xchat
 	xchat-systray
 	xdelta
-       	xfonts-intl-phonetic
+	xfonts-intl-phonetic
  	xfonts-tipa
 	xfsprogs
 	xine-ui
