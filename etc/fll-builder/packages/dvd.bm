@@ -13,10 +13,10 @@ FLL_PACKAGE_DEPMODS=(
 	distro-xfce
 	gimp-basic
 	gimp-heavy
-	gkrellm
+	gkrellm-meta
 	hwsupport-essential
 	hwsupport-extra
-	openoffice.org
+	openoffice-meta
 	pidgin
 	tex-latex
 	utils-essential

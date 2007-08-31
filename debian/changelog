@@ -29,6 +29,8 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add new mirror for the Republic of China/ Taiwan.
   * don't store a dummy fstab.
   * just store the year in the default config.
+  * fix meta package names.
+  * fix changelog abuse.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -68,8 +70,15 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add xfce4-dev-tools to xfce.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
+  
+  [ Ferdinand Thommes ]
+  * fixed syntax error in dvd.bm
+  * updated i18n.bm with iceape and sylpheed
+  * cleaned up dvd.bm
+  * added alsastuff.bm gkrellmpack.bm openoffice.bm pidginpack.bm wine-base.pm
+  * updated dvd.bm added tex-latex.bm to packages.d
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 18:43:29 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 19:24:19 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
@@ -166,11 +175,6 @@ fll-builder (1.1.5) unstable; urgency=low
   * add fll-build.conf man page
 
   [ Ferdinand Thommes ]
-  * fixed syntax error in dvd.bm
-  * updated i18n.bm with iceape and sylpheed
-  * cleaned up dvd.bm
-  *added alsastuff.bm gkrellmpack.bm openoffice.bm pidginpack.bm wine-base.pm
-  * updated dvd.bm added tex-latex.bm to packages.d
   * package.list for sidux-dvd
   * updated dvd.bm to 1.5 gb
   * updated dvd.bm to 1.6 gb
