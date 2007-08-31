@@ -1,5 +1,6 @@
 FLL_PACKAGE_DEPMODS=(
 	cli
+	data-rescue
 	devel-basic
 	devel-debian
 	devel-qt3
@@ -57,9 +58,7 @@ FLL_PACKAGES=(
 	claws-mail-extra-plugins
 	conky
 	cvs
-	dar
 	dcraw
-	ddrescue
 	debarchiver
 	denemo
 	dia
@@ -91,7 +90,6 @@ FLL_PACKAGES=(
 	f-spot
 	fujiplay
 	flac
-	gawk
 	geany
 	gdancer
 	gftp
@@ -105,7 +103,6 @@ FLL_PACKAGES=(
 	gtkam-gimp
 	gtkpod
 	gutenbrowser
-	hexedit
 	highlight
 	html2text
 	httrack
@@ -136,7 +133,6 @@ FLL_PACKAGES=(
 	kannasaver
 	karbon
 	katapult
-	kate
 	kbattleship
 	kbibtex
 	kdeaccessibility
@@ -190,9 +186,6 @@ FLL_PACKAGES=(
 	kmobiletools
 	kmousetool
 	kmouth
-	koffice-i18n-de
-	koffice-i18n-engb
-        konserve
 	kpat
 	kradio
 	krecordmydesktop
@@ -206,7 +199,6 @@ FLL_PACKAGES=(
 	kwiki
 	lazarus
 	libqt-perl
-	libwine
 	licq
 	licq-plugin-kde
 	licq-plugin-qt
@@ -218,15 +210,12 @@ FLL_PACKAGES=(
 	lmms
 	lynx
 	lyx
-	magicrescue
 	mediawiki
 	mediawiki-extensions
 	metacam
 	meterbridge
 	mhwaveedit
-        mindi
 	mono
-        mondo
 	mousepad
 	moto4lin
 	mozilla-plugin-vlc
@@ -238,7 +227,6 @@ FLL_PACKAGES=(
 	myspell-de-de
 	myspell-en-us
 	nano
-	ndiswrapper-utils-1.9
 	nvram-wakeup
 	openssh-server
 	original-awk
@@ -305,7 +293,6 @@ FLL_PACKAGES=(
 	xdelta
 	xfonts-intl-phonetic
  	xfonts-tipa
-	xfsprogs
 	xine-ui
 	xpaint
 	xsane

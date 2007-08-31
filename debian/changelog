@@ -15,6 +15,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
    - fix meta package names.
    - fix changelog abuse.
    - fix pidgin task.
+   - add data-rescue/ backup task.
   * install recommends for siduxcc (apt-show-versions).
   * release notes:
     - add mirror at the university of Kent, thanks to etorix.
@@ -82,7 +83,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * fixed wine-base.bm
   * fixed alsastuff.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 22:58:30 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 31 Aug 2007 23:13:18 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
