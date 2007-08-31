@@ -1,1 +1,4 @@
- 
+FLL_PACKAGES+=(
+	alsa-base
+	alsa-utils
+)
