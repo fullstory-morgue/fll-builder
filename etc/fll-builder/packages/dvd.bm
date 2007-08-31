@@ -17,7 +17,7 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport-essential
 	hwsupport-extra
 	openoffice-meta
-	pidgin
+	pidgin-meta
 	tex-latex
 	utils-essential
 	utils-extra
