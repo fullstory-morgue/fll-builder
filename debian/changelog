@@ -68,11 +68,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
-  [ Ferdinand Thommes ]
-  * cleaned up dvd.bm *added alsastuff.bm gkrellmpack.bm openoffice.bm
-    pidginpack.bm wine-base.pm
-
- -- Ferdinand Thommes <devil@sidux.com>  Fri, 31 Aug 2007 17:20:43 +0200
+   -- Ferdinand Thommes <devil@sidux.com>  Fri, 31 Aug 2007 17:25:03 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
@@ -169,6 +165,7 @@ fll-builder (1.1.5) unstable; urgency=low
   * add fll-build.conf man page
 
   [ Ferdinand Thommes ]
+  * updated i18n.bm with iceape and sylpheed
   * cleaned up dvd.bm
   *added alsastuff.bm gkrellmpack.bm openoffice.bm pidginpack.bm wine-base.pm
   * updated dvd.bm added tex-latex.bm to packages.d

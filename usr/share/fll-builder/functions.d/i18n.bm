@@ -34,6 +34,9 @@ detect_i18n_support_packages() {
 			gimp)
 				grep_i18n_string gimp-help $@
 				;;
+			iceape)
+				grep_i18n_string iceape-locale $@
+				;;
 			icedove)
 				grep_i18n_string icedove-locale $@
 				;;
@@ -55,6 +58,9 @@ detect_i18n_support_packages() {
 				;;
 			sidux-manual)
 				grep_i18n_string sidux-manual $@
+				;;
+			sylpheed)
+				grep_i18n_string sylpheed-i18n $@
 				;;
 		esac
 	done
