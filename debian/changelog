@@ -81,7 +81,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * fixed wine-base.bm
   * fixed alsastuff.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Sep 2007 13:10:58 +0200
+  [ Joaquim Boura ]
+  * added rsync URL for tu-bs
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Sun, 02 Sep 2007 17:00:31 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
