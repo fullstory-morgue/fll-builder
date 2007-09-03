@@ -14,7 +14,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	akregator
-	amarok
+#	amarok
 	ark
 	basket
 	digikam

@@ -84,7 +84,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * added rsync URL for tu-bs
 
- -- Joaquim Boura <x-un-i@sidux.com>  Sun, 02 Sep 2007 17:00:31 +0200
+  [ Bernard Gray ]
+  * add gimp-plugin-registry for gimp script-fu plugins 
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 04 Sep 2007 09:22:22 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 

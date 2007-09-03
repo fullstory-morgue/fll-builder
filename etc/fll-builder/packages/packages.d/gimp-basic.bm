@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	gimp
+	gimp-plugins-registry
 	gimp-print
 )
 
