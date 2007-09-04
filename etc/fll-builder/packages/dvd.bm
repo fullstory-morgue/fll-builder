@@ -289,6 +289,7 @@ FLL_PACKAGES=(
 	vcdimager
 	vdr-gui
 	vim-full
+	virtualbox-ose
 	vlc
 	vorbis-tools
 	wengophone

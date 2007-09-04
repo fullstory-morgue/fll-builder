@@ -14,6 +14,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - fix pidgin task.
     - add data-rescue/ backup task.
     - add konversation, kSIRC is unbearable.
+    - add virtualbox-ose.
   * install recommends for siduxcc (apt-show-versions).
   * release notes:
     - add mirror at the university of Kent, thanks to etorix.
@@ -85,9 +86,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * added rsync URL for tu-bs
 
   [ Bernard Gray ]
-  * add gimp-plugin-registry for gimp script-fu plugins 
+  * add gimp-plugin-registry for gimp script-fu plugins
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 04 Sep 2007 09:22:22 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 04 Sep 2007 15:50:18 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
