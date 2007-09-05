@@ -74,6 +74,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
   [ Ferdinand Thommes ]
+  * removed konserve from data-rescue.bm, not in sid anymore
   * fixed syntax error in dvd.bm
   * updated i18n.bm with iceape and sylpheed
   * cleaned up dvd.bm
@@ -88,7 +89,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * add gimp-plugin-registry for gimp script-fu plugins
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 04 Sep 2007 15:50:18 +0200
+ -- Ferdinand Thommes <devil@sidux.com>  Wed, 05 Sep 2007 10:16:21 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
