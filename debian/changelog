@@ -88,9 +88,12 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * add gimp-plugin-registry for gimp script-fu plugins
-  * add ksvg to distro-kde (svg previewer for konq) 
+  * add ksvg to distro-kde (svg previewer for konq)
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 06 Sep 2007 12:48:31 +1000
+  [ Niall Walsh ]
+  * Handle multiple lang_location combinations in FLL_I18N_SUPPORT
+
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Thu, 06 Sep 2007 18:31:13 +0100
 
 fll-builder (1.1.5) unstable; urgency=low
 

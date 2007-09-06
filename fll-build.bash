@@ -499,6 +499,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# handle locale support packages
 	header "processing locale support packages for: $FLL_I18N_SUPPORT"
 	if [[ $FLL_I18N_SUPPORT ]]; then
+		FLL_I18N_SUPPORT="$(tr A-Z a-z <<<$FLL_I18N_SUPPORT)"
 		FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
 		if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
 			chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}

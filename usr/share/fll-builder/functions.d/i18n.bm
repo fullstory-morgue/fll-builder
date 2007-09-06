@@ -2,16 +2,37 @@ grep_i18n_string() {
 	local STRING="$1"
 	shift
 	local AVAILABLE=( $(grep-dctrl -s Package -nP "$STRING" "$FLL_BUILD_CHROOT"/var/lib/apt/lists/*Packages) )
+	# Language and location parts, created sub-list and test value
+	local L1
+	local L2
+	local LL
+	local LT
 
 	[[ ${AVAILABLE[@]} ]] || return
 	
 	for l in $@; do
-		for a in ${AVAILABLE[@]}; do
-			# limit scope to "common" locale suffixes
-			if [[ $a =~ "^${STRING}-?(en|${l})?-${l}$" ]]; then
-				echo "$a"
-				break
+		# split input around underscore
+		L1=${l%_*}
+		L2=${l#*_}
+		if [[ "$L1" = "$L2" ]]; then
+			# "en en-en enen"
+			LL="$L1 $L1-$L1 $L1$L1"
+		else
+			# "en-gb engb en en-en enen gb"
+			LL="$L1-$L2 $L1$L2 $L1 $L1-$L1 $L1$L1 $L2"
+		fi
+		LT=0
+		for L in $LL; do
+			if [[ $LT == 1 ]]; then
+				break;
 			fi
+			for a in ${AVAILABLE[@]}; do
+				if [[ $a =~ "^${STRING}-?${L}$" ]]; then
+					echo "$a"
+					LT=1
+					break
+				fi
+			done
 		done
 	done
 }
