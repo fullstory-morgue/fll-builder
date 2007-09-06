@@ -4,5 +4,6 @@ FLL_PACKAGES+=(
 	sidux-art-kde-gaia
 	kdmtheme
 	kooka
+	ksvg
 )
 
