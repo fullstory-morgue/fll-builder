@@ -74,6 +74,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
   [ Ferdinand Thommes ]
+  * fixed some typos in siduxcc po files
   * removed konserve from data-rescue.bm, not in sid anymore
   * fixed syntax error in dvd.bm
   * updated i18n.bm with iceape and sylpheed
@@ -93,7 +94,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Handle multiple lang_location combinations in FLL_I18N_SUPPORT
 
- -- Niall Walsh <niallwalsh@users.berlios.de>  Thu, 06 Sep 2007 18:31:13 +0100
+ -- Ferdinand Thommes <devil@sidux.com>  Fri, 07 Sep 2007 10:18:00 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
