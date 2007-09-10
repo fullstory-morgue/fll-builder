@@ -77,7 +77,7 @@ detect_i18n_support_packages() {
 				grep_i18n_string openoffice.org-l10n $@
 				grep_i18n_string openoffice.org-thesaurus $@
 				;;
-			sidux-manual)
+			sidux-manual-en)
 				grep_i18n_string sidux-manual $@
 				;;
 			sylpheed)
