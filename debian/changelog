@@ -95,8 +95,9 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Niall Walsh ]
   * Handle multiple lang_location combinations in FLL_I18N_SUPPORT
   * Make sidux-manual-en the controlling package for pulling in manuals
+  * Add ro_RO.UTF-8 to the generated locales
 
- -- Niall Walsh <niallwalsh@users.berlios.de>  Mon, 10 Sep 2007 17:35:33 +0100
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Mon, 10 Sep 2007 17:42:07 +0100
 
 fll-builder (1.1.5) unstable; urgency=low
 
