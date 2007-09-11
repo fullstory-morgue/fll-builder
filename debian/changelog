@@ -33,6 +33,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add new mirror for the Republic of China/ Taiwan.
   * don't store a dummy fstab.
   * just store the year in the default config.
+  * add VCS control headers.
 
   [ Kel Modderman ]
   * Filter generic i18n packages (non-lang specific) for english or english
@@ -97,7 +98,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * Make sidux-manual-en the controlling package for pulling in manuals
   * Add ro_RO.UTF-8 to the generated locales
 
- -- Niall Walsh <niallwalsh@users.berlios.de>  Mon, 10 Sep 2007 17:42:07 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 11 Sep 2007 20:09:31 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
