@@ -39,7 +39,7 @@ grep_i18n_string() {
 
 detect_i18n_support_packages() {
 	for p in gcompris gimp gwenview icedove iceweasel k3b kdebase koffice myspell-en-us \
-		openoffice.org sidux-manual; do
+		openoffice.org sidux-manual-en; do
 		installed_in_chroot "$p" || continue
 		case "$p" in
 			k3b|gwenview)
