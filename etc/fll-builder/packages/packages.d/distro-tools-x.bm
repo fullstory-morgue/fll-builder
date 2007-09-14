@@ -7,6 +7,7 @@ FLL_PACKAGES+=(
 	fix-fonts
 	gparted
 	install-gui
+	install-usb-gui
 	install-meta
 	powersaved
 	rootshell

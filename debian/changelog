@@ -98,7 +98,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * Make sidux-manual-en the controlling package for pulling in manuals
   * Add ro_RO.UTF-8 to the generated locales
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 11 Sep 2007 20:09:31 +0200
+  [ Horst Tritremmel ]
+  * install-usb-gui to distro-tools-x.bm added
+
+ -- Horst Tritremmel <hjt@sidux.com>  Fri, 14 Sep 2007 08:31:00 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
