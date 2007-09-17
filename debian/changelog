@@ -31,6 +31,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add deb-src lines.
     - add pt_BR manual translator Jose Tadeu Barros (ceti) to the credit list.
     - add new mirror for the Republic of China/ Taiwan.
+    - add new mirror at the Australian National University, AARNet.
   * don't store a dummy fstab.
   * just store the year in the default config.
   * add VCS control headers.
@@ -101,7 +102,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * install-usb-gui to distro-tools-x.bm added
 
- -- Horst Tritremmel <hjt@sidux.com>  Fri, 14 Sep 2007 08:31:00 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 17 Sep 2007 11:04:47 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
