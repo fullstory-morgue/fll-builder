@@ -38,6 +38,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add HEAnet.
     - add repo info for sidux.com/ sidux.net.
     - fix syntax bug.
+    - fix grammar, thanks to etorix.
   * don't store a dummy fstab.
   * just store the year in the default config.
   * add VCS control headers.
@@ -113,7 +114,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * gdm-themes-sidux removed from distro-xfce.bm
   * gnome-terminal added to distro-xfce.bm
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 19 Sep 2007 16:06:19 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 19 Sep 2007 16:28:07 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
