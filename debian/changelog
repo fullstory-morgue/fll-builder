@@ -35,6 +35,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
     - add ftp/ rsync addresses to AARNet.
     - no rsync on AARNet.
     - remove the pledge for additional mirrors.
+    - add HEAnet.
   * don't store a dummy fstab.
   * just store the year in the default config.
   * add VCS control headers.
@@ -107,7 +108,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * gdm-themes-sidux added to distro-xfce.bm. Use so long as sidux-gaia
     for gdm is broken.
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 19 Sep 2007 09:56:34 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 19 Sep 2007 14:15:29 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
