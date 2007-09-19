@@ -54,10 +54,10 @@ preview -->
 				<p>
 					A last minute update of xine-lib (1.1.7-2) in debian sid has dropped all previous dependencies of libxine1 on its required audio/ video plugins to &quot;Recommends&quot; (in preparation of implementing &quot;<a href="http://lists.debian.org/debian-devel-announce/2007/08/msg00000.html">Installation of Recommends by default on October 1st</a>&quot;) and caused our initial sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; release to lose out-of-the box support for audio/ video playback (<a href="http://bugs.debian.org/437693">#437693</a>). 
 					Already existing installations of 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; can be fixed by updating &quot;libxine1&quot;, &quot;libxine1-ffmpeg&quot; and fixing the group membership for &quot;video&quot;.
-					<pre>apt-get update
-apt-get install libxine1 libxine1-ffmpeg
-sed -i "s/\,sidux/\,$(getent passwd 1000 | cut -d\: -f1)/" /etc/group</pre>
 				</p>
+				<pre>apt-get update
+apt-get install apt-get install libasyncns0 libmodplug0c2 libpulse0 libxcb-shape0 libxcb-shm0 libxcb-xv0 libxvmc1
+sed -i "s/\,sidux/\,$(getent passwd 1000 | cut -d\: -f1)/" /etc/group</pre>
 
 				<p>
 					This updated hotfix release fixes the audio/ video problems for live purposes and is targeted at preventing these issues for new installations.
@@ -278,6 +278,22 @@ deb-src ftp://ftp.spline.de/pub/sidux/debian/ sid main contrib non-free firmware
 					<li>
 						<strong>Russian Federal University Network St. Petersburg</strong>, Russian Federation<br />
 						<a href="http://sidux.2wl.ru/downloads/">http://sidux.2wl.ru/downloads/</a>
+					</li>
+					<li>
+						<strong>sidux e.V.</strong>, Germany<br />
+						<em>(repository and kernels only)</em>
+						<ul>
+							<li>
+								<a href="http://sidux.com/files/">http://sidux.com/files/</a><br />
+								<pre>deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+							</li>
+							<li>
+								<a href="http://sidux.net/files/">http://sidux.net/files/</a><br />
+								<pre>deb http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+							</li>
+						</ul>
 					</li>
 				</ul>
 
