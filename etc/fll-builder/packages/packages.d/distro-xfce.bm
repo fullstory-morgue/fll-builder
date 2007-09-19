@@ -1,5 +1,5 @@
 FLL_PACKAGES+=(
 	desktop-defaults-xfce
 	sidux-art-gnome-gaia
+	gdm-themes-sidux	# for sidux-dawn gdm-theme. Use so long as sidux-gaia for gdm is broken, sidux-dawn is part of gdm-themes-sidux
 )
-

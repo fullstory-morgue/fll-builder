@@ -104,8 +104,10 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Horst Tritremmel ]
   * install-usb-gui to distro-tools-x.bm added
+  * gdm-themes-sidux added to distro-xfce.bm. Use so long as sidux-gaia
+    for gdm is broken.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 17 Sep 2007 11:30:22 +0200
+ -- Horst Tritremmel <hjt@sidux.com>  Wed, 19 Sep 2007 09:56:34 +0200
 
 fll-builder (1.1.5) unstable; urgency=low
 
