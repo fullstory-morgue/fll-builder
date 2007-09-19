@@ -6,7 +6,6 @@ FLL_PACKAGE_DEPMODS=(
 	distro-xfce
 	hwsupport-essential
 	utils-essential
-	utils-extra
 	xserver
 )
 
@@ -14,6 +13,7 @@ FLL_PACKAGES=(
         abiword
         abiword-help
         abiword-plugins
+	crystalcursors
 	exaile
 	gdm
 	gkrellm
@@ -24,16 +24,21 @@ FLL_PACKAGES=(
 	gkrellm-hdplop
 	gkrellm-alltraxclock
 	gksu
-        gnumeric
-        gnumeric-doc
-        gnumeric-plugins-extra
+	gnome-icon-theme-nuovo
 	gtk2-engines-xfce
+	gpm
 	icedove
 	iceweasel
 	infobash
+	mousepad
+	orage
         thunar-archive-plugin
         thunar-media-tags-plugin
 	thunar-volman
+	unp
+	mc
+	numlockx
+	rox-filer
 	xchat
 	xchat-systray
 	xfce4
@@ -76,4 +81,5 @@ FLL_PACKAGES=(
 	xfprint4
 	xfwm4
 	xfwm4-themes
+	xtrlock
 )
