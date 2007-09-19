@@ -97,6 +97,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * add gimp-plugin-registry for gimp script-fu plugins
   * add ksvg to distro-kde (svg previewer for konq)
+  * add utils-extra to xfce* package lists
 
   [ Niall Walsh ]
   * Handle multiple lang_location combinations in FLL_I18N_SUPPORT
@@ -108,7 +109,7 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * gdm-themes-sidux added to distro-xfce.bm. Use so long as sidux-gaia
     for gdm is broken.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 19 Sep 2007 14:15:29 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 19 Sep 2007 22:26:57 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
