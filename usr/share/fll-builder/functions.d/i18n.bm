@@ -12,8 +12,8 @@ grep_i18n_string() {
 	
 	for l in $@; do
 		# split input around underscore
-		L1=$(tr '[A-Z]' '[a-z]' <<< ${l%[_-]*})
-		L2=$(tr '[A-Z]' '[a-z]' <<< ${l#*[_-]})
+		L1=${l%[_-]*}
+		L2=${l#*[_-]}
 		if [[ "$L1" = "$L2" ]]; then
 			# "en en-en enen"
 			LL="$L1 $L1-$L1 $L1$L1"
