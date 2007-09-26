@@ -44,7 +44,7 @@ detect_i18n_support_packages() {
 		case "$p" in
 			k3b|gwenview)
 				for l in $@; do
-					[[ "$l" =~ '^(au|en|gb|us)$' ]] && continue
+					[[ "$l" =~ '^en' ]] && continue
 					echo "${p}-i18n"
 					break
 				done
