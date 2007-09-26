@@ -116,7 +116,11 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * gdm-themes-sidux removed from distro-xfce.bm
   * gnome-terminal added to distro-xfce.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 22 Sep 2007 01:35:39 +0200
+  [ Kel Modderman ]
+  * Activate fll-live-xorgconfig.
+  * Kill xorgconfig-sidux and hwsetup-ng, die die die!
+
+ -- Kel Modderman <kel@otaku42.de>  Wed, 26 Sep 2007 15:56:58 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 

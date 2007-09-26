@@ -3,8 +3,8 @@ FLL_PACKAGES+=(
 	configure-gprs
 	configure-screenres
 	configure-xawtv
-	ddcxinfo-sidux
 	fix-fonts
+	fll-live-xorgconfig
 	gparted
 	install-gui
 	install-usb-gui
@@ -17,7 +17,6 @@ FLL_PACKAGES+=(
 	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
-	xorgconfig-sidux
 	zenity		# the hard dependency must die! ;)
 )
 
