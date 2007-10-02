@@ -533,7 +533,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# create formatted package manifest
 	printf "%-50s%-15s%s\n" "<Package Name>" "<Size>" "<Version>" > \
 		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
-	chroot_exec dpkg-query --showformat='${Package;-50}${Installed-Size;-15}${Version}\n' -W | \
+	chroot_exec dpkg-query --showformat='${Package;-55}${Installed-Size;-15}${Version}\n' -W | \
 		tee --append "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	
 	# XXX: our kernel packages have no apt-gettable source, filter KVERS
