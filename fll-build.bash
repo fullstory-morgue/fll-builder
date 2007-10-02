@@ -520,7 +520,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
 			installed_in_chroot "$p" || continue
 			header "Installing recommended packages for $p"
-			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | awk -F, '/^$/{ for (i = 1; i <= NF; i++) { gsub(/(^[ \t]+|[ \t]+\|.*|\([^)]+\))/, "", $i); print $i } }') )
+			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
+				awk -F, '/./{ for (i = 1; i <= NF; i++) { sub(/^[ \t]+/,"",$i); sub(/\|.*/,"",$i); sub(/\(.*/,"",$i); print $i; }}') )
 		done
 
 		[[ ${FLL_PACKAGES_EXTRA[@]} ]] && chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
