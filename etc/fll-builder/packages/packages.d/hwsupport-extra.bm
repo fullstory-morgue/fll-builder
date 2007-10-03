@@ -18,6 +18,7 @@ FLL_PACKAGES+=(
 	hotkey-setup
 	hpijs-ppds
 	hplip
+	hwinfo
 	laptop-detect
 	linuxprinting.org-ppds
 	lirc
