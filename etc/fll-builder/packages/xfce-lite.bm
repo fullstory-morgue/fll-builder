@@ -73,6 +73,7 @@ FLL_PACKAGES=(
 	xfce4-verve-plugin
 	xfce4-wavelan-plugin
 	xfce4-weather-plugin
+	xfce4-xkb-plugin
 	xfdesktop4
 	xfdesktop4-data
 	xfmedia
