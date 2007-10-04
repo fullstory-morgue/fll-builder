@@ -10,7 +10,6 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	gnome-icon-theme-nuovo
 	audacious
 	audacious-crossfade
 	audacious-plugins
@@ -18,7 +17,6 @@ FLL_PACKAGES=(
 	audacious-plugins-ugly
 	audacity
 	brasero
-	crystalcursors
 	desktop-file-utils
 	dillo
 	exaile

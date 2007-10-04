@@ -13,7 +13,6 @@ FLL_PACKAGES=(
         abiword
         abiword-help
         abiword-plugins
-	crystalcursors
 	exaile
 	gdm
 	gkrellm
@@ -24,7 +23,6 @@ FLL_PACKAGES=(
 	gkrellm-hdplop
 	gkrellm-alltraxclock
 	gksu
-	gnome-icon-theme-nuovo
 	gtk2-engines-xfce
 	gpm
 	icedove
