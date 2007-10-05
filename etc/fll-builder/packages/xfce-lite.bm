@@ -24,11 +24,9 @@ FLL_PACKAGES=(
 	gkrellm-hdplop
 	gkrellm-alltraxclock
 	gksu
-	gtk2-engines-xfce
 	gpm
 	icedove
 	iceweasel
-	infobash
 	mousepad
 	orage
 	pidgin

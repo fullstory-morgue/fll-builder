@@ -126,9 +126,11 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
   * add xfce xkb plugin for keyboard lang switching
   * add utils-extra to xfce*.bm
    - need man-db package for reading manpages
-  * add pidgin packages to xfce*.bm 
+  * add pidgin packages to xfce*.bm
+  * remove duplicate infobash from xfce-lite 
+  * trim xfce-lite 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 05 Oct 2007 20:40:12 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 05 Oct 2007 20:49:33 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
