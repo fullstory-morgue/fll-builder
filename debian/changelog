@@ -123,9 +123,11 @@ fll-builder (1.1.6) UNRELEASED; urgency=low
 
   [ Bernard Gray ]
   * remove non-std cursor and icon themes from xfce*
-  * add xfce xkb plugin for keyboard lang switching 
+  * add xfce xkb plugin for keyboard lang switching
+  * add utils-extra to xfce*.bm
+   - need man-db package for reading manpages
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 04 Oct 2007 19:01:10 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 05 Oct 2007 12:56:16 +1000
 
 fll-builder (1.1.5) unstable; urgency=low
 
