@@ -31,7 +31,10 @@ FLL_PACKAGES=(
 	infobash
 	mousepad
 	orage
-        thunar-archive-plugin
+	pidgin
+	pidgin-guifications
+	pidgin-plugin-pack
+	thunar-archive-plugin
         thunar-media-tags-plugin
 	thunar-volman
 	unp

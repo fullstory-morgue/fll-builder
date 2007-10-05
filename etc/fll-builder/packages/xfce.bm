@@ -53,6 +53,9 @@ FLL_PACKAGES=(
 	numlockx
 	openoffice.org
 	orage
+	pidgin
+	pidgin-guifications
+	pidgin-plugin-pack
 	quodlibet
 	quodlibet-ext
 	quodlibet-plugins
