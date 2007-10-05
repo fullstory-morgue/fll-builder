@@ -4,7 +4,7 @@ FLL_PACKAGES+=(
 	grub-gfxboot
 	fll-live-initscripts
 	sidux-art-wallpaper
-	sidux-art-wallpaper-gaia
+	sidux-art-wallpaper-eros
 	sidux-graphics
 	sidux-keyrings
 	sidux-scripts

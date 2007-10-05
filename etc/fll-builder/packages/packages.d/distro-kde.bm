@@ -1,7 +1,7 @@
 FLL_PACKAGES+=(
 	desktop-defaults-kde
 	sidux-art-kde
-	sidux-art-kde-gaia
+	sidux-art-kde-eros
 	kdmtheme
 	kooka
 	ksvg
