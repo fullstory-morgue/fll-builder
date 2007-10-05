@@ -34,7 +34,7 @@ FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] && echo live || echo installed)
 FLL_INSTALL_TYPE="debian"
 
 # where is the default X wallpaper located
-FLL_WALLPAPER="/usr/share/wallpapers/sidux-gaia.png"
+FLL_WALLPAPER="/usr/share/wallpapers/sidux-eros-1600x1200.png"
 
 # specify some settings for IRC support
 FLL_IRC_SERVER="irc.oftc.net"

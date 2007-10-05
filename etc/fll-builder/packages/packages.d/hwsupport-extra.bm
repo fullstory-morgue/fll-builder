@@ -12,12 +12,12 @@ FLL_PACKAGES+=(
 	foomatic-db
 	foomatic-db-engine
 	foomatic-db-gutenprint
-	foomatic-db-hpijs
+#	foomatic-db-hpijs
 	foomatic-filters
-	foomatic-filters-ppds
+#	foomatic-filters-ppds
 	hotkey-setup
-	hpijs-ppds
-	hplip
+#	hpijs-ppds
+#	hplip
 	hwinfo
 	laptop-detect
 	linuxprinting.org-ppds
