@@ -1,8 +1,9 @@
 FLL_PACKAGES+=(
 	apt-conf-sidux
 	desktop-defaults-common
-	grub-gfxboot
 	fll-live-initscripts
+	grub-gfxboot
+	irqbalance
 	sidux-art-wallpaper
 	sidux-art-wallpaper-eros
 	sidux-graphics

@@ -3,18 +3,19 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
   * update syntax for Vcs headers in debian/control
+  * add userspace irqbalance.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
   * fix devil's changelog mistake
   * remove gimp-basic from xfce.bm
-  
+
   [ Ferdinand Thommes ]
   * fixed xfce.bm
   * added unp to cli.bm
   * trimmed xfce.bm
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 08 Oct 2007 18:02:08 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 08 Oct 2007 18:27:14 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
