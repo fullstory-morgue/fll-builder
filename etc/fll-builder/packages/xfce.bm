@@ -5,7 +5,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-tools-x
 	distro-xfce
 	gimp-basic
-	gkrellm-meta.bm
+	gkrellm-meta
 	hwsupport-essential
 	utils-essential
 	utils-extra
