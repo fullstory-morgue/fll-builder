@@ -4,7 +4,17 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * NOT RELEASED YET
   * update syntax for Vcs headers in debian/control
 
- -- Ferdinand Thommes <devil@sidux.com>  Mon, 08 Oct 2007 09:05:25 +0200
+  [ Bernard Gray ]
+  * remove xfce-lite.bm so single xfce package is used
+  * fix devil's changelog mistake
+  * remove gimp-basic from xfce.bm
+  
+  [ Ferdinand Thommes ]
+  * fixed xfce.bm
+  * added unp to cli.bm
+  * trimmed xfce.bm
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 08 Oct 2007 18:02:08 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
@@ -95,9 +105,6 @@ fll-builder (1.1.6) unstable; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
   [ Ferdinand Thommes ]
-  * fixed xfce.bm
-  * added unp to cli.bm
-  * trimmed xfce.bm
   * added xfce.bm and xfce-lite.bm prvided by mzilikazi
   * added po files for fr and nl to siduxcc
   * fixed some typos in siduxcc po files
