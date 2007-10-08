@@ -1,9 +1,10 @@
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
   * update syntax for Vcs headers in debian/control
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 07 Oct 2007 14:40:01 +0200
+ -- Ferdinand Thommes <devil@sidux.com>  Mon, 08 Oct 2007 08:56:03 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
@@ -94,6 +95,7 @@ fll-builder (1.1.6) unstable; urgency=low
   * sync xfce specific packages between xfce.bm and xfce-light.bm some more
 
   [ Ferdinand Thommes ]
+  * trimmed xfce.bm
   * added xfce.bm and xfce-lite.bm prvided by mzilikazi
   * added po files for fr and nl to siduxcc
   * fixed some typos in siduxcc po files
