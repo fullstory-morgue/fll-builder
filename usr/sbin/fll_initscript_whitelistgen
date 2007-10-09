@@ -7,10 +7,10 @@ my (%i, @pkg_list, %blacklist);
 my ($chroot, $p_list, $b_list);
 
 GetOptions(
-		'b|blacklist=s' => \$b_list,
-		'c|chroot=s' => \$chroot,
-		'p|packages=s' => \$p_list,
-	);
+	'b|blacklist=s' => \$b_list,
+	'c|chroot=s' => \$chroot,
+	'p|packages=s' => \$p_list,
+);
 
 if ($p_list and -s $p_list) {
 	open(my $fh, '<', $p_list);
@@ -51,7 +51,7 @@ for my $pkg (@pkg_list) {
 			$i{$1} = 1 unless $blacklist{$1};
 		}
 	}
-	close($fh)
+	close($fh);
 }
 
 printf("# %s\n", $_) for (sort keys %i);
