@@ -1,7 +1,7 @@
 #################################################
 # core packages, same list as in fll-installer
 #################################################
-alsa
+alsa-base
 alsa-utils
 #atd
 avahi-daemon
