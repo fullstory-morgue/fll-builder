@@ -498,9 +498,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	# handle locale support packages
 	header "processing locale support packages for: $FLL_I18N_SUPPORT"
+	unset FLL_I18N_SUPPORT_PACKAGES
 	if [[ $FLL_I18N_SUPPORT ]]; then
 		FLL_I18N_SUPPORT="$(tr A-Z a-z <<<$FLL_I18N_SUPPORT)"
 		FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
+		
 		if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
 			chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}
 		fi
@@ -524,42 +526,36 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				awk -F, '/./{ for (i = 1; i <= NF; i++) { sub(/^[ \t]+/,"",$i); sub(/\|.*/,"",$i); sub(/\(.*/,"",$i); print $i; }}') )
 		done
 
-		[[ ${FLL_PACKAGES_EXTRA[@]} ]] && chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
+		if [[ ${FLL_PACKAGES_EXTRA[@]} ]]; then
+			chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
+		fi
 	fi
 
 	# purge unwanted packages
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	
-	header "Creating package manifest file"
-	# create formatted package manifest
-	printf "%-50s%-15s%s\n" "<Package Name>" "<Size>" "<Version>" > \
-		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
-	chroot_exec dpkg-query --showformat='${Package;-55}${Installed-Size;-15}${Version}\n' -W | \
-		tee --append "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
-	
-	# XXX: our kernel packages have no apt-gettable source, filter KVERS
-	FLL_PACKAGE_MANIFEST=( $(awk '$1 !~ /('"$KVERS"'$|^<)/{ print $1 }' \
-		"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest") )
-	
-	if [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
-		header "Calculating source package URI list..."
-	
-		# generate source package URI list
-		chroot_exec apt-get -qq --print-uris source ${FLL_PACKAGE_MANIFEST[@]} | \
-			awk '{ gsub(/'\''/,"", $1); print $1 }' | sort --unique | \
-			tee "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+	if exists_in_chroot /usr/bin/fll_src_uri; then
+		FLL_BUILD_SOURCES=$(mktemp -p $FLL_BUILD_CHROOT fll.sources.XXXX)
+		FLL_BUILD_MANIFEST=$(mktemp -p $FLL_BUILD_CHROOT fll.manifest.XXXX)
+
+		chroot_exec apt-get --assume-yes install libapt-pkg-perl
+		chroot_exec fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
+
+		mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	
 		# fix source URI's to use non cached address
 		if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
 			sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
-				"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+				"$FLL_BUILD_SOURCES"
 		fi
 
 		for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
 			[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
 			sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
-				"$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+				"$FLL_BUILD_SOURCES"
 		done
+
+		mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
 	fi
 	
 	#################################################################
@@ -781,6 +777,7 @@ EOF
 
 	# if started as user, apply user ownership to output (based on --uid)
 	if ((FLL_BUILD_OUTPUT_UID)); then
+		chmod 0644 "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" \
 			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 	fi
