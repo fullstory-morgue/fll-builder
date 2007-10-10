@@ -4,6 +4,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * NOT RELEASED YET
   * update syntax for Vcs headers in debian/control
   * add userspace irqbalance.
+  * package lists:
+    - add hwinfo to kde-stripped.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -25,7 +27,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Readjust to new init blacklist logic via fll_analyze_initscripts.
   * 915resolution no longer required, intel xorg driver doesn't use it.
 
- -- Kel Modderman <kel@otaku42.de>  Wed, 10 Oct 2007 23:06:47 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 10 Oct 2007 21:45:34 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
