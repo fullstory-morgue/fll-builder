@@ -8,6 +8,10 @@
 #################################################
 # our live initscripts
 #################################################
+desktop-defaults-common
+desktop-defaults-gnome
+desktop-defaults-kde
+desktop-defaults-xfce
 fll-live-initscripts
 fll-live-xorgconfig
 #################################################
