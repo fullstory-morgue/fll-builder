@@ -1,0 +1,22 @@
+#################################################
+# This is an input file for:
+#     fll_analyze_initscripts(1)
+# You may list individual initscript names or
+# packages names here, and they will be black
+# listed.
+#
+#################################################
+# these initscripts should never be executed on
+# live system
+#################################################
+/etc/init.d/bootlogd
+/etc/init.d/checkfs.sh
+/etc/init.d/checkroot.sh
+/etc/init.d/halt
+/etc/init.d/hwclock.sh
+/etc/init.d/reboot
+/etc/init.d/stop-bootlogd
+/etc/init.d/stop-bootlogd-single
+/etc/init.d/umountfs
+/etc/init.d/umountroot
+/etc/init.d/urandom
