@@ -538,7 +538,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_BUILD_MANIFEST=$(mktemp -p $FLL_BUILD_CHROOT fll.manifest.XXXX)
 
 		chroot_exec apt-get --assume-yes install libapt-pkg-perl
-		chroot_exec fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
+		chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
 
 		mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 	
@@ -558,13 +558,22 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	fi
 	
 	#################################################################
-	# 		init whitelist generation			#
+	# 		init blacklist generation			#
 	#################################################################
-	header "Creating initscript whitelist..."
-	"$FLL_BUILD_BASE"/usr/sbin/fll_initscript_whitelistgen --chroot "$FLL_BUILD_CHROOT" \
-		--packages "$FLL_BUILD_SHARED/init_package_whitelist" \
-		--blacklist "$FLL_BUILD_SHARED/init_blacklist" | \
-			tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
+	if exists_in_chroot /usr/bin/fll_analyze_initscripts; then
+		header "Creating initscript blacklist..."
+	
+		FLL_BUILD_INIT_BLACKLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.blacklist.XXXX)
+		FLL_BUILD_INIT_WHITELIST=$(mktemp -p $FLL_BUILD_CHROOT fll.whitelist.XXXX)
+	
+		cat "$FLL_BUILD_SHARED/fll_init_blacklist" > "$FLL_BUILD_INIT_BLACKLIST"
+		cat "$FLL_BUILD_SHARED/fll_init_whitelist" > "$FLL_BUILD_INIT_WHITELIST"
+
+		chroot_exec /usr/bin/fll_analyze_initscripts --remove \
+			--blacklist "/${FLL_BUILD_INIT_BLACKLIST##*/}" \
+			--whitelist "/${FLL_BUILD_INIT_WHITELIST##*/}" \
+			| tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
+	fi
 	
 	#################################################################
 	#		hack inittab and shadow				#

@@ -6,6 +6,11 @@
 # listed.
 #
 #################################################
+# our live initscripts
+#################################################
+fll-live-initscripts
+fll-live-xorgconfig
+#################################################
 # core packages, same list as in fll-installer
 #################################################
 alsa-base
