@@ -12,6 +12,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * fix devil's changelog mistake
   * remove gimp-basic from xfce.bm
   * amarok will install again - reenable in kde-full
+  * minor update for release notes icon
 
   [ Ferdinand Thommes ]
   * fixed xfce.bm
@@ -29,7 +30,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * 915resolution no longer required, intel xorg driver doesn't use it.
   * Spread out some awk code, easier on the eye.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 11 Oct 2007 16:48:22 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 11 Oct 2007 17:25:22 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
