@@ -520,7 +520,19 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			installed_in_chroot "$p" || continue
 			header "Installing recommended packages for $p"
 			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
-				awk -F, '/./{ for (i = 1; i <= NF; i++) { sub(/^[ \t]+/,"",$i); sub(/\|.*/,"",$i); sub(/\(.*/,"",$i); print $i; }}') )
+				awk -F, '
+					/./ {
+						for (i = 1; i <= NF; i++) {
+							# trim leading whitespace
+							sub(/^[ \t]+/,"",$i)
+							# take the preferred string from conditional
+							sub(/\|.*/,"",$i)
+							# trim version strings
+							sub(/\(.*/,"",$i)
+							print $i
+						}
+					}
+				') )
 		done
 
 		if [[ ${FLL_PACKAGES_EXTRA[@]} ]]; then
