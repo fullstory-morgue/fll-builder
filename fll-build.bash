@@ -14,7 +14,8 @@ print_copyright() {
 	cat \
 <<EOF
 
-Copyright (C) 2006 - 2007 F.U.L.L.S.T.O.R.Y Project
+Copyright (C) 2006 - 2007 Kel Modderman <kel@otaku42.de>
+          (C) 2006 - 2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
 
 F.U.L.L.S.T.O.R.Y Project Homepage:
 http://developer.berlios.de/projects/fullstory
