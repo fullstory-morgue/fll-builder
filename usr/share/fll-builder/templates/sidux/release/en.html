@@ -35,9 +35,9 @@
 				<li><a href="#welcome">Welcome</a></li>
 				<li><a href="#release-notes">Release Notes</a></li>
 				<li><a href="#whats-new">Whats New</a></li>
-<!-- preview
+<!-- preview -->
 				<li><a href="#pending">Pending changes</a></li>
-preview -->
+<!-- preview -->
 				<li><a href="#non-free">non-free sources and Drivers</a></li>
 				<li><a href="#disclaimer">Disclaimer</a></li>
 				<li><a href="#mirror">Mirrors</a></li>
@@ -50,19 +50,6 @@ preview -->
 		<div id="main-page">
 			<div class="divider" id="welcome">
 				<h1 id="top-header">sidux 2007-03.1 hotfix</h1>
-
-				<p>
-					A last minute update of xine-lib (1.1.7-2) in debian sid has dropped all previous dependencies of libxine1 on its required audio/ video plugins to &quot;Recommends&quot; (in preparation of implementing &quot;<a href="http://lists.debian.org/debian-devel-announce/2007/08/msg00000.html">Installation of Recommends by default on October 1st</a>&quot;) and caused our initial sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; release to lose out-of-the box support for audio/ video playback (<a href="http://bugs.debian.org/437693">#437693</a>). 
-					Already existing installations of 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; can be fixed by updating &quot;libxine1&quot;, &quot;libxine1-ffmpeg&quot; and fixing the group membership for &quot;video&quot;.
-				</p>
-				<pre>apt-get update
-apt-get install apt-get install libasyncns0 libmodplug0c2 libpulse0 libxcb-shape0 libxcb-shm0 libxcb-xv0 libxvmc1
-sed -i "s/\,sidux/\,$(getent passwd 1000 | cut -d\: -f1)/" /etc/group</pre>
-
-				<p>
-					This updated hotfix release fixes the audio/ video problems for live purposes and is targeted at preventing these issues for new installations.
-				</p>
-
 				<p>
 					After less than 3 months of development, we are proud to announce the immediate availability of the sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; release for amd64 and i686 systems, shipping in a &asymp;440 MB lite KDE and a &asymp;700 MB full KDE flavor.
 					sidux is a full featured debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
@@ -92,46 +79,33 @@ sed -i "s/\,sidux/\,$(getent passwd 1000 | cut -d\: -f1)/" /etc/group</pre>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer).</li>
 					<li>debian sid, as of 2007-08-15.</li>
-					<li>kernel 2.6.22.3-rc1 (smp, hard preemption).</li>
+					<li>kernel 2.6.23.1 (smp, hard preemption, highres timers, tickless timers for all supported platforms).</li>
+					<li>libata support for parallel ATA systems.</li>
+					<li>X.org 7.3.</li>
 					<li>KDE 3.5.7 (en + de).</li>
-					<li>completely overhauled init sequence.</li>
-					<li>completely refactored installer backend.</li>
+					<li>completely new X.org probing, finally amd64 compatible.</li>
+					<li>new USB Installer.</li>
 					<li>new artwork created by cleary and the sidux art team.</li>
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
-					<li>lots of changes for the manual.</li>
-					<li>iwlwifi3945/ iwlwifi4965 1.0.0-1.</li>
-					<li>rt2x00 2.0.6+git20060810 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers</li>
-					<li>support for RealTek RTL8187 wlan cards.</li>
-					<li>libata support for parallel ATA systems.</li>
-					<li>native vmlinuz-$KVERS and initrd.img-$KVERS naming conventions are used on the live CD now, please consult the manual for fromiso syntax changes.</li>
-					<li>enhanced hardware support libraries.</li>
-					<li>support for &quot;smxi&quot;, replacing &quot;sm&quot; and &quot;du-fixes-h2.sh&quot;.</li>
-					<li>bugfix for keyboard layout selections in X.</li>
-					<li>USB scanner support has been fixed in kernel &ge;2.6.22.1-slh-smp-7/ &ge;2.6.22.1-slh64-smp-7.</li>
-					<li>XDG menu entry fix for My-PPPoE Conf.</li>
-					<li>added siduxcc and kooka.</li>
-					<li>thanks to concerted team efforts, the dependencies on Xdialog and therefore gtk+ 1.2 could be removed.</li>
-					<li>support for Agere Systems et131x ethernet controllers.</li>
-					<li>fw-detect to probe for hardware with non-free needs.</li>
+					<li>iwlwifi3945/ iwlwifi4965 1.1.17.</li>
+					<li>b43/ b43legacy support for Broadcom wlan cards.</li>
+					<li>rt2x00 2.0.10 support for RaLink cards supporting wpasupplicant, remove /etc/modprobe.d/mac80211 to prefer it over RaLink legacy drivers.</li>
 					<li>rt73-legacy driver.</li>
+					<li>support for RealTek RTL8187 wlan cards.</li>
+					<li>support for ADMtek ADM8211 wlan cards.</li>
+					<li>enhanced hardware support libraries.</li>
+					<li>fw-detect to probe for hardware with non-free needs.</li>
 					<li>memtest86+.</li>
-					<li>added iputils-ping.</li>
-					<li>added VDR 1.4.7.</li>
-					<li>bugfix for partition detection.</li>
-					<li>CUPS 1.3.0.</li>
-					<li>fix audio-/ video playback issues, please update libxine1 and libxine1-ffmpeg to fix existing 2007-03 installs.</li>
-					<li>fix group membership for multiple users per group.</li>
 				</ul>
 			</div>
-<!-- preview
+<!-- preview -->
 			<div class="divider" id="pending">
 				<h2>What hasn't made it into the preview yet:</h2>
 				<ul>
-					<li>a</li>
-					<li>b</li>
+					<li>preview</li>
 				</ul>
 			</div>
-preview -->
+<!-- preview -->
 			<div class="divider" id="non-free">
 				<h2>Hints for hardware with non-free needs:</h2>
 				<p>
@@ -377,10 +351,10 @@ deb-src http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix
 					<li>
 						sidux 2007-03.1 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-15
 					</li>
-history -->
 					<li>
 						sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; &mdash; calendar week 41-42 2007
 					</li>
+history -->
 					<li>
 						sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; &mdash; calendar week 1-2 2008
 					</li>
@@ -447,3 +421,4 @@ history -->
 		</div>
 	</body>
 </html>
+
