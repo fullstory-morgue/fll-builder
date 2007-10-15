@@ -10,6 +10,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - fix typo, s/Bohdi/Bodhi/.
     - initial adaption for Ερως.
     - e1000e.
+    - KDE 3.5.8.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -35,7 +36,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 16 Oct 2007 00:11:55 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 16 Oct 2007 01:27:29 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
