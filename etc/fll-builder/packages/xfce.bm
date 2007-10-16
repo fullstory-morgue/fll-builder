@@ -4,7 +4,6 @@ FLL_PACKAGE_DEPMODS=(
 	distro-tools
 	distro-tools-x
 	distro-xfce
-	gkrellm-meta
 	hwsupport-essential
 	utils-essential
 	utils-extra
@@ -16,11 +15,7 @@ FLL_PACKAGES=(
 	audacity
 	brasero
 	desktop-file-utils
-	fortune-mod
-	fortunes-min
 	gconf2
-	gconf2-common
-	gdk-imlib11
 	gdm
 	gksu
 	gnumeric
@@ -69,10 +64,8 @@ FLL_PACKAGES=(
 	xfce4-weather-plugin
 	xfce4-xkb-plugin
 	xfdesktop4
-	xfdesktop4-data
 	xfprint4
 	xfwm4
-	xfwm4-themes
 	xtrlock
 )
 

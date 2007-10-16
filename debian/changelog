@@ -1,7 +1,8 @@
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
-  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
+
+  [ Stefan Lippers-Hollmann ]
   * update syntax for Vcs headers in debian/control
   * add userspace irqbalance.
   * package lists:
@@ -15,7 +16,13 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
     with libata anyways.
-  * shrink xfce list.
+  * xfce list:
+    - gdk-imlib11
+    - gkrellm-meta
+    - fortune
+    - icedove
+    - pidgin and friends.
+    - vlc-nox
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -43,7 +50,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 16 Oct 2007 23:49:07 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 17 Oct 2007 00:13:12 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
