@@ -11,6 +11,10 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - initial adaption for Ερως.
     - e1000e.
     - KDE 3.5.8.
+  * do not default to acpi=off in failsafe options, this does not work for SMP
+    systems and may be dangerous for notebooks in particular.
+  * do not default to nodma in failsafe options, this has no practical meaning
+    with libata anyways.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -38,7 +42,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 16 Oct 2007 11:03:27 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 16 Oct 2007 22:58:58 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
