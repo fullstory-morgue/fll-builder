@@ -25,21 +25,10 @@ FLL_PACKAGES=(
 	gksu
 	gnumeric
 	gtk2-engines-xfce
-	icedove
 	iceweasel
 	mousepad
 	numlockx
 	orage
-	pidgin
-	pidgin-guifications
-	pidgin-plugin-pack
-	pidgin-festival
-	pidgin
-	pidgin-guifications
-	pidgin-plugin-pack
-	quodlibet
-	quodlibet-ext
-	quodlibet-plugins
 	shared-mime-info
 	thunar
 	thunar-archive-plugin
@@ -48,7 +37,6 @@ FLL_PACKAGES=(
 	thunar-volman
 	trayer
 	vlc
-	vlc-nox
 	wmauda
 	xarchiver
 	xbase-clients
