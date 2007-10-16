@@ -18,7 +18,9 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove gimp-basic from xfce.bm
   * amarok will install again - reenable in kde-full
   * minor update for release notes icon
-
+  * remove buggy audacious from xfce.bm
+  * remove duplicate gtk2 entry from xfce.bm
+  * remove xfmedia and nuovo gnome theme from xfce.bm
   [ Ferdinand Thommes ]
   * fixed xfce.bm
   * added unp to cli.bm
@@ -36,7 +38,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 16 Oct 2007 01:27:29 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 16 Oct 2007 11:03:27 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 

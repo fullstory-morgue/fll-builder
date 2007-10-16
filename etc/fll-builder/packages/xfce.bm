@@ -13,11 +13,6 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	abiword
-	audacious
-	audacious-crossfade
-	audacious-plugins
-	audacious-plugins-extra
-	audacious-plugins-ugly
 	audacity
 	brasero
 	desktop-file-utils
@@ -28,9 +23,7 @@ FLL_PACKAGES=(
 	gdk-imlib11
 	gdm
 	gksu
-	gnome-icon-theme-nuovo
 	gnumeric
-	gtk2-engines-xfce
 	gtk2-engines-xfce
 	icedove
 	iceweasel
@@ -89,7 +82,6 @@ FLL_PACKAGES=(
 	xfce4-xkb-plugin
 	xfdesktop4
 	xfdesktop4-data
-	xfmedia
 	xfprint4
 	xfwm4
 	xfwm4-themes
