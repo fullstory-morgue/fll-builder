@@ -12,7 +12,6 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	abiword
-	audacity
 	brasero
 	desktop-file-utils
 	gconf2
@@ -20,6 +19,8 @@ FLL_PACKAGES=(
 	gksu
 	gnumeric
 	gtk2-engines-xfce
+	gxine
+	gxineplugin
 	iceweasel
 	mousepad
 	numlockx
@@ -31,7 +32,6 @@ FLL_PACKAGES=(
 	thunar-media-tags-plugin
 	thunar-volman
 	trayer
-	vlc
 	wmauda
 	xarchiver
 	xbase-clients

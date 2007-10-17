@@ -37,6 +37,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * fixed xfce.bm
   * added unp to cli.bm
   * trimmed xfce.bm
+  * xfce.bm - remove audacity
+  * xfce.bm - replace vlc with gxine and gxineplugin
 
   [ Kel Modderman ]
   * Use fll_src_uri to get manifest and source file listings.
@@ -50,7 +52,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 17 Oct 2007 00:13:12 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 17 Oct 2007 11:47:55 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
