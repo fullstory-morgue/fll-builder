@@ -5,6 +5,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-tools-x
 	distro-xfce
 	hwsupport-essential
+	hwsupport-extra
 	utils-essential
 	utils-extra
 	xserver
