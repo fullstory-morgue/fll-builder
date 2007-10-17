@@ -36,6 +36,8 @@ FLL_PACKAGES=(
 	xarchiver
 	xbase-clients
 	xbitmaps
+	xchat
+	xchat-systray
 	xfce4
 	xfce4-artwork
 	xfce4-battery-plugin
