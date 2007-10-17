@@ -33,6 +33,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove buggy audacious from xfce.bm
   * remove duplicate gtk2 entry from xfce.bm
   * remove xfmedia and nuovo gnome theme from xfce.bm
+  * gimp-print has been absorbed into the gimp package
+
   [ Ferdinand Thommes ]
   * fixed xfce.bm
   * added unp to cli.bm
@@ -54,7 +56,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 17 Oct 2007 12:10:41 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 18 Oct 2007 09:40:13 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
