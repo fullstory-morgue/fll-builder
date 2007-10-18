@@ -56,7 +56,10 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Spread out some awk code, easier on the eye.
   * Add real copyright holders to copyright header.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 18 Oct 2007 09:40:13 +1000
+  [ Ferdinand Thommes ]
+  * added aqualung for testing
+
+ -- Ferdinand Thommes <devil@sidux.com>  Thu, 18 Oct 2007 11:52:06 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 

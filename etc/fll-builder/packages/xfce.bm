@@ -13,6 +13,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	abiword
+	aqualung
 	brasero
 	desktop-file-utils
 	gconf2
