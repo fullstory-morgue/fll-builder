@@ -23,6 +23,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - icedove
     - pidgin and friends.
     - vlc-nox
+  * detect lvm2 partitions.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -59,7 +60,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Ferdinand Thommes ]
   * added aqualung for testing
 
- -- Ferdinand Thommes <devil@sidux.com>  Thu, 18 Oct 2007 11:52:06 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 21 Oct 2007 23:28:13 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 

@@ -35,6 +35,8 @@ ifupdown
 initscripts
 #klogd
 libc6
+libdevmapper1.02.1
+lvm2
 module-init-tools
 netbase
 pcmciautils
