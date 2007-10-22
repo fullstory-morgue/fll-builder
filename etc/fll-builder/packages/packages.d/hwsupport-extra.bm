@@ -19,6 +19,7 @@ FLL_PACKAGES+=(
 #	hplip
 	hwinfo
 	laptop-detect
+	libsmbios-bin
 	linuxprinting.org-ppds
 	lirc
 	min12xxw
