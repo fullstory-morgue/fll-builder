@@ -156,6 +156,9 @@ FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
 # store current UID, override later if executed by !root
 FLL_BUILD_OUTPUT_UID=$UID
 
+# create source uri + manifest by default
+FLL_SOURCE_RELEASE=1
+
 #################################################################
 #		source functions				#
 #################################################################
@@ -544,7 +547,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# purge unwanted packages
 	chroot_exec dpkg --purge cdebootstrap-helper-diverts
 	
-	if exists_in_chroot /usr/bin/fll_src_uri; then
+	if exists_in_chroot /usr/bin/fll_src_uri && [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
 		header "Creating source URI list and package manifest..."
 
 		FLL_BUILD_SOURCES=$(mktemp -p $FLL_BUILD_CHROOT fll.sources.XXXX)
