@@ -10,6 +10,10 @@
 #################################################
 /etc/init.d/fll-*
 #################################################
+# libdevmapper occupies a painful namespace
+#################################################
+/etc/init.d/libdevmapper*
+#################################################
 # core packages, same list as in fll-installer
 #################################################
 alsa-base
@@ -30,7 +34,6 @@ ifupdown
 initscripts
 #klogd
 libc6
-libdevmapper*
 lvm2
 module-init-tools
 netbase

@@ -63,11 +63,13 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     for the RF kill switch support on DELL laptops.
   * Use new glob support in fll_init_whitelist to allow all initscripts in
     /etc/init.d/fll-* namespace.
+  * globbing in fll_init_whitelist is for initscript names only, not package
+    names, use initscript glob for libdevmapper.
 
   [ Ferdinand Thommes ]
   * added aqualung for testing
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 24 Oct 2007 00:39:07 +0200
+ -- Kel Modderman <kel@otaku42.de>  Wed, 24 Oct 2007 08:48:04 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
