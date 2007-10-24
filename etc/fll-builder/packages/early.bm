@@ -1,0 +1,6 @@
+FLL_PACKAGES_EARLY=(
+	apt-conf-sidux
+	apt-utils
+	distro-defaults
+	debconf
+)

@@ -365,6 +365,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
 		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
 	done
+
+	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/early.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/early.bm
 	
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
@@ -442,12 +445,15 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
 			;;
 	esac
+
+	#################################################################
+	#		install packages required early in chroot
+	#################################################################
+	chroot_exec apt-get --assume-yes ${FLL_PACKAGES_EARLY[@]}
 	
 	#################################################################
 	#		preseed locales					#
 	#################################################################
-	chroot_exec apt-get --assume-yes install debconf apt-utils
-	
 	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
 		chroot_exec debconf-set-selections
 	
@@ -460,7 +466,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		install kernel, make initial ramdisk		#
 	#################################################################
 	# module-init-tools required for depmod, it may not be in minimal bootstrap
-	chroot_exec apt-get --assume-yes install distro-defaults fll-live-initramfs module-init-tools
+	chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
 
 	# ensure initrd is created by linux-image postinst hook
 	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
