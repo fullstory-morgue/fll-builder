@@ -449,7 +449,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		install packages required early in chroot
 	#################################################################
-	chroot_exec apt-get --assume-yes ${FLL_PACKAGES_EARLY[@]}
+	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
 	
 	#################################################################
 	#		preseed locales					#
