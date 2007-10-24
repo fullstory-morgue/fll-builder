@@ -1,0 +1,126 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	### --- kde-lite ---------------------------
+	ark
+	k3b
+	kaffeine
+	kde-core
+	kdm
+	konversation
+	kmix
+	knemo
+	kpowersave
+	kppp
+	kpdf
+	ksnapshot
+	ktorrent
+	kuickshow
+	gtk2-engines-qtcurve
+	iceweasel
+	siduxcc
+
+	### --- edu --------------------------------
+	matchbox
+
+	kchart
+	kexi
+	kformula
+	kivio
+	koshell
+	kplato
+	kpresenter
+	kspread
+
+	scribus
+
+	quanta
+	kimagemapeditor
+	#vlc  - temporaryraly commented out due to dependency problems
+
+	audacity
+
+	kdissert 
+	keduca
+	kpdf
+	ksociograma
+	krusader
+
+	mc
+
+	chemtool
+	#gperiodic
+	katomic
+	kalzium
+
+	#qgis
+	sunclock
+
+	kturtle
+
+	#dia
+	#digikam
+	gimp
+	inkscape
+	#karbon
+	kino
+
+	#kolourpaint
+	ksnapshot
+	ksvg
+	kview
+	stopmotion
+	tuxpaint
+
+	khangman
+	#gnuchess
+	tuxtype
+	lmemory
+	lletters
+	gtans
+	kanagram
+
+	childsplay
+	childsplay-alphabet-sounds-de
+	childsplay-plugins
+	#gcompris
+	ktuberling
+	ktouch
+	pingus
+	tuxmath
+
+	kbruch
+	kig
+	kmplot
+	kpercentage
+	wxmaxima
+
+	#amarok
+	glame
+	hydrogen
+
+	#celestia
+	kstars
+	kworldclock
+
+	kdict
+	klatin
+	kvoctrain
+	kwordquiz
+
+	klogic
+	ksimus
+	#pcb
+)
+
