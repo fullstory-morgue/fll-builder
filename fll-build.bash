@@ -366,8 +366,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
 	done
 
-	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/early.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/early.bm
+	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/early.bm"
+	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/early.bm
 	
 	if [[ ! ${FLL_PACKAGES[@]} ]]; then
 		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
