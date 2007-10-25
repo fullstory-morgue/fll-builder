@@ -27,6 +27,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * detect lvm2 partitions.
   * use new globbing support for libdevmapper* in fll_init_whitelist.
   * re- add fll-source-fetcher.sh.
+  * siduxcc's recommends are installable again, due to local libapt-pkg-perl
+    binNMUs.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -75,7 +77,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * kde-edu.bm added
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 25 Oct 2007 01:02:13 +0200
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 25 Oct 2007 02:53:55 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
