@@ -60,7 +60,7 @@ FLL_PACKAGES=(
 	kicker-applets
 	kiconedit
 	kio-apt
-	kipi-plugins
+#	kipi-plugins
 	kmahjongg
 	kmail
 	kmailcvt

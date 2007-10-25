@@ -40,6 +40,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove duplicate gtk2 entry from xfce.bm
   * remove xfmedia and nuovo gnome theme from xfce.bm
   * gimp-print has been absorbed into the gimp package
+  * remove gnome-terminal since issues with xfce-terminal are fixed
 
   [ Ferdinand Thommes ]
   * fixed xfce.bm
@@ -77,7 +78,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * kde-edu.bm added
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 25 Oct 2007 02:53:55 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 25 Oct 2007 13:58:12 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
