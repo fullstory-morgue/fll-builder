@@ -25,5 +25,5 @@ make_exclude_file() {
 		esac
 	done < "$LIST"
 
-	eval find . ${FINDOPTS[@]}
+	eval find . ${FINDOPTS[@]} | grep -v '/lock$'
 }
