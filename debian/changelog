@@ -41,6 +41,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove xfmedia and nuovo gnome theme from xfce.bm
   * gimp-print has been absorbed into the gimp package
   * remove gnome-terminal since issues with xfce-terminal are fixed
+  * revert accidental kde-full mod
 
   [ Ferdinand Thommes ]
   * fixed xfce.bm
@@ -78,7 +79,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * kde-edu.bm added
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 25 Oct 2007 13:58:12 +1000
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 25 Oct 2007 14:00:04 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
