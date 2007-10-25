@@ -81,8 +81,9 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   [ Horst Tritremmel ]
   * kde-edu.bm added
   * kde-edu updated
+  * distro-edu.bm added
 
- -- Horst Tritremmel <hjt@sidux.com>  Thu, 25 Oct 2007 15:50:46 +0200
+ -- Horst Tritremmel <hjt@sidux.com>  Thu, 25 Oct 2007 15:52:18 +0200
 
 fll-builder (1.1.6) unstable; urgency=low
 
