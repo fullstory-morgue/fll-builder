@@ -66,7 +66,6 @@ FLL_PACKAGES=(
 	xfce4-utils
 	xfce4-verve-plugin
 	xfce4-weather-plugin
-	xfce4-xkb-plugin
 	xfdesktop4
 	xfprint4
 	xfwm4
