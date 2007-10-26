@@ -69,7 +69,7 @@ FLL_PACKAGES=(
 	djtools
 	dnsmasq
 	docbook2x
-	dolphin
+	d3lphin
 	dvdauthor
 	easytag
 	ekiga
@@ -124,7 +124,7 @@ FLL_PACKAGES=(
 	inkscape
 	iproute
 	irssi
-	istanbul
+#	istanbul
 	jackd
 	jack-tools
 	java2html
@@ -222,7 +222,7 @@ FLL_PACKAGES=(
 	mono
 	mousepad
 	moto4lin
-	mozilla-plugin-vlc
+#	mozilla-plugin-vlc
 	mozplugger
 	multisync
 	mutt
@@ -247,7 +247,7 @@ FLL_PACKAGES=(
 	qcad
 	qemu
 	qtemu
-	quodlibet
+#	quodlibet
 	rdiff-backup
 	ripperx
 	rosegarden4
@@ -290,7 +290,7 @@ FLL_PACKAGES=(
 	vdr-gui
 	vim-full
 	virtualbox-ose
-	vlc
+#	vlc
 	vorbis-tools
 	wengophone
 	xchat
