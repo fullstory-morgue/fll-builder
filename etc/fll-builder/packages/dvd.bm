@@ -91,7 +91,6 @@ FLL_PACKAGES=(
 	fujiplay
 	flac
 	geany
-	gdancer
 	gftp
 	gnucash
 	gnumeric
