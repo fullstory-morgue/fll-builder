@@ -3,4 +3,3 @@ FLL_PACKAGES+=(
 	gimp-plugin-registry
 )
 
-#	gimp-svg
