@@ -68,6 +68,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove gnome-terminal since issues with xfce-terminal are fixed
   * revert accidental kde-full mod
   * xfce.bm - remove buggy xkb-plugin
+  * release notes - update AARNet location
 
   [ Ferdinand Thommes ]
   * fixed xfce.bm
@@ -109,7 +110,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * kde-edu updated
   * distro-edu.bm added
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 27 Oct 2007 02:08:53 +0200
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 29 Oct 2007 09:59:26 +1100
 
 fll-builder (1.1.6) unstable; urgency=low
 
