@@ -8,7 +8,7 @@ body, html, div {
 body {
 	font-family:"dejavu serif", "times new roman", serif;
 	font-size:100%;
-	background:#eaedf4;
+	background:#cbc9a7;
 	color:#000611;
 }
 
@@ -37,13 +37,13 @@ h1, h2, h3, h4, h5, h6 {
 	font-family:"dejavu sans", arial, sans-serif;
 	margin-top:0px;	/* this must be 0 to fix a firefox css issue with this layout */
 	margin-bottom:.1em;
-	color:#040a2f;
+	color:#ffffff;
 	padding:.2em;
 }
 
 h1 {
 	font-size:150%;
-	background:#d4d7dd;
+	background:#898369;
 	margin-bottom:1em;
 }
 
@@ -52,7 +52,7 @@ h2 {
 	border-style:solid;
 	border-color:#040a2f;
 	font-size:125%;
-	background:#d4d7dd;
+	background:#898369;
 	margin-bottom:1em;
 }
 
@@ -102,25 +102,25 @@ pre {
 	position:fixed;
 	float:left;
 	height:auto;
-	background-color:#eaedf4;
+	background-color:#cbc9a7;
 	width:164px;
 	font-family:"dejavu sans", arial, sans-serif;
 	font-size:105%;
 }
 
 #menu .menubutton {
-	background-color:#7ba7a6;
+	background-color:#b0b094;
 	padding:2%;
 	border-width:1px 2px 1px 1px;
 	border-style:solid;
-	border-color:#eaedf4;
+	border-color:#cbc9a7;
 	font-size:90%;
 	font-weight:bold;
 	width:162px;
 }
 
 #menu a {
-	color:#eaedf4;
+	color:#ffffff;
 	text-decoration:none;
 	display:block;
 }
