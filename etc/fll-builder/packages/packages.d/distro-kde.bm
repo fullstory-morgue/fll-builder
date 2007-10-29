@@ -3,7 +3,6 @@ FLL_PACKAGES+=(
 	sidux-art-kde
 	sidux-art-kde-eros
 	kdmtheme
-	kooka
 	ksvg
 )
 

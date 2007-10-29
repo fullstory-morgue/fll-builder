@@ -30,5 +30,6 @@ FLL_PACKAGES+=(
 	sane-utils
 	libsane-extras
 	vbetool
+	xsane
 )
 

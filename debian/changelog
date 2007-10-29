@@ -20,6 +20,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
       half of gnome getting installed.
     - no longer install recommends for libxine1.
     - revisit non-installable/ disabled packages.
+    - replace kooka by xsane, it's larger but a lot better.
     - kde-stripped:
       + additions:
         % add hwinfo to kde-stripped.
@@ -112,7 +113,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * kde-edu updated
   * distro-edu.bm added
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 29 Oct 2007 14:41:00 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 29 Oct 2007 14:09:13 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
