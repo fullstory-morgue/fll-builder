@@ -49,27 +49,37 @@
 
 		<div id="main-page">
 			<div class="divider" id="welcome">
-				<h1 id="top-header">sidux 2007-03.1 Hotfix</h1>
+				<h1 id="top-header">sidux 2007-04 preview 1</h1>
 				<p>
-					Nach weniger als drei Monaten Entwicklungszeit geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-03.1 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;440 MB gro&szlig;en kde-lite&ndash; und einer &#8776;700 MB  gro&szlig;en kde-full Variante.
+					Nach einigen Verz&ouml;gerungen und Abweichungen von unserem vorgesehenem Zeitplan durch X.org 7.3 bedingte Probleme unterschiedlicher Relevanz, ist sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; nun bereit die Preview Saison f&uuml;r amd64 und i686 Systeme einzul&auml;uten.
+					Wie &uuml;blich erscheinen die Previews nur als kleine (&asymp;460 MB), aber voll funktionsf&auml;hige, KDE-lite Varianten, um Tests und xdelta Uploads zu erleichtern und werden erst f&uuml;r das endg&uuml;ltige Release um die &asymp;700 MB KDE-full Versionen erg&auml;nzt.
+				</p>
+
+				<p>
 					sidux ist eine umfassende Debian sid basierte Live-CD mit besonderem Augenmerk auf Festplatteninstallationen, einem sauberen Upgradepfad innerhalb sids und zus&auml;tzlichem Hard- und Softwaresupport.
+					Das ISO basiert vollst&auml;ndig auf Debian sid, angereichert und stabilisiert mit sidux eigenen Paketen und Skripten.
 				</p>
 			</div>
 
 			<div class="divider" id="release-notes">
 				<h2>Release Notes f&uuml;r &Epsilon;&rho;&omega;&sigmaf; preview 1</h2>
 				<p>
-					Unser drittes offizielles sidux Release konzentriert sich auf die &Uuml;berholung der SysV Initsequenz der Live CD, der Refaktorierung des Installer Backends und der Grundsteinlegung f&uuml;r regelrechte gettext basierte Lokalisierungen unseres Toolsets, mit zus&auml;tzlichen Anstrengungen bez&uuml;glich einer allgemeinen Codebereinigung, der Revision von gtk+ 1.2 basierten Tools und insbesondere dem Kernel.
-					Obwohl Kernel 2.6.22.3(-rc1) unter Verwendung von libata f&uuml;r die meisten PATA Chips&auml;tze verwendet wird, konnte eine zus&auml;tzliche Unterst&uuml;tzung f&uuml;r Intel IPW3945/ IPW4965 (iwlwifi 1.0.0-1), Realtek 8187 und RT2x00 wlan Karten basierend auf <a href="http://sidux.com/Article212.html">mac80211</a> hinzugef&uuml;gt werden.
+					Diese Preview auf dem Weg zu unserem vierten offiziellen sidux Release &quot;&Epsilon;&rho;&omega;&sigmaf;&quot;, konzentriert sich auf X.org 7.3/ xrandr 1.2 bedingte &Auml;nderungen, die neue X Erkennung und Tests des neuen Upstream Kernels 2.6.23 und dessen wlan/ mac80211 F&auml;higkeiten.
+					Aus Testgr&uuml;nden wurden alle legacy Treiber f&uuml;r RaLink und Intersil ISL3880 wlan Karten durch ihre neuen mac80211 basierten Entsprechungen (rt2x00, p54) ersetzt. <a href="http://sidux.com/index.php?name=PNphpBB2&file=viewtopic&t=6679">R&uuml;ckmeldungen</a> bez&uuml;glich deren Stabilit&auml;t sind sehr erw&uuml;nscht, um die bestm&ouml;gliche Kombination f&uuml;r das finale Release zu eruieren (legacy Treiber stehen in unserem Repository f&uuml;r module-assisstant bereit, die mac80211 basierten Treibervarianten k&ouml;nnen &uuml;ber &quot;/etc/modprobe.d/mac80211&quot; in die Blacklist aufgenommen werden).
 				</p>
 
 				<p>
-					Erneut ist dieses Release nur in zwei KDE basierten Varianten (lite und full) verf&uuml;gbar, wir suchen interessierte Maintainer, die sich f&uuml;r andere Desktop Environments oder Fenstermamager, deren Optimierung oder spezielle Releases engagieren m&ouml;chten.
-					Gleichwohl es Bestrebungen f&uuml;r XFCE und gnome Varianten gibt, konnte bislang das erforderliche Entwicklerquorum nicht erreicht werden.
+					Besondere Anstrengungen wurden in erweiterte Methoden zur USB Installation und das live persistency Framework investiert (R&uuml;ckmeldungen erw&uuml;nscht).
+					Verschiedene Updates, Korrekturen und Anpassungen wurden praktisch der gesamten Paketliste zuteil und eine Menge an &Uuml;bersetzungs- und Lokalisierungsbestrebungen konnten gestartet werden, um die Situation f&uuml;r unsere nicht englisch-/ deutschsprachigen Benutzer zu verbessern.
+					Was davon bis hin zum finalen Release bez&uuml;glich eines besseren Lokalisierungssupports und -integration, oder dem Support alternativer Window Manager oder Desktop Environments erm&ouml;glicht werden kann, steht momentan zur Diskussion.
 				</p>
 
 				<p>
-					Das ISO basiert vollst&auml;ndig auf Debian sid, angereichert und stabilisiert mit sidux eigenen Paketen und Skripten.
+					Unser besonderer Dank gilt allen an der Erweiterung der Mirror Liste Beteiligten, und im besonderen allen Mirror Hostern f&uuml; iher Bem&uuml;hungen um sidux.
+				</p>
+
+				<p>
+					Das vollausgestattete finale Release von sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; wird in etwa 2-3 Wochen erwartet, bis dahin werden X-Deltas je nach Bedarf zur Verf&uuml;gung gestellt.
 				</p>
 			</div>
 
@@ -77,26 +87,28 @@
 				<h2>Jetzt zu den interessanten Themen, was steht nun auf dem Plan:  </h2>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, neuere 64 bit f&auml;hige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
-					<li>Debian sid, Stand 2007-08-14.</li>
-					<li>kernel 2.6.23.1 (smp, hard preemption, highres timers, tickless timers for all supported platforms).</li>
+					<li>Debian sid, Stand 2007-10-29.</li>
+					<li>kernel 2.6.23.1 (smp, hard preemption).</li>
 					<li>libata Support f&uuml;r parallel ATA Systeme.</li>
 					<li>X.org 7.3.</li>
 					<li>KDE 3.5.8 (en + de).</li>
 					<li>vollst&auml;ndig neu entwickelte X.org Erkennung, endlich amd64 kompatibel.</li>
-					<li>neuer USB Installer.</li>
+					<li>neuer USB fromiso Installer.</li>
 					<li>neues Artwork gestaltet von cleary und dem sidux art team.</li>
-					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handb&uuml;cher f&uuml;r weitere Sprachen auf: <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> und verf&uuml;gbar via apt; ein gro&szlig;es Dankesch&ouml;n geht wieder einmal an das DoKumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handb&uuml;cher f&uuml;r weitere Sprachen auf: <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> und verf&uuml;gbar via apt; ein gro&szlig;es Dankesch&ouml;n geht wieder einmal an das Dokumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
 					<li>viele &Auml;nderungen im und am Handbuch.</li>
-					<li>iwlwifi3945/ iwlwifi4965 1.1.17.</li>
-					<li>b43/ b43legacy Support f&uum;r Broadcom wlan Karten.</li>
-					<li>rt2x00 2.0.10 Support f&uuml;r RaLink Karten die wpasupplicant unterst&uuml;tzen, bitte entfernt /etc/modprobe.d/mac80211 um es dem RaLink legacy Treiber vorzuziehen</li>
-					<li>rt73-legacy Treiber.</li>
+					<li>iwlwifi3945/ iwlwifi4965 1.1.19.</li>
+					<li>b43/ b43legacy Support f&uuml;r Broadcom wlan Karten.</li>
+					<li>rt2x00 2.0.12 Support f&uuml;r RaLink Karten.</li>
 					<li>Support f&uuml;r RealTek RTL8187 wlan Karten.</li>
 					<li>Support f&uuml;r ADMtek ADM8211 wlan Karten.</li>
 					<li>Support f&uuml;r Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet Karten (ICH9).</li>
 					<li>erweiterte Hardware Support Libraries.</li>
 					<li>fw-detect f&uuml;r Hardware, die non-free Pakete braucht.</li>
 					<li>memtest86+</li>
+					<li>&Uuml;berholung der Partitions- und Dateisystemerkennung.</li>
+					<li>grundlegende lvm2 Erkennung und Unterst&uuml;tzung (kein Installersupport).</li>
+					<li>diverse X.org 7.3 und Kernel 2.6.23 bezogene Bug- und Kompatibilit&auml;tskorrekturen.</li>
 				</ul>
 			</div>
 
@@ -104,7 +116,11 @@
 			<div class="divider" id="pending">
 				<h2>Was hat es nicht in diese Preview geschafft?:</h2>
 				<ul>
-					<li>Preview</li>
+					<li>minimale Artworkkonsolidierung.</li>
+					<li>endg&uuml;ltige Dokumentations- und Handbuchanpassungen.</li>
+					<li>Pinnacle PCTVsat (DVB-S) Kompatibilit&auml;t.</li>
+					<li>sidux-hermes.</li>
+					<li>ISO Di&auml;t.</li>
 				</ul>
 			</div>
 <!-- preview -->
@@ -133,7 +149,7 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 				<ul>
 					<li>
 						ATi Radeon Grafik:<br />
-						3d Beschleunigung f&uuml;r &auml;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx Karten brauchen non-free Treiber f&uuml;r beschleunigte Performance, die bisher noch nicht kompatibel mit X.org 7.2 sind. Abh&auml;ngig vom jeweiligen Chipsatz "xmodule=vesa" oder "xmodule=fbdev" als Cheatcode k&ouml;nnte helfen bei Radeon X1xxx Modellen.
+						3d Beschleunigung f&uuml;r &auml;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx Karten brauchen non-free Treiber f&uuml;r beschleunigte Performance, die bisher noch nicht kompatibel mit Kernel 2.6.23 sind. Abh&auml;ngig vom jeweiligen Chipsatz "xmodule=vesa" oder "xmodule=fbdev" als Cheatcode k&ouml;nnte helfen bei Radeon X1xxx Modellen.
 					</li>
 					<li>
 						Atheros/ "madwifi" wlan:<br />
@@ -316,7 +332,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix
 					</li>
 				</ul>
 
-				<em>Unser Dank gilt allen Mirrorbetreibern für ihre Bem&uuml;hungen um sidux.</em>
+				<em>Unser Dank gilt allen Mirrorbetreibern f&uuml;r ihre Bem&uuml;hungen um sidux.</em>
 			</div>
 
 			<div class="divider" id="howto-involve">
@@ -373,8 +389,8 @@ history -->
 				<h2>Besonderer Dank geht an das gesamte sidux Entwicklerteam:</h2>
 				<p>
 					Jose Tadeu Barros (ceti)<br />
-					Joaquim Boura (x-un-i)<br />
 					<a href="http://rebelhomicide.demon.nl">Michiel de Boer</a> (locsmif)<br />
+					Joaquim Boura (x-un-i)<br />
 					Mikhail Burov (von_Selbst)<br />
 					<a href="http://www.alessiogiustini.com"> Alessio Giustini</a> (alessiog75)<br />
 					Stefan R. Eissens (eislon)<br />
@@ -384,13 +400,14 @@ history -->
 					Chris Hildebrandt (slam)<br />
 					Ralph Hokanson Jr. (piper)<br />
 					Richard Holt (Richard)<br />
-					Markus Huber (hubi)<br />
 					Harald Hope (h2)<br />
 					HarzG<br />
+					Markus Huber (hubi)<br />
 					Aedan Kelly (etorix)<br />
 					Lady_Cuddles<br />
 					Latino<br />
 					Stefan Lippers-Hollmann (slh)<br />
+					Philippe Masson (LjanA)<br />
 					Kel Modderman (kelmo)<br />
 					Koslow<br />
 					Markus M&uuml;ller (moto)<br />
