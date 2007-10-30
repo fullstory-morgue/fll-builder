@@ -17,6 +17,7 @@ FLL_PACKAGES+=(
 	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
+	xsane
 	zenity		# the hard dependency must die! ;)
 )
 
