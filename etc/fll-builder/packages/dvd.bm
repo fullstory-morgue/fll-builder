@@ -92,7 +92,7 @@ FLL_PACKAGES=(
 	flac
 	geany
 	gftp
-	gnucash
+#	gnucash
 	gnumeric
 	gnusound
 	gossip
