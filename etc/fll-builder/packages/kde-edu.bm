@@ -49,11 +49,10 @@ FLL_PACKAGES=(
 
 	quanta
 	kimagemapeditor
-	#vlc		# - broken
 
 	audacity
 
-	kdissert 
+	kdissert
 	keduca
 	kpdf
 	ksociograma
@@ -62,23 +61,17 @@ FLL_PACKAGES=(
 	mc
 
 	chemtool
-	#gperiodic
 	katomic
 	kalzium
 
-	#qgis
 	sunclock
 
 	kturtle
 
-	#dia
-	#digikam
 	gimp
 	inkscape
-	#karbon
 	kino
 
-	#kolourpaint
 	ksnapshot
 	ksvg
 	kview
@@ -86,7 +79,6 @@ FLL_PACKAGES=(
 	tuxpaint
 
 	khangman
-	#gnuchess
 	tuxtype
 	lmemory
 	lletters
@@ -96,7 +88,6 @@ FLL_PACKAGES=(
 	childsplay
 	childsplay-alphabet-sounds-de
 	childsplay-plugins
-	#gcompris
 	ktuberling
 	ktouch
 	pingus
@@ -108,11 +99,9 @@ FLL_PACKAGES=(
 	kpercentage
 	wxmaxima
 
-	#amarok
 	glame
 	hydrogen
 
-	#celestia
 	kstars
 	kworldclock
 
@@ -123,6 +112,14 @@ FLL_PACKAGES=(
 
 	klogic
 	ksimus
-	#pcb
+
+#	itools		# 2007-10-30 - Islamic hijri date and prayer time utilities
+#	minbar		# 2007-10-30 - GNOME Islamic prayer times application
+#	hebcal		# 2007-10-30 - A Perpetual Jewish Calendar
+#	hdate-applet	# 2007-10-30 - Hebrew calendar applet
+
+#	qgis		# 2007-10-31 - Geographic Information System (GIS)
+#	qgis-plugin-grass	# 2007-10-31 - Plugin for accessing GRASS data from QGIS
+
 )
 
