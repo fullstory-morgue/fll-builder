@@ -670,6 +670,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 
+	# update pciids
+	if installed_in_chroot pciutils; then
+		header "Updating pciids..."
+		chroot_exec /usr/bin/update-pciids
+	fi
+
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
