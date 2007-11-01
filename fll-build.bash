@@ -89,9 +89,9 @@ header() {
 	cat \
 <<EOF
 
-#################################################################
+#################################################
 # $@
-#################################################################
+#################################################
 EOF
 }
 
@@ -454,6 +454,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		preseed locales					#
 	#################################################################
+	header "Configuring locales..."
 	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
 		chroot_exec debconf-set-selections
 	
@@ -601,24 +602,25 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		hack inittab and shadow				#
         #################################################################
         # init 5 by default
-        sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-                        "$FLL_BUILD_CHROOT"/etc/inittab
+	header "Hacking inittab..."
+	sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
+		"$FLL_BUILD_CHROOT"/etc/inittab
 
-        if [[ -z $FLL_ROOT_PASSWD ]]; then
-                # immutable bash login shells
-                sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
-                        -e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-                        -e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-                                "$FLL_BUILD_CHROOT"/etc/inittab
+	if [[ -z $FLL_ROOT_PASSWD ]]; then
+		# immutable bash login shells
+		sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
+			-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+			-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+				"$FLL_BUILD_CHROOT"/etc/inittab
 
                 # lock down root
-                sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-                        "$FLL_BUILD_CHROOT"/etc/shadow
-        else
-                # $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
-                sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
-                        "$FLL_BUILD_CHROOT"/etc/shadow
-        fi 
+		sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+			"$FLL_BUILD_CHROOT"/etc/shadow
+	else
+		# $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
+		sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
+			"$FLL_BUILD_CHROOT"/etc/shadow
+	fi 
 	#################################################################
 	#		misc chroot preseeding				#
 	#################################################################
@@ -643,36 +645,35 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
 	if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
 		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
-			header "Fixing /etc/X11/X symlink"
+			header "Fixing /etc/X11/X symlink..."
 			remove_from_chroot /etc/X11/X
 			chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
 			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
 		fi
 	fi
 
-	# run fix-fonts
-	if installed_in_chroot fix-fonts; then
-		chroot_exec fix-fonts
-	fi
-	
 	# use most as PAGER if installed in chroot
 	if installed_in_chroot most; then
+		header "Setting \$PAGER to /usr/bin/most..."
 		chroot_exec update-alternatives --set pager /usr/bin/most
 	fi
 	
 	# vimrc.local
 	if installed_in_chroot vim; then
+		header "Creating /etc/vim/vimrc.local..."
 		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
 	fi
 
 	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
 	if installed_in_chroot kppp && exists_in_chroot /etc/ppp/peers/kppp-options; then
+		header "Hacking /etc/ppp/peers/kppp-options for noauth..."
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
 
 	#################################################################
 	#		cleanup & prepare final chroot			#
 	#################################################################
+	header "Cleaning up..."
 	chroot_exec dpkg --purge fll-live-initramfs
 
 	# remove used hacks and patches
@@ -711,6 +712,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	chroot_virtfs umount
 
+	header "Staging ISO..."
 	# add templates (grub menu.lst/documentation/manual/autorun etc.)
 	for dir in "$FLL_BUILD_TEMPLATES"/*; do
 		[[ -d $dir ]] || continue
@@ -766,6 +768,7 @@ EOF
 	popd >/dev/null
 
 	# md5sums
+	header "Calculating md5sums..."
 	pushd "$FLL_BUILD_RESULT" >/dev/null
 		find .	\
 			-type f \
@@ -800,7 +803,7 @@ EOF
 		"$FLL_BUILD_RESULT"
 
 	# generate md5sums
-	echo "> Calculate md5sums for the resulting ISO."
+	echo "Calculate md5sums for the resulting ISO..."
 	pushd "$FLL_BUILD_ISO_DIR" >/dev/null
 		md5sum -b "$FLL_ISO_NAME" | tee "$FLL_ISO_NAME".md5
 	popd >/dev/null
@@ -812,10 +815,11 @@ EOF
 			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
 	fi
 
+	header "Nuking build area..."
+	nuke_buildarea
+
 	echo
 	echo "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"
-
-	nuke_buildarea
 done
 
 exit 0

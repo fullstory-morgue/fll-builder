@@ -110,6 +110,10 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     package install -> ${FLL_PACKAGES_EARLY[@]} array.
   * Remove hwsetup traces from exclusion list. Filter out the attempted
     exclusion of lock files in exclude.bm function module.
+  * Add a few headers to various functions throught fll-build.bash.
+  * Fix some whitespace.
+  * Don't run fix-fonts in the build chroot, I don't think it makes any sense
+    here.
 
   [ Ferdinand Thommes ]
   * added aqualung for testing
@@ -120,7 +124,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 31 Oct 2007 09:57:36 +0100
+ -- Kel Modderman <kel@otaku42.de>  Thu, 01 Nov 2007 10:23:24 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
