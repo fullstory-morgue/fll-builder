@@ -14,6 +14,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - update credits section.
     - finalize release notes for 2007-04 pre1.
     - sidux.2wl.ru is no more.
+    - start to talk about pre2, so it doesn't get lost.
+    - siduxcc is fixed.
   * do not default to acpi=off in failsafe options, this does not work for SMP
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
@@ -61,6 +63,10 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * re- add fll-source-fetcher.sh.
   * siduxcc's recommends are installable again, due to local libapt-pkg-perl
     binNMUs.
+  * switch from sources.list to /etc/apt/sources.list.d/.
+  * add mandatory FLL_BUILD_*MIRROR_LABEL_SAFE and  FLL_BUILD_*MIRROR_SUITE
+    variables.
+  * strip bogus version info from snapshot builds.
   * take care to remove persistency udev rules, even though they should only
     be created on boot and not in chroot, better safe than sorry.
 
@@ -127,7 +133,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Kel Modderman <kel@otaku42.de>  Sat, 03 Nov 2007 21:17:35 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 03 Nov 2007 15:04:40 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 

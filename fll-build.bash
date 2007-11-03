@@ -431,20 +431,37 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		iso name (with package timestamp)		#
 	#################################################################
-	case "$FLL_BUILD_ARCH" in
-		i?86)
-			FLL_ISO_NAME=$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-			;;
-		amd64|x86_64)
-			FLL_ISO_NAME=$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-			;;
-		*)
-			FLL_ISO_NAME=$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-			;;
-	esac
+	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
+		case "$FLL_BUILD_ARCH" in
+			i?86)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+			amd64|x86_64)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}64-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+			*)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+		esac
+	else
+		case "$FLL_BUILD_ARCH" in
+			i?86)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+			amd64|x86_64)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+			*)
+				FLL_ISO_NAME=$(tr A-Z a-z <<< \
+					${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				;;
+		esac
+	fi
 
 	#################################################################
 	#		install packages required early in chroot
@@ -690,8 +707,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot apt_sources	/etc/apt/sources.list
 	
 	# add version marker, this is the exact time stamp for our package list
-	printf "$FLL_DISTRO_NAME $FLL_DISTRO_VERSION - $FLL_DISTRO_CODENAME - $FLL_BUILD_PACKAGE_PROFILE - ($FLL_PACKAGE_TIMESTAMP)\n" \
-		>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
+		printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($FLL_PACKAGE_TIMESTAMP)\n" \
+			>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	else
+		printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_VERSION} - ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($FLL_PACKAGE_TIMESTAMP)\n" \
+			>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+	fi
 	chmod 0444 "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
 	
 	# a few dæmons are broken if log files are missing, 
