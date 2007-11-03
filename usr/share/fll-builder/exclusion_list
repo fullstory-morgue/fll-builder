@@ -16,6 +16,7 @@ f	./boot/initrd.img*
 f	./etc/adjtime
 f	./etc/timezone
 f	./etc/ssh/ssh_host_*key*
+f	./etc/udev/rules.d/*_persistent-*.rules
 f	./etc/X11/xorg.conf
 f	./var/backups/*.gz
 f	./var/cache/apt/archives/*
