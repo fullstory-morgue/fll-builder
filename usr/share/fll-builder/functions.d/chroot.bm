@@ -43,21 +43,28 @@ installed_in_chroot() {
 chroot_virtfs() {
 	local ACTION="$1"
 	local PROC="$FLL_BUILD_CHROOT"/proc
+	local DEVPTS="$FLL_BUILD_CHROOT"/dev/pts
 
 	[[ $ACTION && $PROC ]] || return 1
 	[[ -d $PROC ]] || return 0
 
 	case "$ACTION" in
 		mount)
-			mount  procfll -t proc "$PROC"
+			mount fll-proc -t proc "$PROC"
+			mkdir -p "$DEVPTS"
+			mount fll-devpts -t devpts "$DEVPTS"
 			;;
 		umount)
-			grep -q "$PROC" /proc/mounts || return 0
 			# binfmt workaround
-			if [[ -e $PROC/sys/fs/binfmt_misc/status ]]; then
-				umount "$PROC"/sys/fs/binfmt_misc
+			if [[ -e "$PROC/sys/fs/binfmt_misc/status" ]]; then
+				umount "$PROC/sys/fs/binfmt_misc"
 			fi
-			umount "$PROC"
+			if grep -q "$PROC" /proc/mounts; then
+				umount "$PROC"
+			fi
+			if grep -q "$DEVPTS" /proc/mounts; then
+				umount "$DEVPTS"
+			fi
 			;;
 	esac
 
