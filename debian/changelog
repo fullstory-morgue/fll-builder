@@ -20,6 +20,7 @@ fll-builder (1.1.7) unstable; urgency=low
     - several spelling fixes and text improvements contributed by bfree and
       slam.
     - start to talk about pre3, so it doesn't get lost.
+    - citations needed.
   * do not default to acpi=off in failsafe options, this does not work for SMP
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
@@ -137,7 +138,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 05 Nov 2007 21:31:41 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 05 Nov 2007 21:40:12 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
