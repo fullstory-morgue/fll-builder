@@ -51,28 +51,23 @@
 			<div class="divider" id="welcome">
 				<h1 id="top-header">sidux 2007-04 preview 2</h1>
 				<p>
-					After quite some delays from our planned schedule, due to X.org 7.3 related issues of varying severity, sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; is now ready to enter the preview season for amd64 and i686 systems.
+					It has been a turbulent week behind the scenes of Debian sid, with an accidental glibc upload, a broken openssl version (<a href="http://bugs.debian.org/449200">#449200</a>) affecting wpasupplicant and ries.debian.org (ftp-master) breaking down due to filesystem problems.
+					Nevertheless it is time to continue the preview season with our second preview heading towards our fourth sidux release &quot;&Epsilon;&rho;&omega;&sigmaf;&quot;, concentrating on further X.org 7.3/ xrandr 1.2 and X detection testing and finalizing the driver selection for various wlan cards (please report any issues <a href="http://sidux.com/index.php?name=PNphpBB2&file=viewtopic&t=6679">here</a>).
 					As usual the previews are shipping only as a small (&asymp;460 MB), but fully functional, KDE-lite flavour, to ease up testing and xdelta uploads and will be accompanied by &asymp;700 MB KDE-full variants for the final release.
 				</p>
 
 				<p>
-					sidux is a full featured debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
-					The ISO is completely based on debian sid, enriched and stabilized with sidux' own packages and scripts.
+					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
+					The ISO is completely based on Debian sid, enriched and stabilized with sidux' own packages and scripts.
 				</p>
 			</div>
 	
 			<div class="divider" id="release-notes">
 				<h2>Release notes for &Epsilon;&rho;&omega;&sigmaf; preview 2</h2>
-
 				<p>
-					This preview heading towards our fourth sidux release &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; concentrates on X.org 7.3/ xrandr 1.2 and X detection related changes and testing the new upstream kernel 2.6.23 and its wlan/ mac80211 capabilities.
-					For testing purposes all legacy wlan drivers for RaLink and Intersil ISL3880 wlan cards have been replaced by their new mac80211 based counterparts (rt2x00, p54), <a href="http://sidux.com/index.php?name=PNphpBB2&file=viewtopic&t=6679">feedback</a> regarding their stability is seriously appreciated to find the best combination for the final release (legacy drivers are available through our repositories by using module-assistant and blacklisting the mac80211 based drivers in &quot;/etc/modprobe.d/mac80211&quot;).
-				</p>
-
-				<p>
-					Further efforts have been invested into an advanced USB installation and live persistency framework (feedback welcome).
-					Various updates, fixes and adaptions have been applied to basically the complete package list and a lot of translation- and localisation related endeavours were started to improve the situation for our non english/ german speaking users.
-					What can be done until the final release in regard to better localisation support and integration or support for alternative window managers and desktop environments is currently under consideration.
+					Further efforts have been invested into an advanced USB installation, kernel stabilisation and live persistency framework (feedback welcome).
+					Various updates, fixes and adaptions have been applied to basically the complete package list and a lot of translation and localisation related endeavours were started to improve the situation for our non english/ german speaking users.
+					What can be done for the final release in regard to better localisation support and integration or support for alternative window managers and desktop environments is currently under consideration.
 				</p>
 
 				<p>
@@ -80,15 +75,15 @@
 				</p>
 
 				<p>
-					The full featured final release of sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; will be ready in about 2-3 weeks, intermediate xdeltas will be provided as needed until then.
+					The full featured final release of sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; will be ready in about 1-2 weeks, intermediate xdeltas will be provided as needed until then.
 				</p>
 			</div>
 	
 			<div class="divider" id="whats-new">
 				<h2>Now to the interesting topics, like what's on the menu for now:</h2>
 				<ul>
-					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer).</li>
-					<li>debian sid, as of 2007-10-29.</li>
+					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer)).</li>
+					<li>Debian sid, as of 2007-11-05.</li>
 					<li>kernel 2.6.23.1 (smp, hard preemption).</li>
 					<li>libata support for parallel ATA systems.</li>
 					<li>X.org 7.3.</li>
@@ -99,7 +94,8 @@
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
 					<li>iwlwifi3945/ iwlwifi4965 1.1.19.</li>
 					<li>b43/ b43legacy support for Broadcom wlan cards.</li>
-					<li>rt2x00 2.0.12 support for RaLink cards.</li>
+					<li>rt2x00 2.0.12+git-8647-g130dd8f support for RaLink cards.</li>
+					<li>experimental support for RealTek RTL8185 wlan cards.</li>
 					<li>support for RealTek RTL8187 wlan cards.</li>
 					<li>support for ADMtek ADM8211 wlan cards.</li>
 					<li>support for Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet cards (ICH9).</li>
@@ -108,7 +104,12 @@
 					<li>memtest86+.</li>
 					<li>overhauled partition and file system detection.</li>
 					<li>basic lvm2 detection and support (no installer support).</li>
-					<li>several X.org 7.3 and kernel 2.6.23 related bug- and compatibility fixes.</li>
+					<li>several X.org 7.3 and kernel 2.6.23 related bug and compatibility fixes.</li>
+					<li>siduxcc overhaul.</li>
+					<li>persistency fixes.</li>
+					<li>bitsetting/ xrandr compatible driver for ATi cards (6.7.195).</li>
+					<li>several X.org detection improvements and bugfixes.</li>
+					<li>/etc/apt/sources.list.d/ superseding the monolithic /etc/apt/sources.list.</li>
 				</ul>
 			</div>
 <!-- preview -->
@@ -338,15 +339,14 @@ deb-src http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix
 				</p>
 
 				<p>
-					We will gladly discuss any dfsg-free patches and contributions.
-					Especially regarding alternative window managers (gnome, xfce), mobile network connectivity (GPRS/ UMTS, Bluetooth, but also ISDN, PPP, PPPoE) or general janitorial tasks or translations/ localisations.
+					We will gladly discuss any dfsg-free patches and contributions, especially regarding alternative window managers (gnome, xfce), mobile network connectivity (GPRS/ UMTS, Bluetooth, but also ISDN, PPP, PPPoE) or general janitorial tasks or translations/ localisations.
 				</p>
 			</div>
 	
 			<div class="divider" id="roadmap">
 				<h2>Roadmap:</h2>
 				<p>
-					Please understand that the following roadmap is a rough estimate regarding our release schedule and is affected by the status of upstream debian sid, major system components like X.org, KDE, the linux kernel and our own developments and is subject to changes.
+					Please understand that the following roadmap is a rough estimate regarding our release schedule and is affected by the status of upstream Debian sid, major system components like X.org, KDE, the linux kernel and our own developments and is subject to changes.
 				</p>
 	
 				<ul>
@@ -394,7 +394,7 @@ history -->
 					Roland Engert (RoEn)<br />
 					Bernard Gray (cleary)<br />
 					Andreas Hausmann (Bodhi)<br />
-					Chris Hildebrandt (slam)<br />
+					<a href="http://w3you.com">Chris Hildebrandt</a> (slam)<br />
 					Ralph Hokanson Jr. (piper)<br />
 					Richard Holt (Richard)<br />
 					Harald Hope (h2)<br />
