@@ -137,9 +137,8 @@ fll-builder (1.1.7) unstable; urgency=low
   * kde-edu updated
   * distro-edu.bm added
   * distro-edu.bm updated
-  * new non-free [Button] handling for sources.list.d
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 07 Nov 2007 16:09:30 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 05 Nov 2007 21:40:12 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
