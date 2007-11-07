@@ -50,6 +50,12 @@ EOF
 EOF
 					# populate sources.list.d
 					if [ -n "${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}" ]; then
+
+echo "'${DEST}.d\/${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}.list'="
+echo "${DEST}.d/${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}.list"
+echo ${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}
+echo $i
+echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 						cat > "${DEST}.d/${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}.list" \
 <<EOF
 deb ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}

@@ -399,7 +399,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
 	
 	chroot_exec apt-get update
-	
+
 	# import key for extra mirror(s)
 	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
 		header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
@@ -686,6 +686,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Hacking /etc/ppp/peers/kppp-options for noauth..."
 		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 	fi
+
+	#hjt
+	chroot_exec update-alternatives --install /usr/bin/x-window-manager x-window-manager /usr/bin/enlightenment_start 49
+	#cat_file_to_chroot applications.menu	/etc/xdg/menus/applications.menu
 
 	#################################################################
 	#		cleanup & prepare final chroot			#
