@@ -41,6 +41,9 @@ fll-builder (1.1.7) unstable; urgency=low
         % sidux-vdr-extras
         % superkaramba
         % vdr-gui
+    - kde-full:
+      + replace openoffice.org by the new meta task openoffice.lite created by
+        cleary.
     - xfce list:
       + removals:
         % gdk-imlib11
@@ -139,7 +142,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 09 Nov 2007 10:44:30 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 09 Nov 2007 01:37:40 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 

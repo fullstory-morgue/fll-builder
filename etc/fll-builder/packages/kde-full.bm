@@ -7,6 +7,7 @@ FLL_PACKAGE_DEPMODS=(
 	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
+	openoffice-lite
 	utils-essential
 	utils-extra
 	xserver
@@ -89,7 +90,6 @@ FLL_PACKAGES=(
 	libqt-perl
 	moto4lin
 	myspell-en-us
-	openoffice.org
 	openoffice.org-kde
 	nano
 	pdfedit
