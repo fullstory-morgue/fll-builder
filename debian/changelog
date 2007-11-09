@@ -95,6 +95,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * release notes - change colours in screen.css to suit eros
   * release notes - change sidux-logo.png to suit eros
   * create openoffice-lite.bm to purge less desirable ooo components (base)
+  * remove iceweasel and ktorrent from kde-lite (now ~400MB i386 build)
 
   [ Ferdinand Thommes ]
   * fixed xfce.bm
@@ -142,7 +143,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 09 Nov 2007 01:37:40 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 09 Nov 2007 12:36:36 +1100
 
 fll-builder (1.1.6) unstable; urgency=low
 
