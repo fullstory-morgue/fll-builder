@@ -135,6 +135,9 @@ fll-builder (1.1.7) unstable; urgency=low
   * Don't run fix-fonts in the build chroot, I don't think it makes any sense
     here.
   * Initial /dev/pts handling in chroot_virtfs().
+  * kde-full profile tweaking:
+    - gimp-basic, libqt-perl, pdfedit, out
+    - krita, openoffice.org-thesaurus-en-us in
 
   [ Ferdinand Thommes ]
   * added aqualung for testing
@@ -145,7 +148,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 09 Nov 2007 02:54:25 +0100
+ -- Kel Modderman <kel@otaku42.de>  Fri, 09 Nov 2007 13:43:31 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 

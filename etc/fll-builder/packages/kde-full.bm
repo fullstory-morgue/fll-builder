@@ -4,7 +4,6 @@ FLL_PACKAGE_DEPMODS=(
 	distro-kde
 	distro-tools
 	distro-tools-x
-	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
 	openoffice-lite
@@ -80,6 +79,7 @@ FLL_PACKAGES=(
 	kpowersave
 	kppp
 	krdc
+	krita
 	kreversi
 	krusader
 	ksnapshot
@@ -87,12 +87,11 @@ FLL_PACKAGES=(
 	kvpnc
 	kwalletmanager
 	kwifimanager
-	libqt-perl
 	moto4lin
 	myspell-en-us
 	openoffice.org-kde
+	openoffice.org-thesaurus-en-us
 	nano
-	pdfedit
 	rdiff-backup
 	siduxcc
 	wengophone
