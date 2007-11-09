@@ -77,6 +77,8 @@ fll-builder (1.1.7) unstable; urgency=low
   * strip bogus version info from snapshot builds.
   * take care to remove persistency udev rules, even though they should only
     be created on boot and not in chroot, better safe than sorry.
+  * shorten FLL_BUILD_*MIRROR_LABEL_SAFE to debian and sidux, to allow
+    deriving from distro-defaults FLL_DISTRO_NAME in fll-locales.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -143,7 +145,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 09 Nov 2007 12:36:36 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 09 Nov 2007 02:54:25 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
