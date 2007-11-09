@@ -73,7 +73,7 @@ detect_i18n_support_packages() {
 			myspell-en-us)
 				grep_i18n_string myspell $@
 				;;
-			openoffice.org)
+			openoffice.org-core)
 				grep_i18n_string openoffice.org-l10n $@
 				grep_i18n_string openoffice.org-thesaurus $@
 				;;
