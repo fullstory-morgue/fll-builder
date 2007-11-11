@@ -21,6 +21,7 @@ fll-builder (1.1.7) unstable; urgency=low
       slam.
     - start to talk about pre3, so it doesn't get lost.
     - citations needed.
+    - adapt pending issues.
   * do not default to acpi=off in failsafe options, this does not work for SMP
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
@@ -152,8 +153,7 @@ fll-builder (1.1.7) unstable; urgency=low
   [ Ferdinand Thommes ]
   * added releasenote.en for special release for Chip-Linux
 
- -- Ferdinand Thommes <devil@sidux.com>  Sun, 11 Nov 2007 23:56:33 +0100
-  * added en en.html for 2004-07 pre3
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 12 Nov 2007 00:48:55 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
