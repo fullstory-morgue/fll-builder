@@ -101,6 +101,8 @@ fll-builder (1.1.7) unstable; urgency=low
   * remove iceweasel and ktorrent from kde-lite (now ~400MB i386 build)
 
   [ Ferdinand Thommes ]
+  * added releasenote.de for special release for Chip-Linux
+  * added aqualung for testing
   * fixed xfce.bm
   * added unp to cli.bm
   * trimmed xfce.bm
@@ -141,10 +143,6 @@ fll-builder (1.1.7) unstable; urgency=low
     - krita, openoffice.org-thesaurus-en-us in
   * Fix i18n.bm for new openoffice-lite module.
 
-  [ Ferdinand Thommes ]
-  * added aqualung for testing
-  * added releasenote.de for special release for Chip-Linux
-
   [ Horst Tritremmel ]
   * kde-edu.bm added
   * kde-edu updated
@@ -152,6 +150,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm updated
 
  -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 11 Nov 2007 22:04:18 +0100
+  * added en en.html for 2004-07 pre3
 
 fll-builder (1.1.6) unstable; urgency=low
 
