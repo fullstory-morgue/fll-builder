@@ -149,7 +149,10 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 11 Nov 2007 22:04:18 +0100
+  [ Ferdinand Thommes ]
+  * added releasenote.en for special release for Chip-Linux
+
+ -- Ferdinand Thommes <devil@sidux.com>  Sun, 11 Nov 2007 23:56:33 +0100
   * added en en.html for 2004-07 pre3
 
 fll-builder (1.1.6) unstable; urgency=low
