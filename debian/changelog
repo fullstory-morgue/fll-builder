@@ -79,6 +79,7 @@ fll-builder (1.1.7) unstable; urgency=low
     be created on boot and not in chroot, better safe than sorry.
   * shorten FLL_BUILD_*MIRROR_LABEL_SAFE to debian and sidux, to allow
     deriving from distro-defaults FLL_DISTRO_NAME in fll-locales.
+  * finally ditch sidux-graphics in favour of gfxboot-theme-sidux.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -142,6 +143,7 @@ fll-builder (1.1.7) unstable; urgency=low
 
   [ Ferdinand Thommes ]
   * added aqualung for testing
+  * added releasenote.de for special release for Chip-Linux
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -149,10 +151,7 @@ fll-builder (1.1.7) unstable; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
-  [ Ferdinand Thommes ]
-  * added releasenote.de for special release for Chip-Linux
-
- -- Ferdinand Thommes <devil@sidux.com>  Sun, 11 Nov 2007 20:16:38 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 11 Nov 2007 22:04:18 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
