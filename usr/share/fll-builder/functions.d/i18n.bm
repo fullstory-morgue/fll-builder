@@ -39,8 +39,12 @@ grep_i18n_string() {
 
 detect_i18n_support_packages() {
 	for p in gcompris gimp gwenview icedove iceweasel k3b kdebase koffice myspell-en-us \
-		openoffice.org sidux-manual-en; do
-		installed_in_chroot "$p" || continue
+		openoffice.org-core sidux-manual-en; do
+
+		if [[ $(type -t installed_in_chroot) == "function" ]]; then
+			installed_in_chroot "$p" || continue
+		fi
+
 		case "$p" in
 			k3b|gwenview)
 				for l in $@; do
