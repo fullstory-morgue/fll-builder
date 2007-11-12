@@ -151,6 +151,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Do upper -> lower case conversion of language string in i18n.bm too.
   * Allow detect_i18n_support() to continue when installed_in_chroot() is not
     a defined function. Use ful for regression test.
+  * Add detect_i18n_test() to i18n.bm for testing.
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -158,7 +159,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Kel Modderman <kel@otaku42.de>  Tue, 13 Nov 2007 00:04:30 +1000
+ -- Kel Modderman <kel@otaku42.de>  Tue, 13 Nov 2007 00:12:38 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 

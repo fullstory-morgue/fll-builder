@@ -90,3 +90,10 @@ detect_i18n_support_packages() {
 		esac
 	done
 }
+
+detect_i18n_test() {
+	for l in $(locale -a | sed -n 's/\.utf8//p'); do
+		echo "# $l"
+		detect_i18n_support_packages $l
+	done
+}
