@@ -124,17 +124,29 @@ preview -->
 			<div class="divider" id="non-free">
 				<h2>Hinweise f&uuml;r Hardware, die non-free Pakete braucht:</h2>
 				<p>
-					sidux enth&auml;lt nur <a href="http://www.debian.org/social_contract">dfsg</a> freie Software, deshalb ist es sinnvoll, contrib/ non-free in die  <a href="http://sidux.com/files/misc/sources.list">/etc/apt/sources.list</a> aufzunehmen und Internetzugang sicherzustellen.
+					sidux enth&auml;lt nur <a href="http://www.debian.org/social_contract">dfsg</a> freie Software, deshalb ist es sinnvoll, contrib/ non-free in die  <a href="http://sidux.com/files/misc/sources.list.d/debian.list">/etc/apt/sources.list.d/debian.list</a> aufzunehmen und Internetzugang sicherzustellen.
 				</p>
 		<pre># See sources.list(5) for more information, especially
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
+# The /etc/apt/sources.list.d/ directory provides a way to add sources.list
+# entries in seperate files that end with sources.list file.
 
-# Unstable
+# unstable
 deb http://ftp.de.debian.org/debian unstable main contrib non-free
 # deb-src http://ftp.de.debian.org/debian unstable main contrib non-free
 
-# sidux
+# testing
+# deb http://ftp.de.debian.org/debian testing main contrib non-free
+# deb-src http://ftp.de.debian.org/debian testing main contrib non-free
+
+# experimental
+# deb http://ftp.de.debian.org/debian experimental main contrib non-free
+# deb-src http://ftp.de.debian.org/debian experimental main contrib non-free</pre>
+				<p>
+					und <a href="http://sidux.com/files/misc/sources.list.d/sidux.list">/etc/apt/sources.list.d/sidux.list</a>:
+				</p>
+				<pre># sidux e.V., Germany
 deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
 #deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
 
