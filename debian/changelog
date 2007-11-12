@@ -148,6 +148,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - gimp-basic, libqt-perl, pdfedit, out
     - krita, openoffice.org-thesaurus-en-us in
   * Fix i18n.bm for new openoffice-lite module.
+  * Do upper -> lower case conversion of language string in i18n.bm too.
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -155,7 +156,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 12 Nov 2007 14:10:46 +0100
+ -- Kel Modderman <kel@otaku42.de>  Mon, 12 Nov 2007 23:51:20 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
