@@ -20,6 +20,8 @@ FLL_PACKAGES=(
 	gdm
 	gksu
 	gnumeric
+	gstreamer0.10-fluendo-mp3
+	gstreamer0.10-plugins-base
 	gtk2-engines-xfce
 	gxine
 	gxineplugin
