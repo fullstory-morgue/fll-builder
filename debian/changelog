@@ -153,6 +153,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Allow detect_i18n_support() to continue when installed_in_chroot() is not
     a defined function. Use ful for regression test.
   * Add detect_i18n_test() to i18n.bm for testing.
+  * Drop krita from kde-full package array.
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -160,7 +161,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 14 Nov 2007 16:48:55 +1100
+ -- Kel Modderman <kel@otaku42.de>  Fri, 16 Nov 2007 13:29:13 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 

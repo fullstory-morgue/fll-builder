@@ -79,7 +79,6 @@ FLL_PACKAGES=(
 	kpowersave
 	kppp
 	krdc
-	krita
 	kreversi
 	krusader
 	ksnapshot
