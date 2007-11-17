@@ -88,6 +88,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * add initial tasks for east asian languages.
   * whitelist virtualbox-ose-guest-utils, it will be removed by fll-virtual if
     necessary.
+  * use arch extension for image file.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -164,7 +165,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Nov 2007 19:32:34 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Nov 2007 23:53:40 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 

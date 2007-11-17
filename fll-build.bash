@@ -436,10 +436,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			i?86)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X32"
 				;;
 			amd64|x86_64)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}64-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X64"
 				;;
 			*)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
@@ -451,10 +453,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			i?86)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X32"
 				;;
 			amd64|x86_64)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X64"
 				;;
 			*)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
@@ -462,11 +466,17 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				;;
 		esac
 	fi
+	FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 
 	#################################################################
 	#		install packages required early in chroot
 	#################################################################
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
+
+	# add arch marker to squashfs image.
+	sed -i	-e "s/\(FLL_IMAGE_DIR=\).*/\1\"${FLL_IMAGE_DIR}\"/" \
+		-e "s/\(FLL_IMAGE_FILE=\).*/\1\"${FLL_IMAGE_FILE}\"/" \
+			"${FLL_BUILD_CHROOT}/etc/default/distro"
 	
 	#################################################################
 	#		preseed locales					#
