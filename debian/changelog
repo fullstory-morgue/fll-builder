@@ -85,6 +85,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     deriving from distro-defaults FLL_DISTRO_NAME in fll-locales.
   * finally ditch sidux-graphics in favour of gfxboot-theme-sidux.
   * add logrotate to utils-essential, thanks to kelmo for noticing.
+  * add initial tasks for east asian languages.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -161,7 +162,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 16 Nov 2007 13:29:13 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 17 Nov 2007 14:43:53 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
