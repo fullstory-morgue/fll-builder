@@ -46,6 +46,7 @@ sudo
 #sysklogd
 sysv-rc
 udev
+virtualbox-ose-guest-utils
 wpasupplicant
 x11-common
 #################################################
