@@ -32,5 +32,6 @@ FLL_PACKAGES+=(
 )
 
 if [[ $FLL_BUILD_ARCH == i386 ]]; then
-	FLL_PACKAGES+=( virtualbox-ose-guest-utils )
+	FLL_PACKAGES+=( libc6-i686 )
 fi
+

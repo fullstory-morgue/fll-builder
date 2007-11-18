@@ -23,3 +23,7 @@ FLL_PACKAGES+=(
 	zenity		# the hard dependency must die! ;)
 )
 
+if [[ $FLL_BUILD_ARCH == i386 ]]; then
+	FLL_PACKAGES+=( virtualbox-ose-guest-utils )
+fi
+
