@@ -160,6 +160,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * Drop krita from kde-full package array.
   * We cannot responsibly ship hotkey-setup or kdmtheme, they are known to be
     broken atm.
+  * Try to add virtualbox-ose-guest-utils conditional to build architecture in
+    hwsupport-extra package module.
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -167,7 +169,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 18 Nov 2007 16:06:11 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 18 Nov 2007 23:32:31 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 

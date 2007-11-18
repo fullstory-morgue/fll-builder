@@ -31,3 +31,6 @@ FLL_PACKAGES+=(
 	vbetool
 )
 
+if [[ $FLL_BUILD_ARCH == i386 ]]; then
+	FLL_PACKAGES+=( virtualbox-ose-guest-utils )
+fi
