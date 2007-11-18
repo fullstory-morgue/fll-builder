@@ -92,6 +92,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * use arch extension for image file.
   * move virtualbox-ose-guest-utils to distro-x.
   * install libc6-i686 on i386 builds.
+  * s/X32/386/.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -172,7 +173,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Nov 2007 15:39:37 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Nov 2007 15:54:14 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
