@@ -1,4 +1,5 @@
 FLL_PACKAGES+=(
+	dmz-cursor-theme
 	fluxbox
 	fontconfig
 	libgl1-mesa-dri

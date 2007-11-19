@@ -474,19 +474,19 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
 
 	# allow the user config to override distro-defaults
-	sed -i	-e "s/\(FLL_DISTRO_NAME=\).*/\1\"${FLL_DISTRO_NAME}\"/" \
-		-e "s/\(FLL_IMAGE_DIR=\).*/\1\"${FLL_IMAGE_DIR}\"/" \
-		-e "s/\(FLL_IMAGE_FILE=\).*/\1\"${FLL_IMAGE_FILE}\"/" \
-		-e "s/\(FLL_MOUNTPOINT=\).*/\1\"${FLL_MOUNTPOINT}\"/" \
-		-e "s/\(FLL_MEDIA_NAME=\).*/\1\"${FLL_MEDIA_NAME}\"/" \
-		-e "s/\(FLL_LIVE_USER=\).*/\1\"${FLL_LIVE_USER}\"/" \
-		-e "s/\(FLL_LIVE_USER_GROUPS=\).*/\1\"${FLL_LIVE_USER_GROUPS}\"/" \
-		-e "s/\(FLL_WALLPAPER=\).*/\1\"${FLL_WALLPAPER}\"/" \
-		-e "s/\(FLL_IRC_SERVER=\).*/\1\"${FLL_IRC_SERVER}\"/" \
-		-e "s/\(FLL_IRC_PORT=\).*/\1\"${FLL_IRC_PORT}\"/" \
-		-e "s/\(FLL_IRC_CHANNEL=\).*/\1\"${FLL_IRC_CHANNEL}\"/" \
-		-e "s/\(FLL_CDROM_INDEX=\).*/\1\"${FLL_CDROM_INDEX}\"/" \
-		-e "s/\(FLL_CDROM_INDEX_ICON=\).*/\1\"${FLL_CDROM_INDEX_ICON}\"/" \
+	sed -i	-e "s%\(FLL_DISTRO_NAME=\).*%\1\"${FLL_DISTRO_NAME}\"%" \
+		-e "s%\(FLL_IMAGE_DIR=\).*%\1\"${FLL_IMAGE_DIR}\"%" \
+		-e "s%\(FLL_IMAGE_FILE=\).*%\1\"${FLL_IMAGE_FILE}\"%" \
+		-e "s%\(FLL_MOUNTPOINT=\).*%\1\"${FLL_MOUNTPOINT}\"%" \
+		-e "s%\(FLL_MEDIA_NAME=\).*%\1\"${FLL_MEDIA_NAME}\"%" \
+		-e "s%\(FLL_LIVE_USER=\).*%\1\"${FLL_LIVE_USER}\"%" \
+		-e "s%\(FLL_LIVE_USER_GROUPS=\).*%\1\"${FLL_LIVE_USER_GROUPS}\"%" \
+		-e "s%\(FLL_WALLPAPER=\).*%\1\"${FLL_WALLPAPER}\"%" \
+		-e "s%\(FLL_IRC_SERVER=\).*%\1\"${FLL_IRC_SERVER}\"%" \
+		-e "s%\(FLL_IRC_PORT=\).*%\1\"${FLL_IRC_PORT}\"%" \
+		-e "s%\(FLL_IRC_CHANNEL=\).*%\1\"${FLL_IRC_CHANNEL}\"%" \
+		-e "s%\(FLL_CDROM_INDEX=\).*%\1\"${FLL_CDROM_INDEX}\"%" \
+		-e "s%\(FLL_CDROM_INDEX_ICON=\).*%\1\"${FLL_CDROM_INDEX_ICON}\"%" \
 			"${FLL_BUILD_CHROOT}/etc/default/distro"
 	
 	#################################################################
@@ -688,6 +688,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
 			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
 		fi
+	fi
+
+	# set default X cursor theme
+	if installed_in_chroot dmz-cursor-theme && exists_in_chroot /usr/share/icons/DMZ-Black/cursor.theme; then
+		header "Setting x-cursor-theme to DMZ-Black..."
+		chroot_exec update-alternatives --set x-cursor-theme /usr/share/icons/DMZ-Black/cursor.theme
 	fi
 
 	# use most as PAGER if installed in chroot
