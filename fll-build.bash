@@ -441,7 +441,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			amd64|x86_64)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}64-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X64"
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.x64"
 				;;
 			*)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
@@ -458,7 +458,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			amd64|x86_64)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
 					${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.X64"
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.x64"
 				;;
 			*)
 				FLL_ISO_NAME=$(tr A-Z a-z <<< \
