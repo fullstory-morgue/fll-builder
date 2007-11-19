@@ -473,7 +473,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
 
-	# add arch marker to squashfs image.
+	# allow the user config to override distro-defaults
 	sed -i	-e "s/\(FLL_DISTRO_NAME=\).*/\1\"${FLL_DISTRO_NAME}\"/" \
 		-e "s/\(FLL_IMAGE_DIR=\).*/\1\"${FLL_IMAGE_DIR}\"/" \
 		-e "s/\(FLL_IMAGE_FILE=\).*/\1\"${FLL_IMAGE_FILE}\"/" \
