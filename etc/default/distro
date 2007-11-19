@@ -30,9 +30,6 @@ FLL_LIVE_USER_GROUPS="dialout dip fuse cdrom sudo audio video plugdev users flop
 # this affects su/ sudo mechanisms and other defaults
 FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] && echo live || echo installed)
 
-# install type (debian|beginner|live)
-FLL_INSTALL_TYPE="debian"
-
 # where is the default X wallpaper located
 FLL_WALLPAPER="/usr/share/wallpapers/sidux-eros-1600x1200.png"
 
@@ -40,9 +37,6 @@ FLL_WALLPAPER="/usr/share/wallpapers/sidux-eros-1600x1200.png"
 FLL_IRC_SERVER="irc.oftc.net"
 FLL_IRC_PORT="6667"
 FLL_IRC_CHANNEL="#sidux"
-
-# preferred X toolkit for various helper tools (gtk|gtk2|kde).
-FLL_XTOOLKIT="kde"
 
 # cdrom html index.html custom info
 # for sidux it's the manual

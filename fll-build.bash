@@ -474,8 +474,19 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
 
 	# add arch marker to squashfs image.
-	sed -i	-e "s/\(FLL_IMAGE_DIR=\).*/\1\"${FLL_IMAGE_DIR}\"/" \
+	sed -i	-e "s/\(FLL_DISTRO_NAME=\).*/\1\"${FLL_DISTRO_NAME}\"/" \
+		-e "s/\(FLL_IMAGE_DIR=\).*/\1\"${FLL_IMAGE_DIR}\"/" \
 		-e "s/\(FLL_IMAGE_FILE=\).*/\1\"${FLL_IMAGE_FILE}\"/" \
+		-e "s/\(FLL_MOUNTPOINT=\).*/\1\"${FLL_MOUNTPOINT}\"/" \
+		-e "s/\(FLL_MEDIA_NAME=\).*/\1\"${FLL_MEDIA_NAME}\"/" \
+		-e "s/\(FLL_LIVE_USER=\).*/\1\"${FLL_LIVE_USER}\"/" \
+		-e "s/\(FLL_LIVE_USER_GROUPS=\).*/\1\"${FLL_LIVE_USER_GROUPS}\"/" \
+		-e "s/\(FLL_WALLPAPER=\).*/\1\"${FLL_WALLPAPER}\"/" \
+		-e "s/\(FLL_IRC_SERVER=\).*/\1\"${FLL_IRC_SERVER}\"/" \
+		-e "s/\(FLL_IRC_PORT=\).*/\1\"${FLL_IRC_PORT}\"/" \
+		-e "s/\(FLL_IRC_CHANNEL=\).*/\1\"${FLL_IRC_CHANNEL}\"/" \
+		-e "s/\(FLL_CDROM_INDEX=\).*/\1\"${FLL_CDROM_INDEX}\"/" \
+		-e "s/\(FLL_CDROM_INDEX_ICON=\).*/\1\"${FLL_CDROM_INDEX_ICON}\"/" \
 			"${FLL_BUILD_CHROOT}/etc/default/distro"
 	
 	#################################################################
