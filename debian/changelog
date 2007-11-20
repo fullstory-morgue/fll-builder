@@ -174,6 +174,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     Add dmz-cursor-theme to our xserver package module array.
   * Fix poor usage of sed committed in r12345, it could not handle the /
     character that is used in a handful of distro-defaults variables.
+  * Add hint for IVTV firmware to en + de release notes.
 
   [ Horst Tritremmel ]
   * kde-edu.bm added
@@ -181,7 +182,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Kel Modderman <kel@otaku42.de>  Mon, 19 Nov 2007 16:25:53 +1000
+ -- Kel Modderman <kel@otaku42.de>  Tue, 20 Nov 2007 13:28:47 +1000
 
 fll-builder (1.1.6) unstable; urgency=low
 
