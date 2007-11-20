@@ -408,9 +408,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
 			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
 				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
-		else
-			echo "Must provide GPG keyid for ${FLL_BUILD_EXTRAMIRROR[$i]}"
-			exit 8
 		fi
 	done
 
