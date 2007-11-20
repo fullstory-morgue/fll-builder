@@ -16,7 +16,11 @@ FLL_PACKAGES+=(
 	xfonts-100dpi-transcoded
 	xresprobe
 	xserver-xorg
-	xserver-xorg-input-all
+#	xserver-xorg-input-all		# wacom breaks this atm
+	xserver-xorg-input-evdev
+	xserver-xorg-input-kbd
+	xserver-xorg-input-mouse
+	xserver-xorg-input-synaptics
 	xserver-xorg-video-all
 	xutils
 )
