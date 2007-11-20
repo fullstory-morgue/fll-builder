@@ -100,6 +100,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * s/X64/x64/.
   * allow overrrides for most distro-defaults options.
   * remove never employed options from distro-defaults.
+  * finish kde-full.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -185,7 +186,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 20 Nov 2007 16:33:00 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 20 Nov 2007 22:06:44 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
