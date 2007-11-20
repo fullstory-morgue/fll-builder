@@ -28,6 +28,8 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - clean up contributors.
     - talk about virtualbox-ose-guest support.
     - add russian mirror again.
+    - talk about hetzner
+    - delay 2008-01 to mid-end january 2008.
   * do not default to acpi=off in failsafe options, this does not work for SMP
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
@@ -183,7 +185,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 20 Nov 2007 15:56:12 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 20 Nov 2007 16:33:00 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
