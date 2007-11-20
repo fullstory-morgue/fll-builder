@@ -13,6 +13,7 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
+	libxine1-misc-plugins	# ugly hack to avoid libxine1-plugins
 	akregator
 	amarok
 	ark
