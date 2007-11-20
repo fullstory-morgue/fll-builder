@@ -82,6 +82,7 @@ FLL_PACKAGES=(
 	kreversi
 	krusader
 	ksnapshot
+	ksvg
 	ktorrent
 	kvpnc
 	kwalletmanager
