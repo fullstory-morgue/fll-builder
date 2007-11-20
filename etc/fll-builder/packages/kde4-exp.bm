@@ -1,0 +1,147 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	libxine1-misc-plugins   # ugly hack to avoid libxine1-plugins
+
+	# kdelibs
+	kdelibs5/experimental
+	kdelibs5-data/experimental
+	kdelibs5-doc/experimental
+	kdelibs-bin/experimental
+
+	# kdepimlibs
+	kdepimlibs5/experimental
+	kdepimlibs-data/experimental
+
+	# kdebase-runtime
+	drkonqi/experimental
+	kdebase-runtime/experimental
+	kdebase-runtime-bin/experimental
+	kdebase-runtime-data/experimental
+	khelpcenter/experimental
+	kde-icons-oxygen/experimental
+
+	# kdebase
+	dolphin/experimental
+	kappfinder/experimental
+	kdebase/experimental
+	kdebase-bin/experimental
+	kdebase-data/experimental
+	kdebase-kio-plugins/experimental
+	kdepasswd/experimental
+	kfind/experimental
+	knetattach/experimental
+	konqueror/experimental
+	konqueror-nsplugins/experimental
+	konsole/experimental
+	kwrite/experimental
+	libkonq5/experimental
+
+	# kdebase-workspace
+	kdebase-workspace/experimental
+	kdebase-workspace-bin/experimental
+	kdebase-workspace-data/experimental
+	kdm/experimental
+	klipper/experimental
+	ksysguard/experimental
+	ksysguardd/experimental
+	kwin/experimental
+	systemsettings/experimental
+
+	# extragear-plasma
+#	extragear-plasma/experimental
+#	extragear-plasma-data/experimental
+
+	# kdeedu
+#	blinken/experimental
+#	indi/experimental
+#	kalgebra/experimental
+#	kalzium/experimental
+#	kalzium-data/experimental
+#	kanagram/experimental
+#	kbruch/experimental
+#	kdeedu/experimental
+#	keduca/experimental
+#	kgeography/experimental
+#	khangman/experimental
+#	kig/experimental
+#	kiten/experimental
+#	klettres/experimental
+#	klettres-data/experimental
+#	kmplot/experimental
+#	kpercentage/experimental
+#	kstars/experimental
+#	kstars-data/experimental
+#	ktouch/experimental
+#	kturtle/experimental
+#	kwordquiz/experimental
+#	libkdeedu4/experimental
+#	libkiten1/experimental
+#	libmarble4/experimental
+#	marble/experimental
+#	marble-data/experimental
+#	parley/experimental
+#	parley-data/experimental
+
+	# kdegames
+#	bovo/experimental
+#	katomic/experimental
+#	kbackgammon/experimental
+#	kbattleship/experimental
+#	kblackbox/experimental
+#	kbounce/experimental
+#	kdegames/experimental
+#	kdegames-card-data/experimental
+#	kdegames-mahjongg-data/experimental
+#	kgoldrunner/experimental
+#	kiriki/experimental
+#	kjumpingcube/experimental
+#	klines/experimental
+#	kmahjongg/experimental
+#	kmines/experimental
+#	knetwalk/experimental
+#	kolf/experimental
+#	konquest/experimental
+#	kpat/experimental
+#	kreversi/experimental
+#	ksame/experimental
+#	kshisen/experimental
+#	kspaceduel/experimental
+#	ksquares/experimental
+#	ksudoku/experimental
+#	ktuberling/experimental
+#	kwin4/experimental
+#	libkdegames4/experimental
+#	lskat/experimental
+
+	# kdegraphics
+	gwenview/experimental
+	kamera/experimental
+	kcolorchooser/experimental
+	kdegraphics/experimental
+	kdegraphics-strigi-plugins/experimental
+	kolourpaint4/experimental
+	kruler/experimental
+	kscan/experimental
+	ksnapshot/experimental
+	libokularcore1/experimental
+	okular/experimental
+	okular-extra-backends/experimental
+
+	# misc
+	gtk2-engines-qtcurve
+)
+
+# broken
+exit 1
