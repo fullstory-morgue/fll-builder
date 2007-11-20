@@ -413,6 +413,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 	# add imported gpg keys to apt's trusted keyring
 	if exists_in_chroot /root/.gnupg/pubring.gpg; then
+		header "Importing /root/.gnupg/pubring.gpg with apt-key..."
 		chroot_exec apt-key add /root/.gnupg/pubring.gpg
 	fi
 
