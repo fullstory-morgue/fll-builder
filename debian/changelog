@@ -30,6 +30,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - add russian mirror again.
     - talk about hetzner
     - delay 2008-01 to mid-end january 2008.
+    - finalize release notes for 2007-04.
   * do not default to acpi=off in failsafe options, this does not work for SMP
     systems and may be dangerous for notebooks in particular.
   * do not default to nodma in failsafe options, this has no practical meaning
@@ -101,6 +102,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * allow overrrides for most distro-defaults options.
   * remove never employed options from distro-defaults.
   * finish kde-full.
+  * enhance inline comments about sources.list vs. sources.list.d/.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -186,7 +188,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 20 Nov 2007 22:06:44 +0100
+ -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Wed, 21 Nov 2007 02:19:27 +0000
 
 fll-builder (1.1.6) unstable; urgency=low
 

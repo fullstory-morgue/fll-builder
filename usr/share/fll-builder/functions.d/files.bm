@@ -15,6 +15,17 @@ cat_file_to_chroot() {
 # The /etc/apt/sources.list.d/ directory provides a way to add sources.list
 # entries in seperate files that end with sources.list file.
 
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Please use /etc/apt/sources.list.d/ instead and create a seperate *.list    #
+# file for each server, like:                                                 #
+#      /etc/apt/sources.list.d/debian.list                                    #
+#      /etc/apt/sources.list.d/sidux.list                                     #
+#      /etc/apt/sources.list.d/foo.list                                       #
+#      /etc/apt/sources.list.d/bar.list                                       #
+# containing the actual deb/ deb-src stanzas for the desired suites and       #
+# repositories.                                                               #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
 #deb ${FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 #deb-src ${FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
 

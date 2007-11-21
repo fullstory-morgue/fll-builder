@@ -49,10 +49,9 @@ preview -->
 
 		<div id="main-page">
 			<div class="divider" id="welcome">
-				<h1 id="top-header">sidux 2007-04 preview 3</h1>
+				<h1 id="top-header">sidux 2007-04</h1>
 				<p>
-					Eigentlich sollte dies bereits die endgültige Version von sidux 2007-04 sein. Allerdings war die vergangene Woche etwas turbulent hinter den Kulissen von Debian sid, mit einem unbeabsichtigten <a href="http://lists.debian.org/debian-devel/2007/11/msg00033.html">glibc</a> Upload, einer defekten openssl Version (<a href="http://bugs.debian.org/449200">#449200</a>), welche wpasupplicant negativ beeintr&auml;chtigte und dem <a href="http://lists.debian.org/debian-devel-announce/2007/11/msg00001.html">Zusammenbruch</a> von ries.debian.org (ftp-master) durch Dateisystemprobleme.
-					Aus diesen Gründen haben wir für diese Veröffentlichung eine Preview 3 erstellt, die im Weitesten dem vierten sidux Release &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; entspricht was Paketumfang und Stabilität angeht. Der grösste Unterschied zur finalen Version, die in ca. 1 Woche erscheinen wird, sind die durch den Ausfall von ries.debian.org (ftp-master) aufgelaufenen Updates für einige Pakete.
+					W&auml;hrend sich sidux seinem ersten Geburtstag n&auml;hert, geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;445 MB gro&szlig;en kde-lite&ndash; und einer &asymp;680 MB gro&szlig;en kde-full Variante.
 				</p>
 
 				<p>
@@ -62,11 +61,15 @@ preview -->
 			</div>
 
 			<div class="divider" id="release-notes">
-				<h2>Release Notes f&uuml;r &Epsilon;&rho;&omega;&sigmaf; preview 3</h2>
+				<h2>Release Notes f&uuml;r &Epsilon;&rho;&omega;&sigmaf;</h2>
 				<p>
-					Besondere Anstrengungen wurden in erweiterte Methoden zur USB Installation, die Kernelstabilisierung und das live persistency Framework investiert (R&uuml;ckmeldungen erw&uuml;nscht).
+					Unser viertes Release konzentriert sich auf X.org 7.3/ xrandr 1.2 bedingte &Auml;nderungen, die neue X Erkennung und den neuen Upstream Kernel 2.6.23, mit aktualisiertem mac80211 wlan Stack und Treibern, welche die Unterst&uuml;tzung  einer Reihe zus&auml;tzlicher wlan Karten erm&ouml;glichen.
+					Obwohl die letzten zwei Monate mit dem Erscheinen von X.org 7.3, mehreren Library Transitionen und Infrastrukturproblemen f&uuml;r Debian sid als relativ turbulent zu bezeichnen sind, scheinen diese Problem f&uuml;r sidux weitgehend behoben zu sein, so da&szlig; nun der bestm&ouml;gliche opensource Support f&uuml;r diverse Grafikchips&auml;tze, verbunden mit den durch xrandr 1.2 kompatiblen Treiber m&ouml;glichen, erweiterten, Konfigurationsoptionen zur Laufzeit, bereitgestellt werden kann.
+				</p>
+
+				<p>
+					Besondere Anstrengungen wurden in erweiterte Methoden zur USB Installation, die Kernelstabilisierung und das live persistency Framework investiert.
 					Verschiedene Updates, Korrekturen und Anpassungen wurden praktisch der gesamten Paketliste zuteil und eine Menge an &Uuml;bersetzungs- und Lokalisierungsbestrebungen konnten gestartet werden, um die Situation f&uuml;r unsere nicht englisch-/ deutschsprachigen Benutzer zu verbessern.
-					Was davon bis hin zum finalen Release bez&uuml;glich eines besseren Lokalisierungssupports und -integration, oder dem Support alternativer Window Manager oder Desktop Environments erm&ouml;glicht werden kann, steht momentan zur Diskussion.
 				</p>
 
 				<p>
@@ -80,8 +83,8 @@ preview -->
 				<h2>Jetzt zu den interessanten Themen, was steht nun auf dem Plan:  </h2>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, neuere 64 bit f&auml;hige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
-					<li>Debian sid, Stand 2007-11-12.</li>
-					<li>kernel 2.6.23.1 (smp, hard preemption).</li>
+					<li>Debian sid, Stand 2007-11-21.</li>
+					<li>kernel 2.6.23.9-rc1 (smp, hard preemption).</li>
 					<li>libata Support f&uuml;r parallel ATA Systeme.</li>
 					<li>X.org 7.3.</li>
 					<li>KDE 3.5.8 (en + de).</li>
@@ -92,7 +95,7 @@ preview -->
 					<li>viele &Auml;nderungen im und am Handbuch.</li>
 					<li>iwlwifi3945/ iwlwifi4965 1.1.19.</li>
 					<li>b43/ b43legacy Support f&uuml;r Broadcom wlan Karten.</li>
-					<li>rt2x00 2.0.12+git-8647-g130dd8f Support f&uuml;r RaLink Karten.</li>
+					<li>rt2x00 2.0.12+git-9501-g9dab9ee Support f&uuml;r RaLink Karten.</li>
 					<li>experimenteller Support f&uuml;r RealTek RTL8185 wlan Karten.</li>
 					<li>Support f&uuml;r RealTek RTL8187 wlan Karten.</li>
 					<li>Support f&uuml;r ADMtek ADM8211 wlan Karten.</li>
@@ -118,7 +121,7 @@ preview -->
 			<div class="divider" id="pending">
 				<h2>Was hat es nicht in diese Preview geschafft?:</h2>
 				<ul>
-					<li>Pinnacle PCTVsat (DVB-S) Kompatibilit&auml;t.</li>
+					<li>a</li>
 				</ul>
 			</div>
 preview -->
