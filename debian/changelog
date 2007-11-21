@@ -42,7 +42,9 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
     - revisit non-installable/ disabled packages.
     - replace kooka by xsane, it's larger but a lot better, move it to
       distro-tools-x.
-    - add libxine1-x and libxine1-xvdr to distro-tools-x
+    - add libxine1-x and libxine1-xvdr to distro-tools-x.
+    - remove previously added bloat.
+    - try to live without forcing libxine1-misc-plugins into the builds.
     - kde-stripped:
       + additions:
         % add hwinfo to kde-stripped.
@@ -188,7 +190,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Wed, 21 Nov 2007 02:19:27 +0000
+ -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Wed, 21 Nov 2007 04:21:31 +0000
 
 fll-builder (1.1.6) unstable; urgency=low
 

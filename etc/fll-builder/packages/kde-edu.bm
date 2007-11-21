@@ -14,7 +14,6 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	### --- kde-lite ---------------------------
-	libxine1-misc-plugins	# ugly hack to avoid libxine1-plugins
 	ark
 	k3b
 	kaffeine

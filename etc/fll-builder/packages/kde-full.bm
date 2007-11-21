@@ -13,13 +13,11 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	libxine1-misc-plugins	# ugly hack to avoid libxine1-plugins
 	akregator
 	amarok
 	ark
 	basket
 	digikam
-	debhelper
 	dnsutils
 	gtk2-engines-qtcurve
 	gwenview
@@ -94,11 +92,8 @@ FLL_PACKAGES=(
 	nano
 	openoffice.org-kde
 	openoffice.org-thesaurus-en-us
-	pdfedit
 	rdiff-backup
 	siduxcc
-	sidux-vdr
-	vdr-gui
 	wengophone
 	yakuake
 )
