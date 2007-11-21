@@ -105,6 +105,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * remove never employed options from distro-defaults.
   * finish kde-full.
   * enhance inline comments about sources.list vs. sources.list.d/.
+  * use lower case for directories.
 
   [ Bernard Gray ]
   * remove xfce-lite.bm so single xfce package is used
@@ -190,7 +191,7 @@ fll-builder (1.1.7) UNRELEASED; urgency=low
   * distro-edu.bm added
   * distro-edu.bm updated
 
- -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Wed, 21 Nov 2007 04:21:31 +0000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 21 Nov 2007 15:03:34 +0100
 
 fll-builder (1.1.6) unstable; urgency=low
 
