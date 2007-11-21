@@ -294,472 +294,29 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		export ftp_proxy=$FLL_FTP_PROXY
 	fi
 
-	#################################################################
-	#		prepare build area				#
-	#################################################################
-	# temporary staging areas within buildarea
-	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-	FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT"
-	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
-
-	mkdir -vp "$FLL_BUILD_CHROOT" "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
-
-	# fix permissions to allow user access
-	if ((FLL_BUILD_OUTPUT_UID)); then
-		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_AREA"
-		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
-	fi
-
-	if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
-		if [[ $FLL_BUILD_ISO_DIR ]]; then
-			echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
-			echo "$SELF: creating iso in $FLL_BUILD_AREA"
-		fi
-		FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
-	fi
-
-	#################################################################
-	#		prepare kernel zip package			#
-	#################################################################
-	if [[ $FLL_BUILD_LINUX_KERNEL =~ '.*kernel-(.*).zip$' ]]; then
-		KVERS=${BASH_REMATCH[1]}
-
-		# stage temporary dir within chroot
-		FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
-
-		if [[ -f $FLL_BUILD_LINUX_KERNEL ]]; then
-			cp -v "$FLL_BUILD_LINUX_KERNEL" "$FLL_BUILD_LINUX_KERNELDIR"
-		else
-			wget "$FLL_BUILD_LINUX_KERNEL" \
-				-O "$FLL_BUILD_LINUX_KERNELDIR"/kernel-"$KVERS".zip
-		fi
-
-		pushd "$FLL_BUILD_LINUX_KERNELDIR" &>/dev/null
-			zip -T kernel-"$KVERS".zip
-			unzip kernel-"$KVERS".zip
-		popd &>/dev/null
-	elif [[ $FLL_BUILD_LINUX_KERNEL =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
-		KVERS="$FLL_BUILD_LINUX_KERNEL"
-		unset FLL_BUILD_LINUX_KERNELDIR
-	else
-		if [[ $FLL_BUILD_LINUX_KERNEL ]]; then
-			echo "Unrecognised kernel package: $FLL_BUILD_LINUX_KERNEL"
-		else
-			echo "Must define FLL_BUILD_LINUX_KERNEL in your conf"
-		fi
-		exit 5
-	fi
-
-	#################################################################
-	#		process package array(s)			#
-	#################################################################
-	if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
-		echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
-		exit 6
-	fi
-
-	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
-
-	for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
-		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
-		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
-	done
-
-	header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/early.bm"
-	source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/early.bm
-	
-	if [[ ! ${FLL_PACKAGES[@]} ]]; then
-		echo "$SELF: package profile did not produce FLL_PACKAGES array!"
-		exit 7
-	fi
-	
-	# echo package list early for bfree :-)
-	echo "${FLL_PACKAGES[@]}"
-
-	#################################################################
-	#		create & prepare chroot				#
-	#################################################################
-	if [[ $DEBUG ]]; then
-		FLL_DEBOOSTRAP_VERBOSITY="--debug"
-	else
-		FLL_DEBOOSTRAP_VERBOSITY="--verbose"
-	fi
-
-	header "running cdebootstrap..."
-	cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="$FLL_BUILD_ARCH" --flavour=minimal sid \
-		"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
-	
-	chroot_virtfs mount
-
-	cat_file_to_chroot chroot_policy	/usr/sbin/policy-rc.d
-	cat_file_to_chroot debian_chroot	/etc/debian_chroot
-	cat_file_to_chroot fstab		/etc/fstab
-	cat_file_to_chroot interfaces		/etc/network/interfaces
-	cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
-	
-	chroot_exec apt-get update
-	
-	# import key for extra mirror(s)
-	for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
-		header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
-		if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
-			cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec apt-key add -
-		elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
-			chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
-				"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
-		fi
-	done
-
-	# add imported gpg keys to apt's trusted keyring
-	if exists_in_chroot /root/.gnupg/pubring.gpg; then
-		header "Importing /root/.gnupg/pubring.gpg with apt-key..."
-		chroot_exec apt-key add /root/.gnupg/pubring.gpg
-	fi
-
-	# refresh lists now that "secure apt" is aware of required gpg keys
-	chroot_exec apt-get update
-	
 	# package timestamp for snapshot versioning
 	FLL_PACKAGE_TIMESTAMP="$(date -u +%Y%m%d%H%M)"
-
-	# grab any fixes from fix.main
-	chroot_exec apt-get --assume-yes dist-upgrade
 
 	#################################################################
 	#		iso name (with package timestamp)		#
 	#################################################################
 	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
-		case "$FLL_BUILD_ARCH" in
-			i?86)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.386"
-				;;
-			amd64|x86_64)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}64-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.x64"
-				;;
-			*)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				;;
-		esac
+		FLL_ISO_NAME=$(tr A-Z a-z <<< \
+			${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
 	else
-		case "$FLL_BUILD_ARCH" in
-			i?86)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.386"
-				;;
-			amd64|x86_64)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}64-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE}.x64"
-				;;
-			*)
-				FLL_ISO_NAME=$(tr A-Z a-z <<< \
-					${FLL_DISTRO_NAME}-${FLL_BUILD_ARCH}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
-				;;
-		esac
-	fi
-	FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
-
-	#################################################################
-	#		install packages required early in chroot
-	#################################################################
-	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
-
-	# allow the user config to override distro-defaults
-	sed -i	-e "s%\(FLL_DISTRO_NAME=\).*%\1\"${FLL_DISTRO_NAME}\"%" \
-		-e "s%\(FLL_IMAGE_DIR=\).*%\1\"${FLL_IMAGE_DIR}\"%" \
-		-e "s%\(FLL_IMAGE_FILE=\).*%\1\"${FLL_IMAGE_FILE}\"%" \
-		-e "s%\(FLL_MOUNTPOINT=\).*%\1\"${FLL_MOUNTPOINT}\"%" \
-		-e "s%\(FLL_MEDIA_NAME=\).*%\1\"${FLL_MEDIA_NAME}\"%" \
-		-e "s%\(FLL_LIVE_USER=\).*%\1\"${FLL_LIVE_USER}\"%" \
-		-e "s%\(FLL_LIVE_USER_GROUPS=\).*%\1\"${FLL_LIVE_USER_GROUPS}\"%" \
-		-e "s%\(FLL_WALLPAPER=\).*%\1\"${FLL_WALLPAPER}\"%" \
-		-e "s%\(FLL_IRC_SERVER=\).*%\1\"${FLL_IRC_SERVER}\"%" \
-		-e "s%\(FLL_IRC_PORT=\).*%\1\"${FLL_IRC_PORT}\"%" \
-		-e "s%\(FLL_IRC_CHANNEL=\).*%\1\"${FLL_IRC_CHANNEL}\"%" \
-		-e "s%\(FLL_CDROM_INDEX=\).*%\1\"${FLL_CDROM_INDEX}\"%" \
-		-e "s%\(FLL_CDROM_INDEX_ICON=\).*%\1\"${FLL_CDROM_INDEX_ICON}\"%" \
-			"${FLL_BUILD_CHROOT}/etc/default/distro"
-	
-	#################################################################
-	#		preseed locales					#
-	#################################################################
-	header "Configuring locales..."
-	echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
-		chroot_exec debconf-set-selections
-	
-	echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ro_RO.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | \
-		chroot_exec debconf-set-selections
-	
-	chroot_exec apt-get --assume-yes install locales
-
-	#################################################################
-	#		install kernel, make initial ramdisk		#
-	#################################################################
-	# module-init-tools required for depmod, it may not be in minimal bootstrap
-	chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
-
-	# ensure initrd is created by linux-image postinst hook
-	cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
-	
-	if [[ $FLL_BUILD_LINUX_KERNELDIR ]]; then
-		# install kernel via zip package from http://sidux.com/files/kernel/
-		chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
-
-		# link-up kernel headers/documentation
-		rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
-		ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
-		ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
-		ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
-		cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
-			"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
-		rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
-		ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
-			"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
-	else
-		# debian kernel, just apt-get it
-		chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
-			squashfs-modules-"$KVERS" unionfs-modules-"$KVERS"
-			# aufs-modules-"$KVERS"
-	fi
-
-	header "Grabbing kernel and initramfs now"
-	# grab kernel and initial ramdisk before other packages are installed
-	cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
-	cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
-	
-	#################################################################
-	#		mass package installation			#
-	#################################################################
-	header "Installing packages..."
-	chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
-
-	# handle locale support packages
-	header "processing locale support packages for: $FLL_I18N_SUPPORT"
-	unset FLL_I18N_SUPPORT_PACKAGES
-	if [[ $FLL_I18N_SUPPORT ]]; then
-		FLL_I18N_SUPPORT="$(tr A-Z a-z <<<$FLL_I18N_SUPPORT)"
-		FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
-		
-		if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
-			chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}
-		fi
-	fi
-
-	# handle recommends for specified packages
-	header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
-	source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
-
-	unset FLL_PACKAGES_EXTRA
-	if [[ ${FLL_PACKAGES_RECOMMENDS[@]} ]]; then
-		if [[ ! -x $(which grep-dctrl) ]]; then
-			echo "$SELF: grep-dctrl missing!" 1>&2 
-			exit 9
-		fi
-
-		for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
-			installed_in_chroot "$p" || continue
-			header "Installing recommended packages for $p"
-			FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
-				awk -F, '
-					/./ {
-						for (i = 1; i <= NF; i++) {
-							# trim leading whitespace
-							sub(/^[ \t]+/,"",$i)
-							# take the preferred string from conditional
-							sub(/\|.*/,"",$i)
-							# trim version strings
-							sub(/\(.*/,"",$i)
-							print $i
-						}
-					}
-				') )
-		done
-
-		if [[ ${FLL_PACKAGES_EXTRA[@]} ]]; then
-			chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
-		fi
-	fi
-
-	# purge unwanted packages
-	chroot_exec dpkg --purge cdebootstrap-helper-diverts
-	
-	if exists_in_chroot /usr/bin/fll_src_uri && [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
-		header "Creating source URI list and package manifest..."
-
-		FLL_BUILD_SOURCES=$(mktemp -p $FLL_BUILD_CHROOT fll.sources.XXXX)
-		FLL_BUILD_MANIFEST=$(mktemp -p $FLL_BUILD_CHROOT fll.manifest.XXXX)
-
-		chroot_exec apt-get --assume-yes install libapt-pkg-perl
-		chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
-
-		mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
-	
-		# fix source URI's to use non cached address
-		if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
-			sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
-				"$FLL_BUILD_SOURCES"
-		fi
-
-		for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
-			[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
-			sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
-				"$FLL_BUILD_SOURCES"
-		done
-
-		mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
-	fi
-	
-	#################################################################
-	# 		init blacklist generation			#
-	#################################################################
-	if exists_in_chroot /usr/bin/fll_analyze_initscripts; then
-		header "Creating initscript blacklist..."
-	
-		FLL_BUILD_INIT_BLACKLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.blacklist.XXXX)
-		FLL_BUILD_INIT_WHITELIST=$(mktemp -p $FLL_BUILD_CHROOT fll.whitelist.XXXX)
-	
-		cat "$FLL_BUILD_SHARED/fll_init_blacklist" > "$FLL_BUILD_INIT_BLACKLIST"
-		cat "$FLL_BUILD_SHARED/fll_init_whitelist" > "$FLL_BUILD_INIT_WHITELIST"
-
-		chroot_exec /usr/bin/fll_analyze_initscripts --remove \
-			--blacklist "/${FLL_BUILD_INIT_BLACKLIST##*/}" \
-			--whitelist "/${FLL_BUILD_INIT_WHITELIST##*/}" \
-			| tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
-	fi
-	
-	#################################################################
-	#		hack inittab and shadow				#
-        #################################################################
-        # init 5 by default
-	header "Hacking inittab..."
-	sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-		"$FLL_BUILD_CHROOT"/etc/inittab
-
-	if [[ -z $FLL_ROOT_PASSWD ]]; then
-		# immutable bash login shells
-		sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
-			-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-			-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-				"$FLL_BUILD_CHROOT"/etc/inittab
-
-                # lock down root
-		sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-			"$FLL_BUILD_CHROOT"/etc/shadow
-	else
-		# $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
-		sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
-			"$FLL_BUILD_CHROOT"/etc/shadow
-	fi 
-	#################################################################
-	#		misc chroot preseeding				#
-	#################################################################
-	# preconfigure fontconfig-config
-	if installed_in_chroot fontconfig-config; then
-		header "Fixing fontconfig"
-		# hinting select Native|Autohinter|None
-		echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
-		# subpixel select Automatic|Always|Never
-		echo "fontconfig-config fontconfig/subpixel_rendering select Automatic" | chroot_exec debconf-set-selections
-		# bitmaps boolean true|false
-		echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
-	
-		# disable bitmap fonts. create the symlink ourselves, derived from fontconfig-config.postinst
-		if exists_in_chroot /etc/fonts/conf.avail/70-no-bitmaps.conf; then
-			chroot_exec ln -vs /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
-		fi
-
-		chroot_exec dpkg-reconfigure fontconfig
-	fi
-
-	# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
-	if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
-		if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
-			header "Fixing /etc/X11/X symlink..."
-			remove_from_chroot /etc/X11/X
-			chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
-			echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
-		fi
-	fi
-
-	# set default X cursor theme
-	if installed_in_chroot dmz-cursor-theme && exists_in_chroot /usr/share/icons/DMZ-Black/cursor.theme; then
-		header "Setting x-cursor-theme to DMZ-Black..."
-		chroot_exec update-alternatives --set x-cursor-theme /usr/share/icons/DMZ-Black/cursor.theme
-	fi
-
-	# use most as PAGER if installed in chroot
-	if installed_in_chroot most; then
-		header "Setting \$PAGER to /usr/bin/most..."
-		chroot_exec update-alternatives --set pager /usr/bin/most
-	fi
-	
-	# vimrc.local
-	if installed_in_chroot vim; then
-		header "Creating /etc/vim/vimrc.local..."
-		cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
-	fi
-
-	# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
-	if installed_in_chroot kppp && exists_in_chroot /etc/ppp/peers/kppp-options; then
-		header "Hacking /etc/ppp/peers/kppp-options for noauth..."
-		sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
+		FLL_ISO_NAME=$(tr A-Z a-z <<< \
+			${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
 	fi
 
 	#################################################################
-	#		cleanup & prepare final chroot			#
+	#		prepare build area				#
 	#################################################################
-	header "Cleaning up..."
-	chroot_exec dpkg --purge fll-live-initramfs
+	# temporary staging areas within buildarea
+	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
+	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
+	mkdir -vp "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
 
-	# remove used hacks and patches
-	remove_from_chroot /etc/kernel-img.conf
-	remove_from_chroot /usr/sbin/policy-rc.d
-	remove_from_chroot /etc/debian_chroot
-	remove_from_chroot /etc/hosts
-	# nuke this one
-	:> "${FLL_BUILD_CHROOT}"/etc/resolv.conf
-	
-	# create final config files
-	cat_file_to_chroot hosts	/etc/hosts
-	cat_file_to_chroot hostname	/etc/hostname
-	cat_file_to_chroot apt_sources	/etc/apt/sources.list
-	
-	# add version marker, this is the exact time stamp for our package list
-	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
-		printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($FLL_PACKAGE_TIMESTAMP)\n" \
-			>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-	else
-		printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_VERSION} - ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($FLL_PACKAGE_TIMESTAMP)\n" \
-			>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-	fi
-	chmod 0444 "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
-	
-	# a few dæmons are broken if log files are missing, 
-	# therefore nuke log and spool files while preserving permissions
-	find	"${FLL_BUILD_CHROOT}/var/cache/" \
-		"${FLL_BUILD_CHROOT}/var/log/" \
-			   -name \*\\.gz \
-			-o -name \*\\.bz2 \
-			-o -name \*\\.[0-9][0-9]? \
-				-exec rm -f {} \;
-	
-	find	"${FLL_BUILD_CHROOT}/var/log/" \
-		"${FLL_BUILD_CHROOT}/var/mail/" \
-		"${FLL_BUILD_CHROOT}/var/spool/" \
-			-type f \
-			-size +0 \
-				-exec cp /dev/null '{}' \;
-
-	chroot_virtfs umount
-
-	header "Staging ISO..."
+	header "Staging result area: $FLL_BUILD_RESULT"
 	# add templates (grub menu.lst/documentation/manual/autorun etc.)
 	for dir in "$FLL_BUILD_TEMPLATES"/*; do
 		[[ -d $dir ]] || continue
@@ -769,50 +326,522 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		popd >/dev/null
 	done
 
-	# populate /boot/grub
-	cp -v "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2} \
-		"$FLL_BUILD_RESULT"/boot/grub/
-	cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/message
+	# fix permissions to allow user access
+	if ((FLL_BUILD_OUTPUT_UID)); then
+		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_AREA"
+		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
+	fi
 
-	# fixup the initrd.img and vmlinuz tokens
-	sed -i	-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
-		-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
+	for arch in ${!FLL_BUILD_ARCH[@]}; do
+		#################################################################
+		#		arch specific name				#
+		#################################################################
+		case "${FLL_BUILD_ARCH[${arch}]}" in
+			i?86)
+				ARCH="686"
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.686"
+				;;
+			amd64|x86_64)
+				ARCH="x64"
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.x64"
+				;;
+			*)
+				ARCH=${FLL_BUILD_ARCH[${arch}]}
+				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${FLL_BUILD_ARCH[${arch}]}"
+				;;
+		esac
+		FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
+
+		#################################################################
+		#		arch specific build area			#
+		#################################################################
+		FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT-${ARCH}"
+		mkdir -vp "$FLL_BUILD_CHROOT"
+
+		if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
+			if [[ $FLL_BUILD_ISO_DIR ]]; then
+				echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
+				echo "$SELF: creating iso in $FLL_BUILD_AREA"
+			fi
+			FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
+		fi
+
+		#################################################################
+		#		prepare kernel zip package			#
+		#################################################################
+		if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '.*kernel-(.*).zip$' ]]; then
+			KVERS=${BASH_REMATCH[1]}
+
+			# stage temporary dir within chroot
+			FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
+
+			if [[ -f ${FLL_BUILD_LINUX_KERNEL[${arch}]} ]]; then
+				cp -v "${FLL_BUILD_LINUX_KERNEL[${arch}]}" "$FLL_BUILD_LINUX_KERNELDIR"
+			else
+				wget "${FLL_BUILD_LINUX_KERNEL[${arch}]}" \
+					-O "$FLL_BUILD_LINUX_KERNELDIR"/kernel-"$KVERS".zip
+			fi
+
+			pushd "$FLL_BUILD_LINUX_KERNELDIR" &>/dev/null
+				zip -T kernel-"$KVERS".zip
+				unzip kernel-"$KVERS".zip
+			popd &>/dev/null
+		elif [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
+			KVERS="${FLL_BUILD_LINUX_KERNEL[${arch}]}"
+			unset FLL_BUILD_LINUX_KERNELDIR
+		else
+			if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} ]]; then
+				echo "Unrecognised kernel package: ${FLL_BUILD_LINUX_KERNEL[${arch}]}"
+			else
+				echo "Must define FLL_BUILD_LINUX_KERNEL in your conf"
+			fi
+			exit 5
+		fi
+
+		#################################################################
+		#		process package array(s)			#
+		#################################################################
+		if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
+			echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
+			exit 6
+		fi
+
+		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
+		source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
+
+		for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+			header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+			source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
+		done
+
+		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/early.bm"
+		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/early.bm
+		
+		if [[ ! ${FLL_PACKAGES[@]} ]]; then
+			echo "$SELF: package profile did not produce FLL_PACKAGES array!"
+			exit 7
+		fi
+		
+		# echo package list early for bfree :-)
+		echo "${FLL_PACKAGES[@]}"
+
+		#################################################################
+		#		create & prepare chroot				#
+		#################################################################
+		if [[ $DEBUG ]]; then
+			FLL_DEBOOSTRAP_VERBOSITY="--debug"
+		else
+			FLL_DEBOOSTRAP_VERBOSITY="--verbose"
+		fi
+
+		header "running cdebootstrap..."
+		cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="${FLL_BUILD_ARCH[${arch}]}" --flavour=minimal "$FLL_BUILD_DEBIANMIRROR_SUITE" \
+			"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
+		
+		chroot_virtfs mount
+
+		cat_file_to_chroot chroot_policy	/usr/sbin/policy-rc.d
+		cat_file_to_chroot debian_chroot	/etc/debian_chroot
+		cat_file_to_chroot fstab		/etc/fstab
+		cat_file_to_chroot interfaces		/etc/network/interfaces
+		cat_file_to_chroot apt_sources_tmp	/etc/apt/sources.list
+		
+		chroot_exec apt-get update
+		
+		# import key for extra mirror(s)
+		for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
+			header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
+			if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
+				cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec apt-key add -
+			elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
+				chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
+					"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
+			fi
+		done
+
+		# add imported gpg keys to apt's trusted keyring
+		if exists_in_chroot /root/.gnupg/pubring.gpg; then
+			header "Importing /root/.gnupg/pubring.gpg with apt-key..."
+			chroot_exec apt-key add /root/.gnupg/pubring.gpg
+		fi
+
+		# refresh lists now that "secure apt" is aware of required gpg keys
+		chroot_exec apt-get update
+		
+		# grab any fixes from fix.main
+		chroot_exec apt-get --assume-yes dist-upgrade
+
+		#################################################################
+		#		install packages required early in chroot
+		#################################################################
+		chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EARLY[@]}
+
+		# allow the user config to override distro-defaults
+		sed -i	-e "s%\(FLL_DISTRO_NAME=\).*%\1\"${FLL_DISTRO_NAME}\"%" \
+			-e "s%\(FLL_IMAGE_DIR=\).*%\1\"${FLL_IMAGE_DIR}\"%" \
+			-e "s%\(FLL_IMAGE_FILE=\).*%\1\"${FLL_IMAGE_FILE}\"%" \
+			-e "s%\(FLL_MOUNTPOINT=\).*%\1\"${FLL_MOUNTPOINT}\"%" \
+			-e "s%\(FLL_MEDIA_NAME=\).*%\1\"${FLL_MEDIA_NAME}\"%" \
+			-e "s%\(FLL_LIVE_USER=\).*%\1\"${FLL_LIVE_USER}\"%" \
+			-e "s%\(FLL_LIVE_USER_GROUPS=\).*%\1\"${FLL_LIVE_USER_GROUPS}\"%" \
+			-e "s%\(FLL_WALLPAPER=\).*%\1\"${FLL_WALLPAPER}\"%" \
+			-e "s%\(FLL_IRC_SERVER=\).*%\1\"${FLL_IRC_SERVER}\"%" \
+			-e "s%\(FLL_IRC_PORT=\).*%\1\"${FLL_IRC_PORT}\"%" \
+			-e "s%\(FLL_IRC_CHANNEL=\).*%\1\"${FLL_IRC_CHANNEL}\"%" \
+			-e "s%\(FLL_CDROM_INDEX=\).*%\1\"${FLL_CDROM_INDEX}\"%" \
+			-e "s%\(FLL_CDROM_INDEX_ICON=\).*%\1\"${FLL_CDROM_INDEX_ICON}\"%" \
+				"${FLL_BUILD_CHROOT}/etc/default/distro"
+		
+		#################################################################
+		#		preseed locales					#
+		#################################################################
+		header "Configuring locales..."
+		echo "locales	locales/default_environment_locale	select	en_US.UTF-8" | \
+			chroot_exec debconf-set-selections
+		
+		echo "locales	locales/locales_to_be_generated	multiselect	be_BY.UTF-8 UTF-8, bg_BG.UTF-8 UTF-8, cs_CZ.UTF-8 UTF-8, da_DK.UTF-8 UTF-8, de_CH.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, el_GR.UTF-8 UTF-8, en_AU.UTF-8 UTF-8, en_GB.UTF-8 UTF-8, en_IE.UTF-8 UTF-8, en_US.UTF-8 UTF-8, es_ES.UTF-8 UTF-8, fi_FI.UTF-8 UTF-8, fr_FR.UTF-8 UTF-8, fr_BE.UTF-8 UTF-8, ga_IE.UTF-8 UTF-8, he_IL.UTF-8 UTF-8, hr_HR.UTF-8 UTF-8, hu_HU.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, ja_JP.UTF-8 UTF-8, ko_KR.UTF-8 UTF-8, nl_NL.UTF-8 UTF-8, nl_BE.UTF-8 UTF-8, pl_PL.UTF-8 UTF-8, pt_BR.UTF-8 UTF-8, pt_PT.UTF-8 UTF-8, ro_RO.UTF-8 UTF-8, ru_RU.UTF-8 UTF-8, sk_SK.UTF-8 UTF-8, sl_SI.UTF-8 UTF-8, tr_TR.UTF-8 UTF-8, zh_CN.UTF-8 UTF-8, zh_TW.UTF-8 UTF-8" | \
+			chroot_exec debconf-set-selections
+		
+		chroot_exec apt-get --assume-yes install locales
+
+		#################################################################
+		#		install kernel, make initial ramdisk		#
+		#################################################################
+		# module-init-tools required for depmod, it may not be in minimal bootstrap
+		chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
+
+		# ensure initrd is created by linux-image postinst hook
+		cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
+		
+		if [[ $FLL_BUILD_LINUX_KERNELDIR ]]; then
+			# install kernel via zip package from http://sidux.com/files/kernel/
+			chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
+
+			# link-up kernel headers/documentation
+			rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
+			ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
+			ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
+			ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
+			cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
+				"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
+			rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+			ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
+				"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+		else
+			# debian kernel, just apt-get it
+			chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
+				squashfs-modules-"$KVERS" unionfs-modules-"$KVERS"
+				# aufs-modules-"$KVERS"
+		fi
+
+		header "Grabbing kernel and initramfs now"
+		# grab kernel and initial ramdisk before other packages are installed
+		cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+		cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+		
+		#################################################################
+		#		mass package installation			#
+		#################################################################
+		header "Installing packages..."
+		chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
+
+		# handle locale support packages
+		header "processing locale support packages for: $FLL_I18N_SUPPORT"
+		unset FLL_I18N_SUPPORT_PACKAGES
+		if [[ $FLL_I18N_SUPPORT ]]; then
+			FLL_I18N_SUPPORT="$(tr A-Z a-z <<<$FLL_I18N_SUPPORT)"
+			FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
+			
+			if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
+				chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}
+			fi
+		fi
+
+		# handle recommends for specified packages
+		header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
+		source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
+
+		unset FLL_PACKAGES_EXTRA
+		if [[ ${FLL_PACKAGES_RECOMMENDS[@]} ]]; then
+			if [[ ! -x $(which grep-dctrl) ]]; then
+				echo "$SELF: grep-dctrl missing!" 1>&2 
+				exit 9
+			fi
+
+			for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
+				installed_in_chroot "$p" || continue
+				header "Installing recommended packages for $p"
+				FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
+					awk -F, '
+						/./ {
+							for (i = 1; i <= NF; i++) {
+								# trim leading whitespace
+								sub(/^[ \t]+/,"",$i)
+								# take the preferred string from conditional
+								sub(/\|.*/,"",$i)
+								# trim version strings
+								sub(/\(.*/,"",$i)
+								print $i
+							}
+						}
+					') )
+			done
+
+			if [[ ${FLL_PACKAGES_EXTRA[@]} ]]; then
+				chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
+			fi
+		fi
+
+		# purge unwanted packages
+		chroot_exec dpkg --purge cdebootstrap-helper-diverts
+		
+		if exists_in_chroot /usr/bin/fll_src_uri && [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
+			header "Creating source URI list and package manifest..."
+
+			FLL_BUILD_SOURCES=$(mktemp -p $FLL_BUILD_CHROOT fll.sources.XXXX)
+			FLL_BUILD_MANIFEST=$(mktemp -p $FLL_BUILD_CHROOT fll.manifest.XXXX)
+
+			chroot_exec apt-get --assume-yes install libapt-pkg-perl
+			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
+
+			mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.manifest"
+		
+			# fix source URI's to use non cached address
+			if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
+				sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
+					"$FLL_BUILD_SOURCES"
+			fi
+
+			for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
+				[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
+				sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
+					"$FLL_BUILD_SOURCES"
+			done
+
+			mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.sources"
+		fi
+		
+		#################################################################
+		# 		init blacklist generation			#
+		#################################################################
+		if exists_in_chroot /usr/bin/fll_analyze_initscripts; then
+			header "Creating initscript blacklist..."
+		
+			FLL_BUILD_INIT_BLACKLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.blacklist.XXXX)
+			FLL_BUILD_INIT_WHITELIST=$(mktemp -p $FLL_BUILD_CHROOT fll.whitelist.XXXX)
+		
+			cat "$FLL_BUILD_SHARED/fll_init_blacklist" > "$FLL_BUILD_INIT_BLACKLIST"
+			cat "$FLL_BUILD_SHARED/fll_init_whitelist" > "$FLL_BUILD_INIT_WHITELIST"
+
+			chroot_exec /usr/bin/fll_analyze_initscripts --remove \
+				--blacklist "/${FLL_BUILD_INIT_BLACKLIST##*/}" \
+				--whitelist "/${FLL_BUILD_INIT_WHITELIST##*/}" \
+				| tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
+		fi
+		
+		#################################################################
+		#		hack inittab and shadow				#
+		#################################################################
+		# init 5 by default
+		header "Hacking inittab..."
+		sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
+			"$FLL_BUILD_CHROOT"/etc/inittab
+
+		if [[ -z $FLL_ROOT_PASSWD ]]; then
+			# immutable bash login shells
+			sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
+				-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+				-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
+					"$FLL_BUILD_CHROOT"/etc/inittab
+
+			# lock down root
+			sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
+				"$FLL_BUILD_CHROOT"/etc/shadow
+		else
+			# $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
+			sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
+				"$FLL_BUILD_CHROOT"/etc/shadow
+		fi 
+		#################################################################
+		#		misc chroot preseeding				#
+		#################################################################
+		# preconfigure fontconfig-config
+		if installed_in_chroot fontconfig-config; then
+			header "Fixing fontconfig"
+			# hinting select Native|Autohinter|None
+			echo "fontconfig-config fontconfig/hinting_type select Native" | chroot_exec debconf-set-selections
+			# subpixel select Automatic|Always|Never
+			echo "fontconfig-config fontconfig/subpixel_rendering select Automatic" | chroot_exec debconf-set-selections
+			# bitmaps boolean true|false
+			echo "fontconfig-config fontconfig/enable_bitmaps boolean false" | chroot_exec debconf-set-selections
+		
+			# disable bitmap fonts. create the symlink ourselves, derived from fontconfig-config.postinst
+			if exists_in_chroot /etc/fonts/conf.avail/70-no-bitmaps.conf; then
+				chroot_exec ln -vs /etc/fonts/conf.avail/70-no-bitmaps.conf /etc/fonts/conf.d/70-no-bitmaps.conf
+			fi
+
+			chroot_exec dpkg-reconfigure fontconfig
+		fi
+
+		# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
+		if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
+			if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
+				header "Fixing /etc/X11/X symlink..."
+				remove_from_chroot /etc/X11/X
+				chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
+				echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
+			fi
+		fi
+
+		# set default X cursor theme
+		if installed_in_chroot dmz-cursor-theme && exists_in_chroot /usr/share/icons/DMZ-Black/cursor.theme; then
+			header "Setting x-cursor-theme to DMZ-Black..."
+			chroot_exec update-alternatives --set x-cursor-theme /usr/share/icons/DMZ-Black/cursor.theme
+		fi
+
+		# use most as PAGER if installed in chroot
+		if installed_in_chroot most; then
+			header "Setting \$PAGER to /usr/bin/most..."
+			chroot_exec update-alternatives --set pager /usr/bin/most
+		fi
+		
+		# vimrc.local
+		if installed_in_chroot vim; then
+			header "Creating /etc/vim/vimrc.local..."
+			cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
+		fi
+
+		# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
+		if installed_in_chroot kppp && exists_in_chroot /etc/ppp/peers/kppp-options; then
+			header "Hacking /etc/ppp/peers/kppp-options for noauth..."
+			sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
+		fi
+
+		#################################################################
+		#		cleanup & prepare final chroot			#
+		#################################################################
+		header "Cleaning up..."
+		chroot_exec dpkg --purge fll-live-initramfs
+
+		# remove used hacks and patches
+		remove_from_chroot /etc/kernel-img.conf
+		remove_from_chroot /usr/sbin/policy-rc.d
+		remove_from_chroot /etc/debian_chroot
+		remove_from_chroot /etc/hosts
+		# nuke this one
+		:> "${FLL_BUILD_CHROOT}"/etc/resolv.conf
+		
+		# create final config files
+		cat_file_to_chroot hosts	/etc/hosts
+		cat_file_to_chroot hostname	/etc/hostname
+		cat_file_to_chroot apt_sources	/etc/apt/sources.list
+		
+		# add version marker
+		if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
+			printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($(date -u +%Y%m%d%H%M))\n" \
+				>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+		else
+			printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_VERSION} - ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($(date -u +%Y%m%d%H%M))\n" \
+				>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+		fi
+		chmod 0444 "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+		
+		# a few dæmons are broken if log files are missing, 
+		# therefore nuke log and spool files while preserving permissions
+		find	"${FLL_BUILD_CHROOT}/var/cache/" \
+			"${FLL_BUILD_CHROOT}/var/log/" \
+				   -name \*\\.gz \
+				-o -name \*\\.bz2 \
+				-o -name \*\\.[0-9][0-9]? \
+					-exec rm -f {} \;
+		
+		find	"${FLL_BUILD_CHROOT}/var/log/" \
+			"${FLL_BUILD_CHROOT}/var/mail/" \
+			"${FLL_BUILD_CHROOT}/var/spool/" \
+				-type f \
+				-size +0 \
+					-exec cp /dev/null '{}' \;
+
+		chroot_virtfs umount
+
+		#################################################################
+		#		prepare boot files				#
+		#################################################################
+		header "Preparing ISO /boot files..."
+		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+
+		echo "title  sidux (${ARCH}) Default" >> \
+			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791" >> \
+			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "initrd /boot/initrd.img-${KVERS}" >> \
+			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		
+		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+
+		echo "title  sidux (${ARCH}) Advanced Menu" >> \
+			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "configfile /boot/grub/menu.lst.${ARCH}" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-	if exists_in_chroot /boot/memtest86+.bin; then
-		cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/memtest86+.bin
-		cat >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst \
-<<EOF
+		sed	-e 's|@arch@|'"$ARCH"'|'		\
+			-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
+			-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
+				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > "$FLL_BUILD_RESULT"/boot/grub/menu.lst.${ARCH}
 
-title memtest86+
-kernel /boot/memtest86+.bin
-EOF
-	fi
+		[[ -f "$FLL_BUILD_RESULT"/boot/message ]] || \
+			cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/grub/message
 
-	[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
+		for f in "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2}; do
+			[[ -f $f ]] || continue
+			[[ -f "$FLL_BUILD_RESULT"/boot/grub/${f##*/} ]] || cp -v $f "$FLL_BUILD_RESULT/boot/grub/"
+		done
+
+		if exists_in_chroot /boot/memtest86+.bin && [[ ! -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]]; then
+			 [[ -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]] || \
+			 	cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/
+		fi
+
+		[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
+
+		#################################################################
+		#		build						#
+		#################################################################
+
+		FLL_BUILD_EXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP fll.exclude-file.XXXXX)
+		FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p $FLL_BUILD_TEMP fll.exclusions.XXXXX)
+		FLL_BUILD_MKSQUASHFSOPTS=( "-ef $FLL_BUILD_EXCLUDEFILE" )
+
+		header "Creating squashfs exclusions file..."
+		cat "$FLL_BUILD_EXCLUSION_LIST" > "$FLL_BUILD_TMPEXCLUSION_LIST"
+		pushd "$FLL_BUILD_CHROOT" >/dev/null
+			make_exclude_file "$FLL_BUILD_TMPEXCLUSION_LIST" | tee "$FLL_BUILD_EXCLUDEFILE"
+		popd >/dev/null
+		
+		if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
+			FLL_BUILD_MKSQUASHFSOPTS+=( "-sort $FLL_BUILD_SQUASHFS_SORTFILE" )
+		fi
+
+		header "Creating squashfs..."
+		pushd "$FLL_BUILD_CHROOT" >/dev/null
+			mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
+		popd >/dev/null
+
+		header "Nuking $FLL_BUILD_CHROOT..."
+		nuke "$FLL_BUILD_CHROOT"
+	done
+
+	[[ $FLL_BUILD_CHROOT_ONLY ]] && exit 0
 
 	#################################################################
-	#		build						#
+	#		prepare iso					#
 	#################################################################
-
-	FLL_BUILD_EXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP fll.exclude-file.XXXXX)
-	FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p $FLL_BUILD_TEMP fll.exclusions.XXXXX)
-	FLL_BUILD_MKSQUASHFSOPTS=( "-ef $FLL_BUILD_EXCLUDEFILE" )
-
-	header "Creating squashfs exclusions file..."
-	cat "$FLL_BUILD_EXCLUSION_LIST" > "$FLL_BUILD_TMPEXCLUSION_LIST"
-	pushd "$FLL_BUILD_CHROOT" >/dev/null
-		make_exclude_file "$FLL_BUILD_TMPEXCLUSION_LIST" | tee "$FLL_BUILD_EXCLUDEFILE"
-	popd >/dev/null
-	
-	if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
-		FLL_BUILD_MKSQUASHFSOPTS+=( "-sort $FLL_BUILD_SQUASHFS_SORTFILE" )
+	if [ -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]; then
+		echo 					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "title memtest86+" 		>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo "kernel /boot/memtest86+.bin" 	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 	fi
-
-	header "Creating squashfs..."
-	pushd "$FLL_BUILD_CHROOT" >/dev/null
-		mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
-	popd >/dev/null
+	rm -f "$FLL_BUILD_RESULT"/boot/grub/menu.lst.in
 
 	# md5sums
 	header "Calculating md5sums..."
@@ -820,7 +849,7 @@ EOF
 		find .	\
 			-type f \
 			-not \( \
-				-name '*md5sums' \
+				   -name '*md5sums' \
 				-o -name '*.cat' \
 				-o -name 'iso9660_stage1_5' \
 				-o -name 'stage2_eltorito' \
