@@ -6,6 +6,7 @@ FLL_PACKAGES+=(
 	fix-fonts
 	fll-live-xorgconfig
 	gparted
+	hplip-gui
 	install-gui
 	install-usb-gui
 	install-meta
