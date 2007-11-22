@@ -11,10 +11,13 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * kde-edu.bm updated
   * kde-edu.bm and distro-edu.bm updated
 
+  [ Stefan Lippers-Hollmann ]
+  * small ISO naming tweaks.
+
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
 
- -- Fabian Wuertz <xadras@sidux.com>  Thu, 22 Nov 2007 17:04:19 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 22 Nov 2007 23:01:19 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
