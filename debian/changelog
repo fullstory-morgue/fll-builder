@@ -1,8 +1,10 @@
 fll-builder (1.1.8) UNRELEASED; urgency=low
 
   * Initial multi-arch support.
+  * Add iso support for more descriptive iso names for single and multi-arch
+    builds.
 
- -- Kel Modderman <kel@otaku42.de>  Thu, 22 Nov 2007 00:05:45 +1000
+ -- Kel Modderman <kel@otaku42.de>  Thu, 22 Nov 2007 10:34:26 +1000
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 

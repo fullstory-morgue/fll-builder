@@ -85,16 +85,6 @@ Options:
 EOF
 }
 
-header() {
-	cat \
-<<EOF
-
-#################################################
-# $@
-#################################################
-EOF
-}
-
 #################################################################
 #		root?						#
 #################################################################
@@ -244,8 +234,6 @@ done
 #################################################################
 #		determine abs. dirname				#
 #################################################################
-absdirname() { [[ -n $1 ]] && ( pushd $1 >/dev/null && echo $PWD; ) }
-
 if [[ $1 ]]; then
 	# make build dir and determine its absolute path
 	mkdir -p $1 && FLL_BUILD_AREA="$(absdirname $1)"
@@ -301,11 +289,21 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		iso name (with package timestamp)		#
 	#################################################################
 	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
-		FLL_ISO_NAME=$(tr A-Z a-z <<< \
-			${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-multi-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		else
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-$(arch ${FLL_BUILD_ARCH[@]})-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		fi
 	else
-		FLL_ISO_NAME=$(tr A-Z a-z <<< \
-			${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-multi-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		else
+			FLL_ISO_NAME=$(tr A-Z a-z <<< \
+				${FLL_DISTRO_NAME}-$(arch ${FLL_BUILD_ARCH[@]})-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}.iso)
+		fi
 	fi
 
 	#################################################################
@@ -339,20 +337,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# NOTE: we have to be very careful when redefining FLL_ variables
 		# in a loop like this, make sure we strip the previously appended
 		# FLL_IMAGE_FILE extension.
-		case "${FLL_BUILD_ARCH[${arch}]}" in
-			i?86)
-				ARCH="686"
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.686"
-				;;
-			amd64|x86_64)
-				ARCH="x64"
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.x64"
-				;;
-			*)
-				ARCH=${FLL_BUILD_ARCH[${arch}]}
-				FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${FLL_BUILD_ARCH[${arch}]}"
-				;;
-		esac
+		ARCH=$(arch ${FLL_BUILD_ARCH[${arch}]})
+		FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${ARCH}"
 		FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 
 		#################################################################
