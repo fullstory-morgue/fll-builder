@@ -593,7 +593,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			chroot_exec apt-get --assume-yes install libapt-pkg-perl
 			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
 
-			mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.manifest"
+			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.manifest"
+			else
+				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
+			fi
 		
 			# fix source URI's to use non cached address
 			if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
@@ -607,7 +611,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 					"$FLL_BUILD_SOURCES"
 			done
 
-			mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.sources"
+			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.sources"
+			else
+				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+			fi
 		fi
 		
 		#################################################################
