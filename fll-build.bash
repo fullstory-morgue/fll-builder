@@ -714,6 +714,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
 		fi
 
+		#   hack wallpaper if FLL_BUILD_WALLPAPER exists in fll-build.conf
+		if [[ $FLL_BUILD_WALLPAPER ]]; then
+			header "Hacking wallpaper..."
+			sed -i  -e "s#FLL_WALLPAPER=.*#FLL_WALLPAPER=\"${FLL_BUILD_WALLPAPER}\"#" \
+				"$FLL_BUILD_CHROOT"/etc/default/distro
+		fi
+
 		#################################################################
 		#		cleanup & prepare final chroot			#
 		#################################################################

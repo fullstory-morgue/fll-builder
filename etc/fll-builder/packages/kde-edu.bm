@@ -56,7 +56,7 @@ FLL_PACKAGES=(
 
 	quanta
 
-	#gimp
+	gimp
 	inkscape
 	kimagemapeditor
 	#vlc #nachladen
@@ -69,22 +69,21 @@ FLL_PACKAGES=(
 	kpdf
 	ksociograma
 	krusader
-	#mc #MidnightCommander wird vom Basissystem mit installiert
 	xsane
 	#kooka		#als Alternative zu xsane nachinstallieren werden
 
 
 	####Chemie ---------
 	chemtool
-	#gperiodic	#nachinstallieren
+	gperiodic	#nachinstallieren
 	katomic
 	kalzium
 	
 	####Erdkunde --------
-	#qgis		#nachinstallieren
-	#qgis-plugin-grass  #mit qgis zusammen nachinstallieren
+	qgis		#nachinstallieren
+	qgis-plugin-grass  #mit qgis zusammen nachinstallieren
 	sunclock
-	#kgeography	#nachinstallieren	
+	kgeography	#nachinstallieren	
 
 	####E-Learning ------
 	#moodle		#Lerndatenbank nachinstallieren, Datenbank, Webserver erforderlich
@@ -96,16 +95,12 @@ FLL_PACKAGES=(
 	#nachinstallieren diverse Programmiersprachen siehe metapaket education
 	
 	####Kunst ------------
-	#dia		nachinstallieren
+	dia		nachinstallieren
 	digikam
-	#gimp		#schon unter Allgemeines
-	#inkscape	#schon unter Allgemeines
-	#karbon		#schon unter Allgemeines
+
 	kino
 	kolourpaint
-	#krita		#nachinstallieren	
-	#ksnapshot	#kommt schon mit KDE-Lite
-	#ksvg   	#schon bei kde-distro dabei
+	krita		#nachinstallieren	
 	stopmotion
 	tuxpaint
 
@@ -115,23 +110,19 @@ FLL_PACKAGES=(
 	childsplay-plugins
 	ktuberling
 	ktouch
-	#pingus		#nachinstallieren		
+	pingus		#nachinstallieren		
 	tuxmath
 
 	####Mathematik ---------
-	kbruch
-	#kformula	#schon unter Allgemeines	
+	kbruch	
 	kig
-	#kivio		#schon unter Allgemeines
-	#kspread	#schon unter Allgemeines
 	kmplot
 	kpercentage
 	wxmaxima
 	gnuplot		#Zusatz zu wxmaxima für Funktionsplot
 
 	####Musik --------------
-	#amarok		#nachinstallieren
-	#audacity	#schon unter Allgemeines
+	amarok		#nachinstallieren
 	#glame		#nachinstallieren
 	hydrogen
 	
@@ -144,11 +135,11 @@ FLL_PACKAGES=(
 	bibletime-i18n
 	itools		# 2007-10-30 - Islamic hijri date and prayer time utilities
 	hebcal		# 2007-10-30 - A Perpetual Jewish Calendar
-	#hdate-applet	# nachinstallieren 2007-10-30 - Hebrew calendar applet
-	#minbar		# nachinstallieren 2007-10-30 - Islamic prayer times application
+	hdate-applet	# nachinstallieren 2007-10-30 - Hebrew calendar applet
+	minbar		# nachinstallieren 2007-10-30 - Islamic prayer times application
 	
 	####Sprachen -----------
-	#hanzim		#nachinstallieren
+	hanzim		#nachinstallieren
 	kdict		
 	klatin
 	kvoctrain
@@ -156,7 +147,7 @@ FLL_PACKAGES=(
 
 	####Technik -----------
 	klogic
-	#ksimus		#nachinstallieren
+	ksimus		#nachinstallieren
 	pcb
 )
 

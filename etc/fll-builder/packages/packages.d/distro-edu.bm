@@ -1,4 +1,14 @@
 FLL_PACKAGES+=(
+	apt-conf-sidux
+	desktop-defaults-common
+	fll-live-initscripts
+	gfxboot-theme-sidux
+	grub-gfxboot
+	irqbalance
+	sidux-keyrings
+	sidux-scripts
+	su-me
+	udev-config-sidux
 	sidux-art-wallpaper-eros-edu
 )
 
