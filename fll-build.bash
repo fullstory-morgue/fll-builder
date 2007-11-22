@@ -336,6 +336,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#################################################################
 		#		arch specific name				#
 		#################################################################
+		# NOTE: we have to be very careful when redefining FLL_ variables
+		# in a loop like this, make sure we strip the previously appended
+		# FLL_IMAGE_FILE extension.
 		case "${FLL_BUILD_ARCH[${arch}]}" in
 			i?86)
 				ARCH="686"
