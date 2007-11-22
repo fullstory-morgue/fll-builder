@@ -774,7 +774,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Preparing ISO /boot files..."
 		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		echo "title  sidux (${ARCH})" >> \
+		echo "title  sidux $ARCH" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
@@ -783,7 +783,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		
 		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		echo "title  sidux (${ARCH}) Advanced Menu" >> \
+		echo "title  sidux $ARCH Advanced Menu" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 		echo "configfile /boot/grub/menu.lst.${ARCH}" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
