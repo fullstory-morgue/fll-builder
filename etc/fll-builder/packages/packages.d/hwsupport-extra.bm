@@ -1,33 +1,14 @@
 FLL_PACKAGES+=(
 	alsa-utils
-	cryptsetup
 #	cpufrequtils -> now provides cpufreq module detection. possible confliction
-	cupsys
-	cupsys-client
-	cupsys-bsd
-	cupsys-driver-gutenprint
 	dmidecode
 	dmsetup
-	foomatic-db
-	foomatic-db-engine
-	foomatic-db-gutenprint
-	foomatic-db-hpijs
-	foomatic-filters
-	foomatic-filters-ppds
-	hpijs-ppds
-	hplip
 	hwinfo
 	laptop-detect
 	libsmbios-bin
-	linuxprinting.org-ppds
 	lirc
-	min12xxw
 	pm-utils
-	pnm2ppa
 	powersaved
-	sane
-	sane-utils
-	libsane-extras
 	vbetool
 )
 

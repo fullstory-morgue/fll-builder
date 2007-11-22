@@ -7,6 +7,7 @@ FLL_PACKAGE_DEPMODS=(
 	distro-tools-x
 	hwsupport-essential
 	hwsupport-extra
+	hwsupport-printscan
 	utils-essential
 	utils-extra
 	xserver

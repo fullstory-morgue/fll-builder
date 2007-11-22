@@ -2,6 +2,7 @@ FLL_PACKAGES+=(
 	build-essential
 	cdebootstrap
 	cdrdao
+	cryptsetup
 	dvd+rw-tools
 	dvb-utils
 	dosfstools

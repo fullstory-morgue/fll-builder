@@ -16,6 +16,7 @@ FLL_PACKAGE_DEPMODS=(
 	gkrellm-meta
 	hwsupport-essential
 	hwsupport-extra
+	hwsupport-printscan
 	lang-extra-ja
 	openoffice-meta
 	pidgin-meta
