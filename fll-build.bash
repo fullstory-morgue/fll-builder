@@ -767,7 +767,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Preparing ISO /boot files..."
 		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		echo "title  sidux (${ARCH}) Default" >> \
+		echo "title  sidux (${ARCH})" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
@@ -784,14 +784,15 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		sed	-e 's|@arch@|'"$ARCH"'|'		\
 			-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
 			-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
-				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > "$FLL_BUILD_RESULT"/boot/grub/menu.lst.${ARCH}
+				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > \
+					"$FLL_BUILD_RESULT"/boot/grub/menu.lst.${ARCH}
 
 		[[ -f "$FLL_BUILD_RESULT"/boot/message ]] || \
 			cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/grub/message
 
 		for f in "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2}; do
-			[[ -f $f ]] || continue
-			[[ -f "$FLL_BUILD_RESULT"/boot/grub/${f##*/} ]] || cp -v $f "$FLL_BUILD_RESULT/boot/grub/"
+			[[ -f $f ]] && [[ ! -f "$FLL_BUILD_RESULT"/boot/grub/${f##*/} ]] || continue
+			cp -v $f "$FLL_BUILD_RESULT/boot/grub/"
 		done
 
 		if exists_in_chroot /boot/memtest86+.bin && [[ ! -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]]; then
