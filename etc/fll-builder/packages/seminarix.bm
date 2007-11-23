@@ -1,6 +1,5 @@
 FLL_PACKAGE_DEPMODS=(
 	cli
-	distro
 	distro-edu
 	distro-kde
 	distro-tools
@@ -56,7 +55,7 @@ FLL_PACKAGES=(
 
 	quanta
 
-	gimp
+	#gimp
 	inkscape
 	kimagemapeditor
 	#vlc #nachladen
@@ -100,7 +99,7 @@ FLL_PACKAGES=(
 
 	kino
 	kolourpaint
-	krita		#nachinstallieren	
+	#krita		#nachinstallieren	
 	stopmotion
 	tuxpaint
 
@@ -110,7 +109,7 @@ FLL_PACKAGES=(
 	childsplay-plugins
 	ktuberling
 	ktouch
-	pingus		#nachinstallieren		
+	#pingus		#nachinstallieren		
 	tuxmath
 
 	####Mathematik ---------
@@ -122,7 +121,7 @@ FLL_PACKAGES=(
 	gnuplot		#Zusatz zu wxmaxima für Funktionsplot
 
 	####Musik --------------
-	amarok		#nachinstallieren
+	#amarok		#nachinstallieren
 	#glame		#nachinstallieren
 	hydrogen
 	
