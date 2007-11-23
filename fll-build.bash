@@ -289,21 +289,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		iso name (with package timestamp)		#
 	#################################################################
 	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
-		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-			FLL_ISO_NAME="$(tr A-Z a-z <<< \
+		FLL_ISO_NAME="$(tr A-Z a-z <<< \
 				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
-		else
-			FLL_ISO_NAME="$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(arch ${FLL_BUILD_ARCH[@]}).iso)"
-		fi
 	else
-		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-			FLL_ISO_NAME="$(tr A-Z a-z <<< \
+		FLL_ISO_NAME="$(tr A-Z a-z <<< \
 				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
-		else
-			FLL_ISO_NAME="$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(arch ${FLL_BUILD_ARCH[@]}).iso)"
-		fi
 	fi
 
 	#################################################################
