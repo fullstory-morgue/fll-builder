@@ -25,8 +25,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * seminarix.bm - dont install krita, gimp, amarok pingus, not enough
     space
   * mv seminarix.bm kde-seminarix.bm, it is based on kde
+  * Couldnt find package nachinstallieren bugfix in kde-seminarix.bm
 
- -- Horst Tritremmel <hjt@sidux.com>  Fri, 23 Nov 2007 10:03:54 +0100
+ -- Horst Tritremmel <hjt@sidux.com>  Fri, 23 Nov 2007 10:09:11 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 

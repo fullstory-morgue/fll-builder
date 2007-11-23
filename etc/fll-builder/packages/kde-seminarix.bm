@@ -94,7 +94,7 @@ FLL_PACKAGES=(
 	#nachinstallieren diverse Programmiersprachen siehe metapaket education
 	
 	####Kunst ------------
-	dia		nachinstallieren
+	dia		#nachinstallieren
 	digikam
 
 	kino
