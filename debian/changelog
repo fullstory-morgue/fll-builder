@@ -17,7 +17,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 22 Nov 2007 23:01:19 +0100
+  [ Bernard Gray ]
+  * append to mirror.list files instead of overwrite to allow multiple mirror
+   definitions in one /etc/apt/sources.list.d/MIRROR.list file 
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 23 Nov 2007 16:45:25 +1100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
