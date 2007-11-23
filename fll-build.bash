@@ -345,10 +345,40 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		fi
 
 		#################################################################
+		#		process package array(s)			#
+		#################################################################
+		unset FLL_PACKAGES
+		if [[ ! -s "${FLL_BUILD_PACKAGE_PROFDIR}/${FLL_BUILD_PACKAGE_PROFILE}.bm" ]]; then
+			echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
+			exit 5
+		fi
+
+		header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/${FLL_BUILD_PACKAGE_PROFILE}.bm"
+		source "${FLL_BUILD_PACKAGE_PROFDIR}/${FLL_BUILD_PACKAGE_PROFILE}.bm"
+
+		for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
+			header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+			source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/${pkgmod}.bm"
+		done
+
+		header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/early.bm"
+		source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/early.bm"
+		
+		if [[ ! ${FLL_PACKAGES[@]} ]]; then
+			echo "$SELF: package profile did not produce FLL_PACKAGES array!"
+			exit 6
+		fi
+		
+		header "Package to be installed..."
+		echo "${FLL_PACKAGES[@]}"
+
+		#################################################################
 		#		prepare kernel zip package			#
 		#################################################################
 		if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '.*kernel-(.*).zip$' ]]; then
 			KVERS=${BASH_REMATCH[1]}
+
+			header "Preparing ${FLL_BUILD_LINUX_KERNEL[${arch}]}..."
 
 			# stage temporary dir within chroot
 			FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
@@ -373,35 +403,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			else
 				echo "Must define FLL_BUILD_LINUX_KERNEL in your conf"
 			fi
-			exit 5
-		fi
-
-		#################################################################
-		#		process package array(s)			#
-		#################################################################
-		if [[ ! -s "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm ]]; then
-			echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
 			exit 6
 		fi
-
-		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/$FLL_BUILD_PACKAGE_PROFILE.bm"
-		source "$FLL_BUILD_PACKAGE_PROFDIR"/"$FLL_BUILD_PACKAGE_PROFILE".bm
-
-		for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
-			header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
-			source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/${pkgmod}.bm
-		done
-
-		header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/early.bm"
-		source "$FLL_BUILD_PACKAGE_PROFDIR"/packages.d/early.bm
-		
-		if [[ ! ${FLL_PACKAGES[@]} ]]; then
-			echo "$SELF: package profile did not produce FLL_PACKAGES array!"
-			exit 7
-		fi
-		
-		# echo package list early for bfree :-)
-		echo "${FLL_PACKAGES[@]}"
 
 		#################################################################
 		#		create & prepare chroot				#
