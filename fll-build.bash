@@ -787,8 +787,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		echo "configfile /boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		sed	-e 's|@arch@|'"${FLL_BUILD_ARCH[${arch}]}"'|'		\
-			-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
+		sed	-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
 			-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
 				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > \
 					"$FLL_BUILD_RESULT"/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}
