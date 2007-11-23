@@ -26,8 +26,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     space
   * mv seminarix.bm kde-seminarix.bm, it is based on kde
   * Couldnt find package nachinstallieren bugfix in kde-seminarix.bm
+  * kde-seminarix.bm: vym, koffice-i18n-de added, kdissert removed
 
- -- Horst Tritremmel <hjt@sidux.com>  Fri, 23 Nov 2007 10:09:11 +0100
+ -- Horst Tritremmel <hjt@sidux.com>  Fri, 23 Nov 2007 20:36:34 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 

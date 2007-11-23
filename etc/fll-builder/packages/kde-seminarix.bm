@@ -50,6 +50,7 @@ FLL_PACKAGES=(
 	kpresenter
 	karbon	
 	kspread
+	koffice-i18n-de
 
 	scribus
 
@@ -62,8 +63,8 @@ FLL_PACKAGES=(
 	
 	audacity
 	
-	kdissert	
-	#vym 		#Alternative zu kdissert nachinstallieren
+	#kdissert	#nachinstallieren
+	vym
 	keduca
 	kpdf
 	ksociograma
