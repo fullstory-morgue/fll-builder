@@ -291,7 +291,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
 		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
 			FLL_ISO_NAME="$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \+ <<< ${FLL_BUILD_ARCH[@]}).iso)"
+				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
 		else
 			FLL_ISO_NAME="$(tr A-Z a-z <<< \
 				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(arch ${FLL_BUILD_ARCH[@]}).iso)"
@@ -299,7 +299,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	else
 		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
 			FLL_ISO_NAME="$(tr A-Z a-z <<< \
-				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \+ <<< ${FLL_BUILD_ARCH[@]}).iso)"
+				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
 		else
 			FLL_ISO_NAME="$(tr A-Z a-z <<< \
 				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(arch ${FLL_BUILD_ARCH[@]}).iso)"
@@ -337,14 +337,13 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# NOTE: we have to be very careful when redefining FLL_ variables
 		# in a loop like this, make sure we strip the previously appended
 		# FLL_IMAGE_FILE extension.
-		ARCH=$(arch ${FLL_BUILD_ARCH[${arch}]})
-		FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${ARCH}"
+		FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${FLL_BUILD_ARCH[${arch}]}"
 		FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
 
 		#################################################################
 		#		arch specific build area			#
 		#################################################################
-		FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT-${ARCH}"
+		FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT-${FLL_BUILD_ARCH[${arch}]}"
 		mkdir -vp "$FLL_BUILD_CHROOT"
 
 		if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
@@ -594,7 +593,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
 
 			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.manifest"
+				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
 			else
 				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
 			fi
@@ -612,7 +611,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			done
 
 			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${ARCH}.sources"
+				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
 			else
 				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
 			fi
@@ -774,7 +773,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Preparing ISO /boot files..."
 		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		echo "title  sidux $ARCH" >> \
+		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]}" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
@@ -783,16 +782,16 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		
 		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		echo "title  sidux $ARCH Advanced Menu" >> \
+		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]} Advanced Menu" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "configfile /boot/grub/menu.lst.${ARCH}" >> \
+		echo "configfile /boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}" >> \
 			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
 
-		sed	-e 's|@arch@|'"$ARCH"'|'		\
+		sed	-e 's|@arch@|'"${FLL_BUILD_ARCH[${arch}]}"'|'		\
 			-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
 			-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
 				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > \
-					"$FLL_BUILD_RESULT"/boot/grub/menu.lst.${ARCH}
+					"$FLL_BUILD_RESULT"/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}
 
 		[[ -f "$FLL_BUILD_RESULT"/boot/message ]] || \
 			cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/grub/message
