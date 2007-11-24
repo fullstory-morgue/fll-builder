@@ -3,6 +3,7 @@ FLL_PACKAGES+=(
 	cdebootstrap
 	cdrdao
 	cryptsetup
+	debhelper
 	dvd+rw-tools
 	dvb-utils
 	dosfstools
