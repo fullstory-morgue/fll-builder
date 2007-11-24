@@ -14,17 +14,3 @@ Description: set various default options
  This package has much influence on the system and update behaviour of
  customized live linux utilities. Take care to keep sane settings for
  installed systems.
-
-#Package: fll-builder
-#Architecture: all
-#Depends: apt-utils, cdebootstrap, dctrl-tools, distro-defaults (>= ${source:Version}), genisoimage, squashfs-tools (>= 1:3.2r2-0+c0.sidux.1), unzip, wget, zip
-#Description: scripts to build a live-cd based on the FULLSTORY project code
-# The purpose of fll-builder is to build a modern linux operating system
-# from the rich software provided by the unstable branch of the Debian
-# GNU/Linux project (codename: sid). 
-# .
-# The product of fll-builder contains additional software from the
-# F.U.L.L.S.T.O.R.Y project that enhances the operating system's ability to
-# adapt to a diverse range of hardware configurations. 
-# .
-# Homepage: http://developer.berlios.de/projects/fullstory 
