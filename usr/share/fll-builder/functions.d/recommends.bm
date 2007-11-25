@@ -1,0 +1,23 @@
+grep_recommends() {
+	for p in $@; do
+		
+		if [[ $(type -t installed_in_chroot) == "function" ]]; then
+			installed_in_chroot "$p" || continue
+		fi
+
+		grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
+			awk -F, '
+				/./ {
+					for (i = 1; i <= NF; i++) {
+						# trim leading whitespace
+						sub(/^[ \t]+/,"",$i)
+						# take the preferred string from conditional
+						sub(/\|.*/,"",$i)
+						# trim version strings
+						sub(/\(.*/,"",$i)
+						print $i
+					}
+				}
+			'
+	done
+}

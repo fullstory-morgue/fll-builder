@@ -544,31 +544,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
 		source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm"
 
-		unset FLL_PACKAGES_EXTRA
 		if [[ ${FLL_PACKAGES_RECOMMENDS[@]} ]]; then
 			if [[ ! -x $(which grep-dctrl) ]]; then
 				echo "$SELF: grep-dctrl missing!" 1>&2 
 				exit 9
 			fi
-
-			for p in ${FLL_PACKAGES_RECOMMENDS[@]}; do
-				installed_in_chroot "$p" || continue
-				header "Installing recommended packages for $p"
-				FLL_PACKAGES_EXTRA+=( $(grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
-					awk -F, '
-						/./ {
-							for (i = 1; i <= NF; i++) {
-								# trim leading whitespace
-								sub(/^[ \t]+/,"",$i)
-								# take the preferred string from conditional
-								sub(/\|.*/,"",$i)
-								# trim version strings
-								sub(/\(.*/,"",$i)
-								print $i
-							}
-						}
-					') )
-			done
+			
+			header "Installing recommended packages for ${FLL_PACKAGES_RECOMMENDS[@]}"
+			FLL_PACKAGES_EXTRA=( $(grep_recommends ${FLL_PACKAGES_RECOMMENDS[@]}) )
 
 			if [[ ${FLL_PACKAGES_EXTRA[@]} ]]; then
 				chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
