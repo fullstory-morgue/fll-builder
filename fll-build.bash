@@ -790,7 +790,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		echo "title memtest86+" 		>> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 		echo "kernel /boot/memtest86+.bin" 	>> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 	fi
-	rm -fv "${FLL_BUILD_RESULT}/boot/grub/menu.lst.in"
+	rm -f "${FLL_BUILD_RESULT}/boot/grub/menu.lst.in"
 
 	# md5sums
 	header "Calculating md5sums..."
