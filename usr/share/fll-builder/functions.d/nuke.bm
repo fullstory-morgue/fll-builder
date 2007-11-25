@@ -1,26 +1,26 @@
 nuke() {
-	[[ -d $1 ]] || return
+	[[ -d ${1} ]] || return
 	
-	find "$1" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
-  	find "$1" -xdev -depth -type d -print0 | xargs -0 rmdir
+	find "${1}" -xdev \( \! -type d \) -print0 | xargs -0 rm -f
+  	find "${1}" -xdev -depth -type d -print0 | xargs -0 rmdir
 	
 	return 0
 }
 
 nuke_buildarea() {
-	[[ -d $FLL_BUILD_TEMP ]] || return 0
+	[[ -d ${FLL_BUILD_TEMP} ]] || return 0
 
 	if chroot_virtfs umount; then
-		if [[ $FLL_BUILD_PRESERVE_CHROOT ]]; then
-			echo "Chroot preserved at $FLL_BUILD_AREA"
+		if [[ ${FLL_BUILD_PRESERVE_CHROOT} ]]; then
+			echo "Chroot preserved at ${FLL_BUILD_AREA}"
 			return 0
 		fi
 		# adpated from pbuilder
-		nuke "$FLL_BUILD_TEMP"
+		nuke "${FLL_BUILD_TEMP}"
 		return 0
 	else
 		echo "Error umounting virtual filesystems"
-		echo "You must manually cleanup up $FLL_BUILD_AREA"
+		echo "You must manually cleanup up ${FLL_BUILD_AREA}"
 		return 1
 	fi
 }

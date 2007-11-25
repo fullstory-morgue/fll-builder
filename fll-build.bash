@@ -51,10 +51,10 @@ print_help() {
 	cat \
 <<EOF
 
-Usage: $SELF [options] <build_directory>
+Usage: ${SELF} [options] <build_directory>
 
 Arguments:
-  $SELF takes only one argument; path to build directory. A writeable
+  ${SELF} takes only one argument; path to build directory. A writeable
   directory must be provided as the first and only argument (after options).
 
 Options:
@@ -89,7 +89,7 @@ EOF
 #		root?						#
 #################################################################
 if ((UID)); then
-	exec su root -c "$0 --uid $UID $*"
+	exec su root -c "${0} --uid ${UID} $*"
 fi
 
 #################################################################
@@ -106,45 +106,45 @@ export LANG LC_ALL
 DPKG_ARCH=$(dpkg --print-installation-architecture)
 
 # Allow lazy development and testing
-FLL_BUILD_BASE=$(dirname $0)
-if [[ ! -f  $FLL_BUILD_BASE/debian/changelog ]]; then
+FLL_BUILD_BASE=$(dirname ${0})
+if [[ ! -f  ${FLL_BUILD_BASE}/debian/changelog ]]; then
 	unset FLL_BUILD_BASE
 fi
 
 # fll defaults
-FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
-source "$FLL_BUILD_DEFAULTS"
+FLL_BUILD_DEFAULTS="${FLL_BUILD_BASE}/etc/default/distro"
+source "${FLL_BUILD_DEFAULTS}"
 
 # distro name, lower casified
-FLL_DISTRO_NAME_LC="$(tr [:upper:] [:lower:] <<< $FLL_DISTRO_NAME)"
+FLL_DISTRO_NAME_LC="$(tr [:upper:] [:lower:] <<< ${FLL_DISTRO_NAME})"
 # distro name, upper casified
-FLL_DISTRO_NAME_UC="$(tr [:lower:] [:upper:] <<< $FLL_DISTRO_NAME)"
+FLL_DISTRO_NAME_UC="$(tr [:lower:] [:upper:] <<< ${FLL_DISTRO_NAME})"
 
-# check for $FLL_DISTRO_CODENAME
-if [[ -z $FLL_DISTRO_CODENAME ]]; then
+# check for ${FLL_DISTRO_CODENAME}
+if [[ -z ${FLL_DISTRO_CODENAME} ]]; then
 	FLL_DISTRO_CODENAME="snapshot"
 fi
 
-# set $FLL_DISTRO_CODENAME_SAFE, if undefined
-if [[ -z $FLL_DISTRO_CODENAME_SAFE ]]; then
-	FLL_DISTRO_CODENAME_SAFE="$(sed s/\ /_/g <<< $FLL_DISTRO_CODENAME)"
+# set ${FLL_DISTRO_CODENAME_SAFE}, if undefined
+if [[ -z ${FLL_DISTRO_CODENAME_SAFE} ]]; then
+	FLL_DISTRO_CODENAME_SAFE="$(sed s/\ /_/g <<< ${FLL_DISTRO_CODENAME})"
 fi
 
 # fll default configfile
-FLL_BUILD_DEFCONFIG="$FLL_BUILD_BASE/etc/fll-builder/fll-build.conf"
+FLL_BUILD_DEFCONFIG="${FLL_BUILD_BASE}/etc/fll-builder/fll-build.conf"
 
 # package profile dir and default
-FLL_BUILD_PACKAGE_PROFDIR="$FLL_BUILD_BASE/etc/fll-builder/packages"
+FLL_BUILD_PACKAGE_PROFDIR="${FLL_BUILD_BASE}/etc/fll-builder/packages"
 FLL_BUILD_PACKAGE_PROFILE="kde-lite"
 
 # fll script and template location variables
-FLL_BUILD_SHARED="$FLL_BUILD_BASE/usr/share/fll-builder"
-FLL_BUILD_FUNCTIONS="$FLL_BUILD_SHARED/functions.d"
-FLL_BUILD_TEMPLATES="$FLL_BUILD_SHARED/templates"
-FLL_BUILD_EXCLUSION_LIST="$FLL_BUILD_SHARED/exclusion_list"
+FLL_BUILD_SHARED="${FLL_BUILD_BASE}/usr/share/fll-builder"
+FLL_BUILD_FUNCTIONS="${FLL_BUILD_SHARED}/functions.d"
+FLL_BUILD_TEMPLATES="${FLL_BUILD_SHARED}/templates"
+FLL_BUILD_EXCLUSION_LIST="${FLL_BUILD_SHARED}/exclusion_list"
 
 # store current UID, override later if executed by !root
-FLL_BUILD_OUTPUT_UID=$UID
+FLL_BUILD_OUTPUT_UID=${UID}
 
 # create source uri + manifest by default
 FLL_SOURCE_RELEASE=1
@@ -152,33 +152,33 @@ FLL_SOURCE_RELEASE=1
 #################################################################
 #		source functions				#
 #################################################################
-for func in "$FLL_BUILD_FUNCTIONS"/*.bm; do
-	source "$func"
+for func in "${FLL_BUILD_FUNCTIONS}"/*.bm; do
+	source "${func}"
 done
 
 #################################################################
 #		parse command line				#
 #################################################################
-ARGS=$( getopt --name "$SELF" \
+ARGS=$( getopt --name "${SELF}" \
 	--options Bc:Cdhno:pP:St: \
 	--long binary-release,configfile:,chroot-only,copyright,debug,help,output:,package-profiledir,preserve,source-release,template-dir:,uid: \
 	-- $@ )
 
 if [[ $? != 0 ]]; then
-	echo "$SELF: getopt failed, terminating."
+	echo "${SELF}: getopt failed, terminating."
 	exit 1
 fi
 
-eval set -- "$ARGS"
+eval set -- "${ARGS}"
 
 while true; do
-	case $1 in
+	case ${1} in
 		-B|--binary-release)
 			((FLL_SOURCE_RELEASE--))
 			;;
 		-c|--configfile)
 			shift
-			FLL_BUILD_CONFIGS+=( $1 )
+			FLL_BUILD_CONFIGS+=( ${1} )
 			;;
 		-C|--copyright)
 			print_copyright
@@ -196,33 +196,33 @@ while true; do
 			;;
 		-o|--output)
 			shift
-			FLL_BUILD_ISO_DIR=$1
+			FLL_BUILD_ISO_DIR=${1}
 			;;
 		-p|--preserve)
 			((FLL_BUILD_PRESERVE_CHROOT++))
 			;;
 		-P|--package-profiledir)
 			shift
-			FLL_BUILD_PACKAGE_PROFDIR=$1
+			FLL_BUILD_PACKAGE_PROFDIR=${1}
 			;;
 		-S|--source-release)
 			((FLL_SOURCE_RELEASE++))
 			;;
 		-t|--template-dir)
 			shift
-			FLL_BUILD_TEMPLATES=$1
+			FLL_BUILD_TEMPLATES=${1}
 			;;
 		--uid)
 			# this need not be a documented feature
 			shift
-			FLL_BUILD_OUTPUT_UID=$1
+			FLL_BUILD_OUTPUT_UID=${1}
 			;;
 		--)
 			shift
 			break
 			;;
 		*)
-			echo "$SELF: invalid command line option"
+			echo "${SELF}: invalid command line option"
 			echo
 			print_help
 			exit 2
@@ -234,17 +234,17 @@ done
 #################################################################
 #		determine abs. dirname				#
 #################################################################
-if [[ $1 ]]; then
+if [[ ${1} ]]; then
 	# make build dir and determine its absolute path
-	mkdir -p $1 && FLL_BUILD_AREA="$(absdirname $1)"
+	mkdir -p ${1} && FLL_BUILD_AREA="$(absdirname ${1})"
 else
-	echo "$SELF: must supply a build directory as first and only command line argument!"
+	echo "${SELF}: must supply a build directory as first and only command line argument!"
 	echo
 	print_help
 	exit 4
 fi
 
-if [[ $DEBUG -ge 2 ]]; then
+if [[ ${DEBUG} -ge 2 ]]; then
 	set -x
 fi
 
@@ -258,28 +258,28 @@ trap nuke_buildarea exit
 #################################################################
 # alternate configfile
 if [[ ! ${FLL_BUILD_CONFIGS[@]} ]]; then
-	FLL_BUILD_CONFIGS=( $FLL_BUILD_DEFCONFIG )
+	FLL_BUILD_CONFIGS=( ${FLL_BUILD_DEFCONFIG} )
 fi
 
 for config in ${FLL_BUILD_CONFIGS[@]}; do
-	if [[ $config != $FLL_BUILD_DEFCONFIG ]]; then
+	if [[ ${config} != ${FLL_BUILD_DEFCONFIG} ]]; then
 		# restore defaults for each build
-		source "$FLL_BUILD_DEFCONFIG"
+		source "${FLL_BUILD_DEFCONFIG}"
 	fi
 
-	FLL_BUILD_ARCH="$DPKG_ARCH"
+	FLL_BUILD_ARCH="${DPKG_ARCH}"
 
-	source "$config"
+	source "${config}"
 
 	#################################################################
 	#		export proxy env vars				#
 	#################################################################
-	if [[ $FLL_HTTP_PROXY ]]; then
-		export http_proxy=$FLL_HTTP_PROXY
+	if [[ ${FLL_HTTP_PROXY} ]]; then
+		export http_proxy=${FLL_HTTP_PROXY}
 	fi
 
-	if [[ $FLL_FTP_PROXY ]]; then
-		export ftp_proxy=$FLL_FTP_PROXY
+	if [[ ${FLL_FTP_PROXY} ]]; then
+		export ftp_proxy=${FLL_FTP_PROXY}
 	fi
 
 	# package timestamp for snapshot versioning
@@ -288,7 +288,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#################################################################
 	#		iso name (with package timestamp)		#
 	#################################################################
-	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
+	if [ "${FLL_DISTRO_CODENAME}" = "snapshot" ]; then
 		FLL_ISO_NAME="$(tr [:upper:] [:lower:] <<< \
 				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
 	else
@@ -300,24 +300,24 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		prepare build area				#
 	#################################################################
 	# temporary staging areas within buildarea
-	FLL_BUILD_TEMP=$(mktemp -p $FLL_BUILD_AREA -d $SELF.XXXXX)
-	FLL_BUILD_RESULT="$FLL_BUILD_TEMP/RESULT"
-	mkdir -vp "$FLL_BUILD_RESULT/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
+	FLL_BUILD_TEMP=$(mktemp -p ${FLL_BUILD_AREA} -d ${SELF}.XXXXX)
+	FLL_BUILD_RESULT="${FLL_BUILD_TEMP}/RESULT"
+	mkdir -vp "${FLL_BUILD_RESULT}/boot" "${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR}"
 
-	header "Staging result area: $FLL_BUILD_RESULT"
+	header "Staging result area: ${FLL_BUILD_RESULT}"
 	# add templates (grub menu.lst/documentation/manual/autorun etc.)
-	for dir in "$FLL_BUILD_TEMPLATES"/*; do
-		[[ -d $dir ]] || continue
-		pushd $dir >/dev/null
+	for dir in "${FLL_BUILD_TEMPLATES}"/*; do
+		[[ -d ${dir} ]] || continue
+		pushd ${dir} >/dev/null
 			find . -not -path '*.svn*' -printf '%P\n' | \
-				cpio -Ladmpv --no-preserve-owner "$FLL_BUILD_RESULT"
+				cpio -Ladmpv --no-preserve-owner "${FLL_BUILD_RESULT}"
 		popd >/dev/null
 	done
 
 	# fix permissions to allow user access
 	if ((FLL_BUILD_OUTPUT_UID)); then
-		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_AREA"
-		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "$FLL_BUILD_TEMP"
+		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "${FLL_BUILD_AREA}"
+		chown -R "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" "${FLL_BUILD_TEMP}"
 	fi
 
 	for arch in ${!FLL_BUILD_ARCH[@]}; do
@@ -328,20 +328,20 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# in a loop like this, make sure we strip the previously appended
 		# FLL_IMAGE_FILE extension.
 		FLL_IMAGE_FILE="${FLL_IMAGE_FILE%%.*}.${FLL_BUILD_ARCH[${arch}]}"
-		FLL_IMAGE_LOCATION="$FLL_IMAGE_DIR/$FLL_IMAGE_FILE"
+		FLL_IMAGE_LOCATION="${FLL_IMAGE_DIR}/${FLL_IMAGE_FILE}"
 
 		#################################################################
 		#		arch specific build area			#
 		#################################################################
-		FLL_BUILD_CHROOT="$FLL_BUILD_TEMP/CHROOT-${FLL_BUILD_ARCH[${arch}]}"
-		mkdir -vp "$FLL_BUILD_CHROOT"
+		FLL_BUILD_CHROOT="${FLL_BUILD_TEMP}/CHROOT-${FLL_BUILD_ARCH[${arch}]}"
+		mkdir -vp "${FLL_BUILD_CHROOT}"
 
-		if [[ ! -d $FLL_BUILD_ISO_DIR ]]; then
-			if [[ $FLL_BUILD_ISO_DIR ]]; then
-				echo "$SELF: $FLL_BUILD_ISO_DIR does not exist!"
-				echo "$SELF: creating iso in $FLL_BUILD_AREA"
+		if [[ ! -d ${FLL_BUILD_ISO_DIR} ]]; then
+			if [[ ${FLL_BUILD_ISO_DIR} ]]; then
+				echo "${SELF}: ${FLL_BUILD_ISO_DIR} does not exist!"
+				echo "${SELF}: creating iso in ${FLL_BUILD_AREA}"
 			fi
-			FLL_BUILD_ISO_DIR="$FLL_BUILD_AREA"
+			FLL_BUILD_ISO_DIR="${FLL_BUILD_AREA}"
 		fi
 
 		#################################################################
@@ -349,7 +349,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#################################################################
 		unset FLL_PACKAGES
 		if [[ ! -s "${FLL_BUILD_PACKAGE_PROFDIR}/${FLL_BUILD_PACKAGE_PROFILE}.bm" ]]; then
-			echo "Unable to process package profile: $FLL_BUILD_PACKAGE_PROFILE"
+			echo "Unable to process package profile: ${FLL_BUILD_PACKAGE_PROFILE}"
 			exit 5
 		fi
 
@@ -357,7 +357,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		source "${FLL_BUILD_PACKAGE_PROFDIR}/${FLL_BUILD_PACKAGE_PROFILE}.bm"
 
 		for pkgmod in ${FLL_PACKAGE_DEPMODS[@]}; do
-			header "Processing: $FLL_BUILD_PACKAGE_PROFDIR/packages.d/${pkgmod}.bm"
+			header "Processing: ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/${pkgmod}.bm"
 			source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/${pkgmod}.bm"
 		done
 
@@ -365,7 +365,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		source "${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/early.bm"
 		
 		if [[ ! ${FLL_PACKAGES[@]} ]]; then
-			echo "$SELF: package profile did not produce FLL_PACKAGES array!"
+			echo "${SELF}: package profile did not produce FLL_PACKAGES array!"
 			exit 6
 		fi
 		
@@ -381,18 +381,18 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			header "Preparing ${FLL_BUILD_LINUX_KERNEL[${arch}]}..."
 
 			# stage temporary dir within chroot
-			FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.kernel.XXXX)
+			FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p ${FLL_BUILD_CHROOT} -d fll.kernel.XXXX)
 
 			if [[ -f ${FLL_BUILD_LINUX_KERNEL[${arch}]} ]]; then
-				cp -v "${FLL_BUILD_LINUX_KERNEL[${arch}]}" "$FLL_BUILD_LINUX_KERNELDIR"
+				cp -v "${FLL_BUILD_LINUX_KERNEL[${arch}]}" "${FLL_BUILD_LINUX_KERNELDIR}"
 			else
 				wget "${FLL_BUILD_LINUX_KERNEL[${arch}]}" \
-					-O "$FLL_BUILD_LINUX_KERNELDIR"/kernel-"$KVERS".zip
+					-O "${FLL_BUILD_LINUX_KERNELDIR}"/kernel-"${KVERS}".zip
 			fi
 
-			pushd "$FLL_BUILD_LINUX_KERNELDIR" &>/dev/null
-				zip -T kernel-"$KVERS".zip
-				unzip kernel-"$KVERS".zip
+			pushd "${FLL_BUILD_LINUX_KERNELDIR}" &>/dev/null
+				zip -T kernel-"${KVERS}".zip
+				unzip kernel-"${KVERS}".zip
 			popd &>/dev/null
 		elif [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
 			KVERS="${FLL_BUILD_LINUX_KERNEL[${arch}]}"
@@ -409,15 +409,15 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#################################################################
 		#		create & prepare chroot				#
 		#################################################################
-		if [[ $DEBUG ]]; then
+		if [[ ${DEBUG} ]]; then
 			FLL_DEBOOSTRAP_VERBOSITY="--debug"
 		else
 			FLL_DEBOOSTRAP_VERBOSITY="--verbose"
 		fi
 
 		header "running cdebootstrap..."
-		cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="${FLL_BUILD_ARCH[${arch}]}" --flavour=minimal "$FLL_BUILD_DEBIANMIRROR_SUITE" \
-			"$FLL_BUILD_CHROOT" "${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR}"
+		cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="${FLL_BUILD_ARCH[${arch}]}" --flavour=minimal "${FLL_BUILD_DEBIANMIRROR_SUITE}" \
+			"${FLL_BUILD_CHROOT}" "${FLL_BUILD_DEBIANMIRROR_CACHED:=${FLL_BUILD_DEBIANMIRROR}}"
 		
 		chroot_virtfs mount
 
@@ -431,12 +431,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		
 		# import key for extra mirror(s)
 		for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
-			header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[$i]}"
-			if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
-				cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} | chroot_exec apt-key add -
-			elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]} ]]; then
+			header "Importing GPG key for ${FLL_BUILD_EXTRAMIRROR[${i}]}"
+			if [[ -f ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[${i}]} ]]; then
+				cat ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[${i}]} | chroot_exec apt-key add -
+			elif [[ ${FLL_BUILD_EXTRAMIRROR_GPGKEYID[${i}]} ]]; then
 				chroot_exec gpg --keyserver wwwkeys.eu.pgp.net --recv-keys \
-					"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[$i]}" || :
+					"${FLL_BUILD_EXTRAMIRROR_GPGKEYID[${i}]}" || :
 			fi
 		done
 
@@ -494,33 +494,32 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# ensure initrd is created by linux-image postinst hook
 		cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
 		
-		if [[ $FLL_BUILD_LINUX_KERNELDIR ]]; then
+		if [[ ${FLL_BUILD_LINUX_KERNELDIR} ]]; then
 			# install kernel via zip package from http://sidux.com/files/kernel/
-			chroot_install_debs_from_dir "$FLL_BUILD_LINUX_KERNELDIR"
+			chroot_install_debs_from_dir "${FLL_BUILD_LINUX_KERNELDIR}"
 
 			# link-up kernel headers/documentation
-			rm -vf "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/{build,source}
-			ln -vs linux-headers-"$KVERS" "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"
-			ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/build
-			ln -vs /usr/src/linux-"$KVERS" "$FLL_BUILD_CHROOT"/lib/modules/"$KVERS"/source
-			cp -vf "$FLL_BUILD_CHROOT"/boot/config-"$KVERS" \
-				"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/.config
-			rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
-			ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
-				"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+			rm -vf "${FLL_BUILD_CHROOT}"/lib/modules/"${KVERS}"/{build,source}
+			ln -vs "linux-headers-${KVERS}" "${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}"
+			ln -vs "/usr/src/linux-${KVERS}" "${FLL_BUILD_CHROOT}/lib/modules/${KVERS}/build"
+			ln -vs "/usr/src/linux-${KVERS}" "${FLL_BUILD_CHROOT}/lib/modules/${KVERS}/source"
+			cp -vf "${FLL_BUILD_CHROOT}/boot/config-${KVERS}" \
+				"${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/.config"
+			rm -rf "${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/Documentation"
+			ln -vs "/usr/share/doc/linux-doc-${KVERS}/Documentation" \
+				"${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/Documentation"
 
-			nuke "$FLL_BUILD_LINUX_KERNELDIR"
+			nuke "${FLL_BUILD_LINUX_KERNELDIR}"
 		else
 			# debian kernel, just apt-get it
-			chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
-				squashfs-modules-"$KVERS" unionfs-modules-"$KVERS"
-				# aufs-modules-"$KVERS"
+			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS} \
+				squashfs-modules-${KVERS} unionfs-modules-${KVERS} aufs-modules-${KVERS}
 		fi
 
 		header "Grabbing kernel and initramfs now"
 		# grab kernel and initial ramdisk before other packages are installed
-		mv -v "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
-		cp -v "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+		mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
+		cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 		
 		#################################################################
 		#		mass package installation			#
@@ -529,11 +528,11 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		chroot_exec apt-get --assume-yes install ${FLL_PACKAGES[@]}
 
 		# handle locale support packages
-		header "processing locale support packages for: $FLL_I18N_SUPPORT"
+		header "processing locale support packages for: ${FLL_I18N_SUPPORT}"
 		unset FLL_I18N_SUPPORT_PACKAGES
-		if [[ $FLL_I18N_SUPPORT ]]; then
-			FLL_I18N_SUPPORT="$(tr [:upper:] [:lower:] <<< $FLL_I18N_SUPPORT)"
-			FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
+		if [[ ${FLL_I18N_SUPPORT} ]]; then
+			FLL_I18N_SUPPORT="$(tr [:upper:] [:lower:] <<< ${FLL_I18N_SUPPORT})"
+			FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages ${FLL_I18N_SUPPORT}) )
 			
 			if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
 				chroot_exec apt-get --assume-yes install ${FLL_I18N_SUPPORT_PACKAGES[@]}
@@ -546,7 +545,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		if [[ ${FLL_PACKAGES_RECOMMENDS[@]} ]]; then
 			if [[ ! -x $(which grep-dctrl) ]]; then
-				echo "$SELF: grep-dctrl missing!" 1>&2 
+				echo "${SELF}: grep-dctrl missing!" 1>&2 
 				exit 9
 			fi
 			
@@ -558,40 +557,37 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			fi
 		fi
 
-		# purge unwanted packages
-		chroot_exec dpkg --purge cdebootstrap-helper-diverts
-		
-		if exists_in_chroot /usr/bin/fll_src_uri && [[ $FLL_SOURCE_RELEASE -ge 1 ]]; then
+		if exists_in_chroot /usr/bin/fll_src_uri && [[ ${FLL_SOURCE_RELEASE} -ge 1 ]]; then
 			header "Creating source URI list and package manifest..."
 
-			FLL_BUILD_SOURCES=$(mktemp -p $FLL_BUILD_CHROOT fll.sources.XXXX)
-			FLL_BUILD_MANIFEST=$(mktemp -p $FLL_BUILD_CHROOT fll.manifest.XXXX)
+			FLL_BUILD_SOURCES=$(mktemp -p ${FLL_BUILD_CHROOT} fll.sources.XXXX)
+			FLL_BUILD_MANIFEST=$(mktemp -p ${FLL_BUILD_CHROOT} fll.manifest.XXXX)
 
 			chroot_exec apt-get --assume-yes install libapt-pkg-perl
 			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
 
 			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
+				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
 			else
-				mv -v "$FLL_BUILD_MANIFEST" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.manifest"
+				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.manifest"
 			fi
 		
 			# fix source URI's to use non cached address
-			if [[ $FLL_BUILD_DEBIANMIRROR_CACHED && $FLL_BUILD_DEBIANMIRROR ]]; then
-				sed -i 's#'"$FLL_BUILD_DEBIANMIRROR_CACHED"'#'"$FLL_BUILD_DEBIANMIRROR"'#' \
-					"$FLL_BUILD_SOURCES"
+			if [[ ${FLL_BUILD_DEBIANMIRROR_CACHED} && ${FLL_BUILD_DEBIANMIRROR} ]]; then
+				sed -i 's#'"${FLL_BUILD_DEBIANMIRROR_CACHED}"'#'"${FLL_BUILD_DEBIANMIRROR}"'#' \
+					"${FLL_BUILD_SOURCES}"
 			fi
 
 			for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
-				[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} && ${FLL_BUILD_EXTRAMIRROR[$i]} ]] || continue
-				sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[$i]}"'#'"${FLL_BUILD_EXTRAMIRROR[$i]}"'#' \
-					"$FLL_BUILD_SOURCES"
+				[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]} && ${FLL_BUILD_EXTRAMIRROR[${i}]} ]] || continue
+				sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]}"'#'"${FLL_BUILD_EXTRAMIRROR[${i}]}"'#' \
+					"${FLL_BUILD_SOURCES}"
 			done
 
 			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
+				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
 			else
-				mv -v "$FLL_BUILD_SOURCES" "$FLL_BUILD_ISO_DIR"/"${FLL_ISO_NAME}.sources"
+				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.sources"
 			fi
 		fi
 		
@@ -601,18 +597,18 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		if exists_in_chroot /usr/bin/fll_analyze_initscripts; then
 			header "Creating initscript blacklist..."
 		
-			FLL_BUILD_INIT_BLACKLIST=$(mktemp -p $FLL_BUILD_CHROOT fll.blacklist.XXXX)
-			FLL_BUILD_INIT_WHITELIST=$(mktemp -p $FLL_BUILD_CHROOT fll.whitelist.XXXX)
+			FLL_BUILD_INIT_BLACKLIST=$(mktemp -p ${FLL_BUILD_CHROOT} fll.blacklist.XXXX)
+			FLL_BUILD_INIT_WHITELIST=$(mktemp -p ${FLL_BUILD_CHROOT} fll.whitelist.XXXX)
 		
-			cat "$FLL_BUILD_SHARED/fll_init_blacklist" > "$FLL_BUILD_INIT_BLACKLIST"
-			cat "$FLL_BUILD_SHARED/fll_init_whitelist" > "$FLL_BUILD_INIT_WHITELIST"
+			cat "${FLL_BUILD_SHARED}/fll_init_blacklist" > "${FLL_BUILD_INIT_BLACKLIST}"
+			cat "${FLL_BUILD_SHARED}/fll_init_whitelist" > "${FLL_BUILD_INIT_WHITELIST}"
 
 			chroot_exec /usr/bin/fll_analyze_initscripts --remove \
 				--blacklist "/${FLL_BUILD_INIT_BLACKLIST##*/}" \
 				--whitelist "/${FLL_BUILD_INIT_WHITELIST##*/}" \
-				| tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
+				| tee --append "${FLL_BUILD_CHROOT}/etc/default/fll-init"
 
-			rm -fv "$FLL_BUILD_INIT_BLACKLIST" "$FLL_BUILD_INIT_WHITELIST"
+			rm -fv "${FLL_BUILD_INIT_BLACKLIST}" "${FLL_BUILD_INIT_WHITELIST}"
 		fi
 		
 		#################################################################
@@ -621,22 +617,22 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# init 5 by default
 		header "Hacking inittab..."
 		sed -i  -e 's#^id:[0-6]:initdefault:#id:5:initdefault:#' \
-			"$FLL_BUILD_CHROOT"/etc/inittab
+			"${FLL_BUILD_CHROOT}"/etc/inittab
 
-		if [[ -z $FLL_ROOT_PASSWD ]]; then
+		if [[ -z ${FLL_ROOT_PASSWD} ]]; then
 			# immutable bash login shells
 			sed -i  -e 's#^\(~~:S:wait\):.\+#\1:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty1#' \
 				-e 's#^\(1\):\([0-9]\+\):\(respawn\):.\+#\1:\2:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
 				-e 's#^\([2-6]\):\([0-9]\+\):\(respawn\):.\+#\1:\245:\3:/sbin/getty \-n \-i \-l /usr/bin/fll_login 38400 tty\1#' \
-					"$FLL_BUILD_CHROOT"/etc/inittab
+					"${FLL_BUILD_CHROOT}/etc/inittab"
 
 			# lock down root
 			sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:\*:\2#" \
-				"$FLL_BUILD_CHROOT"/etc/shadow
+				"${FLL_BUILD_CHROOT}/etc/shadow"
 		else
-			# $FLL_ROOT_PASSWD must be an md5 hashed password - create with `openssl passwd -1'
+			# ${FLL_ROOT_PASSWD} must be an md5 hashed password - create with `openssl passwd -1'
 			sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
-				"$FLL_BUILD_CHROOT"/etc/shadow
+				"${FLL_BUILD_CHROOT}/etc/shadow"
 		fi 
 		#################################################################
 		#		misc chroot debconf preseeding			#
@@ -661,7 +657,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
 		if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
-			if [[ $(readlink "$FLL_BUILD_CHROOT"/etc/X11/X) == "/bin/true" ]]; then
+			if [[ $(readlink "${FLL_BUILD_CHROOT}/etc/X11/X") == "/bin/true" ]]; then
 				header "Fixing /etc/X11/X symlink..."
 				remove_from_chroot /etc/X11/X
 				chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
@@ -673,7 +669,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#		cleanup & prepare final chroot			#
 		#################################################################
 		header "Cleaning up..."
-		chroot_exec dpkg --purge fll-live-initramfs
+		chroot_exec dpkg --purge fll-live-initramfs cdebootstrap-helper-diverts
 
 		# remove used hacks and patches
 		remove_from_chroot /etc/kernel-img.conf
@@ -689,14 +685,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		cat_file_to_chroot apt_sources	/etc/apt/sources.list
 		
 		# add version marker
-		if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
+		if [ "${FLL_DISTRO_CODENAME}" = "snapshot" ]; then
 			printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($(date -u +%Y%m%d%H%M))\n" \
-				>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+				>> "${FLL_BUILD_CHROOT}/etc/${FLL_DISTRO_NAME_LC}-version"
 		else
 			printf "${FLL_DISTRO_NAME} ${FLL_DISTRO_VERSION} - ${FLL_DISTRO_CODENAME} - ${FLL_BUILD_PACKAGE_PROFILE} - ($(date -u +%Y%m%d%H%M))\n" \
-				>> "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+				>> "${FLL_BUILD_CHROOT}/etc/${FLL_DISTRO_NAME_LC}-version"
 		fi
-		chmod 0444 "$FLL_BUILD_CHROOT/etc/${FLL_DISTRO_NAME_LC}-version"
+		chmod 0444 "${FLL_BUILD_CHROOT}/etc/${FLL_DISTRO_NAME_LC}-version"
 		
 		# a few dæmons are broken if log files are missing, 
 		# therefore nuke log and spool files while preserving permissions
@@ -720,84 +716,85 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#		prepare boot files				#
 		#################################################################
 		header "Preparing ISO /boot files..."
-		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo >> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
 		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]}" >> \
-			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791" >> \
-			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791 ${FLL_BOOT_OPTIONS}" >> \
+			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 		echo "initrd /boot/initrd.img-${KVERS}" >> \
-			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 		
-		echo >> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+		echo >> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
 		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]} Advanced Menu" >> \
-			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 		echo "configfile /boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}" >> \
-			"$FLL_BUILD_RESULT"/boot/grub/menu.lst
+			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
-		sed	-e 's|@vmlinuz@|vmlinuz-'"$KVERS"'|'	\
-			-e 's|@initrd@|initrd\.img-'"$KVERS"'|'	\
-				"$FLL_BUILD_RESULT"/boot/grub/menu.lst.in > \
-					"$FLL_BUILD_RESULT"/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}
+		sed	-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'	\
+			-e 's|@initrd@|initrd\.img-'"${KVERS}"'|'	\
+				"${FLL_BUILD_RESULT}/boot/grub/menu.lst.in" > \
+					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}"
 
-		[[ -f "$FLL_BUILD_RESULT"/boot/message ]] || \
-			cp -v "$FLL_BUILD_CHROOT"/boot/message.live "$FLL_BUILD_RESULT"/boot/grub/message
-
-		for f in "$FLL_BUILD_CHROOT"/usr/lib/grub/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2}; do
-			[[ -f $f ]] && [[ ! -f "$FLL_BUILD_RESULT"/boot/grub/${f##*/} ]] || continue
-			cp -v $f "$FLL_BUILD_RESULT/boot/grub/"
-		done
-
-		if exists_in_chroot /boot/memtest86+.bin && [[ ! -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]]; then
-			 [[ -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]] || \
-			 	cp -v "$FLL_BUILD_CHROOT"/boot/memtest86+.bin "$FLL_BUILD_RESULT"/boot/
+		if exists_in_chroot /boot/message; then
+			[[ -f "${FLL_BUILD_RESULT}/boot/message" ]] || \
+				cp -v "${FLL_BUILD_CHROOT}/boot/message.live" "${FLL_BUILD_RESULT}/boot/grub/message"
 		fi
 
-		[[ $FLL_BUILD_CHROOT_ONLY ]] && continue
+		for f in "${FLL_BUILD_CHROOT}/usr/lib/grub/*-pc/"{iso9660_stage1_5,stage2_eltorito,stage2}; do
+			[[ ! -f "${FLL_BUILD_RESULT}/boot/grub/${f##*/}" ]] || cp -v "${f}" "${FLL_BUILD_RESULT}/boot/grub/"
+		done
+
+		if exists_in_chroot /boot/memtest86+.bin; then
+			 [[ -f "${FLL_BUILD_RESULT}/boot/memtest86+.bin" ]] || \
+			 	cp -v "${FLL_BUILD_CHROOT}/boot/memtest86+.bin" "${FLL_BUILD_RESULT}/boot/"
+		fi
+
+		[[ ${FLL_BUILD_CHROOT_ONLY} ]] && continue
 
 		#################################################################
 		#		build						#
 		#################################################################
 
-		FLL_BUILD_EXCLUDEFILE=$(mktemp -p $FLL_BUILD_TEMP fll.exclude-file.XXXXX)
-		FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p $FLL_BUILD_TEMP fll.exclusions.XXXXX)
-		FLL_BUILD_MKSQUASHFSOPTS=( "-ef $FLL_BUILD_EXCLUDEFILE" )
+		FLL_BUILD_EXCLUDEFILE=$(mktemp -p ${FLL_BUILD_TEMP} fll.exclude-file.XXXXX)
+		FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p ${FLL_BUILD_TEMP} fll.exclusions.XXXXX)
+		FLL_BUILD_MKSQUASHFSOPTS=( "-ef ${FLL_BUILD_EXCLUDEFILE}" )
 
 		header "Creating squashfs exclusions file..."
-		cat "$FLL_BUILD_EXCLUSION_LIST" > "$FLL_BUILD_TMPEXCLUSION_LIST"
-		pushd "$FLL_BUILD_CHROOT" >/dev/null
-			make_exclude_file "$FLL_BUILD_TMPEXCLUSION_LIST" | tee "$FLL_BUILD_EXCLUDEFILE"
+		cat "${FLL_BUILD_EXCLUSION_LIST}" > "${FLL_BUILD_TMPEXCLUSION_LIST}"
+		pushd "${FLL_BUILD_CHROOT}" >/dev/null
+			make_exclude_file "${FLL_BUILD_TMPEXCLUSION_LIST}" | tee "${FLL_BUILD_EXCLUDEFILE}"
 		popd >/dev/null
 		
-		if [[ -s $FLL_BUILD_SQUASHFS_SORTFILE ]]; then
-			FLL_BUILD_MKSQUASHFSOPTS+=( "-sort $FLL_BUILD_SQUASHFS_SORTFILE" )
+		if [[ -s ${FLL_BUILD_SQUASHFS_SORTFILE} ]]; then
+			FLL_BUILD_MKSQUASHFSOPTS+=( "-sort ${FLL_BUILD_SQUASHFS_SORTFILE}" )
 		fi
 
 		header "Creating squashfs..."
-		pushd "$FLL_BUILD_CHROOT" >/dev/null
-			mksquashfs . "$FLL_BUILD_RESULT"/"$FLL_IMAGE_LOCATION" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
+		pushd "${FLL_BUILD_CHROOT}" >/dev/null
+			mksquashfs . "${FLL_BUILD_RESULT}/${FLL_IMAGE_LOCATION}" ${FLL_BUILD_MKSQUASHFSOPTS[@]}
 		popd >/dev/null
 
-		header "Nuking $FLL_BUILD_CHROOT..."
-		nuke "$FLL_BUILD_CHROOT"
+		header "Nuking ${FLL_BUILD_CHROOT}..."
+		nuke "${FLL_BUILD_CHROOT}"
 	done
 
-	[[ $FLL_BUILD_CHROOT_ONLY ]] && exit 0
+	[[ ${FLL_BUILD_CHROOT_ONLY} ]] && exit 0
 
 	#################################################################
 	#		prepare iso					#
 	#################################################################
-	if [ -f "$FLL_BUILD_RESULT"/boot/memtest86+.bin ]; then
-		echo 					>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "title memtest86+" 		>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
-		echo "kernel /boot/memtest86+.bin" 	>> "$FLL_BUILD_RESULT"/boot/grub/menu.lst
+	if [ -f "${FLL_BUILD_RESULT}/boot/memtest86+.bin" ]; then
+		echo 					>> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+		echo "title memtest86+" 		>> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+		echo "kernel /boot/memtest86+.bin" 	>> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 	fi
-	rm -f "$FLL_BUILD_RESULT"/boot/grub/menu.lst.in
+	rm -fv "${FLL_BUILD_RESULT}/boot/grub/menu.lst.in"
 
 	# md5sums
 	header "Calculating md5sums..."
-	pushd "$FLL_BUILD_RESULT" >/dev/null
+	pushd "${FLL_BUILD_RESULT}" >/dev/null
 		find .	\
 			-type f \
 			-not \( \
@@ -810,44 +807,44 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	popd >/dev/null
 
 	# create iso sortlist
-	FLL_BUILD_ISOSORTLIST=$(mktemp -p $FLL_BUILD_TEMP fll.isosortlist.XXXXX)
+	FLL_BUILD_ISOSORTLIST=$(mktemp -p ${FLL_BUILD_TEMP} fll.isosortlist.XXXXX)
 
-	cat > "$FLL_BUILD_ISOSORTLIST" \
+	cat > "${FLL_BUILD_ISOSORTLIST}" \
 <<EOF
-$FLL_BUILD_RESULT/boot/grub/* 111111
-$FLL_BUILD_RESULT/boot/* 111110
+${FLL_BUILD_RESULT}/boot/grub/* 111111
+${FLL_BUILD_RESULT}/boot/* 111110
 ${FLL_BUILD_RESULT}/${FLL_IMAGE_DIR} 100001
 EOF
 
 	# make the iso
 	header "Creating ISO..."
 	genisoimage -v -pad -l -r -J \
-		-V "$FLL_DISTRO_NAME_UC" \
-		-A "$FLL_DISTRO_NAME_UC LIVE LINUX CD" \
+		-V "${FLL_DISTRO_NAME_UC}" \
+		-A "${FLL_DISTRO_NAME_UC} LIVE LINUX CD" \
 		-no-emul-boot -boot-load-size 4 -boot-info-table -hide-rr-moved \
 		-b boot/grub/iso9660_stage1_5 -c boot/grub/boot.cat \
-		-sort "$FLL_BUILD_ISOSORTLIST" \
-		-o "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME" \
-		"$FLL_BUILD_RESULT"
+		-sort "${FLL_BUILD_ISOSORTLIST}" \
+		-o "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}" \
+		"${FLL_BUILD_RESULT}"
 
 	# generate md5sums
 	echo "Calculate md5sums for the resulting ISO..."
-	pushd "$FLL_BUILD_ISO_DIR" >/dev/null
-		md5sum -b "$FLL_ISO_NAME" | tee "$FLL_ISO_NAME".md5
+	pushd "${FLL_BUILD_ISO_DIR}" >/dev/null
+		md5sum -b "${FLL_ISO_NAME}" | tee "${FLL_ISO_NAME}.md5"
 	popd >/dev/null
 
 	# if started as user, apply user ownership to output (based on --uid)
 	if ((FLL_BUILD_OUTPUT_UID)); then
-		chmod 0644 "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
+		chmod 0644 "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}"*
 		chown "${FLL_BUILD_OUTPUT_UID}:${FLL_BUILD_OUTPUT_UID}" \
-			"$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"*
+			"${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}"*
 	fi
 
 	header "Nuking build area..."
 	nuke_buildarea
 
 	echo
-	echo "$FLL_BUILD_ISO_DIR"/"$FLL_ISO_NAME"
+	echo "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}"
 done
 
 exit 0

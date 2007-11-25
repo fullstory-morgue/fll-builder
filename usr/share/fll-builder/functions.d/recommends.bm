@@ -2,10 +2,10 @@ grep_recommends() {
 	for p in $@; do
 		
 		if [[ $(type -t installed_in_chroot) == "function" ]]; then
-			installed_in_chroot "$p" || continue
+			installed_in_chroot "${p}" || continue
 		fi
 
-		grep-dctrl -s Recommends -nPX "$p" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
+		grep-dctrl -s Recommends -nPX "${p}" "${FLL_BUILD_CHROOT}/var/lib/dpkg/status" | \
 			awk -F, '
 				/./ {
 					for (i = 1; i <= NF; i++) {

@@ -1,14 +1,14 @@
 chroot_exec() {
-	chroot "$FLL_BUILD_CHROOT" /usr/bin/env -i \
-		SHELL="$SHELL" \
+	chroot "${FLL_BUILD_CHROOT}" /usr/bin/env -i \
+		SHELL="${SHELL}" \
 		HOME="/root" \
 		PATH="/usr/sbin:/usr/bin:/sbin:/bin" \
 		DEBIAN_FRONTEND=${DEBIAN_FRONTEND:="noninteractive"} \
 		DEBIAN_PRIORITY=${DEBIAN_PRIORITY:="critical"} \
 		DEBCONF_NOWARNINGS=${DEBCONF_NOWARNINGS:="yes"} \
 		XORG_CONFIG="custom" \
-		http_proxy="$http_proxy" \
-		ftp_proxy="$ftp_proxy" \
+		http_proxy="${http_proxy}" \
+		ftp_proxy="${ftp_proxy}" \
 		$@
 	
 	return $?
@@ -17,17 +17,17 @@ chroot_exec() {
 remove_from_chroot() {
 	local OBJ="${FLL_BUILD_CHROOT}${1}"
 
-	rm -vf $OBJ
+	rm -vf ${OBJ}
 	
-	if [[ -e "$OBJ".orig ]]; then
-		mv -v "$OBJ".orig "$OBJ"
+	if [[ -e "${OBJ}".orig ]]; then
+		mv -v "${OBJ}".orig "${OBJ}"
 	fi
 }
 
 exists_in_chroot() {
 	local OBJ="${FLL_BUILD_CHROOT}${1}"
 
-	if [[ -e $OBJ ]]; then
+	if [[ -e ${OBJ} ]]; then
 		return 0
 	fi
 
@@ -35,35 +35,35 @@ exists_in_chroot() {
 }
 
 installed_in_chroot() {
-	[[ $1 && $(grep-dctrl -n -s Status -XP $1 "$FLL_BUILD_CHROOT"/var/lib/dpkg/status) == 'install ok installed' ]]
+	[[ ${1} && $(grep-dctrl -n -s Status -XP ${1} "${FLL_BUILD_CHROOT}"/var/lib/dpkg/status) == 'install ok installed' ]]
 	
 	return $?
 }
 
 chroot_virtfs() {
-	local ACTION="$1"
-	local PROC="$FLL_BUILD_CHROOT"/proc
-	local DEVPTS="$FLL_BUILD_CHROOT"/dev/pts
+	local ACTION="${1}"
+	local PROC="${FLL_BUILD_CHROOT}"/proc
+	local DEVPTS="${FLL_BUILD_CHROOT}"/dev/pts
 
-	[[ $ACTION && $PROC ]] || return 1
-	[[ -d $PROC ]] || return 0
+	[[ ${ACTION} && ${PROC} ]] || return 1
+	[[ -d ${PROC} ]] || return 0
 
-	case "$ACTION" in
+	case "${ACTION}" in
 		mount)
-			mount fll-proc -t proc "$PROC"
-			mkdir -p "$DEVPTS"
-			mount fll-devpts -t devpts "$DEVPTS"
+			mount fll-proc -t proc "${PROC}"
+			mkdir -p "${DEVPTS}"
+			mount fll-devpts -t devpts "${DEVPTS}"
 			;;
 		umount)
 			# binfmt workaround
-			if [[ -e "$PROC/sys/fs/binfmt_misc/status" ]]; then
-				umount "$PROC/sys/fs/binfmt_misc"
+			if [[ -e "${PROC}/sys/fs/binfmt_misc/status" ]]; then
+				umount "${PROC}/sys/fs/binfmt_misc"
 			fi
-			if grep -q "$PROC" /proc/mounts; then
-				umount "$PROC"
+			if grep -q "${PROC}" /proc/mounts; then
+				umount "${PROC}"
 			fi
-			if grep -q "$DEVPTS" /proc/mounts; then
-				umount "$DEVPTS"
+			if grep -q "${DEVPTS}" /proc/mounts; then
+				umount "${DEVPTS}"
 			fi
 			;;
 	esac

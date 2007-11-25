@@ -1,12 +1,12 @@
 make_exclude_file() {
-	local LIST="$1"
+	local LIST="${1}"
 	local FINDOPTS=( "-name '*.orig'" )
 	local TYPE REGX TEST
 
 	while read TYPE REGX; do
-		[[ $TYPE && $REGX ]] || continue
+		[[ ${TYPE} && ${REGX} ]] || continue
 
-		case "$REGX" in
+		case "${REGX}" in
 			*/*)
 				TEST=wholename
 				;;
@@ -15,15 +15,15 @@ make_exclude_file() {
 				;;
 		esac
 
-		case "$TYPE" in
+		case "${TYPE}" in
 			d|f)
-				FINDOPTS+=( "-o -type $TYPE -${TEST} '$REGX'" )
+				FINDOPTS+=( "-o -type ${TYPE} -${TEST} '${REGX}'" )
 				;;
 			*)
-				FINDOPTS+=( "-o -${TEST} '$REGX'" )
+				FINDOPTS+=( "-o -${TEST} '${REGX}'" )
 				;;
 		esac
-	done < "$LIST"
+	done < "${LIST}"
 
 	eval find . ${FINDOPTS[@]} | grep -v '/lock$'
 }

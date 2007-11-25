@@ -14,6 +14,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Move initramfs from chroot instead of copy. Don't dereference symlinks.
   * Add recommends.bm function module.
   * Cleanup chroot initscript white + black lists.
+  * Consistent use of curly brackets and shell variable protection.
+  * Add FLL_BOOT_OPTIONS in build configuration.
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -39,7 +41,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 25 Nov 2007 18:34:04 +1000
+ -- Kel Modderman <kel@otaku42.de>  Sun, 25 Nov 2007 19:39:13 +1000
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 

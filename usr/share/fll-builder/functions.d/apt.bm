@@ -1,16 +1,16 @@
 chroot_install_debs_from_dir() {
-	local DEBDIR="$1"
-	local CHROOTDEBDIR="${DEBDIR//$FLL_BUILD_CHROOT/}"
+	local DEBDIR="${1}"
+	local CHROOTDEBDIR="${DEBDIR//${FLL_BUILD_CHROOT}/}"
 	local DEBS
 
-	[[ -d $DEBDIR ]] || return 1
+	[[ -d ${DEBDIR} ]] || return 1
 
-	pushd "$DEBDIR" >/dev/null
+	pushd "${DEBDIR}" >/dev/null
 		apt-ftparchive packages . > Packages
 	popd >/dev/null
 
-	if [[ -s $DEBDIR/Packages ]]; then
-		DEBS=( $(awk '/^Package: /{ print $2 }' $DEBDIR/Packages) )
+	if [[ -s ${DEBDIR}/Packages ]]; then
+		DEBS=( $(awk '/^Package: /{ print ${2} }' ${DEBDIR}/Packages) )
 		if [[ -z ${DEBS[@]} ]]; then
 			echo "No local debs to install!"
 			return 1
@@ -22,7 +22,7 @@ chroot_install_debs_from_dir() {
 
 	# hack sources.list
 	cat_file_to_chroot apt_sources_tmp /etc/apt/sources.list
-	echo "deb file://$CHROOTDEBDIR ./" >> "$FLL_BUILD_CHROOT"/etc/apt/sources.list
+	echo "deb file://${CHROOTDEBDIR} ./" >> "${FLL_BUILD_CHROOT}/etc/apt/sources.list"
 
 	chroot_exec apt-get update
 	chroot_exec apt-get --allow-unauthenticated --assume-yes install ${DEBS[@]}
@@ -36,15 +36,15 @@ install_local_debs() {
 	# XXX: this hack if FOR TESTING PURPOSES ONLY
 	# no source code for these packages can be fetched
 
-	local LOCDEBS="$1"
-	local TMPDEBDIR=$(mktemp -p $FLL_BUILD_CHROOT -d fll.localdebs.XXXXX)
+	local LOCDEBS="${1}"
+	local TMPDEBDIR=$(mktemp -p ${FLL_BUILD_CHROOT} -d fll.localdebs.XXXXX)
 
-	for deb in $LOCDEBS $LOCDEBS/*.deb; do
-		[[ $deb == *.deb && -f $deb ]] || continue
-		cp -v "$deb" "$TMPDEBDIR"
+	for deb in ${LOCDEBS} ${LOCDEBS}/*.deb; do
+		[[ ${deb} == *.deb && -f ${deb} ]] || continue
+		cp -v "${deb}" "${TMPDEBDIR}"
 	done
 
-	if [[ $(ls -A $TMPDEBDIR/*.deb 2>/dev/null) ]]; then
-		chroot_install_debs_from_dir "$TMPDEBDIR"
+	if [[ $(ls -A ${TMPDEBDIR}/*.deb 2>/dev/null) ]]; then
+		chroot_install_debs_from_dir "${TMPDEBDIR}"
 	fi
 }
