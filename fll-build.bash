@@ -742,7 +742,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				cp -v "${FLL_BUILD_CHROOT}/boot/message.live" "${FLL_BUILD_RESULT}/boot/grub/message"
 		fi
 
-		for f in "${FLL_BUILD_CHROOT}/usr/lib/grub/*-pc/"{iso9660_stage1_5,stage2_eltorito,stage2}; do
+		for f in "${FLL_BUILD_CHROOT}/usr/lib/grub"/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2}; do
 			[[ -f "${FLL_BUILD_RESULT}/boot/grub/${f##*/}" ]] || cp -v "${f}" "${FLL_BUILD_RESULT}/boot/grub/"
 		done
 
