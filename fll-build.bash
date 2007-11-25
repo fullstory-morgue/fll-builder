@@ -519,8 +519,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		header "Grabbing kernel and initramfs now"
 		# grab kernel and initial ramdisk before other packages are installed
-		cp -vL "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
-		cp -vL "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+		mv -v "$FLL_BUILD_CHROOT"/boot/initrd.img-"$KVERS" "$FLL_BUILD_RESULT"/boot/
+		cp -v "$FLL_BUILD_CHROOT"/boot/vmlinuz-"$KVERS" "$FLL_BUILD_RESULT"/boot/
 		
 		#################################################################
 		#		mass package installation			#
