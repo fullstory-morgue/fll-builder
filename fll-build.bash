@@ -611,6 +611,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				--blacklist "/${FLL_BUILD_INIT_BLACKLIST##*/}" \
 				--whitelist "/${FLL_BUILD_INIT_WHITELIST##*/}" \
 				| tee --append "$FLL_BUILD_CHROOT"/etc/default/fll-init
+
+			rm -fv "$FLL_BUILD_INIT_BLACKLIST" "$FLL_BUILD_INIT_WHITELIST"
 		fi
 		
 		#################################################################
