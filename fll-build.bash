@@ -116,9 +116,9 @@ FLL_BUILD_DEFAULTS="$FLL_BUILD_BASE/etc/default/distro"
 source "$FLL_BUILD_DEFAULTS"
 
 # distro name, lower casified
-FLL_DISTRO_NAME_LC="$(tr A-Z a-z <<< $FLL_DISTRO_NAME)"
+FLL_DISTRO_NAME_LC="$(tr [:upper:] [:lower:] <<< $FLL_DISTRO_NAME)"
 # distro name, upper casified
-FLL_DISTRO_NAME_UC="$(tr a-z A-Z <<< $FLL_DISTRO_NAME)"
+FLL_DISTRO_NAME_UC="$(tr [:lower:] [:upper:] <<< $FLL_DISTRO_NAME)"
 
 # check for $FLL_DISTRO_CODENAME
 if [[ -z $FLL_DISTRO_CODENAME ]]; then
@@ -289,10 +289,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 	#		iso name (with package timestamp)		#
 	#################################################################
 	if [ "$FLL_DISTRO_CODENAME" = "snapshot" ]; then
-		FLL_ISO_NAME="$(tr A-Z a-z <<< \
+		FLL_ISO_NAME="$(tr [:upper:] [:lower:] <<< \
 				${FLL_DISTRO_NAME}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
 	else
-		FLL_ISO_NAME="$(tr A-Z a-z <<< \
+		FLL_ISO_NAME="$(tr [:upper:] [:lower:] <<< \
 				${FLL_DISTRO_NAME}-${FLL_DISTRO_VERSION}-${FLL_PACKAGE_TIMESTAMP}-${FLL_DISTRO_CODENAME_SAFE}-${FLL_BUILD_PACKAGE_PROFILE}-$(tr [:blank:] \- <<< ${FLL_BUILD_ARCH[@]}).iso)"
 	fi
 
@@ -508,6 +508,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			rm -rf "$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
 			ln -vs /usr/share/doc/linux-doc-"$KVERS"/Documentation \
 				"$FLL_BUILD_CHROOT"/usr/src/linux-"$KVERS"/Documentation
+
+			nuke "$FLL_BUILD_LINUX_KERNELDIR"
 		else
 			# debian kernel, just apt-get it
 			chroot_exec apt-get --assume-yes install linux-image-"$KVERS" linux-headers-"$KVERS" \
@@ -530,7 +532,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		header "processing locale support packages for: $FLL_I18N_SUPPORT"
 		unset FLL_I18N_SUPPORT_PACKAGES
 		if [[ $FLL_I18N_SUPPORT ]]; then
-			FLL_I18N_SUPPORT="$(tr A-Z a-z <<<$FLL_I18N_SUPPORT)"
+			FLL_I18N_SUPPORT="$(tr [:upper:] [:lower:] <<< $FLL_I18N_SUPPORT)"
 			FLL_I18N_SUPPORT_PACKAGES=( $(detect_i18n_support_packages $FLL_I18N_SUPPORT) )
 			
 			if [[ ${FLL_I18N_SUPPORT_PACKAGES[@]} ]]; then
@@ -652,7 +654,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				"$FLL_BUILD_CHROOT"/etc/shadow
 		fi 
 		#################################################################
-		#		misc chroot preseeding				#
+		#		misc chroot debconf preseeding			#
 		#################################################################
 		# preconfigure fontconfig-config
 		if installed_in_chroot fontconfig-config; then
@@ -680,37 +682,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
 				echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
 			fi
-		fi
-
-		# set default X cursor theme
-		if installed_in_chroot dmz-cursor-theme && exists_in_chroot /usr/share/icons/DMZ-Black/cursor.theme; then
-			header "Setting x-cursor-theme to DMZ-Black..."
-			chroot_exec update-alternatives --set x-cursor-theme /usr/share/icons/DMZ-Black/cursor.theme
-		fi
-
-		# use most as PAGER if installed in chroot
-		if installed_in_chroot most; then
-			header "Setting \$PAGER to /usr/bin/most..."
-			chroot_exec update-alternatives --set pager /usr/bin/most
-		fi
-		
-		# vimrc.local
-		if installed_in_chroot vim; then
-			header "Creating /etc/vim/vimrc.local..."
-			cat_file_to_chroot vimrc_local /etc/vim/vimrc.local
-		fi
-
-		# kppp noauth setting (as per /usr/share/doc/kppp/README.Debian)
-		if installed_in_chroot kppp && exists_in_chroot /etc/ppp/peers/kppp-options; then
-			header "Hacking /etc/ppp/peers/kppp-options for noauth..."
-			sed -i 's/^#noauth/noauth/' "$FLL_BUILD_CHROOT"/etc/ppp/peers/kppp-options
-		fi
-
-		#   hack wallpaper if FLL_BUILD_WALLPAPER exists in fll-build.conf
-		if [[ $FLL_BUILD_WALLPAPER ]]; then
-			header "Hacking wallpaper..."
-			sed -i  -e "s#FLL_WALLPAPER=.*#FLL_WALLPAPER=\"${FLL_BUILD_WALLPAPER}\"#" \
-				"$FLL_BUILD_CHROOT"/etc/default/distro
 		fi
 
 		#################################################################

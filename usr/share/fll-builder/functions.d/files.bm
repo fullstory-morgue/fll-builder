@@ -192,17 +192,5 @@ warn_initrd = NO
 do_initrd = YES
 EOF
 			;;
-
-		vimrc_local)
-			cat > "$DEST" \
-<<EOF
-syntax on
-set background=dark
-set showmatch
-set pastetoggle=<F10>
-au FileType debchangelog normal z0
-EOF
-			;;
-
 	esac
 }
