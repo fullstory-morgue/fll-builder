@@ -10,7 +10,7 @@ chroot_install_debs_from_dir() {
 	popd >/dev/null
 
 	if [[ -s ${DEBDIR}/Packages ]]; then
-		DEBS=( $(awk '/^Package: /{ print ${2} }' ${DEBDIR}/Packages) )
+		DEBS=( $(awk '/^Package: /{ print $2 }' ${DEBDIR}/Packages) )
 		if [[ -z ${DEBS[@]} ]]; then
 			echo "No local debs to install!"
 			return 1
