@@ -19,12 +19,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * No longer source default fll-build.conf on each build iteration, enforse
     usage of modified build configuration file.
 
-  [ Horst Tritremmel ]
-  * kde-edu.bm updated
-  * kde-edu.bm and distro-edu.bm updated
-
   [ Stefan Lippers-Hollmann ]
   * small ISO naming tweaks.
+  * xorg 1:7.3+7 doesn't create /etc/X11/X at all, if we inhibit the xorg.conf
+    creation by xserver-xorg.postinst, create it properly if xserver-xorg is
+    installed in chroot.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -34,19 +33,19 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
    definitions in one /etc/apt/sources.list.d/MIRROR.list file
 
   [ Horst Tritremmel ]
+  * kde-edu.bm updated
+  * kde-edu.bm and distro-edu.bm updated
   * seminarix.bm - dont install krita, gimp, amarok pingus, not enough
     space
   * mv seminarix.bm kde-seminarix.bm, it is based on kde
   * Couldnt find package nachinstallieren bugfix in kde-seminarix.bm
   * kde-seminarix.bm: vym, koffice-i18n-de added, kdissert removed
+  * libxine1-misc-plugins removed in kde-seminarax.bm
 
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
-  [ Horst Tritremmel ]
-  * libxine1-misc-plugins removed in kde-seminarax.bm
-
- -- Horst Tritremmel <hjt@sidux.com>  Tue, 27 Nov 2007 14:53:07 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 27 Nov 2007 17:44:43 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 

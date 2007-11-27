@@ -653,8 +653,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		fi
 
 		# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
-		if installed_in_chroot xserver-xorg && exists_in_chroot /etc/X11/X; then
-			if [[ $(readlink "${FLL_BUILD_CHROOT}/etc/X11/X") == "/bin/true" ]]; then
+		if installed_in_chroot xserver-xorg; then
+			if [[ ! -e "${FLL_BUILD_CHROOT}/etc/X11/X" ]] || [[ $(readlink "${FLL_BUILD_CHROOT}/etc/X11/X") == "/bin/true" ]]; then
 				header "Fixing /etc/X11/X symlink..."
 				remove_from_chroot /etc/X11/X
 				chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
