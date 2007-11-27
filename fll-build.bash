@@ -244,6 +244,13 @@ else
 	exit 4
 fi
 
+if [[ ! ${FLL_BUILD_CONFIGS[@]} ]]; then
+	echo "${SELF}: must supply a build configuration file"
+	echo
+	print_help
+	exit 5
+fi
+
 if [[ ${DEBUG} -ge 2 ]]; then
 	set -x
 fi
@@ -256,17 +263,7 @@ trap nuke_buildarea exit
 #################################################################
 #		source local config(s)				#
 #################################################################
-# alternate configfile
-if [[ ! ${FLL_BUILD_CONFIGS[@]} ]]; then
-	FLL_BUILD_CONFIGS=( ${FLL_BUILD_DEFCONFIG} )
-fi
-
 for config in ${FLL_BUILD_CONFIGS[@]}; do
-	if [[ ${config} != ${FLL_BUILD_DEFCONFIG} ]]; then
-		# restore defaults for each build
-		source "${FLL_BUILD_DEFCONFIG}"
-	fi
-
 	FLL_BUILD_ARCH="${DPKG_ARCH}"
 
 	source "${config}"
