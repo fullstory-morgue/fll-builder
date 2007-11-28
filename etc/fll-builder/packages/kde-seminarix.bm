@@ -64,7 +64,7 @@ FLL_PACKAGES=(
 	inkscape
 	kimagemapeditor
 	audacity
-	kdissert
+	#kdissert
 	vym
 	keduca
 	kpdf
