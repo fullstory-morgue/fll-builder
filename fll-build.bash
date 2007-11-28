@@ -713,33 +713,31 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#		prepare boot files				#
 		#################################################################
 		header "Preparing ISO /boot files..."
-#		echo >> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#
-#		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]}" >> \
-#			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#		echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791 ${FLL_BOOT_OPTIONS}" >> \
-#			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#		echo "initrd /boot/initrd.img-${KVERS}" >> \
-#			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#		
-#		echo >> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#
-#		echo "title  sidux ${FLL_BUILD_ARCH[${arch}]} Advanced Menu" >> \
-#			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
-#		echo "configfile /boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}" >> \
-#			"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
-		sed	-e 's|@distro@|'"${FLL_DISTRO_NAME}"'|'	\
-			-e 's|@arch@|'"${FLL_BUILD_ARCH[${arch}]}"'|'	\
-			-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'  \
-			-e 's|@initrd@|initrd\.img-'"${KVERS}"'|' \
-				"${FLL_BUILD_RESULT}/boot/grub/menu.lst.arch" >> \
-					"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+		# use menu.lst template file if it exists
+		if [ -r "${FLL_BUILD_RESULT}/boot/grub/menu.lst.arch" ]; then
+			sed	-e 's|@distro@|'"${FLL_DISTRO_NAME}"'|'	\
+				-e 's|@arch@|'"${FLL_BUILD_ARCH[${arch}]}"'|'	\
+				-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'  \
+				-e 's|@initrd@|initrd\.img-'"${KVERS}"'|' \
+					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.arch" >> \
+						"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
-		sed	-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'	\
-			-e 's|@initrd@|initrd\.img-'"${KVERS}"'|'	\
-				"${FLL_BUILD_RESULT}/boot/grub/menu.lst.in" > \
-					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}"
+			sed	-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'	\
+				-e 's|@initrd@|initrd\.img-'"${KVERS}"'|'	\
+					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.in" > \
+						"${FLL_BUILD_RESULT}/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}"
+		else	
+			#sensible defaults
+			echo >> "${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+	
+			echo "title  ${FLL_DISTRO_NAME} ${FLL_BUILD_ARCH[${arch}]}" >> \
+				"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+			echo "kernel /boot/vmlinuz-${KVERS} boot=fll quiet vga=791 ${FLL_BOOT_OPTIONS}" >> \
+				"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+			echo "initrd /boot/initrd.img-${KVERS}" >> \
+				"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
+		fi
 
 		if exists_in_chroot /boot/message; then
 			[[ -f "${FLL_BUILD_RESULT}/boot/message" ]] || \

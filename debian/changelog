@@ -37,7 +37,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * add template to begin removal of hardcoded sidux grub menu entry creation
     in fll-build.bash
   * mod fll-build.bash to use full menu.lst template
-  * XXX: todo add memtest entry
+  * add fallback for missing menu.lst.arch template
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -57,7 +57,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * kde-seminarix.bm updated
   * kdissert comment out, to greate
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 28 Nov 2007 10:43:40 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 28 Nov 2007 21:21:32 +1100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
