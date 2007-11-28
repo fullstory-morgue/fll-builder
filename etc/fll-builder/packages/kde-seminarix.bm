@@ -130,7 +130,7 @@ FLL_PACKAGES=(
 	#music
 	###
 	amarok
-	glame
+	#glame
 	hydrogen
 
 	###

@@ -48,16 +48,15 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Couldnt find package nachinstallieren bugfix in kde-seminarix.bm
   * kde-seminarix.bm: vym, koffice-i18n-de added, kdissert removed
   * libxine1-misc-plugins removed in kde-seminarax.bm
+  * mv distro-edu.bm distro-seminarix.bm
+  * kde-seminarix.bm updated
+  * kdissert comment out, to greate
+  * glame comment out
 
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
-  [ Horst Tritremmel ]
-  * mv distro-edu.bm distro-seminarix.bm
-  * kde-seminarix.bm updated
-  * kdissert comment out, to greate
-
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 28 Nov 2007 21:21:32 +1100
+ -- Horst Tritremmel <hjt@sidux.com>  Wed, 28 Nov 2007 20:12:38 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
