@@ -38,6 +38,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     in fll-build.bash
   * mod fll-build.bash to use full menu.lst template
   * add fallback for missing menu.lst.arch template
+  * remove accidentally added @timeout@ flag in menu.list.in
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -56,7 +57,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Horst Tritremmel <hjt@sidux.com>  Wed, 28 Nov 2007 20:12:38 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 29 Nov 2007 08:39:52 +1100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
