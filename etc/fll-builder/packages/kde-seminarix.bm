@@ -1,6 +1,6 @@
 FLL_PACKAGE_DEPMODS=(
 	cli
-	distro-edu
+	distro-seminarix
 	distro-kde
 	distro-tools
 	distro-tools-x
@@ -13,7 +13,9 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	####KDE-Lite --------
+	#########
+	#KDE-Lite
+	#########
 	ark
 	gwenview
 	k3b
@@ -30,16 +32,23 @@ FLL_PACKAGES=(
 	gtk2-engines-qtcurve
 	siduxcc
 
-	### ---edu---entspricht-weitgehend-dem-seminarix-Handbuch-----------------------------
-	
-	####Allgemein -----------
+
+	##########
+	#seminarix
+	##########
+
+	###
+	#generic
+	###
 	sidux-edu
 	seminarix-handbook
-
 	iceweasel
 
+	###
 	#KOffice-Suite
+	###
 	kword
+		koffice-i18n-de
 	kchart
 	kexi
 	kformula
@@ -49,104 +58,110 @@ FLL_PACKAGES=(
 	kpresenter
 	karbon	
 	kspread
-	koffice-i18n-de
-
 	scribus
-
 	quanta
-
 	#gimp
 	inkscape
 	kimagemapeditor
-	#vlc #nachladen
-	
 	audacity
-	
-	#kdissert	#nachinstallieren
+	kdissert
 	vym
 	keduca
 	kpdf
 	ksociograma
 	krusader
 	xsane
-	#kooka		#als Alternative zu xsane nachinstallieren werden
+	#kooka
 
-
-	####Chemie ---------
+	###
+	#chemical
+	###
 	chemtool
-	gperiodic	#nachinstallieren
+	gperiodic
 	katomic
 	kalzium
-	
-	####Erdkunde --------
-	qgis		#nachinstallieren
-	qgis-plugin-grass  #mit qgis zusammen nachinstallieren
+
+	###
+	#geography
+	###
+	qgis
+	qgis-plugin-grass
 	sunclock
-	kgeography	#nachinstallieren	
+	kgeography
 
-	####E-Learning ------
-	#moodle		#Lerndatenbank nachinstallieren, Datenbank, Webserver erforderlich
-	#moodlebook 	#zur Lerndatenbank erweitern nachinstallieren
-	#moodle-debian-edu-theme	#Skolelinux-Theme von Moodle nachinstallieren
-
-	####Informatik ------
+	###
+	#informatics
+	###
 	kturtle
-	#nachinstallieren diverse Programmiersprachen siehe metapaket education
-	
-	####Kunst ------------
-	dia		#nachinstallieren
-	digikam
 
+	###
+	#art
+	###
+	dia
+	digikam
 	kino
 	kolourpaint
-	#krita		#nachinstallieren	
+	krita
 	stopmotion
 	tuxpaint
 
-	####Lernspiele ---------	
+	###
+	#educational game
+	###
 	childsplay
 	childsplay-alphabet-sounds-de
 	childsplay-plugins
 	ktuberling
 	ktouch
-	#pingus		#nachinstallieren		
+	pingus
 	tuxmath
 
-	####Mathematik ---------
-	kbruch	
+	###
+	#mathematics
+	###
+	kbruch
 	kig
 	kmplot
 	kpercentage
 	wxmaxima
-	gnuplot		#Zusatz zu wxmaxima für Funktionsplot
+	gnuplot
 
-	####Musik --------------
-	#amarok		#nachinstallieren
-	#glame		#nachinstallieren
+	###
+	#music
+	###
+	amarok
+	glame
 	hydrogen
-	
-	####Physik -------------
-	#celestia	#nachinstallieren- aber nur bei 3D-Verfügbarkeit
+
+	###
+	#physics
+	###
 	kstars
 
-	####Religion -----------
+	###
+	#religion
+	###
 	bibletime
 	bibletime-i18n
-	itools		# 2007-10-30 - Islamic hijri date and prayer time utilities
-	hebcal		# 2007-10-30 - A Perpetual Jewish Calendar
-	hdate-applet	# nachinstallieren 2007-10-30 - Hebrew calendar applet
-	minbar		# nachinstallieren 2007-10-30 - Islamic prayer times application
-	
-	####Sprachen -----------
-	hanzim		#nachinstallieren
-	kdict		
+	itools		# Islamic hijri date and prayer time utilities
+	hebcal		# A Perpetual Jewish Calendar
+	hdate-applet	# Hebrew calendar applet
+	minbar		# Islamic prayer times application
+
+	###
+	#languages
+	###
+	hanzim
+	kdict
 	klatin
 	kvoctrain
 	kwordquiz
 
-	####Technik -----------
+	###
+	#technics
+	###
 	klogic
-	ksimus		#nachinstallieren
+	ksimus
 	pcb
 )
 

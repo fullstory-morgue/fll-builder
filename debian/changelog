@@ -52,7 +52,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 28 Nov 2007 16:39:08 +1100
+  [ Horst Tritremmel ]
+  * mv distro-edu.bm distro-seminarix.bm
+  * kde-seminarix.bm updated
+
+ -- Horst Tritremmel <hjt@sidux.com>  Wed, 28 Nov 2007 10:18:08 +0100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
