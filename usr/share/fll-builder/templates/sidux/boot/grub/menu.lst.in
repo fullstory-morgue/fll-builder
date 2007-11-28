@@ -1,5 +1,5 @@
 default 0
-timeout -1
+timeout @timeout@
 color red/black light-red/black
 foreground EE0000
 background 400000

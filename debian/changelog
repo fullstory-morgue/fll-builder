@@ -34,6 +34,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * append to mirror.list files instead of overwrite to allow multiple mirror
    definitions in one /etc/apt/sources.list.d/MIRROR.list file
+  * add template to begin removal of hardcoded sidux grub menu entry creation 
+    in fll-build.bash
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -48,7 +50,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 27 Nov 2007 21:37:56 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 28 Nov 2007 13:50:48 +1100
 
 fll-builder (1.1.7) UNRELEASED; urgency=low
 
