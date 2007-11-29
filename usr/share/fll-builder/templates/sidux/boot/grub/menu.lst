@@ -3,4 +3,4 @@ timeout 30
 color red/black light-red/black
 foreground EE0000
 background 400000
-gfxmenu /boot/grub/message
+gfxmenu /boot/message

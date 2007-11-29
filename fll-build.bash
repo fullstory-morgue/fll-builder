@@ -740,17 +740,21 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		fi
 
 		if exists_in_chroot /boot/message; then
-			[[ -f "${FLL_BUILD_RESULT}/boot/message" ]] || \
-				cp -v "${FLL_BUILD_CHROOT}/boot/message.live" "${FLL_BUILD_RESULT}/boot/grub/message"
+			if [[ ! -f "${FLL_BUILD_RESULT}/boot/message" ]]; then
+				cp -v "${FLL_BUILD_CHROOT}/boot/message.live" "${FLL_BUILD_RESULT}/boot/message"
+			fi
 		fi
 
 		for f in "${FLL_BUILD_CHROOT}/usr/lib/grub"/*-pc/{iso9660_stage1_5,stage2_eltorito,stage2}; do
-			[[ -f "${FLL_BUILD_RESULT}/boot/grub/${f##*/}" ]] || cp -v "${f}" "${FLL_BUILD_RESULT}/boot/grub/"
+			if [[ ! -f "${FLL_BUILD_RESULT}/boot/grub/${f##*/}" ]]; then
+				cp -v "${f}" "${FLL_BUILD_RESULT}/boot/grub/"
+			fi
 		done
 
 		if exists_in_chroot /boot/memtest86+.bin; then
-			 [[ -f "${FLL_BUILD_RESULT}/boot/memtest86+.bin" ]] || \
+			if [[ ! -f "${FLL_BUILD_RESULT}/boot/memtest86+.bin" ]]; then
 			 	cp -v "${FLL_BUILD_CHROOT}/boot/memtest86+.bin" "${FLL_BUILD_RESULT}/boot/"
+			fi
 		fi
 
 		[[ ${FLL_BUILD_CHROOT_ONLY} ]] && continue
