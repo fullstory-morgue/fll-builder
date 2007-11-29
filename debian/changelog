@@ -60,9 +60,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
 
  -- Horst Tritremmel <hjt@sidux.com>  Thu, 29 Nov 2007 13:03:53 +0100
 
-fll-builder (1.1.7) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.1.7) unstable; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * update syntax for Vcs headers in debian/control
