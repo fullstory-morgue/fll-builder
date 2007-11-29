@@ -1,5 +1,7 @@
 fll-builder (1.1.8) UNRELEASED; urgency=low
 
+  * NOT RELEASED YET
+
   [ Kel Modderman ]
   * Initial multi-arch support.
   * Add iso support for more descriptive iso names for single and multi-arch
@@ -27,6 +29,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * release notes:
     - recommend firmware-rt61 and firmware-rt73.
     - mention the newly added installer support for existing lvm2 setups.
+    - debian-kernel decided in all its wisdom to merge firmware-rt61 and
+      firmware-rt73 into firmware-ralink, one day after uploading - inform the
+      user about it.
+    - no longer talk about obsolete firmware packages for Intel IPW3945/
+      IPW4965.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -58,7 +65,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Horst Tritremmel <hjt@sidux.com>  Thu, 29 Nov 2007 13:03:53 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 29 Nov 2007 22:25:27 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

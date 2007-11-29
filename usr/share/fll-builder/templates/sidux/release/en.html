@@ -195,14 +195,10 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 					<li>
 						Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:<br />
 						<pre>apt-get install firmware-iwlwifi</pre>
-						<em>please remove iwlwifi-ucode and iwlwifi-3945, if already installed.</em>
 					</li>
 					<li>
 						Intel ipw4965/ iwlwifi, draft-n wlan:<br />
 						<pre>apt-get install firmware-iwlwifi</pre>
-						<em>please remove iwlwifi-4965, if already installed.</em>
-						
-						<br /><br /><em>feedback regarding iwlwifi 3945 and iwlwifi 4965 is always appreciated.</em>
 					</li>
 					<li>
 						Intersil prism54, 54 MBit/s wlan:<br />
@@ -213,12 +209,9 @@ deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.con
 						3d acceleration isn't possible with free drivers yet, please use &quot;get-sidux-binary-gfx &amp;&amp; install-binary-gfx -a&quot; or &quot;sgfxi&quot; to fetch install scripts for these cards.
 					</li>
 					<li>
-						RaLink rt61 54 MBit/s wlan:<br />
-						<pre>apt-get install firmware-rt61</pre>
-					</li>
-					<li>
-						RaLink rt73 54 MBit/s wlan:<br />
-						<pre>apt-get install firmware-rt73</pre>
+						RaLink rt61 and rt73 54 MBit/s wlan:<br />
+						<pre>apt-get install firmware-ralink</pre>
+						<em>please remove rt61-fwcutter, rt73-fwcutter, firmware-rt61 and firmware-rt73, if already installed.</em>
 					</li>
 					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
