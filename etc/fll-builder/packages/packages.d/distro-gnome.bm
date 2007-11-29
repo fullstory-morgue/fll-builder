@@ -1,0 +1,5 @@
+FLL_PACKAGES+=(
+	desktop-defaults-gnome
+	gksu
+)
+

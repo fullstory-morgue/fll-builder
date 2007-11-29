@@ -1,0 +1,9 @@
+FLL_PACKAGES+=(
+	gkrellm
+	gkrellm-mailwatch
+	gkrellmoon
+	gkrellmitime
+	gkrellm-volume
+	gkrellm-hdplop
+	gkrellm-alltraxclock
+)

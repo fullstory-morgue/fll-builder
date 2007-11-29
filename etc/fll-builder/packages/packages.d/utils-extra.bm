@@ -1,0 +1,33 @@
+FLL_PACKAGES+=(
+	build-essential
+	cdebootstrap
+	cdrdao
+	dvd+rw-tools
+	dvb-utils
+	dosfstools
+	ftp
+	fuse-utils
+	genisoimage
+	jfsutils
+	man-db
+	manpages
+	memtest86+
+	module-assistant
+	ntpdate
+	ntfs-3g
+	ntfsprogs
+	nmap
+	openssh-client
+	reiserfsprogs
+	sshfs
+	smbclient
+	smbfs
+	strace
+	testdisk
+	traceroute
+	xfsprogs
+	unzip
+	vpnc
+	wodim
+	zip
+)

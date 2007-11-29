@@ -1,0 +1,60 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	gimp-basic
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	amarok
+	ark
+	audacity
+	audacious
+	audacious-plugins
+	digikam
+	foobillard
+	frozen-bubble
+	gwenview
+	iceape
+	icedove
+	iceweasel
+	inkscape
+	k3b
+	kaffeine
+	kde-core
+	kde
+	kdesvn
+	kdesvn-kio-plugins
+	kdevelop
+	kdetv
+	kdm
+	koffice
+	konversation
+	knemo
+	kpowersave
+	ktorrent
+	kvpnc
+	libqt-perl
+	nmapfe
+	myspell-en-us
+	openarena
+	openoffice.org
+	openoffice.org-kde
+	qcad
+	qcad-doc
+	qemu
+	qemu-launcher
+	rafkill
+	scribus-ng
+	supertux
+	vlc
+	wireshark
+)
+

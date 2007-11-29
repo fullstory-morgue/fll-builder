@@ -1,0 +1,10 @@
+FLL_PACKAGES+=(
+	elinks
+	gpm
+	htop
+	mc
+	most
+	rcconf
+	unp
+	vim
+)

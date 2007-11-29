@@ -1,0 +1,11 @@
+FLL_PACKAGE_DEPMODS=(
+	distro
+	hwsupport-essential
+	utils-essential
+	xserver
+)
+
+FLL_PACKAGES=(
+	powernowd
+	fll-live-xorgconfig
+)

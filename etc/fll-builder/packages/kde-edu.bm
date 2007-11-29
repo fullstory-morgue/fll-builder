@@ -1,0 +1,124 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-edu
+	distro-kde
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	### --- kde-lite ---------------------------
+	ark
+	k3b
+	kaffeine
+	kde-core
+	kdm
+	konversation
+	kmix
+	knemo
+	kpowersave
+	kppp
+	kpdf
+	ksnapshot
+	ktorrent
+	kuickshow
+	gtk2-engines-qtcurve
+	iceweasel
+	siduxcc
+
+	### --- edu --------------------------------
+	matchbox
+
+	kchart
+	kexi
+	kformula
+	kivio
+	koshell
+	kplato
+	kpresenter
+	kspread
+
+	scribus
+
+	quanta
+	kimagemapeditor
+
+	audacity
+
+	kdissert
+	keduca
+	kpdf
+	ksociograma
+	krusader
+
+	mc
+
+	chemtool
+	katomic
+	kalzium
+
+	sunclock
+
+	kturtle
+
+	gimp
+	inkscape
+	kino
+
+	ksnapshot
+	ksvg
+	kview
+	stopmotion
+	tuxpaint
+
+	khangman
+	tuxtype
+	lmemory
+	lletters
+	gtans
+	kanagram
+
+	childsplay
+	childsplay-alphabet-sounds-de
+	childsplay-plugins
+	ktuberling
+	ktouch
+	pingus
+	tuxmath
+
+	kbruch
+	kig
+	kmplot
+	kpercentage
+	wxmaxima
+
+	glame
+	hydrogen
+
+	kstars
+	kworldclock
+
+	kdict
+	klatin
+	kvoctrain
+	kwordquiz
+
+	klogic
+	ksimus
+
+#	itools		# 2007-10-30 - Islamic hijri date and prayer time utilities
+#	minbar		# 2007-10-30 - GNOME Islamic prayer times application
+#	hebcal		# 2007-10-30 - A Perpetual Jewish Calendar
+#	hdate-applet	# 2007-10-30 - Hebrew calendar applet
+
+#	qgis		# 2007-10-31 - Geographic Information System (GIS)
+#	qgis-plugin-grass	# 2007-10-31 - Plugin for accessing GRASS data from QGIS
+
+)
+

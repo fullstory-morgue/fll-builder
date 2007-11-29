@@ -1,0 +1,63 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-gnome
+	distro-tools
+	distro-tools-x
+	gimp-basic
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	gdm
+	gdm-themes-sidux
+	gnome
+	gnome-commander
+	gnome-applets
+	gnome-audio
+	gnome-btdownload
+	gnome-chess
+	gnome-find
+	gnome-games
+	gnome-gpg
+	gnome-keyring
+	gnome-keyring-manager
+	gnome-mag
+	gnome-media
+	gnome-art
+	gnome-mount
+	gnome-nettool
+	gnome-osd
+	gnome-photo-printer
+	gnome-office
+	gnome-schedule
+	gnome-utils
+	libgnomevfs2-extra
+	xchat
+	xchat-systray
+	iceweasel
+	iceweasel-gnome-support
+	icedove
+	icedove-gnome-support
+	scribus-ng
+	p7zip-full
+	pidgin
+	pidgin-data
+	pidgin-encryption
+	infobash
+	configure-networkcard
+	configure-ndiswrapper
+	configure-isdn
+	epiphany-browser
+	epiphany-extensions
+	openoffice.org
+	openoffice.org-gnome
+	totem
+	zenity
+	samba
+	bug-buddy
+)

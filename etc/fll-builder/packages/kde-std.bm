@@ -1,0 +1,39 @@
+FLL_PACKAGE_DEPMODS=(
+	cli
+	distro
+	distro-kde
+	distro-tools
+	distro-tools-x
+	hwsupport-essential
+	hwsupport-extra
+	utils-essential
+	utils-extra
+	xserver
+)
+
+FLL_PACKAGES=(
+	ark
+	digikam
+	gwenview
+	k3b
+	kaffeine
+	kde-core
+	kdeadmin
+	kdebluetooth
+	kdegraphics
+	kdemultimedia-kfile-plugins
+	kdemultimedia-kio-plugins
+	kdenetwork
+	kdepim
+	kdeprint
+	kdeutils
+	kdm
+	kipi-plugins
+	koffice
+	konversation
+	kopete
+	knemo
+	kpowersave
+	ktorrent
+	kvpnc
+)

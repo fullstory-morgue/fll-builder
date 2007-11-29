@@ -1,0 +1,459 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<title>sidux release notes</title>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<style type="text/css" media="all">@import url("screen.css");</style>
+	<style type="text/css" media="print">@import url("print.css");</style>
+	<link rel ="shortcut icon" href="cdrom.ico" />
+</head>
+	<body>
+		<div id="menu">
+			<img src="sidux.png" alt="logo" id="menu-header" />
+
+			<div class="menubutton" onclick="top.location.href='http://sidux.com/'">
+				<a href="http://sidux.com/">sidux.com main site</a>
+			</div>
+
+			<div class="menubutton" onclick="top.location.href='http://manual.sidux.com/'">
+				<a href="http://manual.sidux.com/">sidux Operating System Manual</a>
+			</div>
+
+			<div class="menubutton" onclick="top.location.href='http://manual.sidux.com/meta-manual/'">
+				<a href="http://manual.sidux.com/meta-manual/">sidux Meta-Manual</a>
+			</div>
+
+			<div class="menubutton" onclick="top.location.href='en.html'">
+				<a href="en.html">Release notes (en)</a>
+			</div>
+
+			<div class="menubutton" onclick="top.location.href='de.html'">
+				<a href="de.html">Release notes (de)</a>
+			</div>
+
+			<ul>
+				<li><a href="#welcome">Welcome</a></li>
+				<li><a href="#release-notes">Release Notes</a></li>
+				<li><a href="#whats-new">Whats New</a></li>
+<!-- preview
+				<li><a href="#pending">Pending changes</a></li>
+preview -->
+				<li><a href="#non-free">non-free sources and Drivers</a></li>
+				<li><a href="#disclaimer">Disclaimer</a></li>
+				<li><a href="#mirror">Mirrors</a></li>
+				<li><a href="#howto-involve">Getting Involved</a></li>
+				<li><a href="#roadmap">Roadmap</a></li>
+				<li><a href="#credits">Credits</a></li>
+			</ul>
+		</div>
+
+		<div id="main-page">
+			<div class="divider" id="welcome">
+				<h1 id="top-header">sidux 2007-04</h1>
+				<p>
+					While sidux is approaching its first birthday, we are proud to announce the immediate availability of the sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; release for amd64 and i686 systems, shipping in a &asymp;445 MB KDE lite and a &asymp;680 MB KDE full flavour.
+				</p>
+
+				<p>
+					sidux is a full featured Debian sid based live CD with a special focus on hard disk installations, a clean upgrade path within sid and additional hard- and software support.
+					The ISO is completely based on Debian sid, enriched and stabilized with sidux' own packages and scripts.
+				</p>
+			</div>
+	
+			<div class="divider" id="release-notes">
+				<h2>Release notes for &Epsilon;&rho;&omega;&sigmaf;</h2>
+				<p>
+					Our fourth release concentrates on X.org 7.3/ xrandr 1.2 and X detection related changes and the new upstream kernel 2.6.23, combined with an updated mac80211 wlan stack and drivers, which brought support for a number of additional wlan cards.
+					While the last two months have been pretty turbulent in Debian sid with X.org 7.3 entering the scene, several library transitions and infrastructural problems, these issues seem to be mostly resolved for sidux and now allow to provide the best possible opensource support for various graphics chipsets and advanced runtime configuration options provided by xrandr 1.2 compatible drivers.
+				</p>
+				
+				<p>
+					Further efforts have been invested into an advanced USB installation, kernel stabilisation and the live persistency framework.
+					Various updates, fixes and adaptions have been applied to basically the complete package list and a lot of translation and localisation related endeavours were started to improve the situation for our non english/ german speaking users.
+				</p>
+
+				<p>
+					Our special thanks go to everyone involved in enhancing our list of download mirrors and especially all mirror hosters for their efforts regarding sidux.
+				</p>
+
+			</div>
+	
+			<div class="divider" id="whats-new">
+				<h2>Now to the interesting topics, like what's on the menu for now:</h2>
+				<ul>
+					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer)).</li>
+					<li>Debian sid, as of 2007-11-21.</li>
+					<li>kernel 2.6.23.9-rc1 (smp, hard preemption).</li>
+					<li>libata support for parallel ATA systems.</li>
+					<li>X.org 7.3.</li>
+					<li>KDE 3.5.8 (en + de).</li>
+					<li>completely new X.org probing, finally amd64 compatible.</li>
+					<li>new USB fromiso Installer.</li>
+					<li>new artwork created by cleary and the sidux art team.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
+					<li>iwlwifi3945/ iwlwifi4965 1.1.19.</li>
+					<li>b43/ b43legacy support for Broadcom wlan cards.</li>
+					<li>rt2x00 2.0.12+git-9501-g9dab9ee support for RaLink cards.</li>
+					<li>experimental support for RealTek RTL8185 wlan cards.</li>
+					<li>support for RealTek RTL8187 wlan cards.</li>
+					<li>support for ADMtek ADM8211 wlan cards.</li>
+					<li>support for Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet cards (ICH9).</li>
+					<li>enhanced hardware support libraries.</li>
+					<li>fw-detect to probe for hardware with non-free needs.</li>
+					<li>memtest86+.</li>
+					<li>overhauled partition and file system detection.</li>
+					<li>basic lvm2 detection and support (no installer support).</li>
+					<li>several X.org 7.3 and kernel 2.6.23 related bug and compatibility fixes.</li>
+					<li>siduxcc overhaul.</li>
+					<li>persistency fixes.</li>
+					<li>bitsetting/ xrandr compatible driver for ATi cards (6.7.195).</li>
+					<li>several X.org detection improvements and bugfixes.</li>
+					<li>/etc/apt/sources.list.d/ superseding the monolithic /etc/apt/sources.list.</li>
+					<li>fix booting for VIA C7 CPUs.</li>
+					<li>virtualbox-ose-guest support.</li>
+					<li>fix remaining sources.list.d/ issues.</li>
+				</ul>
+			</div>
+<!-- preview
+			<div class="divider" id="pending">
+				<h2>What hasn't made it into the preview yet:</h2>
+				<ul>
+					<li>a</li>
+				</ul>
+			</div>
+preview -->
+			<div class="divider" id="non-free">
+				<h2>Hints for hardware with non-free needs:</h2>
+				<p>
+					sidux contains only <a href="http://www.debian.org/social_contract">dfsg</a> free software, so you'll probably want to add contrib/ non-free to your <a href="http://sidux.com/files/misc/sources.list.d/debian.list">/etc/apt/sources.list.d/debian.list</a> and ensure internet access.
+				</p>
+				<pre># See sources.list(5) for more information, especially
+# Remember that you can only use http, ftp or file URIs
+# CDROMs are managed through the apt-cdrom tool.
+# The /etc/apt/sources.list.d/ directory provides a way to add sources.list
+# entries in seperate files that end with sources.list file.
+
+# unstable
+deb http://ftp.de.debian.org/debian unstable main contrib non-free
+# deb-src http://ftp.de.debian.org/debian unstable main contrib non-free
+
+# testing
+# deb http://ftp.de.debian.org/debian testing main contrib non-free
+# deb-src http://ftp.de.debian.org/debian testing main contrib non-free
+
+# experimental
+# deb http://ftp.de.debian.org/debian experimental main contrib non-free
+# deb-src http://ftp.de.debian.org/debian experimental main contrib non-free</pre>
+				<p>
+					and <a href="http://sidux.com/files/misc/sources.list.d/sidux.list">/etc/apt/sources.list.d/sidux.list</a>:
+				</p>
+				<pre># sidux e.V., Germany
+deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+#deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+
+				<p>
+					The required firmware can be determined with the following device/ firmware enumeration or by using the newly developed fw-detect script (packaged in configure-networkcard).
+				</p>
+
+				<ul>
+					<li>
+						ATi Radeon graphics:<br />
+						3d acceleration for older cards up to r35x should work, newer Radeon X1xxx cards need non-free drivers for accelerated performance which are not yet compatible with Kernel 2.6.23. Depending on the particular chipset "xmodule=vesa" or "xmodule=fbdev" as cheatcode might be in order for later Radeon X1xxx models.
+					</li>
+					<li>
+						Atheros/ "madwifi" wlan:<br />
+						<pre>m-a a-i madwifi</pre>
+					</li>
+					<li>
+						Atmel AT76c50x 11 MBit/s wlan:<br />
+						<pre>apt-get install atmel-firmware</pre>
+					</li>
+					<li>
+						Broadcom, bcm43xx/ b43/ b43legacy wlan:<br />
+						<pre>apt-get install bcm43xx-fwcutter b43-fwcutter</pre>
+					</li>
+					<li>
+						Eagle USB ADSL modem:<br />
+						fetch the firmware from <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						DVB firmware for various full featured DVB TV cards (most budget cards won't need this):<br />
+						fetch the needed firmware (check dmesg) from <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						IVTV firmware:<br />
+						fetch the firmware from <a href="http://dl.ivtvdriver.org/ivtv/firmware/">http://dl.ivtvdriver.org/ivtv/firmware/</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						Intel ipw2100, 11 MBit/s wlan:<br />
+						<pre>apt-get install ipw2100-firmware</pre>
+					</li>
+					<li>
+						Intel ipw2200, 54 MBit/s wlan:<br />
+						<pre>apt-get install ipw2200-firmware</pre>
+					</li>
+					<li>
+						Intel ipw3945/ iwlwifi, 54 Mbit/s wlan:<br />
+						<pre>apt-get install firmware-iwlwifi</pre>
+						<em>please remove iwlwifi-ucode and iwlwifi-3945, if already installed.</em>
+					</li>
+					<li>
+						Intel ipw4965/ iwlwifi, draft-n wlan:<br />
+						<pre>apt-get install firmware-iwlwifi</pre>
+						<em>please remove iwlwifi-4965, if already installed.</em>
+						
+						<br /><br /><em>feedback regarding iwlwifi 3945 and iwlwifi 4965 is always appreciated.</em>
+					</li>
+					<li>
+						Intersil prism54, 54 MBit/s wlan:<br />
+						fetch the firmware from <a href="http://prism54.org/firmware/">http://prism54.org/firmware/</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						nVidia graphics:<br />
+						3d acceleration isn't possible with free drivers yet, please use &quot;get-sidux-binary-gfx &amp;&amp; install-binary-gfx -a&quot; or &quot;sgfxi&quot; to fetch install scripts for these cards.
+					</li>
+					<li>
+						RaLink rt61 54 MBit/s wlan:<br />
+						<pre>apt-get install rt61-fwcutter</pre>
+					</li>
+					<li>
+						RaLink rt73 54 MBit/s wlan:<br />
+						<pre>apt-get install rt73-fwcutter</pre>
+					</li>
+					<li>
+						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:<br />
+						fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						ZyDAS zd1201 11 MBit/s wlan:<br />
+						fetch the firmware from <a href="http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz">http://surfnet.dl.sourceforge.net/sourceforge/linux-lc100020/zd1201-0.14-fw.tar.gz</a> and place it under /lib/firmware/.
+					</li>
+					<li>
+						ZyDAS zd1211 54 MBit/s wlan:<br />
+						<pre>apt-get install zd1211-firmware</pre>
+					</li>
+				</ul>
+	
+				<p>
+					We try to provide packages for legally redistributable firmware from our non-free repositories, but not all vendors allow this.
+				</p>
+			</div>
+	
+			<div class="divider" id="disclaimer">
+				<h2>Disclaimer:</h2>
+				<p>
+					This is experimental software.
+					Use at your own risk.
+					The sidux project, it's developers and team members (all represented by the sidux e.V.) cannot be held liable under any circumstances for damage to hardware or software, lost data, or other direct or indirect damage resulting from the use of this software.
+					If you do not agree to these terms and conditions, you are not permitted to use or further distribute this software.
+				</p>
+			</div>
+
+			<div class="divider" id="mirror">
+				<h2>Download URLs, please give the mirrors some time to sync:</h2>
+
+				<h3>Europe</h3>
+				<ul>
+					<li>
+						<strong>Technical University Carolo-Wilhelmina at Brunswick</strong>, Germany<br />
+						<a href="http://debian.tu-bs.de/project/sidux/">http://debian.tu-bs.de/project/sidux/</a><br />
+						<a href="ftp://debian.tu-bs.de/project/sidux/">ftp://debian.tu-bs.de/project/sidux/</a><br />
+						<a href="rsync://debian.tu-bs.de/sidux/">rsync://debian.tu-bs.de/sidux/</a>
+						<pre>deb http://debian.tu-bs.de/project/sidux/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src http://debian.tu-bs.de/project/sidux/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+					</li>
+					<li>
+						<strong>University of Kent/ Computer Science Department</strong>, United Kingdom<br />
+						<a href="ftp://ftp.mirrorservice.org/sites/sidux.com/sidux/">ftp://ftp.mirrorservice.org/sites/sidux.com/sidux/</a><br />
+						<a href="http://www.mirrorservice.org/sites/sidux.com/sidux/">http://www.mirrorservice.org/sites/sidux.com/sidux/</a><br />
+						<a href="rsync://rsync.mirrorservice.org/sidux.com/sidux/">rsync://rsync.mirrorservice.org/sidux.com/sidux/</a>
+					</li>
+					<li>
+						<strong>Ireland's National Education and Research Network/ HEAnet</strong>, Dublin, Ireland<br />
+						<a href="http://ftp.heanet.ie/pub/sidux/">http://ftp.heanet.ie/pub/sidux/</a><br />
+						<a href="ftp://ftp.heanet.ie/pub/sidux/">ftp://ftp.heanet.ie/pub/sidux/</a><br />
+						<a href="rsync://ftp.heanet.ie/pub/sidux/">rsync://ftp.heanet.ie/pub/sidux/</a>
+					</li>
+					<li>
+						<strong>Free University Berlin/ Institute of Computer Science</strong>, Germany<br />
+						<a href="ftp://ftp.spline.de/pub/sidux/">ftp://ftp.spline.de/pub/sidux/</a><br />
+						<a href="rsync://ftp.spline.de/Sidux/">rsync://ftp.spline.de/Sidux/</a><br />
+						<pre>deb ftp://ftp.spline.de/pub/sidux/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src ftp://ftp.spline.de/pub/sidux/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+					</li>
+					<li>
+						<strong>Russian Federal University Network St. Petersburg</strong>, Russian Federation<br />
+						<a href="http://sidux.2wl.ru/downloads/">http://sidux.2wl.ru/downloads/</a>
+					</li>
+					<li>
+						<strong>sidux e.V.</strong>, Germany<br />
+						<em>(repository and kernels only)</em>
+						<ul>
+							<li>
+								<a href="http://sidux.com/files/">http://sidux.com/files/</a><br />
+								<pre>deb http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src http://sidux.com/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+							</li>
+							<li>
+								<a href="http://sidux.net/files/">http://sidux.net/files/</a><br />
+								<pre>deb http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free
+deb-src http://sidux.net/debian/ sid main contrib non-free firmware fix.main fix.contrib fix.non-free</pre>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<h3>North America</h3>
+				<ul>
+					<li>
+						<strong>University of Tennessee/ SunSITE</strong>, TN, USA<br />
+						<a href="ftp://ftp.sunsite.utk.edu/pub/linux/Sidux/">ftp://ftp.sunsite.utk.edu/pub/linux/Sidux/</a><br />
+						<a href="rsync://sunsite.utk.edu/sidux/">rsync://sunsite.utk.edu/sidux/</a>
+					</li>
+
+					<li>
+						<strong>Washington State University/ Linux User Group and School of Electrical Engineering and Computer Science</strong>, Pullman WA, USA<br />
+						<a href="http://lug01.eecs.wsu.edu/sidux/">http://lug01.eecs.wsu.edu/sidux/</a>
+					</li>
+				</ul>
+
+				<h3>Asia</h3>
+				<ul>
+					<li>
+						<strong>National Taiwan University/ Computer and Information Networking Center</strong>, Taipei City, Taiwan, R.O.C.<br />
+						<a href="http://ftp.tw.debian.org/pub/Sidux/">http://ftp.tw.debian.org/pub/Sidux/</a><br />
+						<a href="ftp://ftp.tw.debian.org/pub/Sidux/">ftp://ftp.tw.debian.org/pub/Sidux/</a>
+					</li>
+				</ul>
+
+				<h3>Africa</h3>
+				<ul>
+					<li>
+						<strong>University of Cape Town/ Linux Enthusiasts Group</strong>, South Africa<br />
+						<a href="http://ftp.leg.uct.ac.za/pub/linux/sidux/">http://ftp.leg.uct.ac.za/pub/linux/sidux/</a>
+					</li>
+				</ul>
+
+				<h3>Australia/ New Zealand</h3>
+				<ul>
+					<li>
+						<strong>University of Queensland/ AARNet</strong>, Brisbane, Australia<br />
+						<a href="http://mirror.aarnet.edu.au/pub/sidux/">http://mirror.aarnet.edu.au/pub/sidux/</a><br />
+						<a href="ftp://mirror.aarnet.edu.au/pub/sidux/">ftp://mirror.aarnet.edu.au/pub/sidux/</a><br />
+					</li>
+
+					<li>
+						<strong>Linux NZ/ Auckland</strong>, New Zealand<br />
+						<a href="ftp://debian.co.nz/Sidux/">ftp://debian.co.nz/Sidux/</a> <em>(only accessible from New Zealand)</em>
+					</li>
+				</ul>
+
+				<em>Our thanks go to all mirror hosters for their efforts regarding sidux.</em>
+			</div>
+
+			<div class="divider" id="howto-involve">
+				<h2>How to get involved</h2>
+				<p>
+					Getting involved in sidux is easy, just join us at our <a href="http://sidux.com">Forum</a> or even better on IRC (irc.oftc.net, port 6667, channel #sidux) and discuss your patches/ proposals or additions.
+				</p>
+
+				<p>
+					We will gladly discuss any dfsg-free patches and contributions, especially regarding alternative window managers (gnome, xfce), mobile network connectivity (GPRS/ UMTS, Bluetooth, but also ISDN, PPP, PPPoE) or general janitorial tasks or translations/ localisations.
+				</p>
+			</div>
+	
+			<div class="divider" id="roadmap">
+				<h2>Roadmap:</h2>
+				<p>
+					Please understand that the following roadmap is a rough estimate regarding our release schedule and is affected by the status of upstream Debian sid, major system components like X.org, KDE, the linux kernel and our own developments and is subject to changes.
+				</p>
+	
+				<ul>
+<!-- history
+					<li>
+						sidux 2007-01 &quot;&Chi;&alpha;&omicron;&sigmaf;&quot; &mdash; 2007-02-21
+					</li>
+					<li>
+						sidux 2007-02 &quot;&Tau;&alpha;&rho;&tau;&alpha;&rho;&sigmaf;&quot; &mdash; 2007-05-28
+					</li>
+					<li>
+						sidux 2007-03 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-14
+					</li>
+					<li>
+						sidux 2007-03.1 &quot;&Gamma;&alpha;&iota;&alpha;&quot; &mdash; 2007-08-15
+					</li>
+					<li>
+						sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; &mdash; calendar week 41-42 2007
+					</li>
+history -->
+					<li>
+						sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; &mdash; calendar week 2-4 2008
+					</li>
+					<li>
+						sidux 2008-02 &quot;&Epsilon;&rho;&epsilon;&beta;&omicron;&sigmaf;&quot; &mdash; calendar week 13-14 2008
+					</li>
+					<li>
+						sidux 2008-03 &quot;&Omega;&upsilon;&rho;&epsilon;&alpha;&quot; &mdash; calendar week 25-26 2008
+					</li>
+					<li>
+						sidux 2008-04 &quot;&Pi;&omicron;&nu;&tau;&omicron;&sigmaf;&quot; &mdash; calendar week 37-38 2008
+					</li>
+				</ul>
+			</div>
+	
+			<div class="divider" id="credits">
+				<h2>Special thanks go to the entire sidux development team:</h2>
+				<p>
+					Jose Tadeu Barros (ceti)<br />
+					<a href="http://rebelhomicide.demon.nl">Michiel de Boer</a> (locsmif)<br />
+					Joaquim Boura (x-un-i)<br />
+					Mikhail Burov (von_Selbst)<br />
+					<a href="http://www.alessiogiustini.com"> Alessio Giustini</a> (alessiog75)<br />
+					Stefan R. Eissens (eislon)<br />
+					Roland Engert (RoEn)<br />
+					Bernard Gray (cleary)<br />
+					<a href="http://w3you.com">Chris Hildebrandt</a> (slam)<br />
+					Ralph Hokanson Jr. (piper)<br />
+					Richard Holt (Richard)<br />
+					Harald Hope (h2)<br />
+					HarzG<br />
+					Markus Huber (hubi)<br />
+					Aedan Kelly (etorix)<br />
+					Lady_Cuddles<br />
+					Latino<br />
+					Stefan Lippers-Hollmann (slh)<br />
+					Philippe Masson (LjanA)<br />
+					Kel Modderman (kelmo)<br />
+					Koslow<br />
+					Markus M&uuml;ller (moto)<br />
+					maslot<br />
+					Gabriel Palade (ladepa)<br />
+					<a href="http://www.r7h.at">Gerald Prock</a> (raider700)<br />
+					<a href="mailto:cathbard@gmail.com">Steven J. Robinson</a> (cathbard)<br />
+					Philipp Rudolph (Zophod)<br />
+					Dinko Sabo (cobra)<br />
+					Florian Schneider (hathe)<br />
+					Ferdi Thommes (devil)<br />
+					Horst Tritremmel (hjt)<br />
+					Trevor Walkley (bluewater)<br />
+					Niall Walsh (bfree)<br  />
+					Andreas Weber (webera)<br />
+					Fabian Wuertz (xadras)<br />
+					zerby<br />
+					zonker<br />
+					zulu9
+				</p>
+
+				<p>
+					Thanks to <a href="http://www.hetzner.de/">Hetzner Online AG</a> for sponsoring <a href="http://sidux.com">sidux.com</a>.
+				</p>
+
+				<p>
+					On behalf of the sidux team:<br />
+					<em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stefan Lippers-Hollmann (slh)</em>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>
+

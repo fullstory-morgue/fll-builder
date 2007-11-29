@@ -1,0 +1,12 @@
+FLL_PACKAGES+=(
+	configure-dsl
+	configure-isdn
+	configure-modemlink
+	configure-ndiswrapper
+	configure-networkcard
+	infobash
+	ppp-scripts
+	sshstart-sidux
+	startsyslog-sidux
+)
+

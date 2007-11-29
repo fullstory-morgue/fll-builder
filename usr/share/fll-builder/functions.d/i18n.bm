@@ -1,0 +1,99 @@
+grep_i18n_string() {
+	local STRING="$1"
+	shift
+	local AVAILABLE=( $(grep-dctrl -s Package -nP "$STRING" "$FLL_BUILD_CHROOT"/var/lib/apt/lists/*Packages) )
+	# Language and location parts, created sub-list and test value
+	local L1
+	local L2
+	local LL
+	local LT
+
+	[[ ${AVAILABLE[@]} ]] || return
+	
+	for l in $@; do
+		# split input around underscore
+		L1=$(tr [[:upper:]] [[:lower:]] <<< ${l%[_-]*})
+		L2=$(tr [[:upper:]] [[:lower:]] <<< ${l#*[_-]})
+		if [[ "$L1" = "$L2" ]]; then
+			# "en en-en enen"
+			LL="$L1 $L1-$L1 $L1$L1"
+		else
+			# "en-gb engb en en-en enen gb"
+			LL="$L1-$L2 $L1$L2 $L1 $L1-$L1 $L1$L1 $L2"
+		fi
+		LT=0
+		for L in $LL; do
+			if [[ $LT == 1 ]]; then
+				break;
+			fi
+			for a in ${AVAILABLE[@]}; do
+				if [[ $a =~ "^${STRING}-?${L}$" ]]; then
+					echo "$a"
+					LT=1
+					break
+				fi
+			done
+		done
+	done
+}
+
+detect_i18n_support_packages() {
+	for p in gcompris gimp gwenview icedove iceweasel k3b kdebase koffice myspell-en-us \
+		openoffice.org-core sidux-manual-en; do
+
+		if [[ $(type -t installed_in_chroot) == "function" ]]; then
+			installed_in_chroot "$p" || continue
+		fi
+
+		case "$p" in
+			k3b|gwenview)
+				for l in $@; do
+					[[ "$l" =~ '^en' ]] && continue
+					echo "${p}-i18n"
+					break
+				done
+				;;
+			gcompris)
+				grep_i18n_string gcompris-sound $@
+				;;
+			gimp)
+				grep_i18n_string gimp-help $@
+				;;
+			iceape)
+				grep_i18n_string iceape-locale $@
+				;;
+			icedove)
+				grep_i18n_string icedove-locale $@
+				;;
+			iceweasel)
+				grep_i18n_string iceweasel-l10n $@
+				;;
+			kdebase)
+				grep_i18n_string kde-i18n $@
+				;;
+			koffice)
+				grep_i18n_string koffice-i18n $@
+				;;
+			myspell-en-us)
+				grep_i18n_string myspell $@
+				;;
+			openoffice.org-core)
+				grep_i18n_string openoffice.org-l10n $@
+				grep_i18n_string openoffice.org-thesaurus $@
+				;;
+			sidux-manual-en)
+				grep_i18n_string sidux-manual $@
+				;;
+			sylpheed)
+				grep_i18n_string sylpheed-i18n $@
+				;;
+		esac
+	done
+}
+
+detect_i18n_test() {
+	for l in $(locale -a | sed -n 's/\.utf8//p'); do
+		echo "# $l"
+		detect_i18n_support_packages $l
+	done
+}

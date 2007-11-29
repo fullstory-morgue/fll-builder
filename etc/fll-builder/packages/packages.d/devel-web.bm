@@ -1,0 +1,8 @@
+FLL_PACKAGES+=(
+	dnsutils
+	iputils-ping
+	kdewebdev
+	tidy
+	traceroute
+)
+

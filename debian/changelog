@@ -1,0 +1,1067 @@
+fll-builder (1.1.7) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * update syntax for Vcs headers in debian/control
+  * add userspace irqbalance.
+  * release notes:
+    - fix typo, s/Bohdi/Bodhi/.
+    - initial adaption for Ερως.
+    - e1000e.
+    - KDE 3.5.8.
+    - start to talk about Ερως instead of Γάια, so we don't forget it ;)
+    - update credits section.
+    - finalize release notes for 2007-04 pre1.
+    - sidux.2wl.ru is no more.
+    - start to talk about pre2, so it doesn't get lost.
+    - siduxcc is fixed.
+    - finalize pre2 release notes.
+    - several spelling fixes and text improvements contributed by bfree and
+      slam.
+    - start to talk about pre3, so it doesn't get lost.
+    - citations needed.
+    - adapt pending issues.
+    - fix booting for CPUs with broken real mode switch (VIA C7).
+    - update date information.
+    - elaborate about source.list.d.
+    - clean up contributors.
+    - talk about virtualbox-ose-guest support.
+    - add russian mirror again.
+    - talk about hetzner
+    - delay 2008-01 to mid-end january 2008.
+    - finalize release notes for 2007-04.
+  * do not default to acpi=off in failsafe options, this does not work for SMP
+    systems and may be dangerous for notebooks in particular.
+  * do not default to nodma in failsafe options, this has no practical meaning
+    with libata anyways.
+  * package lists:
+    - add libxine1-misc-plugins to kde-*.bm, to avoid libxine1-plugins and
+      half of gnome getting installed.
+    - no longer install recommends for libxine1.
+    - revisit non-installable/ disabled packages.
+    - replace kooka by xsane, it's larger but a lot better, move it to
+      distro-tools-x.
+    - add libxine1-x and libxine1-xvdr to distro-tools-x.
+    - remove previously added bloat.
+    - try to live without forcing libxine1-misc-plugins into the builds.
+    - kde-stripped:
+      + additions:
+        % add hwinfo to kde-stripped.
+      + removals:
+        % sidux-vdr
+        % sidux-vdr-extras
+        % superkaramba
+        % vdr-gui
+    - kde-full:
+      + replace openoffice.org by the new meta task openoffice.lite created by
+        cleary.
+    - xfce list:
+      + removals:
+        % gdk-imlib11
+        % gkrellm-meta
+        % fortune
+        % icedove
+        % pidgin and friends.
+        % vlc-nox
+    - dvd list:
+      + changes:
+        % dolphin --> d3lphin.
+      + temporarily disabled/ non-installable:
+        % gnucash
+        % istanbul
+        % mozilla-plugin-vlc
+        % quodlibet
+        % vlc
+      + removals:
+        % gdancer (pulls in xmms)
+    - gnome-full:
+      + removals:
+        % xmms
+  * detect lvm2 partitions.
+  * use new globbing support for libdevmapper* in fll_init_whitelist.
+  * re- add fll-source-fetcher.sh.
+  * siduxcc's recommends are installable again, due to local libapt-pkg-perl
+    binNMUs.
+  * switch from sources.list to /etc/apt/sources.list.d/.
+  * add mandatory FLL_BUILD_*MIRROR_LABEL_SAFE and  FLL_BUILD_*MIRROR_SUITE
+    variables.
+  * strip bogus version info from snapshot builds.
+  * take care to remove persistency udev rules, even though they should only
+    be created on boot and not in chroot, better safe than sorry.
+  * shorten FLL_BUILD_*MIRROR_LABEL_SAFE to debian and sidux, to allow
+    deriving from distro-defaults FLL_DISTRO_NAME in fll-locales.
+  * finally ditch sidux-graphics in favour of gfxboot-theme-sidux.
+  * add logrotate to utils-essential, thanks to kelmo for noticing.
+  * add initial tasks for east asian languages.
+  * whitelist virtualbox-ose-guest-utils, it will be removed by fll-virtual if
+    necessary.
+  * use arch extension for image file.
+  * move virtualbox-ose-guest-utils to distro-x.
+  * install libc6-i686 on i386 builds.
+  * s/X32/386/.
+  * s/X64/x64/.
+  * allow overrrides for most distro-defaults options.
+  * remove never employed options from distro-defaults.
+  * finish kde-full.
+  * enhance inline comments about sources.list vs. sources.list.d/.
+  * use lower case for directories.
+
+  [ Bernard Gray ]
+  * remove xfce-lite.bm so single xfce package is used
+  * fix devil's changelog mistake
+  * remove gimp-basic from xfce.bm
+  * amarok will install again - reenable in kde-full
+  * minor update for release notes icon
+  * remove buggy audacious from xfce.bm
+  * remove duplicate gtk2 entry from xfce.bm
+  * remove xfmedia and nuovo gnome theme from xfce.bm
+  * gimp-print has been absorbed into the gimp package
+  * remove gnome-terminal since issues with xfce-terminal are fixed
+  * revert accidental kde-full mod
+  * xfce.bm - remove buggy xkb-plugin
+  * release notes - update AARNet location
+  * release notes - change colours in screen.css to suit eros
+  * release notes - change sidux-logo.png to suit eros
+  * create openoffice-lite.bm to purge less desirable ooo components (base)
+  * remove iceweasel and ktorrent from kde-lite (now ~400MB i386 build)
+  * add plugins for brasero basic decoding functionality
+
+  [ Ferdinand Thommes ]
+  * added releasenote.de for special release for Chip-Linux
+  * added aqualung for testing
+  * fixed xfce.bm
+  * added unp to cli.bm
+  * trimmed xfce.bm
+  * xfce.bm - remove audacity
+  * xfce.bm - replace vlc with gxine and gxineplugin
+  * xfce.bm - add xchat and axchat-systray (by popular demand)
+  * xfce.bm - add hwsupport-extra for cups
+  * added releasenote.en for special release for Chip-Linux
+
+  [ Kel Modderman ]
+  * Use fll_src_uri to get manifest and source file listings.
+  * Remove need for su-me, I don't like su-me.
+  * s/alsa/alsa-base/ in init_package_whitelist.
+  * Add fll_init_{black,white}list files for future use.
+  * Fix for removal of FLL_SOURCE_REL variable, always put src uri's into
+    sources.list of build chroot.
+  * Readjust to new init blacklist logic via fll_analyze_initscripts.
+  * 915resolution no longer required, intel xorg driver doesn't use it.
+  * Spread out some awk code, easier on the eye.
+  * Add real copyright holders to copyright header.
+  * Make -B and -S work again.
+  * Add libsmbios-bin - ships the dellWirelessCtl utility which is required
+    for the RF kill switch support on DELL laptops.
+  * Use new glob support in fll_init_whitelist to allow all initscripts in
+    /etc/init.d/fll-* namespace.
+  * globbing in fll_init_whitelist is for initscript names only, not package
+    names, use initscript glob for libdevmapper.
+  * Add early.bm to take care of packages that are required before mass
+    package install -> ${FLL_PACKAGES_EARLY[@]} array.
+  * Remove hwsetup traces from exclusion list. Filter out the attempted
+    exclusion of lock files in exclude.bm function module.
+  * Add a few headers to various functions throught fll-build.bash.
+  * Fix some whitespace.
+  * Don't run fix-fonts in the build chroot, I don't think it makes any sense
+    here.
+  * Initial /dev/pts handling in chroot_virtfs().
+  * kde-full profile tweaking:
+    - gimp-basic, libqt-perl, pdfedit, out
+    - krita, openoffice.org-thesaurus-en-us in
+  * Fix i18n.bm for new openoffice-lite module. Really fix it.
+  * Do upper -> lower case conversion of language string in i18n.bm too.
+  * Allow detect_i18n_support() to continue when installed_in_chroot() is not
+    a defined function. Use ful for regression test.
+  * Add detect_i18n_test() to i18n.bm for testing.
+  * Drop krita from kde-full package array.
+  * We cannot responsibly ship hotkey-setup or kdmtheme, they are known to be
+    broken atm.
+  * Try to add virtualbox-ose-guest-utils conditional to build architecture in
+    hwsupport-extra package module.
+  * Set a dmz-cursor-theme variant as x-cursor-theme alternative if installed.
+    Add dmz-cursor-theme to our xserver package module array.
+  * Fix poor usage of sed committed in r12345, it could not handle the /
+    character that is used in a handful of distro-defaults variables.
+  * Add hint for IVTV firmware to en + de release notes.
+
+  [ Horst Tritremmel ]
+  * kde-edu.bm added
+  * kde-edu updated
+  * distro-edu.bm added
+  * distro-edu.bm updated
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 21 Nov 2007 15:03:34 +0100
+
+fll-builder (1.1.6) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * add FLL_I18N_SUPPORT to example config
+  * dvd package list:
+    - unmet dependencies:
+      + gimp-svg
+    - enable previously unmet dependencies again.
+    - remove duplicates
+    - fix meta package names.
+    - fix changelog abuse.
+    - fix pidgin task.
+    - add data-rescue/ backup task.
+    - add konversation, kSIRC is unbearable.
+    - add virtualbox-ose.
+  * install recommends for siduxcc (apt-show-versions).
+  * release notes:
+    - add mirror at the university of Kent, thanks to etorix.
+    - add missing line break to mirror section, list ftp over http for the
+      university of Kent.
+    - add mirror at the university of Tennessee/ SunSITE, thanks to etorix and
+      Tirian.
+    - fix rsync address for the university of Tennessee/ SunSITE.
+    - add zonker to the team.
+    - standardize field delimiter for mirrors.
+    - add russian and south african mirrors, order by continent.
+    - slight rephrasing of the german mirror wish.
+    - add new mirror for New Zealand.
+    - add deb-src lines.
+    - add pt_BR manual translator Jose Tadeu Barros (ceti) to the credit list.
+    - add new mirror for the Republic of China/ Taiwan.
+    - add new mirror at the Australian National University, AARNet.
+    - add ftp/ rsync addresses to AARNet.
+    - no rsync on AARNet.
+    - remove the pledge for additional mirrors.
+    - add HEAnet.
+    - add repo info for sidux.com/ sidux.net.
+    - fix syntax bug.
+    - fix grammar, thanks to etorix.
+    - add b43-fwcutter.
+  * don't store a dummy fstab.
+  * just store the year in the default config.
+  * add VCS control headers.
+
+  [ Kel Modderman ]
+  * Filter generic i18n packages (non-lang specific) for english or english
+    variant only builds.
+  * Write initscript whitelist to fll-init.default in a way that won't break
+    scripts that source that file (if any).
+  * Add kio-apt to kde-full profile.
+  * Add lots more "headers".
+  * Cleanup some old cruft todo with fontconfig-config and initramfs-tools.
+  * Remove nodev test, little value for us.
+  * Fix comment for -S|--source-release option.
+  * Make source URI generation default action again. Introduce
+    -B|--binary-release for old behaviour.
+  * No longer create strange ($FLL_MOUNTPOINT) directory in build chroot, this
+    may be disruptive and break build.
+  * Add en to default FLL_I18N_SUPPORT in config.
+  * Fix breakage from first attempt to get rid of $FLL_MOUNTPOINT in build
+    chroot. Really fix it this time.
+  * Fix genisoimage sort rule, use FLL_IMAGE_DIR and not FLL_MOUNTPOINT.
+  * Activate fll-live-xorgconfig.
+  * Kill xorgconfig-sidux and hwsetup-ng, die die die!
+  * Add hwinfo to hwsupport-extra.bm.
+  * Add extra 5 units of space to first field of package manifest.
+  * Refine awk code behind our intstall recommends logic.
+
+  [ Bernard Gray ]
+  * populate fll-build.conf.5 skeleton some more
+  * add patch for optional root password
+  * add desktop-defaults-xfce to distro-xfce.bm
+  * bash the xfce pkg list into something recognisable
+  * remove configure* and zenity from xfce-lite.bm (managed in other lists)
+  * hack together a starting point for xfce.bm (XXX: NEEDS LOOKING AT!)
+  * remove gstreamer really-ugly plugins from xfce.bm
+  * add brasero (cd/dvd burning) + recommends to xfce.bm
+  * add lite office tools (abiword/gnumeric) to xfce-lite.bm
+  * add heavy office tools (openoffice.org) to xfce.bm
+  * add gimp and inkscape to xfce.bm
+  * add cli group to xfce and xfce-lite
+  * remove vim from xfce-lite (subset of cli.bm)
+  * cleanup xchat entries in xfce and xfce-lite
+  * remove gdm-themes-sidux from xfce-lite
+  * add xfce4-dev-tools to xfce.bm
+  * sync xfce specific packages between xfce.bm and xfce-light.bm
+  * sync xfce specific packages between xfce.bm and xfce-light.bm some more
+
+  [ Ferdinand Thommes ]
+  * added xfce.bm and xfce-lite.bm prvided by mzilikazi
+  * added po files for fr and nl to siduxcc
+  * fixed some typos in siduxcc po files
+  * removed konserve from data-rescue.bm, not in sid anymore
+  * fixed syntax error in dvd.bm
+  * updated i18n.bm with iceape and sylpheed
+  * cleaned up dvd.bm
+  * added alsastuff.bm gkrellmpack.bm openoffice.bm pidginpack.bm wine-base.pm
+  * updated dvd.bm added tex-latex.bm to packages.d
+  * fixed wine-base.bm
+  * fixed alsastuff.bm
+
+  [ Joaquim Boura ]
+  * added rsync URL for tu-bs
+
+  [ Bernard Gray ]
+  * add gimp-plugin-registry for gimp script-fu plugins
+  * add ksvg to distro-kde (svg previewer for konq)
+  * add utils-extra to xfce* package lists
+
+  [ Niall Walsh ]
+  * Handle multiple lang_location combinations in FLL_I18N_SUPPORT
+  * Make sidux-manual-en the controlling package for pulling in manuals
+  * Add ro_RO.UTF-8 to the generated locales
+
+  [ Horst Tritremmel ]
+  * install-usb-gui to distro-tools-x.bm added
+  * gdm-themes-sidux added to distro-xfce.bm. Use so long as sidux-gaia
+    for gdm is broken.
+  * gdm-themes-sidux removed from distro-xfce.bm
+  * gnome-terminal added to distro-xfce.bm
+
+  [ Bernard Gray ]
+  * remove non-std cursor and icon themes from xfce*
+  * add xfce xkb plugin for keyboard lang switching
+  * add utils-extra to xfce*.bm
+   - need man-db package for reading manpages
+  * add pidgin packages to xfce*.bm
+  * remove duplicate infobash from xfce-lite
+  * trim xfce-lite
+  * update default-distro for eros
+  * update distro* with eros theme packages
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 05 Oct 2007 22:04:59 +1000
+
+fll-builder (1.1.5) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * revert r9657, remove xdialog alltogether and switch to zenity for now.
+  * release notes:
+    - celebrate Xdialog-free builds.
+    - prepare for pre3.
+    - simplify firmware paragraphs, thanks to etorix.
+    - initial restructuring.
+    - move release notes to /release/.
+    - fix relative anchors.
+    - rework index.html.
+    - navigate between english and german variants.
+    - re- indent print.css.
+    - enroll first order headings.
+    - update kernel info.
+    - fix language navigation.
+    - first stage of CSS overhaul.
+    - further CSS style tweaking.
+    - make ie happy about our release names.
+    - rework mirror info.
+    - mention sgfxi.
+    - tab := 8 spaces.
+    - finalize release notes for 2007-03.
+    - adapt release notes for 2007-03.1.
+    - fix video group.
+    - get-sidux-binary-gfx versus sgfxi.
+    - various spelling/ case fixes.
+    - fix contributor's section, thanks to makke.
+    - add Washington State University mirror, thanks to UncleDeadly.
+  * fix commited svn conflict introduced by r9770.
+  * add iputils-ping to utils-essential.bm.
+  * add vdr to kde-full.
+  * add ftp on popular demand.
+  * add sidux-vdr-server-extra.
+  * fix autorun.
+  * fix german contact translation.
+  * finalize package lists for Γαια.
+  * update default fallback config.
+  * DVD package list:
+    - ardour-i686 doesn't exist for amd64.
+    - remove hungarian media player.
+    - apache2 is a bogus meta package, use apache2-mpm-prefork directly.
+    - kdevelop3 is a transitional dummy package, remove it.
+    - klettres depends on klettres-data anyways, remove bogus predetermined
+      breaking point.
+    - list libapache2-mod-php5 only once.
+    - do not ship something as utterly broken as partimage!
+    - do not depend explicitly on ssft, enough tools pull it in already and it
+      serves no standalone purpose.
+    - ssh is an obsolete meta package, depend on openssh-server explicitly,
+      openssh-client is already covered by utils-extra.
+    - remove xmms, it's about to be removed from debian soon.
+    - remove bogus dependencies on kalzium-data, kgeography-data,
+      krecipes-data, kstars-data and xfdesktop4-data.
+    - depend on sidux-manual as meta package.
+    - remove bogus dependencies on base packages:
+      + ifupdown
+      + module-init-tools
+      + tar
+    - remove screensavers, whick lock up X hard without user password:
+      + kscreensaver
+      + kscreensaver-xsavers
+      + kscreensaver-xsavers-webcollage
+      + xscreensaver-gl
+    - remove indirect dependencies:
+      + debconf
+      + icewm-common
+    - temporarily remove broken packages:
+      + gimp-ufraw is broken, remove it for now.
+  * add framework to install Recommends for specified packages, adds
+    FLL_PACKAGES_RECOMMENDS and
+    ${FLL_BUILD_PACKAGE_PROFDIR}/packages.d/recommends.bm to the external
+    package API.
+  * prettify recommends processing.
+  * auto-install recommends for:
+    - kontact
+    - libxine1
+  * gimp-basic/ gimp-heavy meta tasks.
+  * standardize on gimp meta tasks.
+  * remove FLL_I18N_SUPPORT from distro-defaults.
+  * move FLL_CDROM_INDEX_ICON below release/.
+
+  [ Kel Modderman ]
+  * memtest86+ reinstated.
+  * determine absolute dirname of FLL_BUILD_AREA.
+  * Add installed_in_chroot() to chroot.bm.
+  * Use installed_in_chroot() where applicable.
+  * Introduce new i18n handling.
+  * packages.d/i18n.bm is no more.
+
+  [ Bernard Gray ]
+  * add fll-build.conf man page
+
+  [ Ferdinand Thommes ]
+  * package.list for sidux-dvd
+  * updated dvd.bm to 1.5 gb
+  * updated dvd.bm to 1.6 gb
+  * dvd.bm updated to 1.75 gb
+  * expanded xfce-lite.bm
+  * removed teclasat from dvd.bm
+  * added nvram-wakeup
+  * added nvram-wakeup and etherwake
+
+  [ Joaquim Boura ]
+  * fixed mispelling of file-roller
+  * fixed grammar.
+
+  [ Andreas Weber ]
+  * Package List gnome-std fixed.
+  * gnome-find removed (not available for 64bit).
+  * p7zip-full and samba added for gnome-std/full
+  * libgnomevfs2-extra added for Gnome Builds
+  * bug-buddy added for Gnome-Builds
+
+  [ Horst Tritremmel ]
+  * if FLL_BUILD_EXTRAMIRROR is empty, don't write to sources.list (files.bm)
+
+  [ Niall Walsh ]
+  * Do not try to install nonexistent sidux-manual packages (i18n.bm)
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 20 Aug 2007 15:20:12 +0200
+
+fll-builder (1.1.4) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * release notes:
+    - add download mirror section.
+    - fix download links to link to the preview, not the old release.
+    - USB scanner support is fixed now.
+    - XkbLayout workaround.
+    - adapt introduction.
+    - import devil's german translation.
+    - first round of fixes to german release notes.
+    - fix indention for german translations.
+    - sync both translations.
+    - fix mypppoeconf.
+    - add siduxcc.
+    - add kooka.
+    - debian has changed names for firmware-iwlwifi again...
+    - add xadras.
+  * add siduxcc to kde-lite and kde-full.
+  * add kooka to hwsupport-extra.
+  * autorun release notes on NT >= 5.0.
+  * exclude bootstrap log.
+  * make /etc/sidux-version read only, nothing should ever write to it.
+  * move release notes icon.
+
+  [ Bernard Gray ]
+  * release notes:
+    - move request feedback for intel chipsets
+    - reword request for mirrors
+  * add sidux-release-notes icon
+  * update distro-defaults to use the new icon
+
+  [ Kel Modderman ]
+  * Add fontconfig to xserver package module.
+  * Add xorgconfig-sidux to minimal-x profile.
+  * Suppress xorg.conf creation by exporting env variable,
+    XORG_CONFIG=custom, in chroot_exec() (chroot.bm).
+  * Nuke resolv.conf.
+  * Nuke anything todo with resolv.conf, cdeboostrap now manages that. It also
+    takes care of hosts file, so copy_to_chroot() is entirely redundant and
+    has been removed.
+  * Manage /etc/X11/X -> /usr/bin/Xorg symlink and debconf preseeding to cover
+    for our inhibition of xserver-xorg.postinst. Lets see how it goes.
+  * Add fll_initscript_whitelistgen, a package whitelist and an initscript
+    blacklist. Preseed /etc/default/fll-init with initscripts to be used by
+    live system.
+  * Add header() to make functions stand out where wanted.
+  * Remove the local debs backdoor.
+  * Uncomment procps and sudo in init_package_list.
+  * s/init_package_list/init_package_whitelist/.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 01 Aug 2007 13:59:46 +0200
+
+fll-builder (1.1.3) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * add pnm2ppa to support HP GDI printers, thanks to saxxonian.
+  * add cryptsetup.
+  * libkdcraw-runtime is no longer needed/ available.
+  * add $FLL_BUILD_PACKAGE_PROFILE to /etc/${FLL_DISTRO_NAME_LC}-version and
+    ISO filename.
+  * digikam is fine again.
+  * remove kde-ltag package list.
+  * unionfs 2.x is still broken.
+  * hook english + localized manuals into distro-tools-x.
+  * add basic release note template to CD root:
+    - re- indent english release notes.
+    - rename release notes to release.html.
+    - dereference links in templates.
+    - move release notes one level to the top.
+    - dispose release/.
+    - update the release note's feature list.
+    - update roadmap.
+    - ditch existing introduction.
+    - enhance "getting involved".
+    - contributor cosmetics
+    - feature list.
+    - update firmware section.
+    - sidux e.V.
+    - split after each sentence.
+    - move the disclaimer above the signatures.
+    - further feature additions.
+    - XHTML syntax checks.
+    - add the offline manual to the menu.
+    - roadmap cosmetics.
+    - clarify firmware post scriptum.
+    - iwlwifi3945/ iwlwifi4965 0.1.2.
+    - rt2x00 2.0.3.
+    - menu restructuring.
+    - touchups throughout the full release notes.
+    - further additions to pending list.
+    - break the symlink between en and de, to allow translations.
+  * let the desktop icon point to the release notes instead of the manual.
+  * upload distro-defaults.
+
+  [ Kel Modderman ]
+  * Make kdeservicemenus-sidux specific to kde-full profile.
+  * Add xdialog to standard X package module.
+  * Toss the manual.
+  * Add sanity check for nodev mount option.
+  * Add kdmtheme to distro kde package module. We need to provide it if we
+    ship a kdm theme, or users get strange things happening once they change
+    kdm config.
+
+  [ Horst Tritremmel ]
+  * add zenity to gnome and xfce modules for sidux-irc in gnome
+  * add xchat-systray and gdm-themes-sidux to xfce-lite.bm
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 22 Jul 2007 16:15:44 +0200
+
+fll-builder (1.1.2) unstable; urgency=low
+
+  [ Kel Modderman ]
+  * Purge fll-live-initramfs.
+  * Purge /etc/initramfs-tools/conf.d/resume that is created by
+    initramfs-tools.preinst.
+  * Do dist-upgrade just after bootstrap to grab any fixes from fix.main that
+    may concern essential packages (sysvinit-libata for example).
+  * Depend on new gaia specific art.
+  * Update distro-defaults for new wallpaper name.
+  * Add desktop-defaults-common to distro.bm.
+
+  [ Stefan Lippers-Hollmann ]
+  * don't follow the braindead aptitude extended state info.
+  * install apt-conf-sidux.
+
+  [ Chris Hildebrandt ]
+  * added libsane-extras for extended hardware support
+
+  [ Joaquim Boura ]
+  * pt language is a special case
+
+ -- Kel Modderman <kel@otaku42.de>  Fri, 29 Jun 2007 23:31:17 +1000
+
+fll-builder (1.1.1) unstable; urgency=low
+
+  * Fix sed hack that renamed vmlinuz and initrd.img entries in menu.lst.
+
+ -- Kel Modderman <kel@otaku42.de>  Thu, 14 Jun 2007 21:59:06 +1000
+
+fll-builder (1.1.0) unstable; urgency=low
+
+  * Rename vmlinux and miniroot.gz to vmlinuz-$KVERS and initrd.img-$KVERS
+    respectively.
+
+ -- Kel Modderman <kel@otaku42.de>  Thu, 14 Jun 2007 21:50:40 +1000
+
+fll-builder (1.0.10) unstable; urgency=low
+
+  [ Kel Modderman ]
+  * Add yakuake to kde-full line up.
+  * Don't ship cpufreq-utils for now, it provides its own detection mechanism
+    now and could possibly conflict with our current detection.
+  * Bump FLL_DISTRO_VERSION and FLL_DISTRO_CODENAME.
+  * Activate sidux.com gpg key per default.
+  * Bring back some sanity to our inittab hack. New fll-live-initscripts will
+    provide a login wrapper, /usr/bin/fll_login. Use it.
+  * Add partimage to utils-extra module.
+  * Make way for fll-live-initramfs
+    - don't create user in build
+    - add desktop-defaults packages to package profiles
+  * Make inittab hack unconditional.
+  * rm initscripts-sidux-live, add fll-live-initrscripts.
+  * Add ttf-dejavu to xserver lineup.
+  * Don't hack /etc/sudoers.
+  * Revise failsafe target of menu.lst.
+  * Also adjust nodma usage. We don't handle that in out scripts anymore, just
+    pass that param onto ide subsystem.
+  * Preconfigure fontconfig, turn bitmap fonts off.
+  * Add our own defaults preferences to iceweasal.
+  * Hardcode installation of apt-utils alongside debconf for preconfiguration
+    enhancements.
+  * Move FLL_MOUNTPOINT to position under /fll/* namespace.
+    - adjust creation/removal of FLL_MOUNTPOINT in build chroot to fool
+      packages that check for that
+    - exclude ./fll* at mksquashfs time
+  * Add iceweasel and gtk2 engine to light build for a period of testing.
+
+  [ Bernard Gray ]
+  * livecd manual update sidux-manual-01.10.2007.05.26-live-cd-2007-02
+  * remove "resume" cheatcode option
+
+  [ Stefan Lippers-Hollmann ]
+  * final package list for Τάρταρος.
+  * checkmem has been orphaned.
+  * partimage is broken crap, which produces broken backups that can't be
+    restored at random, remove it again (#391046).
+  * hack around the recent xine-libs changes and depend on libxine1-ffmpeg/
+    libxine1-{gnome,kde} directly - revisit this as soon as the major
+    applications are fixed.
+  * enable debugging options in menu.lst again.
+  * enable console=tty in addition to the serial console for debug entries.
+  * the popular media players have tightened their depdendencies on
+    libxine1-ffmpeg by now, it is no longer required to explicitly depend on
+    it.
+  * etcskel-sidux has been orphaned, remove it from the package lists.
+  * user-profile-sidux has been orphaned, remove it from the package lists.
+  * knx-installer has been orphaned, remove it from the package lists.
+  * configure-mouse is obsolete, don't install it.
+
+  [ Andreas Weber ]
+  * Some Packages picked from the kde Profile.
+  * Pidgin reactivated
+  * evolution added for gnome-lite
+  * Desktop Icon fixed
+  * xdialog added for gnome (required for scripts with dialog wrapper)
+
+  [ Horst Tritremmel ]
+  * add kde-core to kde-profiles
+
+ -- Kel Modderman <kel@otaku42.de>  Thu, 14 Jun 2007 20:20:47 +1000
+
+fll-builder (1.0.9) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * add dvb-utils to utils-extra.
+  * remove scribus-ng from kde-full, we need to save 12 MB.
+  * make a potentially fixed cdebootstrap-helper-diverts more obvious while
+    building.
+  * #398844 is fixed, remove the nasty hack around it.
+  * disable digikam, digikamimageplugins, gwenview and kipi-plugins for the
+    time being, as they're currently inconsistent in sid.
+  * add gwenview and kipi-plugins again.
+  * digikamimageplugins have been merged into digikam itself.
+  * add kde-ltag.bm, thanks to devil.
+  * fix --login shell invocation.
+  * specify /root/.bashrc to initialize the immutable login shells.
+  * strip --login from bash invocation, we do want to actually source the
+    default rcfile and its environment.
+  * livecd manual update to sidux-manual-01.06.2007.05.22-live-cd-2007-02.
+  * /etc/hwsetup is just supposed to be a file, not a directory.
+  * livecd manual update to sidux-manual-01.09.2007.05.25-live-cd-2007-02.
+
+  [ Andreas Weber ]
+  * gnome-support added for iceweasel and icedove
+  * Burning Applicaction and unzip added for gnome-std
+  * Mail client fixed for gnome-std
+  * gnome-system-tools and gconf-editor added for gnome-std
+  * gnome-games activated in gnome-std. Working again.
+  * gaim replaced by pidgin
+  * synaptic added for gnome-std
+  * some more Packages added to gnome-std. gnome-office removed.
+
+  [ Horst Tritremmel ]
+  * change the size of sidux-book.gif from 72x72 to 48x48 for gnome
+  * gnome-games deactivated, broken again
+  * libgnome2-perl added for gnome-std
+
+  [ Kel Modderman ]
+  * Put md5sums file on root of iso9660 filesystem.
+  * Sort md5sums file by filename (second field of md5sum output) ignoring
+    case.
+  * Allow DEBIAN_FRONTEND, DEBIAN_PRIORITY and DEBCONF_NOWARNINGS to be
+    overriden.
+  * remove pwrbtn hack for now, it leads to an unclean shutdown on the live
+    CD, add it to the installer instead.
+  * reinstate --login option to immutable bash shells spawned by our inittab
+    hack. We just need to make sure we've exported the correct HOME variable
+    for it to source the correct rcfiles.
+  * Protect the double dash long option during sed hack of inittab.
+  * Add libqt-perl to "heavier" kde builds.
+  * Don't exclude files from /etc/udev/rules.d/, sidux' udev config was being
+    wiped out. Persistent rules are not generated within a chroot.
+  * Don't specify union/copy-on-write dirs in distro-defaults. No need to make
+    them configurable.
+
+  [ Bernard Gray ]
+  * add -t|--template-dir option to man page
+  * accept -t|--template-dir FLL_BUILD_TEMPLATES override for fll_builder
+  * forgot to add the t: template-dir: bits
+  * --output requires an argument
+  * fix formatting and add shift for the -t case
+  * livecd manual update to sidux-manual-01.00.2007.05.16-live-cd-2007-02
+  * livecd manual update to sidux-manual-01.04.2007.05.20-live-cd-2007-02
+  * livecd manual update to sidux-manual-01.05.2007.05.22-live-cd-2007-02
+
+ -- Kel Modderman <kel@otaku42.de>  Sun, 27 May 2007 22:35:56 +1000
+
+fll-builder (1.0.8) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * hack around broken cdebootstrap #398844.
+  * disable unused entries for menu.lst.
+
+  [ Bernard Gray ]
+  * livecd manual update to sidux-manual-0.3.2007.05.08-live-cd-2007-02
+  * offline gpg apt-key fix
+  * discard cd root dir README
+  * livecd manual update to sidux-manual-0.4.2007.05.10-live-cd-2007-02
+  * livecd manual update to sidux-manual-0.5.2007.05.10-live-cd-2007-02
+  * livecd manual update to sidux-manual-0.6.2007.05.12-live-cd-2007-02
+  * lowercase 'sidux' for sidux Manual
+
+  [ Kel Modderman ]
+  * Mark uswsusp as broken in package module.
+  * Drop acpi-support in favour of pm-utils.
+  * Remove old initrd support.
+  * Remove bogus failsafe stuff from menu.lst.
+
+  [ Andreas Weber ]
+  * vim added to gnome-lite
+  * removed vim again and added cli
+  * 4 broken Packages removed and xmms added
+
+  [ Joaquim Boura ]
+  * uploaded fixed fromiso live-cd manual page.
+
+ -- Andreas Weber <andreas@it-weber.com>  Mon, 14 May 2007 15:25:11 +0200
+
+fll-builder (1.0.7) unstable; urgency=low
+
+  * Add union specific mount point variables, FLL_UNION_MOUNTPOINT and
+    FLL_UNION_COWDIR.
+
+ -- Kel Modderman <kel@otaku42.de>  Wed, 09 May 2007 08:18:48 +1000
+
+fll-builder (1.0.6) unstable; urgency=low
+
+  * Fix relative pathname to sidux manual icon.
+
+ -- Kel Modderman <kel@otaku42.de>  Mon, 07 May 2007 22:55:16 +1000
+
+fll-builder (1.0.5) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * disable kdeservicemenus-sidux for now, imagemagick is uninstallable due to
+    the libjasper-dev-1.701 --> libjasper-dev-1.701 transition.
+  * live-initrd-sidux has been replaced by fll-live-initramfs.
+  * temporarily enable serial console debugging entry for grub again.
+  * hide implicit aufs cheat in menu.lst.
+  * add versioning defaults to the default config.
+  * update embedded manual version to 0.1-30-04-2007-live-cd-07-02.
+  * hack powersaved to act on powerbutton events.
+  * kdeservicemenus-sidux is installable again.
+
+  [ Bernard Gray ]
+  * fix typo
+  * remove extra index.html from manual
+  * update manual to sidux-manual-0.2-03-05-2007-live-cd-07-02
+  * update manual to sidux-manual-0.1.05.05.07-live-cd-2007-02
+
+  [ Kel Modderman ]
+  * Add powersaved to distro-tools-x module. kpowersaved no longer depends on
+    it, plus is also indirectly depends on X related libs.
+  * Add switch to use alternate package profile directory location.
+  * Reinstate -S|--source-release option, default builds are now binary only.
+  * Update Manual icon variable to something more useful.
+
+ -- Kel Modderman <kel@otaku42.de>  Mon, 07 May 2007 22:10:31 +1000
+
+fll-builder (1.0.4) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * remove stale /pkglist.XXX files and move them to the build chroot.
+  * lang= is handled by gfxboot now, remove it from menu.lst.
+  * saveconfig and mkpersistenthome are obsolete now.
+  * fix belgian locales.
+  * exclude boot file from MD5 list, -boot-info-table makes genisoimage to
+    patch the source file with a 56-byte table with information of the CD-ROM
+    layout at offset 8.
+  * revert r5013, it has been fixed properly now.
+  * move dmraid and lvm2 to utils-raid_lvm.bm.
+  * add console-tools to utils-essential.bm
+  * add kde-stripped.bm for debugging purposes.
+  * remove xsession-sidux and restartx from dependencies.
+  * mkdosswapfile doesn't exist anymore.
+  * shuffle lvm2 and fake RAID support around.
+  * add mdadm to utils-fakeraid.
+  * add aufs option for menu.lst.
+  * create netdev group, if it doesn't already exist.
+  * don't depend on unionfs-tools, neither uninfs 2.x nor aufs strictly need
+    it.
+  * change menu.lst to reflect the most common uses.
+  * remove obsolete FLL_DISTRO_VERSION, FLL_DISTRO_CODENAME from
+    distro-defaults, it set by the fll-builder configuration and shouldn't be
+    overrideable on the installed system.
+
+  [ Kel Modderman ]
+  * Update copyright year stamp.
+  * Change URL to location of original source.
+  * Annotate copyright/license of sidux manual and copyright holder of
+    distro-defaults in debian/copyright.
+  * Prefix all mktemp'd material with fll., and exclude these at mkfs time
+    rather than cleaning up in each individual function.
+  * Fix inittab hack, leading forward slash to "/bin/bash" was missing for
+    ttys 2-6.
+  * Install linux kernel early, and make provision for upcoming live-initramfs
+    development.
+  * Add workaround for umounting binfmt crap, to avoid bailing out when
+    chroot's proc cannot be umounted.
+  * Exclude /var/lib/initramfs-tools/ state directory from squashfs image.
+  * Copy initrd to result staging directory immediately after creation to
+    avoid package selection from calling hooks that would uneccessarily bloat
+    our live-initramfs.
+  * Calculate md5sum manifest of cd contents _after_ squashfs image has been
+    created.
+  * Add i18n support for k3b and gwenview.
+  * Massive refactoring of build infrastructure. Important build creation
+    steps are now done in sequence by sourcing a series of scriplets.
+  * Build area must be given as first argument.
+  * Use /etc/fllbuilder/fll-build.conf to store default definitions for build
+    source URI's, package profile etc etc.
+  * Allow the opportunity to specify more than one configfile, and have a
+    product produced for each one.
+  * Reduce functions.d, move functions for specific purposes into their
+    respective scriptlet.
+  * Strip executable property and shebang line from sourced bash modules.
+  * Preserve package and source package lists for each iso.
+  * scapartitions has vanished.
+  * Begin cleanup for fll-live-initramfs transition. Remove if/else from here,
+    and instead use a dummy live-initrd package to provide initramfs hook from
+    an external repository.
+  * Support for setting x-www-browser in the case epiphany-browser is
+    installed (gnome package profile presumably).
+  * When kppp is installed, "fix" its ppp noauth settings via
+    /etc/ppp/peers/kppp-options as per /usr/share/doc/kppp/README.Debian.
+  * Export fll_proxy and http_proxy if set in fll-build.conf.
+  * Again add support for external repositories, along with matching gpg
+    keyids and components.
+  * Purge old DEBOOSTRAP_* variables, see default config for condensed method
+    of handling target arch. Hardcode minimal boostrap option.
+  * Annotate default config file with useful comments.
+  * Decouple FLLMIRROR from scripts, treat it as just another extra repository
+    to debian. Eliminate the need for $FLL_DISTRO_NAME-keyrings package,
+    explicitly define trusted gpg keyid for fll repo.
+  * Support for using debian kernels as alternative.
+  * Impove cdebootstrap verbosity.
+  * Remove obsolete variable declarations from etc/default/distro. Lower
+    casify FLL_MEDIA_NAME default.
+
+  [ Bernard Gray ]
+  * manual update sid-man-snap-32-PRE-5-Chaos-2007
+  * manual update sid-man-snap-32a-PRE-5-Chaos-2007
+  * change case for sidux manual icon title
+  * reapply url option for kernel var
+  * remove kernel archive existence/integrity checks now kernel is installed early
+  * remove now unused error codes
+  * anally retentive error code function cleanup
+  * manual update sid-man-snap-40-livecd-07-02
+  * manual update sid-manu-snap-40-live-cd-tartaros-030407
+  * cleanup extra man files from update
+  * manual update sidux-manual-0.0-11-04-2007-live-cd-07-02
+  * manual pages renamed
+  * manual update sidux-manual-0.0-16-04-2007-live-cd-07-02
+  * manual update sidux-manual-0.0-18-04-2007-live-cd-07-02
+  * manual update sidux-manual-0.1-18-04-2007-live-cd-07-02
+  * manual update sidux-manual-0.5-18-04-2007-live-cd-07-02
+
+  [ Joaquim Boura ]
+  * use sidux-xdg instead of sidux-menu
+
+  [ Horst Tritremmel ]
+  * add gnome-full.bm package
+
+  [ Andreas Weber ]
+  * add gnome-lite.bm package
+  * add distro-gnome.bm
+  * add gnome-std.bm package
+  * add gnome-full.bm package
+  * add xfce-lite.bm package
+
+  [ Bernard Gray ]
+  * add sidux-art-wallpaper to package list
+  * add sidux-art-kde to package list
+  * remove chaos ksplash from package list
+  * set sidux.png to distro default wallpaper
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 26 Apr 2007 17:59:40 +0200
+
+fll-builder (1.0.3) unstable; urgency=low
+
+  [ Bernard Gray ]
+  * add checking for kernel zip file existance and specific error code return
+  * manual updated sid-man-snapshot-31b--WIP-XDELTA-1-Pre3-chaos-2007-light
+  * manual updated sid-man-snaps-31-wip-PRE4-chaos-2007
+  * manual icon added
+  * Added croatian language
+  * add FLL_CDROM_INDEX and FLL_CDROM_INDEX_ICON for manual
+
+  [ Kel Modderman ]
+  * Hack inittab to allow "immutable" bash login shells on the tty's instead
+    of mgetty.
+  * Always preserve FLL_BUILD_AREA, create a hive of temp directories on top
+    of this given location.
+  * Define source iso name in source iso making function, not elsewhere.
+  * Chown build area according to UID that initiated build.
+  * Source iso neglected to include kernel directory.
+  * Clean up install_from_deb_dir(), do extra apt/sources.list cleanup at end
+    of function, don't return a bogus retval.
+  * Cleaned up comment about obtaining source code for fll-builder et al. from
+    fetch_source_code(), distro-defaults being present in chroot ensures that
+    this will happen now that it has been merged into fll-builder source
+    package.
+  * Add hook (hack) for installation of local dir full of debian binaries into
+    chroot. It will remain undocumented for now, as its use should be
+    restricted strictly to internal testing and debugging.
+  * Create /etc/hostname.
+  * Disable splash cmdline param in menu.lst for now, we don't have a splash
+    and it costs us at least a couple of sleep's.
+  * Really upper casify FLL_DISTRO_NAME_UC.
+  * Introduce squashfs exclusion list logic. An exclusion_list file has been
+    added containing a list of regexp's to be searched for in the build chroot
+    by one single instance of find. The output is redirected to a temp file
+    and used by mksquashfs.
+  * Remove extranneous remove_from_chroot stuff, rely on exclusion logic to
+    pick those up.
+  * Allow exclusion logic to take care of apt and bootstrap cache too.
+  * Adapt packaging to recent additions/removals.
+  * Remove obsolete packages.conf.orig file.
+  * Lock down FLL_LIVE_USER entry in /etc/shadow.
+  * Add live user to `dip' group, kppp won't be user friendly otherwise.
+  * Use update-alternatives to set x-www-browser.
+  * Allow choice of apt components via alternate config file (main contrib
+    non-free etc. etc.).
+  * Experimental support for an external repository.
+
+  [ Stefan Lippers-Hollmann ]
+  * print out that we're about to run mksquashfs, md5sum.
+  * mksquashfs -info is to verbose, up to the point where it seriously delays
+    the ISO creation, omit it until the progress bar is fixed on amd64.
+  * lock down root.
+  * remove hwsetup's configfiles.
+  * remove dependency on configure-keyboard, smbconf-sidux and
+    sambastart-sidux, they have been orphaned.
+  * only install vimrc.local if vim is installed at all.
+  * add experimental and comment out experimental + testing from source.list
+    template.
+  * add sidux-browser to FLL_PACKAGES_BASE_DISTRO.
+  * rework clean-up for /var/log to preserve permissions, exclude
+    /etc/X11/xorg.conf.
+  * don't activate deb-src on default.
+  * make lang= cheatcode easier accessible on the grub line.
+  * add /etc/adjtime to the exclude list.
+  * enable progress bar for mksquashfs again, squashfs-tools >=
+    1:3.2r2-0+c0.sidux.1 is fixed.
+  * add cdebootstrap to extra utils.
+  * merge changes to distro-defaults.
+
+  [ Niall Walsh ]
+  * overhaul packages.conf
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 18 Feb 2007 00:42:16 +0100
+
+fll-builder (1.0.2) unstable; urgency=low
+
+  [ Kel Modderman ]
+  * Use most as PAGER if present in chroot.
+  * Clean /var/run and /var/log of files.
+  * Bugfix switch labels of CHROOT and RESULT mktemp'd chroots.
+
+  [ Stefan Lippers-Hollmann ]
+  * add build-essential.
+  * fll-builder seems to confuse people, disable it for the time being.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 13 Jan 2007 16:16:27 +0100
+
+fll-builder (1.0.1) unstable; urgency=low
+
+  [ Kel Modderman ]
+  * Create final config files only after all in-chroot work has been
+    completed.
+  * Remove unused VERBOSITY variable from sample config file.
+  * Move non sidux packages to ESSENTIAL list from SIDUX_CORE list.
+  * Add most to list of most wanted packages, for a nicer PAGER.
+
+  [ Stefan Lippers-Hollmann ]
+  * don't depend on xsession-initscript-sidux.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat,  6 Jan 2007 20:43:09 +0100
+
+fll-builder (1.0.0) unstable; urgency=low
+
+  [ Stefan Lippers-Hollmann ]
+  * move cdebootstrap related cleanup directly into cdebootstrap_chroot().
+  * add procps to essential packages.
+  * rt61 doesn't have a hard depends on non-free firmwares anymore.
+  * prefer $FLL_BUILD_BASE/etc/fll-build/distro over
+    $FLL_BUILD_BASE/etc/default/distro.
+  * remove dpkg list files.
+  * remove backups for dpkg/ debconf, which would interfere with debconf
+    preseeding on a link farm boot.
+  * ensure upper case for ISO volume descriptor.
+  * add FLL_DISTRO_VERSION and FLL_DISTRO_CODENAME to distro-defaults.
+  * write version marker to /etc/$FLL_DISTRO_NAME-version.
+  * add support for FLL_BUILD_PROXY.
+  * adapt menu.lst to remove APM/ MCE related kernel options from the
+    default entry, the -utf8 suffix is no longer used.
+  * rework packages.conf to allow more sophisticated i18n options.
+  * try to hook in initial debconf preseeding.
+  * add a unionfs grub entry for the time being.
+  * LANG=en_US.UTF-8 should be default.
+  * remove stray proxy redefinition.
+  * time stamp created ISOs.
+  * /KNOPPIX.build is obsolete
+  * we don't need sudoers-sidux anymore.
+  * add knx-installer for now, so we can debug it.
+  * take care that FLL_DISTRO_NAME_LC and FLL_DISTRO_NAME_UP are already
+    defined.
+  * add less to package list.
+  * fix install path for /etc/fll-builder/, thanks to kalium for noticing.
+  * label temporary directories.
+  * implement make_fll_source_iso().
+  * add trivial source repository index to fetch_source_code().
+  * add it, hu and ko to locales preseeding.
+  * add gparted to FLL_PACKAGES_DISTRO_EXTRA, thannks to kalium for noticing.
+  * add "man" and move it with manpages to FLL_PACKAGES_DISTRO_CORE.
+  * install manpage for fll-builder.
+  * actually use $FLL_BUILD_DEFAULTS, $FLL_BUILD_CONFIG, $FLL_BUILD_FUNCTIONS
+    and $FLL_BUILD_PACKAGELIST.
+
+  [ Andreas Weber ]
+  * added sux to the package list.
+
+  [ Kel Modderman ]
+  * Initial release.
+
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu,  4 Jan 2007 23:48:27 +0100

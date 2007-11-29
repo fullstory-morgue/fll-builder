@@ -1,0 +1,10 @@
+FLL_PACKAGES+=(
+	pidgin
+	pidgin-encryption
+	pidgin-extprefs
+	pidgin-guifications
+	pidgin-hotkeys
+	pidgin-libnotify
+	pidgin-librvp
+	pidgin-plugin-pack
+)

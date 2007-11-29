@@ -1,0 +1,208 @@
+cat_file_to_chroot() {
+	local FILE="$1"
+	local DEST="${FLL_BUILD_CHROOT}/${2}"
+
+	echo "Creating \`$FILE' at $DEST"
+
+	case "$FILE" in
+
+		apt_sources)
+			cat > "$DEST" \
+<<EOF
+# See sources.list(5) for more information, especially
+# Remember that you can only use http, ftp or file URIs
+# CDROMs are managed through the apt-cdrom tool.
+# The /etc/apt/sources.list.d/ directory provides a way to add sources.list
+# entries in seperate files that end with sources.list file.
+
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# Please use /etc/apt/sources.list.d/ instead and create a seperate *.list    #
+# file for each server, like:                                                 #
+#      /etc/apt/sources.list.d/debian.list                                    #
+#      /etc/apt/sources.list.d/sidux.list                                     #
+#      /etc/apt/sources.list.d/foo.list                                       #
+#      /etc/apt/sources.list.d/bar.list                                       #
+# containing the actual deb/ deb-src stanzas for the desired suites and       #
+# repositories.                                                               #
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+#deb ${FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+#deb-src ${FLL_BUILD_DEBIANMIRROR} sid $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+
+#deb ${FLL_BUILD_DEBIANMIRROR} testing $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+#deb-src ${FLL_BUILD_DEBIANMIRROR} testing $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+
+#deb ${FLL_BUILD_DEBIANMIRROR} experimental $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+#deb-src ${FLL_BUILD_DEBIANMIRROR} experimental $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+EOF
+			# populate sources.list.d
+			rm -f "${DEST}.d/*"
+			if [[ $FLL_BUILD_DEBIANMIRROR_LABEL_SAFE ]]; then
+				cat > "${DEST}.d/${FLL_BUILD_DEBIANMIRROR_LABEL_SAFE}.list" \
+<<EOF
+deb ${FLL_BUILD_DEBIANMIRROR} ${FLL_BUILD_DEBIANMIRROR_SUITE} ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
+#deb-src ${FLL_BUILD_DEBIANMIRROR} ${FLL_BUILD_DEBIANMIRROR_SUITE} ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
+EOF
+			else
+				cat > "${DEST}.d/FLL_BUILD_DEBIANMIRROR.list" \
+<<EOF
+deb ${FLL_BUILD_DEBIANMIRROR} ${FLL_BUILD_DEBIANMIRROR_SUITE} ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
+#deb-src ${FLL_BUILD_DEBIANMIRROR} ${FLL_BUILD_DEBIANMIRROR_SUITE} ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
+EOF
+			fi
+
+			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
+				if [ -n "${FLL_BUILD_EXTRAMIRROR[$i]}" ]; then
+					cat >> "$DEST" \
+<<EOF
+
+#deb ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+#deb-src ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+					# populate sources.list.d
+					if [ -n "${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}" ]; then
+						cat > "${DEST}.d/${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[$i]}.list" \
+<<EOF
+deb ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+#deb-src ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+					else
+						cat > "${DEST}.d/FLL_BUILD_EXTRAMIRROR.list" \
+<<EOF
+deb ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+#deb-src ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+					fi
+				fi
+			done
+			;;
+
+		apt_sources_tmp)
+			cat > "$DEST" \
+<<EOF
+deb ${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR} $FLL_BUILD_DEBIANMIRROR_SUITE $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+EOF
+
+			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
+				if [[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} ]]; then
+					cat >> "$DEST" \
+<<EOF
+deb ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+				else
+					cat >> "$DEST" \
+<<EOF
+deb ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+				fi
+			done
+
+			[[ $FLL_SOURCE_RELEASE -ge 1 ]] || return 0
+			
+			cat >> "$DEST" \
+<<EOF
+deb-src ${FLL_BUILD_DEBIANMIRROR_CACHED:=$FLL_BUILD_DEBIANMIRROR} $FLL_BUILD_DEBIANMIRROR_SUITE $FLL_BUILD_DEBIANMIRROR_COMPONENTS
+EOF
+			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
+				if [[ ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} ]]; then
+					cat >> "$DEST" \
+<<EOF
+deb-src ${FLL_BUILD_EXTRAMIRROR_CACHED[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+				else
+					cat >> "$DEST" \
+<<EOF
+deb-src ${FLL_BUILD_EXTRAMIRROR[$i]} ${FLL_BUILD_EXTRAMIRROR_SUITE[$i]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[$i]}
+EOF
+				fi
+			done
+			;;
+
+		chroot_policy)
+			cat > "$DEST" \
+<<EOF
+#!/bin/sh
+# policy: disable all init scripts
+# as per /usr/share/doc/sysv-rc/README.policy-rc.d.gz
+exit 101
+EOF
+			chmod 0755 "$DEST"
+			;;
+
+		debian_chroot)
+			cat > "$DEST" \
+<<EOF
+$FLL_DISTRO_NAME-live
+EOF
+			;;
+
+		fstab)
+			cat > "$DEST" \
+<<EOF
+# /etc/fstab: static file system information.
+#
+# <file system>	<mount point>	<type>	<options>		<dump>	<pass>
+EOF
+			;;
+
+		hostname)
+
+			cat > "$DEST" \
+<<EOF
+$FLL_DISTRO_NAME
+EOF
+			;;
+
+		hosts)
+			cat > "$DEST" \
+<<EOF
+127.0.0.1	localhost
+127.0.0.1	$FLL_DISTRO_NAME
+
+# The following lines are desirable for IPv6 capable hosts
+# (added automatically by netbase upgrade)
+
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+EOF
+			;;
+
+		interfaces)
+			cat > "$DEST" \
+<<EOF
+# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+
+# The loopback interface
+# automatically added when upgrading
+auto lo
+iface lo inet loopback
+EOF
+			;;
+
+		kernel_img_conf)
+			cat > "$DEST" \
+<<EOF
+do_symlinks = NO
+do_bootloader = NO
+warn_initrd = NO
+do_initrd = YES
+EOF
+			;;
+
+		vimrc_local)
+			cat > "$DEST" \
+<<EOF
+syntax on
+set background=dark
+set showmatch
+set pastetoggle=<F10>
+au FileType debchangelog normal z0
+EOF
+			;;
+
+	esac
+}

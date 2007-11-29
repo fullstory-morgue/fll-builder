@@ -1,0 +1,50 @@
+.TH FLL-BUILD.CONF "5" "August 2007" "" ""
+.SH NAME
+fll-build.conf \- the configuration file for fll-builder
+.SH SYNOPSIS
+The \fIfll-build.conf\fR file is a configuration file for the 
+\fBfll-builder\fR Linux livecd creation tool. It contains 
+variables which define or override the default values used
+by \fBfll-builder\fR.
+.PP
+This manpage is designed to be an incomplete reference of 
+variables accepted by \fBfll-builder\fR which can be defined 
+in the \fIfll-build.conf\fR file. 
+The variable section is divided into two parts:
+.TP
+\fIMANDATORY\fR 
+undefined variables that must be assigned
+before building
+.TP
+\fIOPTIONAL\fR 
+variables that are assigned a sensible default
+but can be overridden
+.PP
+.SH FILE FORMAT
+The file is a valid \fBbash\fR script containing variable 
+assignments.
+In most cases, variables are defined in the following way:
+.PP
+\fIVARIABLE="VALUE"\fR
+.PP
+.SH MANDATORY VARIABLES
+.TP
+\fIFLL_BUILD_LINUX_KERNEL="/path/or/url/to/kernel.zip"\fR
+The local path or remote url to the sidux kernel zip file
+.PP
+.SH OPTIONAL VARIABLES
+.TP
+\fIFLL_DISTRO_VERSION="string"\fR
+A string to distinguish release versions. This value is used as 
+part of the fll-builder output files, and also in 
+/etc/\fB$FLL_DISTRO_NAME\fR-release (Note: \fB$FLL_DISTRO_NAME\fR
+is defined in /etc/default/distro NOT in \fIfll-build.conf\fR)
+.TP
+\fIFLL_DISTRO_CODENAME="string"\fR
+XXX: Todo
+.TP
+\fIFLL_DISTRO_CODENAME_SAFE="gaia"\fR
+XXX: Todo
+.SH AUTHOR
+This manual page was written by Bernard Gray <bernard.gray@gmail.com> for
+the Debian GNU system (but may be used by others).

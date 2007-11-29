@@ -1,0 +1,27 @@
+FLL_PACKAGES+=(
+	dmz-cursor-theme
+	fluxbox
+	fontconfig
+	libgl1-mesa-dri
+	menu
+	mesa-utils
+	sux
+	ttf-bitstream-vera
+	ttf-dejavu
+	ttf-freefont
+	xfonts-base
+	xfonts-75dpi
+	xfonts-75dpi-transcoded
+	xfonts-100dpi
+	xfonts-100dpi-transcoded
+	xresprobe
+	xserver-xorg
+#	xserver-xorg-input-all		# wacom breaks this atm
+	xserver-xorg-input-evdev	# xserver-xorg-input-all
+	xserver-xorg-input-kbd		# xserver-xorg-input-all
+	xserver-xorg-input-mouse	# xserver-xorg-input-all
+	xserver-xorg-input-synaptics	# xserver-xorg-input-all
+	xserver-xorg-video-all
+	xutils
+)
+

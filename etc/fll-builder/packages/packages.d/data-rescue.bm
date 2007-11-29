@@ -1,0 +1,9 @@
+FLL_PACKAGES+=(
+	dar
+	ddrescue
+	hexedit
+	magicrescue
+	mindi
+	mondo
+)
+
