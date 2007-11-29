@@ -53,12 +53,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * kde-seminarix.bm updated
   * kdissert comment out, to greate
   * glame comment out
+  * kde-seminsarix.bm: qgis off, glame and kdissert on
 
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
-
-  [ Horst Tritremmel ]
-  * kde-seminsarix.bm: qgis off, glame and kdissert on
 
  -- Horst Tritremmel <hjt@sidux.com>  Thu, 29 Nov 2007 13:03:53 +0100
 
