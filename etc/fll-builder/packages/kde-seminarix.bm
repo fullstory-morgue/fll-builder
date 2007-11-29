@@ -64,7 +64,7 @@ FLL_PACKAGES=(
 	inkscape
 	kimagemapeditor
 	audacity
-	#kdissert
+	kdissert
 	vym
 	keduca
 	kpdf
@@ -84,8 +84,8 @@ FLL_PACKAGES=(
 	###
 	#geography
 	###
-	qgis
-	qgis-plugin-grass
+	#qgis
+	#qgis-plugin-grass
 	sunclock
 	kgeography
 
@@ -130,7 +130,7 @@ FLL_PACKAGES=(
 	#music
 	###
 	amarok
-	#glame
+	glame
 	hydrogen
 
 	###
