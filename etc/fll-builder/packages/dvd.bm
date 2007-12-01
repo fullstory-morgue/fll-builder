@@ -30,7 +30,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	abiword
-	abiword-plugins
+#	abiword-plugins			# poppler transition.
 	albumshaper
 	alsamixergui
 	amsn
@@ -42,7 +42,6 @@ FLL_PACKAGES=(
 	audacious-plugins-extra
 	audacity
 	bazaar
-	bitchx
 	bittorrent
 	bittorrent-gui
 	blender
@@ -145,7 +144,28 @@ FLL_PACKAGES=(
 	kde-core
 	kdeedu
 	kde-extras
-	kdegraphics
+#	kdegraphics				# poppler transition.
+		kamera
+		kcoloredit
+	#	kdegraphics-kfile-plugins	# poppler transition.
+		kdvi
+		kfax
+		kfaxview
+		kgamma
+		kghostview
+		kiconedit
+		kmrml
+		kolourpaint
+		kooka
+		kpdf
+		kpovmodeler
+		kruler
+		ksnapshot
+		ksvg
+		kuickshow
+		kview
+		kviewshell
+		libkscan1
 	kde-icons-crystalclear
 	kde-icons-crystalproject
 	kdemultimedia
