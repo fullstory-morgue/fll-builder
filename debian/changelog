@@ -37,6 +37,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
+    - distro-tools:
+      + add ceni.
     - dvd:
       + instanbul and quodlibet are installable again, vlc and guncash still
         messed up.
@@ -81,7 +83,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Dec 2007 00:51:29 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Dec 2007 00:57:54 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

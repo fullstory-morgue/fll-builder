@@ -1,4 +1,5 @@
 FLL_PACKAGES+=(
+	ceni
 	configure-dsl
 	configure-isdn
 	configure-modemlink
