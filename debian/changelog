@@ -34,6 +34,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       user about it.
     - no longer talk about obsolete firmware packages for Intel IPW3945/
       IPW4965.
+  * package lists:
+    - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
+    - enable hplip and friends again.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -65,7 +68,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 29 Nov 2007 22:25:27 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Dec 2007 23:24:15 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
