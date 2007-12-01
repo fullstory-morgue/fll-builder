@@ -37,6 +37,14 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
+    - dvd:
+      + instanbul and quodlibet are installable again, vlc and guncash still
+        messed up.
+    - hwsupport-extra:
+      + cpufrequtils hasn't been shipped for 2+ releases, remove it.
+    - kde-full:
+      + kdegraphics-kfile-plugins is still held up in the poppler transition
+        on amd64.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -68,7 +76,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Dec 2007 23:24:15 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Dec 2007 00:27:37 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

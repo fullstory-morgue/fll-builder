@@ -1,6 +1,5 @@
 FLL_PACKAGES+=(
 	alsa-utils
-#	cpufrequtils -> now provides cpufreq module detection. possible confliction
 	dmidecode
 	dmsetup
 	hwinfo

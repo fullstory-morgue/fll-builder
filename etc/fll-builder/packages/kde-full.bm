@@ -38,7 +38,7 @@ FLL_PACKAGES=(
 	kdeaddons-kfile-plugins
 	kdeadmin
 	kdebluetooth
-	kdegraphics-kfile-plugins
+#	kdegraphics-kfile-plugins	# poppler transition.
 	kdelirc
 	kdemultimedia-kfile-plugins
 	kdemultimedia-kio-plugins

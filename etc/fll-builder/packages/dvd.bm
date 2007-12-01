@@ -125,7 +125,7 @@ FLL_PACKAGES=(
 	inkscape
 	iproute
 	irssi
-#	istanbul
+	istanbul
 	jackd
 	jack-tools
 	java2html
@@ -248,7 +248,7 @@ FLL_PACKAGES=(
 	qcad
 	qemu
 	qtemu
-#	quodlibet
+	quodlibet
 	rdiff-backup
 	ripperx
 	rosegarden4
