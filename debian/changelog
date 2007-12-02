@@ -45,8 +45,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + bitchx is no more.
       + kdegraphics-kfile-plugins is help up by the poppler transition,
         dissolve kdegraphics into individual packages.
-      + abiword-plugins is help up by the poppler transition, remove it for
+      + abiword-plugins is held up by the poppler transition, remove it for
         now.
+      + kde-extras is held up by the poppler transition, remove it for now.
     - hwsupport-extra:
       + cpufrequtils hasn't been shipped for 2+ releases, remove it.
     - kde-full:
@@ -83,7 +84,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Dec 2007 00:57:54 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 02 Dec 2007 01:44:42 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
