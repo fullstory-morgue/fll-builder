@@ -230,7 +230,7 @@ FLL_PACKAGES=(
 	lilypond
 	lineak-kdeplugins
 	links2
-	linphone
+#	linphone
 	lisa
 	lmms
 	lynx
