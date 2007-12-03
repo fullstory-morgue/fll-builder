@@ -26,6 +26,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * xorg 1:7.3+7 doesn't create /etc/X11/X at all, if we inhibit the xorg.conf
     creation by xserver-xorg.postinst, create it properly if xserver-xorg is
     installed in chroot.
+  * update to Standards-Version 3.7.3, no changes necessary.
   * release notes:
     - recommend firmware-rt61 and firmware-rt73.
     - mention the newly added installer support for existing lvm2 setups.
@@ -89,7 +90,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 03 Dec 2007 01:31:58 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 03 Dec 2007 13:47:36 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
