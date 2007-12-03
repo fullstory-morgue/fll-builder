@@ -130,8 +130,6 @@ FLL_PACKAGES=(
 	java2html
 	kalgebra
 	kallery
-	kanjisaver
-	kannasaver
 	karbon
 	katapult
 	kbattleship
@@ -180,7 +178,6 @@ FLL_PACKAGES=(
 	kde-style-qtcurve
 	kdesvn
 	kdesvn-kio-plugins	
-	kdetoys
 	kdetv
 	kdeutils
 	kdevelop
@@ -220,8 +217,10 @@ FLL_PACKAGES=(
 	ksynaptics
 	ksysguard
 	kthesaurus
+	kweather
 	kwirelessmonitor
 	kwiki
+	kworldclock
 	lazarus
 	libqt-perl
 	licq
@@ -273,10 +272,7 @@ FLL_PACKAGES=(
 	ripperx
 	rosegarden4
 	rox-filer
-        rss-glx
 	ruby-full
-	ruby1.8
-	ruby1.8-examples
 	samba
 	scite
 	screen

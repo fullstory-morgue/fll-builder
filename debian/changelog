@@ -51,6 +51,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
         now.
       + kde-extras is held up by the poppler transition, remove it for now.
       + linphone is not installable.
+      + remove all screensavers (locks the screen).
+      + ruby-full takes care of the correct ruby version.
     - hwsupport-extra:
       + cpufrequtils hasn't been shipped for 2+ releases, remove it.
     - kde-full:
@@ -87,7 +89,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 03 Dec 2007 00:51:31 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 03 Dec 2007 01:31:58 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
