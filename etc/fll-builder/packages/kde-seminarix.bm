@@ -130,7 +130,7 @@ FLL_PACKAGES=(
 	#music
 	###
 	#amarok
-	minirok
+	juk
 	glame
 	#hydrogen
 
