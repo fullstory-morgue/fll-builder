@@ -48,7 +48,7 @@ FLL_PACKAGES=(
 	#KOffice-Suite
 	###
 	kword
-		koffice-i18n-de
+	koffice-i18n-de
 	kchart
 	kexi
 	kformula
@@ -64,7 +64,7 @@ FLL_PACKAGES=(
 	inkscape
 	kimagemapeditor
 	audacity
-	kdissert
+	#kdissert
 	vym
 	keduca
 	kpdf
@@ -99,7 +99,7 @@ FLL_PACKAGES=(
 	###
 	dia
 	digikam
-	kino
+	#kino
 	kolourpaint
 	krita
 	stopmotion
@@ -113,7 +113,7 @@ FLL_PACKAGES=(
 	childsplay-plugins
 	ktuberling
 	ktouch
-	pingus
+	#pingus
 	tuxmath
 
 	###
@@ -129,9 +129,10 @@ FLL_PACKAGES=(
 	###
 	#music
 	###
-	amarok
+	#amarok
+	minirok
 	glame
-	hydrogen
+	#hydrogen
 
 	###
 	#physics

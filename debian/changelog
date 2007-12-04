@@ -90,7 +90,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * Link to the Forum was pointing to the sidux.com start page.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 03 Dec 2007 13:47:36 +0100
+  [ Ferdinand Thommes ]
+  * trimmed seminarix.bm
+
+ -- Ferdinand Thommes <devil@sidux.com>  Tue, 04 Dec 2007 13:55:29 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
