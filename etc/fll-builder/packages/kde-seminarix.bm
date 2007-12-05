@@ -13,6 +13,7 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
+	gfxboot-theme-sidux-2007-04-eros-de
 	#########
 	#KDE-Lite
 	#########

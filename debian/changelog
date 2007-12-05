@@ -59,6 +59,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - kde-full:
       + kdegraphics-kfile-plugins is still held up in the poppler transition
         on amd64.
+    - kde-seminarix:
+      + default to german locales.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -95,7 +97,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Ferdinand Thommes <devil@sidux.com>  Wed, 05 Dec 2007 09:44:54 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 05 Dec 2007 14:26:37 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
