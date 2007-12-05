@@ -17,19 +17,19 @@ FLL_PACKAGES=(
 	#KDE-Lite
 	#########
 	ark
+	gtk2-engines-qtcurve
 	gwenview
 	k3b
 	kaffeine
 	kde-core
 	kdm
-	konversation
 	kmix
 	knemo
+	konversation
+	kpdf
 	kpowersave
 	kppp
-	kpdf
 	ksnapshot
-	gtk2-engines-qtcurve
 	siduxcc
 
 
@@ -40,54 +40,49 @@ FLL_PACKAGES=(
 	###
 	#generic
 	###
-	sidux-edu
 	seminarix-handbook
 	iceweasel
-
+	sidux-edu
 	###
 	#KOffice-Suite
 	###
-	kword
-	koffice-i18n-de
+	audacity
+	inkscape
+	karbon
 	kchart
+	keduca
 	kexi
 	kformula
+	kimagemapeditor
 	kivio
+	koffice-i18n-de
 	koshell
 	kplato
-	kpresenter
-	karbon	
+	kpresenter	
 	kspread
-	scribus
-	quanta
-	#gimp
-	inkscape
-	kimagemapeditor
-	audacity
-	#kdissert
-	vym
-	keduca
-	kpdf
-	ksociograma
 	krusader
+	ksociograma
+	kword
+	quanta
+	scribus
+	vym
 	xsane
-	#kooka
 
 	###
 	#chemical
 	###
 	chemtool
 	gperiodic
-	katomic
 	kalzium
+	katomic
+
 
 	###
 	#geography
 	###
-	#qgis
-	#qgis-plugin-grass
-	sunclock
 	kgeography
+	sunclock
+
 
 	###
 	#informatics
@@ -99,7 +94,7 @@ FLL_PACKAGES=(
 	###
 	dia
 	digikam
-	#kino
+	kino
 	kolourpaint
 	krita
 	stopmotion
@@ -113,26 +108,25 @@ FLL_PACKAGES=(
 	childsplay-plugins
 	ktuberling
 	ktouch
-	#pingus
 	tuxmath
 
 	###
 	#mathematics
 	###
+	gnuplot
 	kbruch
 	kig
 	kmplot
 	kpercentage
 	wxmaxima
-	gnuplot
+
 
 	###
 	#music
 	###
-	#amarok
+	hydrogen
 	juk
-	glame
-	#hydrogen
+
 
 	###
 	#physics
@@ -163,6 +157,5 @@ FLL_PACKAGES=(
 	###
 	klogic
 	ksimus
-	pcb
 )
 

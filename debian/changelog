@@ -93,8 +93,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Ferdinand Thommes ]
   * trimmed seminarix.bm
   * added juk to kde-seminarix.bm
+  * added final kde-seminarix.bm
 
- -- Ferdinand Thommes <devil@sidux.com>  Tue, 04 Dec 2007 15:53:34 +0100
+ -- Ferdinand Thommes <devil@sidux.com>  Wed, 05 Dec 2007 09:44:54 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
