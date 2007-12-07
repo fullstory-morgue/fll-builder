@@ -88,6 +88,7 @@ FLL_PACKAGES=(
 	kvpnc
 	kwalletmanager
 	kwifimanager
+	libqt-perl
 	moto4lin
 	myspell-en-us
 	nano

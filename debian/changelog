@@ -20,6 +20,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Add FLL_BOOT_OPTIONS in build configuration.
   * No longer source default fll-build.conf on each build iteration, enforse
     usage of modified build configuration file.
+  * Re-add libqt-perl to kde-full profile.
 
   [ Stefan Lippers-Hollmann ]
   * small ISO naming tweaks.
@@ -97,7 +98,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 05 Dec 2007 14:26:37 +0100
+ -- Kel Modderman <kel@otaku42.de>  Fri, 07 Dec 2007 14:03:34 +1000
 
 fll-builder (1.1.7) unstable; urgency=low
 
