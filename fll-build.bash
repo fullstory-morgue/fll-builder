@@ -143,6 +143,11 @@ FLL_BUILD_FUNCTIONS="${FLL_BUILD_SHARED}/functions.d"
 FLL_BUILD_TEMPLATES="${FLL_BUILD_SHARED}/templates"
 FLL_BUILD_EXCLUSION_LIST="${FLL_BUILD_SHARED}/exclusion_list"
 
+# squashfs compression
+if [[ -z ${FLL_BUILD_SQUASHFS_COMPRESSION} ]]; then
+	FLL_BUILD_SQUASHFS_COMPRESSION="zlib"
+fi
+
 # store current UID, override later if executed by !root
 FLL_BUILD_OUTPUT_UID=${UID}
 
@@ -766,6 +771,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_BUILD_EXCLUDEFILE=$(mktemp -p ${FLL_BUILD_TEMP} fll.exclude-file.XXXXX)
 		FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p ${FLL_BUILD_TEMP} fll.exclusions.XXXXX)
 		FLL_BUILD_MKSQUASHFSOPTS=( "-ef ${FLL_BUILD_EXCLUDEFILE}" )
+
+		if [[ ${FLL_BUILD_SQUASHFS_COMPRESSION} != "lzma" ]]; then
+			FLL_BUILD_MKSQUASHFSOPTS+=( "-nolzma" )
+		fi
 
 		header "Creating squashfs exclusions file..."
 		cat "${FLL_BUILD_EXCLUSION_LIST}" > "${FLL_BUILD_TMPEXCLUSION_LIST}"

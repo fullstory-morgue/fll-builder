@@ -67,6 +67,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
         on amd64.
     - kde-seminarix:
       + default to german locales.
+  * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -103,7 +104,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 10 Dec 2007 02:32:06 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 10 Dec 2007 14:19:01 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
