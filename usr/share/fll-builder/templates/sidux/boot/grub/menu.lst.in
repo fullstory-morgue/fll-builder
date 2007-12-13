@@ -33,5 +33,9 @@ title  Failsafe Mode
 kernel /boot/@vmlinuz@ boot=fll vga=normal noacpi noapic nomce nosmp nousb nohz=off nohwsetup nocpufreq nonetworkconfig noxorgconfig xmodule=vesa 
 initrd /boot/@initrd@
 
+title  Default (Text Mode)
+kernel /boot/@vmlinuz@ boot=fll quiet vga=791 3
+initrd /boot/@initrd@
+
 title Main Menu
 configfile /boot/grub/menu.lst

@@ -80,6 +80,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * mod fll-build.bash to use full menu.lst template
   * add fallback for missing menu.lst.arch template
   * remove accidentally added @timeout@ flag in menu.list.in
+  * add text mode to the advanced grub menu
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -104,7 +105,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 10 Dec 2007 14:19:01 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Thu, 13 Dec 2007 12:33:59 +1100
 
 fll-builder (1.1.7) unstable; urgency=low
 
