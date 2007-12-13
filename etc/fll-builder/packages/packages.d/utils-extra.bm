@@ -15,6 +15,7 @@ FLL_PACKAGES+=(
 	man-db
 	manpages
 	memtest86+
+	mlocate
 	module-assistant
 	ntpdate
 	ntfs-3g

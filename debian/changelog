@@ -48,6 +48,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       use the xserver-xorg-input-all again.
     - distro-tools:
       + add ceni.
+    - utils-extra:
+      + add mlocate.
     - dvd:
       + instanbul and quodlibet are installable again, vlc and guncash still
         messed up.
@@ -105,7 +107,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Bernard Gray <bernard.gray@gmail.com>  Thu, 13 Dec 2007 12:33:59 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 14 Dec 2007 00:12:34 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
