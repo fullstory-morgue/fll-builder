@@ -773,7 +773,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_BUILD_MKSQUASHFSOPTS=( "-ef ${FLL_BUILD_EXCLUDEFILE}" )
 
 		if [[ ${FLL_BUILD_SQUASHFS_COMPRESSION} != "lzma" ]]; then
-			FLL_BUILD_MKSQUASHFSOPTS+=( "-nolzma" )
+			#FLL_BUILD_MKSQUASHFSOPTS+=( "-nolzma" )
 		fi
 
 		header "Creating squashfs exclusions file..."
