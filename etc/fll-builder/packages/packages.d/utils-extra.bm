@@ -27,7 +27,7 @@ FLL_PACKAGES+=(
 	smbclient
 	smbfs
 	strace
-	testdisk
+#	testdisk	# libntfs9 --> libntfs10, FTBS.
 	traceroute
 	xfsprogs
 	unzip
