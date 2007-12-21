@@ -23,6 +23,7 @@ FLL_PACKAGES+=(
 	nmap
 	openssh-client
 	reiserfsprogs
+	resolvconf
 	sshfs
 	smbclient
 	smbfs
