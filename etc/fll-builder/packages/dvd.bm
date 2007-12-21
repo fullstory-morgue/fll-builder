@@ -30,7 +30,7 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	abiword
-#	abiword-plugins			# poppler transition.
+	abiword-plugins
 	albumshaper
 	alsamixergui
 	amsn
@@ -93,7 +93,7 @@ FLL_PACKAGES=(
 	flac
 	geany
 	gftp
-#	gnucash
+#	gnucash			# libgoffice-1-2
 	gnumeric
 	gnusound
 	gossip
@@ -141,29 +141,7 @@ FLL_PACKAGES=(
 	kdebluetooth
 	kde-core
 	kdeedu
-#	kde-extras				# poppler transition.
-#	kdegraphics				# poppler transition.
-		kamera
-		kcoloredit
-	#	kdegraphics-kfile-plugins	# poppler transition.
-		kdvi
-		kfax
-		kfaxview
-		kgamma
-		kghostview
-		kiconedit
-		kmrml
-		kolourpaint
-		kooka
-		kpdf
-		kpovmodeler
-		kruler
-		ksnapshot
-		ksvg
-		kuickshow
-		kview
-		kviewshell
-		libkscan1
+	kdegraphics
 	kde-icons-crystalclear
 	kde-icons-crystalproject
 	kdemultimedia
@@ -229,7 +207,7 @@ FLL_PACKAGES=(
 	lilypond
 	lineak-kdeplugins
 	links2
-#	linphone
+	linphone
 	lisa
 	lmms
 	lynx
@@ -242,7 +220,7 @@ FLL_PACKAGES=(
 	mono
 	mousepad
 	moto4lin
-#	mozilla-plugin-vlc
+	mozilla-plugin-vlc
 	mozplugger
 	multisync
 	mutt
@@ -307,7 +285,7 @@ FLL_PACKAGES=(
 	vdr-gui
 	vim-full
 	virtualbox-ose
-#	vlc
+	vlc
 	vorbis-tools
 	wengophone
 	xchat
