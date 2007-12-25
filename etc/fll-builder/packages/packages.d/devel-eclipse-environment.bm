@@ -1,0 +1,6 @@
+FLL_PACKAGES+=(
+	classpath-doc
+	eclipse
+	eclipse-platform-gcj
+)
+

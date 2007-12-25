@@ -44,6 +44,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - new instructions for p54 firmwares.
     - deprecate the never used "firmware" section by not talking about it
       anymore.
+    - rebelhomicide.demon.nl doesn't exist anymore.
+    - add muchan as contributor.
+    - update specifications.
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
@@ -68,12 +71,18 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + ruby-full takes care of the correct ruby version.
       + abiword-plugins, kdegraphics, linphone, mozilla-plugin-vlc and vlc are
         installable again.
+      + amule, audacious-plugins-extra, klamav and amule are not installable.
+      + disable rosegarden, uninstallable on i386.
+      + split out no longer existing "mono" into packages.d/.
+      + add eclipse.
     - hwsupport-extra:
       + cpufrequtils hasn't been shipped for 2+ releases, remove it.
     - kde-full:
       + kdegraphics-kfile-plugins is still held up in the poppler transition
         on amd64.
       + kdegraphics-kfile-plugins is installable again.
+      + add krita.
+      + add virtualbox-ose.
     - kde-seminarix:
       + default to german locales.
   * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
@@ -116,7 +125,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Kel Modderman <kel@otaku42.de>  Fri, 21 Dec 2007 10:11:26 +1000
+ -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Tue, 25 Dec 2007 22:45:24 +0000
 
 fll-builder (1.1.7) unstable; urgency=low
 

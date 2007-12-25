@@ -18,6 +18,8 @@ FLL_PACKAGES=(
 	amarok
 	ark
 	basket
+	debhelper
+	dnsutils
 	digikam
 	dnsutils
 	gtk2-engines-qtcurve
@@ -81,6 +83,7 @@ FLL_PACKAGES=(
 	kppp
 	krdc
 	kreversi
+	krita
 	krusader
 	ksnapshot
 	ksvg
@@ -94,8 +97,12 @@ FLL_PACKAGES=(
 	nano
 	openoffice.org-kde
 	openoffice.org-thesaurus-en-us
+	pdfedit
 	rdiff-backup
 	siduxcc
+	sidux-vdr
+	vdr-gui
+	virtualbox-ose
 	wengophone
 	yakuake
 )

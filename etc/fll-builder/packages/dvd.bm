@@ -3,6 +3,8 @@ FLL_PACKAGE_DEPMODS=(
 	data-rescue
 	devel-basic
 	devel-debian
+	devel-eclipse-environment
+	devel-mono
 	devel-qt3
 	devel-qt4
 	devel-web
@@ -34,12 +36,12 @@ FLL_PACKAGES=(
 	albumshaper
 	alsamixergui
 	amsn
-	amule
+#	amule				# libcrypto++6
 	ardour
 	atlantik
 	audacious
 	audacious-plugins
-	audacious-plugins-extra
+#	audacious-plugins-extra		# libbinio1c2
 	audacity
 	bazaar
 	bittorrent
@@ -174,7 +176,7 @@ FLL_PACKAGES=(
 	kiosktool
 	kipi-plugins
 	kitty
-	klamav
+#	klamav				# libclamav2
 	klash
 	klik
 	klineakconfig
@@ -217,7 +219,6 @@ FLL_PACKAGES=(
 	metacam
 	meterbridge
 	mhwaveedit
-	mono
 	mousepad
 	moto4lin
 	mozilla-plugin-vlc
@@ -248,7 +249,7 @@ FLL_PACKAGES=(
 	quodlibet
 	rdiff-backup
 	ripperx
-	rosegarden4
+#	rosegarden
 	rox-filer
 	ruby-full
 	samba

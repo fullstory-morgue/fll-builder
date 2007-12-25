@@ -1,0 +1,6 @@
+FLL_PACKAGES+=(
+	mono-gmcs
+	mono-smcs
+	mono-xbuild
+)
+
