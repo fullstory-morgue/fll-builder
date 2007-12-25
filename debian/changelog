@@ -47,6 +47,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - rebelhomicide.demon.nl doesn't exist anymore.
     - add muchan as contributor.
     - update specifications.
+    - revert broken german release notes to known good variant.
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
@@ -125,7 +126,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Tue, 25 Dec 2007 22:45:24 +0000
+ -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Tue, 25 Dec 2007 23:42:31 +0000
 
 fll-builder (1.1.7) unstable; urgency=low
 
