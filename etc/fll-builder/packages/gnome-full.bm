@@ -76,6 +76,5 @@ FLL_PACKAGES=(
 	moto4lin
 	zenity
 	samba
-	cdebootstrap
 	wodim
 )

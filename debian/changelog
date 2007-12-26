@@ -131,9 +131,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added final kde-seminarix.bm
 
   [ Andreas Weber ]
-  * gnome-full.bm updated  
+  * gnome-full.bm updated
+  * gnome-std.bm updated.
+  * distro-gnome.bm updated.
 
- -- Andreas Weber <webera@srv-1>  Wed, 26 Dec 2007 11:14:01 +0100
+ -- Andreas Weber <webera@srv-1>  Wed, 26 Dec 2007 17:06:40 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
