@@ -49,9 +49,10 @@ preview -->
 
 		<div id="main-page">
 			<div class="divider" id="welcome">
-				<h1 id="top-header">sidux 2007-04</h1>
+				<h1 id="top-header">sidux 2007-04.5 Weihnachtsspecial</h1>
 				<p>
-					W&auml;hrend sich sidux seinem ersten Geburtstag n&auml;hert, geben wir mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in einer &asymp;445 MB gro&szlig;en kde-lite&ndash; und einer &asymp;680 MB gro&szlig;en kde-full Variante.
+					Einiges hat sich seit der Ver&ouml;ffentlichung von sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; getan, insbesondere im Hinblick auf zus&auml;tzliche Hardwareunterst&uuml;tzung f&uuml;r aktuelle Grafik-, DVB-, ALSA und wireless LAN Ger&auml;te, was eine Auffrischung von &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; nahe legt, w&auml;hrend die Entwicklung von sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; fortgesetzt wird.
+					Dementsprechend geben wir nun mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in etwa &asymp;445 MB gro&szlig;en kde-lite&ndash; Varianten und einem kombinierten i386+amd64 Release mit etwa &asymp;1430 MB f&uuml;r kde-full.
 				</p>
 
 				<p>
@@ -61,15 +62,23 @@ preview -->
 			</div>
 
 			<div class="divider" id="release-notes">
-				<h2>Release Notes f&uuml;r &Epsilon;&rho;&omega;&sigmaf;</h2>
+				<h2>Release Notes f&uuml;r &Epsilon;&rho;&omega;&sigmaf; xmas</h2>
 				<p>
-					Unser viertes Release konzentriert sich auf X.org 7.3/ xrandr 1.2 bedingte &Auml;nderungen, die neue X Erkennung und den neuen Upstream Kernel 2.6.23, mit aktualisiertem mac80211 wlan Stack und Treibern, welche die Unterst&uuml;tzung  einer Reihe zus&auml;tzlicher wlan Karten erm&ouml;glichen.
-					Obwohl die letzten zwei Monate mit dem Erscheinen von X.org 7.3, mehreren Library Transitionen und Infrastrukturproblemen f&uuml;r Debian sid als relativ turbulent zu bezeichnen sind, scheinen diese Problem f&uuml;r sidux weitgehend behoben zu sein, so da&szlig; nun der bestm&ouml;gliche opensource Support f&uuml;r diverse Grafikchips&auml;tze, verbunden mit den durch xrandr 1.2 kompatiblen Treiber m&ouml;glichen, erweiterten, Konfigurationsoptionen zur Laufzeit, bereitgestellt werden kann.
+					Dieses Updaterelease von sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; konzentriert sich auf zus&auml;tzlichen Hardwaresupport und Stabilit&auml;tsverbesserungen f&uuml;r wlan und DVB Karten, verbunden mit der erst seit kurzem verf&uuml;gbaren Unterst&uuml;tzung f&uuml;r verschiedene ATi Grafikkarten in Verbindung mit der neuen X.org 7.3/ xrandr 1.2 basierten X Erkennung.
 				</p>
 
 				<p>
-					Besondere Anstrengungen wurden in erweiterte Methoden zur USB Installation, die Kernelstabilisierung und das live persistency Framework investiert.
-					Verschiedene Updates, Korrekturen und Anpassungen wurden praktisch der gesamten Paketliste zuteil und eine Menge an &Uuml;bersetzungs- und Lokalisierungsbestrebungen konnten gestartet werden, um die Situation f&uuml;r unsere nicht englisch-/ deutschsprachigen Benutzer zu verbessern.
+					Ein neues Feature ist das kombinierte DVD ISO f&uuml;r kde-full, welches i386 und amd64 Architekturen unterst&uuml;tzt und das harte Gr&ouml;&szlig;enlimit von CD-R Medien umgeht, jedoch versucht einen schlanken Paketumfang beizubehalten.
+					Besondere Anstrengungen wurden in die Konsolidierung der klassischen und erweiterten Installationsmethoden, die Kernelstabilisierung und das live persistency Framework investiert.
+					Verschiedene Updates, Korrekturen und Anpassungen wurden einem gro&szlig;en Teil der Paketliste zuteil.
+				</p>
+
+				<p>
+					Als besonderes Weihnachtspr&auml;sent f&uuml;r unsere nicht englisch-/ deutschsprachigen Benutzer, wird f&uuml;r sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; ein xdelta zur Nachr&uuml;stung anf&auml;nglicher Lokalisierungen aller derzeit unterst&uuml;tzten Sprachen bereitstehen.
+				</p>
+
+				<p>
+					Der Releaseplan f&uuml;r 2008-01 &quot;&Nu;&upsilon;&xi;&quot; wurde angesichts dieses zwischenzeitlichen &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; Update leicht angepa&szlig;t und f&uuml;r Anfang Februar terminiert.
 				</p>
 
 				<p>
@@ -114,6 +123,8 @@ preview -->
 					<li>bitsetting/ xrandr kompatibler Treiber f&uuml;r ATi Karten (6.7.197).</li>
 					<li>grundlegende lvm2 Erkennung und Installationsunterst&uuml;tzung auf existierende logical volumes.</li>
 					<li>Pinnacle PCTVsat (DVB-S) Kompatibilität.</li>
+					<li>Kernel 2.6.23 Stabilisierung.</li>
+					<li>dual-arch ISO.</li>
 				</ul>
 			</div>
 
@@ -382,10 +393,10 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 					</li>
 history -->
 					<li>
-						sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; &mdash; calendar week 2-4 2008
+						sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; &mdash; calendar week 4-6 2008
 					</li>
 					<li>
-						sidux 2008-02 &quot;&Epsilon;&rho;&epsilon;&beta;&omicron;&sigmaf;&quot; &mdash; calendar week 13-14 2008
+						sidux 2008-02 &quot;&Epsilon;&rho;&epsilon;&beta;&omicron;&sigmaf;&quot; &mdash; calendar week 14-15 2008
 					</li>
 					<li>
 						sidux 2008-03 &quot;&Omega;&upsilon;&rho;&epsilon;&alpha;&quot; &mdash; calendar week 25-26 2008
