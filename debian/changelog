@@ -130,7 +130,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 26 Dec 2007 05:45:23 +0100
+  [ Andreas Weber ]
+  * gnome-full.bm updated  
+
+ -- Andreas Weber <webera@srv-1>  Wed, 26 Dec 2007 11:14:01 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

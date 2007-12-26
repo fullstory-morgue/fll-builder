@@ -4,10 +4,8 @@ FLL_PACKAGE_DEPMODS=(
 	distro-gnome
 	distro-tools
 	distro-tools-x
-	gimp-basic
 	hwsupport-essential
 	hwsupport-extra
-	hwsupport-printscan
 	utils-essential
 	utils-extra
 	xserver
@@ -16,13 +14,12 @@ FLL_PACKAGE_DEPMODS=(
 FLL_PACKAGES=(
 	gdm
 	gdm-themes-sidux
-	gnome
+	gnome-core
 	gnome-commander
 	gnome-applets
 	gnome-audio
 	gnome-btdownload
 	gnome-chess
-	gnome-find
 	gnome-games
 	gnome-gpg
 	gnome-keyring
@@ -34,31 +31,51 @@ FLL_PACKAGES=(
 	gnome-nettool
 	gnome-osd
 	gnome-photo-printer
-	gnome-office
 	gnome-schedule
+	gnome-system-tools
+	gnome-icon-theme
+	gnome-themes
+	gnome-themes-extras
 	gnome-utils
+	gnome-cups-manager
 	libgnomevfs2-extra
+	gconf-editor
+	gimp
 	xchat
 	xchat-systray
 	iceweasel
 	iceweasel-gnome-support
-	icedove
-	icedove-gnome-support
+	evolution
 	scribus-ng
-	p7zip-full
-	pidgin
-	pidgin-data
-	pidgin-encryption
 	infobash
 	configure-networkcard
 	configure-ndiswrapper
 	configure-isdn
 	epiphany-browser
 	epiphany-extensions
-	openoffice.org
+	mpg123
+	vorbis-tools
+	gnomebaker
+	bluefish
+	unzip
+	libgnome2-perl
 	openoffice.org-gnome
+	openoffice.org
+	p7zip-full
+	pidgin
+	pidgin-data
+	pidgin-encryption
 	totem
+	wireshark
+	netcat
+	synaptic
+	etherape
+	wengophone
+	pdfedit
+	gkrellm
+	moto4lin
 	zenity
 	samba
-	bug-buddy
+	cdebootstrap
+	wodim
 )
