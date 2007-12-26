@@ -40,7 +40,6 @@ FLL_PACKAGES=(
 	gnome-themes-extras
 	gnome-utils
 	gnome-cups-manager
-	gnome-office
 	libgnomevfs2-extra
 	gconf-editor
 	xchat
