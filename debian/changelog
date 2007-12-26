@@ -51,6 +51,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - finalize release notes for 2007-04.5 eros xmas.
     - finalize release notes for 2007-04.5 eros seminarix.
     - finalize release notes for 2007-04.5 eros DVD.
+    - revert to ordinary release notes, heading to nyx.
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
@@ -129,7 +130,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * added juk to kde-seminarix.bm
   * added final kde-seminarix.bm
 
- -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Wed, 26 Dec 2007 04:34:00 +0000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 26 Dec 2007 05:45:23 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
