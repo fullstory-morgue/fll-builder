@@ -90,6 +90,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + add virtualbox-ose.
     - kde-seminarix:
       + default to german locales.
+    - distro:
+      + add lilo.
   * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
   * the quick'n'dirty way to ignore FLL_BUILD_SQUASHFS_COMPRESSION.
   * add norwegian locales.
@@ -134,9 +136,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * gnome-full.bm updated
   * gnome-std.bm updated.
-  * distro-gnome.bm updated. 
+  * distro-gnome.bm updated.
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 28 Dec 2007 12:53:21 +1100
+ -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Fri, 28 Dec 2007 09:49:43 +0000
 
 fll-builder (1.1.7) unstable; urgency=low
 

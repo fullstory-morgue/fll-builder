@@ -5,6 +5,7 @@ FLL_PACKAGES+=(
 	gfxboot-theme-sidux
 	grub-gfxboot
 	irqbalance
+	lilo
 	sidux-art-wallpaper
 	sidux-art-wallpaper-eros
 	sidux-keyrings
