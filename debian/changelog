@@ -106,6 +106,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * add fallback for missing menu.lst.arch template
   * remove accidentally added @timeout@ flag in menu.list.in
   * add text mode to the advanced grub menu
+  * remove numlockx from xfce - on some laptops it enables numlock by on boot
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -133,9 +134,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Andreas Weber ]
   * gnome-full.bm updated
   * gnome-std.bm updated.
-  * distro-gnome.bm updated.
+  * distro-gnome.bm updated. 
 
- -- Andreas Weber <webera@srv-1>  Wed, 26 Dec 2007 17:06:40 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 28 Dec 2007 12:53:21 +1100
 
 fll-builder (1.1.7) unstable; urgency=low
 

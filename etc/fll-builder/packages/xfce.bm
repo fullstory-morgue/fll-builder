@@ -27,7 +27,6 @@ FLL_PACKAGES=(
 	gxineplugin
 	iceweasel
 	mousepad
-	numlockx
 	orage
 	shared-mime-info
 	thunar
