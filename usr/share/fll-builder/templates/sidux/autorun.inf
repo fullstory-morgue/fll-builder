@@ -1,4 +1,4 @@
 [autorun]
 shellexecute=index.html
-icon=release\cdrom.ico
+icon=cdrom.ico
 
