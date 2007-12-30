@@ -25,4 +25,5 @@ FLL_PACKAGES=(
 	pidgin
 	pidgin-encryption
 	zenity
+	file-roller
 )

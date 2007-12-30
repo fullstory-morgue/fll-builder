@@ -137,8 +137,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * gnome-full.bm updated
   * gnome-std.bm updated.
   * distro-gnome.bm updated.
+  * file-roller added.
+  * Wengophone temporaray removed.
 
- -- Stefan Lippers-Hollmann <slh@dev.sidux.com>  Fri, 28 Dec 2007 09:49:43 +0000
+ -- Andreas Weber <andreas@it-weber.com>  Sun, 30 Dec 2007 16:43:03 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
