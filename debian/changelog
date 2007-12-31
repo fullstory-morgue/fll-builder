@@ -140,9 +140,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * file-roller added.
   * Wengophone temporaray removed.
   * nautilus-open-terminal added to Gnome Builds.
-  * Nautilus Plugins and seahorse added to Gnome Builds. 
+  * Nautilus Plugins and seahorse added to Gnome Builds.
+  * Mistake fixed in fll-build.bash 
 
- -- Andreas Weber <andreas@it-weber.com>  Mon, 31 Dec 2007 09:03:02 +0100
+ -- Andreas Weber <andreas@it-weber.com>  Mon, 31 Dec 2007 09:04:40 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

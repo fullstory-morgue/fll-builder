@@ -418,7 +418,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		fi
 
 		header "running cdebootstrap..."
-		cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --allow-unauthenticated --arch="${FLL_BUILD_ARCH[${arch}]}" --flavour=minimal "${FLL_BUILD_DEBIANMIRROR_SUITE}" \
+		cdebootstrap ${FLL_DEBOOSTRAP_VERBOSITY} --arch="${FLL_BUILD_ARCH[${arch}]}" --flavour=minimal "${FLL_BUILD_DEBIANMIRROR_SUITE}" \
 			"${FLL_BUILD_CHROOT}" "${FLL_BUILD_DEBIANMIRROR_CACHED:=${FLL_BUILD_DEBIANMIRROR}}"
 		
 		chroot_virtfs mount
