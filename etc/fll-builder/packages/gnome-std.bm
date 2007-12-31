@@ -22,7 +22,7 @@ FLL_PACKAGES=(
 	gnome-audio
 	gnome-btdownload
 	gnome-chess
-	gnome-games
+	#gnome-games
 	gnome-gpg
 	gnome-keyring
 	gnome-keyring-manager
@@ -41,6 +41,10 @@ FLL_PACKAGES=(
 	gnome-utils
 	gnome-cups-manager
 	nautilus-open-terminal
+	nautilus-cd-burner 
+	nautilus-gksu 
+	python-nautilus 
+	seahorse
 	libgnomevfs2-extra
 	gconf-editor
 	xchat

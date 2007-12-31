@@ -39,6 +39,10 @@ FLL_PACKAGES=(
 	gnome-utils
 	gnome-cups-manager
 	nautilus-open-terminal
+	nautilus-cd-burner 
+	nautilus-gksu 
+	python-nautilus 
+	seahorse
 	libgnomevfs2-extra
 	gconf-editor
 	gimp
