@@ -139,8 +139,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * distro-gnome.bm updated.
   * file-roller added.
   * Wengophone temporaray removed.
+  * nautilus-open-terminal added to Gnome Builds. 
 
- -- Andreas Weber <andreas@it-weber.com>  Sun, 30 Dec 2007 16:43:03 +0100
+ -- Andreas Weber <andreas@it-weber.com>  Mon, 31 Dec 2007 08:55:19 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

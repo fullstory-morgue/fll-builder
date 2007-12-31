@@ -13,6 +13,7 @@ FLL_PACKAGES=(
 	gdm
 	gdm-themes-sidux
 	gnome-core
+	nautilus-open-terminal
 	xchat
 	xchat-systray
 	infobash
