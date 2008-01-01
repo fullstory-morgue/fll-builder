@@ -65,20 +65,20 @@ FLL_PACKAGES=(
 	bluefish
 	unzip
 	libgnome2-perl
-	openoffice.org-gnome
-	openoffice.org
+	#openoffice.org-gnome
+	#openoffice.org
 	#p7zip-full
 	pidgin
 	pidgin-data
 	pidgin-encryption
 	totem
-	wireshark
-	netcat
+	#wireshark
+	#netcat
 	#synaptic
-	etherape
+	#etherape
 	#wengophone
-	pdfedit
-	gkrellm
+	#pdfedit
+	#gkrellm
 	moto4lin
 	zenity
 	samba

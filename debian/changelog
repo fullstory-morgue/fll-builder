@@ -143,9 +143,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * nautilus-open-terminal added to Gnome Builds.
   * Nautilus Plugins and seahorse added to Gnome Builds.
   * Mistake fixed in fll-build.bash
-  * Package List gnome-std.bm changed to fit on CD. 
+  * Package List gnome-std.bm changed to fit on CD.
+  * Some more Packages removed from gnome-std.bm. 
 
- -- Andreas Weber <andreas@it-weber.com>  Tue, 01 Jan 2008 20:34:54 +0100
+ -- Andreas Weber <andreas@it-weber.com>  Tue, 01 Jan 2008 20:55:16 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
