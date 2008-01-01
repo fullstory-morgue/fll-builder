@@ -95,6 +95,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
   * the quick'n'dirty way to ignore FLL_BUILD_SQUASHFS_COMPRESSION.
   * add norwegian locales.
+  * kde-extras doesn't exist anymore, remove it from recommends.bm.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -141,9 +142,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Wengophone temporaray removed.
   * nautilus-open-terminal added to Gnome Builds.
   * Nautilus Plugins and seahorse added to Gnome Builds.
-  * Mistake fixed in fll-build.bash 
+  * Mistake fixed in fll-build.bash
 
- -- Andreas Weber <andreas@it-weber.com>  Mon, 31 Dec 2007 09:04:40 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 01 Jan 2008 13:48:22 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
