@@ -21,7 +21,7 @@ FLL_PACKAGES=(
 	gnome-applets
 	gnome-audio
 	gnome-btdownload
-	gnome-chess
+	#gnome-chess
 	#gnome-games
 	gnome-gpg
 	gnome-keyring
@@ -37,13 +37,13 @@ FLL_PACKAGES=(
 	gnome-system-tools
 	gnome-icon-theme
 	gnome-themes
-	gnome-themes-extras
+	#gnome-themes-extras
 	gnome-utils
 	gnome-cups-manager
 	nautilus-open-terminal
 	nautilus-cd-burner 
 	nautilus-gksu 
-	python-nautilus 
+	#python-nautilus 
 	seahorse
 	libgnomevfs2-extra
 	gconf-editor
@@ -67,14 +67,14 @@ FLL_PACKAGES=(
 	libgnome2-perl
 	openoffice.org-gnome
 	openoffice.org
-	p7zip-full
+	#p7zip-full
 	pidgin
 	pidgin-data
 	pidgin-encryption
 	totem
 	wireshark
 	netcat
-	synaptic
+	#synaptic
 	etherape
 	#wengophone
 	pdfedit
