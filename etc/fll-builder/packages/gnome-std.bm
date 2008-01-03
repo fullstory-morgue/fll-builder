@@ -51,7 +51,7 @@ FLL_PACKAGES=(
 	xchat-systray
 	iceweasel
 	iceweasel-gnome-support
-	evolution
+	#evolution		# broken by libpisync0
 	scribus-ng
 	infobash
 	configure-networkcard
