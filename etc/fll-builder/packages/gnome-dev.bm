@@ -1,13 +1,20 @@
+# This is a special Gnome Build for a DVD with DEV Utilities, Office and Multimedia Stuff
+
 FLL_PACKAGE_DEPMODS=(
 	cli
 	distro
 	distro-gnome
 	distro-tools
 	distro-tools-x
-	gimp-basic
+	devel-basic
+	devel-debian
+	devel-eclipse-environment
+	devel-gtk2
+	devel-mono
+	devel-qt3
+	devel-qt4
 	hwsupport-essential
 	hwsupport-extra
-	hwsupport-printscan
 	utils-essential
 	utils-extra
 	xserver
@@ -21,6 +28,7 @@ FLL_PACKAGES=(
 	gnome-applets
 	gnome-audio
 	gnome-btdownload
+	gnome-gpg
 	gnome-keyring
 	gnome-keyring-manager
 	gnome-mag
@@ -36,6 +44,14 @@ FLL_PACKAGES=(
 	gnome-themes
 	gnome-utils
 	gnome-cups-manager
+	abiword
+	abiword-plugins
+	gnumeric
+	clamav
+	clamav-freshclam
+	firestarter
+	httrack
+	istanbul
 	evolution
 	nautilus-open-terminal
 	nautilus-cd-burner 
@@ -58,16 +74,48 @@ FLL_PACKAGES=(
 	bluefish
 	unzip
 	libgnome2-perl
-	openoffice.org-gnome
-	openoffice.org
 	pidgin
 	pidgin-data
 	pidgin-encryption
 	totem
 	wengophone
+	streamtuner
+	streamripper
+	xmms
+	vlc
+	vorbis-tools
 	moto4lin
 	zenity
 	samba
 	bug-buddy
 	file-roller
+	qemu
+	virtualbox-ose
+	qtemu
+	screen
+	screenkast
+	xdelta
+	cvs
+	debarchiver 
+	vim-full
+	eric 
+	eric-api-files 
+	monodevelop
+	anjuta
+	libgconf2-dev
+	libglade2-dev
+	libgnomeui-dev
+	autogen
+	subversion 
+	subversion-tools 
+	svn-buildpackage
+	qemu 
+	cabextract
+	squashfs-tools
+	cdebootstrap
+	wodim
+	sidux-kernelhacking 
+	#sidux-modules # acx100 broken
+	libncurses5
+	libncurses5-dev
 )
