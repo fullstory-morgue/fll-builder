@@ -833,7 +833,7 @@ EOF
 
 	# make the iso
 	header "Creating ISO..."
-	genisoimage -v -pad -l -r -J \
+	genisoimage -v -pad -l -r -J -udf \
 		-V "${FLL_DISTRO_NAME_UC}" \
 		-A "${FLL_DISTRO_NAME_UC} LIVE LINUX CD" \
 		-no-emul-boot -boot-load-size 4 -boot-info-table -hide-rr-moved \

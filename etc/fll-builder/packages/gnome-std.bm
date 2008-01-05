@@ -36,7 +36,7 @@ FLL_PACKAGES=(
 	gnome-themes
 	gnome-utils
 	gnome-cups-manager
-	evolution
+#	evolution			# libpisync0
 	nautilus-open-terminal
 	nautilus-cd-burner 
 	nautilus-gksu 
