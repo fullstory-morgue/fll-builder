@@ -36,12 +36,12 @@ FLL_PACKAGES=(
 	albumshaper
 	alsamixergui
 	amsn
-#	amule				# libcrypto++6
+	amule
 	ardour
 	atlantik
 	audacious
 	audacious-plugins
-#	audacious-plugins-extra		# libbinio1c2
+	audacious-plugins-extra		# libbinio1c2
 	audacity
 	bazaar
 	bittorrent
@@ -58,7 +58,7 @@ FLL_PACKAGES=(
 	clamav
 	clamav-freshclam
 	claws-mail
-	claws-mail-extra-plugins
+#	claws-mail-extra-plugins
 	conky
 	cvs
 	dcraw
@@ -81,7 +81,7 @@ FLL_PACKAGES=(
 	enigmail
 	epiphany
 	etherwake
-	evolution
+#	evolution		# libpisync0
 	fakechroot
 	fetchmail
 	fetchmailconf
@@ -95,7 +95,7 @@ FLL_PACKAGES=(
 	flac
 	geany
 	gftp
-#	gnucash			# libgoffice-1-2
+	gnucash
 	gnumeric
 	gnusound
 	gossip
@@ -249,7 +249,7 @@ FLL_PACKAGES=(
 	quodlibet
 	rdiff-backup
 	ripperx
-#	rosegarden
+	rosegarden
 	rox-filer
 	ruby-full
 	samba
@@ -273,8 +273,8 @@ FLL_PACKAGES=(
 	subversion
 	subversion-tools
 	svn-buildpackage
-	sylpheed
-	sylpheed-i18n
+#	sylpheed
+#	sylpheed-i18n
 	tipa
 	tipa-doc
 	transcriber

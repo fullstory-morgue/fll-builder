@@ -5,7 +5,7 @@ FLL_PACKAGES+=(
 	cupsys-driver-gutenprint
 	foomatic-db
 	foomatic-db-engine
-	foomatic-db-gutenprint
+#	foomatic-db-gutenprint		# ijsgutenprint
 	foomatic-db-hpijs
 	foomatic-filters
 	foomatic-filters-ppds
