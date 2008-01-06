@@ -491,7 +491,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#		install kernel, make initial ramdisk		#
 		#################################################################
 		# module-init-tools required for depmod, it may not be in minimal bootstrap
-		chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools
+		chroot_exec apt-get --assume-yes install fll-live-initramfs module-init-tools lvm2
 
 		# ensure initrd is created by linux-image postinst hook
 		cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf

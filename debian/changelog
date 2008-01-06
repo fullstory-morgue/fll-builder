@@ -99,6 +99,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * the quick'n'dirty way to ignore FLL_BUILD_SQUASHFS_COMPRESSION.
   * add norwegian locales.
   * kde-extras doesn't exist anymore, remove it from recommends.bm.
+  * install lvm2 at the same time as fll-live-initramfs, so we can start the
+    lvm2 detection/ load devmapper modules in initramfs.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -150,7 +152,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Some more Packages removed from gnome-std.bm.
   * gnome-dev.bm added.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 05 Jan 2008 02:02:38 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 06 Jan 2008 01:05:37 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
