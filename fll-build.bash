@@ -661,6 +661,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		if installed_in_chroot menu; then
 			header "initialise debian menu system"
 			chroot_exec update-menus
+			wait
 		fi
 
 		# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
