@@ -657,6 +657,12 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			chroot_exec dpkg-reconfigure fontconfig
 		fi
 
+		# initialise debian menu system for fluxbox and friends
+		if installed_in_chroot menu; then
+			header "initialise debian menu system"
+			chroot_exec update-menus
+		fi
+
 		# sid effect of inhibiting xorg.conf creation by xserver-xorg.postinst
 		if installed_in_chroot xserver-xorg; then
 			if [[ ! -e "${FLL_BUILD_CHROOT}/etc/X11/X" ]] || [[ $(readlink "${FLL_BUILD_CHROOT}/etc/X11/X") == "/bin/true" ]]; then
