@@ -57,6 +57,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - enable hplip and friends again.
     - xserver-xorg-input-wacom is installable again, return to using
       use the xserver-xorg-input-all again.
+    - no longer hard depend on configure-networkcard.
     - distro-tools:
       + add ceni.
     - utils-extra:
@@ -166,7 +167,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 Jan 2008 19:09:17 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 Jan 2008 22:00:23 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

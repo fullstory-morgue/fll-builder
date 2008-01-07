@@ -4,7 +4,6 @@ FLL_PACKAGES+=(
 	configure-isdn
 	configure-modemlink
 	configure-ndiswrapper
-	configure-networkcard
 	infobash
 	ppp-scripts
 	sshstart-sidux

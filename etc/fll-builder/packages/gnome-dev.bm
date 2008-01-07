@@ -63,7 +63,6 @@ FLL_PACKAGES=(
 	xchat-systray
 	scribus-ng
 	infobash
-	configure-networkcard
 	configure-ndiswrapper
 	configure-isdn
 	epiphany-browser

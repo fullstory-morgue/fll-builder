@@ -17,7 +17,6 @@ FLL_PACKAGES=(
 	xchat
 	xchat-systray
 	infobash
-	configure-networkcard
 	configure-ndiswrapper
 	configure-isdn
 	epiphany-browser
