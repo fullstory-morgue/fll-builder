@@ -1,7 +1,6 @@
 FLL_PACKAGES+=(
 	configure-cups
 	configure-gprs
-	configure-screenres
 	configure-xawtv
 	fix-fonts
 	fll-live-xorgconfig
