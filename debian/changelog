@@ -82,6 +82,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + split out no longer existing "mono" into packages.d/.
       + add eclipse.
       + update installable packages
+    - hwsupport-essential:
+      + add br2684ctl, it's no longer a hard dependency of configure-dsl.
     - hwsupport-extra:
       + cpufrequtils hasn't been shipped for 2+ releases, remove it.
     - kde-full:
@@ -167,7 +169,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 Jan 2008 22:00:23 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 07 Jan 2008 22:26:57 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
