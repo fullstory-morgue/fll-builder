@@ -2,8 +2,7 @@ FLL_PACKAGES+=(
 	openclipart-openoffice.org 
 	openoffice.org
         openoffice.org-filter-so52
-	openoffice.org-help-de 
+	openoffice.org-help-en-us
 	openoffice.org-kde
-	openoffice.org-l10n-de
         openoffice.org-officebean
 )

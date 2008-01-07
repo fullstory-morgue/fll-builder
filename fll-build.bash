@@ -728,15 +728,20 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		# use menu.lst template file if it exists
 		if [ -r "${FLL_BUILD_RESULT}/boot/grub/menu.lst.arch" ]; then
+			if [[ "${FLL_BOOT_OPTIONS}" ]]; then
+				FLL_BOOT_OPTIONS=" ${FLL_BOOT_OPTIONS}"
+			fi
 			sed	-e 's|@distro@|'"${FLL_DISTRO_NAME}"'|'	\
 				-e 's|@arch@|'"${FLL_BUILD_ARCH[${arch}]}"'|'	\
 				-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'  \
 				-e 's|@initrd@|initrd\.img-'"${KVERS}"'|' \
+				-e 's|^kernel.*|&'"${FLL_BOOT_OPTIONS}"'|' \
 					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.arch" >> \
 						"${FLL_BUILD_RESULT}/boot/grub/menu.lst"
 
 			sed	-e 's|@vmlinuz@|vmlinuz-'"${KVERS}"'|'	\
 				-e 's|@initrd@|initrd\.img-'"${KVERS}"'|'	\
+				-e 's|^kernel.*|&'"${FLL_BOOT_OPTIONS}"'|' \
 					"${FLL_BUILD_RESULT}/boot/grub/menu.lst.in" > \
 						"${FLL_BUILD_RESULT}/boot/grub/menu.lst.${FLL_BUILD_ARCH[${arch}]}"
 		else	

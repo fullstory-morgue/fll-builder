@@ -160,7 +160,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * add wait to allow a complete creation of the debian menus
 
- -- Joaquim Boura <x-un-i@sidux.com>  Sun, 06 Jan 2008 14:47:31 +0100
+  [ Niall Walsh ]
+  * Make FLL_BOOT_OPTIONS apply to multi-arch builds
+  * Fix openoffice-meta i18n
+
+ -- Niall Walsh <niallwalsh@users.berlios.de>  Mon, 07 Jan 2008 14:19:57 +0000
 
 fll-builder (1.1.7) unstable; urgency=low
 
