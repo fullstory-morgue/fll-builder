@@ -16,7 +16,6 @@ FLL_PACKAGES+=(
 	sidux-browser
 	sidux-irc
 	sidux-manual-en
-	sidux-xdg
 	sidux-searchplugins
 	sidux-setpassword
 	xsane

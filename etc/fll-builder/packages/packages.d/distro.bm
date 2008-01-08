@@ -10,7 +10,6 @@ FLL_PACKAGES+=(
 	sidux-art-wallpaper-eros
 	sidux-keyrings
 	sidux-scripts
-	su-me
 	udev-config-sidux
 )
 

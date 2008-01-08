@@ -7,7 +7,6 @@ FLL_PACKAGES+=(
 	irqbalance
 	sidux-keyrings
 	sidux-scripts
-	su-me
 	udev-config-sidux
 	sidux-art-wallpaper-eros-edu
 )
