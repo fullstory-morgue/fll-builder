@@ -98,6 +98,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - gnome-std:
       + evolution, broken by libpisync0.
       + remove evolution again.
+      + remove evolution one more time, fix it or leave it out.
     - distro:
       + add lilo.
     - distro-tools-x:
@@ -168,7 +169,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 08 Jan 2008 20:45:13 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 08 Jan 2008 21:12:46 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
