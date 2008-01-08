@@ -28,9 +28,6 @@ FLL_PACKAGES=(
 	gnome-applets
 	gnome-audio
 	gnome-btdownload
-	gnome-gpg
-	gnome-keyring
-	gnome-keyring-manager
 	gnome-mag
 	gnome-media
 	gnome-art

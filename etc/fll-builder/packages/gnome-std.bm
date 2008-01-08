@@ -21,8 +21,6 @@ FLL_PACKAGES=(
 	gnome-applets
 	gnome-audio
 	gnome-btdownload
-	gnome-keyring
-	gnome-keyring-manager
 	gnome-mag
 	gnome-media
 	gnome-art
@@ -36,7 +34,7 @@ FLL_PACKAGES=(
 	gnome-themes
 	gnome-utils
 	gnome-cups-manager
-#	evolution			# libpisync0
+	evolution
 	nautilus-open-terminal
 	nautilus-cd-burner 
 	nautilus-gksu 
@@ -57,8 +55,9 @@ FLL_PACKAGES=(
 	bluefish
 	unzip
 	libgnome2-perl
-	openoffice.org-gnome
-	openoffice.org
+	abiword
+	abiword-plugins
+	gnumeric
 	pidgin
 	pidgin-data
 	pidgin-encryption
