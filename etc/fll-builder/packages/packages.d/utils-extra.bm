@@ -22,6 +22,7 @@ FLL_PACKAGES+=(
 	ntfsprogs
 	nmap
 	openssh-client
+	pwgen
 	reiserfsprogs
 #	resolvconf	# clobbers host when installed in chroot
 	sshfs
