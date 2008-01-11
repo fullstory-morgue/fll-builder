@@ -52,6 +52,10 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - finalize release notes for 2007-04.5 eros seminarix.
     - finalize release notes for 2007-04.5 eros DVD.
     - revert to ordinary release notes, heading to nyx.
+    - mirrors:
+      + add Internap Network Services, thanks to etorix.
+      + remove Linux NZ/ New Zealand, terribly outdated.
+      + disable Washington State University for the time being (server down).
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
@@ -171,7 +175,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 10 Jan 2008 13:06:35 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 11 Jan 2008 02:15:07 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
