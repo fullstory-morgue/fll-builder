@@ -34,7 +34,9 @@ FLL_PACKAGES=(
 	gnome-themes
 	gnome-utils
 	gnome-cups-manager
-#	evolution		# libpisync0
+	gnome-office
+	gnome-randr-applet
+	#evolution
 	nautilus-open-terminal
 	nautilus-cd-burner 
 	nautilus-gksu 
@@ -55,9 +57,6 @@ FLL_PACKAGES=(
 	bluefish
 	unzip
 	libgnome2-perl
-	abiword
-	abiword-plugins
-	gnumeric
 	pidgin
 	pidgin-data
 	pidgin-encryption
