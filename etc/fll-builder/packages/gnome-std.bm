@@ -36,7 +36,7 @@ FLL_PACKAGES=(
 	gnome-cups-manager
 	gnome-office
 	gnome-randr-applet
-	#evolution
+	evolution
 	nautilus-open-terminal
 	nautilus-cd-burner 
 	nautilus-gksu 
