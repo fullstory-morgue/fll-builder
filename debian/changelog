@@ -29,6 +29,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     creation by xserver-xorg.postinst, create it properly if xserver-xorg is
     installed in chroot.
   * update to Standards-Version 3.7.3, no changes necessary.
+  * explicitly specify unioning filesystem type from advanced menu.
   * release notes:
     - recommend firmware-rt61 and firmware-rt73.
     - mention the newly added installer support for existing lvm2 setups.
@@ -178,7 +179,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 16 Jan 2008 04:05:37 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 17 Jan 2008 00:05:58 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
