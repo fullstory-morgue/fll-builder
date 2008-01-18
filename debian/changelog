@@ -65,6 +65,9 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - no longer hard depend on configure-networkcard.
     - sidux-xdg and su-me are no more.
     - kde-heavy and kde-std are unmaintained, remove old cruft.
+    - don't install "rootshell" on default, gnome and KDE provide their own
+      means of spawning a rootshell (konsole | gksu).
+    - rootshell is obsolete, remove it.
     - distro-tools:
       + add ceni.
     - utils-extra:

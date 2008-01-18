@@ -12,7 +12,6 @@ FLL_PACKAGES+=(
 	libxine1-x
 	libxine1-xvdr
 	powersaved
-	rootshell
 	sidux-browser
 	sidux-irc
 	sidux-manual-en
