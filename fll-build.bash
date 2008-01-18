@@ -674,6 +674,14 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			fi
 		fi
 
+		# disable system-wide readable home directories
+		if installed_in_chroot adduser; then
+			header "Configuring adduser..."
+			echo "adduser	adduser/homedir-permission	boolean	false" | chroot_exec debconf-set-selections
+			# adduser.conf supersedes debconf preseeding...
+			chroot_exec sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" /etc/adduser.conf
+		fi
+
 		#################################################################
 		#		cleanup & prepare final chroot			#
 		#################################################################
