@@ -123,6 +123,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * initialise debian menu system for fluxbox and friends
   * disable system-wide readable home directories.
   * /root/ should be restricted as well.
+  * update to debhelper compat 6.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -184,7 +185,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 18 Jan 2008 15:46:42 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 18 Jan 2008 23:18:05 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
