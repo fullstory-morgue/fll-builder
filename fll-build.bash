@@ -702,7 +702,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		cat_file_to_chroot apt_sources	/etc/apt/sources.list
 
 		# /root/ should be restricted
-		chmod 0711 "${FLL_BUILD_CHROOT}/root"
+		chmod 0751 "${FLL_BUILD_CHROOT}/root"
 		
 		# add version marker
 		if [ "${FLL_DISTRO_CODENAME}" = "snapshot" ]; then
