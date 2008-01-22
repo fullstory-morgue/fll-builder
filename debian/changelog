@@ -127,6 +127,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * disable system-wide readable home directories.
   * /root/ should be restricted as well.
   * update to debhelper compat 6.
+  * refresh package names for startsyslog, setpassword and sshstart.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -188,7 +189,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 Jan 2008 10:09:52 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 Jan 2008 16:22:52 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

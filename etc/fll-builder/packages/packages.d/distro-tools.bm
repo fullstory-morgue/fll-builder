@@ -6,7 +6,7 @@ FLL_PACKAGES+=(
 	infobash
 	modemlink
 	ppp-scripts
-	sshstart-sidux
-	startsyslog-sidux
+	sshstart
+	startsyslog
 )
 
