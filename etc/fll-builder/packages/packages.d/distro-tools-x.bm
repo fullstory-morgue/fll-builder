@@ -1,10 +1,10 @@
 FLL_PACKAGES+=(
 	configure-cups
-	configure-gprs
 	configure-xawtv
 	fix-fonts
 	fll-live-xorgconfig
 	gparted
+	gprsconnect
 	hplip-gui
 	install-gui
 	install-usb-gui

@@ -1,10 +1,10 @@
 FLL_PACKAGES+=(
+	capi-isdnconf
 	ceni
 	configure-dsl
-	configure-isdn
-	configure-modemlink
 	configure-ndiswrapper
 	infobash
+	modemlink
 	ppp-scripts
 	sshstart-sidux
 	startsyslog-sidux

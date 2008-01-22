@@ -68,6 +68,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - don't install "rootshell" on default, gnome and KDE provide their own
       means of spawning a rootshell (konsole | gksu).
     - rootshell is obsolete, remove it.
+    - adapt package names away from transitional dummy packages.
     - distro-tools:
       + add ceni.
     - utils-extra:
@@ -185,7 +186,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 18 Jan 2008 23:18:05 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 Jan 2008 01:14:12 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
