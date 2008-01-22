@@ -16,14 +16,10 @@ FLL_PACKAGES=(
 	nautilus-open-terminal
 	xchat
 	xchat-systray
-	infobash
-	configure-ndiswrapper
-	configure-isdn
 	epiphany-browser
 	epiphany-extensions
 	evolution
 	pidgin
 	pidgin-encryption
-	zenity
 	file-roller
 )

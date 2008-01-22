@@ -46,16 +46,12 @@ FLL_PACKAGES=(
 	xchat
 	xchat-systray
 	scribus-ng
-	infobash
-	configure-ndiswrapper
-	configure-isdn
 	epiphany-browser
 	epiphany-extensions
 	mpg123
 	vorbis-tools
 	gnomebaker
 	bluefish
-	unzip
 	libgnome2-perl
 	pidgin
 	pidgin-data
@@ -63,7 +59,6 @@ FLL_PACKAGES=(
 	totem
 	wengophone
 	moto4lin
-	zenity
 	samba
 	bug-buddy
 	file-roller

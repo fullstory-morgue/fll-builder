@@ -49,16 +49,12 @@ FLL_PACKAGES=(
 	iceweasel-gnome-support
 	evolution
 	scribus-ng
-	infobash
-	configure-ndiswrapper
-	configure-isdn
 	epiphany-browser
 	epiphany-extensions
 	mpg123
 	vorbis-tools
 	gnomebaker
 	bluefish
-	unzip
 	libgnome2-perl
 	openoffice.org-gnome
 	openoffice.org
@@ -75,7 +71,6 @@ FLL_PACKAGES=(
 	pdfedit
 	gkrellm
 	moto4lin
-	zenity
 	samba
 	wodim
 	file-roller

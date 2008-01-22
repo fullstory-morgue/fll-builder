@@ -69,6 +69,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       means of spawning a rootshell (konsole | gksu).
     - rootshell is obsolete, remove it.
     - adapt package names away from transitional dummy packages.
+    - remove packages already defined in basic and included meta selections
+      from gnome lists.
     - distro-tools:
       + add ceni.
     - utils-extra:
@@ -186,7 +188,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 Jan 2008 01:14:12 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 22 Jan 2008 10:09:52 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
