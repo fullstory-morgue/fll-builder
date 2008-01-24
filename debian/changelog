@@ -116,6 +116,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     - distro-tools-x:
       + configure-screenres doesn't exist anymore.
       + add xserver-xorg-video-amd for i386.
+      + replace configure-xawtv with tvtime for testing.
     - utils-extra:
       + add pwgen.
   * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
@@ -191,7 +192,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 24 Jan 2008 11:25:56 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 24 Jan 2008 14:13:18 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

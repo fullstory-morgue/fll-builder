@@ -1,6 +1,5 @@
 FLL_PACKAGES+=(
 	configure-cups
-	configure-xawtv
 	fix-fonts
 	fll-live-xorgconfig
 	gparted
@@ -17,6 +16,7 @@ FLL_PACKAGES+=(
 	sidux-manual-en
 	sidux-searchplugins
 	setpassword
+	tvtime
 	xsane
 	zenity		# the hard dependency must die! ;)
 )
