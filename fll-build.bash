@@ -676,16 +676,16 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 
 		# temporary hotfix to prevent creating ext3 partitions with inode sizes 
 		# of 256 byte, which aren't accessible by grub 0.97 yet
-		chroot_exec sed -i	-e s/inode_size\ \=\ 256/inode_size\ \=\ 128/ \
-					-e s/inode_ratio\ \=\ 16384/inode_ratio\ \=\ 8192/ \
-						/etc/mke2fs.conf
+		sed -i	-e "s/inode_size = 256/inode_size = 128/" \
+			-e "s/inode_ratio = 16384/inode_ratio = 8192/" \
+				"${FLL_BUILD_CHROOT}/etc/mke2fs.conf"
 
 		# disable system-wide readable home directories
 		if installed_in_chroot adduser; then
 			header "Configuring adduser..."
 			echo "adduser	adduser/homedir-permission	boolean	false" | chroot_exec debconf-set-selections
 			# adduser.conf supersedes debconf preseeding...
-			chroot_exec sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" /etc/adduser.conf
+			sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" "${FLL_BUILD_CHROOT}/etc/adduser.conf"
 		fi
 
 		#################################################################
