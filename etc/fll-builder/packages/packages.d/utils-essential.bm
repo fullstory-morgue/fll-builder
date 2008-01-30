@@ -1,5 +1,6 @@
 FLL_PACKAGES+=(
 	adduser
+	anacron
 	apt-utils
 	bzip2
 	console-data

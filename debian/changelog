@@ -73,9 +73,12 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       from gnome lists.
     - distro-tools:
       + add ceni.
+    - utils-essential:
+      + add anacron.
     - utils-extra:
       + add mlocate.
       + remove testdisk for the time being, it is FTBS against libntfs10.
+      + add pwgen.
     - dvd:
       + instanbul and quodlibet are installable again, vlc and guncash still
         messed up.
@@ -117,8 +120,6 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + configure-screenres doesn't exist anymore.
       + add xserver-xorg-video-amd for i386.
       + replace configure-xawtv with tvtime for testing.
-    - utils-extra:
-      + add pwgen.
   * add FLL_BUILD_SQUASHFS_COMPRESSION override, default to zlib.
   * the quick'n'dirty way to ignore FLL_BUILD_SQUASHFS_COMPRESSION.
   * add norwegian locales.
@@ -195,7 +196,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 29 Jan 2008 18:43:03 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 30 Jan 2008 11:07:52 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
