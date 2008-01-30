@@ -674,12 +674,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			fi
 		fi
 
-		# temporary hotfix to prevent creating ext3 partitions with inode sizes 
-		# of 256 byte, which aren't accessible by grub 0.97 yet
-		sed -i	-e "s/inode_size = 256/inode_size = 128/" \
-			-e "s/inode_ratio = 16384/inode_ratio = 8192/" \
-				"${FLL_BUILD_CHROOT}/etc/mke2fs.conf"
-
 		# disable system-wide readable home directories
 		if installed_in_chroot adduser; then
 			header "Configuring adduser..."

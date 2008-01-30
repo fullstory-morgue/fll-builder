@@ -135,6 +135,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * remove maslot from the credits list upon his request.
   * hack /etc/mke2fs.conf to use 128 byte (instead of the new default of 256
     byte) for creating ext3 filesystems.
+  * our grub-gfxboot packages support ext3 filesystems with 256 byte inodes
+    now, drop the previously introduced hack for /etc/mke2fs.conf again.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -196,7 +198,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 30 Jan 2008 11:07:52 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 30 Jan 2008 15:11:11 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
