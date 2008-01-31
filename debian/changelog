@@ -58,6 +58,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + remove Linux NZ/ New Zealand, terribly outdated.
       + disable Washington State University for the time being (server down).
       + properly describe "spline".
+    - xmas is gone, already prepare for Νυξ so it doesn't get forgotten.
   * package lists:
     - add xserver-xorg-video-radeonhd to xserver.bm for the time being.
     - enable hplip and friends again.
@@ -199,7 +200,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 31 Jan 2008 16:14:03 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 31 Jan 2008 16:19:15 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
