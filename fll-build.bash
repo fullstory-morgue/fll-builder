@@ -795,8 +795,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		FLL_BUILD_TMPEXCLUSION_LIST=$(mktemp -p ${FLL_BUILD_TEMP} fll.exclusions.XXXXX)
 		FLL_BUILD_MKSQUASHFSOPTS=( "-ef ${FLL_BUILD_EXCLUDEFILE}" )
 
-		if [[ ${FLL_BUILD_SQUASHFS_COMPRESSION} != "lzma" ]]; then
-			: #FLL_BUILD_MKSQUASHFSOPTS+=( "-nolzma" )
+		if [[ ${FLL_BUILD_SQUASHFS_COMPRESSION} = "lzma" ]]; then
+			FLL_BUILD_MKSQUASHFSOPTS+=( "-lzma" )
 		fi
 
 		header "Creating squashfs exclusions file..."
