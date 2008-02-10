@@ -23,6 +23,7 @@ avahi-daemon
 #capiutils
 console-tools
 console-common
+cpufrequtils
 #cron
 dbus
 fuse-utils
