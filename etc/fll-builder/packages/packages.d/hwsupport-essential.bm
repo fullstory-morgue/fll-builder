@@ -2,6 +2,7 @@ FLL_PACKAGES+=(
 	acpid
 	alsa-base
 	br2684ctl
+	cpufrequtils
 	laptop-detect
 	lvm2
 	pcmciautils
