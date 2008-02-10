@@ -142,6 +142,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * our grub-gfxboot packages support ext3 filesystems with 256 byte inodes
     now, drop the previously introduced hack for /etc/mke2fs.conf again.
   * adapt to new parameter usage of squashfs-tools 1:3.3-2.
+  * blacklist cron and anacron on the live cd.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -203,7 +204,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Kel Modderman <kel@otaku42.de>  Sun, 10 Feb 2008 22:35:22 +1000
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 10 Feb 2008 14:11:45 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
