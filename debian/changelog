@@ -204,7 +204,11 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * Make FLL_BOOT_OPTIONS apply to multi-arch builds
   * Fix openoffice-meta i18n
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 10 Feb 2008 14:11:45 +0100
+  [ Ferdinand Thommes ]
+  * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
+  * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
+
+ -- Ferdinand Thommes <devil@sidux.com>  Sun, 10 Feb 2008 18:30:14 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 

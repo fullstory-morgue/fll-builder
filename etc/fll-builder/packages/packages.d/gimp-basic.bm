@@ -1,5 +1,5 @@
 FLL_PACKAGES+=(
 	gimp
-	gimp-plugin-registry
+#	gimp-plugin-registry    #Depends: libglew1.4
 )
 

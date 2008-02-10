@@ -6,7 +6,7 @@ FLL_PACKAGE_DEPMODS=(
 	devel-eclipse-environment
 	devel-mono
 	devel-qt3
-	devel-qt4
+#	devel-qt4			#cmake
 	devel-web
 	distro
 	distro-kde
@@ -41,7 +41,7 @@ FLL_PACKAGES=(
 	atlantik
 	audacious
 	audacious-plugins
-	audacious-plugins-extra		# libbinio1c2
+#	audacious-plugins-extra		# libbinio1c2  libprojectm1
 	audacity
 	bazaar
 	bittorrent
@@ -58,7 +58,7 @@ FLL_PACKAGES=(
 	clamav
 	clamav-freshclam
 	claws-mail
-#	claws-mail-extra-plugins
+	claws-mail-extra-plugins
 	conky
 	cvs
 	dcraw
@@ -81,7 +81,7 @@ FLL_PACKAGES=(
 	enigmail
 	epiphany
 	etherwake
-#	evolution		# libpisync0
+	evolution		# libpisync0
 	fakechroot
 	fetchmail
 	fetchmailconf
@@ -174,7 +174,7 @@ FLL_PACKAGES=(
 	kino
 	kio-apt
 	kiosktool
-	kipi-plugins
+#	kipi-plugins			#Depends: libkexiv2-3
 	kitty
 #	klamav				# libclamav2
 	klash
@@ -273,13 +273,11 @@ FLL_PACKAGES=(
 	subversion
 	subversion-tools
 	svn-buildpackage
-#	sylpheed
-#	sylpheed-i18n
 	tipa
 	tipa-doc
 	transcriber
 	tuxpaint
-	ufraw
+#	ufraw			#libexiv2-0
         unison
 	unp
 	vcdimager
