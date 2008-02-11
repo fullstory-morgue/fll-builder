@@ -515,7 +515,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		else
 			# debian kernel, just apt-get it
 			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS} \
-				squashfs-modules-${KVERS} unionfs-modules-${KVERS} aufs-modules-${KVERS}
+				squashfs-modules-${KVERS} aufs-modules-${KVERS}
 		fi
 
 		header "Grabbing kernel and initramfs now"
