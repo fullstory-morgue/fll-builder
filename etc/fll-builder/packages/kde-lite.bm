@@ -16,7 +16,7 @@ FLL_PACKAGES=(
 	ark
 	gwenview
 	k3b
-	kaffeine
+#	kaffeine
 	kde-core
 	kdm
 	konversation

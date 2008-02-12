@@ -159,6 +159,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * remove accidentally added @timeout@ flag in menu.list.in
   * add text mode to the advanced grub menu
   * remove numlockx from xfce - on some laptops it enables numlock by on boot
+  * update release notes svg to display correctly on kde3/4
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -210,7 +211,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 11 Feb 2008 04:30:16 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 12 Feb 2008 13:53:07 +1100
 
 fll-builder (1.1.7) unstable; urgency=low
 
