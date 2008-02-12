@@ -160,6 +160,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * add text mode to the advanced grub menu
   * remove numlockx from xfce - on some laptops it enables numlock by on boot
   * update release notes svg to display correctly on kde3/4
+  * revert accidental commit of package templates
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -211,7 +212,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 12 Feb 2008 13:53:07 +1100
+ -- Bernard Gray <bernard.gray@gmail.com>  Tue, 12 Feb 2008 14:03:42 +1100
 
 fll-builder (1.1.7) unstable; urgency=low
 

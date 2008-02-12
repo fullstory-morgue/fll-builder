@@ -8,8 +8,8 @@ FLL_PACKAGES+=(
 	install-gui
 	install-usb-gui
 	install-meta
-#	libxine1-x
-#	libxine1-xvdr
+	libxine1-x
+	libxine1-xvdr
 	powersaved
 	sidux-browser
 	sidux-irc
