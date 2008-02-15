@@ -3,7 +3,3 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport-essential
 	utils-essential
 )
-
-FLL_PACKAGES=(
-	powernowd
-)
