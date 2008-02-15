@@ -33,6 +33,7 @@ hal
 hotkey-setup
 ifupdown
 initscripts
+irqbalance
 #klogd
 libc6
 lvm2
