@@ -3,6 +3,7 @@ FLL_PACKAGES+=(
 	alsa-base
 	br2684ctl
 	cpufrequtils
+	irqbalance
 	laptop-detect
 	lvm2
 	pcmciautils

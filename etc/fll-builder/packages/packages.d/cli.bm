@@ -5,6 +5,7 @@ FLL_PACKAGES+=(
 	mc
 	most
 	rcconf
+	screen
 	unp
 	vim
 )
