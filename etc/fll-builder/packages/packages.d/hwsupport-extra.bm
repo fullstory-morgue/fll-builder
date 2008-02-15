@@ -12,6 +12,8 @@ FLL_PACKAGES+=(
 )
 
 if [[ ${FLL_BUILD_ARCH[${arch}]} == i386 ]]; then
-	FLL_PACKAGES+=( libc6-i686 )
+	FLL_PACKAGES+=(
+		libc6-i686
+	)
 fi
 
