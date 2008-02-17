@@ -145,6 +145,8 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * blacklist cron and anacron on the live cd.
   * don't bother about unionfs-modules-${KVERS} (this will need fallback/
     error handling).
+  * allow linux-image-2.6-sidux-${arch} to pull in recommends
+    (linux-headers-2.6-sidux-${arch}).
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -212,7 +214,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Bernard Gray <bernard.gray@gmail.com>  Tue, 12 Feb 2008 14:03:42 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Feb 2008 14:05:07 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
