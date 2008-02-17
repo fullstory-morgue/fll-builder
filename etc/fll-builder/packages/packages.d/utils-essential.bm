@@ -13,6 +13,7 @@ FLL_PACKAGES+=(
 	iptables
 	iputils-ping
 	less
+	lilo
 	locales
 	logrotate
 	netbase
