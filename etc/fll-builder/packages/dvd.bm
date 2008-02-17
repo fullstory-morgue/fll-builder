@@ -294,7 +294,6 @@ FLL_PACKAGES=(
  	xfonts-tipa
 	xine-ui
 	xpaint
-	xsane
 	zsh
 )
 

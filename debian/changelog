@@ -102,6 +102,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
       + split out no longer existing "mono" into packages.d/.
       + add eclipse.
       + update installable packages
+      + don't list xsane, it's already pulled in by distro-tools-x.
     - hwsupport-essential:
       + add br2684ctl, it's no longer a hard dependency of configure-dsl.
     - hwsupport-extra:
@@ -214,7 +215,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Feb 2008 14:05:07 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Feb 2008 14:17:28 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
