@@ -528,15 +528,16 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 					exit 1
 				}
 
-				kvers=$(basename ${dir})
+				KVERS=$(basename ${dir})
 				
 				KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
-					  --eregex ".+-modules?-${kvers}$" \
+					  --eregex ".+-modules?-${KVERS}$" \
 					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
 				chroot_exec apt-get --assume-yes install ${KMODS[@]}
 
-				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${kvers}" "${FLL_BUILD_RESULT}/boot/"
-				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${kvers}" "${FLL_BUILD_RESULT}/boot/"
+				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
+				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
+				break
 			done
 		fi
 
