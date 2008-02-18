@@ -518,6 +518,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 			cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 		else
+			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS}
+			
 			# grep for available kernel modules
 			for dir in "${FLL_BUILD_CHROOT}"/lib/modules/*; do
 				[[ -d ${dir} ]] || {
@@ -525,16 +527,15 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 					exit 1
 				}
 
-				METAKVERS=${KVERS}
 				# substitute KVERS with actual version string
 				KVERS=$(basename ${dir})
 				
 				KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
 					  --eregex ".+-modules?-${KVERS}$" \
 					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
-				chroot_exec apt-get --assume-yes install linux-image-${METAKVERS} \
-					linux-headers-${METAKVERS} ${KMODS[@]}
+				chroot_exec apt-get --assume-yes install ${KMODS[@]}
 
+				chroot_exec update-initramfs -u -k ${KVERS}
 				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 				break
