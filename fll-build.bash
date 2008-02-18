@@ -396,7 +396,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				zip -T kernel-"${KVERS}".zip
 				unzip kernel-"${KVERS}".zip
 			popd &>/dev/null
-		elif [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+\.[0-9]+(\.?[0-9]*-.*)' ]]; then
+		elif [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+(\.[0-9]+)?(\.?[0-9]*-.*)?' ]]; then
 			KVERS="${FLL_BUILD_LINUX_KERNEL[${arch}]}"
 			unset FLL_BUILD_LINUX_KERNELDIR
 		else
@@ -512,17 +512,34 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				"${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/Documentation"
 
 			nuke "${FLL_BUILD_LINUX_KERNELDIR}"
+		
+			header "Grabbing kernel and initramfs now"
+			# grab kernel and initial ramdisk before other packages are installed
+			mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
+			cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 		else
 			# debian kernel, just apt-get it
-			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS} \
-				squashfs-modules-${KVERS} aufs-modules-${KVERS}
+			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS}
+			
+			# grep for available kernel modules
+			for dir in "${FLL_BUILD_CHROOT}"/lib/modules/*; do
+				[[ -d ${dir} ]] || {
+					echo "E: error detecting installed linux-image"
+					exit 1
+				}
+
+				kvers=$(basename ${dir})
+				
+				KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
+					  --eregex .+-modules?-${kvers} \
+					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
+				chroot_exec apt-get --assume-yes install ${KMODS[@]}
+
+				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${kvers}" "${FLL_BUILD_RESULT}/boot/"
+				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${kvers}" "${FLL_BUILD_RESULT}/boot/"
+			done
 		fi
 
-		header "Grabbing kernel and initramfs now"
-		# grab kernel and initial ramdisk before other packages are installed
-		mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
-		cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
-		
 		#################################################################
 		#		mass package installation			#
 		#################################################################
