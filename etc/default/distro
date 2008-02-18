@@ -31,7 +31,7 @@ FLL_LIVE_USER_GROUPS="dialout dip fuse cdrom sudo audio video plugdev users flop
 FLL_DISTRO_MODE=$([ -d "$FLL_MOUNTPOINT" ] && echo live || echo installed)
 
 # where is the default X wallpaper located
-FLL_WALLPAPER="/usr/share/wallpapers/sidux-eros-1600x1200.png"
+FLL_WALLPAPER="/usr/share/wallpapers/sidux-nyx-1600x1200.png"
 
 # specify some settings for IRC support
 FLL_IRC_SERVER="irc.oftc.net"

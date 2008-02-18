@@ -164,6 +164,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * remove numlockx from xfce - on some laptops it enables numlock by on boot
   * update release notes svg to display correctly on kde3/4
   * revert accidental commit of package templates
+  * update package lists and distro defaults for nyx art
 
   [ Horst Tritremmel ]
   * kde-edu.bm updated
@@ -215,7 +216,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sun, 17 Feb 2008 14:17:28 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Mon, 18 Feb 2008 21:31:31 +1100
 
 fll-builder (1.1.7) unstable; urgency=low
 

@@ -5,7 +5,7 @@ FLL_PACKAGES+=(
 	gfxboot-theme-sidux
 	grub-gfxboot
 	sidux-art-wallpaper
-	sidux-art-wallpaper-eros
+	sidux-art-wallpaper-nyx
 	sidux-keyrings
 	sidux-scripts
 	udev-config-sidux

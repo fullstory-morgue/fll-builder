@@ -1,6 +1,6 @@
 FLL_PACKAGES+=(
 	desktop-defaults-kde
 	sidux-art-kde
-	sidux-art-kde-eros
+	sidux-art-kde-nyx
 )
 
