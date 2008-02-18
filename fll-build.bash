@@ -535,7 +535,8 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
 				chroot_exec apt-get --assume-yes install ${KMODS[@]}
 
-				chroot_exec update-initramfs -u -k ${KVERS}
+				chroot_exec update-initramfs -d -k ${KVERS}
+				chroot_exec update-initramfs -v -c -k ${KVERS}
 				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 				break
