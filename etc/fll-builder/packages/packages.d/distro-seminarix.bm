@@ -1,5 +1,4 @@
 FLL_PACKAGES+=(
-	apt-conf-sidux
 	desktop-defaults-common
 	fll-live-initscripts
 	gfxboot-theme-sidux
