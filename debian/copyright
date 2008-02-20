@@ -5,20 +5,20 @@ The original source can always be found at:
 	http://developer.berlios.de/projects/fullstory
 
 Copyright:
-	(C) 2006-2007 F.U.L.L.S.T.O.R.Y Project
-	(C) 2006 - 2007 Kel Modderman <kel@otaku42.de>
-	(C) 2006-2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
+	© 2006-2007 F.U.L.L.S.T.O.R.Y Project
+	© 2006 - 2007 Kel Modderman <kel@otaku42.de>
+	© 2006-2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
 
 Some code and ideas taken from the debian-live project; live-package.
 Copyright:
-	(C) 2006-2007 Daniel Baumann <daniel@debian.org>
-	(C) 2006-2007 Marco Amadori <marco.amadori@gmail.com>
+	© 2006-2007 Daniel Baumann <daniel@debian.org>
+	© 2006-2007 Marco Amadori <marco.amadori@gmail.com>
 License: GPL
 http://debian-live.alioth.debian.org/
 
 ./etc/default/distro is covered by the BSD license.
 Copyright:
-	(C) 2005-2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
+	© 2005-2007 Stefan Lippers-Hollmann <s.l-h@gmx.de>
 
 On Debian systems, the complete text of the BSD license can be found in
 `/usr/share/common-licenses/BSD'.
@@ -26,7 +26,7 @@ On Debian systems, the complete text of the BSD license can be found in
 The sidux manual, ./usr/share/fll-builder/templates/sidux/manual, is covered by
 the GNU/FDL license.
 Copyright:
-	(C) 2006-2007 sidux Foundation
+	© 2006-2007 sidux Foundation
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.2

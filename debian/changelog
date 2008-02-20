@@ -148,6 +148,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
     error handling).
   * allow linux-image-2.6-sidux-${arch} to pull in recommends
     (linux-headers-2.6-sidux-${arch}).
+  * appease lintian and write (C) as © in debian/copyright.
 
   [ Fabian Wuertz ]
   * kde-edu.bm -> seminarix.bm
@@ -216,7 +217,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 18 Feb 2008 21:31:31 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 20 Feb 2008 22:09:00 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
