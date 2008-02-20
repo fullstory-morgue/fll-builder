@@ -2,6 +2,7 @@ FLL_PACKAGES+=(
 	dmz-cursor-theme
 	fluxbox
 	fontconfig
+	fontconfig-config
 	libgl1-mesa-dri
 	menu
 	mesa-utils
@@ -18,7 +19,7 @@ FLL_PACKAGES+=(
 	xserver-xorg
 	xserver-xorg-input-all
 	xserver-xorg-video-all
-		xserver-xorg-video-radeonhd
+	xserver-xorg-video-radeonhd
 	xutils
 )
 
