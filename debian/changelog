@@ -1,6 +1,4 @@
-fll-builder (1.1.8) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.1.8) unstable; urgency=low
 
   [ Kel Modderman ]
   * Initial multi-arch support.
@@ -217,7 +215,7 @@ fll-builder (1.1.8) UNRELEASED; urgency=low
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
   * updated dvd.bm and gimp-basic, dvd builds fine muktiarch
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 20 Feb 2008 22:09:00 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 20 Feb 2008 23:21:28 +0100
 
 fll-builder (1.1.7) unstable; urgency=low
 
