@@ -375,30 +375,10 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		echo "${FLL_PACKAGES[@]}"
 
 		#################################################################
-		#		prepare kernel zip package			#
+		#		check kernel version				#
 		#################################################################
-		if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '.*kernel-(.*).zip$' ]]; then
-			KVERS=${BASH_REMATCH[1]}
-
-			header "Preparing ${FLL_BUILD_LINUX_KERNEL[${arch}]}..."
-
-			# stage temporary dir within chroot
-			FLL_BUILD_LINUX_KERNELDIR=$(mktemp -p ${FLL_BUILD_CHROOT} -d fll.kernel.XXXX)
-
-			if [[ -f ${FLL_BUILD_LINUX_KERNEL[${arch}]} ]]; then
-				cp -v "${FLL_BUILD_LINUX_KERNEL[${arch}]}" "${FLL_BUILD_LINUX_KERNELDIR}"
-			else
-				wget "${FLL_BUILD_LINUX_KERNEL[${arch}]}" \
-					-O "${FLL_BUILD_LINUX_KERNELDIR}"/kernel-"${KVERS}".zip
-			fi
-
-			pushd "${FLL_BUILD_LINUX_KERNELDIR}" &>/dev/null
-				zip -T kernel-"${KVERS}".zip
-				unzip kernel-"${KVERS}".zip
-			popd &>/dev/null
-		elif [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+(\.[0-9]+)?(\.?[0-9]*-.*)?' ]]; then
+		if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} =~ '^[0-9]+\.[0-9]+(\.[0-9]+)?(\.?[0-9]*-.*)?' ]]; then
 			KVERS="${FLL_BUILD_LINUX_KERNEL[${arch}]}"
-			unset FLL_BUILD_LINUX_KERNELDIR
 		else
 			if [[ ${FLL_BUILD_LINUX_KERNEL[${arch}]} ]]; then
 				echo "Unrecognised kernel package: ${FLL_BUILD_LINUX_KERNEL[${arch}]}"
@@ -496,50 +476,27 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		# ensure initrd is created by linux-image postinst hook
 		cat_file_to_chroot kernel_img_conf /etc/kernel-img.conf
 		
-		if [[ ${FLL_BUILD_LINUX_KERNELDIR} ]]; then
-			# install kernel via zip package from http://sidux.com/files/kernel/
-			chroot_install_debs_from_dir "${FLL_BUILD_LINUX_KERNELDIR}"
-
-			# link-up kernel headers/documentation
-			rm -vf "${FLL_BUILD_CHROOT}"/lib/modules/"${KVERS}"/{build,source}
-			ln -vs "linux-headers-${KVERS}" "${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}"
-			ln -vs "/usr/src/linux-${KVERS}" "${FLL_BUILD_CHROOT}/lib/modules/${KVERS}/build"
-			ln -vs "/usr/src/linux-${KVERS}" "${FLL_BUILD_CHROOT}/lib/modules/${KVERS}/source"
-			cp -vf "${FLL_BUILD_CHROOT}/boot/config-${KVERS}" \
-				"${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/.config"
-			rm -rf "${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/Documentation"
-			ln -vs "/usr/share/doc/linux-doc-${KVERS}/Documentation" \
-				"${FLL_BUILD_CHROOT}/usr/src/linux-${KVERS}/Documentation"
-
-			nuke "${FLL_BUILD_LINUX_KERNELDIR}"
+		KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
+				  --eregex ".+-modules-${KVERS}$" \
+				  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
+		chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS} ${KMODS[@]}
 		
-			header "Grabbing kernel and initramfs now"
-			# grab kernel and initial ramdisk before other packages are installed
+		# grep for available kernel modules
+		for dir in "${FLL_BUILD_CHROOT}"/lib/modules/*; do
+			[[ -d ${dir} ]] || {
+				echo "E: error detecting installed linux-image"
+				exit 1
+			}
+
+			# substitute KVERS with actual version string
+			KVERS=$(basename ${dir})
+			
+			chroot_exec update-initramfs -d -k ${KVERS}
+			chroot_exec update-initramfs -v -c -k ${KVERS}
 			mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
 			cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
-		else
-			KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
-					  --eregex ".+-modules-${KVERS}$" \
-					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
-			chroot_exec apt-get --assume-yes install linux-image-${KVERS} linux-headers-${KVERS} ${KMODS[@]}
-			
-			# grep for available kernel modules
-			for dir in "${FLL_BUILD_CHROOT}"/lib/modules/*; do
-				[[ -d ${dir} ]] || {
-					echo "E: error detecting installed linux-image"
-					exit 1
-				}
-
-				# substitute KVERS with actual version string
-				KVERS=$(basename ${dir})
-				
-				chroot_exec update-initramfs -d -k ${KVERS}
-				chroot_exec update-initramfs -v -c -k ${KVERS}
-				mv -v "${FLL_BUILD_CHROOT}/boot/initrd.img-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
-				cp -v "${FLL_BUILD_CHROOT}/boot/vmlinuz-${KVERS}" "${FLL_BUILD_RESULT}/boot/"
-				break
-			done
-		fi
+			break
+		done
 
 		#################################################################
 		#		mass package installation			#
