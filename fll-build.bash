@@ -531,7 +531,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				KVERS=$(basename ${dir})
 				
 				KMODS=( $(grep-aptavail --no-field-names --show-field=Package --field=Package \
-					  --eregex ".+-modules?-${KVERS}$" \
+					  --eregex ".+-modules-${KVERS}$" \
 					  "${FLL_BUILD_CHROOT}"/var/lib/apt/lists/*_Packages 2>/dev/null) )
 				chroot_exec apt-get --assume-yes install ${KMODS[@]}
 
