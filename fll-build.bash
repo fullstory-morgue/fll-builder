@@ -576,40 +576,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 				chroot_exec apt-get --assume-yes install ${FLL_PACKAGES_EXTRA[@]}
 			fi
 		fi
-
-		if exists_in_chroot /usr/bin/fll_src_uri && [[ ${FLL_SOURCE_RELEASE} -ge 1 ]]; then
-			header "Creating source URI list and package manifest..."
-
-			FLL_BUILD_SOURCES=$(mktemp -p ${FLL_BUILD_CHROOT} fll.sources.XXXX)
-			FLL_BUILD_MANIFEST=$(mktemp -p ${FLL_BUILD_CHROOT} fll.manifest.XXXX)
-
-			chroot_exec apt-get --assume-yes install libapt-pkg-perl
-			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
-
-			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
-			else
-				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.manifest"
-			fi
-		
-			# fix source URI's to use non cached address
-			if [[ ${FLL_BUILD_DEBIANMIRROR_CACHED} && ${FLL_BUILD_DEBIANMIRROR} ]]; then
-				sed -i 's#'"${FLL_BUILD_DEBIANMIRROR_CACHED}"'#'"${FLL_BUILD_DEBIANMIRROR}"'#' \
-					"${FLL_BUILD_SOURCES}"
-			fi
-
-			for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
-				[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]} && ${FLL_BUILD_EXTRAMIRROR[${i}]} ]] || continue
-				sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]}"'#'"${FLL_BUILD_EXTRAMIRROR[${i}]}"'#' \
-					"${FLL_BUILD_SOURCES}"
-			done
-
-			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
-				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
-			else
-				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.sources"
-			fi
-		fi
 		
 		#################################################################
 		# 		init blacklist generation			#
@@ -700,11 +666,46 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" "${FLL_BUILD_CHROOT}/etc/adduser.conf"
 		fi
 
+		if exists_in_chroot /usr/bin/fll_src_uri && [[ ${FLL_SOURCE_RELEASE} -ge 1 ]]; then
+			header "Creating source URI list and package manifest..."
+
+			FLL_BUILD_SOURCES=$(mktemp -p ${FLL_BUILD_CHROOT} fll.sources.XXXX)
+			FLL_BUILD_MANIFEST=$(mktemp -p ${FLL_BUILD_CHROOT} fll.manifest.XXXX)
+
+			chroot_exec apt-get --assume-yes install libapt-pkg-perl
+			chroot_exec dpkg --purge cdebootstrap-helper-diverts	# it's only shipped in binary as part of cdebootstrap
+			chroot_exec /usr/bin/fll_src_uri --sources "/${FLL_BUILD_SOURCES##*/}" --manifest "/${FLL_BUILD_MANIFEST##*/}"
+
+			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
+			else
+				mv -v "${FLL_BUILD_MANIFEST}" "${FLL_BUILD_ISO_DIR}/${FLL_ISO_NAME}.manifest"
+			fi
+		
+			# fix source URI's to use non cached address
+			if [[ ${FLL_BUILD_DEBIANMIRROR_CACHED} && ${FLL_BUILD_DEBIANMIRROR} ]]; then
+				sed -i 's#'"${FLL_BUILD_DEBIANMIRROR_CACHED}"'#'"${FLL_BUILD_DEBIANMIRROR}"'#' \
+					"${FLL_BUILD_SOURCES}"
+			fi
+
+			for i in ${!FLL_BUILD_EXTRAMIRROR_CACHED[@]}; do
+				[[ ${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]} && ${FLL_BUILD_EXTRAMIRROR[${i}]} ]] || continue
+				sed -i 's#'"${FLL_BUILD_EXTRAMIRROR_CACHED[${i}]}"'#'"${FLL_BUILD_EXTRAMIRROR[${i}]}"'#' \
+					"${FLL_BUILD_SOURCES}"
+			done
+
+			if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
+				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
+			else
+				mv -v "${FLL_BUILD_SOURCES}" "${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.sources"
+			fi
+		fi
+
 		#################################################################
 		#		cleanup & prepare final chroot			#
 		#################################################################
 		header "Cleaning up..."
-		chroot_exec dpkg --purge fll-live-initramfs cdebootstrap-helper-diverts
+		chroot_exec dpkg --purge fll-live-initramfs
 
 		# remove used hacks and patches
 		remove_from_chroot /etc/kernel-img.conf
