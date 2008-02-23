@@ -1,7 +1,7 @@
 FLL_PACKAGES+=(
 	desktop-defaults-gnome
 	gksu
-	sidux-art-gnome-eros
+	sidux-art-gnome
 	siduxcc-common
 )
 

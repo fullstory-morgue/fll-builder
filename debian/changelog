@@ -9,6 +9,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - do not explicitly depend on a specific version of our artwork, that's
       the task of our meta packages.
   * generate updated PNG icons for the release notes.
+  * switch sidux-art-gnome-eros to proper metapackages.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -19,7 +20,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * make release-notes.svg kde3/4 compatible
   * export to 48x48 px for release-notes.png
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 23 Feb 2008 21:25:14 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 23 Feb 2008 21:28:36 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

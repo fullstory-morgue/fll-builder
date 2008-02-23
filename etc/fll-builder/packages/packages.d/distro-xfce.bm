@@ -1,4 +1,4 @@
 FLL_PACKAGES+=(
 	desktop-defaults-xfce
-	sidux-art-gnome-eros
+	sidux-art-gnome
 )
