@@ -1,4 +1,5 @@
 FLL_PACKAGES+=(
+	apt-conf-sidux
 	desktop-defaults-common
 	fll-live-initscripts
 	gfxboot-theme-sidux
@@ -7,6 +8,6 @@ FLL_PACKAGES+=(
 	sidux-keyrings
 	sidux-scripts
 	udev-config-sidux
-	sidux-art-wallpaper-eros-edu
+	sidux-art-wallpaper-nyx-edu
 )
 

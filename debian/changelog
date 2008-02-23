@@ -20,7 +20,10 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * make release-notes.svg kde3/4 compatible
   * export to 48x48 px for release-notes.png
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 23 Feb 2008 21:28:36 +0100
+  [ Ferdinand Thommes ]
+  * adapted distro-seminarix.bm for nyx
+
+ -- Ferdinand Thommes <devil@sidux.com>  Sat, 23 Feb 2008 23:19:26 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
