@@ -1,10 +1,16 @@
 fll-builder (1.1.9) UNRELEASED; urgency=low
 
+  [ Stefan Lippers-Hollmann ]
   * NOT RELEASED YET
   * take care of cdebootstrap-helper-diverts.
   * there are no kernel-*.zip packages anymore.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Fri, 22 Feb 2008 23:25:33 +0100
+  [ Kel Modderman ]
+  * Revamp method of querying source package URIs, also including logic to
+    detect URI of $module-source packages.
+  * Make package manifest file with grep-dctrl, it is much easier this way.
+
+ -- Kel Modderman <kel@otaku42.de>  Sat, 23 Feb 2008 13:09:38 +1000
 
 fll-builder (1.1.8) unstable; urgency=low
 
