@@ -258,7 +258,6 @@ FLL_PACKAGES=(
 	screenkast
 	scribus-ng
 	sendemail
-	sidux-art-kde-tartaros
 	siduxcc
 	sidux-kernelhacking
 	sidux-manual
