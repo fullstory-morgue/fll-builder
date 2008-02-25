@@ -623,8 +623,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" "${FLL_BUILD_CHROOT}/etc/adduser.conf"
 		fi
 
-		chroot_exec dpkg --purge cdebootstrap-helper-diverts	# it's only shipped in binary as part of cdebootstrap
-
 		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
 			FLL_BUILD_MANIFEST="${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
 			FLL_BUILD_SOURCES="${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.sources"
@@ -671,7 +669,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		#		cleanup & prepare final chroot			#
 		#################################################################
 		header "Cleaning up..."
-		chroot_exec dpkg --purge fll-live-initramfs
+		chroot_exec dpkg --purge fll-live-initramfs cdebootstrap-helper-rc.d
 
 		# remove used hacks and patches
 		remove_from_chroot /etc/kernel-img.conf

@@ -15,6 +15,8 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * Revamp method of querying source package URIs, also including logic to
     detect URI of $module-source packages.
   * Make package manifest file with grep-dctrl, it is much easier this way.
+  * Purge cdebootstrap-helper-rc.d, cdebootstrap-helper-diverts seems dead in
+    the water with new versions of cdebootstrap.
 
   [ Bernard Gray ]
   * make release-notes.svg kde3/4 compatible
@@ -23,7 +25,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   [ Ferdinand Thommes ]
   * adapted distro-seminarix.bm for nyx
 
- -- Ferdinand Thommes <devil@sidux.com>  Sat, 23 Feb 2008 23:19:26 +0100
+ -- Kel Modderman <kel@otaku42.de>  Mon, 25 Feb 2008 11:29:18 +1000
 
 fll-builder (1.1.8) unstable; urgency=low
 
