@@ -10,6 +10,8 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
       the task of our meta packages.
   * generate updated PNG icons for the release notes.
   * switch sidux-art-gnome-eros to proper metapackages.
+  * shut up selinux by creating an empty /selinux, if it doesn't already
+    exist.
   * add Daniel-S-P to the credit section.
 
   [ Kel Modderman ]
@@ -29,7 +31,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * update release notes css and logo for nyx
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 25 Feb 2008 19:11:56 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 25 Feb 2008 19:15:33 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

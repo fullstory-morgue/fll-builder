@@ -684,6 +684,9 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		cat_file_to_chroot hostname	/etc/hostname
 		cat_file_to_chroot apt_sources	/etc/apt/sources.list
 
+		# shut up selinux
+		mkdir -p "${FLL_BUILD_CHROOT}/selinux"
+
 		# /root/ should be restricted
 		chmod 0751 "${FLL_BUILD_CHROOT}/root"
 		
