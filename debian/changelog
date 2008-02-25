@@ -31,7 +31,10 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * update release notes css and logo for nyx
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 25 Feb 2008 19:15:33 +0100
+  [ Joaquim Boura ]
+  * add David Creedy (klaymen) to credits
+
+ -- Joaquim Boura <x-un-i@sidux.com>  Mon, 25 Feb 2008 22:06:50 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
