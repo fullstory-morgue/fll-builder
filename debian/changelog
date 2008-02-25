@@ -10,6 +10,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
       the task of our meta packages.
   * generate updated PNG icons for the release notes.
   * switch sidux-art-gnome-eros to proper metapackages.
+  * add Daniel-S-P to the credit section.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -26,9 +27,9 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * adapted distro-seminarix.bm for nyx
 
   [ Bernard Gray ]
-  * update release notes css and logo for nyx 
+  * update release notes css and logo for nyx
 
- -- Bernard Gray <bernard.gray@gmail.com>  Mon, 25 Feb 2008 17:21:55 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Mon, 25 Feb 2008 19:11:56 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
