@@ -33,16 +33,20 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   [ Bernard Gray ]
   * make release-notes.svg kde3/4 compatible
   * export to 48x48 px for release-notes.png
+  * update release notes css and logo for nyx
 
   [ Ferdinand Thommes ]
   * adapted distro-seminarix.bm for nyx
 
-  [ Bernard Gray ]
-  * update release notes css and logo for nyx
-
   [ Joaquim Boura ]
   * add David Creedy (klaymen) to credits
   * added ttf-mona for minimal font support for japanese
+
+  [ Niall Walsh ]
+  * fll-builder: release notes css, add a common css and strip back screen and
+    print to just their unique rules.  make print.css black and white and only
+    fill in urls for class="printurl" links. set {page-break-inside: avoid} on
+    .divider not p (though it probably only works in opera).
 
  -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 21:40:04 +0100
 
