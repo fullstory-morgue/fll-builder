@@ -22,6 +22,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - small layout corrections.
     - sync future release dates with reality.
     - increase vertical indenture for <h3> to <h4>.
+    - allow CSS to be parsed as strict XML again.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -48,7 +49,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     fill in urls for class="printurl" links. set {page-break-inside: avoid} on
     .divider not p (though it probably only works in opera).
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 21:40:04 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 23:15:22 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

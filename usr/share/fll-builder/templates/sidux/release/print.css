@@ -1,3 +1,4 @@
+/* <![CDATA[ */
 body {
 	background: transparent;
 	color:#000000;
@@ -39,3 +40,4 @@ a:link, a:visited {
 	content: " (" attr(href) ") ";
 	font-size:90%;
 }
+/* ]]> */
