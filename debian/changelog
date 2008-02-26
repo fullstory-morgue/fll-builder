@@ -20,6 +20,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - increase top margin for <pre> boxes within lists.
     - there is no dedicated kernel directory anymore.
     - small layout corrections.
+    - sync future release dates with reality.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -41,7 +42,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   [ Joaquim Boura ]
   * add David Creedy (klaymen) to credits
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 18:27:05 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 18:35:53 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
