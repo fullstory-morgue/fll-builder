@@ -1,141 +1,147 @@
-/*<![CDATA[*/
-BODY, HTML, DIV
-{
-	margin: 0px;
-	padding: 0px;
+/* <![CDATA[ */
+
+body, html, div {
+	margin:0px;
+	padding:0px;
 }
-BODY
-{
-	font-family: "dejavu serif", "times new roman", serif;
-	font-size: 100%;
-	background: #FFFEFC;
-	color: #172B4F;
+
+body {
+	font-family:"dejavu serif", "times new roman", serif;
+	font-size:100%;
+	background:#fffefc;
+	color:#172B4f;
 }
-#main-page
-{
-	padding: 10px 20px;
-	margin-left: 165px;
-	z-index: 2;
+
+#main-page {
+	padding:10px 20px;
+	margin-left:165px;
+	z-index:2;
 }
-P
-{
-	margin-top: 0px;
+
+p {
+	margin-top:0px;
 }
-#main-page UL
-{
-	margin: 0em 0em 1em;
-	padding: 0px;
+
+#main-page ul {
+	margin:0em 0em 1em 0em;
+	padding:0px;
 }
-#main-page LI
-{
-	margin: 0em 0em 0.5em 1.5em;
-	padding: 0px;
+
+#main-page li {
+	margin:0em 0em .5em 1.5em;
+	padding:0px;
 }
-H1, H2, H3, H4, H5, H6
-{
-	font-weight: bold;
-	font-family: "dejavu sans", arial, sans-serif;
-	margin-top: 0px;
-	/*this must be 0 to fix a firefox css issue with this layout*/
-	margin-bottom: 0.1em;
-	color: #1F2051;
-	padding: 0.2em;
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:bold;
+	font-family:"dejavu sans", arial, sans-serif;
+	margin-top:0px;	/* this must be 0 to fix a firefox css issue with this layout */
+	margin-bottom:.1em;
+	color:#1f2051;
+	padding:.2em;
 }
-H1
-{
-	font-size: 150%;
-	background: #F7F7F7;
-	margin-bottom: 1em;
+
+h1 {
+	font-size:150%;
+	background:#f7f7f7;
+	margin-bottom:1em;
 }
-H2
-{
-	border-width: 1px 0px 0px;
-	border-style: solid;
-	border-color: #FFFFFF #040A2F #040A2F;
-	font-size: 125%;
-	background: #F7F7F7;
-	margin-bottom: 1em;
+
+h2 {
+	border-width:1px 0px 0px 0px;
+	border-style:solid;
+	border-color:#040a2f;
+	font-size:125%;
+	background:#f7f7f7;
+	margin-bottom:1em;
 }
-H3
-{
-	font-size: 115%;
+
+h3 {
+	font-size:115%;
 }
-H4
-{
-	font-size: 100%;
+
+h4 {
+	font-size:100%;
 }
-H5
-{
-	font-size: 100%;
+
+h5 {
+	font-size:100%;
 }
-H6
-{
-	font-size: 100%;
+
+h6 {
+	font-size:100%;
 }
-IMG
-{
-	border: none;
+
+img {
+	border:none;
 }
-.divider
-{
-	margin-bottom: 1em;
-	padding-bottom: 1em;
+
+.divider {
+	margin-bottom:1em;
+	padding-bottom:1em;
 }
-PRE
-{
-	color: #000000;
-	background: #FDFFD3;
-	border-width: 1px;
-	border-style: solid;
-	border-color: #888888;
-	font-family: dejavu, "Lucida Console", monospace;
-	font-size: 85%;
-	width: 95%;
-	margin: 0 auto 1em;
-	padding: 6px;
-	text-align: left;
-	overflow: auto;
+
+pre {
+	color:#000000;
+	background:#fdffd3;
+	border-width:1px;
+	border-style:solid;
+	border-color:#888888;
+	font-family:"dejavu", "Lucida Console", monospace;
+	font-size:85%;
+	width:95%;
+	margin:0 auto 1em auto;
+	padding:6px;
+	text-align:left;
+	overflow:auto;
 }
-#menu
-{
-	top: 0px;
-	left: 0px;
-	position: fixed;
-	float: left;
-	height: 100%;
-	background-color: #394D73;
-	width: 164px;
-	font-family: "dejavu sans", arial, sans-serif;
-	font-size: 105%;
+
+#menu {
+	top:0px;
+	left:0px;
+	position:fixed;
+	float:left;
+	height:100%;
+	background-color:#394d73;
+	width:172px;
+	font-family:"dejavu sans", arial, sans-serif;
+	font-size:105%;
 }
-#menu .menubutton
-{
-	background-color: #8B8B8B;
-	padding: 2%;
-	border-width: 1px 2px 1px 1px;
-	border-style: solid;
-	border-color: #C2C3C9;
-	font-size: 90%;
-	font-weight: bold;
-	width: 162px;
+
+#menu .menubutton {
+	background-color:#8b8b8b;
+	padding:2%;
+	border-width:1px 2px 1px 1px;
+	border-style:solid;
+	border-color:#c2c3c9;
+	font-size:90%;
+	font-weight:bold;
+	width:162px;
 }
-#menu A
-{
-	color: #FFFFFF;
-	text-decoration: none;
-	display: block;
+
+#menu a {
+	color:#ffffff;
+	text-decoration:none;
+	display:block;
 }
-#menu UL
-{
-	margin: 3px 0px;
-	padding: 0px 5px 0px 20px;
-	list-style-type: disc;
+
+#menu ul {
+	margin:3px 0px;
+	padding:0px 5px 0px 20px;
+	list-style-type:disc;
+	color:#f9f9f9;
 }
-#menu LI A
-{
-	font-size: 70%;
-	line-height: 1.1em;
-	color: #F9F9F9;
-	text-decoration: none;
+
+#menu li a {
+	font-size:70%;
+	line-height:1.1em;
+	color:#f9f9f9;
+	text-decoration:none;
 }
-/*]]>*/
+
+#menu img {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+/* ]]> */
