@@ -21,6 +21,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - there is no dedicated kernel directory anymore.
     - small layout corrections.
     - sync future release dates with reality.
+    - increase vertical indenture for <h3> to <h6>.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -43,7 +44,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * add David Creedy (klaymen) to credits
   * added ttf-mona for minimal font support for japanese
 
- -- Joaquim Boura <x-un-i@sidux.com>  Tue, 26 Feb 2008 19:09:14 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 21:37:57 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
