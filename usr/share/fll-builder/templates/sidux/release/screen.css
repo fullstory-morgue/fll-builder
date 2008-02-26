@@ -131,13 +131,14 @@ pre {
 }
 
 #menu ul {
-	margin:3px 0px;
+	margin:8px 0px;
 	padding:0px 5px 0px 20px;
 	list-style-type:disc;
 	color:#f9f9f9;
 }
 
 #menu li a {
+	margin:0.3em 0.3em;
 	font-size:70%;
 	line-height:1.1em;
 	color:#f9f9f9;
