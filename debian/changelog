@@ -41,8 +41,9 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
 
   [ Joaquim Boura ]
   * add David Creedy (klaymen) to credits
+  * added ttf-mona for minimal font support for japanese
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 18:35:53 +0100
+ -- Joaquim Boura <x-un-i@sidux.com>  Tue, 26 Feb 2008 19:09:14 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
