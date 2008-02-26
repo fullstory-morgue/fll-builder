@@ -1,5 +1,6 @@
 body {
 	background: transparent;
+	color:#000000;
 	font-size: 12pt;
 }
 
@@ -17,8 +18,14 @@ body {
 	list-style-position: inside;
 }
 
-p {
+.divider {
 	page-break-inside:avoid;
+}
+
+pre {
+	overflow: visible;
+	background:#ffffff;
+	border-color:#000000;
 }
 
 a:link, a:visited {
@@ -28,7 +35,7 @@ a:link, a:visited {
 	text-decoration: none;
 }
 
-#main-page a:link:after, #main-page a:visited:after {
+#main-page a.printurl:link:after, #main-page a.printurl:visited:after {
 	content: " (" attr(href) ") ";
 	font-size:90%;
 }

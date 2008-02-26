@@ -1,0 +1,101 @@
+body, html, div {
+	margin:0px;
+	padding:0px;
+}
+
+body {
+	font-family:"dejavu serif", "times new roman", serif;
+	font-size:100%;
+}
+
+p {
+	margin-top:0px;
+}
+
+p {
+	margin-top:0px;
+}
+
+#main-page ul {
+	margin:0em 0em 1em 0em;
+	padding:0px;
+}
+
+#main-page li {
+	margin:0em 0em .5em 1.5em;
+	padding:0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight:bold;
+	font-family:"dejavu sans", arial, sans-serif;
+	margin-top:0px;	/* this must be 0 to fix a firefox css issue with this layout */
+	margin-bottom:.1em;
+	padding:.2em;
+}
+
+h1 {
+	font-size:150%;
+	margin-bottom:1em;
+}
+
+h2 {
+	border-width:1px 0px 0px 0px;
+	border-style:solid;
+	font-size:125%;
+	margin-bottom:1em;
+}
+
+h3 {
+	margin-top:1em;
+	margin-bottom:0.5em;
+	font-size:115%;
+}
+
+h4 {
+	margin-top:0.75em;
+	margin-bottom:0.25em;
+	font-size:100%;
+}
+
+h5 {
+	margin-top:0px;
+	margin-bottom:0px;
+	font-size:100%;
+	font-style:normal;
+	font-weight:bold;
+}
+
+h6 {
+	margin-top:0px;
+	margin-bottom:0px;
+	font-size:100%;
+	font-style:normal;
+	font-weight:normal;
+}
+
+img {
+	border:none;
+}
+
+li pre {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
+.divider {
+	margin-bottom:1em;
+	padding-bottom:1em;
+}
+
+pre {
+	border-width:1px;
+	border-style:solid;
+	font-family:"dejavu", "Lucida Console", monospace;
+	font-size:85%;
+	width:95%;
+	margin:0 auto 1em auto;
+	padding:6px;
+	text-align:left;
+}
+
