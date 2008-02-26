@@ -76,6 +76,11 @@ img {
 	border:none;
 }
 
+li pre {
+	margin-top:1em;
+	margin-bottom:1em;
+}
+
 .divider {
 	margin-bottom:1em;
 	padding-bottom:1em;
