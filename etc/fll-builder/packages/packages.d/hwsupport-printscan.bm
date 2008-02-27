@@ -11,7 +11,7 @@ FLL_PACKAGES+=(
 	foomatic-filters-ppds
 	hpijs-ppds
 	hplip
-	linuxprinting.org-ppds
+	openprinting-ppds
 	min12xxw
 	pnm2ppa
 	sane

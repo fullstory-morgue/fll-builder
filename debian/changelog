@@ -35,6 +35,8 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * make release-notes.svg kde3/4 compatible
   * export to 48x48 px for release-notes.png
   * update release notes css and logo for nyx
+  * openprinting-ppds replaces linuxprinting.org-ppds
+  	- beware, this is quite a large package @ ~17MB
 
   [ Ferdinand Thommes ]
   * adapted distro-seminarix.bm for nyx
@@ -49,7 +51,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     fill in urls for class="printurl" links. set {page-break-inside: avoid} on
     .divider not p (though it probably only works in opera).
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Tue, 26 Feb 2008 23:15:22 +0100
+ -- Bernard Gray <bernard.gray@gmail.com>  Wed, 27 Feb 2008 15:30:38 +1100
 
 fll-builder (1.1.8) unstable; urgency=low
 
