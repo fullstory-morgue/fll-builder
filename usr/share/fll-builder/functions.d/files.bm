@@ -25,15 +25,6 @@ cat_file_to_chroot() {
 # containing the actual deb/ deb-src stanzas for the desired suites and       #
 # repositories.                                                               #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
-#deb ${FLL_BUILD_DEBIANMIRROR} sid ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
-#deb-src ${FLL_BUILD_DEBIANMIRROR} sid ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
-
-#deb ${FLL_BUILD_DEBIANMIRROR} testing ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
-#deb-src ${FLL_BUILD_DEBIANMIRROR} testing ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
-
-#deb ${FLL_BUILD_DEBIANMIRROR} experimental ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
-#deb-src ${FLL_BUILD_DEBIANMIRROR} experimental ${FLL_BUILD_DEBIANMIRROR_COMPONENTS}
 EOF
 			# populate sources.list.d
 			rm -f "${DEST}.d/*"
