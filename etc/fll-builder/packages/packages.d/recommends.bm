@@ -1,4 +1,5 @@
 FLL_PACKAGES_RECOMMENDS=(
+	bash
 	kontact
 	siduxcc
 )
