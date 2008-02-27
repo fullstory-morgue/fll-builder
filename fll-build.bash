@@ -605,16 +605,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			wait
 		fi
 
-		# side effect of inhibiting xorg.conf creation by xserver-xorg.postinst
-		if installed_in_chroot xserver-xorg; then
-			if [[ ! -e "${FLL_BUILD_CHROOT}/etc/X11/X" ]] || [[ $(readlink "${FLL_BUILD_CHROOT}/etc/X11/X") == "/bin/true" ]]; then
-				header "Fixing /etc/X11/X symlink..."
-				remove_from_chroot /etc/X11/X
-				chroot_exec ln -vs /usr/bin/Xorg /etc/X11/X
-				echo "xserver-xorg shared/default-x-server select xserver-xorg" | chroot_exec debconf-set-selections
-			fi
-		fi
-
 		# disable system-wide readable home directories
 		if installed_in_chroot adduser; then
 			header "Configuring adduser..."
@@ -622,6 +612,7 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			# adduser.conf supersedes debconf preseeding...
 			sed -i "s/^\(DIR_MODE\=\)[0-9]*$/\10751/" "${FLL_BUILD_CHROOT}/etc/adduser.conf"
 		fi
+		chmod 0751 "${FLL_BUILD_CHROOT}/root"
 
 		if [[ ${#FLL_BUILD_ARCH[@]} -gt 1 ]]; then
 			FLL_BUILD_MANIFEST="${FLL_BUILD_ISO_DIR}"/"${FLL_ISO_NAME}.${FLL_BUILD_ARCH[${arch}]}.manifest"
@@ -683,12 +674,6 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 		cat_file_to_chroot hosts	/etc/hosts
 		cat_file_to_chroot hostname	/etc/hostname
 		cat_file_to_chroot apt_sources	/etc/apt/sources.list
-
-		# shut up selinux
-		mkdir -p "${FLL_BUILD_CHROOT}/selinux"
-
-		# /root/ should be restricted
-		chmod 0751 "${FLL_BUILD_CHROOT}/root"
 		
 		# add version marker
 		if [ "${FLL_DISTRO_CODENAME}" = "snapshot" ]; then

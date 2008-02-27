@@ -23,6 +23,9 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - sync future release dates with reality.
     - increase vertical indenture for <h3> to <h4>.
     - allow CSS to be parsed as strict XML again.
+  * XORG_CONFIG="custom" and manual symlink creation shouldn't be needed
+    anymore.
+  * move chmodding /root/ logically to setting adduser's defaults.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -51,7 +54,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     fill in urls for class="printurl" links. set {page-break-inside: avoid} on
     .divider not p (though it probably only works in opera).
 
- -- Bernard Gray <bernard.gray@gmail.com>  Wed, 27 Feb 2008 15:30:38 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 27 Feb 2008 10:27:51 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

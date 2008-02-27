@@ -6,7 +6,6 @@ chroot_exec() {
 		DEBIAN_FRONTEND=${DEBIAN_FRONTEND:="noninteractive"} \
 		DEBIAN_PRIORITY=${DEBIAN_PRIORITY:="critical"} \
 		DEBCONF_NOWARNINGS=${DEBCONF_NOWARNINGS:="yes"} \
-		XORG_CONFIG="custom" \
 		http_proxy="${http_proxy}" \
 		ftp_proxy="${ftp_proxy}" \
 		$@
