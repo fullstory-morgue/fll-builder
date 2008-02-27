@@ -13,10 +13,10 @@ cat_file_to_chroot() {
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 # The /etc/apt/sources.list.d/ directory provides a way to add sources.list
-# entries in seperate files that end with sources.list file.
+# entries in separate files that end with sources.list file.
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# Please use /etc/apt/sources.list.d/ instead and create a seperate *.list    #
+# Please use /etc/apt/sources.list.d/ instead and create a separate *.list    #
 # file for each server, like:                                                 #
 #      /etc/apt/sources.list.d/debian.list                                    #
 #      /etc/apt/sources.list.d/sidux.list                                     #
