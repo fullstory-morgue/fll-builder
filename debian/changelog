@@ -59,7 +59,10 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     fill in urls for class="printurl" links. set {page-break-inside: avoid} on
     .divider not p (though it probably only works in opera).
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 28 Feb 2008 01:22:04 +0100
+  [ Bernard Gray ]
+  * fix rel notes sidux logo background for retard browsers
+
+ -- Bernard Gray <bernard.gray@gmail.com>  Fri, 29 Feb 2008 09:13:51 +1100
 
 fll-builder (1.1.8) unstable; urgency=low
 
