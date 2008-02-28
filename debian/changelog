@@ -31,6 +31,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * fix typo, seperate --> separate.
   * remove deb/ deb-src stanzas from /etc/apt/sources.list, we're using
     /etc/apt/sources.list.d/*.list.
+  * remove additional mirrors from /etc/apt/sources.list as well.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -44,7 +45,6 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * export to 48x48 px for release-notes.png
   * update release notes css and logo for nyx
   * openprinting-ppds replaces linuxprinting.org-ppds
-  	- beware, this is quite a large package @ ~17MB
 
   [ Ferdinand Thommes ]
   * adapted distro-seminarix.bm for nyx
@@ -59,7 +59,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     fill in urls for class="printurl" links. set {page-break-inside: avoid} on
     .divider not p (though it probably only works in opera).
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 27 Feb 2008 13:38:38 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Thu, 28 Feb 2008 01:22:04 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

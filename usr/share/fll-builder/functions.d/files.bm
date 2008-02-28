@@ -43,14 +43,7 @@ EOF
 			fi
 
 			for i in ${!FLL_BUILD_EXTRAMIRROR[@]}; do
-				if [ -n "${FLL_BUILD_EXTRAMIRROR[${i}]}" ]; then
-					cat >> "${DEST}" \
-<<EOF
-
-#deb ${FLL_BUILD_EXTRAMIRROR[${i}]} ${FLL_BUILD_EXTRAMIRROR_SUITE[${i}]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[${i}]}
-#deb-src ${FLL_BUILD_EXTRAMIRROR[${i}]} ${FLL_BUILD_EXTRAMIRROR_SUITE[${i}]} ${FLL_BUILD_EXTRAMIRROR_COMPONENTS[${i}]}
-EOF
-					# populate sources.list.d
+					# populate /etc/apt/sources.list.d/
 					if [ -n "${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[${i}]}" ]; then
 						cat >> "${DEST}.d/${FLL_BUILD_EXTRAMIRROR_LABEL_SAFE[${i}]}.list" \
 <<EOF
