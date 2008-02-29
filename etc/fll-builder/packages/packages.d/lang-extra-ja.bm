@@ -1,4 +1,5 @@
 FLL_PACKAGES+=(
 	ttf-kochi-gothic
+	ttf-mona
 )
 

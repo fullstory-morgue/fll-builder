@@ -17,7 +17,6 @@ FLL_PACKAGES+=(
 	sidux-searchplugins
 	setpassword
 	tvtime
-	ttf-mona
 	xsane
 	zenity		# the hard dependency must die! ;)
 )
