@@ -8,6 +8,7 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport-extra
 	utils-essential
 	utils-extra
+	utils-x
 	xserver
 )
 

@@ -4,6 +4,7 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport-essential
 	utils-essential
 	utils-extra
+	utils-x
 )
 
 FLL_PACKAGES=(

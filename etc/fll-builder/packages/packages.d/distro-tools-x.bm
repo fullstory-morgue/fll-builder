@@ -2,29 +2,16 @@ FLL_PACKAGES+=(
 	configure-cups
 	fix-fonts
 	fll-live-xorgconfig
-	gparted
 	gprsconnect
-	hplip-gui
 	install-gui
 	install-usb-gui
 	install-meta
-	libxine1-x
-	libxine1-xvdr
-	powersaved
 	sidux-browser
 	sidux-irc
 	sidux-manual-en
 	sidux-searchplugins
 	setpassword
-	tvtime
-	xsane
 	zenity		# the hard dependency must die! ;)
 )
 
-if [[ ${FLL_BUILD_ARCH[${arch}]} == i386 ]]; then
-	FLL_PACKAGES+=(
-		virtualbox-ose-guest-utils
-		xserver-xorg-video-amd
-	)
-fi
 

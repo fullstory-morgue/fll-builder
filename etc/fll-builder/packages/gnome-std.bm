@@ -10,6 +10,7 @@ FLL_PACKAGE_DEPMODS=(
 	hwsupport-printscan
 	utils-essential
 	utils-extra
+	utils-x
 	xserver
 )
 

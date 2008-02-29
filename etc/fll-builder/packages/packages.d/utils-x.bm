@@ -1,0 +1,7 @@
+FLL_PACKAGES+=(
+	gparted
+	hplip-gui
+	libxine1-xvdr
+	tvtime
+	xsane
+)

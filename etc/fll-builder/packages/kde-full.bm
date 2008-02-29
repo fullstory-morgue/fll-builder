@@ -10,6 +10,7 @@ FLL_PACKAGE_DEPMODS=(
 	openoffice-lite
 	utils-essential
 	utils-extra
+	utils-x
 	xserver
 )
 

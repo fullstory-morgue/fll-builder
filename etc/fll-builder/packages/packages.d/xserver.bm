@@ -23,3 +23,10 @@ FLL_PACKAGES+=(
 	xutils
 )
 
+if [[ ${FLL_BUILD_ARCH[${arch}]} == i386 ]]; then
+	FLL_PACKAGES+=(
+		virtualbox-ose-guest-utils
+		xserver-xorg-video-amd
+	)
+fi
+

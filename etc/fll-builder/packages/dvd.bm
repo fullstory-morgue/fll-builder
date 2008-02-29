@@ -25,6 +25,7 @@ FLL_PACKAGE_DEPMODS=(
 	tex-latex
 	utils-essential
 	utils-extra
+	utils-x
 	webserver-lamp
 	wine-base
 	xserver
