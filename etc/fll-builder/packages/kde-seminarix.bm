@@ -68,7 +68,6 @@ FLL_PACKAGES=(
 	quanta
 	scribus
 	vym
-	xsane
 
 	###
 	#chemical
