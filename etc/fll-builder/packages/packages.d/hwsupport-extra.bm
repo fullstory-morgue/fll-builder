@@ -6,7 +6,6 @@ FLL_PACKAGES+=(
 	laptop-detect
 	libsmbios-bin
 	lirc
-	powersaved
 	vbetool
 )
 
