@@ -4,4 +4,5 @@ FLL_PACKAGES+=(
 	libxine1-xvdr
 	tvtime
 	xsane
+	zenity		# the hard dependency must die! ;)
 )
