@@ -1,6 +1,4 @@
-fll-builder (1.1.9) UNRELEASED; urgency=low
-
-  * NOT RELEASED YET
+fll-builder (1.1.9) unstable; urgency=low
 
   [ Stefan Lippers-Hollmann ]
   * take care of cdebootstrap-helper-diverts.
@@ -70,7 +68,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * fix rel notes sidux logo background for retard browsers
   * update cdrom.ico to new icon theme 
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Mar 2008 01:35:53 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Mar 2008 03:29:05 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 
