@@ -6,6 +6,5 @@ FLL_PACKAGE_DEPMODS=(
 )
 
 FLL_PACKAGES=(
-	powernowd
 	fll-live-xorgconfig
 )
