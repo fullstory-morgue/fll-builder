@@ -576,7 +576,18 @@ for config in ${FLL_BUILD_CONFIGS[@]}; do
 			# ${FLL_ROOT_PASSWD} must be an md5 hashed password - create with `openssl passwd -1'
 			sed -i "s#^\(root\):.*:\(.*:.*:.*:.*:.*:.*:.*\)#\1:${FLL_ROOT_PASSWD}:\2#" \
 				"${FLL_BUILD_CHROOT}/etc/shadow"
-		fi 
+		fi
+
+		if [ -w "${FLL_BUILD_CHROOT}/etc/pam.d/login" ]; then
+			header 'Disabling pam_lastlog...'
+			sed -i '/^[^#].*pam_lastlog\.so/s/^/# /' "${FLL_BUILD_CHROOT}/etc/pam.d/login"
+		fi
+
+		# Fix Debian kppp noauth defaults
+		if [ -w "${FLL_BUILD_CHROOT}/etc/ppp/peers/kppp-options" ]; then
+			header 'Allowing KPPP noauth...'
+			sed -i 's/^#noauth/noauth/' "${FLL_BUILD_CHROOT}/etc/ppp/peers/kppp-options"
+		fi
 		#################################################################
 		#		misc chroot debconf preseeding			#
 		#################################################################
