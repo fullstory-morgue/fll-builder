@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>sidux release notes</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<style type="text/css" media="all">@import url("all.css");</style>
 	<style type="text/css" media="screen">@import url("screen.css");</style>
 	<style type="text/css" media="print">@import url("print.css");</style>
@@ -40,6 +40,7 @@
 				<li><a href="#pending">Pending changes</a></li>
 <!-- preview -->
 				<li><a href="#non-free">non-free sources and Drivers</a></li>
+				<li><a href="#upgrade">Upgrade Support</a></li>
 				<li><a href="#disclaimer">Disclaimer</a></li>
 				<li><a href="#mirror">Mirrors</a></li>
 				<li><a href="#howto-involve">Getting Involved</a></li>
@@ -52,8 +53,9 @@
 			<div class="divider" id="welcome">
 				<h1 id="top-header">sidux 2008-01 preview 1</h1>
 				<p>
-					A lot has changed since sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; got released, most importantly additional hardware support for concurrent graphics-, DVB-, ALSA- and wireless LAN devices, which suggests to fresh up &quot;&Epsilon;&rho;&omega;&sigmaf;&quot;, while continuing the development for sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot;.
-					Consequently we are now proud to announce the immediate availability of the sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; christmas special for amd64 and i686 systems, shipping in roughly &asymp;445 MB KDE lite flavours and a combined i386+amd64 release with &asymp;1430 MB KDE for kde-full.
+					What has originally been planned as minor maintenance release with the bumped kernel version as major feature, resulted in much larger changes for sidux 2008-01 &quot;Νυξ&quot;.
+					Now we have the pleasure to announce the first public preview of sidux 2008-01, shipping in a roughly &asymp;460 MB large kde-lite variant for amd64 and i386 systems.
+					Please note this is not the final release, the full featured final release of &quot;Νυξ&quot; will be ready in about 2-3 weeks (depending on the availability of KDE 3.5.9 in Debian sid), intermediate xdeltas will be provided as needed until then.
 				</p>
 
 				<p>
@@ -63,27 +65,26 @@
 			</div>
 	
 			<div class="divider" id="release-notes">
-				<h2>Release notes for &Nu;&upsilon;&xi; preview 1</h2>
+				<h2>Release notes for Νυξ preview 1</h2>
 				<p>
-					This update release of sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; concentrates on additional hardware support and stability improvements for wireless and DVB devices, combined with newly available hardware support for various ATi graphics cards in interaction with the new X.org 7.3/ xrandr 1.2 based X detection.
+					This preview heading towards our fifths major release &quot;Νυξ&quot; doesn't only ship new upstream packages, but also sidux' own development has sped up and seen a lot of changes.
+				</p>
+				<p>
+					Talking about upstream development, kernel 2.6.24 has merged &quot;i386&quot; and &quot;x86_64&quot; as sub-architectures for the new generic "x86" architecture and offers support for further wireless lan devices like RealTek RTL8180L/ RTL8185, UVC video support for Logitech webcams, high resolution timers and dynamic ticks for amd64 systems.
+					Especially these kernel related changes have imposed a number adaptions on sidux' kernel release process, which is now provided by packages closely following Debian's lead and are finally, accompanied by a number of GPL2 compatible external module packages, available through plain apt-get. 
+					Metapackages (please see <a href="#upgrade">introduction</a> below) now easily allow selecting the required kernel support and keeping up to date with bug- and security fixes.
+				</p>
+				<p>
+					Another major topic has been the dissolution of the former &quot;sidux&quot; menu into the XDG compliant menu categories, which &mdash; in combination with the new SVG based artwork &mdash; allow for better compatibility with alternative window managers and desktop environments and have been a precondition for future KDE4 or potential GNOME or XFCE support. 
+					Likewise a number of packages have undergone major changes or been replaced by new approaches (like Ceni replacing netcardconfig) alltogether.
 				</p>
 
 				<p>
-					A new feature is the combined DVD ISO for kde-full, which supports i386 and amd64 architectures and avoids the hard size limit of CD-R media while trying to retain a slick package list.
-					Further efforts have been invested into consolidating classical and advanced USB installation methods, kernel stabilisation and the live persistency framework.
-					Various updates, fixes and adaptions have been applied to large parts of the package list.
+					The release plan for further sidux releases in 2008 has been adapted accordingly.
 				</p>
 
 				<p>
-					As a special christmas present for our non english/ german speaking users, sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; ships an xdelta to add initial localisations for all currently supported languages.
-				</p>
-
-				<p>
-					The release plan for sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; has been adapted slightly in response to this intermediate &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; update and moved to early february.
-				</p>
-
-				<p>
-					Our special thanks go to everyone involved in enhancing our list of download mirrors and especially all mirror hosters for their efforts regarding sidux.
+					Our special thanks go to the sidux art team and especially all mirror hosters for their efforts regarding sidux.
 				</p>
 
 			</div>
@@ -92,46 +93,43 @@
 				<h2>Now to the interesting topics, like what's on the menu for now:</h2>
 				<ul>
 					<li>amd64 (AMD64, Intel Core2, newer 64 bit capable AMD Sempron and Intel Pentium 4 CPUs (watch for the &quot;lm&quot; flag in /proc/cpuinfo or use infobash -v3) and i686 (Pentium pro/ Pentium II, AMD K7 Athlon or newer)).</li>
-					<li>Debian sid, as of 2007-12-26.</li>
-					<li>kernel 2.6.23.12 (smp, hard preemption).</li>
-					<li>libata support for parallel ATA systems.</li>
+					<li>Debian sid, as of 2008-03-01.</li>
+					<li>kernel 2.6.24.3 (smp, hard preemption).</li>
 					<li>X.org 7.3.</li>
 					<li>KDE 3.5.8 (en + de).</li>
-					<li>completely new X.org probing, finally amd64 compatible.</li>
-					<li>new USB fromiso Installer.</li>
-					<li>new artwork created by cleary and the sidux art team.</li>
+					<li>new, SVG based, artwork created by sidux art team under Bernard Gray (cleary), David Creedy (klaymen) und Daniel-S-P, providing improved KDE4 and GNOME support.</li>
+					<li>dissolution of the previous &quot;sidux&quot; menu into the corresponding XDG categories, allowing broader window manager support and XDG compliance.</li>
 					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> directly on the disc, online manuals for more languages online at <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> and available via apt; a big thank you goes to the documentation and translation teams!<br />Please note that the offline manual is only available on the running live CD or the installed system.</li>
-					<li>iwlwifi3945/ iwlwifi4965 1.1.17.</li>
+					<li>many changes for the manual.</li>
+					<li>iwlwifi3945/ iwlwifi4965 support.</li>
 					<li>b43/ b43legacy support for Broadcom wlan cards.</li>
-					<li>rt2x00 2.0.13 support for RaLink cards.</li>
-					<li>support for RealTek RTL8187 wlan cards.</li>
-					<li>support for ADMtek ADM8211 wlan cards.</li>
-					<li>support for Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet cards (ICH9).</li>
-					<li>enhanced hardware support libraries.</li>
+					<li>rt2x00 support for RaLink cards.</li>
+					<li>support for RealTek RTL8180L and RTL8185 PCI/ cardbus wlan cards.</li>
+					<li>support for RealTek RTL8187 USB wlan cards.</li>
+					<li>support for ADMtek ADM8211 PCI/ cardbus wlan cards.</li>
+					<li>support for IPWireless 3G UMTS PCMCIA cards.</li>
+					<li>support for HSDPA Broadband Wireless Data (Globe Trotter) cards.</li>
+					<li>e1000e support for Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet cards (ICH9).</li>
+					<li>support for Logitech Quickcam Orbit, Logitech Quickcam Pro for Notebooks, Logitech Quickcam Pro 5000, Asus Eee PC webcams (linux-uvc).</li>
 					<li>fw-detect to probe for hardware with non-free needs.</li>
 					<li>memtest86+.</li>
 					<li>overhauled partition and file system detection.</li>
-					<li>several X.org 7.3 and kernel 2.6.23 related bug and compatibility fixes.</li>
-					<li>siduxcc overhaul.</li>
-					<li>persistency fixes.</li>
-					<li>several X.org detection improvements and bugfixes.</li>
 					<li>/etc/apt/sources.list.d/ superseding the monolithic /etc/apt/sources.list.</li>
-					<li>fix booting for VIA C7 CPUs.</li>
-					<li>virtualbox-ose-guest support.</li>
-					<li>fix remaining sources.list.d/ issues.</li>
-					<li>bitsetting/ xrandr compatible driver for ATi cards (6.7.197).</li>
+					<li>virtualbox-ose-guest 1.5.6 support.</li>
+					<li>bitsetting/ xrandr settings for ATi and Intel cards.</li>
 					<li>basic lvm2 detection and install support on exististing logical volumes.</li>
-					<li>Pinnacle PCTVsat (DVB-S) compatibility.</li>
-					<li>kernel 2.6.23 stabilization.</li>
-					<li>dual-arch ISO.</li>
-					<li>fix fluxbox initialisation</li>
+					<li>Ceni as primary tool for handling network devices.</li>
+					<li>consistent switch to Debian's &quot;su-to-root&quot; instead of using custom su wrappers.</li>
 				</ul>
 			</div>
 <!-- preview -->
 			<div class="divider" id="pending">
 				<h2>What hasn't made it into the preview yet:</h2>
 				<ul>
-					<li>a</li>
+					<li>KDE 3.5.9.</li>
+					<li>final manual adaptions for Νυξ.</li>
+					<li>revisiting locale support.</li>
+					<li>minor artwork consolidation.</li>
 				</ul>
 			</div>
 <!-- preview -->
@@ -144,7 +142,7 @@
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 # The /etc/apt/sources.list.d/ directory provides a way to add sources.list
-# entries in seperate files that end with sources.list file.
+# entries in separate files that end with sources.list file.
 
 # unstable
 deb http://ftp.de.debian.org/debian unstable main contrib non-free
@@ -228,7 +226,7 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 					</li>
 					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:
-						<pre>m-a a-i madwifi</pre>
+						<pre>m-a a-i acx100</pre>
 						and fetch the firmware from <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> and place it under /lib/firmware/.
 					</li>
 					<li>
@@ -244,6 +242,144 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 				<p>
 					We try to provide packages for legally redistributable firmware from our non-free repositories, but not all vendors allow this.
 				</p>
+			</div>
+	
+			<div class="divider" id="upgrade">
+				<h2>Hints for Upgraders:</h2>
+				<p>
+					sidux tries hard to provide seamless upgrade path for debian and sidux' own packages, nevertheless a few things remain that could be improved with manual interaction.
+				</p>
+				
+				<h3>bash-completion</h3>
+				<p>
+					bash 3.1dfsg-9 has dropped /etc/bash_completion, which provides advanced completion information (like &quot;apt-get i[tab]&quot;), and split it out into a new package called &quot;bash-completion&quot; (&gt;&gt; 20060301-1).
+					Given that &quot;bash&quot; only recommends &quot;bash-completion&quot;, it is recommended to install &quot;bash-completion&quot; manually:
+				</p>
+				<pre>apt-get install bash-completion</pre>
+				<p>
+					(agree to installing the package maintainer's version of /etc/bash_completion)
+				</p>
+				
+				<h3>grub/ grub-gfxboot</h3>
+				<p>The following features have been recently added to grub-gfxboot:</p>
+				<ul>
+					<li>
+						savedefault<br />
+						<ul>
+							<li>
+								remembers the last booted kernel<br />
+								this requires setting &quot;savedefault=true&quot; within the automagic kernel list and changing "&quot;default &lt;entry number&gt;&quot; to &quot;default saved&quot; in /boot/grub/menu.lst.
+							</li>
+						</ul>
+					</li>
+					<li>
+						256 byte inode sizes on ext3<br />
+						<ul>
+							<li>
+								e2fsprogs &ge; 1.40.5-1 creates ext3 filesystems with 256 byte large inodes by default (in contrast to 128 byte used before), to accommodate for further ext4 related changes.
+							</li>
+						</ul>
+					</li>
+					<li>
+						ext4 extents (only supported by grub-gfxboot)<br />
+						<ul>
+							<li>
+								starting with kernel 2.6.23, ext4 filesystems are mounted using extents by default.
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+				<p>
+					Using any of these new features requires updating the bootsector of your system.
+					Bootsectors written by &quot;grub or earlier versions of &quot;grub-gfxboot&quot; are not able to boot or even access partitions using any of these new features!<br />
+					While these changes don't affect existing systems, we strongly recommend updating your bootsectors using:
+				</p>
+				<pre>grub-install --recheck --no-floppy &lt;raw device or partition&gt;</pre>
+				<p>
+					to get access to newly created ext3 (with inode sizes exceeding 128 byte) or ext4 partitions, or to use savedefault features.
+				</p>
+
+				<p>
+					Please be careful with updating the bootsector, choosing improper installation targets might render your system unbootable.
+				</p>
+
+				<h3>Kernel packaging</h3>
+				<p>
+					Starting with kernel 2.6.24, sidux kernels and dfsg-free external modules arei exclusively available via apt and can be kept up to date via metapackages.
+				</p>
+
+				<ul>
+					<li>
+						<h4>amd64:</h4>
+						<ul>
+							<li>
+								<h5>Kernel and headers:</h5>
+								<pre>apt-get install	linux-image-2.6-sidux-amd64 \
+		linux-headers-2.6-sidux-amd64</pre>
+							</li>
+							<li>
+								<h5>external, dfsg-free and GPL2 compatible, modules:</h5>
+								<pre>apt-get install	acer-acpi-modules-2.6-sidux-amd64 		\
+		atl2-modules-2.6-sidux-amd64			\
+		aufs-modules-2.6-sidux-amd64			\
+		btrfs-modules-2.6-sidux-amd64			\
+		et131x-modules-2.6-sidux-amd64			\
+		fsam7400-modules-2.6-sidux-amd64		\
+		gspca-modules-2.6-sidux-amd64			\
+		ndiswrapper-modules-2.6-sidux-amd64		\
+		qc-usb-modules-2.6-sidux-amd64			\
+		rfswitch-modules-2.6-sidux-amd64		\
+		squashfs-modules-2.6-sidux-amd64		\
+		virtualbox-ose-modules-2.6-sidux-amd64</pre>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h4>i386:</h4>
+						<ul>
+							<li>
+								<h5>Kernel and headers:</h5>
+								<pre>apt-get install	linux-image-2.6-sidux-686 \
+		linux-headers-2.6-sidux-686</pre>
+							</li>
+							<li>
+								<h5>external, dfsg-free and GPL2 compatible, modules:</h5>
+								<pre>apt-get install	acer-acpi-modules-2.6-sidux-686			\
+		acerhk-modules-2.6-sidux-686			\
+		atl2-modules-2.6-sidux-686			\
+		aufs-modules-2.6-sidux-686			\
+		btrfs-modules-2.6-sidux-686			\
+		et131x-modules-2.6-sidux-686			\
+		fsam7400-modules-2.6-sidux-686			\
+		gspca-modules-2.6-sidux-686			\
+		ndiswrapper-modules-2.6-sidux-686		\
+		omnibook-modules-2.6-sidux-686			\
+		qc-usb-modules-2.6-sidux-686			\
+		rfswitch-modules-2.6-sidux-686			\
+		squashfs-modules-2.6-sidux-686			\
+		virtualbox-ose-guest-modules-2.6-sidux-686	\
+		virtualbox-ose-modules-2.6-sidux-686</pre>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<p>
+					This upgrade mechanism can be disabled by removing the aforementioned metapackages.
+					Further kernel updates would require manual intervention, bugfixes and security corrections wouldn't be installed as part of the ordinary dist-upgrade anymore!
+				</p>
+				
+				<h3>Obsolete packages</h3>
+				<p>
+					As part of the continuing development of sidux, a number of packages have been replaced by better alternatives or become redundant.
+				</p>
+				<ul>
+					<li>configure-networkcard, replaced by &quot;Ceni&quot;.</li>
+					<li>configure-screenres, replaced by &quot;siduxcc&quot; (&quot;siduxcc-common&quot; in textmode).</li>
+					<li>rootshell, all major desktop environments offer equivalent root xterms.</li>
+					<li>sidux-xdg, the contents of the former &quot;sidux&quot; menu have been sorted into the official XDG categories.</li>
+				</ul>
 			</div>
 	
 			<div class="divider" id="disclaimer">
@@ -319,12 +455,6 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 						<a href="http://ftp-mirror.internap.com/pub/sidux/">http://ftp-mirror.internap.com/pub/sidux/</a><br />
 						<a href="rsync://ftp-mirror.internap.com/sidux/">rsync://ftp-mirror.internap.com/sidux/</a>
 					</li>
-<!--
-					<li>
-						<strong>Washington State University/ Linux User Group and School of Electrical Engineering and Computer Science</strong>, Pullman WA, USA<br />
-						<a href="http://lug01.eecs.wsu.edu/sidux/">http://lug01.eecs.wsu.edu/sidux/</a>
-					</li>
--->
 				</ul>
 
 				<h3>Asia</h3>
@@ -375,13 +505,13 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 	
 				<ul>
 					<li>
-						sidux 2008-02 &quot;&Epsilon;&rho;&epsilon;&beta;&omicron;&sigmaf;&quot; &mdash; calendar week 17-18 2008
+						sidux 2008-02 &quot;Έρεβος&quot; &mdash; calendar week 18-19 2008
 					</li>
 					<li>
-						sidux 2008-03 &quot;&Omega;&upsilon;&rho;&epsilon;&alpha;&quot; &mdash; calendar week 28-29 2008
+						sidux 2008-03 &quot;Ωυρέα&quot; &mdash; calendar week 28-29 2008
 					</li>
 					<li>
-						sidux 2008-04 &quot;&Pi;&omicron;&nu;&tau;&omicron;&sigmaf;&quot; &mdash; calendar week 39-40 2008
+						sidux 2008-04 &quot;Πόντος&quot; &mdash; calendar week 39-40 2008
 					</li>
 				</ul>
 			</div>
@@ -411,7 +541,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 					Philippe Masson (LjanA)<br />
 					Kel Modderman (kelmo)<br />
 					Koslow<br />
-					Markus M&uuml;ller (moto)<br />
+					Markus Müller (moto)<br />
 					muchan<br />
 					Gabriel Palade (ladepa)<br />
 					<a href="http://www.r7h.at">Gerald Prock</a> (raider700)<br />
@@ -432,7 +562,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 				</p>
 
 				<p>
-					Thanks to <a class="printurl" href="http://www.hetzner.de/">Hetzner Online AG</a> for sponsoring <a href="http://sidux.com">sidux.com</a>.
+					Thanks to <a href="http://www.hetzner.de/" class="printurl">Hetzner Online AG</a> for sponsoring <a href="http://sidux.com">sidux.com</a>.
 				</p>
 
 				<p>

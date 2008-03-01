@@ -2,7 +2,7 @@ FLL_PACKAGES+=(
 	automake1.10
 	autoconf
 	build-essential
-#	cmake
+	cmake
 	diff
 	diffstat
 	gettext

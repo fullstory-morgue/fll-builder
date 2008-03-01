@@ -1,5 +1,3 @@
-# This is a special Gnome Build for a DVD with DEV Utilities, Office and Multimedia Stuff
-
 FLL_PACKAGE_DEPMODS=(
 	cli
 	distro
@@ -107,7 +105,6 @@ FLL_PACKAGES=(
 	cdebootstrap
 	wodim
 	sidux-kernelhacking 
-	#sidux-modules # acx100 broken
 	libncurses5
 	libncurses5-dev
 )

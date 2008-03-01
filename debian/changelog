@@ -23,8 +23,14 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
     - there is no dedicated kernel directory anymore.
     - small layout corrections.
     - sync future release dates with reality.
+    - update features and pending topics.
+    - don't directly link to sidux.net, there is nothing interesting for the
+      user.
+    - use charset=UTF-8.
+    - actually make use of utf-8 encodings.
     - increase vertical indenture for <h3> to <h4>.
     - allow CSS to be parsed as strict XML again.
+    - finalize release notes for 2008-01 pre1.
   * XORG_CONFIG="custom" and manual symlink creation shouldn't be needed
     anymore.
   * move chmodding /root/ logically to setting adduser's defaults.
@@ -32,6 +38,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * remove deb/ deb-src stanzas from /etc/apt/sources.list, we're using
     /etc/apt/sources.list.d/*.list.
   * remove additional mirrors from /etc/apt/sources.list as well.
+  * revisit uninstallable packages in the lists.
 
   [ Kel Modderman ]
   * Revamp method of querying source package URIs, also including logic to
@@ -63,7 +70,7 @@ fll-builder (1.1.9) UNRELEASED; urgency=low
   * fix rel notes sidux logo background for retard browsers
   * update cdrom.ico to new icon theme 
 
- -- Bernard Gray <bernard.gray@gmail.com>  Fri, 29 Feb 2008 09:49:34 +1100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Mar 2008 01:35:53 +0100
 
 fll-builder (1.1.8) unstable; urgency=low
 

@@ -15,9 +15,6 @@ FLL_PACKAGE_DEPMODS=(
 
 FLL_PACKAGES=(
 	gfxboot-theme-sidux-2007-04-eros-de
-	#########
-	#KDE-Lite
-	#########
 	ark
 	gtk2-engines-qtcurve
 	gwenview
@@ -34,20 +31,10 @@ FLL_PACKAGES=(
 	ksnapshot
 	siduxcc
 
-
-	##########
-	#seminarix
-	##########
-
-	###
-	#generic
-	###
 	seminarix-handbook
 	iceweasel
 	sidux-edu
-	###
-	#KOffice-Suite
-	###
+
 	audacity
 	inkscape
 	karbon
@@ -69,30 +56,16 @@ FLL_PACKAGES=(
 	scribus
 	vym
 
-	###
-	#chemical
-	###
 	chemtool
 	gperiodic
 	kalzium
 	katomic
 
-
-	###
-	#geography
-	###
 	kgeography
 	sunclock
 
-
-	###
-	#informatics
-	###
 	kturtle
 
-	###
-	#art
-	###
 	dia
 	digikam
 	kino
@@ -101,9 +74,6 @@ FLL_PACKAGES=(
 	stopmotion
 	tuxpaint
 
-	###
-	#educational game
-	###
 	childsplay
 	childsplay-alphabet-sounds-de
 	childsplay-plugins
@@ -111,9 +81,6 @@ FLL_PACKAGES=(
 	ktouch
 	tuxmath
 
-	###
-	#mathematics
-	###
 	gnuplot
 	kbruch
 	kig
@@ -121,41 +88,24 @@ FLL_PACKAGES=(
 	kpercentage
 	wxmaxima
 
-
-	###
-	#music
-	###
 	hydrogen
 	juk
 
-
-	###
-	#physics
-	###
 	kstars
 
-	###
-	#religion
-	###
 	bibletime
 	bibletime-i18n
-	itools		# Islamic hijri date and prayer time utilities
-	hebcal		# A Perpetual Jewish Calendar
-	hdate-applet	# Hebrew calendar applet
-	minbar		# Islamic prayer times application
+	itools
+	hebcal
+	hdate-applet
+	minbar
 
-	###
-	#languages
-	###
 	hanzim
 	kdict
 	klatin
 	kvoctrain
 	kwordquiz
 
-	###
-	#technics
-	###
 	klogic
 	ksimus
 )

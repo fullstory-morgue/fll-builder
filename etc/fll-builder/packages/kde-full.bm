@@ -101,8 +101,8 @@ FLL_PACKAGES=(
 	pdfedit
 	rdiff-backup
 	siduxcc
-	sidux-vdr
-	vdr-gui
+#	sidux-vdr
+#	vdr-gui
 	virtualbox-ose
 	wengophone
 	yakuake

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<title>sidux release notes</title>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 	<style type="text/css" media="all">@import url("all.css");</style>
 	<style type="text/css" media="screen">@import url("screen.css");</style>
 	<style type="text/css" media="print">@import url("print.css");</style>
@@ -40,6 +40,7 @@
 				<li><a href="#pending">Pending changes</a></li>
 <!-- preview -->
 				<li><a href="#non-free">non-free Quellen und Treiber</a></li>
+				<li><a href="#upgrade">Upgrade Support</a></li>
 				<li><a href="#disclaimer">Disclaimer</a></li>
 				<li><a href="#mirror">Mirror</a></li>
 				<li><a href="#howto-involve">Getting Involved</a></li>
@@ -52,38 +53,37 @@
 			<div class="divider" id="welcome">
 				<h1 id="top-header">sidux 2008-1 Preview 1</h1>
 				<p>
-					Einiges hat sich seit der Ver&ouml;ffentlichung von sidux 2007-04 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; getan, insbesondere im Hinblick auf zus&auml;tzliche Hardwareunterst&uuml;tzung f&uuml;r aktuelle Grafik-, DVB-, ALSA und wireless LAN Ger&auml;te, was eine Auffrischung von &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; nahe legt, w&auml;hrend die Entwicklung von sidux 2008-01 &quot;&Nu;&upsilon;&xi;&quot; fortgesetzt wird.
-					Dementsprechend geben wir nun mit Freuden die sofortige Verf&uuml;gbarkeit von sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; f&uuml;r amd64- und i686-Systeme bekannt, erh&auml;ltlich in etwa &asymp;445 MB gro&szlig;en kde-lite&ndash; Varianten und einem kombinierten i386+amd64 Release mit etwa &asymp;1430 MB f&uuml;r kde-full.
+					Was ursprünglich als geringfügiges Maintenance Release geplant war, resultierte letztlich in wesentlich umfangreicheren Änderungen für sidux 2008-01 &quot;Νυξ&quot;.
+					Nun haben wir das Vergnügen die erste öffentliche Preview von sidux 2008-01 anzukündigen, verfügbar in etwa &asymp;460 MB großen kde-lite Varianten für amd64 und i686 Systeme.
+					Bitte beachten Sie daß es sich hierbei noch nicht um das engültige Release handelt, das voll ausgestattete &quot;Νυξ&quot; Release ist in etwa 2-3 Wochen zu erwarten (abhängig von der Verfügbarkeit von KDE 3.5.9 in Debian sid), zwischenzeitliche xdeltas wird es bis dahin nach Bedarf geben.
 				</p>
 
 				<p>
-					sidux ist eine umfassende Debian sid basierte Live-CD mit besonderem Augenmerk auf Festplatteninstallationen, einem sauberen Upgradepfad innerhalb sids und zus&auml;tzlichem Hard- und Softwaresupport.
-					Das ISO basiert vollst&auml;ndig auf Debian sid, angereichert und stabilisiert mit sidux eigenen Paketen und Skripten.
+					sidux ist eine umfassende Debian sid basierte Live-CD mit besonderem Augenmerk auf Festplatteninstallationen, einem sauberen Upgradepfad innerhalb sids und zusätzlichem Hard- und Softwaresupport.
+					Das ISO basiert vollständig auf Debian sid, angereichert und stabilisiert mit sidux eigenen Paketen und Skripten.
 				</p>
 			</div>
 
 			<div class="divider" id="release-notes">
-				<h2>Release Notes f&uuml;r &Nu;&upsilon;&xi; Preview 1</h2>
+				<h2>Release Notes für Νυξ Preview 1</h2>
 				<p>
-					Dieses Updaterelease von sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; konzentriert sich auf zus&auml;tzlichen Hardwaresupport und Stabilit&auml;tsverbesserungen f&uuml;r wlan und DVB Karten, verbunden mit der erst seit kurzem verf&uuml;gbaren Unterst&uuml;tzung f&uuml;r verschiedene ATi Grafikkarten in Verbindung mit der neuen X.org 7.3/ xrandr 1.2 basierten X Erkennung.
+					Diese Preview auf dem Weg zu unserem fünften major Release &quot;Νυξ&quot; bringt nicht nur neue Upstreampakete, sondern auch die Entwicklung von sidux selbst wurde beschleunigt und unterzog sich einer Menge von Änderungen.
+				</p>
+				<p>
+					So wurden zum Beispiel im neuen Upstreamkernel 2.6.24 die Subarchitekturen &quot;i386&quot; und &quot;x86_64&quot; in die neue generische "x86" Architektur zusammengefasst, ferner steht nun Unterstützung für weitere wireless LAN Geräte wie RealTek RTL8180L/ RTL8185, UVC Video Unterstützung, high resolution timers und Dynamic Ticks für amd64 Systeme zur Verfügung.
+					Insbesondere diese kernelbezogenen Änderungen erforderten eine Reihe von Änderungen an dem Releaseprozeß des Kernels für sidux, welcher nun in Form von eng an Debian angelehnten Paketen über apt-get gewährleistet wird, begleitet von einer Anzahl GPL2 kompatibler externer Modulpakete. 
+					Metapakete (eine nähere <a href="#upgrade">Einführung</a> ist weiter unten verfügbar) ermöglichen nun eine einfache Auswahl des erforderlichen Kernelsupports sowie die Verfügbarkeit von Fehlerbereinigen und Sicherheitskorrekturen.
+				</p>
+				<p>
+					Ein besonderes Augenmerk wurde auf die Auflösung des bisherigen &quot;sidux&quot; Menüs in XDG konforme Menükategorien gelegt, welche &mdash; in Kombination mit dem neuen SVG basierten Artwork &mdash; eine bessere Kompatibilität mit alternativen Windowmanagern und Desktopenvironments ermöglichen und eine Voraussetzung für künftigen KDE4 oder potentiellen GNOME oder XFCE Support darstellen.
+					Ebenso hat eine große Anzahl von Paketen teils massive Änderungen erfahren oder wurde vollständig durch neue Ansätze ersetzt (wie zum Beispiel &quot;netcardconfig&quot; durch &quot;Ceni&quot;).
+				</p>
+				<p>
+					Der Releaseplan der weiteren für 2008 geplanten sidux Releases wurde entsprechend adaptiert.
 				</p>
 
 				<p>
-					Ein neues Feature ist das kombinierte DVD ISO f&uuml;r kde-full, welches i386 und amd64 Architekturen unterst&uuml;tzt und das harte Gr&ouml;&szlig;enlimit von CD-R Medien umgeht, jedoch versucht einen schlanken Paketumfang beizubehalten.
-					Besondere Anstrengungen wurden in die Konsolidierung der klassischen und erweiterten Installationsmethoden, die Kernelstabilisierung und das live persistency Framework investiert.
-					Verschiedene Updates, Korrekturen und Anpassungen wurden einem gro&szlig;en Teil der Paketliste zuteil.
-				</p>
-
-				<p>
-					Als besonderes Weihnachtspr&auml;sent f&uuml;r unsere nicht englisch-/ deutschsprachigen Benutzer, wird f&uuml;r sidux 2007-04.5 &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; ein xdelta zur Nachr&uuml;stung anf&auml;nglicher Lokalisierungen aller derzeit unterst&uuml;tzten Sprachen bereitstehen.
-				</p>
-
-				<p>
-					Der Releaseplan f&uuml;r 2008-01 &quot;&Nu;&upsilon;&xi;&quot; wurde angesichts dieses zwischenzeitlichen &quot;&Epsilon;&rho;&omega;&sigmaf;&quot; Update leicht angepa&szlig;t und f&uuml;r Anfang Februar terminiert.
-				</p>
-
-				<p>
-					Unser besonderer Dank gilt allen an der Erweiterung der Mirror Liste Beteiligten, und im besonderen allen Mirror Hostern f&uuml;r ihre Bem&uuml;hungen um sidux.
+					Unser besonderer Dank gilt dem sidux art Team und im besonderen allen Mirrorhostern für ihre Bemühungen um sidux.
 				</p>
 
 				
@@ -92,41 +92,35 @@
 			<div class="divider" id="whats-new">
 				<h2>Jetzt zu den interessanten Themen, was steht nun auf dem Plan:  </h2>
 				<ul>
-					<li>amd64 (AMD64, Intel Core2, neuere 64 bit f&auml;hige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
-					<li>Debian sid, Stand 2007-12-26.</li>
-					<li>kernel 2.6.23.12 (smp, hard preemption).</li>
-					<li>libata Support f&uuml;r parallel ATA Systeme.</li>
+					<li>amd64 (AMD64, Intel Core2, neuere 64 bit fähige AMD Sempron and Intel Pentium 4 CPUs (achtet auf das &quot;lm&quot;-Flag in /proc/cpuinfo oder nutzt infobash -v3) und i686 (Pentium pro, Pentium II oder neuer).</li>
+					<li>Debian sid, Stand 2008-03-01.</li>
+					<li>kernel 2.6.24.3 (smp, hard preemption).</li>
 					<li>X.org 7.3.</li>
 					<li>KDE 3.5.8 (en + de).</li>
-					<li>vollst&auml;ndig neu entwickelte X.org Erkennung, endlich amd64 kompatibel.</li>
-					<li>neuer USB fromiso Installer.</li>
-					<li>neues Artwork gestaltet von cleary und dem sidux art team.</li>
-					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handb&uuml;cher f&uuml;r weitere Sprachen auf: <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> und verf&uuml;gbar via apt; ein gro&szlig;es Dankesch&ouml;n geht wieder einmal an das Dokumentations- und &Uuml;bersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
-					<li>viele &Auml;nderungen im und am Handbuch.</li>
-					<li>iwlwifi3945/ iwlwifi4965 1.1.17.</li>
-					<li>b43/ b43legacy Support f&uuml;r Broadcom wlan Karten.</li>
-					<li>rt2x00 2.0.13 Support f&uuml;r RaLink Karten.</li>
-					<li>Support f&uuml;r RealTek RTL8187 wlan Karten.</li>
-					<li>Support f&uuml;r ADMtek ADM8211 wlan Karten.</li>
-					<li>Support f&uuml;r Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet Karten (ICH9).</li>
-					<li>erweiterte Hardware Support Libraries.</li>
-					<li>fw-detect f&uuml;r Hardware, die non-free Pakete braucht.</li>
+					<li>neues, SVG basiertes Artwork, gestaltet von dem sidux art team unter Bernard Gray (cleary), David Creedy (klaymen) und Daniel-S-P, im Hinblick auf verbesserten KDE4 und GNOME Support.</li>
+					<li>Auflösung des bisherigen &quot;sidux&quot; Menüs in die entsprechenden XDG Kategorien, was einen breite Support von window managern und XDG Konformität ermöglicht.</li>
+					<li><a href="file:///usr/share/sidux-manual/index.html">offline manual</a> for <a href="file:///usr/share/sidux-manual/en/welcome-en.htm">en</a> + <a href="file:///usr/share/sidux-manual/de/welcome-de.htm">de</a> direkt auf der CD, online Handbücher für weitere Sprachen auf: <a href="http://manual.sidux.com/">http://manual.sidux.com/</a> und verfügbar via apt; ein großes Dankeschön geht wieder einmal an das Dokumentations- und Übersetzerteam!<br />Bitte beachtet, dass das Offline Handbuch nur durch die Live-CD oder im installierten System zu erreichen ist.</li>
+					<li>viele Änderungen im und am Handbuch.</li>
+					<li>iwlwifi3945/ iwlwifi4965 Unterstützung.</li>
+					<li>b43/ b43legacy Support für Broadcom wlan Karten.</li>
+					<li>rt2x00 Support für RaLink Karten.</li>
+					<li>Support für RealTek RTL8180L und RTL8185 PCI/ cardbus wlan Karten.</li>
+					<li>Support für RealTek RTL8187 USB wlan Karten.</li>
+					<li>Support für ADMtek ADM8211 PCI/ cardbus wlan Karten.</li>
+					<li>Unterstützung für IPWireless 3G UMTS PCMCIA Karten.</li>
+					<li>Unterstützung für HSDPA Broadband Wireless Data (Globe Trotter) Karten.</li>
+					<li>e1000e Support für Intel 82801I, 82566DM-2, 82562GT-2, 82562G-2 and 82562V-2 Gigabit Ethernet Karten (ICH9).</li>
+					<li>Support für Logitech Quickcam Orbit, Logitech Quickcam Pro für Notebooks, Logitech Quickcam Pro 5000, Asus Eee PC webcams (linux-uvc).</li>
+					<li>fw-detect für Hardware, die non-free Pakete braucht.</li>
 					<li>memtest86+</li>
-					<li>&Uuml;berholung der Partitions- und Dateisystemerkennung.</li>
-					<li>diverse X.org 7.3 und Kernel 2.6.23 bezogene Bug- und Kompatibilit&auml;tskorrekturen.</li>
-					<li>siduxcc &Uuml;berholung.</li>
-					<li>Persistenzkorrekturen</li>
-					<li>diverse Verbesserungen und Korrekturen der X.org Erkennung.</li>
+					<li>Überholung der Partitions- und Dateisystemerkennung.</li>
 					<li>/etc/apt/sources.list.d/ ersetzt die monolithische /etc/apt/sources.list.</li>
-					<li>Korrektur des Bootvorgangs f&uuml;r VIA C7 CPUs.</li>
-					<li>virtualbox-ose-guest Support.</li>
+					<li>virtualbox-ose-guest 1.5.6 Support.</li>
 					<li>Korrektur der letzten verbliebenen sources.list.d/ Probleme.</li>
-					<li>bitsetting/ xrandr kompatibler Treiber f&uuml;r ATi Karten (6.7.197).</li>
-					<li>grundlegende lvm2 Erkennung und Installationsunterst&uuml;tzung auf existierende logical volumes.</li>
-					<li>Pinnacle PCTVsat (DVB-S) Kompatibilität.</li>
-					<li>Kernel 2.6.23 Stabilisierung.</li>
-					<li>dual-arch ISO.</li>
-					<li>Korrektur der fluxbox Initialisierung.</li>
+					<li>bitsetting/ xrandr Einstellungen für ATi und Intel Karten.</li>
+					<li>grundlegende lvm2 Erkennung und Installationsunterstützung auf existierende logical volumes.</li>
+					<li>Ceni als vordringliches Konfigurationstool für Netzwerkgeräte.</li>
+					<li>durchgängiger Wechsel auf Debians &quot;su-to-root&quot; anstelle diverser su Wrapper.</li>
 				</ul>
 			</div>
 
@@ -134,21 +128,24 @@
 			<div class="divider" id="pending">
 				<h2>Was hat es nicht in diese Preview geschafft?:</h2>
 				<ul>
-					<li>a</li>
+					<li>KDE 3.5.9.</li>
+					<li>abschließende Anpassungen des Handbuches an Νυξ.</li>
+					<li>Überprüfung des locale Supports.</li>
+					<li>geringfügige Konsolidierung des Artworks.</li>
 				</ul>
 			</div>
 <!-- preview -->
 
 			<div class="divider" id="non-free">
-				<h2>Hinweise f&uuml;r Hardware, die non-free Pakete braucht:</h2>
+				<h2>Hinweise für Hardware, die non-free Pakete braucht:</h2>
 				<p>
-					sidux enth&auml;lt nur <a href="http://www.debian.org/social_contract">dfsg</a> freie Software, deshalb ist es sinnvoll, contrib/ non-free in die  <a href="http://sidux.com/files/misc/sources.list.d/debian.list">/etc/apt/sources.list.d/debian.list</a> aufzunehmen und Internetzugang sicherzustellen.
+					sidux enthält nur <a href="http://www.debian.org/social_contract">dfsg</a> freie Software, deshalb ist es sinnvoll, contrib/ non-free in die  <a href="http://sidux.com/files/misc/sources.list.d/debian.list">/etc/apt/sources.list.d/debian.list</a> aufzunehmen und Internetzugang sicherzustellen.
 				</p>
 		<pre># See sources.list(5) for more information, especially
 # Remember that you can only use http, ftp or file URIs
 # CDROMs are managed through the apt-cdrom tool.
 # The /etc/apt/sources.list.d/ directory provides a way to add sources.list
-# entries in seperate files that end with sources.list file.
+# entries in separate files that end with sources.list file.
 
 # unstable
 deb http://ftp.de.debian.org/debian unstable main contrib non-free
@@ -169,13 +166,13 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 #deb-src http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free</pre>
 
 				<p>
-					Die ben&ouml;tigte Firmware kann entweder der unten folgenden Auflistung entnommen, oder mit dem neu entwickelten fw-detect script (paketiert in configure-networkcard) bestimmt werden.
+					Die benötigte Firmware kann entweder der unten folgenden Auflistung entnommen, oder mit dem neu entwickelten fw-detect script (paketiert in configure-networkcard) bestimmt werden.
 				</p>
 
 				<ul>
 					<li>
 						ATi Radeon Grafik:<br />
-						3d Beschleunigung f&uuml;r &auml;ltere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx Karten brauchen non-free Treiber f&uuml;r beschleunigte Performance, die bisher noch nicht kompatibel mit Kernel 2.6.23 sind. Abh&auml;ngig vom jeweiligen Chipsatz "xmodule=vesa" oder "xmodule=fbdev" als Cheatcode k&ouml;nnte helfen bei Radeon X1xxx Modellen.
+						3d Beschleunigung für ältere Karten bis r35x sollte funktionieren, neuere Radeon X1xxx Karten brauchen non-free Treiber für beschleunigte Performance, die bisher noch nicht kompatibel mit Kernel 2.6.23 sind. Abhängig vom jeweiligen Chipsatz "xmodule=vesa" oder "xmodule=fbdev" als Cheatcode könnte helfen bei Radeon X1xxx Modellen.
 					</li>
 					<li>
 						Atheros/ "madwifi" wlan:<br />
@@ -194,8 +191,8 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 						hole die Firmware von <a href="http://eagle-usb.org/ueagle-atm/non-free/">http://eagle-usb.org/ueagle-atm/non-free/</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
-						DVB firmware f&uuml;r verschiedene full featured DVB TV Karten (die meisten budget Karten brauchen das nicht): <br />
-						 hole die ben&ouml;tigte Firmware (nachschauen mit dmesg) von:  <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> und kopiere sie nach /lib/firmware/.
+						DVB firmware für verschiedene full featured DVB TV Karten (die meisten budget Karten brauchen das nicht): <br />
+						 hole die benötigte Firmware (nachschauen mit dmesg) von:  <a href="http://www.linuxtv.org/downloads/firmware/">http://www.linuxtv.org/downloads/firmware/</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
 						IVTV firmware:<br />
@@ -223,7 +220,7 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 					</li>
 					<li>
 						nVidia graphics:<br />
-						3d Beschleunigung geht mit freien Treibern noch nicht, bitte benutzt &quot;get-sidux-binary-gfx &amp;&amp; install-binary-gfx -a&quot; oder &quot;sgfxi&quot; um Install Skripte f&uuml;r diese Karten zu bekommen.
+						3d Beschleunigung geht mit freien Treibern noch nicht, bitte benutzt &quot;get-sidux-binary-gfx &amp;&amp; install-binary-gfx -a&quot; oder &quot;sgfxi&quot; um Install Skripte für diese Karten zu bekommen.
 					</li>
 					<li>
 						RaLink rt61 und rt73 54 MBit/s wlan:<br />
@@ -232,7 +229,7 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 					</li>
 					<li>
 						Texas Instruments ACX100 (22 Mbit/s)/ ACX111 (54 MBit/s) wlan:
-						<pre>m-a a-i madwifi</pre>
+						<pre>m-a a-i acx100</pre>
 						und hole die firmware von <a href="http://www.kazer.org/acx-firmware-20060207.tar.bz2">http://www.kazer.org/acx-firmware-20060207.tar.bz2</a> und kopiere sie nach /lib/firmware/.
 					</li>
 					<li>
@@ -246,14 +243,152 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 				</ul>
 
 				<p>
-					Wir versuchen, Pakete f&uuml;r legal vertreibbare Firmware in unseren non-free Repositories zur Verf&uuml;gung zu stellen, aber nicht alle Anbieter erlauben dies.
+					Wir versuchen, Pakete für legal vertreibbare Firmware in unseren non-free Repositories zur Verfügung zu stellen, aber nicht alle Anbieter erlauben dies.
 				</p>
+			</div>
+
+			<div class="divider" id="upgrade">
+				<h2>Hinweise für Upgrader:</h2>
+				<p>
+					sidux bemüht sich sehr um einen nahtlosen Upgradepfad für Debian- und sidux-eigene Pakete, dennoch verleiben einige Dinge die manueller Nacharbeit bedürfen.
+				</p>
+
+				<h3>bash-completion</h3>
+				<p>
+					/etc/bash_completion, welches die erweiterten Befehlsvervollständigungen bereitstellt (wie z.B. &quot;apt-get i[tab]&quot;), ist ab Version 3.1dfsg-9 nicht Bestandteil des bash Paketes, die Funktionalität wurde stattdessen in das neue &quot;bash-completion&quot; (&gt;&gt; 20060301-1) ausgelagert.
+					Aufgrund der Eigenschaft daß &quot;bash-completion&quot; nur eine Recommends Abhängigkeit von &quot;bash&quot; ist, empfiehlt es sich &quot;bash-completion&quot; manuell zu installieren:
+				</p>
+				<pre>apt-get install bash-completion</pre>
+				<p>
+					(es wird empfohlen der Installation der Version des Paketbetreuers von /etc/bash_completion zuzustimmen)
+				</p>
+
+				<h3>grub/ grub-gfxboot</h3>
+				<p>Die folgenden Features wurden kürzlich grub-gfxboot hinzugefügt:</p>
+				<ul>
+					<li>
+						savedefault<br />
+						<ul>
+							<li>
+								sichert die zuletzt gebootete Kernelauswahl<br />
+								dies erfordert die Einstellung von &quot;savedefault=true&quot; in der &quot;automagic kernel list&quot; und die Änderung von &quot;default &lt;entry number&gt;&quot; in &quot;default saved&quot; innerhalb der /boot/grub/menu.lst.
+							</li>
+						</ul>
+					</li>
+					<li>
+						256 Byte inode Größen auf ext3<br />
+						<ul>
+							<li>
+								e2fsprogs &ge; 1.40.5-1 erstellt ext3 Dateisysteme mit 256 Byte großen Inodes per default (im Gegensatz zu den zuvor gesetzten 128 Byte), um künftig zu erwartenden ext4 Änderungen vorzubereiten.
+							</li>
+						</ul>
+                                        </li>
+					<li>
+						ext4 Extents (nur von grub-gfxboot supported)<br />
+						<ul>
+							<li>
+								Beginnend mit Kernel 2.6.23 werden ext4 Dateisysteme mit Extents gemounted.
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<p>
+					Die Verwendung jedes dieser neuen Features erfordert die Aktualisierung des Bootsektors der betroffenden Systeme.
+					Von &quot;grub&quot; oder früheren Versionen von &quot;grub-gfxboot&quot; installierte Bootsektoren sind nicht in der Lage auf Partititionen mit diesen Features zuzugreifen oder gar zu booten!<br />
+					Während diese Änderungen keine existierenden Systeme betreffen, empfehlen wir dringend die Bootsektoren mittels des folgenden Befehls zu aktualisieren:
+				</p>
+				<pre>grub-install --recheck --no-floppy &lt;raw device or partition&gt;</pre>
+				<p>
+					um auch auf neu erstellte ext3 (mit Inode Größen oberhalb von 128 Byte) oder ext4 Partitionionen zugreifen, oder das neue savedefault Feature verwenden zu können.
+				</p>
+
+				<p>
+					Besondere Aufmerksamkeit ist beim aktualisieren des Bootsektors anzuraten, die Auswahl eines falschen Installationsziels kann möglicherweise die Bootfähigkeit des Systems beeinträchtigen.
+				</p>
+
+				<h3>Kernelpaketierung</h3>
+				<p>
+					Beginnend mit Kernel 2.6.24 sind sidux Kernels und dfsg-freie externe Module ausschließlich via apt verfügbar und können über Metapakete aktuell gehalten werden.
+				</p>
+
+				<ul>
+					<li>
+						<h4>amd64:</h4>
+						<ul>
+							<li>
+								<h5>Kernel und Header:</h5>
+								<pre>apt-get install	linux-image-2.6-sidux-amd64 \
+		linux-headers-2.6-sidux-amd64</pre>
+							</li>
+							<li>
+								<h5>externe, dfsg-freie und GPL2 kompatible, Module:</h5>
+								<pre>apt-get install	acer-acpi-modules-2.6-sidux-amd64 		\
+		atl2-modules-2.6-sidux-amd64			\
+		aufs-modules-2.6-sidux-amd64			\
+		btrfs-modules-2.6-sidux-amd64			\
+		et131x-modules-2.6-sidux-amd64			\
+		fsam7400-modules-2.6-sidux-amd64		\
+		gspca-modules-2.6-sidux-amd64			\
+		ndiswrapper-modules-2.6-sidux-amd64		\
+		qc-usb-modules-2.6-sidux-amd64			\
+		rfswitch-modules-2.6-sidux-amd64		\
+		squashfs-modules-2.6-sidux-amd64		\
+		virtualbox-ose-modules-2.6-sidux-amd64</pre>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<h4>i386:</h4>
+						<ul>
+							<li>
+								<h5>Kernel und Header:</h5>
+								<pre>apt-get install	linux-image-2.6-sidux-686 \
+		linux-headers-2.6-sidux-686</pre>
+							</li>
+							<li>
+								<h5>externe, dfsg-freie und GPL2 kompatible, Module:</h5>
+								<pre>apt-get install	acer-acpi-modules-2.6-sidux-686			\
+		acerhk-modules-2.6-sidux-686			\
+		atl2-modules-2.6-sidux-686			\
+		aufs-modules-2.6-sidux-686			\
+		btrfs-modules-2.6-sidux-686			\
+		et131x-modules-2.6-sidux-686			\
+		fsam7400-modules-2.6-sidux-686			\
+		gspca-modules-2.6-sidux-686			\
+		ndiswrapper-modules-2.6-sidux-686		\
+		omnibook-modules-2.6-sidux-686			\
+		qc-usb-modules-2.6-sidux-686			\
+		rfswitch-modules-2.6-sidux-686			\
+		squashfs-modules-2.6-sidux-686			\
+		virtualbox-ose-guest-modules-2.6-sidux-686	\
+		virtualbox-ose-modules-2.6-sidux-686</pre>
+							</li>
+						</ul>
+					</li>
+				</ul>
+
+				<p>
+					Dieser Upgrademechanismus kann durch die Entfernung der oben genannten Metapakete deaktiviert werden.
+					Weitere Kernelupdates bedürfen dann manueller Installation, Bugfixes und Sicherheitskorrekturen werden in Folge nicht mehr als Bestandteil des normalen dist-upgrades installiert!
+				</p>
+				
+				<h3>Obsolete packages</h3>
+				<p>
+					Im Rahmen der Weiterentwicklung von sidux wurden einige Pakete durch bessere Alternativen ersetzt oder überflüssig.
+				</p>
+				<ul>
+					<li>configure-networkcard, wurde durch &quot;Ceni&quot; ersetzt.</li>
+					<li>configure-screenres, wurde durch &quot;siduxcc&quot; (bzw. &quot;siduxcc-common&quot; im Textmodus) ersetzt.</li>
+					<li>rootshell, alle üblichen Desktopumgebungen bieten äquivalente X Terminals für root.</li>
+					<li>sidux-xdg, die Inhalte des bisherigen &quot;sidux&quot; Menüs wurde in die offiziellen XDG Kategorien eingeordnet.</li>
+				</ul>
 			</div>
 
 			<div class="divider" id="disclaimer">
 				<h2>Disclaimer:</h2>
 				<p>
-					 Dies ist experimentelle Software. Benutzung geschieht auf eigenes Risiko. Das sidux Projekt, seine Entwickler und Teammitglieder (alle vertreten durch den sidux e.V.) k&ouml;nnen unter keinen Umst&auml;nden haftbar gemacht werden f&uuml;r Sch&auml;den an Hard- oder Software, Datenverlust oder anderen, direkten oder indirekten Sch&auml;den entstanden durch die Benutzung dieser Software. Sollten Sie mit diesen Formulierungen und Bedingungen nicht einverstanden sein, so ist es Ihnen nicht erlaubt, diese Software weiter zu benutzen oder zu verteilen.
+					 Dies ist experimentelle Software. Benutzung geschieht auf eigenes Risiko. Das sidux Projekt, seine Entwickler und Teammitglieder (alle vertreten durch den sidux e.V.) können unter keinen Umständen haftbar gemacht werden für Schäden an Hard- oder Software, Datenverlust oder anderen, direkten oder indirekten Schäden entstanden durch die Benutzung dieser Software. Sollten Sie mit diesen Formulierungen und Bedingungen nicht einverstanden sein, so ist es Ihnen nicht erlaubt, diese Software weiter zu benutzen oder zu verteilen.
 
 				</p>
 			</div>
@@ -264,7 +399,7 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 				<h3>Europa</h3>
 				<ul>
 					<li>
-						<strong>Technische Universit&auml;t Carolo-Wilhelmina zu Braunschweig</strong>, Deutschland<br />
+						<strong>Technische Universität Carolo-Wilhelmina zu Braunschweig</strong>, Deutschland<br />
 						<a href="http://debian.tu-bs.de/project/sidux/">http://debian.tu-bs.de/project/sidux/</a><br />
 						<a href="ftp://debian.tu-bs.de/project/sidux/">ftp://debian.tu-bs.de/project/sidux/</a><br />
 						<a href="rsync://debian.tu-bs.de/sidux/">rsync://debian.tu-bs.de/sidux/</a>
@@ -272,7 +407,7 @@ deb http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.
 deb-src http://debian.tu-bs.de/project/sidux/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free</pre>
 					</li>
 					<li>
-						<strong>University of Kent/ Computer Science Department</strong>, Vereinigtes K&ouml;nigreich<br />
+						<strong>University of Kent/ Computer Science Department</strong>, Vereinigtes Königreich<br />
 						<a href="ftp://ftp.mirrorservice.org/sites/sidux.com/sidux/">ftp://ftp.mirrorservice.org/sites/sidux.com/sidux/</a><br />
 						<a href="http://www.mirrorservice.org/sites/sidux.com/sidux/">http://www.mirrorservice.org/sites/sidux.com/sidux/</a><br />
 						<a href="rsync://rsync.mirrorservice.org/sidux.com/sidux/">rsync://rsync.mirrorservice.org/sidux.com/sidux/</a>
@@ -284,7 +419,7 @@ deb-src http://debian.tu-bs.de/project/sidux/debian/ sid main contrib non-free f
 						<a href="rsync://ftp.heanet.ie/pub/sidux/">rsync://ftp.heanet.ie/pub/sidux/</a>
 					</li>
 					<li>
-						<strong>Freie Universit&auml;t Berlin/ spline (Student Project LInux NEtwork)</strong>, Deutschland<br />
+						<strong>Freie Universität Berlin/ spline (Student Project LInux NEtwork)</strong>, Deutschland<br />
 						<a href="ftp://ftp.spline.de/pub/sidux/">ftp://ftp.spline.de/pub/sidux/</a><br />
 						<a href="rsync://ftp.spline.de/Sidux/">rsync://ftp.spline.de/Sidux/</a><br />
 						<pre>deb ftp://ftp.spline.de/pub/sidux/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free
@@ -300,7 +435,7 @@ deb-src ftp://ftp.spline.de/pub/sidux/debian/ sid main contrib non-free fix.main
 deb-src http://sidux.com/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free</pre>
 							</li>
 							<li>
-								<a href="http://sidux.net/files/">http://sidux.net/files/</a><br />
+								http://sidux.net/<br />
 								<pre>deb http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free
 deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib fix.non-free</pre>
 							</li>
@@ -321,12 +456,6 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 						<a href="http://ftp-mirror.internap.com/pub/sidux/">http://ftp-mirror.internap.com/pub/sidux/</a><br />
 						<a href="rsync://ftp-mirror.internap.com/sidux/">rsync://ftp-mirror.internap.com/sidux/</a>
 					</li>
-<!--
-					<li>
-						<strong>Washington State University/ Linux User Group and School of Electrical Engineering and Computer Science</strong>, Pullman WA, USA<br />
-						<a href="http://lug01.eecs.wsu.edu/sidux/">http://lug01.eecs.wsu.edu/sidux/</a>
-					</li>
--->
 				</ul>
 
 				<h3>Asia</h3>
@@ -341,7 +470,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 				<h3>Afrika</h3>
 				<ul>
 					<li>
-						<strong>University of Cape Town/ Linux Enthusiasts Group</strong>, S&uuml;dafrika<br />
+						<strong>University of Cape Town/ Linux Enthusiasts Group</strong>, Südafrika<br />
 						<a href="http://ftp.leg.uct.ac.za/pub/linux/sidux/">http://ftp.leg.uct.ac.za/pub/linux/sidux/</a>
 					</li>
 				</ul>
@@ -355,35 +484,35 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 					</li>
 				</ul>
 
-				<em>Unser Dank gilt allen Mirrorbetreibern f&uuml;r ihre Bem&uuml;hungen um sidux.</em>
+				<em>Unser Dank gilt allen Mirrorbetreibern für ihre Bemühungen um sidux.</em>
 			</div>
 
 			<div class="divider" id="howto-involve">
 				<h2>Wie kann man mitwirken?</h2>
 				<p>
-					Sich bei sidux zu engagieren ist einfach, besucht uns im <a href="http://sidux.com/module-PNphpBB2.html">Forum</a> oder besser im IRC (irc.oftc.net, port 6667, channel #sidux) und diskutiert Eure Patches/ Vorschl&auml;ge oder Erweiterungen.
+					Sich bei sidux zu engagieren ist einfach, besucht uns im <a href="http://sidux.com/module-PNphpBB2.html">Forum</a> oder besser im IRC (irc.oftc.net, port 6667, channel #sidux) und diskutiert Eure Patches/ Vorschläge oder Erweiterungen.
 				</p>
 
 				<p>
-					Wir diskutieren gerne jegliche dfsg-freie Patches und Beitr&auml;ge, insbesondere im Bereich alternativer Window Manager (gnome, xfce), mobile Netzwerke (GPRS/ UMTS, Bluetooth, aber auch ISDN, PPP, PPPoE) oder generelle Tasks wie &Uuml;bersetzungen/Lokalisationen und &Auml;hnliches.
+					Wir diskutieren gerne jegliche dfsg-freie Patches und Beiträge, insbesondere im Bereich alternativer Window Manager (gnome, xfce), mobile Netzwerke (GPRS/ UMTS, Bluetooth, aber auch ISDN, PPP, PPPoE) oder generelle Tasks wie Übersetzungen/ Lokalisationen und Ähnliches.
 				</p>
 			</div>
 
 			<div class="divider" id="roadmap">
 				<h2>Roadmap:</h2>
 				<p>
-					Bitte habt Verst&auml;ndnis, dass folgende Roadmap eine ungenaue Sch&auml;tzung unseres Releaseplans darstellt, beeinflusst vom Status von Upstream Debian sid, wichtigen Systemkomponenten wie X.org, KDE, dem Linux-Kernel und unseren eigenen Entwicklungen, und dass sie &Auml;nderungen unterliegen kann.
+					Bitte habt Verständnis, dass folgende Roadmap eine ungenaue Schätzung unseres Releaseplans darstellt, beeinflusst vom Status von Upstream Debian sid, wichtigen Systemkomponenten wie X.org, KDE, dem Linux-Kernel und unseren eigenen Entwicklungen, und dass sie Änderungen unterliegen kann.
 				</p>
 
 				<ul>
 					<li>
-						sidux 2008-02 &quot;&Epsilon;&rho;&epsilon;&beta;&omicron;&sigmaf;&quot; &mdash; calendar week 17-18 2008
+						sidux 2008-02 &quot;Έρεβος&quot; &mdash; calendar week 18-19 2008
 					</li>
 					<li>
-						sidux 2008-03 &quot;&Omega;&upsilon;&rho;&epsilon;&alpha;&quot; &mdash; calendar week 28-29 2008
+						sidux 2008-03 &quot;Ωυρέα&quot; &mdash; calendar week 28-29 2008
 					</li>
 					<li>
-						sidux 2008-04 &quot;&Pi;&omicron;&nu;&tau;&omicron;&sigmaf;&quot; &mdash; calendar week 39-40 2008
+						sidux 2008-04 &quot;Πόντος&quot; &mdash; calendar week 39-40 2008
 					</li>
 				</ul>
 			</div>
@@ -413,7 +542,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 					Philippe Masson (LjanA)<br />
 					Kel Modderman (kelmo)<br />
 					Koslow<br />
-					Markus M&uuml;ller (moto)<br />
+					Markus Müller (moto)<br />
 					muchan<br />
 					Gabriel Palade (ladepa)<br />
 					<a href="http://www.r7h.at">Gerald Prock</a> (raider700)<br />
@@ -434,7 +563,7 @@ deb-src http://sidux.net/debian/ sid main contrib non-free fix.main fix.contrib 
 				</p>
 
 				<p>
-					Unser Dank geht an die <a class="printurl" href="http://www.hetzner.de/">Hetzner Online AG</a> f&uuml;r das Sponsoring  von <a href="http://sidux.com">sidux.com</a>.
+					Unser Dank geht an die <a href="http://www.hetzner.de/" class="printurl">Hetzner Online AG</a> für das Sponsoring  von <a href="http://sidux.com">sidux.com</a>.
 				</p>
 
 				<p>
