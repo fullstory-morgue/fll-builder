@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+echo 'This script is no longer maintained, Aborting!'
+exit 1
+
 SELF="fll-build"
 
 #################################################################
