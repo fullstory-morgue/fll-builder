@@ -1,6 +1,7 @@
-fll-builder (1.1.10) UNRELEASED; urgency=low
+fll-builder (1.1.10) ORPHANED; urgency=low
 
   * NOT RELEASED YET
+  * ORPHAN PACKAGE
 
  -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Mar 2008 03:32:17 +0100
 
