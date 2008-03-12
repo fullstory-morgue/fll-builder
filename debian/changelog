@@ -2,8 +2,9 @@ fll-builder (1.1.10) ORPHANED; urgency=low
 
   * NOT RELEASED YET
   * ORPHAN PACKAGE
+  * drop release notes, they aren't maintained anymore.
 
- -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Sat, 01 Mar 2008 03:32:17 +0100
+ -- Stefan Lippers-Hollmann <s.l-h@gmx.de>  Wed, 12 Mar 2008 15:35:56 +0100
 
 fll-builder (1.1.9) unstable; urgency=low
 

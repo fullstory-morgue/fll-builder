@@ -5,9 +5,3 @@ include /usr/share/cdbs/1/rules/debhelper.mk
 install/distro-defaults::
 	install -D -m 0644 etc/default/distro \
 		debian/distro-defaults/etc/default/distro
-
-create-icons::
-	inkscape --export-width=32 \
-		 --export-height=32 \
-		 --export-png="$(CURDIR)/usr/share/fll-builder/templates/sidux/release/release-notes.png" \
-			$(CURDIR)/usr/share/fll-builder/templates/sidux/release/release-notes.svg ; \

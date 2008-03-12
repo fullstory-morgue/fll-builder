@@ -1,6 +1,0 @@
-title  @distro@ @arch@
-kernel /boot/@vmlinuz@ boot=fll quiet vga=791
-initrd /boot/@initrd@
-
-title  @distro@ @arch@ Advanced Menu
-configfile /boot/grub/menu.lst.@arch@
